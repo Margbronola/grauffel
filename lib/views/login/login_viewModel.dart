@@ -1,3 +1,5 @@
+import 'package:egczacademy/views/home/home.dart';
+import 'package:egczacademy/views/reservation/reservation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -18,11 +20,11 @@ class LoginViewModel extends BaseViewModel {
   }
 
   void toggle() {
-    // showPassword = _authService.toggle(showPassword);
+    showPassword = !showPassword;
     notifyListeners();
   }
 
-  Future<void> login(context) async {
-
+  Future<void> login() async {
+    _navigationService.navigateToView(Home());
   }
 }

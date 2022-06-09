@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_screenutil: ^5.5.3+2
+  google_fonts: ^3.0.1
   stacked: ^2.3.8
   stacked_services: ^0.8.25
 

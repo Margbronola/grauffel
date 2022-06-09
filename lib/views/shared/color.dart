@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
-const Color backgroundColor = Color.fromARGB(255, 5, 4, 0);
-const Color buttonColor = Color.fromARGB(255, 221, 194, 89);
+const Color backgroundColor = Colors.black;
 const Color kcWhite = Colors.white;
+const Color buttonColor = Color(0xffBD9D56);
+const Color primaryColor = Color(0xff161616);
+const Color secondaryColor = Color(0xff191919);
+
+const Color cardColor = Colors.white70;
