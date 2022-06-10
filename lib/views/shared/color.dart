@@ -7,3 +7,5 @@ const Color primaryColor = Color(0xff161616);
 const Color secondaryColor = Color(0xff191919);
 
 const Color cardColor = Colors.white70;
+
+const Color greyLight = Color.fromARGB(105, 158, 158, 158);

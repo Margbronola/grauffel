@@ -1,67 +1,26 @@
+import 'package:egczacademy/views/home/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../reservation/reservation_card.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class Profile extends StatelessWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Hello ! JOHN",
-          style: TextStyle(fontSize: 20.sp),
-        ),
-        automaticallyImplyLeading: false,
-      ),
       body: Container(
         color: kcWhite,
-        // padding: EdgeInsets.symmetric(horizontal: 38.w),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 100,
-                width: size.width,
-                color: secondaryColor,
-                child: Image.asset(
-                  "assets/images/logo2.png",
-                  scale: 5,
-                ),
-              ),
-              Container(
-                  height: 67.h,
-                  width: size.width,
-                  color: buttonColor,
-                  child: Stack(
-                    children: [
-                      Container(
-                          height: 67.h,
-                          width: 56.w,
-                          child: Image.asset("assets/images/help.png")),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 38.w),
-                          child: Text(
-                            "Des documents sont nécessaires pour accéder au stand de tir",
-                            style: TextStyle(color: kcWhite, fontSize: 15.sp),
-                          ),
-                        ),
-                      )
-                    ],
-                  )),
-              Container(
-                height: 129.h,
-                width: size.width,
+        height: size.height,
+        width: size.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
                 decoration: BoxDecoration(
-                  color: kcWhite,
+                  color: backgroundColor,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -71,128 +30,117 @@ class MyWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width: 150.w,
-                      child: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "TOUTES LES RESERVATIONS",
-                              textAlign: TextAlign.center,
-                              style: ThemeData()
-                                  .textTheme
-                                  .headlineSmall!
-                                  .copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "3",
-                              style: ThemeData()
-                                  .textTheme
-                                  .headlineSmall!
-                                  .copyWith(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
+                child: Container(
+                  height: 125.h,
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/profile.png",
+                        scale: 5,
                       ),
-                    ),
-                    Container(
-                      width: 150.w,
-                      child: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "MUNITIONS \nACHETEES",
-                              textAlign: TextAlign.center,
-                              style: ThemeData()
-                                  .textTheme
-                                  .headlineSmall!
-                                  .copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "50",
-                              style: ThemeData()
-                                  .textTheme
-                                  .headlineSmall!
-                                  .copyWith(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              verticalSpaceMedium(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  children: [
-                    Text("RESERVATION(S)"),
-                    Stack(
-                      fit: StackFit.passthrough,
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                  color: Color.fromARGB(105, 158, 158, 158),
-                                  width: 5),
-                            ),
+                      horizontalSpaceMedium(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "BONJOUR JOHN",
+                            style:
+                                ThemeData().textTheme.headlineSmall!.copyWith(
+                                      color: kcWhite,
+                                      fontSize: 20.sp,
+                                    ),
                           ),
-                        ),
-                        TabBar(
-                          unselectedLabelColor: Colors.grey,
-                          labelColor: backgroundColor,
-                          indicatorColor: buttonColor,
-                          indicatorWeight: 5,
-                          tabs: [
-                            Tab(
-                              text: "A venir",
-                            ),
-                            Tab(
-                              text: "Passées",
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          Text(
+                            "Profile pic",
+                            style:
+                                ThemeData().textTheme.headlineSmall!.copyWith(
+                                      color: Colors.grey,
+                                      fontSize: 10.sp,
+                                    ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )),
+            Expanded(
+              child: ListView(
+                children: docs.map(buildTile).toList(),
               ),
-              Expanded(
-                child: TabBarView(
-                  children: [
-                    Container(
-                      child: ListView(
-                        children: [ReservationCard(), ReservationCard()],
-                      ),
-                    ),
-                    Container(
-                      color: Colors.blue,
-                    )
-                  ],
-                ),
-              )
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget childCard() {
+    return Container(
+      width: double.infinity,
+      height: 48,
+      color: greyLight,
+      child: Card(
+        color: kcWhite,
+        child: Padding(
+          padding: EdgeInsets.only(top: 6.h, right: 25.w, left: 25.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Ajouter",
+                    style: ThemeData().textTheme.headlineSmall!.copyWith(
+                          color: buttonColor,
+                          fontSize: 12.sp,
+                        ),
+                  ),
+                  Text(
+                    "Pièce d'identité / passeport",
+                    style: ThemeData().textTheme.headlineSmall!.copyWith(
+                          color: backgroundColor,
+                          fontSize: 15.sp,
+                        ),
+                  ),
+                ],
+              ),
+              Image.asset(
+                "assets/images/docfile.png",
+                height: 30.h,
+                width: 23.w,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget buildTile(DocsTile tile) {
+    return ExpansionTile(
+        // ignore: sort_child_properties_last
+        children: [childCard(), childCard()],
+        collapsedTextColor: Colors.black,
+        collapsedIconColor: Colors.black,
+        iconColor: buttonColor,
+        textColor: buttonColor,
+        title: Text(tile.title));
+  }
+}
+
+List<DocsTile> docs = [
+  DocsTile(title: "INFORMATION PERSONNELLES"),
+  DocsTile(title: "EXPERIENCES"),
+  DocsTile(title: "EQUIPEMENTS"),
+  DocsTile(title: "DOCUMENTS")
+];
+
+class DocsTile {
+  String title;
+  DocsTile({
+    required this.title,
+  });
 }

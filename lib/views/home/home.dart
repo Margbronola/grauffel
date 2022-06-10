@@ -1,5 +1,11 @@
+import 'package:egczacademy/views/home/profile/profile.dart';
+import 'package:egczacademy/views/home/reservation/reservation_list.dart';
+import 'package:egczacademy/views/home/settings/settings.dart';
 import 'package:egczacademy/views/reservation/reservation_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../shared/ui_helper.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -35,6 +41,39 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: _selectedIndex != 0
+            ? null
+            : Text(
+                "Hello ! JOHN",
+                style: TextStyle(fontSize: 20.sp),
+              ),
+        leadingWidth: 150.w,
+        leading: _selectedIndex == 0
+            ? null
+            : Row(
+                children: [
+                  SizedBox(
+                    width: 20.w,
+                  ),
+                  Image.asset(
+                    "assets/images/logo2.png",
+                    scale: 12.w,
+                  ),
+                ],
+              ),
+        actions: [
+          GestureDetector(
+            child: Icon(Icons.more_vert),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Settings()));
+            },
+          ),
+          horizontalSpaceSmall()
+        ],
+        automaticallyImplyLeading: false,
+      ),
       body: PageView(
         controller: _pageController,
         onPageChanged: (index) {
@@ -42,12 +81,8 @@ class _HomeState extends State<Home> {
         },
         children: <Widget>[
           ReservationView(),
-          Container(
-            color: Colors.red,
-          ),
-          Container(
-            color: Colors.green,
-          ),
+          ReservationList(),
+          Profile(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

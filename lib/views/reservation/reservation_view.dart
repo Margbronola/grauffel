@@ -16,13 +16,6 @@ class ReservationView extends StatelessWidget {
       builder: (context, model, child) => DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              "Hello ! JOHN",
-              style: TextStyle(fontSize: 20.sp),
-            ),
-            automaticallyImplyLeading: false,
-          ),
           body: Container(
             color: kcWhite,
             // padding: EdgeInsets.symmetric(horizontal: 38.w),
@@ -155,9 +148,8 @@ class ReservationView extends StatelessWidget {
                             Container(
                               decoration: BoxDecoration(
                                 border: Border(
-                                  bottom: BorderSide(
-                                      color: Color.fromARGB(105, 158, 158, 158),
-                                      width: 5),
+                                  bottom:
+                                      BorderSide(color: greyLight, width: 5),
                                 ),
                               ),
                             ),
