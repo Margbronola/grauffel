@@ -65,41 +65,44 @@ class ReservationList extends StatelessWidget {
     );
   }
 
-  Widget ReserveCard({required Reserve reserve}) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Card(
-          elevation: 2,
-          color: kcWhite,
-          child: Row(
-            children: [
-              Image.asset(
-                "assets/images/${reserve.image}.png",
-                height: 131.h,
-                width: 110.w,
-              ),
-              horizontalSpaceMedium(),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      reserve.title,
-                      style: ThemeData()
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 18.sp, color: buttonColor),
-                    ),
-                    Text(
-                      reserve.description,
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
-                            fontSize: 12.sp,
-                          ),
-                    ),
-                  ],
+  Widget ReserveCard({required Reserve reserve}) => GestureDetector(
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Card(
+            elevation: 2,
+            color: kcWhite,
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/images/${reserve.image}.png",
+                  height: 131.h,
+                  width: 110.w,
                 ),
-              ),
-              horizontalSpaceMedium(),
-            ],
+                horizontalSpaceMedium(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        reserve.title,
+                        style: ThemeData()
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(fontSize: 18.sp, color: buttonColor),
+                      ),
+                      Text(
+                        reserve.description,
+                        style: ThemeData().textTheme.bodyText1!.copyWith(
+                              fontSize: 12.sp,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+                horizontalSpaceMedium(),
+              ],
+            ),
           ),
         ),
       );
