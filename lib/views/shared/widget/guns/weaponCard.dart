@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'package:egczacademy/models/gun_model.dart';
 import 'package:egczacademy/views/shared/widget/guns/weaponCardModel.dart';
-
 import '../../color.dart';
 
 class WeaponCardView extends StatelessWidget {
@@ -52,12 +50,14 @@ class WeaponCardView extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  Text(
-                    data.name,
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: 100.w,
+                    child: Text(
+                      data.name,
+                      overflow: TextOverflow.ellipsis,
+                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                          fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   Spacer(),
                   Column(

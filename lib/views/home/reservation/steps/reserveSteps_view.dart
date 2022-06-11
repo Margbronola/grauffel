@@ -1,6 +1,8 @@
 import 'package:egczacademy/views/home/reservation/steps/activities_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/armore_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/bullets_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/equipment_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/submition_view.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/customButton.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
@@ -22,9 +24,11 @@ class ReserveStepsView extends StatelessWidget {
         body: Container(
           color: kcWhite,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  height: 83.h,
+                  height: 90.h,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       color: backgroundColor,
                       image: DecorationImage(
@@ -32,14 +36,16 @@ class ReserveStepsView extends StatelessWidget {
                           fit: BoxFit.cover)),
                   child: Container(
                     color: Color.fromARGB(142, 0, 0, 0),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     height: 83.h,
                     width: double.infinity,
                     child: Center(
                       child: Container(
-                        width: 357.w,
+                        width: size(context).width,
                         height: 37,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             circle(isFilled: true, title: "Activities"),
                             divider(),
@@ -57,7 +63,9 @@ class ReserveStepsView extends StatelessWidget {
                   )),
               // ActivitiesView()
               // ArmoreView()
-              BulletsView()
+              // BulletsView()
+              // EquipmentView()
+              SubmitionView()
             ],
           ),
         ),
@@ -66,29 +74,37 @@ class ReserveStepsView extends StatelessWidget {
     );
   }
 
-  Widget circle({bool isFilled = false, required String title}) => Column(
-        children: [
-          Container(
-            width: 22.w,
-            height: 22.w,
-            decoration: BoxDecoration(
-                color: isFilled ? kcWhite : null,
-                border: Border.all(
-                    color: kcWhite, style: BorderStyle.solid, width: 2),
-                shape: BoxShape.circle),
-          ),
-          SizedBox(
-            height: 5.h,
-          ),
-          Text(
-            title,
-            style: ThemeData().textTheme.headlineSmall!.copyWith(
-                fontSize: 10.sp, color: kcWhite, fontWeight: FontWeight.bold),
-          )
-        ],
+  Widget circle({bool isFilled = false, required String title}) => Container(
+        width: 58.w,
+        child: Column(
+          children: [
+            Container(
+              width: 22.w,
+              height: 22.w,
+              decoration: BoxDecoration(
+                  color: isFilled ? kcWhite : null,
+                  border: Border.all(
+                      color: kcWhite, style: BorderStyle.solid, width: 2),
+                  shape: BoxShape.circle),
+            ),
+            SizedBox(
+              height: 5.h,
+            ),
+            Center(
+              child: Text(
+                title,
+                style: ThemeData().textTheme.headlineSmall!.copyWith(
+                    fontSize: 10.sp,
+                    color: kcWhite,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
       );
   Widget divider() => Container(
-      width: 38.w,
+      width: 20.w,
+      height: 22.w,
       child: Divider(
         color: kcWhite,
         thickness: 2.h,

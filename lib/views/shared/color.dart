@@ -11,3 +11,5 @@ const Color cardColor = Colors.white70;
 const Color greyLight = Color.fromARGB(105, 158, 158, 158);
 
 const Color greyLighter = Color.fromARGB(50, 158, 158, 158);
+
+const Color greyLighter2 = Color.fromARGB(25, 158, 158, 158);
