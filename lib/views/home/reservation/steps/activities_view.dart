@@ -6,7 +6,11 @@ import '../../../shared/customButton.dart';
 import '../../../shared/ui_helper.dart';
 
 class ActivitiesView extends StatelessWidget {
-  const ActivitiesView({Key? key}) : super(key: key);
+  final Function() ontap;
+  const ActivitiesView({
+    Key? key,
+    required this.ontap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class ActivitiesView extends StatelessWidget {
         ),
         verticalSpaceMedium(),
         Container(
-            width: 124.w, child: CustomButton(title: "Suivant", onTap: () {}))
+            width: 124.w, child: CustomButton(title: "Suivant", onTap: ontap))
       ],
     );
   }
