@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-double _VerticalSpaceSmall = 20.0.h;
-double _VerticalSpaceMedium = 30.0.h;
-double _VerticalSpaceLarge = 60.0.h;
+double _verticalSpaceSmall = 20.0.h;
+double _verticalSpaceMedium = 30.0.h;
+double _verticalSpaceLarge = 60.0.h;
 
 // Horizontal spacing constants. Adjust to your liking.
-double _HorizontalSpaceSmall = 10.0.w;
-double _HorizontalSpaceMedium = 20.0.w;
-double HorizontalSpaceLarge = 60.0.w;
+double _horizontalSpaceSmall = 10.0.w;
+double _horizontalSpaceMedium = 20.0.w;
+double _horizontalSpaceLarge = 60.0.w;
 
 /// Returns a vertical space with height set to [_VerticalSpaceSmall]
 Widget verticalSpaceSmall() {
-  return verticalSpace(_VerticalSpaceSmall);
+  return verticalSpace(_verticalSpaceSmall);
 }
 
-/// Returns a vertical space with height set to [_VerticalSpaceMedium]
+/// Returns a vertical space with height set to [_verticalSpaceMedium]
 Widget verticalSpaceMedium() {
-  return verticalSpace(_VerticalSpaceMedium);
+  return verticalSpace(_verticalSpaceMedium);
 }
 
-/// Returns a vertical space with height set to [_VerticalSpaceLarge]
+/// Returns a vertical space with height set to [_verticalSpaceLarge]
 Widget verticalSpaceLarge() {
-  return verticalSpace(_VerticalSpaceLarge);
+  return verticalSpace(_verticalSpaceLarge);
 }
 
 /// Returns a vertical space equal to the [height] supplied
@@ -32,17 +32,17 @@ Widget verticalSpace(double height) {
 
 /// Returns a vertical space with height set to [_HorizontalSpaceSmall]
 Widget horizontalSpaceSmall() {
-  return horizontalSpace(_HorizontalSpaceSmall);
+  return horizontalSpace(_horizontalSpaceSmall);
 }
 
 /// Returns a vertical space with height set to [_HorizontalSpaceMedium]
 Widget horizontalSpaceMedium() {
-  return horizontalSpace(_HorizontalSpaceMedium);
+  return horizontalSpace(_horizontalSpaceMedium);
 }
 
 /// Returns a vertical space with height set to [HorizontalSpaceLarge]
 Widget horizontalSpaceLarge() {
-  return horizontalSpace(HorizontalSpaceLarge);
+  return horizontalSpace(_horizontalSpaceLarge);
 }
 
 /// Returns a vertical space equal to the [width] supplied
