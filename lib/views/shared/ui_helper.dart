@@ -49,3 +49,5 @@ Widget horizontalSpaceLarge() {
 Widget horizontalSpace(double width) {
   return Container(width: width);
 }
+
+Size size(context) => MediaQuery.of(context).size;

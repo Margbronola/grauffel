@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:egczacademy/models/reserve_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:egczacademy/models/reserve_model.dart';
 import '../color.dart';
 import '../ui_helper.dart';
 
 class ReserveCard extends StatelessWidget {
-  ReserveModel reserve;
-  ReserveCard({
+  final ReserveModel reserve;
+  final Function() ontap;
+  const ReserveCard({
     Key? key,
     required this.reserve,
+    required this.ontap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: ontap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Card(

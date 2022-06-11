@@ -11,7 +11,6 @@ class ReservationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return ViewModelBuilder<ReservationViewModel>.reactive(
       builder: (context, model, child) => DefaultTabController(
         length: 2,
@@ -25,7 +24,7 @@ class ReservationView extends StatelessWidget {
                 children: [
                   Container(
                     height: 100,
-                    width: size.width,
+                    width: size(context).width,
                     color: secondaryColor,
                     child: Image.asset(
                       "assets/images/logo2.png",
@@ -34,7 +33,7 @@ class ReservationView extends StatelessWidget {
                   ),
                   Container(
                       height: 67.h,
-                      width: size.width,
+                      width: size(context).width,
                       color: buttonColor,
                       child: Stack(
                         children: [
@@ -57,7 +56,7 @@ class ReservationView extends StatelessWidget {
                       )),
                   Container(
                     height: 129.h,
-                    width: size.width,
+                    width: size(context).width,
                     decoration: BoxDecoration(
                       color: kcWhite,
                       boxShadow: [

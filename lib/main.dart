@@ -8,9 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/app.locator.dart';
 import 'app/app.router.dart';
+import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 
 void main() {
   setupLocator();
+  setupDialogUi();
   runApp(const MyApp());
 }
 

@@ -1,21 +1,24 @@
-import 'package:egczacademy/views/home/reservation/steps/reserveSteps_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import '../../../app/app.locator.dart';
-import '../../shared/widget/dialog/setup_dialog_ui.dart';
 
-class ReservationListModel extends BaseViewModel {
+import '../../../../app/app.locator.dart';
+import '../dialog/setup_dialog_ui.dart';
+
+class WeaponCardViewModel extends BaseViewModel {
+  int? selectedIndex;
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  void showCard() async {
+
+  void showDetails(index) async {
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
-        variant: DialogType.basic,
+        variant: DialogType.arm,
         barrierDismissible: true);
 
     if (response != null) {
       if (response.confirmed) {
-        _navigationService.navigateToView(ReserveStepsView());
+        selectedIndex = index;
+        notifyListeners();
       } else {
         print("CANCE:");
       }

@@ -45,18 +45,21 @@ class ReservationList extends StatelessWidget {
                 child: ListView(
               children: [
                 ReserveCard(
+                    ontap: model.showCard,
                     reserve: const ReserveModel(
                         image: "mask1",
                         title: "PAS DE TIR",
                         description:
                             "Pour vous et vos amisafin de pratiquer le tir 25mou du Fun Shoot en dehorsdes heures d'ouverture")),
                 ReserveCard(
+                    ontap: model.showCard,
                     reserve: const ReserveModel(
                         image: "mask2",
                         title: "Alvéole",
                         description:
                             "Vivre une expérience uniquedans le domaine du tir")),
                 ReserveCard(
+                    ontap: model.showCard,
                     reserve: const ReserveModel(
                         image: "mask3",
                         title: "COURS TSV",
