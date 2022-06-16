@@ -20,7 +20,7 @@ class BasicDialog extends StatelessWidget {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: EdgeInsets.symmetric(horizontal: 20),
-          height: size(context).height / 4.h,
+          height: 250.h,
           child: Column(
             children: [
               Container(

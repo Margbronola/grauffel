@@ -8,7 +8,6 @@ import '../../app/app.locator.dart';
 class WelcomeViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   void goToLogin() {
-    _navigationService.navigateWithTransition(LoginView(),
-        transitionStyle: Transition.zoom);
+    _navigationService.navigateTo(Routes.loginView);
   }
 }

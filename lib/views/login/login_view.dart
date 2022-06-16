@@ -1,6 +1,7 @@
 import 'package:egczacademy/views/shared/customButton.dart';
 import 'package:egczacademy/views/shared/socialButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../shared/validator.dart';
 import 'login_viewModel.dart';
@@ -36,7 +37,10 @@ class LoginView extends StatelessWidget {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.asset("assets/images/logo2.png"),
+                                Image.asset(
+                                  "assets/images/logo2.png",
+                                  scale: 4.w,
+                                ),
                                 SizedBox(height: size.height * 0.06),
                                 TextFormField(
                                   controller: model.emailController,

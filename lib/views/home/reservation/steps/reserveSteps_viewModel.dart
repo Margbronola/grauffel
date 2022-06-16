@@ -9,7 +9,6 @@ class ReserveStepsViewModel extends BaseViewModel {
 
   void init() {
     pageController = PageController();
-    print("init");
   }
 
   @override

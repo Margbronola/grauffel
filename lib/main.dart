@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
           systemNavigationBarIconBrightness: Brightness.light));
     }
     return ScreenUtilInit(
-      designSize: const Size(414, 906),
       builder: (context, child) => MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

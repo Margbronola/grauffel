@@ -27,7 +27,7 @@ class ReserveStepsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  height: 90.h,
+                  height: 100.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: backgroundColor,
