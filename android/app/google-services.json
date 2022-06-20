@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "711105303968",
+    "project_id": "grauffelmobile",
+    "storage_bucket": "grauffelmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711105303968:android:7101f17d24a7010b5440c5",
+        "android_client_info": {
+          "package_name": "com.ericgrauffel.grauffelmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711105303968-heukfdhkpvv3k7n36mhqs27i75fcfiqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ericgrauffel.grauffelmobile",
+            "certificate_hash": "d10f4d7c2d9394fadcf6a625afdcf67d82da4d1d"
+          }
+        },
+        {
+          "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbXlG2HtCuOKZbbwvPmk6XeVF8jkt_s4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ericgrauffel.grauffelmobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711105303968:android:e1a1539ea246e4955440c5",
+        "android_client_info": {
+          "package_name": "com.grauffel.egczacademy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTbXlG2HtCuOKZbbwvPmk6XeVF8jkt_s4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ericgrauffel.grauffelmobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 import 'package:egczacademy/views/home/profile/profile.dart';
 import 'package:egczacademy/views/home/reservation/reservation_list.dart';
-import 'package:egczacademy/views/home/settings/settings.dart';
+import 'package:egczacademy/views/home/settings/settings_view.dart';
 import 'package:egczacademy/views/reservation/reservation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,8 +66,8 @@ class _HomeState extends State<Home> {
           GestureDetector(
             child: Icon(Icons.more_vert),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Settings()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingsView()));
             },
           ),
           horizontalSpaceSmall()
