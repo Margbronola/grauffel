@@ -1,7 +1,5 @@
-import 'package:egczacademy/app/app.router.dart';
 import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked/stacked.dart';
@@ -20,7 +18,9 @@ class WelcomeViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  late final AnimationController controller;
+  late final AnimationController controller_inputText;
+
+  late final AnimationController controller_logo;
   late final Animation<Offset> paddingBottom;
   late final Animation<Offset> offsetAnimation;
   late final Animation<Offset> offsetAnimation2;
@@ -32,7 +32,6 @@ class WelcomeViewModel extends BaseViewModel {
   String get btnText => isForward ? "Login" : "J'AI UN COMPTE";
 
   bool showPassword = false;
-  void register() {}
 
   bool get isFocus => loginFocusNode.hasFocus || passwordFocusNode.hasFocus;
 
@@ -40,16 +39,19 @@ class WelcomeViewModel extends BaseViewModel {
     loginFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
 
-    controller = AnimationController(
+    controller_inputText = AnimationController(
         duration: const Duration(milliseconds: 500), vsync: vsync);
+
+    controller_logo = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: vsync);
 
     offsetAnimation = Tween<Offset>(
       begin: const Offset(50, 0.0),
       end: Offset.zero,
     ).animate(CurvedAnimation(
-      parent: controller,
+      parent: controller_inputText,
       curve: Interval(
-        0.500,
+        0.0,
         1.0,
         curve: Curves.ease,
       ),
@@ -59,9 +61,9 @@ class WelcomeViewModel extends BaseViewModel {
       begin: const Offset(50, 0.0),
       end: Offset.zero,
     ).animate(CurvedAnimation(
-      parent: controller,
+      parent: controller_inputText,
       curve: Interval(
-        0.800,
+        0.500,
         1.0,
         curve: Curves.ease,
       ),
@@ -72,25 +74,26 @@ class WelcomeViewModel extends BaseViewModel {
       end: Offset(0.0, -2),
     ).animate(
       CurvedAnimation(
-        parent: controller,
+        parent: controller_logo,
         curve: Interval(
           0.0,
-          0.500,
+          0.1,
           curve: Curves.ease,
         ),
       ),
     );
   }
 
-  void play() {
-    controller.forward().then((value) {
-      isForward = true;
-      notifyListeners();
-    });
+  void play() async {
+    await controller_logo.forward();
+    await controller_inputText.forward();
+    isForward = true;
+    notifyListeners();
   }
 
   void reset() {
-    controller.reverse().then((value) {
+    controller_inputText.reverse().then((value) {
+      controller_logo.reverse();
       isForward = false;
       notifyListeners();
     });
@@ -126,7 +129,5 @@ class WelcomeViewModel extends BaseViewModel {
     }
   }
 
-  void goToLogin() {
-    // _navigationService.navigateTo(Routes.loginView);
-  }
+  void register() {}
 }

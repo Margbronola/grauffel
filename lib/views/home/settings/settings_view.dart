@@ -57,7 +57,6 @@ class SettingsView extends StatelessWidget {
                 settingTile("lock", "Privacy & Security"),
                 settingTile("headphone", "Help and Support"),
                 MaterialButton(
-                  color: Colors.red,
                   onPressed: model.showToken,
                   child: settingTile(
                     "helpcircle",
@@ -65,7 +64,6 @@ class SettingsView extends StatelessWidget {
                   ),
                 ),
                 MaterialButton(
-                  color: Colors.red,
                   onPressed: model.signOut,
                   child: settingTile("signout", "SignOut"),
                 )

@@ -1,9 +1,7 @@
 import 'package:egczacademy/views/home/home.dart';
-import 'package:egczacademy/views/login/login_view.dart';
 import 'package:egczacademy/views/welcome/welcome_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
 import 'auth_wrapper_viewModel.dart';
 
 class AuthWrapperView extends StatelessWidget {

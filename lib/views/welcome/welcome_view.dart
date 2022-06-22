@@ -122,7 +122,8 @@ class _WelcomeViewState extends State<WelcomeView>
                                       onTap: model.isForward
                                           ? model.login
                                           : model.play),
-                                  // CustomButton(title: "reset", onTap: model.reset),
+                                  CustomButton(
+                                      title: "reset", onTap: model.reset),
                                   verticalSpaceSmall(),
                                   SocialButton(),
                                 ],

@@ -28,7 +28,7 @@ class ReserveStepsView extends StatelessWidget {
             children: [
               Container(
                   height: 100.h,
-                  width: double.infinity,
+                  width: size(context).width,
                   decoration: BoxDecoration(
                       color: backgroundColor,
                       image: DecorationImage(
@@ -36,11 +36,11 @@ class ReserveStepsView extends StatelessWidget {
                           fit: BoxFit.cover)),
                   child: Container(
                     color: Color.fromARGB(142, 0, 0, 0),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
                     height: 83.h,
-                    width: double.infinity,
+                    width: size(context).width,
                     child: Center(
                       child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
                         width: size(context).width,
                         height: 37,
                         child: Row(
@@ -116,12 +116,12 @@ class ReserveStepsView extends StatelessWidget {
   Widget circle(
           {required int index, required String title, required pageIndex}) =>
       Container(
-        width: 58.w,
+        width: 45.w,
         child: Column(
           children: [
             Container(
-              width: 22.w,
-              height: 22.w,
+              width: 20.w,
+              height: 20.w,
               child: pageIndex > index
                   ? Icon(
                       Icons.check,
@@ -141,13 +141,13 @@ class ReserveStepsView extends StatelessWidget {
                   shape: BoxShape.circle),
             ),
             SizedBox(
-              height: 5.h,
+              height: 4.h,
             ),
             Center(
               child: Text(
                 title,
                 style: ThemeData().textTheme.headlineSmall!.copyWith(
-                    fontSize: 10.sp,
+                    fontSize: 8.sp,
                     color: kcWhite,
                     fontWeight: FontWeight.bold),
               ),
@@ -156,7 +156,7 @@ class ReserveStepsView extends StatelessWidget {
         ),
       );
   Widget divider({required int index, required pageIndex}) => Container(
-      width: 20.w,
+      width: 18.w,
       height: 22.w,
       child: Divider(
         color: pageIndex > index ? buttonColor : kcWhite,

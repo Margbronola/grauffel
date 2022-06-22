@@ -27,7 +27,7 @@ class StepView extends StatelessWidget {
       builder: (context, model, child) => Column(
         children: [
           Container(
-            height: 76.h,
+            height: 70.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color: kcWhite,
@@ -50,9 +50,7 @@ class StepView extends StatelessWidget {
             )),
           ),
           verticalSpaceMedium(),
-          Container(
-            height: 400,
-            width: 354.w,
+          Expanded(
             child: GridView.count(
               mainAxisSpacing: 15,
               crossAxisSpacing: 20,
@@ -73,7 +71,9 @@ class StepView extends StatelessWidget {
                 .copyWith(fontSize: 15.sp, color: buttonColor),
           ),
           Container(
-              width: 354.w, child: CustomButton(title: "Suivant", onTap: () {}))
+              padding: EdgeInsets.only(bottom: 20),
+              width: 354.w,
+              child: CustomButton(title: "Suivant", onTap: () {}))
         ],
       ),
       viewModelBuilder: () => StepViewModel(),
