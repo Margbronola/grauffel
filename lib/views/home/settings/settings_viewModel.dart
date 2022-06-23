@@ -20,8 +20,8 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   void showToken() async {
-    String tokne = await _authenticationService.token;
-    print(tokne);
+    // String tokne = await _authenticationService.token;
+    // print(tokne);
   }
 }
 

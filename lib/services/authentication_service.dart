@@ -1,47 +1,52 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:stacked_services/stacked_services.dart';
-
-import '../app/app.locator.dart';
+import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import '../models/user_model.dart';
+import 'global.dart';
 
 class AuthenticationService {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  final DialogService _dialogService = locator<DialogService>();
-
-  Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
-
-  Future<String> get token async =>
-      await firebaseAuth.currentUser!.getIdToken();
-
-  Future<bool>? signIn(
-      {required String email, required String password}) async {
+  //login in server
+  Future<bool> login(
+      {required String firebase_token, required String device_name}) async {
     try {
-      UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      final respo = await http.post(Uri.parse("$url/login"),
+          body: {"firebase_token": firebase_token, "device_name": device_name});
+      var data = json.decode(respo.body);
 
-      return true;
-    } on FirebaseAuthException catch (e) {
+      if (respo.statusCode == 200) {
+        print(data);
+        Fluttertoast.showToast(msg: "Successful");
+        return true;
+      }
+    } catch (e) {
       print(e);
-
       return false;
     }
+    print('NO user');
+    return false;
   }
 
-  Future<bool>? signUp(
-      {required String email, required String password}) async {
+  //server register
+  Future<bool> register({required UserModel userModel}) async {
     try {
-      await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return true;
-    } on FirebaseAuthException catch (e) {
+      Map user = userModel.toJson();
+      user.removeWhere((key, value) => value == null);
+      final respo = await http.post(Uri.parse("$url/register"), body: user);
+      var data = json.decode(respo.body);
+      if (respo.statusCode == 200) {
+        print(data);
+        print("success");
+        Fluttertoast.showToast(msg: "Successful");
+        return true;
+      }
+    } catch (e) {
       print(e);
-
       return false;
     }
+    return false;
   }
 
   Future<bool>? logout() async {
-    await firebaseAuth.signOut();
-
     return false;
   }
 }

@@ -75,7 +75,7 @@ class _WelcomeViewState extends State<WelcomeView>
                                           position: model.offsetAnimation2,
                                           child: TextFormField(
                                             onFieldSubmitted: (String text) {
-                                              model.login();
+                                              model.loginButton();
                                             },
                                             focusNode: model.passwordFocusNode,
                                             style: TextStyle(color: kcWhite),
@@ -120,7 +120,7 @@ class _WelcomeViewState extends State<WelcomeView>
                                   CustomButton(
                                       title: model.btnText,
                                       onTap: model.isForward
-                                          ? model.login
+                                          ? model.loginButton
                                           : model.play),
                                   CustomButton(
                                       title: "reset", onTap: model.reset),

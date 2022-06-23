@@ -1,5 +1,6 @@
 import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/shared/color.dart';
+import 'package:egczacademy/views/welcome/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked/stacked.dart';
@@ -7,24 +8,19 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 import '../home/home.dart';
 
-class WelcomeViewModel extends BaseViewModel {
+class WelcomeViewModel extends BaseViewModel with LoginService {
   final NavigationService _navigationService = locator<NavigationService>();
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
-
   final DialogService _dialogService = locator<DialogService>();
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   late final AnimationController controller_inputText;
-
   late final AnimationController controller_logo;
   late final Animation<Offset> paddingBottom;
   late final Animation<Offset> offsetAnimation;
   late final Animation<Offset> offsetAnimation2;
-
   late FocusNode loginFocusNode;
   late FocusNode passwordFocusNode;
 
@@ -32,7 +28,6 @@ class WelcomeViewModel extends BaseViewModel {
   String get btnText => isForward ? "Login" : "J'AI UN COMPTE";
 
   bool showPassword = false;
-
   bool get isFocus => loginFocusNode.hasFocus || passwordFocusNode.hasFocus;
 
   void init(TickerProvider vsync) {
@@ -101,33 +96,17 @@ class WelcomeViewModel extends BaseViewModel {
 
   void toggle() {
     showPassword = !showPassword;
-
     notifyListeners();
   }
 
-  Future<void> login() async {
-    if (formKey.currentState!.validate() == true) {
-      setBusy(true);
-      _authenticationService
-          .signIn(
-              email: emailController.text, password: passwordController.text)!
-          .then((value) {
-        if (value) {
-          _navigationService.navigateToView(Home());
-        } else {
-          Fluttertoast.showToast(
-              msg: "Accès refusé",
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.white.withOpacity(0.1),
-              textColor: errorColor,
-              fontSize: 16.0);
-        }
-        setBusy(false);
-      });
-    }
+  void loginButton() async {
+    setBusy(true);
+    await login(
+        formKey: formKey,
+        email: emailController.text,
+        password: passwordController.text);
+    setBusy(false);
   }
 
-  void register() {}
+  void registerButton() {}
 }
