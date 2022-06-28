@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/welcome/login_service.dart';
 import 'package:egczacademy/views/welcome/regsiter_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -39,7 +42,11 @@ class WelcomeViewModel extends BaseViewModel
   bool showPassword = false;
   bool cshowPassword = false;
 
+  bool keyBoardVisible = false;
+
   // bool isFocus = false;
+
+  late StreamSubscription<bool> keyboardSubscription;
 
   String get btnText => isLoginView
       ? "Login"
@@ -81,6 +88,17 @@ class WelcomeViewModel extends BaseViewModel
   }
 
   void init(TickerProvider vsync) {
+    var keyboardVisibilityController = KeyboardVisibilityController();
+    // Query
+    print(
+        'Keyboard visibility direct query: ${keyboardVisibilityController.isVisible}');
+
+    // Subscribe
+    keyboardSubscription =
+        keyboardVisibilityController.onChange.listen((bool visible) {
+      keyBoardVisible = visible;
+      notifyListeners();
+    });
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
@@ -92,7 +110,7 @@ class WelcomeViewModel extends BaseViewModel
         duration: const Duration(milliseconds: 500), vsync: vsync);
 
     controller_logo = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: vsync);
+        duration: const Duration(milliseconds: 3000), vsync: vsync);
 
     offsetAnimation = Tween<Offset>(
       begin: const Offset(50, 0.0),

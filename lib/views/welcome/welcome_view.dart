@@ -30,57 +30,74 @@ class _WelcomeViewState extends State<WelcomeView>
             ? const CustomLoader()
             : Stack(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage(imageOwner))),
-                    child: Form(
-                      key: model.formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
+                  SingleChildScrollView(
+                    child: Container(
+                      // width: s,
+                      child: Image.asset(imageOwner),
+                      // decoration: BoxDecoration(
+                      //     image: DecorationImage(image: AssetImage(imageOwner))),
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: Container(
+                      width: size(context).width,
+                      height: size(context).height,
+                      child: Form(
+                        key: model.formKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Expanded(
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      SlideTransition(
-                                          position: model.paddingBottom,
-                                          child: Image.asset(imagelBigLogo,
-                                              scale: 4.5.w)),
-                                      AnimatedContainer(
-                                        duration:
-                                            const Duration(milliseconds: 300),
-                                        padding:
-                                            const EdgeInsets.only(top: 100),
-                                        child: SingleChildScrollView(
-                                          child: Container(
-                                              width: 333.w,
-                                              child: model.isRegisterView
-                                                  ? RegisterInput(
-                                                      model: model,
-                                                    )
-                                                  : LoginInput(model: model)),
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                AnimatedContainer(
+                                    duration: Duration(milliseconds: 400),
+                                    // height: double.infinity,
+                                    child: Image.asset(imagelBigLogo,
+                                        scale: 4.5.w)),
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 400),
+                                      padding: const EdgeInsets.only(top: 50),
+                                      child: AnimatedContainer(
+                                          duration:
+                                              const Duration(milliseconds: 400),
+                                          width: 333.w,
+                                          height:
+                                              model.isRegisterView ? 300 : 200,
+                                          child: model.isRegisterView
+                                              ? SingleChildScrollView(
+                                                  child: RegisterInput(
+                                                    model: model,
+                                                  ),
+                                                )
+                                              : SingleChildScrollView(
+                                                  child: LoginInput(
+                                                      model: model))),
+                                    )
+                                  ],
                                 ),
+                                model.keyBoardVisible
+                                    ? SizedBox()
+                                    : verticalSpaceMedium(),
                                 Column(
                                   children: [
-                                    Container(
-                                      width: 333.w,
-                                      child: Text(
-                                        "Stand de tir indoor pour le loisir et la competition",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: kcWhite,
-                                          fontSize: 22.sp,
-                                        ),
-                                      ),
-                                    ),
+                                    model.keyBoardVisible
+                                        ? SizedBox()
+                                        : Container(
+                                            width: 333.w,
+                                            child: Text(
+                                              "Stand de tir indoor pour le loisir et la competition",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: kcWhite,
+                                                fontSize: 22.sp,
+                                              ),
+                                            ),
+                                          ),
                                     verticalSpaceSmall(),
                                     CustomButton(
                                         title: model.btnText,
@@ -107,14 +124,16 @@ class _WelcomeViewState extends State<WelcomeView>
                                 ),
                               ],
                             ),
-                          ),
-                          verticalSpaceSmall(),
-                          SocialButton(
-                            fbTap: () {},
-                            instaTap: () {},
-                            logoTap: model.animateToRegister,
-                          )
-                        ],
+                            verticalSpaceSmall(),
+                            model.keyBoardVisible
+                                ? SizedBox()
+                                : SocialButton(
+                                    fbTap: () {},
+                                    instaTap: () {},
+                                    logoTap: model.animateToRegister,
+                                  )
+                          ],
+                        ),
                       ),
                     ),
                   ),
