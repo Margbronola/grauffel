@@ -32,11 +32,12 @@ class MyApp extends StatelessWidget {
         .copyWith(systemNavigationBarColor: Colors.black));
 
     return ScreenUtilInit(
+      designSize: const Size(414, 812),
       builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
             appBarTheme: AppBarTheme(backgroundColor: primaryColor),
-            // primaryColor: ,
             textTheme: GoogleFonts.notoSansTakriTextTheme(),
             brightness: Brightness.dark,
             primarySwatch: Colors.yellow,

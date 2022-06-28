@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'color.dart';
 
@@ -19,7 +20,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
-      width: double.infinity,
+      width: 333.w,
+      height: 46.h,
       child: MaterialButton(
         color: color != null ? color : buttonColor,
         onPressed: onTap,

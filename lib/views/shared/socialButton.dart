@@ -1,27 +1,81 @@
-import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../services/global.dart';
 import 'color.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({Key? key}) : super(key: key);
+  final Function() fbTap;
+  final Function() instaTap;
+  final Function() logoTap;
+  const SocialButton({
+    Key? key,
+    required this.fbTap,
+    required this.instaTap,
+    required this.logoTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          height: 25.h,
+          height: 45.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/fb.png", width: 40),
+              ElevatedButton(
+                onPressed: fbTap,
+                child: Center(
+                  child: Image.asset(
+                    fbLogo,
+                    height: 30.h,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(5),
+                  primary: Colors.transparent, // <-- Button color
+                  onPrimary: Colors.white10, // <-- Splash color
+                ),
+              ),
               VerticalDivider(
                 color: kcWhite,
                 thickness: 2,
-                width: 40,
               ),
-              Image.asset("assets/images/insta.webp", width: 40),
+              ElevatedButton(
+                onPressed: logoTap,
+                child: Center(
+                  child: Image.asset(
+                    imageSmallLogo,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(8),
+                  primary: Colors.transparent, // <-- Button color
+                  onPrimary: Colors.white10, // <-- Splash color
+                ),
+              ),
+              VerticalDivider(
+                color: kcWhite,
+                thickness: 2,
+              ),
+              ElevatedButton(
+                onPressed: instaTap,
+                child: Center(
+                  child: Image.asset(
+                    instaLogo,
+                    height: 30.h,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(5),
+                  primary: Colors.transparent, // <-- Button color
+                  onPrimary: Colors.white10, // <-- Splash color
+                ),
+              ),
             ],
           ),
         ),

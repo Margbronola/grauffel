@@ -27,6 +27,18 @@ class Validator {
     }
   }
 
+  static String? validateConfirmPassword(String value, String passwordValue) {
+    Pattern pattern = r'^.{6,}$';
+    RegExp regex = RegExp(pattern as String);
+    if (!regex.hasMatch(value)) {
+      return '🚩 Password must be at least 6 characters.';
+    } else if (passwordValue != value) {
+      return '🚩 Password did not match';
+    } else {
+      return null;
+    }
+  }
+
   static String? validateName(String value) {
     if (value.length < 3) {
       return '🚩 Username is too short.';

@@ -1,9 +1,7 @@
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:egczacademy/views/shared/validator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../welcome/welcome_viewModel.dart';
 import 'color.dart';
@@ -24,8 +22,8 @@ class LoginInput extends StatelessWidget {
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: kcWhite),
-            focusNode: model.loginFocusNode,
+            style: TextStyle(color: kcWhite, fontSize: 20.sp),
+            focusNode: model.emailFocusNode,
             controller: model.emailController,
             validator: (value) {
               return Validator.validateEmail(value ?? "");
@@ -44,7 +42,7 @@ class LoginInput extends StatelessWidget {
               model.loginButton();
             },
             focusNode: model.passwordFocusNode,
-            style: TextStyle(color: kcWhite),
+            style: TextStyle(color: kcWhite, fontSize: 20.sp),
             obscureText: !model.showPassword,
             controller: model.passwordController,
             validator: (value) {

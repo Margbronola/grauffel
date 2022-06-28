@@ -3,6 +3,7 @@ import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/welcome/login_service.dart';
 import 'package:egczacademy/views/welcome/regsiter_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
@@ -27,7 +28,7 @@ class WelcomeViewModel extends BaseViewModel
   late final Animation<Offset> offsetAnimation;
   late final Animation<Offset> offsetAnimation2;
 
-  late FocusNode loginFocusNode;
+  late FocusNode emailFocusNode;
   late FocusNode passwordFocusNode;
   late FocusNode cpasswordFocusNode;
   late FocusNode firstNameFocusNode;
@@ -37,6 +38,8 @@ class WelcomeViewModel extends BaseViewModel
   bool isRegisterView = false;
   bool showPassword = false;
   bool cshowPassword = false;
+
+  // bool isFocus = false;
 
   String get btnText => isLoginView
       ? "Login"
@@ -52,22 +55,24 @@ class WelcomeViewModel extends BaseViewModel
     firstNameController.dispose();
     lastNameController.dispose();
 
-    loginFocusNode.dispose();
+    emailFocusNode.dispose();
     passwordFocusNode.dispose();
     cpasswordFocusNode.dispose();
     firstNameFocusNode.dispose();
     lastNameFocusNode.dispose();
-
     super.dispose();
   }
 
   void unFucos() {
-    loginFocusNode.unfocus();
+    emailFocusNode.unfocus();
     passwordFocusNode.unfocus();
     cpasswordFocusNode.unfocus();
     firstNameFocusNode.unfocus();
     lastNameFocusNode.unfocus();
+    clear();
+  }
 
+  void clear() {
     emailController.clear();
     passwordController.clear();
     cpasswordController.clear();
@@ -76,9 +81,8 @@ class WelcomeViewModel extends BaseViewModel
   }
 
   void init(TickerProvider vsync) {
-    loginFocusNode = FocusNode();
+    emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
-    loginFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
     cpasswordFocusNode = FocusNode();
     firstNameFocusNode = FocusNode();
@@ -101,7 +105,7 @@ class WelcomeViewModel extends BaseViewModel
         curve: Curves.ease,
       ),
     ));
-
+    //slide animate
     offsetAnimation2 = Tween<Offset>(
       begin: const Offset(50, 0.0),
       end: Offset.zero,
@@ -113,10 +117,10 @@ class WelcomeViewModel extends BaseViewModel
         curve: Curves.ease,
       ),
     ));
-
+    //animate to top
     paddingBottom = Tween<Offset>(
       begin: Offset.zero,
-      end: Offset(0.0, -3),
+      end: Offset(0.0, -3.h),
     ).animate(
       CurvedAnimation(
         parent: controller_logo,
@@ -129,7 +133,7 @@ class WelcomeViewModel extends BaseViewModel
     );
   }
 
-  void goToLogin() async {
+  void animateToLogin() async {
     unFucos();
     if (isRegisterView) {
       await controller_inputText.reverse();
@@ -145,7 +149,7 @@ class WelcomeViewModel extends BaseViewModel
     }
   }
 
-  void gotToRegister() async {
+  void animateToRegister() async {
     unFucos();
     if (isLoginView) {
       controller_inputText.reverse().then((value) {
@@ -165,15 +169,6 @@ class WelcomeViewModel extends BaseViewModel
     }
   }
 
-  // void reset() async {
-  //   await controller_inputText.reverse().then((value) {
-  //     controller_logo.reverse();
-  //     isForward = false;
-  //     isRegisterView = false;
-  //     notifyListeners();
-  //   });
-  // }
-
   void toggle({required bool cpass}) {
     if (cpass) {
       cshowPassword = !cshowPassword;
@@ -186,10 +181,11 @@ class WelcomeViewModel extends BaseViewModel
   void loginButton() async {
     print("LOGIN");
     setBusy(true);
-    await login(
-        formKey: formKey,
-        email: emailController.text,
-        password: passwordController.text);
+    await Future.delayed(Duration(seconds: 3));
+    // await login(
+    //     formKey: formKey,
+    //     email: emailController.text,
+    //     password: passwordController.text);
     setBusy(false);
   }
 

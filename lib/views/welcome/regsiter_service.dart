@@ -26,6 +26,7 @@ class RegisterService {
   Future<void> register(
       {required GlobalKey<FormState> formKey, required UserModel user}) async {
     if (formKey.currentState!.validate() == true) {
+      print("You can register now");
       // _authenticationService.register(userModel: user).then((value) {
       //   if (value) {
       //     _navigationService.navigateToView(Home());

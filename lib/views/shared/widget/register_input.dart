@@ -59,7 +59,7 @@ class RegisterInput extends StatelessWidget {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: kcWhite),
-            focusNode: model.loginFocusNode,
+            focusNode: model.emailFocusNode,
             controller: model.emailController,
             validator: (value) {
               return Validator.validateEmail(value ?? "");
@@ -111,7 +111,8 @@ class RegisterInput extends StatelessWidget {
             obscureText: !model.cshowPassword,
             controller: model.cpasswordController,
             validator: (value) {
-              return Validator.validatePassword(value ?? "");
+              return Validator.validateConfirmPassword(
+                  value ?? "", model.cpasswordController.text);
             },
             decoration: InputDecoration(
               suffixIcon: GestureDetector(
