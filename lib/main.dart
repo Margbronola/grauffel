@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
+        .copyWith(systemNavigationBarColor: Colors.black));
+
     return ScreenUtilInit(
       builder: (context, child) => MaterialApp(
         title: 'Flutter Demo',
