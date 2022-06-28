@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
@@ -40,7 +41,7 @@ class AuthenticationService {
         return true;
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       return false;
     }
     return false;

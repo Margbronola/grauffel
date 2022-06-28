@@ -1,6 +1,9 @@
+import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/login_input.dart';
 import 'package:egczacademy/views/shared/socialButton.dart';
+import 'package:egczacademy/views/shared/widget/register_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -24,113 +27,91 @@ class _WelcomeViewState extends State<WelcomeView>
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
             ? Center(child: CircularProgressIndicator())
-            : SafeArea(
-                child: Center(
-                  child: Form(
-                    key: model.formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SlideTransition(
-                                  position: model.paddingBottom,
-                                  child: Image.asset("assets/images/logo2.png",
-                                      scale: 4.w)),
-                              AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
-                                padding: EdgeInsets.only(
-                                    top: model.isFocus ? 50 : 100),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20),
-                                    child: Column(
-                                      children: [
-                                        SlideTransition(
-                                          position: model.offsetAnimation,
-                                          child: TextFormField(
-                                            textInputAction:
-                                                TextInputAction.next,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            style: TextStyle(color: kcWhite),
-                                            focusNode: model.loginFocusNode,
-                                            controller: model.emailController,
-                                            validator: (value) {
-                                              return Validator.validateEmail(
-                                                  value ?? "");
-                                            },
-                                            decoration: InputDecoration(
-                                              hintText: "Adresse mail*",
-                                              isDense: true,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                            height:
-                                                size(context).height * 0.03),
-                                        SlideTransition(
-                                          position: model.offsetAnimation2,
-                                          child: TextFormField(
-                                            onFieldSubmitted: (String text) {
-                                              model.loginButton();
-                                            },
-                                            focusNode: model.passwordFocusNode,
-                                            style: TextStyle(color: kcWhite),
-                                            obscureText: model.showPassword,
-                                            controller:
-                                                model.passwordController,
-                                            validator: (value) {
-                                              return Validator.validatePassword(
-                                                  value ?? "");
-                                            },
-                                            decoration: InputDecoration(
-                                              suffixIcon: GestureDetector(
-                                                onTap: model.toggle,
-                                                child: Icon(
-                                                  model.showPassword
-                                                      ? Icons.visibility
-                                                      : Icons.visibility_off,
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                              hintText: "Mot de passe*",
-                                              isDense: true,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+            : Form(
+                key: model.formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SlideTransition(
+                                    position: model.paddingBottom,
+                                    child: Image.asset(
+                                        "assets/images/logo2.png",
+                                        scale: 4.5.w)),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: 300),
+                                  padding: EdgeInsets.only(top: 100),
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(20),
+                                        child: model.isRegisterView
+                                            ? RegisterInput(
+                                                model: model,
+                                              )
+                                            : LoginInput(model: model)),
                                   ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        model.isFocus
-                            ? SizedBox()
-                            : Column(
+                          Column(
+                            children: [
+                              Text(
+                                "Stand de tir indoor pour le loisir",
+                                style: TextStyle(color: kcWhite),
+                              ),
+                              CustomButton(
+                                  title: model.btnText,
+                                  onTap: model.isLoginView
+                                      ? model.loginButton
+                                      : model.isRegisterView
+                                          ? () {
+                                              model.registerButton(UserModel(
+                                                  first_name: "first_name",
+                                                  last_name: "last_name",
+                                                  email: "email",
+                                                  password: "password",
+                                                  c_password: "c_password"));
+                                            }
+                                          : model.goToLogin),
+                              // CustomButton(
+                              //     title: "reset", onTap: model.reset),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Stand de tir indoor pour le loisir",
+                                    model.isRegisterView
+                                        ? "Have accout already"
+                                        : "No accout yet",
                                     style: TextStyle(color: kcWhite),
                                   ),
-                                  CustomButton(
-                                      title: model.btnText,
-                                      onTap: model.isForward
-                                          ? model.loginButton
-                                          : model.play),
-                                  CustomButton(
-                                      title: "reset", onTap: model.reset),
-                                  verticalSpaceSmall(),
-                                  SocialButton(),
+                                  model.isRegisterView
+                                      ? TextButton(
+                                          onPressed: () {
+                                            model.goToLogin();
+                                          },
+                                          child: Text("Login"))
+                                      : TextButton(
+                                          onPressed: () {
+                                            model.gotToRegister();
+                                          },
+                                          child: Text("Register"))
                                 ],
                               ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    SocialButton(),
+                  ],
                 ),
               ),
       ),

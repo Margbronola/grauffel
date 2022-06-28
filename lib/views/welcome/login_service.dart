@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -27,7 +31,7 @@ class LoginService {
         fontSize: 16.0);
   }
 
-  void goToLogin() {
+  void goToHome() {
     _navigationService.navigateToView(Home());
   }
 
@@ -39,23 +43,73 @@ class LoginService {
       _fireBaseAuthService
           .signIn(email: email, password: password)
           .then((value) async {
-        if (value) {
+        if (value != null) {
           _authenticationService
-              .login(
-                  firebase_token: await _fireBaseAuthService.token,
-                  device_name: deviceName)
+              .login(firebase_token: value, device_name: deviceName)
               .then((value) {
             if (value) {
-              goToLogin();
+              goToHome();
             } else {
               showFail();
             }
           });
-          goToLogin();
         } else {
           showFail();
         }
       });
+    }
+  }
+
+  Future<User?> fbSignIn() async {
+    try {
+      // final LoginResult result = await _fbauth.login(
+      //   permissions: ['public_profile', 'email'],
+      // );
+      // switch (result.status) {
+      //   case LoginStatus.success:
+      //     final facebookCredential =
+      //         FacebookAuthProvider.credential(result.accessToken!.token);
+      //     final authResult = await FirebaseService.auth
+      //         .signInWithCredential(facebookCredential);
+      //     final firebaseUser = authResult.user;
+      //     return firebaseUser;
+      //   case LoginStatus.cancelled:
+      //     Fluttertoast.showToast(msg: "Connexion interrompue".toUpperCase());
+      //     return null;
+      //   case LoginStatus.failed:
+      //     Fluttertoast.showToast(msg: "Autorisation refusée".toUpperCase());
+      //     return null;
+      //   default:
+      //     return null;
+      // }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(msg: "Aucun utilisateur trouvé");
+      } else if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(msg: "Mot de passe incorrect");
+      } else if (e.code == "account-exists-with-different-credential") {
+        Fluttertoast.showToast(
+          msg: "Compte déjà utilisé, essayez une autre adresse e-mail",
+        );
+      } else {
+        Fluttertoast.showToast(msg: e.code);
+      }
+
+      return null;
+    } on SocketException {
+      Fluttertoast.showToast(msg: "Pas de connexion Internet");
+      rethrow;
+    } on HttpException {
+      Fluttertoast.showToast(
+          msg:
+              "Une erreur s'est produite lors de l'exécution de cette opération");
+      return null;
+    } on FormatException {
+      Fluttertoast.showToast(msg: "Erreur de format");
+      return null;
+    } on TimeoutException {
+      Fluttertoast.showToast(msg: "Pas de connexion Internet : timeout");
+      return null;
     }
   }
 }

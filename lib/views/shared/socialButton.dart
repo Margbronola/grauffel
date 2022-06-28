@@ -25,9 +25,15 @@ class SocialButton extends StatelessWidget {
             ],
           ),
         ),
-        verticalSpaceMedium(),
+        SizedBox(
+          height: 5,
+        ),
         Text(
           "Copyright © 2022 EG-CZ ACADEMY",
+          style: TextStyle(color: kcWhite, fontSize: 10.sp),
+        ),
+        SizedBox(
+          height: 5,
         )
       ],
     );

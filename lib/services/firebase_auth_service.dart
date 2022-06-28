@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../app/app.locator.dart';
 
@@ -6,19 +7,27 @@ class FireBaseAuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
-
-  Future<String> get token async =>
-      await firebaseAuth.currentUser!.getIdToken();
-
-  Future<bool> signIn({required String email, required String password}) async {
+  Future<String?> signIn(
+      {required String email, required String password}) async {
     try {
       UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return true;
+      print("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
+      return await user.user!.getIdToken();
     } on FirebaseAuthException catch (e) {
-      print(e);
+      if (e.code == 'user-not-found') {
+        Fluttertoast.showToast(msg: "Aucun utilisateur trouvé");
+      } else if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(msg: "Mot de passe incorrect");
+      } else if (e.code == "account-exists-with-different-credential") {
+        Fluttertoast.showToast(
+          msg: "Compte déjà utilisé, essayez une autre adresse e-mail",
+        );
+      } else {
+        Fluttertoast.showToast(msg: e.code);
+      }
 
-      return false;
+      return null;
     }
   }
 
