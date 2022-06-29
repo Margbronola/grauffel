@@ -7,7 +7,7 @@ import 'global.dart';
 
 class AuthenticationService {
   //login in server
-  Future<bool> login(
+  Future<Map<String, dynamic>?> login(
       {required String firebase_token, required String device_name}) async {
     try {
       final respo = await http.post(Uri.parse("$url/login"),
@@ -15,20 +15,29 @@ class AuthenticationService {
       var data = json.decode(respo.body);
 
       if (respo.statusCode == 200) {
-        print(data);
-        Fluttertoast.showToast(msg: "Successful");
-        return true;
+        try {
+          UserModel user = UserModel.fromJson(data['client']);
+          String token = data['access_token'];
+
+          //TODO:DELETE PRINT
+          print("LOGIN : $user");
+          print("TOKEN : $token");
+          return {'user': user, 'token': token};
+        } catch (e) {
+          print(e);
+          print("convert fail");
+        }
+        Fluttertoast.showToast(msg: "Successful Login");
       }
     } catch (e) {
       print(e);
-      return false;
+      return null;
     }
-    print('NO user');
-    return false;
+    return null;
   }
 
   //server register
-  Future<bool> register({required UserModel userModel}) async {
+  Future<String?> register({required UserModel userModel}) async {
     try {
       Map user = userModel.toJson();
       user.removeWhere((key, value) => value == null);
@@ -37,17 +46,30 @@ class AuthenticationService {
       if (respo.statusCode == 200) {
         print(data);
         print("success");
-        Fluttertoast.showToast(msg: "Successful");
-        return true;
+        Fluttertoast.showToast(msg: "Successful Sign Unp");
+        return data;
       }
     } catch (e) {
       debugPrint(e.toString());
-      return false;
+      return null;
     }
-    return false;
+    return null;
   }
 
-  Future<bool>? logout() async {
+  Future<bool> logout({required String token}) async {
+    try {
+      final respo = await http.post(Uri.parse("$url/logout"), headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+      if (respo.statusCode == 200) {
+        print("success");
+        Fluttertoast.showToast(msg: "Logout Successfully");
+        return true;
+      }
+    } catch (e) {
+      print(e);
+    }
     return false;
   }
 }

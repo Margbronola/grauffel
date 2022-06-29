@@ -24,58 +24,28 @@ class SocialButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: fbTap,
-                child: Center(
-                  child: Image.asset(
-                    fbLogo,
-                    height: 30.h,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(5),
-                  primary: Colors.transparent, // <-- Button color
-                  onPrimary: Colors.white10, // <-- Splash color
+              circleButton(
+                onTap: fbTap,
+                child: Image.asset(
+                  fbLogo,
+                  height: 30.h,
                 ),
               ),
-              VerticalDivider(
-                color: kcWhite,
-                thickness: 2,
-              ),
-              ElevatedButton(
-                onPressed: logoTap,
-                child: Center(
-                  child: Image.asset(
-                    imageSmallLogo,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(8),
-                  primary: Colors.transparent, // <-- Button color
-                  onPrimary: Colors.white10, // <-- Splash color
+              customDivider(),
+              circleButton(
+                onTap: logoTap,
+                child: Image.asset(
+                  imageSmallLogo,
                 ),
               ),
-              VerticalDivider(
-                color: kcWhite,
-                thickness: 2,
-              ),
-              ElevatedButton(
-                onPressed: instaTap,
-                child: Center(
-                  child: Image.asset(
-                    instaLogo,
-                    height: 30.h,
-                  ),
+              customDivider(),
+              circleButton(
+                onTap: instaTap,
+                child: Image.asset(
+                  instaLogo,
+                  height: 30.h,
                 ),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(5),
-                  primary: Colors.transparent, // <-- Button color
-                  onPrimary: Colors.white10, // <-- Splash color
-                ),
-              ),
+              )
             ],
           ),
         ),
@@ -92,4 +62,24 @@ class SocialButton extends StatelessWidget {
       ],
     );
   }
+
+  Widget customDivider() => SizedBox(
+        height: 30.h,
+        child: const VerticalDivider(
+          color: kcWhite,
+          thickness: 2,
+        ),
+      );
+
+  Widget circleButton({required Widget child, required Function() onTap}) =>
+      ElevatedButton(
+        onPressed: onTap,
+        child: Center(child: child),
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          padding: EdgeInsets.all(5),
+          primary: Colors.transparent, // <-- Button color
+          onPrimary: Colors.white10, // <-- Splash color
+        ),
+      );
 }

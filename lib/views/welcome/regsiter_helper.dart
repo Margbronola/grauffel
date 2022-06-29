@@ -5,10 +5,9 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
 import '../../services/authentication_service.dart';
-import '../home/home.dart';
 import '../shared/color.dart';
 
-class RegisterService {
+class RegisterHelper {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();

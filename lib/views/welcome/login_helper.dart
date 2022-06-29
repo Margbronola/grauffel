@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:egczacademy/services/user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,13 +13,17 @@ import '../../services/authentication_service.dart';
 import '../home/home.dart';
 import '../shared/color.dart';
 
-class LoginService {
+class LoginHelper {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final FireBaseAuthService _fireBaseAuthService =
       locator<FireBaseAuthService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  String deviceName = "mobile";
+  final UserService _userService = locator<UserService>();
+
+  static const String _deviceName = "mobile";
+  static const String _userMapKey = "user";
+  static const String _tokenMapKey = "token";
 
   void showFail() {
     Fluttertoast.showToast(
@@ -36,18 +41,25 @@ class LoginService {
   }
 
   Future<void> login(
-      {required GlobalKey<FormState> formKey,
+      {isTest = false,
+      required GlobalKey<FormState> formKey,
       required String email,
       required String password}) async {
-    if (formKey.currentState!.validate() == true) {
+    if (formKey.currentState!.validate() == !isTest) {
+      String testEmail = "john@gmail.com";
+      String testPasswotd = "123456";
       _fireBaseAuthService
-          .signIn(email: email, password: password)
+          .signIn(
+              email: isTest ? testEmail : email,
+              password: isTest ? testPasswotd : password)
           .then((value) async {
         if (value != null) {
-          _authenticationService
-              .login(firebase_token: value, device_name: deviceName)
+          await _authenticationService
+              .login(firebase_token: value, device_name: _deviceName)
               .then((value) {
-            if (value) {
+            if (value != null) {
+              _userService.fetchUser = value[_userMapKey];
+              _userService.fetchToken = value[_tokenMapKey];
               goToHome();
             } else {
               showFail();

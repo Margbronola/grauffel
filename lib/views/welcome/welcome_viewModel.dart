@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/authentication_service.dart';
-import 'package:egczacademy/views/welcome/login_service.dart';
-import 'package:egczacademy/views/welcome/regsiter_service.dart';
+import 'package:egczacademy/views/welcome/login_helper.dart';
+import 'package:egczacademy/views/welcome/regsiter_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 
-class WelcomeViewModel extends BaseViewModel
-    with LoginService, RegisterService {
+class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   final NavigationService _navigationService = locator<NavigationService>();
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
@@ -25,8 +24,8 @@ class WelcomeViewModel extends BaseViewModel
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
 
-  late final AnimationController controller_inputText;
-  late final AnimationController controller_logo;
+  late final AnimationController controllerInputText;
+  late final AnimationController controllerLogo;
   late final Animation<Offset> paddingBottom;
   late final Animation<Offset> offsetAnimation;
   late final Animation<Offset> offsetAnimation2;
@@ -44,14 +43,20 @@ class WelcomeViewModel extends BaseViewModel
 
   bool keyBoardVisible = false;
 
-  // bool isFocus = false;
+  bool get isFocus =>
+      emailFocusNode.hasFocus ||
+      passwordFocusNode.hasFocus ||
+      cpasswordFocusNode.hasFocus ||
+      firstNameFocusNode.hasFocus ||
+      firstNameFocusNode.hasFocus ||
+      lastNameFocusNode.hasFocus;
 
   late StreamSubscription<bool> keyboardSubscription;
 
   String get btnText => isLoginView
-      ? "Login"
+      ? "se connecter".toUpperCase()
       : isRegisterView
-          ? "Register"
+          ? "S'inscrire".toUpperCase()
           : "J'AI UN COMPTE";
 
   @override
@@ -106,17 +111,17 @@ class WelcomeViewModel extends BaseViewModel
     firstNameFocusNode = FocusNode();
     lastNameFocusNode = FocusNode();
 
-    controller_inputText = AnimationController(
+    controllerInputText = AnimationController(
         duration: const Duration(milliseconds: 500), vsync: vsync);
 
-    controller_logo = AnimationController(
-        duration: const Duration(milliseconds: 3000), vsync: vsync);
+    controllerLogo = AnimationController(
+        duration: const Duration(milliseconds: 500), vsync: vsync);
 
     offsetAnimation = Tween<Offset>(
       begin: const Offset(50, 0.0),
       end: Offset.zero,
     ).animate(CurvedAnimation(
-      parent: controller_inputText,
+      parent: controllerInputText,
       curve: Interval(
         0.0,
         1.0,
@@ -128,7 +133,7 @@ class WelcomeViewModel extends BaseViewModel
       begin: const Offset(50, 0.0),
       end: Offset.zero,
     ).animate(CurvedAnimation(
-      parent: controller_inputText,
+      parent: controllerInputText,
       curve: Interval(
         0.500,
         1.0,
@@ -141,7 +146,7 @@ class WelcomeViewModel extends BaseViewModel
       end: Offset(0.0, -3.h),
     ).animate(
       CurvedAnimation(
-        parent: controller_logo,
+        parent: controllerLogo,
         curve: Interval(
           0.0,
           0.1,
@@ -152,38 +157,43 @@ class WelcomeViewModel extends BaseViewModel
   }
 
   void animateToLogin() async {
-    unFucos();
+    print("ANIMATELOGIN");
     if (isRegisterView) {
-      await controller_inputText.reverse();
+      await controllerInputText.reverse();
       isRegisterView = false;
       isLoginView = true;
       notifyListeners();
-      await controller_inputText.forward();
+      await controllerInputText.forward();
     } else {
+      await controllerLogo.forward();
+      await controllerInputText.forward();
       isLoginView = true;
       notifyListeners();
-      await controller_logo.forward();
-      await controller_inputText.forward();
+    }
+    if (isFocus) {
+      unFucos();
     }
   }
 
   void animateToRegister() async {
-    unFucos();
+    print("ANIMATEREGISTER");
     if (isLoginView) {
-      controller_inputText.reverse().then((value) {
+      controllerInputText.reverse().then((value) {
         isRegisterView = true;
         isLoginView = false;
         notifyListeners();
       }).then((value) async {
-        await controller_inputText.forward();
-        print("forward register");
+        await controllerInputText.forward();
         notifyListeners();
       });
     } else {
       isRegisterView = true;
       notifyListeners();
-      await controller_logo.forward();
-      await controller_inputText.forward();
+      await controllerLogo.forward();
+      await controllerInputText.forward();
+    }
+    if (isFocus) {
+      unFucos();
     }
   }
 
@@ -199,12 +209,13 @@ class WelcomeViewModel extends BaseViewModel
   void loginButton() async {
     print("LOGIN");
     setBusy(true);
-    await Future.delayed(Duration(seconds: 3));
-    // await login(
-    //     formKey: formKey,
-    //     email: emailController.text,
-    //     password: passwordController.text);
-    setBusy(false);
+    await login(
+        isTest: true,
+        formKey: formKey,
+        email: emailController.text,
+        password: passwordController.text);
+
+    notifyListeners();
   }
 
   void registerButton(UserModel userModel) async {

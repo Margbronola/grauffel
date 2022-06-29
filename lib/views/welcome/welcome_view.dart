@@ -104,7 +104,7 @@ class _WelcomeViewState extends State<WelcomeView>
                                         onTap: model.isLoginView
                                             ? model.loginButton
                                             : model.isRegisterView
-                                                ? () {
+                                                ? () async {
                                                     model.registerButton(
                                                         const UserModel(
                                                             first_name:
@@ -118,15 +118,13 @@ class _WelcomeViewState extends State<WelcomeView>
                                                                 "c_password"));
                                                   }
                                                 : model.animateToLogin),
-                                    // CustomButton(
-                                    //     title: "reset", onTap: model.reset),
                                   ],
                                 ),
                               ],
                             ),
                             verticalSpaceSmall(),
                             model.keyBoardVisible
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : SocialButton(
                                     fbTap: () {},
                                     instaTap: () {},

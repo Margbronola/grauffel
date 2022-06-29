@@ -6,13 +6,39 @@ part 'user_model.g.dart';
 
 @freezed
 class UserModel with _$UserModel {
-  const factory UserModel({
-    required String first_name,
-    required String last_name,
-    required String email,
-    required String password,
-    required String c_password,
-  }) = _UserModel;
+  const factory UserModel(
+      {int? id,
+      String? avatar,
+      String? fullname,
+      String? first_name,
+      String? last_name,
+      String? email,
+      String? password,
+      String? c_password,
+      DateTime? birthday,
+      String? address,
+      String? zipcode,
+      String? city,
+      int? country_id,
+      int? SIA_number,
+      int? FFTir_license_number,
+      double? credit_points,
+      int? verification,
+      int? payment_verification,
+      int? status,
+      int? active_client_subscription,
+      DateTime? created_at,
+      DateTime? updated_at,
+      String? firebase_id
+      // phone_number
+      // "equipment": null,
+      // "level": null,
+      // "created_at": "2022-06-28T08:32:13.000000Z",
+      // "updated_at": "2022-06-28T08:36:46.000000Z",
+      // "display_name": "blue red (john@gmail.com)",
+      // "image": null,
+
+      }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, Object?> json) =>
       _$UserModelFromJson(json);

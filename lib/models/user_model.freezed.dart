@@ -20,11 +20,29 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get first_name => throw _privateConstructorUsedError;
-  String get last_name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get c_password => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
+  String? get fullname => throw _privateConstructorUsedError;
+  String? get first_name => throw _privateConstructorUsedError;
+  String? get last_name => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
+  String? get c_password => throw _privateConstructorUsedError;
+  DateTime? get birthday => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
+  String? get zipcode => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  int? get country_id => throw _privateConstructorUsedError;
+  int? get SIA_number => throw _privateConstructorUsedError;
+  int? get FFTir_license_number => throw _privateConstructorUsedError;
+  double? get credit_points => throw _privateConstructorUsedError;
+  int? get verification => throw _privateConstructorUsedError;
+  int? get payment_verification => throw _privateConstructorUsedError;
+  int? get status => throw _privateConstructorUsedError;
+  int? get active_client_subscription => throw _privateConstructorUsedError;
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  String? get firebase_id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +55,29 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
   $Res call(
-      {String first_name,
-      String last_name,
-      String email,
-      String password,
-      String c_password});
+      {int? id,
+      String? avatar,
+      String? fullname,
+      String? first_name,
+      String? last_name,
+      String? email,
+      String? password,
+      String? c_password,
+      DateTime? birthday,
+      String? address,
+      String? zipcode,
+      String? city,
+      int? country_id,
+      int? SIA_number,
+      int? FFTir_license_number,
+      double? credit_points,
+      int? verification,
+      int? payment_verification,
+      int? status,
+      int? active_client_subscription,
+      DateTime? created_at,
+      DateTime? updated_at,
+      String? firebase_id});
 }
 
 /// @nodoc
@@ -54,33 +90,123 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? avatar = freezed,
+    Object? fullname = freezed,
     Object? first_name = freezed,
     Object? last_name = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? c_password = freezed,
+    Object? birthday = freezed,
+    Object? address = freezed,
+    Object? zipcode = freezed,
+    Object? city = freezed,
+    Object? country_id = freezed,
+    Object? SIA_number = freezed,
+    Object? FFTir_license_number = freezed,
+    Object? credit_points = freezed,
+    Object? verification = freezed,
+    Object? payment_verification = freezed,
+    Object? status = freezed,
+    Object? active_client_subscription = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? firebase_id = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avatar: avatar == freezed
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fullname: fullname == freezed
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
+              as String?,
       first_name: first_name == freezed
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       last_name: last_name == freezed
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       c_password: c_password == freezed
           ? _value.c_password
           : c_password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      birthday: birthday == freezed
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipcode: zipcode == freezed
+          ? _value.zipcode
+          : zipcode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country_id: country_id == freezed
+          ? _value.country_id
+          : country_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      SIA_number: SIA_number == freezed
+          ? _value.SIA_number
+          : SIA_number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      FFTir_license_number: FFTir_license_number == freezed
+          ? _value.FFTir_license_number
+          : FFTir_license_number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      credit_points: credit_points == freezed
+          ? _value.credit_points
+          : credit_points // ignore: cast_nullable_to_non_nullable
+              as double?,
+      verification: verification == freezed
+          ? _value.verification
+          : verification // ignore: cast_nullable_to_non_nullable
+              as int?,
+      payment_verification: payment_verification == freezed
+          ? _value.payment_verification
+          : payment_verification // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_client_subscription: active_client_subscription == freezed
+          ? _value.active_client_subscription
+          : active_client_subscription // ignore: cast_nullable_to_non_nullable
+              as int?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      firebase_id: firebase_id == freezed
+          ? _value.firebase_id
+          : firebase_id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -92,11 +218,29 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       __$$_UserModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String first_name,
-      String last_name,
-      String email,
-      String password,
-      String c_password});
+      {int? id,
+      String? avatar,
+      String? fullname,
+      String? first_name,
+      String? last_name,
+      String? email,
+      String? password,
+      String? c_password,
+      DateTime? birthday,
+      String? address,
+      String? zipcode,
+      String? city,
+      int? country_id,
+      int? SIA_number,
+      int? FFTir_license_number,
+      double? credit_points,
+      int? verification,
+      int? payment_verification,
+      int? status,
+      int? active_client_subscription,
+      DateTime? created_at,
+      DateTime? updated_at,
+      String? firebase_id});
 }
 
 /// @nodoc
@@ -111,33 +255,123 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
+    Object? avatar = freezed,
+    Object? fullname = freezed,
     Object? first_name = freezed,
     Object? last_name = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? c_password = freezed,
+    Object? birthday = freezed,
+    Object? address = freezed,
+    Object? zipcode = freezed,
+    Object? city = freezed,
+    Object? country_id = freezed,
+    Object? SIA_number = freezed,
+    Object? FFTir_license_number = freezed,
+    Object? credit_points = freezed,
+    Object? verification = freezed,
+    Object? payment_verification = freezed,
+    Object? status = freezed,
+    Object? active_client_subscription = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? firebase_id = freezed,
   }) {
     return _then(_$_UserModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      avatar: avatar == freezed
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fullname: fullname == freezed
+          ? _value.fullname
+          : fullname // ignore: cast_nullable_to_non_nullable
+              as String?,
       first_name: first_name == freezed
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       last_name: last_name == freezed
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       c_password: c_password == freezed
           ? _value.c_password
           : c_password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      birthday: birthday == freezed
+          ? _value.birthday
+          : birthday // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      zipcode: zipcode == freezed
+          ? _value.zipcode
+          : zipcode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country_id: country_id == freezed
+          ? _value.country_id
+          : country_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      SIA_number: SIA_number == freezed
+          ? _value.SIA_number
+          : SIA_number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      FFTir_license_number: FFTir_license_number == freezed
+          ? _value.FFTir_license_number
+          : FFTir_license_number // ignore: cast_nullable_to_non_nullable
+              as int?,
+      credit_points: credit_points == freezed
+          ? _value.credit_points
+          : credit_points // ignore: cast_nullable_to_non_nullable
+              as double?,
+      verification: verification == freezed
+          ? _value.verification
+          : verification // ignore: cast_nullable_to_non_nullable
+              as int?,
+      payment_verification: payment_verification == freezed
+          ? _value.payment_verification
+          : payment_verification // ignore: cast_nullable_to_non_nullable
+              as int?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_client_subscription: active_client_subscription == freezed
+          ? _value.active_client_subscription
+          : active_client_subscription // ignore: cast_nullable_to_non_nullable
+              as int?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      firebase_id: firebase_id == freezed
+          ? _value.firebase_id
+          : firebase_id // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -146,29 +380,83 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   const _$_UserModel(
-      {required this.first_name,
-      required this.last_name,
-      required this.email,
-      required this.password,
-      required this.c_password});
+      {this.id,
+      this.avatar,
+      this.fullname,
+      this.first_name,
+      this.last_name,
+      this.email,
+      this.password,
+      this.c_password,
+      this.birthday,
+      this.address,
+      this.zipcode,
+      this.city,
+      this.country_id,
+      this.SIA_number,
+      this.FFTir_license_number,
+      this.credit_points,
+      this.verification,
+      this.payment_verification,
+      this.status,
+      this.active_client_subscription,
+      this.created_at,
+      this.updated_at,
+      this.firebase_id});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
   @override
-  final String first_name;
+  final int? id;
   @override
-  final String last_name;
+  final String? avatar;
   @override
-  final String email;
+  final String? fullname;
   @override
-  final String password;
+  final String? first_name;
   @override
-  final String c_password;
+  final String? last_name;
+  @override
+  final String? email;
+  @override
+  final String? password;
+  @override
+  final String? c_password;
+  @override
+  final DateTime? birthday;
+  @override
+  final String? address;
+  @override
+  final String? zipcode;
+  @override
+  final String? city;
+  @override
+  final int? country_id;
+  @override
+  final int? SIA_number;
+  @override
+  final int? FFTir_license_number;
+  @override
+  final double? credit_points;
+  @override
+  final int? verification;
+  @override
+  final int? payment_verification;
+  @override
+  final int? status;
+  @override
+  final int? active_client_subscription;
+  @override
+  final DateTime? created_at;
+  @override
+  final DateTime? updated_at;
+  @override
+  final String? firebase_id;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password)';
+    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, active_client_subscription: $active_client_subscription, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id)';
   }
 
   @override
@@ -176,11 +464,30 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UserModel'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('avatar', avatar))
+      ..add(DiagnosticsProperty('fullname', fullname))
       ..add(DiagnosticsProperty('first_name', first_name))
       ..add(DiagnosticsProperty('last_name', last_name))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('c_password', c_password));
+      ..add(DiagnosticsProperty('c_password', c_password))
+      ..add(DiagnosticsProperty('birthday', birthday))
+      ..add(DiagnosticsProperty('address', address))
+      ..add(DiagnosticsProperty('zipcode', zipcode))
+      ..add(DiagnosticsProperty('city', city))
+      ..add(DiagnosticsProperty('country_id', country_id))
+      ..add(DiagnosticsProperty('SIA_number', SIA_number))
+      ..add(DiagnosticsProperty('FFTir_license_number', FFTir_license_number))
+      ..add(DiagnosticsProperty('credit_points', credit_points))
+      ..add(DiagnosticsProperty('verification', verification))
+      ..add(DiagnosticsProperty('payment_verification', payment_verification))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty(
+          'active_client_subscription', active_client_subscription))
+      ..add(DiagnosticsProperty('created_at', created_at))
+      ..add(DiagnosticsProperty('updated_at', updated_at))
+      ..add(DiagnosticsProperty('firebase_id', firebase_id));
   }
 
   @override
@@ -188,24 +495,71 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.avatar, avatar) &&
+            const DeepCollectionEquality().equals(other.fullname, fullname) &&
             const DeepCollectionEquality()
                 .equals(other.first_name, first_name) &&
             const DeepCollectionEquality().equals(other.last_name, last_name) &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality()
-                .equals(other.c_password, c_password));
+                .equals(other.c_password, c_password) &&
+            const DeepCollectionEquality().equals(other.birthday, birthday) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality()
+                .equals(other.country_id, country_id) &&
+            const DeepCollectionEquality()
+                .equals(other.SIA_number, SIA_number) &&
+            const DeepCollectionEquality()
+                .equals(other.FFTir_license_number, FFTir_license_number) &&
+            const DeepCollectionEquality()
+                .equals(other.credit_points, credit_points) &&
+            const DeepCollectionEquality()
+                .equals(other.verification, verification) &&
+            const DeepCollectionEquality()
+                .equals(other.payment_verification, payment_verification) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(
+                other.active_client_subscription, active_client_subscription) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at, created_at) &&
+            const DeepCollectionEquality()
+                .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality()
+                .equals(other.firebase_id, firebase_id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(first_name),
-      const DeepCollectionEquality().hash(last_name),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(c_password));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(avatar),
+        const DeepCollectionEquality().hash(fullname),
+        const DeepCollectionEquality().hash(first_name),
+        const DeepCollectionEquality().hash(last_name),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(password),
+        const DeepCollectionEquality().hash(c_password),
+        const DeepCollectionEquality().hash(birthday),
+        const DeepCollectionEquality().hash(address),
+        const DeepCollectionEquality().hash(zipcode),
+        const DeepCollectionEquality().hash(city),
+        const DeepCollectionEquality().hash(country_id),
+        const DeepCollectionEquality().hash(SIA_number),
+        const DeepCollectionEquality().hash(FFTir_license_number),
+        const DeepCollectionEquality().hash(credit_points),
+        const DeepCollectionEquality().hash(verification),
+        const DeepCollectionEquality().hash(payment_verification),
+        const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(active_client_subscription),
+        const DeepCollectionEquality().hash(created_at),
+        const DeepCollectionEquality().hash(updated_at),
+        const DeepCollectionEquality().hash(firebase_id)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -220,25 +574,79 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String first_name,
-      required final String last_name,
-      required final String email,
-      required final String password,
-      required final String c_password}) = _$_UserModel;
+      {final int? id,
+      final String? avatar,
+      final String? fullname,
+      final String? first_name,
+      final String? last_name,
+      final String? email,
+      final String? password,
+      final String? c_password,
+      final DateTime? birthday,
+      final String? address,
+      final String? zipcode,
+      final String? city,
+      final int? country_id,
+      final int? SIA_number,
+      final int? FFTir_license_number,
+      final double? credit_points,
+      final int? verification,
+      final int? payment_verification,
+      final int? status,
+      final int? active_client_subscription,
+      final DateTime? created_at,
+      final DateTime? updated_at,
+      final String? firebase_id}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  String get first_name => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @override
-  String get last_name => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String? get fullname => throw _privateConstructorUsedError;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String? get first_name => throw _privateConstructorUsedError;
   @override
-  String get c_password => throw _privateConstructorUsedError;
+  String? get last_name => throw _privateConstructorUsedError;
+  @override
+  String? get email => throw _privateConstructorUsedError;
+  @override
+  String? get password => throw _privateConstructorUsedError;
+  @override
+  String? get c_password => throw _privateConstructorUsedError;
+  @override
+  DateTime? get birthday => throw _privateConstructorUsedError;
+  @override
+  String? get address => throw _privateConstructorUsedError;
+  @override
+  String? get zipcode => throw _privateConstructorUsedError;
+  @override
+  String? get city => throw _privateConstructorUsedError;
+  @override
+  int? get country_id => throw _privateConstructorUsedError;
+  @override
+  int? get SIA_number => throw _privateConstructorUsedError;
+  @override
+  int? get FFTir_license_number => throw _privateConstructorUsedError;
+  @override
+  double? get credit_points => throw _privateConstructorUsedError;
+  @override
+  int? get verification => throw _privateConstructorUsedError;
+  @override
+  int? get payment_verification => throw _privateConstructorUsedError;
+  @override
+  int? get status => throw _privateConstructorUsedError;
+  @override
+  int? get active_client_subscription => throw _privateConstructorUsedError;
+  @override
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  @override
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  @override
+  String? get firebase_id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
