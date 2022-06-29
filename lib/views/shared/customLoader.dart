@@ -4,7 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../app/global.dart';
 
 class CustomLoader extends StatefulWidget {
-  const CustomLoader({Key? key}) : super(key: key);
+  final bool withBackground;
+  const CustomLoader({
+    Key? key,
+    this.withBackground = true,
+  }) : super(key: key);
 
   @override
   State<CustomLoader> createState() => _CustomLoaderState();
@@ -30,8 +34,11 @@ class _CustomLoaderState extends State<CustomLoader>
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(imageOwner))),
+      decoration: BoxDecoration(
+          color: widget.withBackground ? null : Colors.black.withOpacity(0.8),
+          image: !widget.withBackground
+              ? null
+              : const DecorationImage(image: AssetImage(imageOwner))),
       child: RotationTransition(
         turns: _animation,
         child: Center(

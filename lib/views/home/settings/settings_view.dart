@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/customLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:searchfield/searchfield.dart';
@@ -17,58 +18,68 @@ class SettingsView extends StatelessWidget {
         appBar: AppBar(
           title: Text("SETTINGS"),
         ),
-        body: Container(
-            color: kcWhite,
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: greyLight, borderRadius: BorderRadius.circular(5)),
-                  child: SearchField<Country>(
-                    marginColor: Colors.transparent,
-                    suggestionsDecoration:
-                        BoxDecoration(color: Colors.white10.withOpacity(0.9)),
-                    searchInputDecoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
+        body: Stack(
+          children: [
+            Container(
+                color: kcWhite,
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: greyLight,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: SearchField<Country>(
+                        marginColor: Colors.transparent,
+                        suggestionsDecoration: BoxDecoration(
+                            color: Colors.white10.withOpacity(0.9)),
+                        searchInputDecoration: InputDecoration(
+                          prefixIcon: Icon(Icons.search),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
                         ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
+                        suggestions: model.countries
+                            .map(
+                              (e) => SearchFieldListItem<Country>(
+                                e.name,
+                                item: e,
+                              ),
+                            )
+                            .toList(),
                       ),
                     ),
-                    suggestions: model.countries
-                        .map(
-                          (e) => SearchFieldListItem<Country>(
-                            e.name,
-                            item: e,
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-                settingTile("user", "Account"),
-                settingTile("bell", "Notification"),
-                settingTile("eye", "Appearance"),
-                settingTile("lock", "Privacy & Security"),
-                settingTile("headphone", "Help and Support"),
-                MaterialButton(
-                  onPressed: model.showToken,
-                  child: settingTile(
-                    "helpcircle",
-                    "About",
-                  ),
-                ),
-                MaterialButton(
-                  onPressed: model.signOut,
-                  child: settingTile("signout", "SignOut"),
-                )
-              ],
-            )),
+                    settingTile("user", "Account"),
+                    settingTile("bell", "Notification"),
+                    settingTile("eye", "Appearance"),
+                    settingTile("lock", "Privacy & Security"),
+                    settingTile("headphone", "Help and Support"),
+                    MaterialButton(
+                      onPressed: model.showToken,
+                      child: settingTile(
+                        "helpcircle",
+                        "About",
+                      ),
+                    ),
+                    MaterialButton(
+                      onPressed: model.signOut,
+                      child: settingTile("signout", "SignOut"),
+                    )
+                  ],
+                )),
+            model.isBusy
+                ? CustomLoader(
+                    withBackground: false,
+                  )
+                : const SizedBox()
+          ],
+        ),
       ),
       viewModelBuilder: () => SettingsViewModel(),
     );

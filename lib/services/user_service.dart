@@ -17,7 +17,7 @@ class UserService {
 
   Future<void> fethUserDetailsApi({required String token}) async {
     try {
-      final respo = await http.post(Uri.parse("$url/client/details"), headers: {
+      final respo = await http.get(Uri.parse("$url/client/details"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
@@ -30,6 +30,8 @@ class UserService {
           print(e);
           print("FROMJSON FAIL");
         }
+      } else {
+        print("SERVER FAIL");
       }
     } catch (e) {
       print(e);

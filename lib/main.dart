@@ -7,13 +7,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/app.locator.dart';
 import 'app/app.router.dart';
+import 'views/shared/widget/dialog/initialize_prefs.dart';
 import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  setupLocator();
+  await setupLocator();
+  await initializePrefs();
   setupDialogUi();
+
   runApp(const MyApp());
 }
 

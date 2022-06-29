@@ -1,6 +1,7 @@
 import 'package:egczacademy/app/app.router.dart';
 import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +14,7 @@ class SettingsViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final FireBaseAuthService _fireBaseAuthService =
       locator<FireBaseAuthService>();
+  final SharedPrefService _sharedPrefService = locator<SharedPrefService>();
 
   List<Country> countries = [
     Country(name: "Account"),
@@ -22,10 +24,14 @@ class SettingsViewModel extends BaseViewModel {
   void signOut() async {
     print("signout firebase");
     setBusy(true);
+    print(_userService.token);
     await _fireBaseAuthService.logout();
-    await _authenticationService.logout(token: _userService.token);
-    setBusy(false);
-    _navigationService.pushNamedAndRemoveUntil(Routes.welcomeView);
+    await _authenticationService.logout(token: _sharedPrefService.prefsToken);
+    _sharedPrefService.clearAllPrefs();
+
+    _navigationService
+        .pushNamedAndRemoveUntil(Routes.welcomeView)!
+        .whenComplete(() => setBusy(false));
   }
 
   void showToken() async {

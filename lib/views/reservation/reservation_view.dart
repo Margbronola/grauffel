@@ -40,50 +40,49 @@ class ReservationView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      !model.showHelp
-                          ? SizedBox()
-                          : Container(
-                              height: 67.h,
-                              width: size(context).width,
-                              color: buttonColor,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                      height: 67.h,
-                                      width: 56.w,
-                                      child: Image.asset(
-                                          "assets/images/help.png")),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 38.w),
-                                      child: Text(
-                                        "Des documents sont nécessaires pour accéder au stand de tir",
-                                        style: TextStyle(
-                                            color: kcWhite, fontSize: 15.sp),
-                                      ),
-                                    ),
+                      //TODO:ANIMATION make it slide animation
+                      AnimatedContainer(
+                          duration: Duration(milliseconds: 400),
+                          height: !model.showHelp ? 0 : 67.h,
+                          width: !model.showHelp ? 0 : size(context).width,
+                          color: buttonColor,
+                          child: Stack(
+                            children: [
+                              Container(
+                                  height: 67.h,
+                                  width: 56.w,
+                                  child: Image.asset("assets/images/help.png")),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 38.w),
+                                  child: Text(
+                                    "Des documents sont nécessaires pour accéder au stand de tir",
+                                    style: TextStyle(
+                                        color: kcWhite, fontSize: 15.sp),
                                   ),
-                                  Positioned(
-                                      top: 5,
-                                      right: 5,
-                                      child: GestureDetector(
-                                        onTap: model.closeHelp,
-                                        child: Container(
-                                            width: 20.w,
-                                            height: 20.h,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: kcWhite, width: 1),
-                                                shape: BoxShape.circle),
-                                            child: Icon(
-                                              Icons.close,
-                                              size: 15.w,
-                                            )),
-                                      ))
-                                ],
-                              )),
+                                ),
+                              ),
+                              Positioned(
+                                  top: 5,
+                                  right: 5,
+                                  child: GestureDetector(
+                                    onTap: model.closeHelp,
+                                    child: Container(
+                                        width: 20.w,
+                                        height: 20.h,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: kcWhite, width: 1),
+                                            shape: BoxShape.circle),
+                                        child: Icon(
+                                          Icons.close,
+                                          size: 15.w,
+                                        )),
+                                  ))
+                            ],
+                          )),
                       Container(
                         height: 100.h,
                         width: size(context).width,

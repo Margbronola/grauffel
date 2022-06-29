@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class LoginHelper {
       locator<FireBaseAuthService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final UserService _userService = locator<UserService>();
+  final SharedPrefService _sharedPrefService = locator<SharedPrefService>();
 
   static const String _deviceName = "mobile";
   static const String _userMapKey = "user";
@@ -56,10 +58,11 @@ class LoginHelper {
         if (value != null) {
           await _authenticationService
               .login(firebase_token: value, device_name: _deviceName)
-              .then((value) {
+              .then((value) async {
             if (value != null) {
               _userService.fetchUser = value[_userMapKey];
               _userService.fetchToken = value[_tokenMapKey];
+              await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
               goToHome();
             } else {
               showFail();
