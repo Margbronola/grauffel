@@ -10,7 +10,6 @@ const String secureIcon = "assets/images/secure-payment.png";
 const String bigTriangle = "assets/images/triangleRight.png";
 const String smallTriangle = "assets/images/smallTriangle.png";
 
-
-
-//TEXT
-
+//PAGING
+const int gunsPerPage = 10;
+const int ammunitionsPerPage = 10;

@@ -63,6 +63,7 @@ class AuthenticationService {
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
         print("success");
         Fluttertoast.showToast(msg: "Logout Successfully");
         return true;

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/welcome/login_helper.dart';
@@ -40,7 +39,6 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   bool isRegisterView = false;
   bool showPassword = false;
   bool cshowPassword = false;
-
   bool keyBoardVisible = false;
 
   bool get isFocus =>
