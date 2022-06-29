@@ -20,9 +20,23 @@ GunModel _$GunModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GunModel {
-  String get image => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
+  int? get brand_id => throw _privateConstructorUsedError;
+  int? get caliber_id => throw _privateConstructorUsedError;
+  int? get mags_capacity => throw _privateConstructorUsedError;
+  int? get reserve => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  bool? get reservable =>
+      throw _privateConstructorUsedError; //available_ammunition
+//caliber
+//brand
+  String? get image => throw _privateConstructorUsedError;
+  List<dynamic>? get bookings => throw _privateConstructorUsedError;
+  List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +48,21 @@ mixin _$GunModel {
 abstract class $GunModelCopyWith<$Res> {
   factory $GunModelCopyWith(GunModel value, $Res Function(GunModel) then) =
       _$GunModelCopyWithImpl<$Res>;
-  $Res call({String image, String name, String description});
+  $Res call(
+      {int? id,
+      String? model,
+      int? brand_id,
+      int? caliber_id,
+      int? mags_capacity,
+      int? reserve,
+      double? price,
+      String? description,
+      DateTime? created_at,
+      DateTime? updated_at,
+      bool? reservable,
+      String? image,
+      List<dynamic>? bookings,
+      List<dynamic>? ammunitions});
 }
 
 /// @nodoc
@@ -47,23 +75,78 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? image = freezed,
-    Object? name = freezed,
+    Object? id = freezed,
+    Object? model = freezed,
+    Object? brand_id = freezed,
+    Object? caliber_id = freezed,
+    Object? mags_capacity = freezed,
+    Object? reserve = freezed,
+    Object? price = freezed,
     Object? description = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? reservable = freezed,
+    Object? image = freezed,
+    Object? bookings = freezed,
+    Object? ammunitions = freezed,
   }) {
     return _then(_value.copyWith(
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand_id: brand_id == freezed
+          ? _value.brand_id
+          : brand_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      caliber_id: caliber_id == freezed
+          ? _value.caliber_id
+          : caliber_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mags_capacity: mags_capacity == freezed
+          ? _value.mags_capacity
+          : mags_capacity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reserve: reserve == freezed
+          ? _value.reserve
+          : reserve // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      reservable: reservable == freezed
+          ? _value.reservable
+          : reservable // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bookings: bookings == freezed
+          ? _value.bookings
+          : bookings // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      ammunitions: ammunitions == freezed
+          ? _value.ammunitions
+          : ammunitions // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
     ));
   }
 }
@@ -74,7 +157,21 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
           _$_GunModel value, $Res Function(_$_GunModel) then) =
       __$$_GunModelCopyWithImpl<$Res>;
   @override
-  $Res call({String image, String name, String description});
+  $Res call(
+      {int? id,
+      String? model,
+      int? brand_id,
+      int? caliber_id,
+      int? mags_capacity,
+      int? reserve,
+      double? price,
+      String? description,
+      DateTime? created_at,
+      DateTime? updated_at,
+      bool? reservable,
+      String? image,
+      List<dynamic>? bookings,
+      List<dynamic>? ammunitions});
 }
 
 /// @nodoc
@@ -89,23 +186,78 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? image = freezed,
-    Object? name = freezed,
+    Object? id = freezed,
+    Object? model = freezed,
+    Object? brand_id = freezed,
+    Object? caliber_id = freezed,
+    Object? mags_capacity = freezed,
+    Object? reserve = freezed,
+    Object? price = freezed,
     Object? description = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? reservable = freezed,
+    Object? image = freezed,
+    Object? bookings = freezed,
+    Object? ammunitions = freezed,
   }) {
     return _then(_$_GunModel(
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand_id: brand_id == freezed
+          ? _value.brand_id
+          : brand_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      caliber_id: caliber_id == freezed
+          ? _value.caliber_id
+          : caliber_id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      mags_capacity: mags_capacity == freezed
+          ? _value.mags_capacity
+          : mags_capacity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reserve: reserve == freezed
+          ? _value.reserve
+          : reserve // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      reservable: reservable == freezed
+          ? _value.reservable
+          : reservable // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bookings: bookings == freezed
+          ? _value._bookings
+          : bookings // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      ammunitions: ammunitions == freezed
+          ? _value._ammunitions
+          : ammunitions // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
     ));
   }
 }
@@ -114,21 +266,74 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   const _$_GunModel(
-      {required this.image, required this.name, required this.description});
+      {this.id,
+      this.model,
+      this.brand_id,
+      this.caliber_id,
+      this.mags_capacity,
+      this.reserve,
+      this.price,
+      this.description,
+      this.created_at,
+      this.updated_at,
+      this.reservable,
+      this.image,
+      final List<dynamic>? bookings,
+      final List<dynamic>? ammunitions})
+      : _bookings = bookings,
+        _ammunitions = ammunitions;
 
   factory _$_GunModel.fromJson(Map<String, dynamic> json) =>
       _$$_GunModelFromJson(json);
 
   @override
-  final String image;
+  final int? id;
   @override
-  final String name;
+  final String? model;
   @override
-  final String description;
+  final int? brand_id;
+  @override
+  final int? caliber_id;
+  @override
+  final int? mags_capacity;
+  @override
+  final int? reserve;
+  @override
+  final double? price;
+  @override
+  final String? description;
+  @override
+  final DateTime? created_at;
+  @override
+  final DateTime? updated_at;
+  @override
+  final bool? reservable;
+//available_ammunition
+//caliber
+//brand
+  @override
+  final String? image;
+  final List<dynamic>? _bookings;
+  @override
+  List<dynamic>? get bookings {
+    final value = _bookings;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<dynamic>? _ammunitions;
+  @override
+  List<dynamic>? get ammunitions {
+    final value = _ammunitions;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(image: $image, name: $name, description: $description)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, image: $image, bookings: $bookings, ammunitions: $ammunitions)';
   }
 
   @override
@@ -136,9 +341,20 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'GunModel'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('model', model))
+      ..add(DiagnosticsProperty('brand_id', brand_id))
+      ..add(DiagnosticsProperty('caliber_id', caliber_id))
+      ..add(DiagnosticsProperty('mags_capacity', mags_capacity))
+      ..add(DiagnosticsProperty('reserve', reserve))
+      ..add(DiagnosticsProperty('price', price))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('created_at', created_at))
+      ..add(DiagnosticsProperty('updated_at', updated_at))
+      ..add(DiagnosticsProperty('reservable', reservable))
       ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('description', description));
+      ..add(DiagnosticsProperty('bookings', bookings))
+      ..add(DiagnosticsProperty('ammunitions', ammunitions));
   }
 
   @override
@@ -146,19 +362,47 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GunModel &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.model, model) &&
+            const DeepCollectionEquality().equals(other.brand_id, brand_id) &&
             const DeepCollectionEquality()
-                .equals(other.description, description));
+                .equals(other.caliber_id, caliber_id) &&
+            const DeepCollectionEquality()
+                .equals(other.mags_capacity, mags_capacity) &&
+            const DeepCollectionEquality().equals(other.reserve, reserve) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at, created_at) &&
+            const DeepCollectionEquality()
+                .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality()
+                .equals(other.reservable, reservable) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other._bookings, _bookings) &&
+            const DeepCollectionEquality()
+                .equals(other._ammunitions, _ammunitions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(model),
+      const DeepCollectionEquality().hash(brand_id),
+      const DeepCollectionEquality().hash(caliber_id),
+      const DeepCollectionEquality().hash(mags_capacity),
+      const DeepCollectionEquality().hash(reserve),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(created_at),
+      const DeepCollectionEquality().hash(updated_at),
+      const DeepCollectionEquality().hash(reservable),
       const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(_bookings),
+      const DeepCollectionEquality().hash(_ammunitions));
 
   @JsonKey(ignore: true)
   @override
@@ -173,18 +417,53 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
 abstract class _GunModel implements GunModel {
   const factory _GunModel(
-      {required final String image,
-      required final String name,
-      required final String description}) = _$_GunModel;
+      {final int? id,
+      final String? model,
+      final int? brand_id,
+      final int? caliber_id,
+      final int? mags_capacity,
+      final int? reserve,
+      final double? price,
+      final String? description,
+      final DateTime? created_at,
+      final DateTime? updated_at,
+      final bool? reservable,
+      final String? image,
+      final List<dynamic>? bookings,
+      final List<dynamic>? ammunitions}) = _$_GunModel;
 
   factory _GunModel.fromJson(Map<String, dynamic> json) = _$_GunModel.fromJson;
 
   @override
-  String get image => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
+  int? get brand_id => throw _privateConstructorUsedError;
+  @override
+  int? get caliber_id => throw _privateConstructorUsedError;
+  @override
+  int? get mags_capacity => throw _privateConstructorUsedError;
+  @override
+  int? get reserve => throw _privateConstructorUsedError;
+  @override
+  double? get price => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
+  @override
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  @override
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  @override
+  bool? get reservable => throw _privateConstructorUsedError;
+  @override //available_ammunition
+//caliber
+//brand
+  String? get image => throw _privateConstructorUsedError;
+  @override
+  List<dynamic>? get bookings => throw _privateConstructorUsedError;
+  @override
+  List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GunModelCopyWith<_$_GunModel> get copyWith =>

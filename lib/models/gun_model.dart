@@ -6,11 +6,24 @@ part 'gun_model.g.dart';
 
 @freezed
 class GunModel with _$GunModel {
-  const factory GunModel({
-    required String image,
-    required String name,
-    required String description,
-  }) = _GunModel;
+  const factory GunModel(
+      {int? id,
+      String? model,
+      int? brand_id,
+      int? caliber_id,
+      int? mags_capacity,
+      int? reserve,
+      double? price,
+      String? description,
+      DateTime? created_at,
+      DateTime? updated_at,
+      bool? reservable,
+      //available_ammunition
+      //caliber
+      //brand
+      String? image,
+      List? bookings,
+      List? ammunitions}) = _GunModel;
 
   factory GunModel.fromJson(Map<String, Object?> json) =>
       _$GunModelFromJson(json);

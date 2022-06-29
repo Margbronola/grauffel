@@ -1,46 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'gun_model.dart';
+part of 'ammunitions_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
+_$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
+    _$_AmmunitionsModel(
       id: json['id'] as int?,
-      model: json['model'] as String?,
       brand_id: json['brand_id'] as int?,
       caliber_id: json['caliber_id'] as int?,
-      mags_capacity: json['mags_capacity'] as int?,
-      reserve: json['reserve'] as int?,
-      price: (json['price'] as num?)?.toDouble(),
+      name: json['name'] as String?,
       description: json['description'] as String?,
+      price: (json['price'] as num?)?.toDouble(),
+      stock: json['stock'] as int?,
+      status: json['status'] as int?,
+      image: json['image'] as String?,
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      reservable: json['reservable'] as bool?,
-      image: json['image'] as String?,
-      bookings: json['bookings'] as List<dynamic>?,
-      ammunitions: json['ammunitions'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
+Map<String, dynamic> _$$_AmmunitionsModelToJson(_$_AmmunitionsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'model': instance.model,
       'brand_id': instance.brand_id,
       'caliber_id': instance.caliber_id,
-      'mags_capacity': instance.mags_capacity,
-      'reserve': instance.reserve,
-      'price': instance.price,
+      'name': instance.name,
       'description': instance.description,
+      'price': instance.price,
+      'stock': instance.stock,
+      'status': instance.status,
+      'image': instance.image,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
-      'reservable': instance.reservable,
-      'image': instance.image,
-      'bookings': instance.bookings,
-      'ammunitions': instance.ammunitions,
     };
