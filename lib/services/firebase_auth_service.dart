@@ -1,12 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../app/app.locator.dart';
 
 class FireBaseAuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
+
   Future<String?> signIn(
       {required String email, required String password}) async {
     try {

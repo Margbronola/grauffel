@@ -1,6 +1,6 @@
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
-import 'package:egczacademy/views/auth_wrapper/auth_wrapper_view.dart';
 import 'package:egczacademy/views/welcome/welcome_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -24,6 +24,9 @@ import '../services/authentication_service.dart';
   ),
   LazySingleton(
     classType: UserService,
+  ),
+  Singleton(
+    classType: SharedPrefService,
   ),
 ])
 class App {

@@ -94,16 +94,12 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
 
   void init(TickerProvider vsync) {
     var keyboardVisibilityController = KeyboardVisibilityController();
-    // Query
-    print(
-        'Keyboard visibility direct query: ${keyboardVisibilityController.isVisible}');
-
-    // Subscribe
     keyboardSubscription =
         keyboardVisibilityController.onChange.listen((bool visible) {
       keyBoardVisible = visible;
       notifyListeners();
     });
+
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
     passwordFocusNode = FocusNode();

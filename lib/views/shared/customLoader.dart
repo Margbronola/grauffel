@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../services/global.dart';
+import '../../app/global.dart';
 
 class CustomLoader extends StatefulWidget {
   const CustomLoader({Key? key}) : super(key: key);

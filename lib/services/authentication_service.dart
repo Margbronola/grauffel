@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
-import 'global.dart';
+import '../app/global.dart';
 
 class AuthenticationService {
   //login in server
@@ -12,9 +12,9 @@ class AuthenticationService {
     try {
       final respo = await http.post(Uri.parse("$url/login"),
           body: {"firebase_token": firebase_token, "device_name": device_name});
-      var data = json.decode(respo.body);
 
       if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
         try {
           UserModel user = UserModel.fromJson(data['client']);
           String token = data['access_token'];
@@ -42,8 +42,8 @@ class AuthenticationService {
       Map user = userModel.toJson();
       user.removeWhere((key, value) => value == null);
       final respo = await http.post(Uri.parse("$url/register"), body: user);
-      var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
         print(data);
         print("success");
         Fluttertoast.showToast(msg: "Successful Sign Unp");

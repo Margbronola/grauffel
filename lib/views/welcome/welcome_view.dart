@@ -1,5 +1,5 @@
 import 'package:egczacademy/models/user_model.dart';
-import 'package:egczacademy/services/global.dart';
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/customButton.dart';
 import 'package:egczacademy/views/shared/customLoader.dart';
