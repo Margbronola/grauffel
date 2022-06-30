@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,10 +11,14 @@ class ReservationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0.1,
+      elevation: 5,
       color: cardColor,
       child: Stack(
         children: [
+          Image.asset(
+            bigTriangle,
+            height: 138.h,
+          ),
           Container(
             padding: EdgeInsets.all(10),
             height: 138.h,
@@ -22,31 +27,31 @@ class ReservationCard extends StatelessWidget {
                 Container(
                   width: 120.w,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "sam.",
+                        "SAM 23 MAI",
                         style: ThemeData().textTheme.headlineSmall!.copyWith(
-                            color: buttonColor, fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                            color: kcWhite),
                       ),
-                      Text(
-                        "23 mai",
-                        style: ThemeData().textTheme.headlineSmall!.copyWith(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                      SizedBox(
+                        width: 90.w,
+                        child: Divider(
+                          color: kcWhite,
+                          thickness: 2,
+                        ),
                       ),
                       Text(
                         "11h00",
-                        style: ThemeData()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(fontWeight: FontWeight.bold),
+                        style: ThemeData().textTheme.headlineSmall!.copyWith(
+                            fontWeight: FontWeight.bold, color: kcWhite),
                       ),
                       Text(
                         "12h00",
-                        style: ThemeData()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(fontWeight: FontWeight.bold),
+                        style: ThemeData().textTheme.headlineSmall!.copyWith(
+                            fontWeight: FontWeight.bold, color: kcWhite),
                       )
                     ],
                   ),
