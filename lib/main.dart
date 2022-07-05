@@ -1,3 +1,4 @@
+import 'package:egczacademy/firebase_options.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupLocator();
   await initializePrefs();
   setupDialogUi();

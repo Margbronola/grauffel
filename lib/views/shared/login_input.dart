@@ -18,7 +18,7 @@ class LoginInput extends StatelessWidget {
     return Column(
       children: [
         SlideTransition(
-          position: model.offsetAnimation,
+          position: model.offsetAnimation1,
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,

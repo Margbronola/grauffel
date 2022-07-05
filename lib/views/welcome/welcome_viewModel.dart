@@ -26,8 +26,11 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   late final AnimationController controllerInputText;
   late final AnimationController controllerLogo;
   late final Animation<Offset> paddingBottom;
-  late final Animation<Offset> offsetAnimation;
+  late final Animation<Offset> offsetAnimation1;
   late final Animation<Offset> offsetAnimation2;
+  late final Animation<Offset> offsetAnimation3;
+  late final Animation<Offset> offsetAnimation4;
+  late final Animation<Offset> offsetAnimation5;
 
   late FocusNode emailFocusNode;
   late FocusNode passwordFocusNode;
@@ -104,36 +107,31 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     cpasswordFocusNode = FocusNode();
     firstNameFocusNode = FocusNode();
     lastNameFocusNode = FocusNode();
-
     controllerInputText = AnimationController(
-        duration: const Duration(milliseconds: 500), vsync: vsync);
+        duration: const Duration(milliseconds: 300), vsync: vsync);
 
     controllerLogo = AnimationController(
-        duration: const Duration(milliseconds: 500), vsync: vsync);
+        duration: const Duration(milliseconds: 300), vsync: vsync);
 
-    offsetAnimation = Tween<Offset>(
-      begin: const Offset(50, 0.0),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: controllerInputText,
-      curve: Interval(
-        0.0,
-        1.0,
-        curve: Curves.ease,
-      ),
-    ));
-    //slide animate
-    offsetAnimation2 = Tween<Offset>(
-      begin: const Offset(50, 0.0),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: controllerInputText,
-      curve: Interval(
-        0.500,
-        1.0,
-        curve: Curves.ease,
-      ),
-    ));
+    Animation<Offset> setOffSet({required double start, required double end}) =>
+        Tween<Offset>(
+          begin: const Offset(50, 0.0),
+          end: Offset.zero,
+        ).animate(CurvedAnimation(
+          parent: controllerInputText,
+          curve: Interval(
+            start,
+            end,
+            curve: Curves.ease,
+          ),
+        ));
+
+    offsetAnimation5 = setOffSet(start: 0.0, end: 0.2);
+    offsetAnimation4 = setOffSet(start: 0.2, end: 0.4);
+    offsetAnimation3 = setOffSet(start: 0.4, end: 0.6);
+    offsetAnimation2 = setOffSet(start: 0.6, end: 0.8);
+    offsetAnimation1 = setOffSet(start: 0.9, end: 1.0);
+
     //animate to top
     paddingBottom = Tween<Offset>(
       begin: Offset.zero,
@@ -153,14 +151,14 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   void animateToLogin() async {
     print("ANIMATELOGIN");
     if (isRegisterView) {
-      await controllerInputText.reverse();
+      controllerInputText.reverse();
       isRegisterView = false;
       isLoginView = true;
       notifyListeners();
-      await controllerInputText.forward();
+      controllerInputText.forward();
     } else {
-      await controllerLogo.forward();
-      await controllerInputText.forward();
+      controllerLogo.forward();
+      controllerInputText.forward();
       isLoginView = true;
       notifyListeners();
     }

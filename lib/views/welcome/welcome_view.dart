@@ -33,7 +33,10 @@ class _WelcomeViewState extends State<WelcomeView>
                   SingleChildScrollView(
                     child: Container(
                       // width: s,
-                      child: Image.asset(imageOwner),
+                      child: Image.asset(
+                        imageOwner,
+                        fit: BoxFit.fill,
+                      ),
                       // decoration: BoxDecoration(
                       //     image: DecorationImage(image: AssetImage(imageOwner))),
                     ),
@@ -53,21 +56,24 @@ class _WelcomeViewState extends State<WelcomeView>
                                 AnimatedContainer(
                                     duration: Duration(milliseconds: 400),
                                     // height: double.infinity,
-                                    child: Image.asset(imagelBigLogo,
-                                        scale: 4.5.w)),
+                                    child: Image.asset(
+                                      imagelBigLogo,
+                                      width: 200.w,
+                                    )),
                                 Stack(
                                   alignment: Alignment.center,
                                   children: [
                                     AnimatedContainer(
                                       duration:
                                           const Duration(milliseconds: 400),
-                                      padding: const EdgeInsets.only(top: 50),
+                                      padding: EdgeInsets.only(top: 40.0.h),
                                       child: AnimatedContainer(
                                           duration:
                                               const Duration(milliseconds: 400),
                                           width: 333.w,
-                                          height:
-                                              model.isRegisterView ? 300 : 200,
+                                          height: model.isRegisterView
+                                              ? 400.h
+                                              : 200.h,
                                           child: model.isRegisterView
                                               ? SingleChildScrollView(
                                                   child: RegisterInput(

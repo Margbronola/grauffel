@@ -38,7 +38,8 @@ class _CustomLoaderState extends State<CustomLoader>
           color: widget.withBackground ? null : Colors.black.withOpacity(0.8),
           image: !widget.withBackground
               ? null
-              : const DecorationImage(image: AssetImage(imageOwner))),
+              : const DecorationImage(
+                  image: AssetImage(imageOwner), fit: BoxFit.fill)),
       child: RotationTransition(
         turns: _animation,
         child: Center(

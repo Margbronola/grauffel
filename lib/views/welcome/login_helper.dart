@@ -11,7 +11,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
 import '../../services/authentication_service.dart';
-import '../home/home.dart';
+import '../home/home_view.dart';
 import '../shared/color.dart';
 
 class LoginHelper {
@@ -39,7 +39,7 @@ class LoginHelper {
   }
 
   void goToHome() {
-    _navigationService.navigateToView(Home());
+    _navigationService.navigateToView(HomeView());
   }
 
   Future<void> login(

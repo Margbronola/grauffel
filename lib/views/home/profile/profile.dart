@@ -1,6 +1,8 @@
-import 'package:egczacademy/views/home/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:egczacademy/views/home/settings/settings_view.dart';
+
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 
@@ -79,7 +81,7 @@ class Profile extends StatelessWidget {
   Widget childCard() {
     return Container(
       width: double.infinity,
-      height: 48,
+      height: 65.h,
       color: greyLight,
       child: Card(
         color: kcWhite,
@@ -119,28 +121,84 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget buildTile(DocsTile tile) {
-    return ExpansionTile(
-        // ignore: sort_child_properties_last
-        children: [childCard(), childCard()],
-        collapsedTextColor: Colors.black,
-        collapsedIconColor: Colors.black,
-        iconColor: buttonColor,
-        textColor: buttonColor,
-        title: Text(tile.title));
+  Widget buildTile(DocsTile docs) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border(
+              bottom: BorderSide(
+                  style: BorderStyle.solid,
+                  color: Colors.grey.withOpacity(0.5)))),
+      child: ExpansionTile(
+          children: docs.children,
+          collapsedTextColor: Colors.black,
+          collapsedIconColor: Colors.black,
+          iconColor: buttonColor,
+          textColor: buttonColor,
+          title: Text(
+            docs.title,
+            style: TextStyle(fontSize: 17.sp),
+          )),
+    );
   }
 }
 
 List<DocsTile> docs = [
-  DocsTile(title: "INFORMATION PERSONNELLES"),
-  DocsTile(title: "EXPERIENCES"),
-  DocsTile(title: "EQUIPEMENTS"),
-  DocsTile(title: "DOCUMENTS")
+  DocsTile(title: "INFORMATION", children: [
+    infoContainer("Date de naissance", "25/01/1972 - 50 ans"),
+    SizedBox(
+      height: 5.h,
+    ),
+    infoContainer("Adresse mail", "john.doe@gmail.com"),
+    SizedBox(
+      height: 5.h,
+    ),
+    infoContainer("Numéro de téléphone", "06 00 00 00 00"),
+    SizedBox(
+      height: 5.h,
+    ),
+    infoContainer("Adresse postale", "123 rue des Lilas"),
+    SizedBox(
+      height: 5.h,
+    ),
+  ]),
+  DocsTile(title: "EXPERIENCES", children: [
+    Container(
+      color: Colors.red,
+    )
+  ]),
+  DocsTile(title: "EQUIPEMENTS", children: [
+    Container(
+      color: Colors.red,
+    )
+  ]),
+  DocsTile(title: "DOCUMENTS", children: [
+    Container(
+      color: Colors.red,
+    )
+  ])
 ];
+
+Widget infoContainer(String title, String value) => Container(
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(color: Colors.grey, fontSize: 13.sp),
+          ),
+          Text(value)
+        ],
+      ),
+    );
 
 class DocsTile {
   String title;
+  List<Widget> children;
   DocsTile({
     required this.title,
+    required this.children,
   });
 }

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../shared/color.dart';
+import '../shared/widget/app_delegate.dart';
 import 'reservation_card.dart';
 import 'reservation_viewModel.dart';
-import 'dart:math' as math;
 
 class ReservationView extends StatelessWidget {
   const ReservationView({Key? key}) : super(key: key);
@@ -31,15 +31,15 @@ class ReservationView extends StatelessWidget {
                         expandedHeight: 125.h,
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
-                              height: 100,
+                              height: 100.h,
                               width: size(context).width,
                               color: secondaryColor,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 50,
-                                    width: 50,
+                                    height: 55.h,
+                                    width: 55.w,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
@@ -50,7 +50,7 @@ class ReservationView extends StatelessWidget {
                                   Text(
                                     "BONJOUR \nJOHN",
                                     style: TextStyle(
-                                        color: kcWhite, fontSize: 25.h),
+                                        color: kcWhite, fontSize: 20..sp),
                                   )
                                 ],
                               )),
@@ -58,9 +58,9 @@ class ReservationView extends StatelessWidget {
                       ),
                       SliverPersistentHeader(
                         pinned: false,
-                        delegate: _SliverAppBarDelegate(
-                          minHeight: 66,
-                          maxHeight: 66,
+                        delegate: SliverAppBarDelegate(
+                          minHeight: 50,
+                          maxHeight: 50,
                           child: AnimatedContainer(
                               duration: Duration(milliseconds: 500),
                               height: !model.showHelp ? 0 : 67.h,
@@ -110,13 +110,13 @@ class ReservationView extends StatelessWidget {
                   },
                   body: Column(
                     children: [
-                      SizedBox(
-                        height: 110 + 92.h,
+                      Container(
+                        height: 80 + 92.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              height: 110.h,
+                              height: 100.h,
                               width: size(context).width,
                               decoration: BoxDecoration(
                                 color: kcWhite,
@@ -209,7 +209,7 @@ class ReservationView extends StatelessWidget {
                               height: 5,
                             ),
                             Container(
-                              height: 92.h,
+                              height: 95.h,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: Column(
@@ -218,7 +218,7 @@ class ReservationView extends StatelessWidget {
                                   Text(
                                     "RESERVATION(S)",
                                     style: TextStyle(
-                                        fontSize: 25.sp,
+                                        fontSize: 20.sp,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Stack(
@@ -286,35 +286,5 @@ class ReservationView extends StatelessWidget {
       ),
       viewModelBuilder: () => ReservationViewModel(),
     );
-  }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate({
-    @required this.minHeight,
-    @required this.maxHeight,
-    @required this.child,
-  });
-  final double? minHeight;
-  final double? maxHeight;
-  final Widget? child;
-
-  @override
-  double get minExtent => minHeight!;
-
-  @override
-  double get maxExtent => math.max(maxHeight!, minHeight!);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return maxHeight != oldDelegate.maxHeight ||
-        minHeight != oldDelegate.minHeight ||
-        child != oldDelegate.child;
   }
 }

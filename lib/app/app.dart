@@ -6,14 +6,14 @@ import 'package:egczacademy/views/welcome/welcome_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../services/authentication_service.dart';
-import '../views/home/home.dart';
+import '../views/home/home_view.dart';
 
 @StackedApp(routes: [
   MaterialRoute(page: SplashView, initial: true),
   MaterialRoute(
     page: WelcomeView,
   ), // contains login and register
-  MaterialRoute(page: Home),
+  MaterialRoute(page: HomeView),
 ], dependencies: [
   LazySingleton(
     classType: AuthenticationService,

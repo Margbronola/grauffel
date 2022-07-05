@@ -33,12 +33,13 @@ class ReservationCard extends StatelessWidget {
                         "SAM 23 MAI",
                         style: ThemeData().textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15.sp,
+                            fontSize: 13.sp,
                             color: kcWhite),
                       ),
                       SizedBox(
-                        width: 90.w,
+                        width: 65.w,
                         child: Divider(
+                          height: 10.h,
                           color: kcWhite,
                           thickness: 2,
                         ),
@@ -46,12 +47,16 @@ class ReservationCard extends StatelessWidget {
                       Text(
                         "11h00",
                         style: ThemeData().textTheme.headlineSmall!.copyWith(
-                            fontWeight: FontWeight.bold, color: kcWhite),
+                            fontWeight: FontWeight.bold,
+                            color: kcWhite,
+                            fontSize: 12.sp),
                       ),
                       Text(
                         "12h00",
                         style: ThemeData().textTheme.headlineSmall!.copyWith(
-                            fontWeight: FontWeight.bold, color: kcWhite),
+                            fontWeight: FontWeight.bold,
+                            color: kcWhite,
+                            fontSize: 12.sp),
                       )
                     ],
                   ),
@@ -63,7 +68,6 @@ class ReservationCard extends StatelessWidget {
                 horizontalSpaceMedium(),
                 Expanded(
                     child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -71,20 +75,21 @@ class ReservationCard extends StatelessWidget {
                       style: ThemeData().textTheme.headlineSmall!.copyWith(
                           color: buttonColor,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                          fontSize: 16.sp),
                     ),
                     Row(
                       children: [
                         Container(
-                          height: 10,
-                          width: 10,
-                          color: secondaryColor,
+                          height: 15.h,
+                          width: 15.w,
                           child: Image.asset(
-                            "assets/images/logo1.png",
+                            secureIcon,
                             scale: 5,
                           ),
                         ),
-                        horizontalSpaceSmall(),
+                        SizedBox(
+                          width: 5.w,
+                        ),
                         Text(
                           "fun shoot",
                           style: ThemeData().textTheme.headlineSmall!.copyWith(
@@ -92,12 +97,18 @@ class ReservationCard extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
                     Text(
-                      "CZ Shadow 2 - Bushing Cerakote 9x19 - 9mm x100 Lunettes, chargeurs...voir plus",
+                      "CZ Shadow 2 - Bushing Cerakote 9x19 - 9mm x100 Lunettes, chargeurs voir plus Bushing Cerakote 9x19 - 9mm x100 Lunettes, chargeurs ",
                       style: ThemeData().textTheme.headlineSmall!.copyWith(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10),
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.sp,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                      maxLines: 3,
                     ),
                   ],
                 ))

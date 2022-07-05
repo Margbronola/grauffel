@@ -18,7 +18,7 @@ class RegisterInput extends StatelessWidget {
     return Column(
       children: [
         SlideTransition(
-          position: model.offsetAnimation,
+          position: model.offsetAnimation1,
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.text,
@@ -36,7 +36,7 @@ class RegisterInput extends StatelessWidget {
         ),
         SizedBox(height: size(context).height * 0.03),
         SlideTransition(
-          position: model.offsetAnimation,
+          position: model.offsetAnimation2,
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.text,
@@ -54,7 +54,7 @@ class RegisterInput extends StatelessWidget {
         ),
         SizedBox(height: size(context).height * 0.03),
         SlideTransition(
-          position: model.offsetAnimation,
+          position: model.offsetAnimation3,
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
@@ -72,7 +72,7 @@ class RegisterInput extends StatelessWidget {
         ),
         SizedBox(height: size(context).height * 0.03),
         SlideTransition(
-          position: model.offsetAnimation2,
+          position: model.offsetAnimation4,
           child: TextFormField(
             onFieldSubmitted: (String text) {
               model.loginButton();
@@ -101,7 +101,7 @@ class RegisterInput extends StatelessWidget {
         ),
         SizedBox(height: size(context).height * 0.03),
         SlideTransition(
-          position: model.offsetAnimation2,
+          position: model.offsetAnimation5,
           child: TextFormField(
             onFieldSubmitted: (String text) {
               model.loginButton();
