@@ -7,13 +7,14 @@ import '../app/global.dart';
 
 class GunAPIService {
   List<GunModel>? _guns;
+  List<GunModel>? get guns => _guns;
   PagingModel? _pagingModel;
+  final int _perPage = 10;
 
-  Future<void> fetchAllGuns(
-      {required String token, required int perPage}) async {
+  Future<void> fetchAllGuns({required String token}) async {
     try {
       final respo =
-          await http.get(Uri.parse("$url/guns?per_page=$perPage"), headers: {
+          await http.get(Uri.parse("$url/guns?per_page=$_perPage"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });

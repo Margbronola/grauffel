@@ -29,11 +29,12 @@ mixin _$GunModel {
   double? get price => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
-  DateTime? get updated_at => throw _privateConstructorUsedError;
-  bool? get reservable =>
-      throw _privateConstructorUsedError; //available_ammunition
-//caliber
-//brand
+  DateTime? get updated_at =>
+      throw _privateConstructorUsedError; //available_ammunition {}
+  bool? get reservable => throw _privateConstructorUsedError; // relatedAmmo []
+// relatedEquipment []
+  CaliberModel? get caliber => throw _privateConstructorUsedError;
+  GunBrandModel? get brand => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
   List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
@@ -60,9 +61,14 @@ abstract class $GunModelCopyWith<$Res> {
       DateTime? created_at,
       DateTime? updated_at,
       bool? reservable,
+      CaliberModel? caliber,
+      GunBrandModel? brand,
       String? image,
       List<dynamic>? bookings,
       List<dynamic>? ammunitions});
+
+  $CaliberModelCopyWith<$Res>? get caliber;
+  $GunBrandModelCopyWith<$Res>? get brand;
 }
 
 /// @nodoc
@@ -86,6 +92,8 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? reservable = freezed,
+    Object? caliber = freezed,
+    Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
     Object? ammunitions = freezed,
@@ -135,6 +143,14 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
               as bool?,
+      caliber: caliber == freezed
+          ? _value.caliber
+          : caliber // ignore: cast_nullable_to_non_nullable
+              as CaliberModel?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as GunBrandModel?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -148,6 +164,28 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
     ));
+  }
+
+  @override
+  $CaliberModelCopyWith<$Res>? get caliber {
+    if (_value.caliber == null) {
+      return null;
+    }
+
+    return $CaliberModelCopyWith<$Res>(_value.caliber!, (value) {
+      return _then(_value.copyWith(caliber: value));
+    });
+  }
+
+  @override
+  $GunBrandModelCopyWith<$Res>? get brand {
+    if (_value.brand == null) {
+      return null;
+    }
+
+    return $GunBrandModelCopyWith<$Res>(_value.brand!, (value) {
+      return _then(_value.copyWith(brand: value));
+    });
   }
 }
 
@@ -169,9 +207,16 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       DateTime? created_at,
       DateTime? updated_at,
       bool? reservable,
+      CaliberModel? caliber,
+      GunBrandModel? brand,
       String? image,
       List<dynamic>? bookings,
       List<dynamic>? ammunitions});
+
+  @override
+  $CaliberModelCopyWith<$Res>? get caliber;
+  @override
+  $GunBrandModelCopyWith<$Res>? get brand;
 }
 
 /// @nodoc
@@ -197,6 +242,8 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? reservable = freezed,
+    Object? caliber = freezed,
+    Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
     Object? ammunitions = freezed,
@@ -246,6 +293,14 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
               as bool?,
+      caliber: caliber == freezed
+          ? _value.caliber
+          : caliber // ignore: cast_nullable_to_non_nullable
+              as CaliberModel?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as GunBrandModel?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -277,6 +332,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       this.created_at,
       this.updated_at,
       this.reservable,
+      this.caliber,
+      this.brand,
       this.image,
       final List<dynamic>? bookings,
       final List<dynamic>? ammunitions})
@@ -306,11 +363,15 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
+//available_ammunition {}
   @override
   final bool? reservable;
-//available_ammunition
-//caliber
-//brand
+// relatedAmmo []
+// relatedEquipment []
+  @override
+  final CaliberModel? caliber;
+  @override
+  final GunBrandModel? brand;
   @override
   final String? image;
   final List<dynamic>? _bookings;
@@ -333,7 +394,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, image: $image, bookings: $bookings, ammunitions: $ammunitions)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, ammunitions: $ammunitions)';
   }
 
   @override
@@ -352,6 +413,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       ..add(DiagnosticsProperty('created_at', created_at))
       ..add(DiagnosticsProperty('updated_at', updated_at))
       ..add(DiagnosticsProperty('reservable', reservable))
+      ..add(DiagnosticsProperty('caliber', caliber))
+      ..add(DiagnosticsProperty('brand', brand))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('bookings', bookings))
       ..add(DiagnosticsProperty('ammunitions', ammunitions));
@@ -379,6 +442,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
                 .equals(other.updated_at, updated_at) &&
             const DeepCollectionEquality()
                 .equals(other.reservable, reservable) &&
+            const DeepCollectionEquality().equals(other.caliber, caliber) &&
+            const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other._bookings, _bookings) &&
             const DeepCollectionEquality()
@@ -400,6 +465,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at),
       const DeepCollectionEquality().hash(reservable),
+      const DeepCollectionEquality().hash(caliber),
+      const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(_bookings),
       const DeepCollectionEquality().hash(_ammunitions));
@@ -428,6 +495,8 @@ abstract class _GunModel implements GunModel {
       final DateTime? created_at,
       final DateTime? updated_at,
       final bool? reservable,
+      final CaliberModel? caliber,
+      final GunBrandModel? brand,
       final String? image,
       final List<dynamic>? bookings,
       final List<dynamic>? ammunitions}) = _$_GunModel;
@@ -454,11 +523,14 @@ abstract class _GunModel implements GunModel {
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override
   DateTime? get updated_at => throw _privateConstructorUsedError;
-  @override
+  @override //available_ammunition {}
   bool? get reservable => throw _privateConstructorUsedError;
-  @override //available_ammunition
-//caliber
-//brand
+  @override // relatedAmmo []
+// relatedEquipment []
+  CaliberModel? get caliber => throw _privateConstructorUsedError;
+  @override
+  GunBrandModel? get brand => throw _privateConstructorUsedError;
+  @override
   String? get image => throw _privateConstructorUsedError;
   @override
   List<dynamic>? get bookings => throw _privateConstructorUsedError;

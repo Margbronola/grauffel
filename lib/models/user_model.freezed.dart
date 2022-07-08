@@ -33,13 +33,13 @@ mixin _$UserModel {
   String? get zipcode => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   int? get country_id => throw _privateConstructorUsedError;
-  int? get SIA_number => throw _privateConstructorUsedError;
-  int? get FFTir_license_number => throw _privateConstructorUsedError;
+  String? get SIA_number => throw _privateConstructorUsedError;
+  String? get FFTir_license_number => throw _privateConstructorUsedError;
   double? get credit_points => throw _privateConstructorUsedError;
   int? get verification => throw _privateConstructorUsedError;
   int? get payment_verification => throw _privateConstructorUsedError;
-  int? get status => throw _privateConstructorUsedError;
-  int? get active_client_subscription => throw _privateConstructorUsedError;
+  int? get status =>
+      throw _privateConstructorUsedError; // SubscriptionModel? active_client_subscription,
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   String? get firebase_id => throw _privateConstructorUsedError;
@@ -68,13 +68,12 @@ abstract class $UserModelCopyWith<$Res> {
       String? zipcode,
       String? city,
       int? country_id,
-      int? SIA_number,
-      int? FFTir_license_number,
+      String? SIA_number,
+      String? FFTir_license_number,
       double? credit_points,
       int? verification,
       int? payment_verification,
       int? status,
-      int? active_client_subscription,
       DateTime? created_at,
       DateTime? updated_at,
       String? firebase_id});
@@ -109,7 +108,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? verification = freezed,
     Object? payment_verification = freezed,
     Object? status = freezed,
-    Object? active_client_subscription = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? firebase_id = freezed,
@@ -170,11 +168,11 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       SIA_number: SIA_number == freezed
           ? _value.SIA_number
           : SIA_number // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       FFTir_license_number: FFTir_license_number == freezed
           ? _value.FFTir_license_number
           : FFTir_license_number // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       credit_points: credit_points == freezed
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
@@ -190,10 +188,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      active_client_subscription: active_client_subscription == freezed
-          ? _value.active_client_subscription
-          : active_client_subscription // ignore: cast_nullable_to_non_nullable
               as int?,
       created_at: created_at == freezed
           ? _value.created_at
@@ -231,13 +225,12 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? zipcode,
       String? city,
       int? country_id,
-      int? SIA_number,
-      int? FFTir_license_number,
+      String? SIA_number,
+      String? FFTir_license_number,
       double? credit_points,
       int? verification,
       int? payment_verification,
       int? status,
-      int? active_client_subscription,
       DateTime? created_at,
       DateTime? updated_at,
       String? firebase_id});
@@ -274,7 +267,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? verification = freezed,
     Object? payment_verification = freezed,
     Object? status = freezed,
-    Object? active_client_subscription = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? firebase_id = freezed,
@@ -335,11 +327,11 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       SIA_number: SIA_number == freezed
           ? _value.SIA_number
           : SIA_number // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       FFTir_license_number: FFTir_license_number == freezed
           ? _value.FFTir_license_number
           : FFTir_license_number // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       credit_points: credit_points == freezed
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
@@ -355,10 +347,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      active_client_subscription: active_client_subscription == freezed
-          ? _value.active_client_subscription
-          : active_client_subscription // ignore: cast_nullable_to_non_nullable
               as int?,
       created_at: created_at == freezed
           ? _value.created_at
@@ -399,7 +387,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       this.verification,
       this.payment_verification,
       this.status,
-      this.active_client_subscription,
       this.created_at,
       this.updated_at,
       this.firebase_id});
@@ -434,9 +421,9 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   @override
   final int? country_id;
   @override
-  final int? SIA_number;
+  final String? SIA_number;
   @override
-  final int? FFTir_license_number;
+  final String? FFTir_license_number;
   @override
   final double? credit_points;
   @override
@@ -445,8 +432,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   final int? payment_verification;
   @override
   final int? status;
-  @override
-  final int? active_client_subscription;
+// SubscriptionModel? active_client_subscription,
   @override
   final DateTime? created_at;
   @override
@@ -456,7 +442,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, active_client_subscription: $active_client_subscription, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id)';
+    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id)';
   }
 
   @override
@@ -483,8 +469,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('verification', verification))
       ..add(DiagnosticsProperty('payment_verification', payment_verification))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty(
-          'active_client_subscription', active_client_subscription))
       ..add(DiagnosticsProperty('created_at', created_at))
       ..add(DiagnosticsProperty('updated_at', updated_at))
       ..add(DiagnosticsProperty('firebase_id', firebase_id));
@@ -522,8 +506,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other.payment_verification, payment_verification) &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(
-                other.active_client_subscription, active_client_subscription) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -555,7 +537,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         const DeepCollectionEquality().hash(verification),
         const DeepCollectionEquality().hash(payment_verification),
         const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(active_client_subscription),
         const DeepCollectionEquality().hash(created_at),
         const DeepCollectionEquality().hash(updated_at),
         const DeepCollectionEquality().hash(firebase_id)
@@ -587,13 +568,12 @@ abstract class _UserModel implements UserModel {
       final String? zipcode,
       final String? city,
       final int? country_id,
-      final int? SIA_number,
-      final int? FFTir_license_number,
+      final String? SIA_number,
+      final String? FFTir_license_number,
       final double? credit_points,
       final int? verification,
       final int? payment_verification,
       final int? status,
-      final int? active_client_subscription,
       final DateTime? created_at,
       final DateTime? updated_at,
       final String? firebase_id}) = _$_UserModel;
@@ -628,9 +608,9 @@ abstract class _UserModel implements UserModel {
   @override
   int? get country_id => throw _privateConstructorUsedError;
   @override
-  int? get SIA_number => throw _privateConstructorUsedError;
+  String? get SIA_number => throw _privateConstructorUsedError;
   @override
-  int? get FFTir_license_number => throw _privateConstructorUsedError;
+  String? get FFTir_license_number => throw _privateConstructorUsedError;
   @override
   double? get credit_points => throw _privateConstructorUsedError;
   @override
@@ -639,9 +619,7 @@ abstract class _UserModel implements UserModel {
   int? get payment_verification => throw _privateConstructorUsedError;
   @override
   int? get status => throw _privateConstructorUsedError;
-  @override
-  int? get active_client_subscription => throw _privateConstructorUsedError;
-  @override
+  @override // SubscriptionModel? active_client_subscription,
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override
   DateTime? get updated_at => throw _privateConstructorUsedError;

@@ -8,7 +8,6 @@ import '../../../../shared/color.dart';
 import '../../../../shared/customButton.dart';
 import '../../../../shared/ui_helper.dart';
 import '../../../../shared/widget/guns/weaponCard.dart';
-import '../armore_view.dart';
 
 class StepView extends StatelessWidget {
   final List data;
@@ -36,7 +35,7 @@ class StepView extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 0.75), // changes position of shadow
+                  offset: const Offset(0, 0.75), // changes position of shadow
                 ),
               ],
             ),
@@ -71,7 +70,7 @@ class StepView extends StatelessWidget {
                 .copyWith(fontSize: 15.sp, color: buttonColor),
           ),
           Container(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               width: 354.w,
               child: CustomButton(title: "Suivant", onTap: () {}))
         ],

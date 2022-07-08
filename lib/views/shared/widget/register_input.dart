@@ -22,13 +22,13 @@ class RegisterInput extends StatelessWidget {
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.text,
-            style: TextStyle(color: kcWhite),
+            style: const TextStyle(color: kcWhite),
             focusNode: model.firstNameFocusNode,
             controller: model.firstNameController,
             validator: (value) {
               return Validator.validateName(value ?? "");
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "First Name",
               isDense: true,
             ),
@@ -40,13 +40,13 @@ class RegisterInput extends StatelessWidget {
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.text,
-            style: TextStyle(color: kcWhite),
+            style: const TextStyle(color: kcWhite),
             focusNode: model.lastNameFocusNode,
             controller: model.lastNameController,
             validator: (value) {
               return Validator.validateName(value ?? "");
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Last Name",
               isDense: true,
             ),
@@ -58,13 +58,13 @@ class RegisterInput extends StatelessWidget {
           child: TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: kcWhite),
+            style: const TextStyle(color: kcWhite),
             focusNode: model.emailFocusNode,
             controller: model.emailController,
             validator: (value) {
               return Validator.validateEmail(value ?? "");
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Email*",
               isDense: true,
             ),
@@ -78,7 +78,7 @@ class RegisterInput extends StatelessWidget {
               model.loginButton();
             },
             focusNode: model.passwordFocusNode,
-            style: TextStyle(color: kcWhite),
+            style: const TextStyle(color: kcWhite),
             obscureText: !model.showPassword,
             controller: model.passwordController,
             validator: (value) {
@@ -107,7 +107,7 @@ class RegisterInput extends StatelessWidget {
               model.loginButton();
             },
             focusNode: model.cpasswordFocusNode,
-            style: TextStyle(color: kcWhite),
+            style: const TextStyle(color: kcWhite),
             obscureText: !model.cshowPassword,
             controller: model.cpasswordController,
             validator: (value) {

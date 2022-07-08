@@ -1,80 +1,129 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:egczacademy/views/home/settings/settings_view.dart';
-
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
+import 'package:stacked/stacked.dart';
+import 'profile_viewModel.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
+class ProfileView extends StatelessWidget {
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        color: kcWhite,
-        height: size.height,
-        width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 0.75), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Container(
-                  height: 125.h,
-                  padding: EdgeInsets.symmetric(horizontal: 32),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/profile.png",
-                        scale: 5,
+    return ViewModelBuilder<ProfileViewModel>.reactive(
+      builder: (context, model, child) => Scaffold(
+        body: Container(
+          color: kcWhite,
+          height: size(context).height,
+          width: size(context).width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                  padding: EdgeInsets.only(top: 20.h),
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(0, 0.75), // changes position of shadow
                       ),
-                      horizontalSpaceMedium(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "BONJOUR JOHN",
-                            style:
-                                ThemeData().textTheme.headlineSmall!.copyWith(
-                                      color: kcWhite,
-                                      fontSize: 20.sp,
-                                    ),
-                          ),
-                          Text(
-                            "Profile pic",
-                            style:
-                                ThemeData().textTheme.headlineSmall!.copyWith(
-                                      color: Colors.grey,
-                                      fontSize: 10.sp,
-                                    ),
-                          )
-                        ],
-                      )
                     ],
                   ),
-                )),
-            Expanded(
-              child: ListView(
-                children: docs.map(buildTile).toList(),
-              ),
-            )
-          ],
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        right: 0,
+                        child: Image.asset(
+                          imagelBigLogo,
+                          scale: 2,
+                          color: kcWhite.withOpacity(0.4),
+                        ),
+                      ),
+                      Container(
+                        color: Colors.black.withOpacity(0.9),
+                        height: 195.h,
+                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              profileImage,
+                              scale: 5,
+                            ),
+                            horizontalSpaceMedium(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  model.user!.fullname!,
+                                  style: TextStyle(
+                                    color: kcWhite,
+                                    fontSize: 22.sp,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      secureIcon,
+                                      color: buttonColor,
+                                      scale: 3,
+                                    ),
+                                    horizontalSpaceSmall(),
+                                    Text(
+                                      model.userValidate,
+                                      style: ThemeData()
+                                          .textTheme
+                                          .headlineSmall!
+                                          .copyWith(
+                                            color: kcWhite,
+                                            fontSize: 15.sp,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  model.user!.email!,
+                                  style: ThemeData()
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                          color: buttonColor,
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                          right: 0,
+                          child: IconButton(
+                              onPressed: model.editProrifle,
+                              icon: const Icon(
+                                Icons.edit,
+                                color: buttonColor,
+                              )))
+                    ],
+                  )),
+              Expanded(
+                child: ListView(
+                  children: docs.map(buildTile).toList(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
+      viewModelBuilder: () => ProfileViewModel(),
     );
   }
 
@@ -129,7 +178,6 @@ class Profile extends StatelessWidget {
                   style: BorderStyle.solid,
                   color: Colors.grey.withOpacity(0.5)))),
       child: ExpansionTile(
-          children: docs.children,
           collapsedTextColor: Colors.black,
           collapsedIconColor: Colors.black,
           iconColor: buttonColor,
@@ -137,7 +185,8 @@ class Profile extends StatelessWidget {
           title: Text(
             docs.title,
             style: TextStyle(fontSize: 17.sp),
-          )),
+          ),
+          children: docs.children),
     );
   }
 }

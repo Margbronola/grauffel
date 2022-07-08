@@ -5,7 +5,7 @@ import '../../app/global.dart';
 
 class CustomLoader extends StatefulWidget {
   final bool withBackground;
-  const CustomLoader({
+  const       CustomLoader({
     Key? key,
     this.withBackground = true,
   }) : super(key: key);

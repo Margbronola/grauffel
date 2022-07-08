@@ -39,7 +39,7 @@ class LoginHelper {
   }
 
   void goToHome() {
-    _navigationService.navigateToView(HomeView());
+    _navigationService.navigateToView(const HomeView());
   }
 
   Future<void> login(
@@ -62,6 +62,8 @@ class LoginHelper {
             if (value != null) {
               _userService.fetchUser = value[_userMapKey];
               _userService.fetchToken = value[_tokenMapKey];
+              print(value[_tokenMapKey]);
+              print(value[_userMapKey]);
               await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
               goToHome();
             } else {
@@ -126,5 +128,6 @@ class LoginHelper {
       Fluttertoast.showToast(msg: "Pas de connexion Internet : timeout");
       return null;
     }
+    return null;
   }
 }

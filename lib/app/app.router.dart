@@ -11,7 +11,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
 import '../views/home/home_view.dart';
-import '../views/welcome/splash/splash_view.dart';
+import '../views/splash/splash_view.dart';
 import '../views/welcome/welcome_view.dart';
 
 class Routes {

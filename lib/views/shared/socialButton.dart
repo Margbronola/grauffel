@@ -31,13 +31,13 @@ class SocialButton extends StatelessWidget {
                   height: 30.h,
                 ),
               ),
-              customDivider(),
-              circleButton(
-                onTap: logoTap,
-                child: Image.asset(
-                  imageSmallLogo,
-                ),
-              ),
+              // customDivider(),
+              // circleButton(
+              //   onTap: logoTap,
+              //   child: Image.asset(
+              //     imageSmallLogo,
+              //   ),
+              // ),
               customDivider(),
               circleButton(
                 onTap: instaTap,
@@ -67,7 +67,7 @@ class SocialButton extends StatelessWidget {
         height: 30.h,
         child: const VerticalDivider(
           color: kcWhite,
-          thickness: 2,
+          thickness: 1.5,
         ),
       );
 

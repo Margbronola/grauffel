@@ -1,4 +1,3 @@
-import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/customButton.dart';
@@ -6,7 +5,6 @@ import 'package:egczacademy/views/shared/customLoader.dart';
 import 'package:egczacademy/views/shared/login_input.dart';
 import 'package:egczacademy/views/shared/socialButton.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
-import 'package:egczacademy/views/shared/widget/register_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -31,124 +29,56 @@ class _WelcomeViewState extends State<WelcomeView>
             : Stack(
                 children: [
                   SingleChildScrollView(
-                    child: Container(
-                      // width: s,
-                      child: Image.asset(
-                        imageOwner,
-                        fit: BoxFit.fill,
-                      ),
-                      // decoration: BoxDecoration(
-                      //     image: DecorationImage(image: AssetImage(imageOwner))),
-                    ),
-                  ),
-                  SingleChildScrollView(
-                    child: Container(
+                    child: SizedBox(
                       width: size(context).width,
                       height: size(context).height,
-                      child: Form(
-                        key: model.formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 AnimatedContainer(
-                                    duration: Duration(milliseconds: 400),
-                                    // height: double.infinity,
+                                    duration: const Duration(milliseconds: 400),
                                     child: Image.asset(
                                       imagelBigLogo,
                                       width: 200.w,
                                     )),
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 400),
-                                      padding: EdgeInsets.only(top: 40.0.h),
-                                      child: AnimatedContainer(
-                                          duration:
-                                              const Duration(milliseconds: 400),
-                                          width: 333.w,
-                                          height: model.isRegisterView
-                                              ? 400.h
-                                              : 200.h,
-                                          child: model.isRegisterView
-                                              ? SingleChildScrollView(
-                                                  child: RegisterInput(
-                                                    model: model,
-                                                  ),
-                                                )
-                                              : SingleChildScrollView(
-                                                  child: LoginInput(
-                                                      model: model))),
-                                    )
-                                  ],
-                                ),
-                                model.keyBoardVisible
-                                    ? SizedBox()
-                                    : verticalSpaceMedium(),
-                                Column(
-                                  children: [
-                                    model.keyBoardVisible
-                                        ? SizedBox()
-                                        : Container(
-                                            width: 333.w,
-                                            child: Text(
-                                              "Stand de tir indoor pour le loisir et la competition",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: kcWhite,
-                                                fontSize: 22.sp,
-                                              ),
-                                            ),
-                                          ),
-                                    verticalSpaceSmall(),
-                                    CustomButton(
-                                        title: model.btnText,
-                                        onTap: model.isLoginView
-                                            ? model.loginButton
-                                            : model.isRegisterView
-                                                ? () async {
-                                                    model.registerButton(
-                                                        const UserModel(
-                                                            first_name:
-                                                                "first_name",
-                                                            last_name:
-                                                                "last_name",
-                                                            email: "email",
-                                                            password:
-                                                                "password",
-                                                            c_password:
-                                                                "c_password"));
-                                                  }
-                                                : model.animateToLogin),
-                                  ],
-                                ),
                               ],
                             ),
-                            verticalSpaceSmall(),
-                            model.keyBoardVisible
-                                ? const SizedBox()
-                                : SocialButton(
-                                    fbTap: () {},
-                                    instaTap: () {},
-                                    logoTap: model.animateToRegister,
-                                  )
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: PageView(
+                                controller: model.pageController,
+                                children: [
+                                  welcomeCenter(model),
+                                  LoginInput(model: model)
+                                ],
+                              ),
+                            ),
+                          ),
+                          verticalSpaceSmall(),
+                          model.keyBoardVisible
+                              ? const SizedBox()
+                              : SocialButton(
+                                  fbTap: () {},
+                                  instaTap: () {},
+                                  logoTap: model.animateToRegister,
+                                )
+                        ],
                       ),
                     ),
                   ),
-                  model.isRegisterView
+                  model.isLoginView
                       ? Positioned(
                           top: 30.h,
                           left: 10.w,
                           child: BackButton(
-                            onPressed: () {
-                              model.animateToLogin();
-                            },
+                            onPressed: model.back,
                             color: kcWhite,
                           ),
                         )
@@ -160,3 +90,25 @@ class _WelcomeViewState extends State<WelcomeView>
     );
   }
 }
+
+Widget welcomeCenter(WelcomeViewModel model) => Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        model.keyBoardVisible
+            ? const SizedBox()
+            : SizedBox(
+                width: 250.w,
+                child: Text(
+                  "Stand de tir indoor pour le loisir et la competition",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    letterSpacing: 2,
+                    color: kcWhite,
+                    fontSize: 20.sp,
+                  ),
+                ),
+              ),
+        verticalSpaceLarge(),
+        CustomButton(title: "J'ai un compte", onTap: model.jumpToLogin),
+      ],
+    );

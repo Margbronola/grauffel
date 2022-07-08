@@ -22,13 +22,12 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       zipcode: json['zipcode'] as String?,
       city: json['city'] as String?,
       country_id: json['country_id'] as int?,
-      SIA_number: json['SIA_number'] as int?,
-      FFTir_license_number: json['FFTir_license_number'] as int?,
+      SIA_number: json['SIA_number'] as String?,
+      FFTir_license_number: json['FFTir_license_number'] as String?,
       credit_points: (json['credit_points'] as num?)?.toDouble(),
       verification: json['verification'] as int?,
       payment_verification: json['payment_verification'] as int?,
       status: json['status'] as int?,
-      active_client_subscription: json['active_client_subscription'] as int?,
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -59,7 +58,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'verification': instance.verification,
       'payment_verification': instance.payment_verification,
       'status': instance.status,
-      'active_client_subscription': instance.active_client_subscription,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
       'firebase_id': instance.firebase_id,

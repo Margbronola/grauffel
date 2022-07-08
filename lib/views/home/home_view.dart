@@ -18,52 +18,57 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       onModelReady: (model) => model.initState(),
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: model.selectedIndex != 0
-              ? null
-              : Text(
-                  "Hello ! JOHN",
-                  style: TextStyle(fontSize: 20.sp),
-                ),
-          leadingWidth: 150.w,
-          leading: model.selectedIndex == 0
-              ? null
-              : Row(
-                  children: [
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Image.asset(
-                      "assets/images/logo2.png",
-                      scale: 12.w,
-                    ),
-                  ],
-                ),
-          actions: [
-            GestureDetector(
-              child: Icon(Icons.more_vert),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsView()));
-              },
-            ),
-            horizontalSpaceSmall()
-          ],
-          automaticallyImplyLeading: false,
-        ),
+        appBar: model.selectedIndex == 2
+            ? null
+            : AppBar(
+                backgroundColor: backgroundColor,
+                title: model.selectedIndex != 0
+                    ? null
+                    : Text(
+                        "Hello ! JOHN",
+                        style: TextStyle(fontSize: 20.sp),
+                      ),
+                leadingWidth: 150.w,
+                leading: model.selectedIndex == 0
+                    ? null
+                    : Row(
+                        children: [
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Image.asset(
+                            "assets/images/logo2.png",
+                            scale: 12.w,
+                          ),
+                        ],
+                      ),
+                actions: [
+                  GestureDetector(
+                    child: const Icon(Icons.more_vert),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SettingsView()));
+                    },
+                  ),
+                  horizontalSpaceSmall()
+                ],
+                automaticallyImplyLeading: false,
+              ),
         body: PageView(
           controller: model.pageController,
           onPageChanged: model.changePage,
-          children: <Widget>[
+          children: const <Widget>[
             ReservationView(),
             ReservationList(),
-            Profile(),
+            ProfileView(),
           ],
         ),
         bottomNavigationBar: BottomBar(
           selectedIndex: model.selectedIndex,
           onTap: model.onTap,
-          items: <BottomBarItem>[
+          items: const <BottomBarItem>[
             BottomBarItem(
               icon: Icon(Icons.home),
               title: Text('Home'),

@@ -20,7 +20,7 @@ class BasicDialog extends StatelessWidget {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: EdgeInsets.symmetric(horizontal: 20),
-          height: 250.h,
+          height: 260.h,
           child: Column(
             children: [
               Container(
@@ -50,6 +50,7 @@ class BasicDialog extends StatelessWidget {
                   onTap: () {
                     completer!(DialogResponse(confirmed: true));
                   }),
+                  verticalSpaceSmall(),
               CustomButton(
                   title: "mes disponibilités",
                   onTap: () {

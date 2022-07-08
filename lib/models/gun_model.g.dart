@@ -22,6 +22,12 @@ _$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
           ? null
           : DateTime.parse(json['updated_at'] as String),
       reservable: json['reservable'] as bool?,
+      caliber: json['caliber'] == null
+          ? null
+          : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
+      brand: json['brand'] == null
+          ? null
+          : GunBrandModel.fromJson(json['brand'] as Map<String, dynamic>),
       image: json['image'] as String?,
       bookings: json['bookings'] as List<dynamic>?,
       ammunitions: json['ammunitions'] as List<dynamic>?,
@@ -40,6 +46,8 @@ Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
       'reservable': instance.reservable,
+      'caliber': instance.caliber,
+      'brand': instance.brand,
       'image': instance.image,
       'bookings': instance.bookings,
       'ammunitions': instance.ammunitions,

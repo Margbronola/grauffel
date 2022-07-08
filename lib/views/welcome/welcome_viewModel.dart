@@ -16,9 +16,11 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final PageController pageController = PageController();
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final TextEditingController cpasswordController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
@@ -73,6 +75,8 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     cpasswordFocusNode.dispose();
     firstNameFocusNode.dispose();
     lastNameFocusNode.dispose();
+
+    pageController.dispose();
     super.dispose();
   }
 
@@ -139,7 +143,7 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     ).animate(
       CurvedAnimation(
         parent: controllerLogo,
-        curve: Interval(
+        curve: const Interval(
           0.0,
           0.1,
           curve: Curves.ease,
@@ -148,23 +152,18 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     );
   }
 
-  void animateToLogin() async {
-    print("ANIMATELOGIN");
-    if (isRegisterView) {
-      controllerInputText.reverse();
-      isRegisterView = false;
-      isLoginView = true;
-      notifyListeners();
-      controllerInputText.forward();
-    } else {
-      controllerLogo.forward();
-      controllerInputText.forward();
-      isLoginView = true;
-      notifyListeners();
-    }
-    if (isFocus) {
-      unFucos();
-    }
+  void jumpToLogin() async {
+    pageController.animateToPage(1,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+    isLoginView = true;
+    notifyListeners();
+  }
+
+  void back() async {
+    pageController.animateToPage(0,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+    isLoginView = false;
+    notifyListeners();
   }
 
   void animateToRegister() async {
@@ -199,13 +198,15 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   }
 
   void loginButton() async {
-    print("LOGIN");
     setBusy(true);
+    print("login");
     await login(
         isTest: true,
         formKey: formKey,
         email: emailController.text,
         password: passwordController.text);
+
+    setBusy(false);
 
     notifyListeners();
   }

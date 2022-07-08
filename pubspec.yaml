@@ -28,7 +28,6 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bottom_bar: ^2.0.1
-  # bottom_navy_bar: ^6.0.0
   cupertino_icons: ^1.0.2
   firebase_auth: ^3.3.20
   firebase_core: ^1.18.0
@@ -41,6 +40,7 @@ dependencies:
   freezed_annotation: ^2.0.3
   google_fonts: ^3.0.1
   http: ^0.13.4
+  image_picker: ^0.8.5+3
   json_serializable: ^6.2.0
   searchfield: ^0.6.5
   shared_preferences: ^2.0.15
