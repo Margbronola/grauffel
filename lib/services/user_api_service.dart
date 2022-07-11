@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:egczacademy/models/transaction_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
@@ -102,5 +103,90 @@ class UserAPIService {
       print(e);
       print("UPDATE USER FAIL");
     }
+  }
+
+  Future<bool> updatePassword(
+      {required String oldPassword,
+      required String newPassword,
+      required String cPassword,
+      required String token}) async {
+    try {
+      final respo =
+          await http.post(Uri.parse("$urlApi/client/update-password"), body: {
+        "old_password": oldPassword,
+        "password": newPassword,
+        "c_password": cPassword
+      }, headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+
+        print("UPDATE PASSWORD PASS");
+        return true;
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("UPDATE PASSWORD FAIL");
+    }
+    return false;
+  }
+
+  // Future<bool> saveFCMToken({
+  //   required String fcmToken,
+  //   required String token,
+  // }) async {
+  //   try {
+  //     final respo =
+  //         await http.post(Uri.parse("$urlApi/clients/save-fcm"), body: {
+  //       "token": fcmToken,
+  //     }, headers: {
+  //       "Accept": "application/json",
+  //       "Authorization": "Bearer $token",
+  //     });
+
+  //     if (respo.statusCode == 200) {
+  //       var data = json.decode(respo.body);
+  //       print(data);
+
+  //       print("SAVE FCM PASS");
+  //       return true;
+  //     } else {
+  //       print(respo.body);
+  //       print("SERVER FAIL");
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //     print("SAVE FCM  FAIL");
+  //   }
+  //   return false;
+  // }
+  Future<List<TransactionModel>?> fetchHistory({required String token}) async {
+    try {
+      final respo =
+          await http.get(Uri.parse("$urlApi/client/points-history"), headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        List transactions = data['transactions'];
+        print("UPDATE PASSWORD PASS");
+        return transactions.map((e) => TransactionModel.fromJson(e)).toList();
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("UPDATE PASSWORD FAIL");
+    }
+    return null;
   }
 }

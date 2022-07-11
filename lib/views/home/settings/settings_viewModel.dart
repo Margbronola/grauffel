@@ -3,6 +3,8 @@ import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/services/firebase_auth_service.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:egczacademy/views/history/transaction_view.dart';
+import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
@@ -15,6 +17,18 @@ class SettingsViewModel extends BaseViewModel {
   final FireBaseAuthService _fireBaseAuthService =
       locator<FireBaseAuthService>();
   final SharedPrefService _sharedPrefService = locator<SharedPrefService>();
+  final DialogService _dialogService = locator<DialogService>();
+
+  void showChangeDialog() async {
+    var response =
+        await _dialogService.showCustomDialog(variant: DialogType.changePass);
+
+    if (response!.confirmed) {
+      print("updated");
+    } else {
+      print("cancel");
+    }
+  }
 
   List<Country> countries = [
     Country(name: "Account"),
@@ -37,6 +51,10 @@ class SettingsViewModel extends BaseViewModel {
   void showToken() async {
     // String tokne = await _authenticationService.token;
     // print(tokne);
+  }
+
+  void goToHistory() {
+    _navigationService.navigateToView(const TransactionView());
   }
 }
 

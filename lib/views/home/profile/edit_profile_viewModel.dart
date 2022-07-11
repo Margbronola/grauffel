@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
-class EditProfileViewModel extends BaseViewModel {
+class EditProfileViewModel extends ReactiveViewModel {
   final UserAPIService _userAPIService = locator<UserAPIService>();
   final UserService _userService = locator<UserService>();
   final ImagePicker _picker = ImagePicker();
@@ -64,22 +64,29 @@ class EditProfileViewModel extends BaseViewModel {
   }
 
   UserModel? get user => _userService.user!;
-  void save() {
+  void save() async {
+    if (formKey.currentState!.validate()) {
+      await _userAPIService.updateDetails(
+          userToEdit: UserModel(address: addresscontroller.text),
+          token: _userService.token!);
+    }
+    setBusy(true);
     if (image != null) {
-      _userAPIService.updateAvatar(image: image, token: _userService.token!);
+      await _userAPIService.updateAvatar(
+          image: image, token: _userService.token!);
     } else {
       print(image);
     }
 
-    if (formKey.currentState!.validate()) {
-      _userAPIService
-          .updateDetails(
-              userToEdit: UserModel(address: addresscontroller.text),
-              token: _userService.token!)
-          .whenComplete(() =>
-              _userAPIService.fethUserDetailsApi(token: _userService.token!));
-    }
-    notifyListeners();
+    await _userAPIService
+        .fethUserDetailsApi(token: _userService.token!)
+        .then((value) {
+      if (value != null) {
+        _userService.updateUser(value);
+      }
+    });
+
+    setBusy(false);
   }
 
   void changeProfilePick() {}
@@ -88,8 +95,13 @@ class EditProfileViewModel extends BaseViewModel {
       image = await _picker.pickImage(source: ImageSource.gallery);
 
       print("image : $image");
+      notifyListeners();
     } catch (e) {
       print(e);
     }
   }
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_userService];
 }

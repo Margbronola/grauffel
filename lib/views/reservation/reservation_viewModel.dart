@@ -6,11 +6,7 @@ class ReservationViewModel extends BaseViewModel {
   bool absorb = false;
   ScrollController scrolleController = ScrollController();
 
-  init() {
-    scrolleController.addListener(() {
-      print(scrolleController.position.pixels);
-    });
-  }
+  init() {}
 
   void closeHelp() {
     print("HELP CLOSE");

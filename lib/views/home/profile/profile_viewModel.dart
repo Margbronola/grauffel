@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class ProfileViewModel extends BaseViewModel {
+class ProfileViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
   final ImagePicker _picker = ImagePicker();
   final NavigationService _navigationService = locator<NavigationService>();
@@ -31,4 +31,8 @@ class ProfileViewModel extends BaseViewModel {
   void editProrifle() {
     _navigationService.navigateToView(const EditProfileView());
   }
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_userService];
 }

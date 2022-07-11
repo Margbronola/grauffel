@@ -48,8 +48,9 @@ class LoginHelper {
       required String email,
       required String password}) async {
     if (formKey.currentState!.validate() == !isTest) {
+      //TODO: testRemove
       String testEmail = "john@gmail.com";
-      String testPasswotd = "123456";
+      String testPasswotd = "123123";
       _fireBaseAuthService
           .signIn(
               email: isTest ? testEmail : email,

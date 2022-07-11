@@ -30,12 +30,12 @@ class ArmDetails extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 25.sp, fontWeight: FontWeight.bold),
                       ),
-                      Container(
+                      SizedBox(
                         width: 277.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.arrow_back_ios,
                               color: backgroundColor,
                             ),
@@ -43,7 +43,7 @@ class ArmDetails extends StatelessWidget {
                               "assets/images/gun.png",
                               width: 212.w,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.arrow_forward_ios,
                               color: backgroundColor,
                             )
@@ -55,7 +55,7 @@ class ArmDetails extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 height: 58.h,
                 width: double.infinity,
                 color: Colors.black,
@@ -115,7 +115,7 @@ class ArmDetails extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Text(
                           """Glock signe une nouvelle génération de ces Glock 17 et 19 avec le Gen 5 dérivé du Glock conçu pour le FBI et qui va équiper d'autres administrations aux USA comme le Stade Dept, l'ATF, LE Dept du trésor etc etc. 
                                           Parmi les changements de conception, il y a 5 caractéristiques principales. 
@@ -131,7 +131,7 @@ class ArmDetails extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                         width: 277.w,
                         child: CustomButton(
                             title: "Choisir cette arme",
@@ -144,7 +144,7 @@ class ArmDetails extends StatelessWidget {
             ],
           ),
         ),
-        BackButton(
+        const BackButton(
           color: Colors.black,
         )
       ],

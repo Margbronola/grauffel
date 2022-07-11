@@ -13,124 +13,129 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          color: kcWhite,
-          height: size(context).height,
-          width: size(context).width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                  padding: EdgeInsets.only(top: 20.h),
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset:
-                            const Offset(0, 0.75), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        right: 0,
-                        child: Image.asset(
-                          imagelBigLogo,
-                          scale: 2,
-                          color: kcWhite.withOpacity(0.4),
-                        ),
-                      ),
-                      Container(
-                        color: Colors.black.withOpacity(0.9),
-                        height: 195.h,
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 100.w,
-                              child: model.user!.image != null
-                                  ? Image.network(
-                                      "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                      fit: BoxFit.cover,
-                                      scale: 5,
-                                    )
-                                  : Image.asset(
-                                      profileImage,
-                                      scale: 5,
-                                    ),
-                            ),
-                            horizontalSpaceMedium(),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  model.user!.fullname!,
-                                  style: TextStyle(
-                                    color: kcWhite,
-                                    fontSize: 22.sp,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      secureIcon,
-                                      color: buttonColor,
-                                      scale: 3,
-                                    ),
-                                    horizontalSpaceSmall(),
-                                    Text(
-                                      model.userValidate,
-                                      style: ThemeData()
-                                          .textTheme
-                                          .headlineSmall!
-                                          .copyWith(
-                                            color: kcWhite,
-                                            fontSize: 15.sp,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5.h,
-                                ),
-                                Text(
-                                  model.user!.address!,
-                                  style: ThemeData()
-                                      .textTheme
-                                      .headlineSmall!
-                                      .copyWith(
-                                          color: buttonColor,
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.bold),
-                                )
-                              ],
+        body: model.isBusy
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                color: kcWhite,
+                height: size(context).height,
+                width: size(context).width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.only(top: 20.h),
+                        decoration: BoxDecoration(
+                          color: backgroundColor,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(
+                                  0, 0.75), // changes position of shadow
                             ),
                           ],
                         ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              right: 0,
+                              child: Image.asset(
+                                imagelBigLogo,
+                                scale: 2,
+                                color: kcWhite.withOpacity(0.4),
+                              ),
+                            ),
+                            Container(
+                              color: Colors.black.withOpacity(0.9),
+                              height: 195.h,
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 100.w,
+                                    child: model.user!.image != null
+                                        ? Image.network(
+                                            "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                            fit: BoxFit.cover,
+                                            scale: 5,
+                                          )
+                                        : Image.asset(
+                                            profileImage,
+                                            scale: 5,
+                                          ),
+                                  ),
+                                  horizontalSpaceMedium(),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        model.user!.fullname!,
+                                        style: TextStyle(
+                                          color: kcWhite,
+                                          fontSize: 22.sp,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            secureIcon,
+                                            color: buttonColor,
+                                            scale: 3,
+                                          ),
+                                          horizontalSpaceSmall(),
+                                          Text(
+                                            model.userValidate,
+                                            style: ThemeData()
+                                                .textTheme
+                                                .headlineSmall!
+                                                .copyWith(
+                                                  color: kcWhite,
+                                                  fontSize: 15.sp,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 5.h,
+                                      ),
+                                      Text(
+                                        model.user!.address!,
+                                        style: ThemeData()
+                                            .textTheme
+                                            .headlineSmall!
+                                            .copyWith(
+                                                color: buttonColor,
+                                                fontSize: 15.sp,
+                                                fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                                right: 0,
+                                child: IconButton(
+                                    onPressed: model.editProrifle,
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      color: buttonColor,
+                                    )))
+                          ],
+                        )),
+                    Expanded(
+                      child: ListView(
+                        children: docs.map(buildTile).toList(),
                       ),
-                      Positioned(
-                          right: 0,
-                          child: IconButton(
-                              onPressed: model.editProrifle,
-                              icon: const Icon(
-                                Icons.edit,
-                                color: buttonColor,
-                              )))
-                    ],
-                  )),
-              Expanded(
-                child: ListView(
-                  children: docs.map(buildTile).toList(),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
+              ),
       ),
       viewModelBuilder: () => ProfileViewModel(),
     );

@@ -111,12 +111,12 @@ class ReservationView extends StatelessWidget {
                   body: Column(
                     children: [
                       SizedBox(
-                        height: 80 + 120.h,
+                        height: 250.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              height: 100.h,
+                              height: 110.h,
                               width: size(context).width,
                               decoration: BoxDecoration(
                                 color: kcWhite,
@@ -208,10 +208,7 @@ class ReservationView extends StatelessWidget {
                             const SizedBox(
                               height: 5,
                             ),
-                            Container(
-                              height: 100.h,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                            Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

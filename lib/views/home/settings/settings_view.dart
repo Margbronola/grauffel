@@ -16,13 +16,13 @@ class SettingsView extends StatelessWidget {
     return ViewModelBuilder<SettingsViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
-          title: Text("SETTINGS"),
+          title: const Text("SETTINGS"),
         ),
         body: Stack(
           children: [
             Container(
                 color: kcWhite,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Container(
@@ -34,7 +34,7 @@ class SettingsView extends StatelessWidget {
                         marginColor: Colors.transparent,
                         suggestionsDecoration: BoxDecoration(
                             color: Colors.white10.withOpacity(0.9)),
-                        searchInputDecoration: InputDecoration(
+                        searchInputDecoration: const InputDecoration(
                           prefixIcon: Icon(Icons.search),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -58,7 +58,16 @@ class SettingsView extends StatelessWidget {
                     settingTile("user", "Account"),
                     settingTile("bell", "Notification"),
                     settingTile("eye", "Appearance"),
-                    settingTile("lock", "Privacy & Security"),
+                    GestureDetector(
+                        onTap: model.goToHistory,
+                        child:
+                            settingTile("transaction", "History/Transactions")),
+                    GestureDetector(
+                        onTap: () {
+                          print("update pass");
+                          model.showChangeDialog();
+                        },
+                        child: settingTile("lock", "Update Password")),
                     settingTile("headphone", "Help and Support"),
                     MaterialButton(
                       onPressed: model.showToken,
@@ -74,7 +83,7 @@ class SettingsView extends StatelessWidget {
                   ],
                 )),
             model.isBusy
-                ? CustomLoader(
+                ? const CustomLoader(
                     withBackground: false,
                   )
                 : const SizedBox()
