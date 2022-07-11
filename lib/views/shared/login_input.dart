@@ -16,78 +16,82 @@ class LoginInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 380.h,
-      width: 354.w,
-      color: kcWhite,
-      padding: EdgeInsets.all(30.w),
-      child: Form(
-        key: model.formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextFormField(
-              textInputAction: TextInputAction.next,
-              keyboardType: TextInputType.emailAddress,
-              style: TextStyle(color: backgroundColor, fontSize: 20.sp),
-              focusNode: model.emailFocusNode,
-              controller: model.emailController,
-              validator: (value) {
-                return Validator.validateEmail(value ?? "");
-              },
-              decoration: const InputDecoration(
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: buttonColor),
-                ),
-                hintStyle: TextStyle(color: backgroundColor),
-                hintText: "Adresse mail*",
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: backgroundColor),
-                ),
-                isDense: true,
-              ),
-            ),
-            SizedBox(height: size(context).height * 0.03),
-            TextFormField(
-              onFieldSubmitted: (String text) {
-                model.loginButton();
-              },
-              focusNode: model.passwordFocusNode,
-              style: TextStyle(color: backgroundColor, fontSize: 20.sp),
-              obscureText: !model.showPassword,
-              controller: model.passwordController,
-              validator: (value) {
-                return Validator.validatePassword(value ?? "");
-              },
-              decoration: InputDecoration(
-                focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: buttonColor),
-                ),
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: backgroundColor),
-                ),
-                hintStyle: const TextStyle(color: backgroundColor),
-                suffixIcon: GestureDetector(
-                  onTap: () {
-                    model.toggle(cpass: false);
-                  },
-                  child: Icon(
-                    model.showPassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    color: Colors.grey,
+    return model.isBusy
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Container(
+            height: 380.h,
+            width: 354.w,
+            color: kcWhite,
+            padding: EdgeInsets.all(30.w),
+            child: Form(
+              key: model.formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextFormField(
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                    focusNode: model.emailFocusNode,
+                    controller: model.emailController,
+                    validator: (value) {
+                      return Validator.validateEmail(value ?? "");
+                    },
+                    decoration: const InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: buttonColor),
+                      ),
+                      hintStyle: TextStyle(color: backgroundColor),
+                      hintText: "Adresse mail*",
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: backgroundColor),
+                      ),
+                      isDense: true,
+                    ),
                   ),
-                ),
-                hintText: "Mot de passe*",
-                isDense: true,
+                  SizedBox(height: size(context).height * 0.03),
+                  TextFormField(
+                    onFieldSubmitted: (String text) {
+                      model.loginButton();
+                    },
+                    focusNode: model.passwordFocusNode,
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                    obscureText: !model.showPassword,
+                    controller: model.passwordController,
+                    validator: (value) {
+                      return Validator.validatePassword(value ?? "");
+                    },
+                    decoration: InputDecoration(
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: buttonColor),
+                      ),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: backgroundColor),
+                      ),
+                      hintStyle: const TextStyle(color: backgroundColor),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          model.toggle(cpass: false);
+                        },
+                        child: Icon(
+                          model.showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      hintText: "Mot de passe*",
+                      isDense: true,
+                    ),
+                  ),
+                  verticalSpaceMedium(),
+                  verticalSpaceLarge(),
+                  CustomButton(title: "Se connecter", onTap: model.loginButton),
+                ],
               ),
             ),
-            verticalSpaceMedium(),
-            verticalSpaceLarge(),
-            CustomButton(title: "Se connecter", onTap: model.loginButton),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

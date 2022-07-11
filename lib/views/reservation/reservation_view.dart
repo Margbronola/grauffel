@@ -28,7 +28,7 @@ class ReservationView extends StatelessWidget {
                     return [
                       SliverAppBar(
                         automaticallyImplyLeading: false,
-                        expandedHeight: 125.h,
+                        expandedHeight: 100.h,
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
                               height: 100.h,
@@ -40,7 +40,7 @@ class ReservationView extends StatelessWidget {
                                   Container(
                                     height: 55.h,
                                     width: 55.w,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -62,13 +62,13 @@ class ReservationView extends StatelessWidget {
                           minHeight: 50,
                           maxHeight: 50,
                           child: AnimatedContainer(
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               height: !model.showHelp ? 0 : 67.h,
                               width: size(context).width,
                               color: buttonColor,
                               child: Stack(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                       height: 67.h,
                                       width: 56.w,
                                       child: Image.asset(
@@ -110,8 +110,8 @@ class ReservationView extends StatelessWidget {
                   },
                   body: Column(
                     children: [
-                      Container(
-                        height: 80 + 92.h,
+                      SizedBox(
+                        height: 80 + 120.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -125,7 +125,7 @@ class ReservationView extends StatelessWidget {
                                     color: Colors.grey.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
-                                    offset: Offset(
+                                    offset: const Offset(
                                         0, 0.75), // changes position of shadow
                                   ),
                                 ],
@@ -134,7 +134,7 @@ class ReservationView extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 150.w,
                                     child: Center(
                                       child: Column(
@@ -168,7 +168,7 @@ class ReservationView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: 150.w,
                                     child: Center(
                                       child: Column(
@@ -205,11 +205,11 @@ class ReservationView extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Container(
-                              height: 95.h,
+                              height: 100.h,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: Column(
@@ -226,14 +226,14 @@ class ReservationView extends StatelessWidget {
                                     alignment: Alignment.bottomCenter,
                                     children: [
                                       Container(
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           border: Border(
                                             bottom: BorderSide(
                                                 color: greyLight, width: 5),
                                           ),
                                         ),
                                       ),
-                                      TabBar(
+                                      const TabBar(
                                         unselectedLabelColor: Colors.grey,
                                         labelColor: backgroundColor,
                                         indicatorColor: buttonColor,
@@ -261,14 +261,14 @@ class ReservationView extends StatelessWidget {
                           child: TabBarView(
                             children: [
                               ListView(
-                                children: [
+                                children: const [
                                   ReservationCard(),
                                   ReservationCard(),
                                   ReservationCard()
                                 ],
                               ),
                               ListView(
-                                children: [
+                                children: const [
                                   ReservationCard(),
                                   ReservationCard(),
                                   ReservationCard()

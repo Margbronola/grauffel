@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
+import 'image_model.dart';
+
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
@@ -29,14 +31,14 @@ class UserModel with _$UserModel {
       // SubscriptionModel? active_client_subscription,
       DateTime? created_at,
       DateTime? updated_at,
-      String? firebase_id
+      String? firebase_id,
+      ImageModel? image
       // phone_number
       // "equipment": null,
       // "level": null,
       // "created_at": "2022-06-28T08:32:13.000000Z",
       // "updated_at": "2022-06-28T08:36:46.000000Z",
       // "display_name": "blue red (john@gmail.com)",
-      // "image": null,
 
       }) = _UserModel;
 

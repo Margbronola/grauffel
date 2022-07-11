@@ -35,6 +35,9 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           ? null
           : DateTime.parse(json['updated_at'] as String),
       firebase_id: json['firebase_id'] as String?,
+      image: json['image'] == null
+          ? null
+          : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -61,4 +64,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
       'firebase_id': instance.firebase_id,
+      'image': instance.image,
     };

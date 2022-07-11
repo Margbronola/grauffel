@@ -13,8 +13,8 @@ class GunAPIService {
 
   Future<void> fetchAllGuns({required String token}) async {
     try {
-      final respo =
-          await http.get(Uri.parse("$url/guns?per_page=$_perPage"), headers: {
+      final respo = await http
+          .get(Uri.parse("$urlApi/guns?per_page=$_perPage"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });

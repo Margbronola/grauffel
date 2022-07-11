@@ -13,6 +13,7 @@ import '../services/authentication_service.dart';
 import '../services/firebase_auth_service.dart';
 import '../services/guns_api_service.dart';
 import '../services/sharedpref_service.dart';
+import '../services/user_api_service.dart';
 import '../services/user_service.dart';
 
 final locator = StackedLocator.instance;
@@ -29,6 +30,7 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => FireBaseAuthService());
   locator.registerLazySingleton(() => UserService());
+  locator.registerLazySingleton(() => UserAPIService());
   locator.registerSingleton(SharedPrefService());
   locator.registerLazySingleton(() => GunAPIService());
 }

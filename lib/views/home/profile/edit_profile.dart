@@ -32,13 +32,20 @@ class EditProfileView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
+                    width: 120.w,
                     child: Stack(
                       children: [
-                        Image.asset(
-                          profileImage,
-                          scale: 3,
-                        ),
+                        model.user!.image != null
+                            ? Image.network(
+                                "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                fit: BoxFit.cover,
+                                scale: 5,
+                              )
+                            : Image.asset(
+                                profileImage,
+                                scale: 5,
+                              ),
                         Positioned(
                           bottom: -5,
                           right: -5,
@@ -75,7 +82,7 @@ class EditProfileView extends StatelessWidget {
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: kcWhite),
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
                     focusNode: model.dateNode,
                     controller: model.dateController,
                     validator: (value) {
@@ -97,7 +104,7 @@ class EditProfileView extends StatelessWidget {
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: kcWhite),
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
                     focusNode: model.phoneNode,
                     controller: model.phoneController,
                     validator: (value) {
@@ -119,7 +126,7 @@ class EditProfileView extends StatelessWidget {
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: kcWhite),
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
                     focusNode: model.addressNode,
                     controller: model.addresscontroller,
                     validator: (value) {
@@ -141,29 +148,7 @@ class EditProfileView extends StatelessWidget {
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(color: kcWhite),
-                    focusNode: model.codeNode,
-                    controller: model.codeController,
-                    validator: (value) {
-                      return Validator.validateName(value ?? "");
-                    },
-                    decoration: const InputDecoration(
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
-                      ),
-                      hintText: "Code postale",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey),
-                      ),
-                      isDense: true,
-                    ),
-                  ),
-                  SizedBox(height: size(context).height * 0.03),
-                  TextFormField(
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.text,
-                    style: const TextStyle(color: kcWhite),
+                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
                     focusNode: model.villeNode,
                     controller: model.villeController,
                     validator: (value) {

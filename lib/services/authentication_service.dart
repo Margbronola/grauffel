@@ -6,16 +6,16 @@ import '../models/user_model.dart';
 import '../app/global.dart';
 
 class AuthenticationService {
-  //login in server
+  //return map  {user,token}
   Future<Map<String, dynamic>?> login(
       {required String firebase_token, required String device_name}) async {
     try {
-      final respo = await http.post(Uri.parse("$url/login"),
+      final respo = await http.post(Uri.parse("$urlApi/login"),
           body: {"firebase_token": firebase_token, "device_name": device_name});
-
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
+          print(data['client']);
           UserModel user = UserModel.fromJson(data['client']);
           String token = data['access_token'];
 
@@ -41,7 +41,7 @@ class AuthenticationService {
     try {
       Map user = userModel.toJson();
       user.removeWhere((key, value) => value == null);
-      final respo = await http.post(Uri.parse("$url/register"), body: user);
+      final respo = await http.post(Uri.parse("$urlApi/register"), body: user);
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         print(data);
@@ -58,7 +58,7 @@ class AuthenticationService {
 
   Future<bool> logout({required String token}) async {
     try {
-      final respo = await http.post(Uri.parse("$url/logout"), headers: {
+      final respo = await http.post(Uri.parse("$urlApi/logout"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });

@@ -198,14 +198,13 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   }
 
   void loginButton() async {
-    setBusy(true);
     print("login");
+    setBusy(true);
     await login(
         isTest: true,
         formKey: formKey,
         email: emailController.text,
         password: passwordController.text);
-
     setBusy(false);
 
     notifyListeners();

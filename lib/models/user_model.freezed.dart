@@ -43,6 +43,7 @@ mixin _$UserModel {
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   String? get firebase_id => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -76,7 +77,10 @@ abstract class $UserModelCopyWith<$Res> {
       int? status,
       DateTime? created_at,
       DateTime? updated_at,
-      String? firebase_id});
+      String? firebase_id,
+      ImageModel? image});
+
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -111,6 +115,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? firebase_id = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -201,7 +206,22 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as ImageModel?,
     ));
+  }
+
+  @override
+  $ImageModelCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value));
+    });
   }
 }
 
@@ -233,7 +253,11 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       int? status,
       DateTime? created_at,
       DateTime? updated_at,
-      String? firebase_id});
+      String? firebase_id,
+      ImageModel? image});
+
+  @override
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -270,6 +294,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? firebase_id = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_UserModel(
       id: id == freezed
@@ -360,6 +385,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
               as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as ImageModel?,
     ));
   }
 }
@@ -389,7 +418,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       this.status,
       this.created_at,
       this.updated_at,
-      this.firebase_id});
+      this.firebase_id,
+      this.image});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -439,10 +469,12 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   final DateTime? updated_at;
   @override
   final String? firebase_id;
+  @override
+  final ImageModel? image;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id)';
+    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id, image: $image)';
   }
 
   @override
@@ -471,7 +503,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('created_at', created_at))
       ..add(DiagnosticsProperty('updated_at', updated_at))
-      ..add(DiagnosticsProperty('firebase_id', firebase_id));
+      ..add(DiagnosticsProperty('firebase_id', firebase_id))
+      ..add(DiagnosticsProperty('image', image));
   }
 
   @override
@@ -511,7 +544,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
             const DeepCollectionEquality()
-                .equals(other.firebase_id, firebase_id));
+                .equals(other.firebase_id, firebase_id) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @JsonKey(ignore: true)
@@ -539,7 +573,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         const DeepCollectionEquality().hash(status),
         const DeepCollectionEquality().hash(created_at),
         const DeepCollectionEquality().hash(updated_at),
-        const DeepCollectionEquality().hash(firebase_id)
+        const DeepCollectionEquality().hash(firebase_id),
+        const DeepCollectionEquality().hash(image)
       ]);
 
   @JsonKey(ignore: true)
@@ -576,7 +611,8 @@ abstract class _UserModel implements UserModel {
       final int? status,
       final DateTime? created_at,
       final DateTime? updated_at,
-      final String? firebase_id}) = _$_UserModel;
+      final String? firebase_id,
+      final ImageModel? image}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -625,6 +661,8 @@ abstract class _UserModel implements UserModel {
   DateTime? get updated_at => throw _privateConstructorUsedError;
   @override
   String? get firebase_id => throw _privateConstructorUsedError;
+  @override
+  ImageModel? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

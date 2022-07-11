@@ -6,6 +6,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../services/authentication_service.dart';
 import '../services/guns_api_service.dart';
+import '../services/user_api_service.dart';
 import '../views/home/home_view.dart';
 import '../views/splash/splash_view.dart';
 
@@ -30,6 +31,9 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: UserService,
+  ),
+  LazySingleton(
+    classType: UserAPIService,
   ),
   Singleton(
     classType: SharedPrefService,

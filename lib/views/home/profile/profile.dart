@@ -47,12 +47,21 @@ class ProfileView extends StatelessWidget {
                       Container(
                         color: Colors.black.withOpacity(0.9),
                         height: 195.h,
-                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Row(
                           children: [
-                            Image.asset(
-                              profileImage,
-                              scale: 5,
+                            SizedBox(
+                              width: 100.w,
+                              child: model.user!.image != null
+                                  ? Image.network(
+                                      "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                      fit: BoxFit.cover,
+                                      scale: 5,
+                                    )
+                                  : Image.asset(
+                                      profileImage,
+                                      scale: 5,
+                                    ),
                             ),
                             horizontalSpaceMedium(),
                             Column(
@@ -90,7 +99,7 @@ class ProfileView extends StatelessWidget {
                                   height: 5.h,
                                 ),
                                 Text(
-                                  model.user!.email!,
+                                  model.user!.address!,
                                   style: ThemeData()
                                       .textTheme
                                       .headlineSmall!
@@ -193,10 +202,6 @@ class ProfileView extends StatelessWidget {
 
 List<DocsTile> docs = [
   DocsTile(title: "INFORMATION", children: [
-    infoContainer("Date de naissance", "25/01/1972 - 50 ans"),
-    SizedBox(
-      height: 5.h,
-    ),
     infoContainer("Adresse mail", "john.doe@gmail.com"),
     SizedBox(
       height: 5.h,

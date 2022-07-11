@@ -60,8 +60,8 @@ class LoginHelper {
               .login(firebase_token: value, device_name: _deviceName)
               .then((value) async {
             if (value != null) {
-              _userService.fetchUser = value[_userMapKey];
-              _userService.fetchToken = value[_tokenMapKey];
+              _userService.updateUser(value[_userMapKey]);
+              _userService.updateToken(value[_tokenMapKey]);
               print(value[_tokenMapKey]);
               print(value[_userMapKey]);
               await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
