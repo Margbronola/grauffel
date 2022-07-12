@@ -23,8 +23,9 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  //API, Documents
   //TODO:FCM TOKEN/clients/save-fcm and /clients/remove-fcm
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([

@@ -1,9 +1,9 @@
-import 'package:egczacademy/models/gun_model.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
+import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/widget/dialog/setup_dialog_ui.dart';
 
 class ArmoreViewModel extends BaseViewModel {

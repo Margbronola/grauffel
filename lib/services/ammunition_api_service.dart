@@ -1,28 +1,29 @@
 import 'dart:convert';
-import 'package:egczacademy/models/paging_model.dart';
+
+import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
-import '../models/gunModel/gun_model.dart';
+import '../models/paging_model.dart';
 
-class GunAPIService {
-  List<GunModel>? _guns;
-  List<GunModel>? get guns => _guns;
+class AmmunitionAPIService {
+  List<AmmunitionsModel>? _ammunitions;
+  List<AmmunitionsModel>? get ammunitions => _ammunitions;
   PagingModel? _pagingModel;
   final int _perPage = 10;
-
-  Future<void> fetchAllGuns({required String token}) async {
+  Future<void> fetchAllAmunition({required String token}) async {
     try {
       final respo = await http
-          .get(Uri.parse("$urlApi/guns?per_page=$_perPage"), headers: {
+          .get(Uri.parse("$urlApi/ammunitions?per_page=$_perPage"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH GUNS PASS");
+          print("FETCH AMMUNITION PASS");
           List fetchGuns = data['data'];
-          _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
+          _ammunitions =
+              fetchGuns.map((e) => AmmunitionsModel.fromJson(e)).toList();
           _pagingModel = PagingModel(
             current_page: data['current_page'],
             first_page_url: data['first_page_url'],
@@ -30,7 +31,7 @@ class GunAPIService {
             prev_page_url: data['prev_page_url'],
           );
 
-          print(_guns);
+          print(_ammunitions);
           print(_pagingModel);
         } catch (e) {
           print(e);
@@ -41,7 +42,7 @@ class GunAPIService {
       }
     } catch (e) {
       print(e);
-      print("FETCH GUNS FAIL");
+      print("FETCH AMMUNITION FAIL");
     }
   }
 }

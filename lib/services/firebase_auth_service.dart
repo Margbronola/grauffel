@@ -24,7 +24,6 @@ class FireBaseAuthService {
       } else {
         Fluttertoast.showToast(msg: e.code);
       }
-
       return null;
     }
   }
@@ -43,7 +42,6 @@ class FireBaseAuthService {
 
   Future<bool>? logout() async {
     await firebaseAuth.signOut();
-
     return false;
   }
 }

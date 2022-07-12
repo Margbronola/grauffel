@@ -1,8 +1,8 @@
-import 'package:egczacademy/models/gun_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/customButton.dart';
 import '../../../../../shared/ui_helper.dart';

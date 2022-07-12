@@ -137,35 +137,6 @@ class UserAPIService {
     return false;
   }
 
-  // Future<bool> saveFCMToken({
-  //   required String fcmToken,
-  //   required String token,
-  // }) async {
-  //   try {
-  //     final respo =
-  //         await http.post(Uri.parse("$urlApi/clients/save-fcm"), body: {
-  //       "token": fcmToken,
-  //     }, headers: {
-  //       "Accept": "application/json",
-  //       "Authorization": "Bearer $token",
-  //     });
-
-  //     if (respo.statusCode == 200) {
-  //       var data = json.decode(respo.body);
-  //       print(data);
-
-  //       print("SAVE FCM PASS");
-  //       return true;
-  //     } else {
-  //       print(respo.body);
-  //       print("SERVER FAIL");
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //     print("SAVE FCM  FAIL");
-  //   }
-  //   return false;
-  // }
   Future<List<TransactionModel>?> fetchHistory({required String token}) async {
     try {
       final respo =
@@ -188,5 +159,65 @@ class UserAPIService {
       print("UPDATE PASSWORD FAIL");
     }
     return null;
+  }
+
+  Future<bool> saveFCMToken({
+    required String fcmToken,
+    required String token,
+  }) async {
+    try {
+      final respo =
+          await http.post(Uri.parse("$urlApi/clients/save-fcm"), body: {
+        "token": fcmToken,
+      }, headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        print(data);
+
+        print("SAVE FCM PASS");
+        return true;
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("SAVE FCM  FAIL");
+    }
+    return false;
+  }
+
+  Future<bool> removeFCMToken({
+    required String fcmToken,
+    required String token,
+  }) async {
+    try {
+      final respo =
+          await http.post(Uri.parse("$urlApi/clients/remove-fcm"), body: {
+        "token": fcmToken,
+      }, headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        print(data);
+
+        print("REMOVE FCM PASS");
+        return true;
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("REMOVE FCM  FAIL");
+    }
+    return false;
   }
 }
