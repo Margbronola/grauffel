@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
-class EditProfileViewModel extends ReactiveViewModel {
+class InformationEditViewModel extends ReactiveViewModel {
   final UserAPIService _userAPIService = locator<UserAPIService>();
   final UserService _userService = locator<UserService>();
   final ImagePicker _picker = ImagePicker();
@@ -17,30 +17,21 @@ class EditProfileViewModel extends ReactiveViewModel {
   final TextEditingController dateController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addresscontroller = TextEditingController();
-  // final TextEditingController codeController = TextEditingController();
   final TextEditingController villeController = TextEditingController();
 
-  late FocusNode emailFocusNode;
-  late FocusNode dateNode;
-  late FocusNode phoneNode;
-  late FocusNode addressNode;
-  late FocusNode codeNode;
-  late FocusNode villeNode;
+  FocusNode emailFocusNode = FocusNode();
+  FocusNode dateNode = FocusNode();
+  FocusNode phoneNode = FocusNode();
+  FocusNode addressNode = FocusNode();
+  FocusNode codeNode = FocusNode();
+  FocusNode villeNode = FocusNode();
 
   void init() {
-    emailFocusNode = FocusNode();
-    dateNode = FocusNode();
-    phoneNode = FocusNode();
-    addressNode = FocusNode();
-    codeNode = FocusNode();
-    villeNode = FocusNode();
-
     if (user != null) {
       emailController.text = user!.email!;
       dateController.text = user!.created_at.toString();
       phoneController.text = user!.SIA_number.toString();
       addresscontroller.text = user!.address!;
-      // codeController.text = user!.country_id!.toString();
       villeController.text = user!.country_id!.toString();
     }
   }

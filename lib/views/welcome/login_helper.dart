@@ -43,15 +43,12 @@ class LoginHelper {
   }
 
   Future<void> login(
-      {isTest = false,
-      required GlobalKey<FormState> formKey,
-      required String email,
-      required String password}) async {
-    if (formKey.currentState!.validate() == !isTest) {
+      {isTest = false, required String email, required String password}) async {
+    if (!isTest) {
       //TODO: testRemove
       String testEmail = "john@gmail.com";
       String testPasswotd = "123123";
-      _fireBaseAuthService
+      await _fireBaseAuthService
           .signIn(
               email: isTest ? testEmail : email,
               password: isTest ? testPasswotd : password)

@@ -17,7 +17,7 @@ class UserModel with _$UserModel {
       String? email,
       String? password,
       String? c_password,
-      DateTime? birthday,
+      // DateTime? birthday,
       String? address,
       String? zipcode,
       String? city,

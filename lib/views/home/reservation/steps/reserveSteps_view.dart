@@ -1,7 +1,7 @@
-import 'package:egczacademy/views/home/reservation/steps/activities_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/selectDate/selectDate_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/guns_list_view.dart/armore_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/bullets_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/equipment_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/bullets_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/equipment_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/submition_view.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
@@ -19,7 +19,8 @@ class ReserveStepsView extends StatelessWidget {
       onModelReady: ((model) => model.init()),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
-          title: const Text("Réservation"),
+          title: Text("être sur Liste d'attente".toUpperCase()),
+          backgroundColor: buttonColor,
         ),
         body: Container(
           color: kcWhite,
@@ -47,41 +48,33 @@ class ReserveStepsView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            circle(
+                            square(
                                 pageIndex: model.selectedIndex,
                                 index: 0,
-                                title: "Activities"),
+                                title: "Date"),
                             divider(
                               pageIndex: model.selectedIndex,
                               index: 0,
                             ),
-                            circle(
+                            square(
                                 pageIndex: model.selectedIndex,
                                 index: 1,
-                                title: "Date"),
+                                title: "Arme"),
                             divider(
                               pageIndex: model.selectedIndex,
                               index: 1,
                             ),
-                            circle(
+                            square(
                                 pageIndex: model.selectedIndex,
                                 index: 2,
-                                title: "Arme"),
+                                title: "Munitons"),
                             divider(
                               pageIndex: model.selectedIndex,
                               index: 2,
                             ),
-                            circle(
+                            square(
                                 pageIndex: model.selectedIndex,
                                 index: 3,
-                                title: "Munitons"),
-                            divider(
-                              pageIndex: model.selectedIndex,
-                              index: 3,
-                            ),
-                            circle(
-                                pageIndex: model.selectedIndex,
-                                index: 4,
                                 title: "Equipement"),
                           ],
                         ),
@@ -93,14 +86,26 @@ class ReserveStepsView extends StatelessWidget {
                   controller: model.pageController,
                   onPageChanged: model.nextIndex,
                   children: <Widget>[
-                    ActivitiesView(
-                      ontap: () {
+                    SelectDateView(
+                      onTap: () {
                         model.submitEvents(1);
                       },
                     ),
-                    const ArmoreView(),
-                    const BulletsView(),
-                    const EquipmentView(),
+                    ArmoreView(
+                      onTap: () {
+                        model.submitEvents(2);
+                      },
+                    ),
+                    BulletsView(
+                      onTap: () {
+                        model.submitEvents(3);
+                      },
+                    ),
+                    EquipmentView(
+                      onTap: () {
+                        model.submitEvents(4);
+                      },
+                    ),
                     const SubmitionView()
                   ],
                 ),
@@ -113,30 +118,31 @@ class ReserveStepsView extends StatelessWidget {
     );
   }
 
-  Widget circle(
+  Widget square(
           {required int index, required String title, required pageIndex}) =>
       SizedBox(
-        width: 45.w,
+        width: 60.w,
         child: Column(
           children: [
             Container(
               width: 20.w,
               height: 20.w,
               decoration: BoxDecoration(
-                  color: pageIndex == index
-                      ? kcWhite
-                      : pageIndex > index
-                          ? buttonColor
-                          : null,
-                  border: pageIndex > index
-                      ? null
-                      : Border.all(
-                          color: kcWhite, style: BorderStyle.solid, width: 2),
-                  shape: BoxShape.circle),
+                color: pageIndex == index
+                    ? kcWhite
+                    : pageIndex > index
+                        ? buttonColor
+                        : null,
+                border: pageIndex > index
+                    ? null
+                    : Border.all(
+                        color: kcWhite, style: BorderStyle.solid, width: 2),
+              ),
               child: pageIndex > index
                   ? Icon(
                       Icons.check,
                       size: 13.w,
+                      color: backgroundColor,
                     )
                   : null,
             ),
@@ -147,7 +153,7 @@ class ReserveStepsView extends StatelessWidget {
               child: Text(
                 title,
                 style: ThemeData().textTheme.headlineSmall!.copyWith(
-                    fontSize: 8.sp,
+                    fontSize: 9.sp,
                     color: kcWhite,
                     fontWeight: FontWeight.bold),
               ),
@@ -156,10 +162,10 @@ class ReserveStepsView extends StatelessWidget {
         ),
       );
   Widget divider({required int index, required pageIndex}) => SizedBox(
-      width: 18.w,
+      width: 50.w,
       height: 22.w,
       child: Divider(
         color: pageIndex > index ? buttonColor : kcWhite,
-        thickness: 2.h,
+        thickness: 1.h,
       ));
 }

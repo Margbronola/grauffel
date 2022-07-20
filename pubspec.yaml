@@ -27,23 +27,31 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  awesome_bottom_bar: ^1.2.1
   bottom_bar: ^2.0.1
+  calendar_timeline: ^1.0.5
   cupertino_icons: ^1.0.2
+  date_picker_timeline: ^1.2.3
   firebase_auth: ^3.3.20
   firebase_core: ^1.18.0
   flutter:
     sdk: flutter
   flutter_facebook_auth: ^4.3.4+2
   flutter_keyboard_visibility: ^5.3.0
+  flutter_localizations:
+    sdk: flutter
   flutter_screenutil: ^5.5.3+2
   fluttertoast: ^8.0.9
   freezed_annotation: ^2.0.3
+  getwidget: ^3.0.1
   google_fonts: ^3.0.1
   http: ^0.13.4
   image_picker: ^0.8.5+3
   json_serializable: ^6.2.0
+  localization: ^2.1.0
   searchfield: ^0.6.5
   shared_preferences: ^2.0.15
+  shimmer: ^2.0.0
   stacked: ^2.3.8
   stacked_services: ^0.8.25
 
@@ -72,6 +80,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - lib/i18n/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

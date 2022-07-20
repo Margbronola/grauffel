@@ -12,6 +12,9 @@ class TransactionView extends StatelessWidget {
     return ViewModelBuilder<TransactionViewModel>.reactive(
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: backgroundColor,
+        ),
         backgroundColor: kcWhite,
         body: model.isBusy || model.transactions == null
             ? const Center(

@@ -53,8 +53,9 @@ class LoginInput extends StatelessWidget {
                   ),
                   SizedBox(height: size(context).height * 0.03),
                   TextFormField(
-                    onFieldSubmitted: (String text) {
-                      model.loginButton();
+                    onFieldSubmitted: (String text) async {
+                      print("login");
+                      await model.loginButton();
                     },
                     focusNode: model.passwordFocusNode,
                     style: TextStyle(color: backgroundColor, fontSize: 20.sp),

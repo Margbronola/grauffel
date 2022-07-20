@@ -1,5 +1,6 @@
 import 'package:egczacademy/services/guns_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/filterGun/filter_gun_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
@@ -10,9 +11,11 @@ class ArmoreViewModel extends BaseViewModel {
   final GunAPIService _gunAPIService = locator<GunAPIService>();
   final UserService _userService = locator<UserService>();
   final DialogService _dialogService = locator<DialogService>();
+  final NavigationService _navigationService = locator<NavigationService>();
   int? selectedIndex;
 
   init() async {
+    print(_userService.token);
     setBusy(true);
     await _gunAPIService.fetchAllGuns(
       token: _userService.token!,
@@ -35,5 +38,9 @@ class ArmoreViewModel extends BaseViewModel {
         print("CANCE:");
       }
     }
+  }
+
+  void goToFilterGunView() {
+    _navigationService.navigateToView(const FilterGunView());
   }
 }

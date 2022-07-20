@@ -1,11 +1,9 @@
 import 'package:egczacademy/views/shared/customLoader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:searchfield/searchfield.dart';
-import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../shared/color.dart';
+import '../../shared/widget/header/header.dart';
 import 'settings_viewModel.dart';
 
 class SettingsView extends StatelessWidget {
@@ -15,78 +13,90 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SettingsViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: const Text("SETTINGS"),
-        ),
-        body: Stack(
+        body: Column(
           children: [
-            Container(
-                color: kcWhite,
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: greyLight,
-                          borderRadius: BorderRadius.circular(5)),
-                      child: SearchField<Country>(
-                        marginColor: Colors.transparent,
-                        suggestionsDecoration: BoxDecoration(
-                            color: Colors.white10.withOpacity(0.9)),
-                        searchInputDecoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
-                          ),
-                        ),
-                        suggestions: model.countries
-                            .map(
-                              (e) => SearchFieldListItem<Country>(
-                                e.name,
-                                item: e,
+            const Header(
+              title: "Paramètres",
+              showLeading: true,
+            ),
+            Expanded(
+              child: Stack(
+                children: [
+                  Expanded(
+                    child: Container(
+                        color: kcWhite,
+                        padding: const EdgeInsets.all(20),
+                        child: Expanded(
+                          child: Column(
+                            children: [
+                              // Container(
+                              //   width: double.infinity,
+                              //   decoration: BoxDecoration(
+                              //       color: greyLight,
+                              //       borderRadius: BorderRadius.circular(5)),
+                              //   child: SearchField<Country>(
+                              //     itemHeight: 30,
+                              //     marginColor: Colors.transparent,
+                              //     suggestionsDecoration: BoxDecoration(
+                              //         color: Colors.white10.withOpacity(0.9)),
+                              //     searchInputDecoration: const InputDecoration(
+                              //       prefixIcon: Icon(Icons.search),
+                              //       focusedBorder: OutlineInputBorder(
+                              //         borderSide: BorderSide(
+                              //           color: Colors.transparent,
+                              //         ),
+                              //       ),
+                              //       border: OutlineInputBorder(
+                              //         borderSide: BorderSide(color: Colors.red),
+                              //       ),
+                              //     ),
+                              //     suggestions: model.countries
+                              //         .map(
+                              //           (e) => SearchFieldListItem<Country>(
+                              //             e.name,
+                              //             item: e,
+                              //           ),
+                              //         )
+                              //         .toList(),
+                              //   ),
+                              // ),
+                              MaterialButton(
+                                onPressed: model.goToNotificationSettings,
+                                child:
+                                    settingTile("transaction", "Notification"),
                               ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                    settingTile("user", "Account"),
-                    settingTile("bell", "Notification"),
-                    settingTile("eye", "Appearance"),
-                    GestureDetector(
-                        onTap: model.goToHistory,
-                        child:
-                            settingTile("transaction", "History/Transactions")),
-                    GestureDetector(
-                        onTap: () {
-                          print("update pass");
-                          model.showChangeDialog();
-                        },
-                        child: settingTile("lock", "Update Password")),
-                    settingTile("headphone", "Help and Support"),
-                    MaterialButton(
-                      onPressed: model.showToken,
-                      child: settingTile(
-                        "helpcircle",
-                        "About",
-                      ),
-                    ),
-                    MaterialButton(
-                      onPressed: model.signOut,
-                      child: settingTile("signout", "SignOut"),
-                    )
-                  ],
-                )),
-            model.isBusy
-                ? const CustomLoader(
-                    withBackground: false,
-                  )
-                : const SizedBox()
+                              MaterialButton(
+                                onPressed: model.goToHistory,
+                                child: settingTile(
+                                    "transaction", "History/Transactions"),
+                              ),
+                              MaterialButton(
+                                onPressed: model.showChangeDialog,
+                                child: settingTile("lock", "Update Password"),
+                              ),
+                              MaterialButton(
+                                onPressed: model.showToken,
+                                child: settingTile(
+                                  "helpcircle",
+                                  "About",
+                                ),
+                              ),
+                              MaterialButton(
+                                onPressed: model.signOut,
+                                child: settingTile("signout", "SignOut"),
+                              )
+                            ],
+                          ),
+                        )),
+                  ),
+                  model.isBusy
+                      ? const CustomLoader(
+                          withBackground: false,
+                        )
+                      : const SizedBox()
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -94,24 +104,26 @@ class SettingsView extends StatelessWidget {
     );
   }
 
-  Widget settingTile(String asset, String title) => Padding(
-        padding: const EdgeInsets.all(17),
-        child: Row(
-          children: [
-            Image.asset(
-              "assets/images/$asset.png",
-              height: 21.h,
-              width: 19.w,
-            ),
-            horizontalSpaceMedium(),
-            Text(
-              title,
-              style: ThemeData().textTheme.headlineSmall!.copyWith(
-                  fontSize: 22.sp,
+  Widget settingTile(String asset, String title) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Image.asset(
+          //   "assets/images/$asset.png",
+          //   height: 21.h,
+          //   width: 19.w,
+          // ),
+
+          Text(
+            title,
+            style: ThemeData().textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey),
-            ),
-          ],
-        ),
+                ),
+          ),
+          const Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+            size: 15,
+          ),
+        ],
       );
 }

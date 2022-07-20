@@ -1,6 +1,7 @@
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 import '../shared/color.dart';
 import '../shared/widget/app_delegate.dart';
@@ -13,11 +14,12 @@ class ReservationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReservationViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onModelReady: (model) async => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         body: SafeArea(
+          top: false,
           child: DefaultTabController(
             length: 2,
             child: AbsorbPointer(
@@ -33,22 +35,23 @@ class ReservationView extends StatelessWidget {
                           background: Container(
                               height: 100.h,
                               width: size(context).width,
-                              color: secondaryColor,
+                              color: backgroundColor,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    height: 55.h,
-                                    width: 55.w,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/images/user.jpeg"))),
-                                  ),
+                                  // Container(
+                                  //   height: 55.h,
+                                  //   width: 55.w,
+                                  //   decoration: const BoxDecoration(
+                                  //       shape: BoxShape.circle,
+                                  //       image: DecorationImage(
+                                  //           image: AssetImage(
+                                  //               "assets/images/user.jpeg"))),
+                                  // ),
                                   horizontalSpaceSmall(),
                                   Text(
-                                    "BONJOUR \nJOHN",
+                                    "BONJOUR ${model.user.first_name}"
+                                        .toUpperCase(),
                                     style: TextStyle(
                                         color: kcWhite, fontSize: 20..sp),
                                   )
@@ -111,109 +114,17 @@ class ReservationView extends StatelessWidget {
                   body: Column(
                     children: [
                       SizedBox(
-                        height: 250.h,
+                        height: 120.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              height: 110.h,
-                              width: size(context).width,
-                              decoration: BoxDecoration(
-                                color: kcWhite,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 7,
-                                    offset: const Offset(
-                                        0, 0.75), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  SizedBox(
-                                    width: 150.w,
-                                    child: Center(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "TOUTES LES RESERVATIONS",
-                                            textAlign: TextAlign.center,
-                                            style: ThemeData()
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          ),
-                                          Text(
-                                            "3",
-                                            style: ThemeData()
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                    fontSize: 30,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 150.w,
-                                    child: Center(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "MUNITIONS \nACHETEES",
-                                            textAlign: TextAlign.center,
-                                            style: ThemeData()
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          ),
-                                          Text(
-                                            "50",
-                                            style: ThemeData()
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                    fontSize: 30,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
                             Expanded(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  verticalSpaceSmall(),
                                   Text(
-                                    "RESERVATION(S)",
+                                    "Réservation(S)".toUpperCase(),
                                     style: TextStyle(
                                         fontSize: 20.sp,
                                         fontWeight: FontWeight.bold),
@@ -257,20 +168,44 @@ class ReservationView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: TabBarView(
                             children: [
-                              ListView(
-                                children: const [
-                                  ReservationCard(),
-                                  ReservationCard(),
-                                  ReservationCard()
-                                ],
-                              ),
-                              ListView(
-                                children: const [
-                                  ReservationCard(),
-                                  ReservationCard(),
-                                  ReservationCard()
-                                ],
-                              ),
+                              model.isBusy
+                                  ? ListView(
+                                      children: [
+                                        cardShimmer(),
+                                        verticalSpaceSmall(),
+                                        cardShimmer(),
+                                        verticalSpaceSmall(),
+                                        cardShimmer(),
+                                      ],
+                                    )
+                                  : model.actives!.isEmpty
+                                      ? Container(
+                                          child: const Center(
+                                          child: Text("No Reservation yet"),
+                                        ))
+                                      : ListView.builder(
+                                          itemCount: model.actives!.length,
+                                          itemBuilder: ((context, index) =>
+                                              ReservationCard(
+                                                  isActive: true,
+                                                  booking:
+                                                      model.actives![index]))),
+                              model.isBusy
+                                  ? ListView(
+                                      children: [
+                                        cardShimmer(),
+                                        verticalSpaceSmall(),
+                                        cardShimmer(),
+                                        verticalSpaceSmall(),
+                                        cardShimmer(),
+                                      ],
+                                    )
+                                  : ListView.builder(
+                                      itemCount: model.past!.length,
+                                      itemBuilder: ((context, index) =>
+                                          ReservationCard(
+                                              booking: model.past![index])),
+                                    ),
                             ],
                           ),
                         ),
@@ -285,3 +220,15 @@ class ReservationView extends StatelessWidget {
     );
   }
 }
+
+Widget cardShimmer() => Shimmer.fromColors(
+      baseColor: greyLighter2,
+      highlightColor: Colors.white,
+      child: Card(
+        color: Colors.white,
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          height: 148.h,
+        ),
+      ),
+    );

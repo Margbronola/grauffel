@@ -20,9 +20,17 @@ EquipmentModel _$EquipmentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EquipmentModel {
-  String get image => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  int? get stocks => throw _privateConstructorUsedError;
+  int? get type => throw _privateConstructorUsedError;
+  int? get unlimited => throw _privateConstructorUsedError;
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  String? get type_name => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +43,18 @@ abstract class $EquipmentModelCopyWith<$Res> {
   factory $EquipmentModelCopyWith(
           EquipmentModel value, $Res Function(EquipmentModel) then) =
       _$EquipmentModelCopyWithImpl<$Res>;
-  $Res call({String image, String name, String description});
+  $Res call(
+      {int? id,
+      String? name,
+      double? price,
+      String? description,
+      int? stocks,
+      int? type,
+      int? unlimited,
+      DateTime? created_at,
+      DateTime? updated_at,
+      String? type_name,
+      String? image});
 }
 
 /// @nodoc
@@ -49,23 +68,63 @@ class _$EquipmentModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? image = freezed,
+    Object? id = freezed,
     Object? name = freezed,
+    Object? price = freezed,
     Object? description = freezed,
+    Object? stocks = freezed,
+    Object? type = freezed,
+    Object? unlimited = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? type_name = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      stocks: stocks == freezed
+          ? _value.stocks
+          : stocks // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as int?,
+      unlimited: unlimited == freezed
+          ? _value.unlimited
+          : unlimited // ignore: cast_nullable_to_non_nullable
+              as int?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      type_name: type_name == freezed
+          ? _value.type_name
+          : type_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -77,7 +136,18 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
           _$_EquipmentModel value, $Res Function(_$_EquipmentModel) then) =
       __$$_EquipmentModelCopyWithImpl<$Res>;
   @override
-  $Res call({String image, String name, String description});
+  $Res call(
+      {int? id,
+      String? name,
+      double? price,
+      String? description,
+      int? stocks,
+      int? type,
+      int? unlimited,
+      DateTime? created_at,
+      DateTime? updated_at,
+      String? type_name,
+      String? image});
 }
 
 /// @nodoc
@@ -93,58 +163,112 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? image = freezed,
+    Object? id = freezed,
     Object? name = freezed,
+    Object? price = freezed,
     Object? description = freezed,
+    Object? stocks = freezed,
+    Object? type = freezed,
+    Object? unlimited = freezed,
+    Object? created_at = freezed,
+    Object? updated_at = freezed,
+    Object? type_name = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_EquipmentModel(
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      stocks: stocks == freezed
+          ? _value.stocks
+          : stocks // ignore: cast_nullable_to_non_nullable
+              as int?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as int?,
+      unlimited: unlimited == freezed
+          ? _value.unlimited
+          : unlimited // ignore: cast_nullable_to_non_nullable
+              as int?,
+      created_at: created_at == freezed
+          ? _value.created_at
+          : created_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updated_at: updated_at == freezed
+          ? _value.updated_at
+          : updated_at // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      type_name: type_name == freezed
+          ? _value.type_name
+          : type_name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_EquipmentModel
-    with DiagnosticableTreeMixin
-    implements _EquipmentModel {
+class _$_EquipmentModel implements _EquipmentModel {
   const _$_EquipmentModel(
-      {required this.image, required this.name, required this.description});
+      {this.id,
+      this.name,
+      this.price,
+      this.description,
+      this.stocks,
+      this.type,
+      this.unlimited,
+      this.created_at,
+      this.updated_at,
+      this.type_name,
+      this.image});
 
   factory _$_EquipmentModel.fromJson(Map<String, dynamic> json) =>
       _$$_EquipmentModelFromJson(json);
 
   @override
-  final String image;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String description;
+  final double? price;
+  @override
+  final String? description;
+  @override
+  final int? stocks;
+  @override
+  final int? type;
+  @override
+  final int? unlimited;
+  @override
+  final DateTime? created_at;
+  @override
+  final DateTime? updated_at;
+  @override
+  final String? type_name;
+  @override
+  final String? image;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'EquipmentModel(image: $image, name: $name, description: $description)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'EquipmentModel'))
-      ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('description', description));
+  String toString() {
+    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, updated_at: $updated_at, type_name: $type_name, image: $image)';
   }
 
   @override
@@ -152,19 +276,37 @@ class _$_EquipmentModel
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EquipmentModel &&
-            const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
-                .equals(other.description, description));
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.stocks, stocks) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.unlimited, unlimited) &&
+            const DeepCollectionEquality()
+                .equals(other.created_at, created_at) &&
+            const DeepCollectionEquality()
+                .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality().equals(other.type_name, type_name) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(stocks),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(unlimited),
+      const DeepCollectionEquality().hash(created_at),
+      const DeepCollectionEquality().hash(updated_at),
+      const DeepCollectionEquality().hash(type_name),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -179,19 +321,43 @@ class _$_EquipmentModel
 
 abstract class _EquipmentModel implements EquipmentModel {
   const factory _EquipmentModel(
-      {required final String image,
-      required final String name,
-      required final String description}) = _$_EquipmentModel;
+      {final int? id,
+      final String? name,
+      final double? price,
+      final String? description,
+      final int? stocks,
+      final int? type,
+      final int? unlimited,
+      final DateTime? created_at,
+      final DateTime? updated_at,
+      final String? type_name,
+      final String? image}) = _$_EquipmentModel;
 
   factory _EquipmentModel.fromJson(Map<String, dynamic> json) =
       _$_EquipmentModel.fromJson;
 
   @override
-  String get image => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  @override
+  String? get description => throw _privateConstructorUsedError;
+  @override
+  int? get stocks => throw _privateConstructorUsedError;
+  @override
+  int? get type => throw _privateConstructorUsedError;
+  @override
+  int? get unlimited => throw _privateConstructorUsedError;
+  @override
+  DateTime? get created_at => throw _privateConstructorUsedError;
+  @override
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  @override
+  String? get type_name => throw _privateConstructorUsedError;
+  @override
+  String? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>

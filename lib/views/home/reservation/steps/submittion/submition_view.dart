@@ -12,62 +12,115 @@ class SubmitionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubmitionViewModel>.reactive(
-      builder: (context, model, child) => ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                Container(
-                  height: 70.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: kcWhite,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 4,
-                        blurRadius: 5,
-                        offset: Offset(0, 0.75), // changes position of shadow
+      builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: kcWhite,
+          title: Text(
+            "Récapitulatif".toUpperCase(),
+            style: ThemeData()
+                .textTheme
+                .bodyText1!
+                .copyWith(fontSize: 22.sp, fontWeight: FontWeight.bold),
+          ),
+        ),
+        body: Container(
+          color: kcWhite,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: [
+                    verticalSpaceMedium(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/cross.png",
+                                width: 27.w,
+                              ),
+                              verticalSpaceSmall(),
+                              Text(
+                                "25 mètres",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.sp),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/calendar.png",
+                                width: 27.w,
+                              ),
+                              verticalSpaceSmall(),
+                              Text(
+                                "sam. 23 mai",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.sp),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/time.png",
+                                width: 27.w,
+                              ),
+                              verticalSpaceSmall(),
+                              Text(
+                                "10h00 - 11h00",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: Center(
-                      child: Text(
-                    "Récapitulatif PAS DE TIR",
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 22.sp, fontWeight: FontWeight.bold),
-                  )),
+                    ),
+                    verticalSpaceMedium(),
+                    itemCard("gun"),
+                    verticalSpaceSmall(),
+                    itemCard("bullet"),
+                    verticalSpaceMedium(),
+                    SizedBox(
+                        width: 310.w,
+                        child: Text("Commentaire*",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15.sp))),
+                    Container(
+                      width: 310.w,
+                      height: 120.h,
+                      color: greyLighter2,
+                    ),
+                    verticalSpaceMedium(),
+                    SizedBox(
+                        width: 310.w,
+                        child: CustomButton(
+                            title: "Réserversss", onTap: model.showCard)),
+                    verticalSpaceSmall(),
+                    SizedBox(
+                        width: 310.w,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Annuler".toUpperCase(),
+                              style: const TextStyle(color: buttonColor),
+                            ))),
+                    verticalSpaceMedium(),
+                  ],
                 ),
-                verticalSpaceSmall(),
-                itemCard("gun"),
-                verticalSpaceSmall(),
-                itemCard("bullet"),
-                verticalSpaceMedium(),
-                SizedBox(width: 310.w, child: Text("Commentaire*")),
-                Container(
-                  width: 310.w,
-                  height: 120.h,
-                  color: greyLighter2,
-                ),
-                verticalSpaceMedium(),
-                SizedBox(
-                    width: 310.w,
-                    child: CustomButton(
-                        title: "Réserversss", onTap: model.showCard)),
-                SizedBox(
-                    width: 310.w,
-                    child: CustomButton(
-                        color: kcWhite,
-                        textColor: buttonColor,
-                        title: "Annuler",
-                        onTap: () {}))
-              ],
-            ),
-          )
-        ],
+              )
+            ],
+          ),
+        ),
       ),
       viewModelBuilder: () => SubmitionViewModel(),
     );
@@ -76,7 +129,7 @@ class SubmitionView extends StatelessWidget {
   Widget itemCard(String image) => Container(
         width: 310.w,
         height: 95.h,
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: greyLighter,
           borderRadius: BorderRadius.circular(5),
@@ -89,7 +142,7 @@ class SubmitionView extends StatelessWidget {
               height: 77.h,
               decoration: BoxDecoration(
                   borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(30)),
+                      const BorderRadius.only(bottomRight: Radius.circular(30)),
                   color: kcWhite,
                   image: DecorationImage(
                       image: AssetImage("assets/images/$image.png"))),

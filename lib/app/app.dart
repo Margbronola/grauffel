@@ -4,7 +4,10 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/welcome/welcome_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
+import '../services/booking_api_service.dart';
+import '../services/equipments_api_service.dart';
 import '../services/guns_api_service.dart';
 import '../services/user_api_service.dart';
 import '../views/home/home_view.dart';
@@ -40,6 +43,15 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: GunAPIService,
+  ),
+  LazySingleton(
+    classType: AmmunitionAPIService,
+  ),
+  LazySingleton(
+    classType: EquipmentsAPIService,
+  ),
+  LazySingleton(
+    classType: BookingAPIService,
   ),
 ])
 class App {

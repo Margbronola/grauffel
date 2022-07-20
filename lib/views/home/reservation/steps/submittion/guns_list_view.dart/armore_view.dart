@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -9,7 +10,11 @@ import '../../../../../shared/ui_helper.dart';
 import 'armore_viewModel.dart';
 
 class ArmoreView extends StatelessWidget {
-  const ArmoreView({Key? key}) : super(key: key);
+  final Function() onTap;
+  const ArmoreView({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
 
   get kcWhite => null;
 
@@ -18,60 +23,93 @@ class ArmoreView extends StatelessWidget {
     return ViewModelBuilder<ArmoreViewModel>.reactive(
       onModelReady: (model) async => model.init(),
       builder: (context, model, child) => model.isBusy
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? const StepeShimmerLoader()
           : Column(
               children: [
-                Container(
-                  height: 70.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: kcWhite,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset:
-                            const Offset(0, 0.75), // changes position of shadow
+                Expanded(
+                  child: Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            "Choix de l'arme",
+                            style: ThemeData().textTheme.bodyText1!.copyWith(
+                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        verticalSpaceSmall(),
+                        Row(
+                          children: [
+                            OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                        color: greyLight) //<-- SEE HERE
+                                    ),
+                                onPressed: model.goToFilterGunView,
+                                child: const Text(
+                                  'Marque',
+                                  style: TextStyle(color: backgroundColor),
+                                )),
+                            horizontalSpaceSmall(),
+                            OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                        color: greyLight) //<-- SEE HERE
+                                    ),
+                                onPressed: model.goToFilterGunView,
+                                child: const Text(
+                                  'Calibre',
+                                  style: TextStyle(color: backgroundColor),
+                                )),
+                          ],
+                        ),
+                        verticalSpaceSmall(),
+                        Expanded(
+                          child: GridView.count(
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 20,
+                            crossAxisCount: 2,
+                            children:
+                                List.generate(model.guns!.length, (index) {
+                              return gunCardView(
+                                  index: index,
+                                  gunModel: model.guns![index],
+                                  model: model);
+                            }),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Divider(
+                  color: greyLight,
+                  thickness: 1,
+                  height: 1,
+                ),
+                verticalSpaceSmall(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Continuer sans\narme".toUpperCase(),
+                        style: ThemeData().textTheme.bodyText1!.copyWith(
+                            fontSize: 15.sp,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
                       ),
+                      Container(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: CustomButton(title: "Suivant", onTap: onTap))
                     ],
                   ),
-                  child: Center(
-                      child: Text(
-                    "Choix de l'arme",
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 20.sp, fontWeight: FontWeight.bold),
-                  )),
-                ),
-                verticalSpaceMedium(),
-                Expanded(
-                  child: GridView.count(
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 20,
-                    crossAxisCount: 2,
-                    children: List.generate(model.guns!.length, (index) {
-                      return gunCardView(
-                          index: index,
-                          gunModel: model.guns![index],
-                          model: model);
-                    }),
-                  ),
-                ),
-                Text(
-                  "Continuer sans arme",
-                  style: ThemeData()
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 15.sp, color: buttonColor),
-                ),
-                Container(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    width: 354.w,
-                    child: CustomButton(title: "Suivant", onTap: () {}))
+                )
               ],
             ),
       viewModelBuilder: () => ArmoreViewModel(),
@@ -150,21 +188,27 @@ Widget gunCardView(
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Marque",
-                  style: ThemeData().textTheme.bodyText1!.copyWith(
-                        fontSize: 10.sp,
-                      ),
+                const Icon(
+                  Icons.info,
+                  color: buttonColor,
                 ),
-                Text(
-                  "CZ",
-                  style: ThemeData()
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 10.sp, fontWeight: FontWeight.bold),
-                ),
+                Column(
+                  children: [
+                    Text(
+                      "Marque",
+                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                            fontSize: 10.sp,
+                          ),
+                    ),
+                    Text(
+                      "CZ",
+                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                )
               ],
             )
           ],

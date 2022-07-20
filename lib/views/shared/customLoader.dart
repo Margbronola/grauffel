@@ -5,9 +5,13 @@ import '../../app/global.dart';
 
 class CustomLoader extends StatefulWidget {
   final bool withBackground;
-  const       CustomLoader({
+  final Color logoColor;
+  final Color? backColor;
+  const CustomLoader({
     Key? key,
     this.withBackground = true,
+    this.logoColor = Colors.white,
+    this.backColor,
   }) : super(key: key);
 
   @override
@@ -35,7 +39,9 @@ class _CustomLoaderState extends State<CustomLoader>
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: widget.withBackground ? null : Colors.black.withOpacity(0.8),
+          color: widget.withBackground
+              ? null
+              : widget.backColor ?? Colors.black.withOpacity(0.8),
           image: !widget.withBackground
               ? null
               : const DecorationImage(
@@ -46,6 +52,7 @@ class _CustomLoaderState extends State<CustomLoader>
             child: Image.asset(
           imageSmallLogo,
           width: 60.h,
+          color: widget.logoColor,
         )),
       ),
     );

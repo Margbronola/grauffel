@@ -15,9 +15,6 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       email: json['email'] as String?,
       password: json['password'] as String?,
       c_password: json['c_password'] as String?,
-      birthday: json['birthday'] == null
-          ? null
-          : DateTime.parse(json['birthday'] as String),
       address: json['address'] as String?,
       zipcode: json['zipcode'] as String?,
       city: json['city'] as String?,
@@ -50,7 +47,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'email': instance.email,
       'password': instance.password,
       'c_password': instance.c_password,
-      'birthday': instance.birthday?.toIso8601String(),
       'address': instance.address,
       'zipcode': instance.zipcode,
       'city': instance.city,

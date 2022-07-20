@@ -27,8 +27,8 @@ mixin _$UserModel {
   String? get last_name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  String? get c_password => throw _privateConstructorUsedError;
-  DateTime? get birthday => throw _privateConstructorUsedError;
+  String? get c_password =>
+      throw _privateConstructorUsedError; // DateTime? birthday,
   String? get address => throw _privateConstructorUsedError;
   String? get zipcode => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
@@ -64,7 +64,6 @@ abstract class $UserModelCopyWith<$Res> {
       String? email,
       String? password,
       String? c_password,
-      DateTime? birthday,
       String? address,
       String? zipcode,
       String? city,
@@ -101,7 +100,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? email = freezed,
     Object? password = freezed,
     Object? c_password = freezed,
-    Object? birthday = freezed,
     Object? address = freezed,
     Object? zipcode = freezed,
     Object? city = freezed,
@@ -150,10 +148,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.c_password
           : c_password // ignore: cast_nullable_to_non_nullable
               as String?,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -240,7 +234,6 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? email,
       String? password,
       String? c_password,
-      DateTime? birthday,
       String? address,
       String? zipcode,
       String? city,
@@ -280,7 +273,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? c_password = freezed,
-    Object? birthday = freezed,
     Object? address = freezed,
     Object? zipcode = freezed,
     Object? city = freezed,
@@ -329,10 +321,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.c_password
           : c_password // ignore: cast_nullable_to_non_nullable
               as String?,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -405,7 +393,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       this.email,
       this.password,
       this.c_password,
-      this.birthday,
       this.address,
       this.zipcode,
       this.city,
@@ -440,8 +427,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   final String? password;
   @override
   final String? c_password;
-  @override
-  final DateTime? birthday;
+// DateTime? birthday,
   @override
   final String? address;
   @override
@@ -474,7 +460,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, birthday: $birthday, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id, image: $image)';
+    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id, image: $image)';
   }
 
   @override
@@ -490,7 +476,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('password', password))
       ..add(DiagnosticsProperty('c_password', c_password))
-      ..add(DiagnosticsProperty('birthday', birthday))
       ..add(DiagnosticsProperty('address', address))
       ..add(DiagnosticsProperty('zipcode', zipcode))
       ..add(DiagnosticsProperty('city', city))
@@ -522,7 +507,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality()
                 .equals(other.c_password, c_password) &&
-            const DeepCollectionEquality().equals(other.birthday, birthday) &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
             const DeepCollectionEquality().equals(other.city, city) &&
@@ -560,7 +544,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         const DeepCollectionEquality().hash(email),
         const DeepCollectionEquality().hash(password),
         const DeepCollectionEquality().hash(c_password),
-        const DeepCollectionEquality().hash(birthday),
         const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(zipcode),
         const DeepCollectionEquality().hash(city),
@@ -598,7 +581,6 @@ abstract class _UserModel implements UserModel {
       final String? email,
       final String? password,
       final String? c_password,
-      final DateTime? birthday,
       final String? address,
       final String? zipcode,
       final String? city,
@@ -633,9 +615,7 @@ abstract class _UserModel implements UserModel {
   String? get password => throw _privateConstructorUsedError;
   @override
   String? get c_password => throw _privateConstructorUsedError;
-  @override
-  DateTime? get birthday => throw _privateConstructorUsedError;
-  @override
+  @override // DateTime? birthday,
   String? get address => throw _privateConstructorUsedError;
   @override
   String? get zipcode => throw _privateConstructorUsedError;

@@ -27,7 +27,7 @@ _$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
           : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
       brand: json['brand'] == null
           ? null
-          : GunBrandModel.fromJson(json['brand'] as Map<String, dynamic>),
+          : BrandModel.fromJson(json['brand'] as Map<String, dynamic>),
       image: json['image'] as String?,
       bookings: json['bookings'] as List<dynamic>?,
       ammunitions: json['ammunitions'] as List<dynamic>?,

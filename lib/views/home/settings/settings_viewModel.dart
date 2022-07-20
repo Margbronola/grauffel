@@ -4,6 +4,7 @@ import 'package:egczacademy/services/firebase_auth_service.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/history/transaction_view.dart';
+import 'package:egczacademy/views/home/settings/notification/notification_settings_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -55,6 +56,10 @@ class SettingsViewModel extends BaseViewModel {
 
   void goToHistory() {
     _navigationService.navigateToView(const TransactionView());
+  }
+
+  void goToNotificationSettings() {
+    _navigationService.navigateToView(const NotificationSettingsView());
   }
 }
 
