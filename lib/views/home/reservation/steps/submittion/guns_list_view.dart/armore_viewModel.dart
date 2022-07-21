@@ -7,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/widget/dialog/setup_dialog_ui.dart';
+import '../filterGun/caliber_filter/caliber_filter_view.dart';
 
 class ArmoreViewModel extends ReactiveViewModel {
   final GunAPIService _gunAPIService = locator<GunAPIService>();
@@ -23,6 +24,10 @@ class ArmoreViewModel extends ReactiveViewModel {
 
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;
+
+  bool get filterCaliberIsActive => _gunListService.filterCaliberIds.isNotEmpty;
+  int get filterCaliberIsActiveLength =>
+      _gunListService.filterCaliberIds.length;
 
   init() async {
     _gunListService.setBusy(true);
@@ -52,8 +57,12 @@ class ArmoreViewModel extends ReactiveViewModel {
     }
   }
 
-  void goToFilterGunView() {
+  void marqueFilter() {
     _navigationService.navigateToView(const FilterGunView());
+  }
+
+  void caliberFilter() {
+    _navigationService.navigateToView(const CaliberFilterView());
   }
 
   @override

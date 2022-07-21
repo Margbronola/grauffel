@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/components/filter_enum.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:stacked/stacked.dart';
 
@@ -13,26 +14,40 @@ class GunListService with ReactiveServiceMixin {
       ReactiveValue<List<GunModel>?>(null);
   List<GunModel>? get guns => _guns.value;
 
-  final List<int> _filterMarqueIds = [];
-
-  List<int> get filterMarqueIds => _filterMarqueIds;
-
   Future setGunList(List<GunModel>? guns) async {
     if (guns != null) {
       _guns.value = guns;
     }
   }
 
-  void addFilter(int id) {
-    _filterMarqueIds.add(id);
+  final List<int> _filterMarqueIds = [];
+  final List<int> _filterCaliberIds = [];
+
+  List<int> get filterMarqueIds => _filterMarqueIds;
+  List<int> get filterCaliberIds => _filterCaliberIds;
+
+  void addFilter(int id, {required Filter filterType}) {
+    if (filterType == Filter.marque) {
+      _filterMarqueIds.add(id);
+    } else {
+      _filterCaliberIds.add(id);
+    }
   }
 
-  void removeFilter(int id) {
-    _filterMarqueIds.remove(id);
+  void removeFilter(int id, {required Filter filterType}) {
+    if (filterType == Filter.marque) {
+      _filterMarqueIds.remove(id);
+    } else {
+      _filterCaliberIds.remove(id);
+    }
   }
 
-  void clearFilter() {
-    _filterMarqueIds.clear();
+  void clearFilter({required Filter filterType}) {
+    if (filterType == Filter.marque) {
+      _filterMarqueIds.clear();
+    } else {
+      _filterCaliberIds.clear();
+    }
   }
 
   void setBusy(bool isBusy) {

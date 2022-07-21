@@ -8,6 +8,7 @@ import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
 import '../services/brand_api_service.dart';
+import '../services/caliber_api_service.dart';
 import '../services/equipments_api_service.dart';
 import '../services/gun_list_service.dart';
 import '../services/guns_api_service.dart';
@@ -59,7 +60,10 @@ import '../views/splash/splash_view.dart';
     classType: BrandAPIService,
   ),
   LazySingleton(
-    classType: GunListService,
+    classType: GunListService, //mixin
+  ),
+  LazySingleton(
+    classType: CaliberAPIService,
   ),
 ])
 class App {

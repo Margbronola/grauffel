@@ -55,7 +55,7 @@ class ArmoreView extends StatelessWidget {
                                             ? buttonColor
                                             : greyLight) //<-- SEE HERE
                                     ),
-                                onPressed: model.goToFilterGunView,
+                                onPressed: model.marqueFilter,
                                 child: Row(
                                   children: [
                                     const Text(
@@ -81,13 +81,36 @@ class ArmoreView extends StatelessWidget {
                             horizontalSpaceSmall(),
                             OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(
-                                        color: greyLight) //<-- SEE HERE
+                                    backgroundColor: model.filterCaliberIsActive
+                                        ? buttonColor.withOpacity(0.3)
+                                        : kcWhite,
+                                    side: BorderSide(
+                                        color: model.filterCaliberIsActive
+                                            ? buttonColor
+                                            : greyLight) //<-- SEE HERE
                                     ),
-                                onPressed: model.goToFilterGunView,
-                                child: const Text(
-                                  'Calibre',
-                                  style: TextStyle(color: backgroundColor),
+                                onPressed: model.caliberFilter,
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      'Calibre',
+                                      style: TextStyle(color: backgroundColor),
+                                    ),
+                                    model.filterCaliberIsActive
+                                        ? Row(
+                                            children: [
+                                              horizontalSpaceSmall(),
+                                              GFBadge(
+                                                shape: GFBadgeShape.circle,
+                                                color: buttonColor,
+                                                child: Text(model
+                                                    .filterCaliberIsActiveLength
+                                                    .toString()),
+                                              ),
+                                            ],
+                                          )
+                                        : const SizedBox(),
+                                  ],
                                 )),
                           ],
                         ),

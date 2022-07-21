@@ -5,25 +5,22 @@ import 'package:loadmore/loadmore.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 
-import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/ui_helper.dart';
+import '../../../../../../shared/color.dart';
+import '../../../../../../shared/ui_helper.dart';
+import 'caliber_filter_viewModel.dart';
 
-import 'filter_gun_viewModel.dart';
-
-class FilterGunView extends StatelessWidget {
-  const FilterGunView({
-    Key? key,
-  }) : super(key: key);
+class CaliberFilterView extends StatelessWidget {
+  const CaliberFilterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<FilterGunViewModel>.reactive(
+    return ViewModelBuilder<CaliberFilterViewModel>.reactive(
       onModelReady: (model) async => model.init(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           elevation: 0,
           title: Text(
-            "marque".toUpperCase(),
+            "caliber".toUpperCase(),
             style: const TextStyle(color: backgroundColor),
           ),
           centerTitle: false,
@@ -81,12 +78,12 @@ class FilterGunView extends StatelessWidget {
                 color: kcWhite,
                 child: LoadMore(
                     isFinish: model.isEndOfList,
-                    onLoadMore: model.fetchBrand,
+                    onLoadMore: model.fetchCalibers,
                     child: ListView.builder(
-                      itemCount: model.marque!.length,
+                      itemCount: model.calibers!.length,
                       itemBuilder: (context, index) => GFCheckboxListTile(
                         margin: const EdgeInsets.all(0),
-                        title: Text(model.marque![index].name!.toUpperCase()),
+                        title: Text(model.calibers![index].name!.toUpperCase()),
                         size: 20,
                         activeBgColor: buttonColor,
                         type: GFCheckboxType.square,
@@ -103,7 +100,7 @@ class FilterGunView extends StatelessWidget {
                       ),
                     ))),
       ),
-      viewModelBuilder: () => FilterGunViewModel(),
+      viewModelBuilder: () => CaliberFilterViewModel(),
     );
   }
 }

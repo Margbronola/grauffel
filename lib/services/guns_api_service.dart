@@ -10,12 +10,20 @@ class GunAPIService {
   PagingModel? _pagingModel;
   final int _perPage = 10;
 
-  Future<void> fetchAllGuns({required String token, List<int>? brand}) async {
+  Future<void> fetchAllGuns(
+      {required String token,
+      List<int>? brandIds,
+      List<int>? caliberIds}) async {
     String url = "$urlApi/guns?per_page=$_perPage";
 
-    if (brand != null) {
-      if (brand.isNotEmpty) {
-        url += "&brand_id=${brand[0]}";
+    if (brandIds != null) {
+      if (brandIds.isNotEmpty) {
+        url += "&brand_id=${brandIds[0]}";
+      }
+    }
+    if (caliberIds != null) {
+      if (caliberIds.isNotEmpty) {
+        url += "&caliber_id=${caliberIds[0]}";
       }
     }
     try {
