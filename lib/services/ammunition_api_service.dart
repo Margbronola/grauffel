@@ -21,9 +21,9 @@ class AmmunitionAPIService {
         var data = json.decode(respo.body);
         try {
           print("FETCH AMMUNITION PASS");
-          List fetchGuns = data['data'];
+          List fetchAmmunition = data['data'];
           _ammunitions =
-              fetchGuns.map((e) => AmmunitionsModel.fromJson(e)).toList();
+              fetchAmmunition.map((e) => AmmunitionsModel.fromJson(e)).toList();
           _pagingModel = PagingModel(
             current_page: data['current_page'],
             first_page_url: data['first_page_url'],

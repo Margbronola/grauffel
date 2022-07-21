@@ -10,10 +10,16 @@ class GunAPIService {
   PagingModel? _pagingModel;
   final int _perPage = 10;
 
-  Future<void> fetchAllGuns({required String token}) async {
+  Future<void> fetchAllGuns({required String token, List<int>? brand}) async {
+    String url = "$urlApi/guns?per_page=$_perPage";
+
+    if (brand != null) {
+      if (brand.isNotEmpty) {
+        url += "&brand_id=${brand[0]}";
+      }
+    }
     try {
-      final respo = await http
-          .get(Uri.parse("$urlApi/guns?per_page=$_perPage"), headers: {
+      final respo = await http.get(Uri.parse(url), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });

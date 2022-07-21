@@ -7,7 +7,9 @@ import 'package:stacked_services/stacked_services.dart';
 import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
+import '../services/brand_api_service.dart';
 import '../services/equipments_api_service.dart';
+import '../services/gun_list_service.dart';
 import '../services/guns_api_service.dart';
 import '../services/user_api_service.dart';
 import '../views/home/home_view.dart';
@@ -52,6 +54,12 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: BookingAPIService,
+  ),
+  LazySingleton(
+    classType: BrandAPIService,
+  ),
+  LazySingleton(
+    classType: GunListService,
   ),
 ])
 class App {

@@ -1,6 +1,8 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../../../models/gunModel/gun_model.dart';
@@ -22,7 +24,7 @@ class ArmoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ArmoreViewModel>.reactive(
       onModelReady: (model) async => model.init(),
-      builder: (context, model, child) => model.isBusy
+      builder: (context, model, child) => model.loader
           ? const StepeShimmerLoader()
           : Column(
               children: [
@@ -45,13 +47,36 @@ class ArmoreView extends StatelessWidget {
                           children: [
                             OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(
-                                        color: greyLight) //<-- SEE HERE
+                                    backgroundColor: model.filterMarqueIsActive
+                                        ? buttonColor.withOpacity(0.3)
+                                        : kcWhite,
+                                    side: BorderSide(
+                                        color: model.filterMarqueIsActive
+                                            ? buttonColor
+                                            : greyLight) //<-- SEE HERE
                                     ),
                                 onPressed: model.goToFilterGunView,
-                                child: const Text(
-                                  'Marque',
-                                  style: TextStyle(color: backgroundColor),
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      'Marque',
+                                      style: TextStyle(color: backgroundColor),
+                                    ),
+                                    model.filterMarqueIsActive
+                                        ? Row(
+                                            children: [
+                                              horizontalSpaceSmall(),
+                                              GFBadge(
+                                                shape: GFBadgeShape.circle,
+                                                color: buttonColor,
+                                                child: Text(model
+                                                    .filterMarqueLength
+                                                    .toString()),
+                                              ),
+                                            ],
+                                          )
+                                        : const SizedBox(),
+                                  ],
                                 )),
                             horizontalSpaceSmall(),
                             OutlinedButton(
@@ -127,9 +152,11 @@ Widget gunCardView(
       },
       child: Container(
         decoration: BoxDecoration(
-            border: model.selectedIndex == index
-                ? Border.all(color: buttonColor, width: 2)
-                : null,
+            border: model.selectedIndex == null
+                ? null
+                : model.selectedIndex == index
+                    ? Border.all(color: buttonColor, width: 2)
+                    : null,
             color: greyLighter,
             borderRadius: BorderRadius.circular(5)),
         width: 161.w,
@@ -152,7 +179,8 @@ Widget gunCardView(
                           image: gunModel.image == null
                               ? const AssetImage("assets/images/gun.png")
                                   as ImageProvider
-                              : const NetworkImage(""))),
+                              : NetworkImage(
+                                  "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),
                 ),
                 SizedBox(
                   height: 5.h,
@@ -160,7 +188,7 @@ Widget gunCardView(
                 SizedBox(
                   width: 100.w,
                   child: Text(
-                    gunModel.brand!.name!,
+                    gunModel.description!,
                     overflow: TextOverflow.ellipsis,
                     style: ThemeData()
                         .textTheme
@@ -173,12 +201,12 @@ Widget gunCardView(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Référence",
+                      "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                           fontSize: 10.sp, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "SH2-BUSH-CER",
+                      gunModel.brand!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                           fontSize: 10.sp, fontWeight: FontWeight.bold),
                     ),
@@ -197,13 +225,13 @@ Widget gunCardView(
                 Column(
                   children: [
                     Text(
-                      "Marque",
+                      "Calibre",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
                           ),
                     ),
                     Text(
-                      "CZ",
+                      gunModel.caliber!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                           fontSize: 10.sp, fontWeight: FontWeight.bold),
                     ),

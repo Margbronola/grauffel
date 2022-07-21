@@ -12,8 +12,10 @@ import 'package:stacked_services/stacked_services.dart';
 import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
+import '../services/brand_api_service.dart';
 import '../services/equipments_api_service.dart';
 import '../services/firebase_auth_service.dart';
+import '../services/gun_list_service.dart';
 import '../services/guns_api_service.dart';
 import '../services/sharedpref_service.dart';
 import '../services/user_api_service.dart';
@@ -39,4 +41,6 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => AmmunitionAPIService());
   locator.registerLazySingleton(() => EquipmentsAPIService());
   locator.registerLazySingleton(() => BookingAPIService());
+  locator.registerLazySingleton(() => BrandAPIService());
+  locator.registerLazySingleton(() => GunListService());
 }

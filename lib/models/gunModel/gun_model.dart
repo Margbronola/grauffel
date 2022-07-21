@@ -1,5 +1,6 @@
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -25,7 +26,7 @@ class GunModel with _$GunModel {
       // relatedEquipment []
       CaliberModel? caliber,
       BrandModel? brand,
-      String? image,
+      ImageModel? image,
       List? bookings,
       List? ammunitions}) = _GunModel;
 

@@ -35,7 +35,7 @@ mixin _$GunModel {
 // relatedEquipment []
   CaliberModel? get caliber => throw _privateConstructorUsedError;
   BrandModel? get brand => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
   List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
 
@@ -63,12 +63,13 @@ abstract class $GunModelCopyWith<$Res> {
       bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
-      String? image,
+      ImageModel? image,
       List<dynamic>? bookings,
       List<dynamic>? ammunitions});
 
   $CaliberModelCopyWith<$Res>? get caliber;
   $BrandModelCopyWith<$Res>? get brand;
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -154,7 +155,7 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
       bookings: bookings == freezed
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
@@ -187,6 +188,17 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
       return _then(_value.copyWith(brand: value));
     });
   }
+
+  @override
+  $ImageModelCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -209,7 +221,7 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
-      String? image,
+      ImageModel? image,
       List<dynamic>? bookings,
       List<dynamic>? ammunitions});
 
@@ -217,6 +229,8 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
   $CaliberModelCopyWith<$Res>? get caliber;
   @override
   $BrandModelCopyWith<$Res>? get brand;
+  @override
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -304,7 +318,7 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
       bookings: bookings == freezed
           ? _value._bookings
           : bookings // ignore: cast_nullable_to_non_nullable
@@ -373,7 +387,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   @override
   final BrandModel? brand;
   @override
-  final String? image;
+  final ImageModel? image;
   final List<dynamic>? _bookings;
   @override
   List<dynamic>? get bookings {
@@ -497,7 +511,7 @@ abstract class _GunModel implements GunModel {
       final bool? reservable,
       final CaliberModel? caliber,
       final BrandModel? brand,
-      final String? image,
+      final ImageModel? image,
       final List<dynamic>? bookings,
       final List<dynamic>? ammunitions}) = _$_GunModel;
 
@@ -531,7 +545,7 @@ abstract class _GunModel implements GunModel {
   @override
   BrandModel? get brand => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   @override
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
   @override
