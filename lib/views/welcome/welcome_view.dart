@@ -65,7 +65,7 @@ class _WelcomeViewState extends State<WelcomeView>
                           model.keyBoardVisible
                               ? const SizedBox()
                               : SocialButton(
-                                  fbTap: () {},
+                                  fbTap: model.fbSignIn,
                                   instaTap: () {},
                                   logoTap: model.animateToRegister,
                                 )

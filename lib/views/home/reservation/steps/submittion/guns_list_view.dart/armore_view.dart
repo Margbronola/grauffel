@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
@@ -154,7 +155,11 @@ class ArmoreView extends StatelessWidget {
                       ),
                       Container(
                           padding: const EdgeInsets.only(bottom: 20),
-                          child: CustomButton(title: "Suivant", onTap: onTap))
+                          child: CustomButton(
+                              title: "Suivant",
+                              onTap: () {
+                                onTap();
+                              }))
                     ],
                   ),
                 )
@@ -199,10 +204,11 @@ Widget gunCardView(
                           bottomRight: Radius.circular(30)),
                       color: kcWhite,
                       image: DecorationImage(
+                          fit: BoxFit.fitHeight,
                           image: gunModel.image == null
-                              ? const AssetImage("assets/images/gun.png")
+                              ? Image.asset("assets/images/gun.png")
                                   as ImageProvider
-                              : NetworkImage(
+                              : CachedNetworkImageProvider(
                                   "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),
                 ),
                 SizedBox(

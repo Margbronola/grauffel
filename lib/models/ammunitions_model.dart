@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -15,7 +16,7 @@ class AmmunitionsModel with _$AmmunitionsModel {
       double? price,
       int? stock,
       int? status,
-      String? image,
+      ImageModel? image,
       DateTime? created_at,
       DateTime? updated_at}) = _AmmunitionsModel;
   //pivot

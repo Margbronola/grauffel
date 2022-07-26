@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/home/profile/document_card_view.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +49,19 @@ class ProfileView extends StatelessWidget {
                                   SizedBox(
                                     width: 100.w,
                                     child: model.user!.image != null
-                                        ? Image.network(
-                                            "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                            fit: BoxFit.cover,
-                                            scale: 5,
+                                        ? CachedNetworkImage(
+                                            imageUrl:
+                                                "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                            placeholder: (context, url) =>
+                                                const Center(
+                                                    child:
+                                                        CircularProgressIndicator
+                                                            .adaptive(
+                                              backgroundColor: Colors.red,
+                                            )),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
                                           )
                                         : Image.asset(
                                             profileImage,
@@ -280,7 +290,10 @@ class ProfileView extends StatelessWidget {
           // tilePadding: const EdgeInsets.all(0),
           onExpansionChanged: (x) {
             if (x) {
-              model.scrollDown();
+              //scroll down for lower view
+              if (title == "DOCUMENTS" || title == "EQUIPEMENTS") {
+                model.scrollDown();
+              }
             }
           },
           collapsedTextColor: Colors.black,

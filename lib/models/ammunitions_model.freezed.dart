@@ -28,7 +28,7 @@ mixin _$AmmunitionsModel {
   double? get price => throw _privateConstructorUsedError;
   int? get stock => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -52,9 +52,11 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       double? price,
       int? stock,
       int? status,
-      String? image,
+      ImageModel? image,
       DateTime? created_at,
       DateTime? updated_at});
+
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -116,7 +118,7 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -126,6 +128,17 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
+  }
+
+  @override
+  $ImageModelCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value));
+    });
   }
 }
 
@@ -145,9 +158,12 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
       double? price,
       int? stock,
       int? status,
-      String? image,
+      ImageModel? image,
       DateTime? created_at,
       DateTime? updated_at});
+
+  @override
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -211,7 +227,7 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -262,7 +278,7 @@ class _$_AmmunitionsModel
   @override
   final int? status;
   @override
-  final String? image;
+  final ImageModel? image;
   @override
   final DateTime? created_at;
   @override
@@ -350,7 +366,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       final double? price,
       final int? stock,
       final int? status,
-      final String? image,
+      final ImageModel? image,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_AmmunitionsModel;
 
@@ -374,7 +390,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   @override
   int? get status => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   @override
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override

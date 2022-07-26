@@ -1,6 +1,6 @@
 import 'package:egczacademy/views/home/reservation/steps/selectDate/selectDate_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/guns_list_view.dart/armore_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/bullets_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/ammunition_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/equipment_view.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/submition_view.dart';
 import 'package:egczacademy/views/shared/color.dart';
@@ -96,7 +96,7 @@ class ReserveStepsView extends StatelessWidget {
                         model.submitEvents(2);
                       },
                     ),
-                    BulletsView(
+                    AmmunitionView(
                       onTap: () {
                         model.submitEvents(3);
                       },

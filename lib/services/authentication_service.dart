@@ -6,7 +6,6 @@ import '../models/user_model.dart';
 import '../app/global.dart';
 
 class AuthenticationService {
-  //return map  {user,token}
   Future<Map<String, dynamic>?> login(
       {required String firebase_token, required String device_name}) async {
     try {
@@ -30,6 +29,7 @@ class AuthenticationService {
         Fluttertoast.showToast(msg: "Successful Login");
       }
     } catch (e) {
+      print("fail");
       print(e);
       return null;
     }

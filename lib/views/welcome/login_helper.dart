@@ -6,6 +6,7 @@ import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -75,28 +76,46 @@ class LoginHelper {
     }
   }
 
-  Future<User?> fbSignIn() async {
+  Future<void> fbSignIn() async {
     try {
-      // final LoginResult result = await _fbauth.login(
-      //   permissions: ['public_profile', 'email'],
-      // );
-      // switch (result.status) {
-      //   case LoginStatus.success:
-      //     final facebookCredential =
-      //         FacebookAuthProvider.credential(result.accessToken!.token);
-      //     final authResult = await FirebaseService.auth
-      //         .signInWithCredential(facebookCredential);
-      //     final firebaseUser = authResult.user;
-      //     return firebaseUser;
-      //   case LoginStatus.cancelled:
-      //     Fluttertoast.showToast(msg: "Connexion interrompue".toUpperCase());
-      //     return null;
-      //   case LoginStatus.failed:
-      //     Fluttertoast.showToast(msg: "Autorisation refusée".toUpperCase());
-      //     return null;
-      //   default:
-      //     return null;
-      // }
+      final LoginResult result = await FacebookAuth.instance.login(
+        permissions: ['public_profile', 'email'],
+      );
+      switch (result.status) {
+        case LoginStatus.success:
+          final facebookCredential =
+              FacebookAuthProvider.credential(result.accessToken!.token);
+          final authResult = await _fireBaseAuthService.firebaseAuth
+              .signInWithCredential(facebookCredential);
+          final firebaseUser = authResult.user;
+          if (firebaseUser != null) {
+            await _authenticationService
+                .login(
+                    firebase_token: await firebaseUser.getIdToken(),
+                    device_name: _deviceName)
+                .then((value) async {
+              if (value != null) {
+                _userService.updateUser(value[_userMapKey]);
+                _userService.updateToken(value[_tokenMapKey]);
+                print(value[_tokenMapKey]);
+                print(value[_userMapKey]);
+                await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
+                goToHome();
+              } else {
+                showFail();
+              }
+            });
+          }
+          return;
+        case LoginStatus.cancelled:
+          Fluttertoast.showToast(msg: "Connexion interrompue".toUpperCase());
+          return;
+        case LoginStatus.failed:
+          Fluttertoast.showToast(msg: "Autorisation refusée".toUpperCase());
+          return;
+        default:
+          return;
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Fluttertoast.showToast(msg: "Aucun utilisateur trouvé");
@@ -110,7 +129,7 @@ class LoginHelper {
         Fluttertoast.showToast(msg: e.code);
       }
 
-      return null;
+      return;
     } on SocketException {
       Fluttertoast.showToast(msg: "Pas de connexion Internet");
       rethrow;
@@ -118,14 +137,13 @@ class LoginHelper {
       Fluttertoast.showToast(
           msg:
               "Une erreur s'est produite lors de l'exécution de cette opération");
-      return null;
+      return;
     } on FormatException {
       Fluttertoast.showToast(msg: "Erreur de format");
-      return null;
+      return;
     } on TimeoutException {
       Fluttertoast.showToast(msg: "Pas de connexion Internet : timeout");
-      return null;
+      return;
     }
-    return null;
   }
 }

@@ -6,13 +6,14 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:collection/collection.dart';
 import '../../../../../../../app/app.locator.dart';
-import '../../../../../../../app/components/filter_enum.dart';
+import '../../../../../../../app/components/enum.dart';
 
 class CaliberFilterViewModel extends ReactiveViewModel {
   final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
   final UserService _userService = locator<UserService>();
   final GunListService _gunListService = locator<GunListService>();
   final GunAPIService _gunAPIService = locator<GunAPIService>();
+
   bool get isEndOfList =>
       _caliberAPIService.caliber!.length ==
       _caliberAPIService.pagingModel!.total;
@@ -28,7 +29,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
     }
 
     if (_gunListService.filterMarqueIds.isNotEmpty) {
-      copyFilterCaliberIds = _gunListService.filterMarqueIds.toList();
+      copyFilterCaliberIds = _gunListService.filterCaliberIds.toList();
     }
 
     setBusy(false);
@@ -67,6 +68,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   Future<void> filterGun() async {
     await _gunAPIService.fetchAllGuns(
         token: _userService.token!,
+        brandIds: _gunListService.filterMarqueIds,
         caliberIds: _gunListService.filterCaliberIds);
     _gunListService.setGunList(_gunAPIService.guns);
   }

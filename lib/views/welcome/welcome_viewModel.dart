@@ -198,6 +198,7 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   }
 
   Future loginButton() async {
+    print("login button");
     if (formKey.currentState!.validate()) {
       setBusy(true);
       await login(

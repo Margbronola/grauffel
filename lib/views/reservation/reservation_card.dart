@@ -39,7 +39,7 @@ class ReservationCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: ThemeData().textTheme.headlineSmall!.copyWith(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20.sp,
+                            fontSize: 18.sp,
                             color: buttonColor),
                       ),
                       verticalSpaceSmall(),

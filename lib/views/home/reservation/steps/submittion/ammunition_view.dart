@@ -1,25 +1,26 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:egczacademy/models/ammunitions_model.dart';
-
+import '../../../../../app/global.dart';
 import '../../../../shared/color.dart';
 import '../../../../shared/customButton.dart';
 import '../../../../shared/ui_helper.dart';
-import 'bullets_viewModel.dart';
+import 'ammunition_viewModel.dart';
 
-class BulletsView extends StatelessWidget {
+class AmmunitionView extends StatelessWidget {
   final Function() onTap;
-  const BulletsView({
+  const AmmunitionView({
     Key? key,
     required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<BulletsViewModel>.reactive(
+    return ViewModelBuilder<AmmunitionViewModel>.reactive(
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => model.isBusy
           ? const StepeShimmerLoader()
@@ -44,24 +45,70 @@ class BulletsView extends StatelessWidget {
                           children: [
                             OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(
-                                        color: greyLight) //<-- SEE HERE
+                                    backgroundColor: model.filterMarqueIsActive
+                                        ? buttonColor.withOpacity(0.3)
+                                        : kcWhite,
+                                    side: BorderSide(
+                                        color: model.filterMarqueIsActive
+                                            ? buttonColor
+                                            : greyLight) //<-- SEE HERE
                                     ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'Marque',
-                                  style: TextStyle(color: backgroundColor),
+                                onPressed: model.marqueFilter,
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      'Marque',
+                                      style: TextStyle(color: backgroundColor),
+                                    ),
+                                    model.filterMarqueIsActive
+                                        ? Row(
+                                            children: [
+                                              horizontalSpaceSmall(),
+                                              GFBadge(
+                                                shape: GFBadgeShape.circle,
+                                                color: buttonColor,
+                                                child: Text(model
+                                                    .filterMarqueLength
+                                                    .toString()),
+                                              ),
+                                            ],
+                                          )
+                                        : const SizedBox(),
+                                  ],
                                 )),
                             horizontalSpaceSmall(),
                             OutlinedButton(
                                 style: OutlinedButton.styleFrom(
-                                    side: const BorderSide(
-                                        color: greyLight) //<-- SEE HERE
+                                    backgroundColor: model.filterCaliberIsActive
+                                        ? buttonColor.withOpacity(0.3)
+                                        : kcWhite,
+                                    side: BorderSide(
+                                        color: model.filterCaliberIsActive
+                                            ? buttonColor
+                                            : greyLight) //<-- SEE HERE
                                     ),
-                                onPressed: () {},
-                                child: const Text(
-                                  'Calibre',
-                                  style: TextStyle(color: backgroundColor),
+                                onPressed: model.caliberFilter,
+                                child: Row(
+                                  children: [
+                                    const Text(
+                                      'Calibre',
+                                      style: TextStyle(color: backgroundColor),
+                                    ),
+                                    model.filterCaliberIsActive
+                                        ? Row(
+                                            children: [
+                                              horizontalSpaceSmall(),
+                                              GFBadge(
+                                                shape: GFBadgeShape.circle,
+                                                color: buttonColor,
+                                                child: Text(model
+                                                    .filterCaliberIsActiveLength
+                                                    .toString()),
+                                              ),
+                                            ],
+                                          )
+                                        : const SizedBox(),
+                                  ],
                                 )),
                           ],
                         ),
@@ -71,11 +118,11 @@ class BulletsView extends StatelessWidget {
                             mainAxisSpacing: 15,
                             crossAxisSpacing: 20,
                             crossAxisCount: 2,
-                            children:
-                                List.generate(model.bullets!.length, (index) {
+                            children: List.generate(model.ammunitions!.length,
+                                (index) {
                               return amminitionCard(
                                   index: index,
-                                  ammunition: model.bullets![index],
+                                  ammunition: model.ammunitions![index],
                                   model: model);
                             }),
                           ),
@@ -111,13 +158,13 @@ class BulletsView extends StatelessWidget {
                 )
               ],
             ),
-      viewModelBuilder: () => BulletsViewModel(),
+      viewModelBuilder: () => AmmunitionViewModel(),
     );
   }
 }
 
 Widget amminitionCard(
-        {required BulletsViewModel model,
+        {required AmmunitionViewModel model,
         required AmmunitionsModel ammunition,
         required int index}) =>
     GestureDetector(
@@ -148,10 +195,12 @@ Widget amminitionCard(
                           bottomRight: Radius.circular(30)),
                       color: kcWhite,
                       image: DecorationImage(
+                          fit: BoxFit.fitHeight,
                           image: ammunition.image == null
-                              ? const AssetImage("assets/images/bullet.png")
+                              ? Image.asset("assets/images/bullet.png")
                                   as ImageProvider
-                              : const NetworkImage(""))),
+                              : CachedNetworkImageProvider(
+                                  "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}"))),
                 ),
                 SizedBox(
                   height: 5.h,

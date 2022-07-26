@@ -16,7 +16,9 @@ _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num?)?.toDouble(),
       stock: json['stock'] as int?,
       status: json['status'] as int?,
-      image: json['image'] as String?,
+      image: json['image'] == null
+          ? null
+          : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'equipment_model.freezed.dart';
@@ -16,7 +17,7 @@ class EquipmentModel with _$EquipmentModel {
       DateTime? created_at,
       DateTime? updated_at,
       String? type_name,
-      String? image}) = _EquipmentModel;
+      ImageModel? image}) = _EquipmentModel;
 
   factory EquipmentModel.fromJson(Map<String, Object?> json) =>
       _$EquipmentModelFromJson(json);

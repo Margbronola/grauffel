@@ -17,15 +17,18 @@ class GunAPIService {
     String url = "$urlApi/guns?per_page=$_perPage";
 
     if (brandIds != null) {
+      String brands = brandIds.join(', ');
       if (brandIds.isNotEmpty) {
-        url += "&brand_id=${brandIds[0]}";
+        url += "&brand_id=$brands";
       }
     }
     if (caliberIds != null) {
+      String calibers = caliberIds.join(', ');
       if (caliberIds.isNotEmpty) {
-        url += "&caliber_id=${caliberIds[0]}";
+        url += "&caliber_id=$calibers";
       }
     }
+    print("URL $url");
     try {
       final respo = await http.get(Uri.parse(url), headers: {
         "Accept": "application/json",

@@ -46,7 +46,6 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   void scrollDown() {
-    print("scroll");
     Future.delayed(const Duration(milliseconds: 300), () {
       scrollController.animateTo(
         scrollController.position.maxScrollExtent,

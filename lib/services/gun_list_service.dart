@@ -1,22 +1,35 @@
-import 'package:egczacademy/app/components/filter_enum.dart';
+import 'package:egczacademy/app/components/enum.dart';
+import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:stacked/stacked.dart';
 
 class GunListService with ReactiveServiceMixin {
   GunListService() {
-    listenToReactiveValues([_guns, _loader]);
+    listenToReactiveValues([_guns, _loader, _ammunition]);
   }
 
   final ReactiveValue<bool> _loader = ReactiveValue<bool>(false);
   bool get loader => _loader.value;
 
+  //GUN
   final ReactiveValue<List<GunModel>?> _guns =
       ReactiveValue<List<GunModel>?>(null);
   List<GunModel>? get guns => _guns.value;
 
+  //BULLET
+  final ReactiveValue<List<AmmunitionsModel>?> _ammunition =
+      ReactiveValue<List<AmmunitionsModel>?>(null);
+  List<AmmunitionsModel>? get ammunition => _ammunition.value;
+
   Future setGunList(List<GunModel>? guns) async {
     if (guns != null) {
       _guns.value = guns;
+    }
+  }
+
+  Future setAmmunitionList(List<AmmunitionsModel>? ammunitions) async {
+    if (ammunitions != null) {
+      _ammunition.value = ammunitions;
     }
   }
 
@@ -48,6 +61,11 @@ class GunListService with ReactiveServiceMixin {
     } else {
       _filterCaliberIds.clear();
     }
+  }
+
+  void clearAall() {
+    _filterMarqueIds.clear();
+    _filterCaliberIds.clear();
   }
 
   void setBusy(bool isBusy) {

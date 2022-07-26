@@ -30,7 +30,7 @@ mixin _$EquipmentModel {
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   String? get type_name => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,9 @@ abstract class $EquipmentModelCopyWith<$Res> {
       DateTime? created_at,
       DateTime? updated_at,
       String? type_name,
-      String? image});
+      ImageModel? image});
+
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -124,8 +126,19 @@ class _$EquipmentModelCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
     ));
+  }
+
+  @override
+  $ImageModelCopyWith<$Res>? get image {
+    if (_value.image == null) {
+      return null;
+    }
+
+    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
+      return _then(_value.copyWith(image: value));
+    });
   }
 }
 
@@ -147,7 +160,10 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       DateTime? created_at,
       DateTime? updated_at,
       String? type_name,
-      String? image});
+      ImageModel? image});
+
+  @override
+  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -219,7 +235,7 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ImageModel?,
     ));
   }
 }
@@ -264,7 +280,7 @@ class _$_EquipmentModel implements _EquipmentModel {
   @override
   final String? type_name;
   @override
-  final String? image;
+  final ImageModel? image;
 
   @override
   String toString() {
@@ -331,7 +347,7 @@ abstract class _EquipmentModel implements EquipmentModel {
       final DateTime? created_at,
       final DateTime? updated_at,
       final String? type_name,
-      final String? image}) = _$_EquipmentModel;
+      final ImageModel? image}) = _$_EquipmentModel;
 
   factory _EquipmentModel.fromJson(Map<String, dynamic> json) =
       _$_EquipmentModel.fromJson;
@@ -357,7 +373,7 @@ abstract class _EquipmentModel implements EquipmentModel {
   @override
   String? get type_name => throw _privateConstructorUsedError;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>

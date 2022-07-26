@@ -22,7 +22,9 @@ _$_EquipmentModel _$$_EquipmentModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['updated_at'] as String),
       type_name: json['type_name'] as String?,
-      image: json['image'] as String?,
+      image: json['image'] == null
+          ? null
+          : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>

@@ -1,7 +1,9 @@
+import 'package:egczacademy/app/components/enum.dart';
+import 'package:egczacademy/services/brand_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/filterGun/filter_gun_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/filterGun/brand_filter_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
@@ -15,6 +17,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GunListService _gunListService = locator<GunListService>();
+  final BrandAPIService _brandAPIService = locator<BrandAPIService>();
 
   int? _selectedIndex;
   int? get selectedIndex => _selectedIndex;
@@ -31,6 +34,7 @@ class ArmoreViewModel extends ReactiveViewModel {
 
   init() async {
     _gunListService.setBusy(true);
+    initFilter();
     await _gunAPIService
         .fetchAllGuns(
           token: _userService.token!,
@@ -58,11 +62,19 @@ class ArmoreViewModel extends ReactiveViewModel {
   }
 
   void marqueFilter() {
-    _navigationService.navigateToView(const FilterGunView());
+    _navigationService.navigateToView(const BrandFilterView(
+      filterListType: FilterList.gun,
+    ));
   }
 
   void caliberFilter() {
     _navigationService.navigateToView(const CaliberFilterView());
+  }
+
+  void initFilter() {
+    _gunListService.clearAall();
+    _brandAPIService.reset();
+    notifyListeners();
   }
 
   @override

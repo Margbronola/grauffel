@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/customButton.dart';
 import '../../../../../shared/ui_helper.dart';
@@ -123,10 +125,12 @@ Widget equipemntCardView(
                           bottomRight: Radius.circular(30)),
                       color: kcWhite,
                       image: DecorationImage(
+                          fit: BoxFit.fitHeight,
                           image: equipmentModel.image == null
-                              ? const AssetImage("assets/images/equipment.png")
+                              ? Image.asset("assets/images/equipment.png")
                                   as ImageProvider
-                              : const NetworkImage(""))),
+                              : CachedNetworkImageProvider(
+                                  "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}"))),
                 ),
                 SizedBox(
                   height: 5.h,
