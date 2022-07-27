@@ -19,23 +19,23 @@ class BrandAPIService {
     }
   }
 
-  Future<void> loadMore({required String token, required int type_id}) async {
+  Future<void> loadMore({required String token, required int typeId}) async {
     if (pagingModel != null) {
       if (pagingModel!.next_page_url != null) {
         if (pagingModel!.total! <= brands!.length) {
           _pagingModel = _pagingModel!
               .copyWith(current_page: _pagingModel!.current_page! + 1);
-          fetch(token: token, type_id: type_id);
+          fetch(token: token, typeId: typeId);
         }
       }
     }
   }
 
-  Future<void> fetch({required String token, required int type_id}) async {
+  Future<void> fetch({required String token, required int typeId}) async {
     try {
       final respo = await http.get(
           Uri.parse(
-              "$urlApi/brands?per_page=$_perPage${pagingModel != null ? "&page=${pagingModel!.current_page}" : ""}&type_id=$type_id"),
+              "$urlApi/brands?per_page=$_perPage${pagingModel != null ? "&page=${pagingModel!.current_page}" : ""}&type_id=$typeId"),
           headers: {
             "Accept": "application/json",
             "Authorization": "Bearer $token",

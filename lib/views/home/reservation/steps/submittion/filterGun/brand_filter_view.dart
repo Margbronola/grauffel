@@ -83,7 +83,13 @@ class BrandFilterView extends StatelessWidget {
                 child: LoadMore(
                     isFinish: model.isEndOfList,
                     onLoadMore: () async {
-                      return model.loadMore(filterListType);
+                      try {
+                        return model.loadMore(filterListType);
+                      } catch (e) {
+                        print("catch");
+                        print(e);
+                      }
+                      return false;
                     },
                     child: ListView.builder(
                       itemCount: model.marque!.length,

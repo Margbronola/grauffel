@@ -29,7 +29,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
       print("fetching");
       await _brandAPIService.fetch(
           token: _userService.token!,
-          type_id: filterList == FilterList.gun ? 2 : 1);
+          typeId: filterList == FilterList.gun ? 2 : 1);
     }
 
     if (_gunListService.filterMarqueIds.isNotEmpty) {
@@ -74,7 +74,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
   Future<bool> loadMore(FilterList filterList) async {
     await _brandAPIService.loadMore(
         token: _userService.token!,
-        type_id: filterList == FilterList.gun ? 2 : 1);
+        typeId: filterList == FilterList.gun ? 2 : 1);
 
     return true;
   }

@@ -1,3 +1,6 @@
 enum Filter { marque, calibre }
 
-enum FilterList { gun, ammunition }
+enum FilterList {
+  gun,
+  ammunition,
+}
