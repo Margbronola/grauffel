@@ -221,12 +221,13 @@ Widget amminitionCard(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Référence",
+                      "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                          ),
                     ),
                     Text(
-                      "SH2-BUSH-CER",
+                      ammunition.brand!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                           fontSize: 10.sp, fontWeight: FontWeight.bold),
                     ),
@@ -245,13 +246,13 @@ Widget amminitionCard(
                 Column(
                   children: [
                     Text(
-                      "Marque",
+                      "Calibre",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
                           ),
                     ),
                     Text(
-                      "CZ",
+                      ammunition.caliber!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                           fontSize: 10.sp, fontWeight: FontWeight.bold),
                     ),

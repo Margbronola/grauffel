@@ -217,7 +217,7 @@ Widget gunCardView(
                 SizedBox(
                   width: 100.w,
                   child: Text(
-                    gunModel.description!,
+                    gunModel.model!,
                     overflow: TextOverflow.ellipsis,
                     style: ThemeData()
                         .textTheme
@@ -232,7 +232,8 @@ Widget gunCardView(
                     Text(
                       "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                          ),
                     ),
                     Text(
                       gunModel.brand!.name!,

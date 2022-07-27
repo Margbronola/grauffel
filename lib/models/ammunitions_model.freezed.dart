@@ -21,14 +21,14 @@ AmmunitionsModel _$AmmunitionsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AmmunitionsModel {
   int? get id => throw _privateConstructorUsedError;
-  int? get brand_id => throw _privateConstructorUsedError;
-  int? get caliber_id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
   int? get stock => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
+  BrandModel? get brand => throw _privateConstructorUsedError;
+  CaliberModel? get caliber => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -45,18 +45,20 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       _$AmmunitionsModelCopyWithImpl<$Res>;
   $Res call(
       {int? id,
-      int? brand_id,
-      int? caliber_id,
       String? name,
       String? description,
       double? price,
       int? stock,
       int? status,
       ImageModel? image,
+      BrandModel? brand,
+      CaliberModel? caliber,
       DateTime? created_at,
       DateTime? updated_at});
 
   $ImageModelCopyWith<$Res>? get image;
+  $BrandModelCopyWith<$Res>? get brand;
+  $CaliberModelCopyWith<$Res>? get caliber;
 }
 
 /// @nodoc
@@ -71,14 +73,14 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? brand_id = freezed,
-    Object? caliber_id = freezed,
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
     Object? stock = freezed,
     Object? status = freezed,
     Object? image = freezed,
+    Object? brand = freezed,
+    Object? caliber = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -86,14 +88,6 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      brand_id: brand_id == freezed
-          ? _value.brand_id
-          : brand_id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      caliber_id: caliber_id == freezed
-          ? _value.caliber_id
-          : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
       name: name == freezed
           ? _value.name
@@ -119,6 +113,14 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as BrandModel?,
+      caliber: caliber == freezed
+          ? _value.caliber
+          : caliber // ignore: cast_nullable_to_non_nullable
+              as CaliberModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -140,6 +142,28 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
       return _then(_value.copyWith(image: value));
     });
   }
+
+  @override
+  $BrandModelCopyWith<$Res>? get brand {
+    if (_value.brand == null) {
+      return null;
+    }
+
+    return $BrandModelCopyWith<$Res>(_value.brand!, (value) {
+      return _then(_value.copyWith(brand: value));
+    });
+  }
+
+  @override
+  $CaliberModelCopyWith<$Res>? get caliber {
+    if (_value.caliber == null) {
+      return null;
+    }
+
+    return $CaliberModelCopyWith<$Res>(_value.caliber!, (value) {
+      return _then(_value.copyWith(caliber: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -151,19 +175,23 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
   @override
   $Res call(
       {int? id,
-      int? brand_id,
-      int? caliber_id,
       String? name,
       String? description,
       double? price,
       int? stock,
       int? status,
       ImageModel? image,
+      BrandModel? brand,
+      CaliberModel? caliber,
       DateTime? created_at,
       DateTime? updated_at});
 
   @override
   $ImageModelCopyWith<$Res>? get image;
+  @override
+  $BrandModelCopyWith<$Res>? get brand;
+  @override
+  $CaliberModelCopyWith<$Res>? get caliber;
 }
 
 /// @nodoc
@@ -180,14 +208,14 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? brand_id = freezed,
-    Object? caliber_id = freezed,
     Object? name = freezed,
     Object? description = freezed,
     Object? price = freezed,
     Object? stock = freezed,
     Object? status = freezed,
     Object? image = freezed,
+    Object? brand = freezed,
+    Object? caliber = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -195,14 +223,6 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      brand_id: brand_id == freezed
-          ? _value.brand_id
-          : brand_id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      caliber_id: caliber_id == freezed
-          ? _value.caliber_id
-          : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
       name: name == freezed
           ? _value.name
@@ -228,6 +248,14 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as BrandModel?,
+      caliber: caliber == freezed
+          ? _value.caliber
+          : caliber // ignore: cast_nullable_to_non_nullable
+              as CaliberModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -242,19 +270,17 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AmmunitionsModel
-    with DiagnosticableTreeMixin
-    implements _AmmunitionsModel {
+class _$_AmmunitionsModel implements _AmmunitionsModel {
   const _$_AmmunitionsModel(
       {this.id,
-      this.brand_id,
-      this.caliber_id,
       this.name,
       this.description,
       this.price,
       this.stock,
       this.status,
       this.image,
+      this.brand,
+      this.caliber,
       this.created_at,
       this.updated_at});
 
@@ -263,10 +289,6 @@ class _$_AmmunitionsModel
 
   @override
   final int? id;
-  @override
-  final int? brand_id;
-  @override
-  final int? caliber_id;
   @override
   final String? name;
   @override
@@ -280,31 +302,17 @@ class _$_AmmunitionsModel
   @override
   final ImageModel? image;
   @override
+  final BrandModel? brand;
+  @override
+  final CaliberModel? caliber;
+  @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AmmunitionsModel(id: $id, brand_id: $brand_id, caliber_id: $caliber_id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AmmunitionsModel'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('brand_id', brand_id))
-      ..add(DiagnosticsProperty('caliber_id', caliber_id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('stock', stock))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('created_at', created_at))
-      ..add(DiagnosticsProperty('updated_at', updated_at));
+  String toString() {
+    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
@@ -313,9 +321,6 @@ class _$_AmmunitionsModel
         (other.runtimeType == runtimeType &&
             other is _$_AmmunitionsModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.brand_id, brand_id) &&
-            const DeepCollectionEquality()
-                .equals(other.caliber_id, caliber_id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -323,6 +328,8 @@ class _$_AmmunitionsModel
             const DeepCollectionEquality().equals(other.stock, stock) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.image, image) &&
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.caliber, caliber) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -334,14 +341,14 @@ class _$_AmmunitionsModel
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(brand_id),
-      const DeepCollectionEquality().hash(caliber_id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(stock),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(image),
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(caliber),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at));
 
@@ -359,14 +366,14 @@ class _$_AmmunitionsModel
 abstract class _AmmunitionsModel implements AmmunitionsModel {
   const factory _AmmunitionsModel(
       {final int? id,
-      final int? brand_id,
-      final int? caliber_id,
       final String? name,
       final String? description,
       final double? price,
       final int? stock,
       final int? status,
       final ImageModel? image,
+      final BrandModel? brand,
+      final CaliberModel? caliber,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_AmmunitionsModel;
 
@@ -375,10 +382,6 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
 
   @override
   int? get id => throw _privateConstructorUsedError;
-  @override
-  int? get brand_id => throw _privateConstructorUsedError;
-  @override
-  int? get caliber_id => throw _privateConstructorUsedError;
   @override
   String? get name => throw _privateConstructorUsedError;
   @override
@@ -391,6 +394,10 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   int? get status => throw _privateConstructorUsedError;
   @override
   ImageModel? get image => throw _privateConstructorUsedError;
+  @override
+  BrandModel? get brand => throw _privateConstructorUsedError;
+  @override
+  CaliberModel? get caliber => throw _privateConstructorUsedError;
   @override
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override

@@ -48,6 +48,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   void showDetails(index) async {
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
+        data: guns![index],
         variant: DialogType.arm,
         barrierDismissible: true);
 

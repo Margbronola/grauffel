@@ -1,6 +1,7 @@
+import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 part 'ammunitions_model.freezed.dart';
 part 'ammunitions_model.g.dart';
@@ -9,14 +10,14 @@ part 'ammunitions_model.g.dart';
 class AmmunitionsModel with _$AmmunitionsModel {
   const factory AmmunitionsModel(
       {int? id,
-      int? brand_id,
-      int? caliber_id,
       String? name,
       String? description,
       double? price,
       int? stock,
       int? status,
       ImageModel? image,
+      BrandModel? brand,
+      CaliberModel? caliber,
       DateTime? created_at,
       DateTime? updated_at}) = _AmmunitionsModel;
   //pivot

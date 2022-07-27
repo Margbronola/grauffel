@@ -8,6 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../../app/app.locator.dart';
+import '../../../../shared/widget/dialog/setup_dialog_ui.dart';
 import 'filterGun/caliber_filter/caliber_filter_view.dart';
 import 'filterGun/brand_filter_view.dart';
 
@@ -18,6 +19,7 @@ class AmmunitionViewModel extends BaseViewModel {
   final GunListService _gunListService = locator<GunListService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
+  final DialogService _dialogService = locator<DialogService>();
 
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;
@@ -52,7 +54,22 @@ class AmmunitionViewModel extends BaseViewModel {
     _navigationService.navigateToView(const CaliberFilterView());
   }
 
-  void showDetails(index) async {}
+  void showDetails(index) async {
+    var response = await _dialogService.showCustomDialog(
+        mainButtonTitle: "ok",
+        data: ammunitions![index],
+        variant: DialogType.ammunition,
+        barrierDismissible: true);
+
+    if (response != null) {
+      if (response.confirmed) {
+        _selectedIndex = index;
+        notifyListeners();
+      } else {
+        print("CANCE:");
+      }
+    }
+  }
 
   void initFilter() {
     _gunListService.clearAall();

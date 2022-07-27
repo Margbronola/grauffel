@@ -9,8 +9,6 @@ part of 'ammunitions_model.dart';
 _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
     _$_AmmunitionsModel(
       id: json['id'] as int?,
-      brand_id: json['brand_id'] as int?,
-      caliber_id: json['caliber_id'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -19,6 +17,12 @@ _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
       image: json['image'] == null
           ? null
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+      brand: json['brand'] == null
+          ? null
+          : BrandModel.fromJson(json['brand'] as Map<String, dynamic>),
+      caliber: json['caliber'] == null
+          ? null
+          : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -30,14 +34,14 @@ _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_AmmunitionsModelToJson(_$_AmmunitionsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'brand_id': instance.brand_id,
-      'caliber_id': instance.caliber_id,
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
       'stock': instance.stock,
       'status': instance.status,
       'image': instance.image,
+      'brand': instance.brand,
+      'caliber': instance.caliber,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
     };

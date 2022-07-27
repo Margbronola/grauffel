@@ -27,7 +27,8 @@ class EquipmentViewModel extends BaseViewModel {
   void showDetails(index) async {
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
-        variant: DialogType.arm,
+        data: equipments![index],
+        variant: DialogType.equipments,
         barrierDismissible: true);
 
     if (response != null) {
