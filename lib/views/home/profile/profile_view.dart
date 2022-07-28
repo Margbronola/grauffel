@@ -56,9 +56,7 @@ class ProfileView extends StatelessWidget {
                                                 const Center(
                                                     child:
                                                         CircularProgressIndicator
-                                                            .adaptive(
-                                              backgroundColor: Colors.red,
-                                            )),
+                                                            .adaptive()),
                                             errorWidget:
                                                 (context, url, error) =>
                                                     const Icon(Icons.error),

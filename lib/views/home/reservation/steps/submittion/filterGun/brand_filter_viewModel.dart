@@ -3,22 +3,26 @@ import 'package:egczacademy/services/brand_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
 import 'package:collection/collection.dart';
-
 import '../../../../../../app/components/enum.dart';
 
 class BrandFilterViewModel extends ReactiveViewModel {
-  final NavigationService _navigationService = locator<NavigationService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final UserService _userService = locator<UserService>();
   final GunAPIService _gunAPIService = locator<GunAPIService>();
   final GunListService _gunListService = locator<GunListService>();
 
-  bool get isEndOfList =>
-      _brandAPIService.brands!.length == _brandAPIService.pagingModel!.total;
+  late ScrollController controller;
+  bool isLoadMoreRunning = false;
+
+  bool get hasNextPage => _brandAPIService.pagingModel != null
+      ? _brandAPIService.pagingModel!.next_page_url != null
+          ? true
+          : false
+      : false;
 
   List<BrandModel>? get marque => _brandAPIService.brands;
   List copyFilterMarqueIds = [];
@@ -35,11 +39,16 @@ class BrandFilterViewModel extends ReactiveViewModel {
     if (_gunListService.filterMarqueIds.isNotEmpty) {
       copyFilterMarqueIds = _gunListService.filterMarqueIds.toList();
     }
+    controller = ScrollController()
+      ..addListener(() async {
+        await loadMore(filterList);
 
+        notifyListeners();
+      });
     setBusy(false);
   }
 
-  void cancelFilter() {
+  void uncheckAllBox() {
     _gunListService.clearFilter(filterType: Filter.marque);
     notifyListeners();
   }
@@ -72,9 +81,16 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   Future<bool> loadMore(FilterList filterList) async {
-    await _brandAPIService.loadMore(
-        token: _userService.token!,
-        typeId: filterList == FilterList.gun ? 2 : 1);
+    if (isLoadMoreRunning == false) {
+      if (controller.position.extentAfter < 300) {
+        isLoadMoreRunning = true;
+        await _brandAPIService.loadMore(
+            token: _userService.token!,
+            typeId: filterList == FilterList.gun ? 2 : 1);
+        isLoadMoreRunning = false;
+        notifyListeners();
+      }
+    }
 
     return true;
   }

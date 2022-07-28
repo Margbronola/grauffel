@@ -9,6 +9,21 @@ class CaliberAPIService {
   PagingModel? _pagingModel;
   PagingModel? get pagingModel => _pagingModel;
   List<CaliberModel>? caliber;
+
+  Future loadMore({required String token}) async {
+    if (pagingModel != null) {
+      if (pagingModel!.next_page_url != null) {
+        _pagingModel = _pagingModel!.copyWith(
+          current_page: _pagingModel!.current_page! + 1,
+        );
+        print(_pagingModel!.current_page!);
+        await fetchCaliber(
+          token: token,
+        );
+      }
+    }
+  }
+
   Future<void> fetchCaliber({required String token}) async {
     if (pagingModel != null) {
       if (pagingModel!.next_page_url != null) {

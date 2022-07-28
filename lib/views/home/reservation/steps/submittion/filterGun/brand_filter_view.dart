@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:loadmore/loadmore.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
 import 'package:egczacademy/app/components/enum.dart';
@@ -32,7 +31,7 @@ class BrandFilterView extends StatelessWidget {
           iconTheme: const IconThemeData(color: backgroundColor),
           actions: [
             TextButton(
-              onPressed: model.cancelFilter,
+              onPressed: model.uncheckAllBox,
               child: Text(
                 "Annuler\nfiltres".toUpperCase(),
                 style: const TextStyle(color: buttonColor),
@@ -80,37 +79,58 @@ class BrandFilterView extends StatelessWidget {
                 ))
             : Container(
                 color: kcWhite,
-                child: LoadMore(
-                    isFinish: model.isEndOfList,
-                    onLoadMore: () async {
-                      try {
-                        return model.loadMore(filterListType);
-                      } catch (e) {
-                        print("catch");
-                        print(e);
-                      }
-                      return false;
-                    },
-                    child: ListView.builder(
-                      itemCount: model.marque!.length,
-                      itemBuilder: (context, index) => GFCheckboxListTile(
-                        margin: const EdgeInsets.all(0),
-                        title: Text(model.marque![index].name!.toUpperCase()),
-                        size: 20,
-                        activeBgColor: buttonColor,
-                        type: GFCheckboxType.square,
-                        activeIcon: const Icon(
-                          Icons.check,
-                          size: 15,
-                          color: Colors.white,
+                height: size(context).height,
+                width: size(context).width,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        controller: model.controller,
+                        itemCount: model.marque!.length,
+                        itemBuilder: (context, index) => GFCheckboxListTile(
+                          margin: const EdgeInsets.all(0),
+                          title: Text(model.marque![index].name!.toUpperCase()),
+                          size: 20,
+                          activeBgColor: buttonColor,
+                          type: GFCheckboxType.square,
+                          activeIcon: const Icon(
+                            Icons.check,
+                            size: 15,
+                            color: Colors.white,
+                          ),
+                          onChanged: (value) {
+                            model.check(value, index);
+                          },
+                          value: model.checked(index),
+                          inactiveIcon: null,
                         ),
-                        onChanged: (value) {
-                          model.check(value, index);
-                        },
-                        value: model.checked(index),
-                        inactiveIcon: null,
                       ),
-                    ))),
+                    ),
+                    // when the _loadMore function is running
+                    if (model.isLoadMoreRunning == true)
+                      Container(
+                        color: Colors.transparent,
+                        padding: const EdgeInsets.all(8),
+                        child: const Center(
+                          child: CircularProgressIndicator.adaptive(
+                            backgroundColor: Colors.grey,
+                          ),
+                        ),
+                      ),
+
+                    // When nothing else to load
+                    if (model.hasNextPage == false)
+                      Opacity(
+                        opacity: 0.5,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 30, bottom: 40),
+                          height: 5,
+                          width: size(context).width,
+                          color: Colors.grey,
+                        ),
+                      ),
+                  ],
+                )),
       ),
       viewModelBuilder: () => BrandFilterViewModel(),
     );

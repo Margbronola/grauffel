@@ -19,14 +19,14 @@ class BrandAPIService {
     }
   }
 
-  Future<void> loadMore({required String token, required int typeId}) async {
+  Future loadMore({required String token, required int typeId}) async {
     if (pagingModel != null) {
       if (pagingModel!.next_page_url != null) {
-        if (pagingModel!.total! <= brands!.length) {
-          _pagingModel = _pagingModel!
-              .copyWith(current_page: _pagingModel!.current_page! + 1);
-          fetch(token: token, typeId: typeId);
-        }
+        _pagingModel = _pagingModel!.copyWith(
+          current_page: _pagingModel!.current_page! + 1,
+        );
+        print(_pagingModel!.current_page!);
+        await fetch(token: token, typeId: typeId);
       }
     }
   }
@@ -53,6 +53,7 @@ class BrandAPIService {
             next_page_url: data['next_page_url'],
             prev_page_url: data['prev_page_url'],
           );
+          print(_pagingModel);
           if (_brands == null) {
             print("FIRST FETCH");
             _brands =
