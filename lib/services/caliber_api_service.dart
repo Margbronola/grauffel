@@ -8,7 +8,9 @@ class CaliberAPIService {
   final int _perPage = 11;
   PagingModel? _pagingModel;
   PagingModel? get pagingModel => _pagingModel;
-  List<CaliberModel>? caliber;
+
+  List<CaliberModel>? _caliber;
+  List<CaliberModel>? get caliber => _caliber;
 
   Future loadMore({required String token}) async {
     if (pagingModel != null) {
@@ -53,7 +55,7 @@ class CaliberAPIService {
             prev_page_url: data['prev_page_url'],
           );
           if (caliber == null) {
-            caliber =
+            _caliber =
                 fetchCaliberList.map((e) => CaliberModel.fromJson(e)).toList();
           } else {
             caliber!.addAll(

@@ -14,7 +14,7 @@ class BrandAPIService {
   void reset() {
     if (_brands != null) {
       print("RESETING");
-      _brands!.clear();
+      _brands = null;
       _pagingModel = null;
     }
   }

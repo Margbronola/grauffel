@@ -2,6 +2,7 @@ import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
+import 'package:egczacademy/services/caliber_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:stacked/stacked.dart';
@@ -20,6 +21,7 @@ class AmmunitionViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final DialogService _dialogService = locator<DialogService>();
+  final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
 
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;

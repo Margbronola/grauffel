@@ -1,5 +1,6 @@
 import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
+import 'package:egczacademy/services/caliber_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
@@ -18,6 +19,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final GunListService _gunListService = locator<GunListService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
+  final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
 
   int? _selectedIndex;
   int? get selectedIndex => _selectedIndex;
@@ -76,6 +78,12 @@ class ArmoreViewModel extends ReactiveViewModel {
     _gunListService.clearAall();
     _brandAPIService.reset();
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    initFilter();
+    super.dispose();
   }
 
   @override
