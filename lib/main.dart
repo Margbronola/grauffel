@@ -12,6 +12,7 @@ import 'app/app.locator.dart';
 import 'app/app.router.dart';
 import 'views/shared/widget/dialog/initialize_prefs.dart';
 import 'views/shared/widget/dialog/setup_dialog_ui.dart';
+import 'views/shared/widget/pallete.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,7 +75,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
             textTheme: GoogleFonts.notoSansTakriTextTheme(),
             brightness: Brightness.dark,
-            primarySwatch: Colors.green,
+            primarySwatch: Palette.kToDark,
             backgroundColor: backgroundColor,
             canvasColor: backgroundColor),
         navigatorKey: StackedService.navigatorKey,

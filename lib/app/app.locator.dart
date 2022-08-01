@@ -14,6 +14,8 @@ import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
 import '../services/brand_api_service.dart';
 import '../services/caliber_api_service.dart';
+import '../services/document_api_service.dart';
+import '../services/document_service.dart';
 import '../services/equipments_api_service.dart';
 import '../services/firebase_auth_service.dart';
 import '../services/gun_list_service.dart';
@@ -45,4 +47,6 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => BrandAPIService());
   locator.registerLazySingleton(() => GunListService());
   locator.registerLazySingleton(() => CaliberAPIService());
+  locator.registerLazySingleton(() => DocumentAPIService());
+  locator.registerLazySingleton(() => DocumentService());
 }

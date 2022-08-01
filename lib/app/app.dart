@@ -1,3 +1,4 @@
+import 'package:egczacademy/services/document_service.dart';
 import 'package:egczacademy/services/firebase_auth_service.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
@@ -9,6 +10,7 @@ import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
 import '../services/brand_api_service.dart';
 import '../services/caliber_api_service.dart';
+import '../services/document_api_service.dart';
 import '../services/equipments_api_service.dart';
 import '../services/gun_list_service.dart';
 import '../services/guns_api_service.dart';
@@ -64,6 +66,12 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: CaliberAPIService,
+  ),
+  LazySingleton(
+    classType: DocumentAPIService,
+  ),
+  LazySingleton(
+    classType: DocumentService,
   ),
 ])
 class App {

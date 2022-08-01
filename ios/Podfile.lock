@@ -1,4 +1,6 @@
 PODS:
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - FBAEMKit (13.2.0):
     - FBSDKCoreKit_Basics (= 13.2.0)
   - FBSDKCoreKit (13.2.0):
@@ -83,6 +85,7 @@ PODS:
   - Toast (4.0.0)
 
 DEPENDENCIES:
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
@@ -113,6 +116,8 @@ SPEC REPOS:
     - Toast
 
 EXTERNAL SOURCES:
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -135,6 +140,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/ios"
 
 SPEC CHECKSUMS:
+  camera_avfoundation: 07c77549ea54ad95d8581be86617c094a46280d9
   FBAEMKit: c2b2895363b7e57192013d1dc49fdf498b28624c
   FBSDKCoreKit: 58139803d861e72c7661dc875611a759352a55ac
   FBSDKCoreKit_Basics: 1ffc68326a5ece051d85574f02a0adcf27c2a5f2

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 const String urlApi = "$urlServer/api";
 const String urlServer = "https://dev.grauffel-app.studioseizh.com";
 
@@ -16,3 +19,10 @@ const String profileImage = "assets/images/profile.png";
 //PAGING
 const int gunsPerPage = 10;
 const int ammunitionsPerPage = 10;
+
+String convertToBase64(File file) {
+  final bytes = File(file.path).readAsBytesSync();
+  String extension = File(file.path).path.split('/').last.split('.').last;
+  String img64 = "data:image/$extension;base64,${base64Encode(bytes)}";
+  return img64;
+}

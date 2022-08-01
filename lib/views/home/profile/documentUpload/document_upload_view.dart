@@ -1,15 +1,21 @@
-import 'package:egczacademy/views/home/profile/document_card_view.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
-import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/models/document_type_model.dart';
+import 'package:egczacademy/views/home/profile/document_card_view.dart';
+import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/ui_helper.dart';
 
 import '../../../shared/color.dart';
 import 'document_upload_viewModel.dart';
 
 class DocumentUploadView extends StatelessWidget {
-  const DocumentUploadView({Key? key}) : super(key: key);
+  final DocumentTypeModel documentTypeModel;
+  const DocumentUploadView({
+    Key? key,
+    required this.documentTypeModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +64,8 @@ class DocumentUploadView extends StatelessWidget {
                 child: DocumentCardView(
                   onTap: () {},
                   bgColor: kcWhite,
-                  cardColor: Colors.white60,
+                  cardColor: greyLight3,
+                  documentTypeModel: documentTypeModel,
                 ),
               ),
               verticalSpaceMedium(),
@@ -68,7 +75,7 @@ class DocumentUploadView extends StatelessWidget {
                 color: backgroundColor,
                 child: Center(
                   child: Text(
-                    "Actuellement".toUpperCase(),
+                    "Nouveau".toUpperCase(),
                     style: TextStyle(
                         color: kcWhite,
                         fontSize: 15.sp,
@@ -82,7 +89,22 @@ class DocumentUploadView extends StatelessWidget {
                 child: DocumentCardView(
                   onTap: () {},
                   bgColor: kcWhite,
+                  documentTypeModel: documentTypeModel,
                 ),
+              ),
+              MaterialButton(
+                textColor: backgroundColor,
+                onPressed: () {
+                  model.upLoadViaCamera(documentTypeModel);
+                },
+                child: const Text(
+                  "Upload as Photo",
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {},
+                textColor: backgroundColor,
+                child: const Text("Upload as PDF"),
               ),
               verticalSpaceMedium(),
               SizedBox(

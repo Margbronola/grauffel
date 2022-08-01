@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/app/global.dart';
-import 'package:egczacademy/views/home/profile/document_card_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import 'package:stacked/stacked.dart';
+import 'document_card_view.dart';
 import 'profile_viewModel.dart';
 
 class ProfileView extends StatelessWidget {
@@ -14,10 +14,13 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
+      onModelReady: (model) async => await model.init(),
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
             ? const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator.adaptive(
+                  backgroundColor: Colors.grey,
+                ),
               )
             : Container(
                 color: kcWhite,
@@ -253,10 +256,32 @@ class ProfileView extends StatelessWidget {
                                 color: docBackground,
                                 height: 10.h,
                               ),
-                              DocumentCardView(onTap: model.uploadDocument),
-                              DocumentCardView(onTap: model.uploadDocument),
-                              DocumentCardView(onTap: model.uploadDocument),
-                              DocumentCardView(onTap: model.uploadDocument),
+                              model.documentLoader == true
+                                  ? const Center(
+                                      child: CircularProgressIndicator.adaptive(
+                                        backgroundColor: Colors.grey,
+                                      ),
+                                    )
+                                  : Column(
+                                      children: [
+                                        ...model.documentTypes
+                                            .map((e) => DocumentCardView(
+                                                  expiration: model
+                                                      .expirationDate(e.id!),
+                                                  isValid: model.isNew(e.id!),
+                                                  cardColor:
+                                                      model.isProcessing(e.id!)
+                                                          ? greyLight3
+                                                          : kcWhite,
+                                                  onTap: () {
+                                                    model.uploadDocument(
+                                                        documentTypeModel: e);
+                                                  },
+                                                  documentTypeModel: e,
+                                                ))
+                                            .toList()
+                                      ],
+                                    ),
                               Container(
                                 color: docBackground,
                                 height: 10.h,

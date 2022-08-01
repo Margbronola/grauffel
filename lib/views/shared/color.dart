@@ -10,5 +10,6 @@ const Color errorColor = Colors.red;
 const Color greyLight = Color.fromARGB(105, 158, 158, 158);
 const Color greyLighter = Color.fromARGB(50, 158, 158, 158);
 const Color greyLighter2 = Color.fromARGB(25, 158, 158, 158);
+const Color greyLight3 = Color.fromARGB(210, 240, 239, 239);
 
 const Color docBackground = Color.fromARGB(93, 158, 158, 158);

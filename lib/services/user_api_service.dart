@@ -37,15 +37,10 @@ class UserAPIService {
   }
 
   Future<void> updateAvatar({XFile? image, required String token}) async {
-    final bytes = File(image!.path).readAsBytesSync();
-    String extension = File(image.path).path.split('/').last.split('.').last;
-    String img64 = "data:image/$extension;base64,${base64Encode(bytes)}";
-    print(img64);
-    print("extension $extension");
     try {
       final respo =
           await http.post(Uri.parse("$urlApi/client/update-avatar"), body: {
-        "avatar": img64
+        "avatar": convertToBase64(File(image!.path))
       }, headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
