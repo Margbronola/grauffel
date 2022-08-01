@@ -52,11 +52,11 @@ class FileUploadView extends StatelessWidget {
                     ],
                   ),
                   const Text(
-                    "You need to Upload your",
+                    "Vous devez télécharger votre",
                     style: TextStyle(color: kcWhite),
                   ),
                   Text(
-                    "Driving License",
+                    documentTypeModel.name!,
                     style: TextStyle(
                         fontSize: 35.sp,
                         fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class FileUploadView extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
-                              Text("Select the documents from Gallery",
+                              Text("Sélectionner les documents de la galerie.",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -148,7 +148,7 @@ class FileUploadView extends StatelessWidget {
                   color: buttonColor,
                   child: SizedBox(
                     height: 60.h,
-                    width: 180.w,
+                    width: 250.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       mainAxisSize: MainAxisSize.min,
@@ -157,7 +157,7 @@ class FileUploadView extends StatelessWidget {
                           Icons.camera_alt_outlined,
                           size: 30,
                         ),
-                        Text("Use Camera"),
+                        Text("Utiliser l'appareil photo"),
                       ],
                     ),
                   ),
