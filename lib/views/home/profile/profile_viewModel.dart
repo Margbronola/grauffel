@@ -116,9 +116,11 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   void uploadDocument({required DocumentTypeModel documentTypeModel}) {
-    _navigationService.navigateToView(const FileUploadView());
+    _navigationService.navigateToView(FileUploadView(
+      documentTypeModel: documentTypeModel,
+    ));
   }
-  //  _navigationService.navigateToView(DocumentUploadView(
+  //  _navigationService.navigateToView(DocumentUploadView(R
   //     documentTypeModel: documentTypeModel,
   //   ));
 
