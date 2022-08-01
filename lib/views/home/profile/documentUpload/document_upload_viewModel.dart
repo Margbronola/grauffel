@@ -11,6 +11,7 @@ class DocumentUploadViewModel extends BaseViewModel {
   upLoadViaCamera(DocumentTypeModel documentTypeModel) {
     _navigationService.navigateToView(CameraView(
       documentTypeModel: documentTypeModel,
+      onSelect: (value) {},
     ));
   }
 }

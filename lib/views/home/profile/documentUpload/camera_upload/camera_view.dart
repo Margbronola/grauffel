@@ -12,9 +12,11 @@ import 'camera_viewModel.dart';
 
 class CameraView extends StatelessWidget {
   final DocumentTypeModel documentTypeModel;
+  final ValueChanged<File?> onSelect;
   const CameraView({
     Key? key,
     required this.documentTypeModel,
+    required this.onSelect,
   }) : super(key: key);
 
   @override
@@ -56,9 +58,9 @@ class CameraView extends StatelessWidget {
                               actions: [
                                 OutlinedButton(
                                     onPressed: () async {
-                                      await model.uploadDoc(
+                                      onSelect(await model.selectDocument(
                                           fileFront: File(file.path),
-                                          documentType: documentTypeModel);
+                                          documentType: documentTypeModel));
                                     },
                                     child: const Icon(Icons.done)),
                                 OutlinedButton(

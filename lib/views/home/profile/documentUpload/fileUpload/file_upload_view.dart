@@ -70,7 +70,7 @@ class FileUploadView extends StatelessWidget {
               child: Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 25),
                 color: kcWhite,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -104,29 +104,35 @@ class FileUploadView extends StatelessWidget {
                       ],
                     ),
                     verticalSpaceLarge(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.image_search_outlined,
-                          color: backgroundColor,
-                          size: 50,
-                        ),
-                        horizontalSpaceSmall(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Select the documents from Gallery",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "PNG, JPEG or PDF",
-                              style: TextStyle(color: Colors.grey),
-                            )
-                          ],
-                        )
-                      ],
+                    MaterialButton(
+                      onPressed: () {
+                        model.uploadPDF(documentTypeModel);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.image_search_outlined,
+                            color: backgroundColor,
+                            size: 50,
+                          ),
+                          horizontalSpaceSmall(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text("Select the documents from Gallery",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  )),
+                              Text(
+                                "PNG, JPEG or PDF",
+                                style: TextStyle(color: Colors.grey),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

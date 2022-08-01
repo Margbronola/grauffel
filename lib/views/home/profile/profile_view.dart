@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import 'package:stacked/stacked.dart';
@@ -257,11 +258,37 @@ class ProfileView extends StatelessWidget {
                                 height: 10.h,
                               ),
                               model.documentLoader == true
-                                  ? const Center(
-                                      child: CircularProgressIndicator.adaptive(
-                                        backgroundColor: Colors.grey,
-                                      ),
-                                    )
+                                  ? SizedBox(
+                                      height: size(context).height / 2,
+                                      width: size(context).width,
+                                      child: ListView(
+                                        children: [
+                                          for (int i = 0; i <= 5; i++)
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                              width: size(context).width,
+                                              height: 90.h,
+                                              child: Shimmer.fromColors(
+                                                baseColor: greyLighter2,
+                                                highlightColor: Colors.white,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ))
                                   : Column(
                                       children: [
                                         ...model.documentTypes
