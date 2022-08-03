@@ -4,7 +4,6 @@ import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../../color.dart';
 import '../../customButton.dart';
 
@@ -47,16 +46,16 @@ class UploadDialog extends StatelessWidget {
                           completer!(DialogResponse(confirmed: false));
                         },
                         child: const Text(
-                          "Cancel",
+                          "Annuler",
                           style: TextStyle(color: Colors.grey),
                         ),
                       ),
                     ),
                     horizontalSpaceSmall(),
                     SizedBox(
-                      width: 150.w,
+                      width: 170.w,
                       child: CustomButton(
-                          title: "upload",
+                          title: "Télécharger",
                           onTap: () {
                             completer!(DialogResponse(confirmed: true));
                           }),
