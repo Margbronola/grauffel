@@ -11,18 +11,24 @@ _$_BookableModel _$$_BookableModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       name: json['name'] as String?,
       description: json['description'] as String?,
-      location: json['location'] as String?,
-      color_code: json['color_code'] as String?,
       capacity: json['capacity'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
+      free_duration: json['free_duration'] as int?,
+      course_duration: json['course_duration'] as int?,
+      competition_duration: json['competition_duration'] as int?,
       status: json['status'] as int?,
+      activitysalle: (json['activitysalle'] as List<dynamic>?)
+          ?.map((e) => ActivitySalleModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      status_name: json['status_name'] as String?,
-      activity_capacity: json['activity_capacity'] as int?,
+      salles: (json['salles'] as List<dynamic>?)
+          ?.map((e) => SalleModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_BookableModelToJson(_$_BookableModel instance) =>
@@ -30,12 +36,14 @@ Map<String, dynamic> _$$_BookableModelToJson(_$_BookableModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'location': instance.location,
-      'color_code': instance.color_code,
       'capacity': instance.capacity,
+      'price': instance.price,
+      'free_duration': instance.free_duration,
+      'course_duration': instance.course_duration,
+      'competition_duration': instance.competition_duration,
       'status': instance.status,
+      'activitysalle': instance.activitysalle,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
-      'status_name': instance.status_name,
-      'activity_capacity': instance.activity_capacity,
+      'salles': instance.salles,
     };

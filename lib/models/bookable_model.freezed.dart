@@ -23,14 +23,17 @@ mixin _$BookableModel {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get location => throw _privateConstructorUsedError;
-  String? get color_code => throw _privateConstructorUsedError;
   int? get capacity => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  int? get free_duration => throw _privateConstructorUsedError;
+  int? get course_duration => throw _privateConstructorUsedError;
+  int? get competition_duration => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
+  List<ActivitySalleModel>? get activitysalle =>
+      throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
-  String? get status_name => throw _privateConstructorUsedError;
-  int? get activity_capacity => throw _privateConstructorUsedError;
+  List<SalleModel>? get salles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,14 +50,16 @@ abstract class $BookableModelCopyWith<$Res> {
       {int? id,
       String? name,
       String? description,
-      String? location,
-      String? color_code,
       int? capacity,
+      double? price,
+      int? free_duration,
+      int? course_duration,
+      int? competition_duration,
       int? status,
+      List<ActivitySalleModel>? activitysalle,
       DateTime? created_at,
       DateTime? updated_at,
-      String? status_name,
-      int? activity_capacity});
+      List<SalleModel>? salles});
 }
 
 /// @nodoc
@@ -71,14 +76,16 @@ class _$BookableModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? location = freezed,
-    Object? color_code = freezed,
     Object? capacity = freezed,
+    Object? price = freezed,
+    Object? free_duration = freezed,
+    Object? course_duration = freezed,
+    Object? competition_duration = freezed,
     Object? status = freezed,
+    Object? activitysalle = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
-    Object? status_name = freezed,
-    Object? activity_capacity = freezed,
+    Object? salles = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -93,22 +100,34 @@ class _$BookableModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String?,
-      color_code: color_code == freezed
-          ? _value.color_code
-          : color_code // ignore: cast_nullable_to_non_nullable
-              as String?,
       capacity: capacity == freezed
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      free_duration: free_duration == freezed
+          ? _value.free_duration
+          : free_duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      course_duration: course_duration == freezed
+          ? _value.course_duration
+          : course_duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      competition_duration: competition_duration == freezed
+          ? _value.competition_duration
+          : competition_duration // ignore: cast_nullable_to_non_nullable
               as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
+      activitysalle: activitysalle == freezed
+          ? _value.activitysalle
+          : activitysalle // ignore: cast_nullable_to_non_nullable
+              as List<ActivitySalleModel>?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -117,14 +136,10 @@ class _$BookableModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
-          ? _value.status_name
-          : status_name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      activity_capacity: activity_capacity == freezed
-          ? _value.activity_capacity
-          : activity_capacity // ignore: cast_nullable_to_non_nullable
-              as int?,
+      salles: salles == freezed
+          ? _value.salles
+          : salles // ignore: cast_nullable_to_non_nullable
+              as List<SalleModel>?,
     ));
   }
 }
@@ -140,14 +155,16 @@ abstract class _$$_BookableModelCopyWith<$Res>
       {int? id,
       String? name,
       String? description,
-      String? location,
-      String? color_code,
       int? capacity,
+      double? price,
+      int? free_duration,
+      int? course_duration,
+      int? competition_duration,
       int? status,
+      List<ActivitySalleModel>? activitysalle,
       DateTime? created_at,
       DateTime? updated_at,
-      String? status_name,
-      int? activity_capacity});
+      List<SalleModel>? salles});
 }
 
 /// @nodoc
@@ -166,14 +183,16 @@ class __$$_BookableModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? location = freezed,
-    Object? color_code = freezed,
     Object? capacity = freezed,
+    Object? price = freezed,
+    Object? free_duration = freezed,
+    Object? course_duration = freezed,
+    Object? competition_duration = freezed,
     Object? status = freezed,
+    Object? activitysalle = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
-    Object? status_name = freezed,
-    Object? activity_capacity = freezed,
+    Object? salles = freezed,
   }) {
     return _then(_$_BookableModel(
       id: id == freezed
@@ -188,22 +207,34 @@ class __$$_BookableModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String?,
-      color_code: color_code == freezed
-          ? _value.color_code
-          : color_code // ignore: cast_nullable_to_non_nullable
-              as String?,
       capacity: capacity == freezed
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      free_duration: free_duration == freezed
+          ? _value.free_duration
+          : free_duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      course_duration: course_duration == freezed
+          ? _value.course_duration
+          : course_duration // ignore: cast_nullable_to_non_nullable
+              as int?,
+      competition_duration: competition_duration == freezed
+          ? _value.competition_duration
+          : competition_duration // ignore: cast_nullable_to_non_nullable
               as int?,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
+      activitysalle: activitysalle == freezed
+          ? _value._activitysalle
+          : activitysalle // ignore: cast_nullable_to_non_nullable
+              as List<ActivitySalleModel>?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -212,14 +243,10 @@ class __$$_BookableModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
-          ? _value.status_name
-          : status_name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      activity_capacity: activity_capacity == freezed
-          ? _value.activity_capacity
-          : activity_capacity // ignore: cast_nullable_to_non_nullable
-              as int?,
+      salles: salles == freezed
+          ? _value._salles
+          : salles // ignore: cast_nullable_to_non_nullable
+              as List<SalleModel>?,
     ));
   }
 }
@@ -231,14 +258,18 @@ class _$_BookableModel implements _BookableModel {
       {this.id,
       this.name,
       this.description,
-      this.location,
-      this.color_code,
       this.capacity,
+      this.price,
+      this.free_duration,
+      this.course_duration,
+      this.competition_duration,
       this.status,
+      final List<ActivitySalleModel>? activitysalle,
       this.created_at,
       this.updated_at,
-      this.status_name,
-      this.activity_capacity});
+      final List<SalleModel>? salles})
+      : _activitysalle = activitysalle,
+        _salles = salles;
 
   factory _$_BookableModel.fromJson(Map<String, dynamic> json) =>
       _$$_BookableModelFromJson(json);
@@ -250,25 +281,42 @@ class _$_BookableModel implements _BookableModel {
   @override
   final String? description;
   @override
-  final String? location;
-  @override
-  final String? color_code;
-  @override
   final int? capacity;
   @override
+  final double? price;
+  @override
+  final int? free_duration;
+  @override
+  final int? course_duration;
+  @override
+  final int? competition_duration;
+  @override
   final int? status;
+  final List<ActivitySalleModel>? _activitysalle;
+  @override
+  List<ActivitySalleModel>? get activitysalle {
+    final value = _activitysalle;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
+  final List<SalleModel>? _salles;
   @override
-  final String? status_name;
-  @override
-  final int? activity_capacity;
+  List<SalleModel>? get salles {
+    final value = _salles;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'BookableModel(id: $id, name: $name, description: $description, location: $location, color_code: $color_code, capacity: $capacity, status: $status, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, activity_capacity: $activity_capacity)';
+    return 'BookableModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, activitysalle: $activitysalle, created_at: $created_at, updated_at: $updated_at, salles: $salles)';
   }
 
   @override
@@ -280,19 +328,22 @@ class _$_BookableModel implements _BookableModel {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
-            const DeepCollectionEquality()
-                .equals(other.color_code, color_code) &&
             const DeepCollectionEquality().equals(other.capacity, capacity) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.free_duration, free_duration) &&
+            const DeepCollectionEquality()
+                .equals(other.course_duration, course_duration) &&
+            const DeepCollectionEquality()
+                .equals(other.competition_duration, competition_duration) &&
             const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.status_name, status_name) &&
-            const DeepCollectionEquality()
-                .equals(other.activity_capacity, activity_capacity));
+            const DeepCollectionEquality().equals(other._salles, _salles));
   }
 
   @JsonKey(ignore: true)
@@ -302,14 +353,16 @@ class _$_BookableModel implements _BookableModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(color_code),
       const DeepCollectionEquality().hash(capacity),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(free_duration),
+      const DeepCollectionEquality().hash(course_duration),
+      const DeepCollectionEquality().hash(competition_duration),
       const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(_activitysalle),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(status_name),
-      const DeepCollectionEquality().hash(activity_capacity));
+      const DeepCollectionEquality().hash(_salles));
 
   @JsonKey(ignore: true)
   @override
@@ -327,14 +380,16 @@ abstract class _BookableModel implements BookableModel {
       {final int? id,
       final String? name,
       final String? description,
-      final String? location,
-      final String? color_code,
       final int? capacity,
+      final double? price,
+      final int? free_duration,
+      final int? course_duration,
+      final int? competition_duration,
       final int? status,
+      final List<ActivitySalleModel>? activitysalle,
       final DateTime? created_at,
       final DateTime? updated_at,
-      final String? status_name,
-      final int? activity_capacity}) = _$_BookableModel;
+      final List<SalleModel>? salles}) = _$_BookableModel;
 
   factory _BookableModel.fromJson(Map<String, dynamic> json) =
       _$_BookableModel.fromJson;
@@ -346,21 +401,26 @@ abstract class _BookableModel implements BookableModel {
   @override
   String? get description => throw _privateConstructorUsedError;
   @override
-  String? get location => throw _privateConstructorUsedError;
-  @override
-  String? get color_code => throw _privateConstructorUsedError;
-  @override
   int? get capacity => throw _privateConstructorUsedError;
   @override
+  double? get price => throw _privateConstructorUsedError;
+  @override
+  int? get free_duration => throw _privateConstructorUsedError;
+  @override
+  int? get course_duration => throw _privateConstructorUsedError;
+  @override
+  int? get competition_duration => throw _privateConstructorUsedError;
+  @override
   int? get status => throw _privateConstructorUsedError;
+  @override
+  List<ActivitySalleModel>? get activitysalle =>
+      throw _privateConstructorUsedError;
   @override
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override
   DateTime? get updated_at => throw _privateConstructorUsedError;
   @override
-  String? get status_name => throw _privateConstructorUsedError;
-  @override
-  int? get activity_capacity => throw _privateConstructorUsedError;
+  List<SalleModel>? get salles => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_BookableModelCopyWith<_$_BookableModel> get copyWith =>

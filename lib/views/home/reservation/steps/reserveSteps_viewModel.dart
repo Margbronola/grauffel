@@ -26,7 +26,7 @@ class ReserveStepsViewModel extends BaseViewModel {
   void nextPage(int index) {
     nextIndex(index);
     pageController!.animateToPage(index,
-        duration: Duration(milliseconds: 500), curve: Curves.ease);
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
     notifyListeners();
   }
 

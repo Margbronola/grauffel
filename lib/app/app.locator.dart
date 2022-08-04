@@ -12,6 +12,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';
+import '../services/booking_service.dart';
 import '../services/brand_api_service.dart';
 import '../services/caliber_api_service.dart';
 import '../services/document_api_service.dart';
@@ -49,4 +50,5 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => CaliberAPIService());
   locator.registerLazySingleton(() => DocumentAPIService());
   locator.registerLazySingleton(() => DocumentService());
+  locator.registerLazySingleton(() => BookingService());
 }

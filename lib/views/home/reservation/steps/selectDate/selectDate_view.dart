@@ -19,6 +19,7 @@ class SelectDateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SelectDateViewModel>.reactive(
+      onModelReady: (model) async => model.init(),
       builder: (context, model, child) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -55,14 +56,25 @@ class SelectDateView extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 20.h),
+                padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20),
                 height: 200,
-                child: Column(
-                  children: [
-                    time(status2: 1),
-                    time(status1: 1, status2: 1),
-                    time(status3: 2),
-                  ],
+                child: GridView.count(
+                  // Create a grid with 2 columns. If you change the scrollDirection to
+                  // horizontal, this produces 2 rows.
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                  childAspectRatio: 2 / 0.5,
+                  children: List.generate(model.availableTimes.length, (index) {
+                    return time(
+                        onPress: () {
+                          model.selectTime(model.availableTimes[index]);
+                        },
+                        isSelected:
+                            model.isSelected(model.availableTimes[index]),
+                        time: model.availableTimes[index].time!,
+                        avaiable: model.availableTimes[index].avaiable!);
+                  }),
                 ),
               )
             ],
@@ -83,53 +95,26 @@ class SelectDateView extends StatelessWidget {
   }
 }
 
-// 0 = vacant
-// 1 = notvacant
-// 2 = selected
-Widget time({int status1 = 0, int status2 = 0, int status3 = 0}) => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 2,
-              padding: const EdgeInsets.all(10),
-              primary: status1 == 0
-                  ? kcWhite
-                  : status1 == 1
-                      ? Colors.white70
-                      : buttonColor, // <-- Button color
-              onPrimary:
-                  status1 == 2 ? kcWhite : buttonColor, // <-- Splash color
-            ),
-            onPressed: () {},
-            child: const Text("9h00 - 11h00")),
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 2,
-              padding: const EdgeInsets.all(10),
-              primary: status2 == 0
-                  ? kcWhite
-                  : status2 == 1
-                      ? Colors.white70
-                      : buttonColor, // <-- Button color
-              onPrimary:
-                  status2 == 2 ? kcWhite : buttonColor, // <-- Splash color
-            ),
-            onPressed: () {},
-            child: const Text("9h00 - 11h00")),
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 2,
-              padding: const EdgeInsets.all(10),
-              primary: status3 == 0
-                  ? kcWhite
-                  : status3 == 1
-                      ? Colors.white70
-                      : buttonColor, // <-- Button color
-              onPrimary:
-                  status3 == 2 ? kcWhite : buttonColor, // <-- Splash color
-            ),
-            onPressed: () {},
-            child: const Text("9h00 - 11h00"))
-      ],
+Widget time(
+        {int avaiable = 0,
+        required String time,
+        bool isSelected = false,
+        required Function() onPress}) =>
+    SizedBox(
+      height: 60,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 2,
+            padding: const EdgeInsets.all(10),
+            primary: avaiable > 0
+                ? isSelected
+                    ? buttonColor
+                    : kcWhite
+                : Colors.white70, // <-- Button color
+          ),
+          onPressed: avaiable > 0 ? onPress : null,
+          child: Text(
+            time,
+            style: TextStyle(color: isSelected ? kcWhite : backgroundColor),
+          )),
     );

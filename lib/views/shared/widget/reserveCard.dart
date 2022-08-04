@@ -23,31 +23,34 @@ class ReserveCard extends StatelessWidget {
           elevation: 2,
           color: kcWhite,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
                 "assets/images/${reserve.image}.png",
                 height: 131.h,
                 width: 110.w,
               ),
-              horizontalSpaceMedium(),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      reserve.title,
-                      style: ThemeData()
-                          .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: 18.sp, color: buttonColor),
-                    ),
-                    Text(
-                      reserve.description,
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
-                            fontSize: 12.sp,
-                          ),
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        reserve.title,
+                        style: ThemeData()
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(fontSize: 18.sp, color: buttonColor),
+                      ),
+                      Text(
+                        reserve.description,
+                        style: ThemeData().textTheme.bodyText1!.copyWith(
+                              fontSize: 12.sp,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               horizontalSpaceMedium(),
