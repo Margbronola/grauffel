@@ -19,6 +19,8 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
 
   final PageController pageController = PageController();
 
+  double flexSize = 400;
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController cpasswordController = TextEditingController();
@@ -200,13 +202,18 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   Future loginButton() async {
     print("login button");
     if (formKey.currentState!.validate()) {
+      flexSize = 400;
       setBusy(true);
       await login(
               isTest: false,
               email: emailController.text,
               password: passwordController.text)
           .whenComplete(() => setBusy(false));
+    } else {
+      flexSize = 500;
+      print("error");
     }
+    notifyListeners();
   }
 
   void registerButton(UserModel userModel) async {

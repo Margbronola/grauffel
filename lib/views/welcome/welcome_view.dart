@@ -48,8 +48,8 @@ class _WelcomeViewState extends State<WelcomeView>
                               ],
                             ),
                           ),
-                          Expanded(
-                            flex: 2,
+                          SizedBox(
+                            height: model.flexSize.h,
                             child: Padding(
                               padding: const EdgeInsets.all(20),
                               child: PageView(

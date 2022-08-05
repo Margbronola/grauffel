@@ -3,7 +3,7 @@ class Validator {
     Pattern pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
     RegExp regex = RegExp(pattern as String);
     if (!regex.hasMatch(value)) {
-      return '🚩 Please enter a valid email address.';
+      return "🚩 S'il vous plaît, mettez une adresse email valide.";
     } else {
       return null;
     }
@@ -11,7 +11,7 @@ class Validator {
 
   static String? validateDropDefaultData(value) {
     if (value == null) {
-      return 'Please select an item.';
+      return 'Veuillez sélectionner un élément.';
     } else {
       return null;
     }
@@ -21,7 +21,7 @@ class Validator {
     Pattern pattern = r'^.{6,}$';
     RegExp regex = RegExp(pattern as String);
     if (!regex.hasMatch(value)) {
-      return '🚩 Password must be at least 6 characters.';
+      return '🚩 Le mot de passe doit être au moins de 6 caractères.';
     } else {
       return null;
     }
@@ -31,9 +31,9 @@ class Validator {
     Pattern pattern = r'^.{6,}$';
     RegExp regex = RegExp(pattern as String);
     if (!regex.hasMatch(value)) {
-      return '🚩 Password must be at least 6 characters.';
+      return '🚩 Le mot de passe doit être au moins de 6 caractères.';
     } else if (passwordValue != value) {
-      return '🚩 Password did not match';
+      return "🚩 Le mot de passe ne correspond pas'";
     } else {
       return null;
     }
@@ -41,7 +41,7 @@ class Validator {
 
   static String? validateName(String value) {
     if (value.length < 3) {
-      return '🚩 Username is too short.';
+      return "🚩 Le nom d'utilisateur est trop court.";
     } else {
       return null;
     }
@@ -49,7 +49,7 @@ class Validator {
 
   static String? validateText(String value) {
     if (value.isEmpty) {
-      return '🚩 Text is too short.';
+      return '🚩 Le texte est trop court';
     } else {
       return null;
     }
@@ -57,7 +57,7 @@ class Validator {
 
   static String? validatePhoneNumber(String value) {
     if (value.length != 11) {
-      return '🚩 Phone number is not valid.';
+      return "🚩 Le numéro de téléphone n'est pas valide.";
     } else {
       return null;
     }

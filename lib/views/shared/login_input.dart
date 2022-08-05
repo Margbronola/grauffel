@@ -21,7 +21,7 @@ class LoginInput extends StatelessWidget {
             child: CircularProgressIndicator(),
           )
         : Container(
-            height: 380.h,
+            height: 200.h,
             width: 354.w,
             color: kcWhite,
             padding: EdgeInsets.all(30.w),
@@ -31,6 +31,7 @@ class LoginInput extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextFormField(
+                    cursorColor: Colors.black,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(color: backgroundColor, fontSize: 20.sp),
@@ -39,20 +40,38 @@ class LoginInput extends StatelessWidget {
                     validator: (value) {
                       return Validator.validateEmail(value ?? "");
                     },
-                    decoration: const InputDecoration(
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
+                    decoration: InputDecoration(
+                      label: RichText(
+                          text: const TextSpan(
+                              text: 'Adresse mail',
+                              style: TextStyle(color: Colors.grey),
+                              children: [
+                            TextSpan(
+                                text: ' *',
+                                style: TextStyle(
+                                  color: buttonColor,
+                                ))
+                          ])),
+                      fillColor: Colors.black,
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black),
                       ),
-                      hintStyle: TextStyle(color: backgroundColor),
-                      hintText: "Adresse mail*",
-                      enabledBorder: UnderlineInputBorder(
+                      // labelText: "Adresse mail",
+                      labelStyle: TextStyle(
+                          color: Colors.grey,
+                          letterSpacing: 1.3,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold),
+                      hintStyle: const TextStyle(color: backgroundColor),
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: backgroundColor),
                       ),
                       isDense: true,
                     ),
                   ),
-                  SizedBox(height: size(context).height * 0.03),
+                  verticalSpaceSmall(),
                   TextFormField(
+                    cursorColor: Colors.black,
                     onFieldSubmitted: (String text) async {
                       print("login");
                       await model.loginButton();
@@ -65,8 +84,24 @@ class LoginInput extends StatelessWidget {
                       return Validator.validatePassword(value ?? "");
                     },
                     decoration: InputDecoration(
+                      label: RichText(
+                          text: const TextSpan(
+                              text: 'Mot de passe',
+                              style: TextStyle(color: Colors.grey),
+                              children: [
+                            TextSpan(
+                                text: ' *',
+                                style: TextStyle(
+                                  color: buttonColor,
+                                ))
+                          ])),
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                          letterSpacing: 1.3,
+                          fontSize: 15.sp),
                       focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                       enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: backgroundColor),
@@ -83,11 +118,9 @@ class LoginInput extends StatelessWidget {
                           color: Colors.grey,
                         ),
                       ),
-                      hintText: "Mot de passe*",
                       isDense: true,
                     ),
                   ),
-                  verticalSpaceMedium(),
                   verticalSpaceLarge(),
                   CustomButton(title: "Se connecter", onTap: model.loginButton),
                 ],
