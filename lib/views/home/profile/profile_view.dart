@@ -118,6 +118,7 @@ class ProfileView extends StatelessWidget {
                           controller: model.scrollController,
                           children: [
                             buildTile(
+                                index: 0,
                                 controller: model.expanTileController1,
                                 child: Stack(
                                   children: [
@@ -154,6 +155,7 @@ class ProfileView extends StatelessWidget {
                                 title: "INFORMATION PERSONNELLES",
                                 model: model),
                             buildTile(
+                                index: 1,
                                 controller: model.expanTileController2,
                                 child: Stack(
                                   children: [
@@ -177,6 +179,7 @@ class ProfileView extends StatelessWidget {
                                 title: "Expériences".toUpperCase(),
                                 model: model),
                             buildTile(
+                                index: 2,
                                 controller: model.expanTileController3,
                                 child: SizedBox(
                                   width: double.infinity,
@@ -203,6 +206,7 @@ class ProfileView extends StatelessWidget {
                                 title: "EQUIPEMENTS",
                                 model: model),
                             buildTile(
+                                index: 3,
                                 controller: model.expanTileController4,
                                 child: model.documentLoader == true
                                     ? SizedBox(
@@ -274,7 +278,8 @@ class ProfileView extends StatelessWidget {
       {required ExpandedTileController controller,
       required Widget child,
       required String title,
-      required ProfileViewModel model}) {
+      required ProfileViewModel model,
+      required int index}) {
     return Center(
       child: Container(
         decoration: const BoxDecoration(
@@ -283,10 +288,12 @@ class ProfileView extends StatelessWidget {
           ),
         ),
         child: ExpandedTile(
-          onTap: model.ontapInfo,
+          onTap: () {
+            model.ontapInfo(index);
+          },
           trailing: null,
           leading: Transform.rotate(
-            angle: model.angle, //set the angel
+            angle: model.angles[index], //set the angel
             child: Container(
               child: const Icon(
                 Icons.chevron_right_outlined,

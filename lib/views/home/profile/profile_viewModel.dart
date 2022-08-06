@@ -39,12 +39,18 @@ class ProfileViewModel extends ReactiveViewModel {
   String get userValidate => _userService.user!.verification! > 1
       ? "Compte non validé"
       : "Not Validated";
-  double angle = 90 * pi / 180;
-  void ontapInfo() {
-    if (angle == 90 * pi / 180) {
-      angle = 0;
+  double angle1 = 0;
+  double angle2 = 0;
+  double angle3 = 0;
+  double angle4 = 0;
+
+  List<double> angles = [];
+
+  void ontapInfo(int index) {
+    if (angles[index] == 90 * pi / 180) {
+      angles[index] = 0;
     } else {
-      angle = 90 * pi / 180;
+      angles[index] = 90 * pi / 180;
     }
     notifyListeners();
   }
@@ -110,6 +116,7 @@ class ProfileViewModel extends ReactiveViewModel {
     expanTileController2 = ExpandedTileController(isExpanded: false);
     expanTileController3 = ExpandedTileController(isExpanded: false);
     expanTileController4 = ExpandedTileController(isExpanded: false);
+    angles = [angle1, angle2, angle3, angle4];
     notifyListeners();
     await _documentService.fetch(
         userService: _userService, documentAPIService: _documentAPIService);
