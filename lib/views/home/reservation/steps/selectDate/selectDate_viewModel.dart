@@ -21,8 +21,23 @@ class SelectDateViewModel extends BaseViewModel {
   List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
   List<TimeModel> selectedTime = [];
 
+  void forwardMonth() {
+    var newDate = DateTime(selectedDate.year, selectedDate.month + 1, 1);
+    controller.animateToDate(newDate);
+
+    notifyListeners();
+  }
+
+  void prevMonth() {
+    var newDate = DateTime(selectedDate.year, selectedDate.month - 1, 1);
+    controller.animateToDate(newDate);
+    notifyListeners();
+  }
+
   Future init() async {
+    setBusy(true);
     await fetchBookableActivity(DateTime.now());
+    setBusy(false);
   }
 
   Future setDate(DateTime dateTime) async {

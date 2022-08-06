@@ -18,30 +18,40 @@ class ReserveCard extends StatelessWidget {
     return GestureDetector(
       onTap: ontap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: Card(
-          elevation: 2,
+          elevation: 3,
           color: kcWhite,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                "assets/images/${reserve.image}.png",
+              Container(
                 height: 131.h,
                 width: 110.w,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                        image: AssetImage(
+                          "assets/images/${reserve.image}.png",
+                        ),
+                        fit: BoxFit.cover)),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         reserve.title,
-                        style: ThemeData()
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(fontSize: 18.sp, color: buttonColor),
+                        style: ThemeData().textTheme.bodyText1!.copyWith(
+                            fontSize: 18.sp,
+                            color: buttonColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 5.h,
                       ),
                       Text(
                         reserve.description,

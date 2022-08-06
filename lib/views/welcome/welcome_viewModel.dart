@@ -205,10 +205,10 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       flexSize = 400;
       setBusy(true);
       await login(
-              isTest: false,
-              email: emailController.text,
-              password: passwordController.text)
-          .whenComplete(() => setBusy(false));
+          isTest: false,
+          email: emailController.text,
+          password: passwordController.text);
+      // setBusy(false);
     } else {
       flexSize = 500;
       print("error");

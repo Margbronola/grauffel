@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
         appBar: model.selectedIndex != 0
             ? null
             : AppBar(
+                toolbarHeight: 90,
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 leadingWidth: 150.w,
@@ -48,10 +49,14 @@ class HomeView extends StatelessWidget {
         body: PageView(
           controller: model.pageController,
           onPageChanged: model.changePage,
-          children: const <Widget>[
-            ReservationView(),
-            ReservationList(),
-            ProfileView(),
+          children: <Widget>[
+            ReservationView(
+              gotoProfile: () {
+                model.onTap(2);
+              },
+            ),
+            const ReservationList(),
+            const ProfileView(),
           ],
         ),
         bottomNavigationBar: BottomBarInspiredInside(

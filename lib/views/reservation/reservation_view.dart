@@ -1,15 +1,21 @@
-import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/views/shared/ui_helper.dart';
+
 import '../shared/color.dart';
 import '../shared/widget/app_delegate.dart';
 import 'reservation_card.dart';
 import 'reservation_viewModel.dart';
 
 class ReservationView extends StatelessWidget {
-  const ReservationView({Key? key}) : super(key: key);
+  final Function() gotoProfile;
+  const ReservationView({
+    Key? key,
+    required this.gotoProfile,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,6 @@ class ReservationView extends StatelessWidget {
         backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,
         body: SafeArea(
-          top: false,
           child: DefaultTabController(
             length: 2,
             child: AbsorbPointer(
@@ -30,10 +35,9 @@ class ReservationView extends StatelessWidget {
                     return [
                       SliverAppBar(
                         automaticallyImplyLeading: false,
-                        expandedHeight: 100.h,
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
-                              height: 100.h,
+                              height: 60.h,
                               width: size(context).width,
                               color: backgroundColor,
                               child: Row(
@@ -69,43 +73,46 @@ class ReservationView extends StatelessWidget {
                               height: !model.showHelp ? 0 : 67.h,
                               width: size(context).width,
                               color: buttonColor,
-                              child: Stack(
-                                children: [
-                                  SizedBox(
-                                      height: 67.h,
-                                      width: 56.w,
-                                      child: Image.asset(
-                                          "assets/images/help.png")),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 38.w),
-                                      child: Text(
-                                        "Des documents sont nécessaires pour accéder au stand de tir",
-                                        style: TextStyle(
-                                            color: kcWhite, fontSize: 15.sp),
+                              child: GestureDetector(
+                                onTap: gotoProfile,
+                                child: Stack(
+                                  children: [
+                                    SizedBox(
+                                        height: 67.h,
+                                        width: 56.w,
+                                        child: Image.asset(
+                                            "assets/images/help.png")),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 38.w),
+                                        child: Text(
+                                          "Des documents sont nécessaires pour accéder au stand de tir",
+                                          style: TextStyle(
+                                              color: kcWhite, fontSize: 15.sp),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                      top: 5,
-                                      right: 5,
-                                      child: GestureDetector(
-                                        onTap: model.closeHelp,
-                                        child: Container(
-                                            width: 20.w,
-                                            height: 20.h,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: kcWhite, width: 1),
-                                                shape: BoxShape.circle),
-                                            child: Icon(
-                                              Icons.close,
-                                              size: 15.w,
-                                            )),
-                                      ))
-                                ],
+                                    // Positioned(
+                                    //     top: 5,
+                                    //     right: 5,
+                                    //     child: GestureDetector(
+                                    //       onTap: model.closeHelp,
+                                    //       child: Container(
+                                    //           width: 20.w,
+                                    //           height: 20.h,
+                                    //           decoration: BoxDecoration(
+                                    //               border: Border.all(
+                                    //                   color: kcWhite, width: 1),
+                                    //               shape: BoxShape.circle),
+                                    //           child: Icon(
+                                    //             Icons.close,
+                                    //             size: 15.w,
+                                    //           )),
+                                    //     ))
+                                  ],
+                                ),
                               )),
                         ),
                       ),

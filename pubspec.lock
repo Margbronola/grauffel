@@ -134,13 +134,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  calendar_timeline:
-    dependency: "direct main"
-    description:
-      name: calendar_timeline
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   camera:
     dependency: transitive
     description:
@@ -256,9 +249,9 @@ packages:
   date_picker_timeline:
     dependency: "direct main"
     description:
-      name: date_picker_timeline
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: calendar_timeline
+      relative: true
+    source: path
     version: "1.2.3"
   fake_async:
     dependency: transitive
@@ -840,13 +833,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
-  scrollable_positioned_list:
-    dependency: transitive
-    description:
-      name: scrollable_positioned_list
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.2"
   searchfield:
     dependency: "direct main"
     description:

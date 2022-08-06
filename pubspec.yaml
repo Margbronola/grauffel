@@ -30,9 +30,11 @@ dependencies:
   awesome_bottom_bar: ^1.2.1
   bottom_bar: ^2.0.1
   cached_network_image: ^3.2.1
-  calendar_timeline: ^1.0.5
+
   cupertino_icons: ^1.0.2
-  date_picker_timeline: ^1.2.3
+  # date_picker_timeline: ^1.2.3
+  date_picker_timeline:
+    path: ./calendar_timeline/
   file_picker: ^5.0.0
   firebase_auth: ^3.3.20
   firebase_core: ^1.18.0

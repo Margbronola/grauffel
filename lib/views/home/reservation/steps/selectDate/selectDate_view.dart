@@ -1,4 +1,4 @@
-import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,59 +22,89 @@ class SelectDateView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               verticalSpaceSmall(),
-              Text(
-                "Choisissez votre créneau",
-                style: ThemeData()
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Text(
+                  "Choisissez votre créneau",
+                  style: ThemeData()
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
               verticalSpaceMedium(),
               Container(
-                color: greyLighter2,
-                padding: EdgeInsets.symmetric(vertical: 20.h),
-                child: CalendarTimeline(
-                  showYears: true,
-                  initialDate: model.selectedDate,
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
-                  onDateSelected: model.setDate,
-                  leftMargin: 20,
-                  monthColor: backgroundColor,
-                  dayColor: backgroundColor,
-                  dayNameColor: kcWhite,
-                  activeDayColor: kcWhite,
-                  activeBackgroundDayColor: buttonColor,
-                  dotsColor: kcWhite,
-                  selectableDayPredicate: (date) => date.day != 23,
-                  locale: 'fr',
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                height: 60.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: model.prevMonth,
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(model.selectedDate.toString()),
+                    IconButton(
+                      onPressed: model.forwardMonth,
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20),
-                height: 200,
-                child: GridView.count(
-                  // Create a grid with 2 columns. If you change the scrollDirection to
-                  // horizontal, this produces 2 rows.
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 2 / 0.5,
-                  children: List.generate(model.availableTimes.length, (index) {
-                    return time(
-                        onPress: () {
-                          model.selectTime(model.availableTimes[index]);
-                        },
-                        isSelected:
-                            model.isSelected(model.availableTimes[index]),
-                        time: model.availableTimes[index].time!,
-                        avaiable: model.availableTimes[index].avaiable!);
-                  }),
+                color: greyLighter2,
+                padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                child: SizedBox(
+                  height: 90.h,
+                  child: DatePicker(
+                    DateTime.now(),
+                    initialSelectedDate: DateTime.now(),
+                    selectionColor: buttonColor,
+                    selectedTextColor: Colors.white,
+                    onDateChange: model.setDate,
+                    locale: 'fr_FR',
+                    controller: model.controller,
+                  ),
                 ),
-              )
+              ),
+              model.isBusy
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20.h, horizontal: 20),
+                      height: 200,
+                      child: GridView.count(
+                        // Create a grid with 2 columns. If you change the scrollDirection to
+                        // horizontal, this produces 2 rows.
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
+                        childAspectRatio: 2 / 0.5,
+                        children:
+                            List.generate(model.availableTimes.length, (index) {
+                          return time(
+                              onPress: () {
+                                model.selectTime(model.availableTimes[index]);
+                              },
+                              isSelected:
+                                  model.isSelected(model.availableTimes[index]),
+                              time: model.availableTimes[index].time!,
+                              avaiable: model.availableTimes[index].avaiable!);
+                        }),
+                      ),
+                    )
             ],
           ),
           Row(
