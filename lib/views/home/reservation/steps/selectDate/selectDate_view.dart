@@ -38,6 +38,7 @@ class SelectDateView extends StatelessWidget {
               ),
               verticalSpaceMedium(),
               Container(
+                color: greyLighter2,
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 height: 60.h,
                 child: Row(
@@ -50,7 +51,10 @@ class SelectDateView extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    Text(model.selectedDate.toString()),
+                    Text(
+                      model.headerDate(),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     IconButton(
                       onPressed: model.forwardMonth,
                       icon: const Icon(
@@ -67,7 +71,7 @@ class SelectDateView extends StatelessWidget {
                 child: SizedBox(
                   height: 90.h,
                   child: DatePicker(
-                    DateTime.now(),
+                    model.currentDate,
                     model.scrollController,
                     initialSelectedDate: DateTime.now(),
                     selectionColor: buttonColor,
@@ -75,17 +79,22 @@ class SelectDateView extends StatelessWidget {
                     onDateChange: model.setDate,
                     locale: 'fr_FR',
                     controller: model.controller,
+                    daysCount: model.numDaysTotal,
+                    inactiveDates: model.inactive,
                   ),
                 ),
               ),
               model.isBusy
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? SizedBox(
+                      height: 300.h,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     )
                   : Container(
                       padding:
                           EdgeInsets.symmetric(vertical: 20.h, horizontal: 20),
-                      height: 200,
+                      height: 300.h,
                       child: GridView.count(
                         // Create a grid with 2 columns. If you change the scrollDirection to
                         // horizontal, this produces 2 rows.
@@ -108,6 +117,22 @@ class SelectDateView extends StatelessWidget {
                     )
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${model.availableTimes.length} places ",
+                style: const TextStyle(
+                    color: buttonColor, fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "restantes",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          verticalSpaceMedium(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

@@ -4,6 +4,7 @@ import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:quiver/time.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
 import '../../../../../app/app.locator.dart';
@@ -15,7 +16,7 @@ class SelectDateViewModel extends BaseViewModel {
   final DatePickerController controller = DatePickerController();
   final ScrollController scrollController = ScrollController();
 
-  DateTime _selectedValue = DateTime.now();
+  DateTime _selectedValue = DateTime.now().toUtc();
   final DateFormat formatter = DateFormat('yMMM');
   DateTime get selectedDate => _selectedValue;
   String get monthYear => formatter.format(_selectedValue);
@@ -23,48 +24,66 @@ class SelectDateViewModel extends BaseViewModel {
   List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
   List<TimeModel> selectedTime = [];
 
-  DateTime currentDate = DateTime.now();
+  List<DateTime> inactive = [];
+
+  DateTime currentDate = DateTime.now().toUtc();
+
+  int numDaysTotal = 0;
+
+  String headerDate() {
+    final DateFormat formatter = DateFormat('MMMM');
+    final String formatted =
+        "${formatter.format(currentDate)} ${currentDate.year}";
+    return formatted;
+  }
 
   void forwardMonth() {
     currentDate = DateTime(currentDate.year, currentDate.month + 1, 1);
-    controller.animateToDate(currentDate);
-    print(currentDate);
+    _selectedValue = currentDate;
+    numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
+    scrollController.animateTo(0,
+        curve: Curves.easeIn, duration: const Duration(milliseconds: 300));
+    print(_selectedValue);
     notifyListeners();
   }
 
   void prevMonth() {
-    currentDate = DateTime(currentDate.year, currentDate.month - 1, 1);
-    controller.animateToDate(currentDate);
-    print(currentDate);
+    if (currentDate.isAfter(DateTime.now())) {
+      currentDate = DateTime(currentDate.year, currentDate.month - 1, 1);
+      _selectedValue = currentDate;
+
+      scrollController.animateTo(0,
+          curve: Curves.easeIn, duration: const Duration(milliseconds: 300));
+
+      numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
+
+      print(numDaysTotal);
+    }
     notifyListeners();
   }
 
   Future init(BuildContext context) async {
+    numDaysTotal = DateTime(DateTime.now().year, DateTime.now().month, 0).day -
+        currentDate
+            .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
+            .inDays;
+
+    for (int x = 1; x < DateTime.now().day; x++) {
+      inactive.add(DateTime(DateTime.now().year, DateTime.now().month, x));
+    }
     setBusy(true);
     await fetchBookableActivity(DateTime.now());
     setBusy(false);
-
-    scrollController.addListener(() {
-      print(scrollController.offset);
-
-      final nextMOnth =
-          DateTime(currentDate.year, currentDate.month + 1, currentDate.day);
-
-      int offset = currentDate.difference(nextMOnth).inDays;
-      var nextMonthoffset = ((offset * 60) * -1);
-      if (scrollController.offset > nextMonthoffset) {
-        print("positive");
-      }
-
-      print(nextMonthoffset);
-      print("----");
-      print(scrollController.offset);
-    });
   }
 
   Future setDate(DateTime dateTime) async {
-    _selectedValue = dateTime;
-    await await fetchBookableActivity(dateTime);
+    if (dateTime.isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
+      print("yes");
+    } else {
+      _selectedValue = dateTime;
+      await await fetchBookableActivity(dateTime);
+    }
+
     notifyListeners();
   }
 
