@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../shared/color.dart';
@@ -116,103 +117,44 @@ class ProfileView extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           controller: model.scrollController,
                           children: [
-                            buildTile(children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        left: 50.w, right: 50.w, bottom: 10.h),
-                                    child: Column(
-                                      children: [
-                                        infoContainer(
-                                            "Adresse mail", model.user!.email!),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        infoContainer(
-                                            "Numéro de téléphone",
-                                            model.user!.SIA_number ??
-                                                "Not Specified"),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        infoContainer("Adresse postale",
-                                            model.user!.address!),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Positioned(
-                                      top: -5,
-                                      right: 0.w,
-                                      child: ElevatedButton(
-                                        onPressed: model.editInformation,
-                                        style: ElevatedButton.styleFrom(
-                                          elevation: 0.2,
-                                          shape: const CircleBorder(),
-                                          padding: const EdgeInsets.all(5),
-                                          primary:
-                                              Colors.white, // <-- Button color
-                                          onPrimary:
-                                              buttonColor, // <-- Splash color
-                                        ),
-                                        child: Center(
-                                            child: Icon(
-                                          Icons.edit,
-                                          color: backgroundColor,
-                                          size: 22.w,
-                                        )),
-                                      ))
-                                ],
-                              ),
-                            ], title: "INFORMATION PERSONNELLES", model: model),
                             buildTile(
-                                children: [
-                                  Stack(
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.only(
-                                            left: 50.w,
-                                            right: 50.w,
-                                            bottom: 10.h),
-                                        child: Column(
-                                          children: const [
-                                            Text(
-                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. "),
-                                          ],
-                                        ),
+                                controller: model.expanTileController1,
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                          left: 50.w,
+                                          right: 50.w,
+                                          bottom: 10.h),
+                                      child: Column(
+                                        children: [
+                                          infoContainer("Adresse mail",
+                                              model.user!.email!),
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                          infoContainer(
+                                              "Numéro de téléphone",
+                                              model.user!.SIA_number ??
+                                                  "Not Specified"),
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                          infoContainer("Adresse postale",
+                                              model.user!.address!),
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                        ],
                                       ),
-                                      Positioned(
-                                          top: -5,
-                                          right: 0.w,
-                                          child: ElevatedButton(
-                                            onPressed: model.editExperience,
-                                            style: ElevatedButton.styleFrom(
-                                              elevation: 0.2,
-                                              shape: const CircleBorder(),
-                                              padding: const EdgeInsets.all(5),
-                                              primary: Colors
-                                                  .white, // <-- Button color
-                                              onPrimary:
-                                                  buttonColor, // <-- Splash color
-                                            ),
-                                            child: Center(
-                                                child: Icon(
-                                              Icons.edit,
-                                              color: backgroundColor,
-                                              size: 22.w,
-                                            )),
-                                          ))
-                                    ],
-                                  )
-                                ],
-                                title: "Expériences".toUpperCase(),
+                                    ),
+                                    editButton(model.editInformation)
+                                  ],
+                                ),
+                                title: "INFORMATION PERSONNELLES",
                                 model: model),
-                            buildTile(children: [
-                              SizedBox(
-                                width: double.infinity,
+                            buildTile(
+                                controller: model.expanTileController2,
                                 child: Stack(
                                   children: [
                                     Container(
@@ -223,97 +165,99 @@ class ProfileView extends StatelessWidget {
                                       child: Column(
                                         children: const [
                                           Text(
-                                              "TANFOGLIO STOCK III\n GLOCK 17 GEN 5\n MUNITIONS CCI MINI-MAG\n CALIBRE\n Lunette de protectio\n Oreillette anti-bruit \n Cibles et patches"),
+                                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. "),
                                         ],
                                       ),
                                     ),
-                                    Positioned(
-                                        top: -5,
-                                        right: 0.w,
-                                        child: ElevatedButton(
-                                          onPressed: model.editExperience,
-                                          style: ElevatedButton.styleFrom(
-                                            elevation: 0.2,
-                                            shape: const CircleBorder(),
-                                            padding: const EdgeInsets.all(5),
-                                            primary: Colors
-                                                .white, // <-- Button color
-                                            onPrimary:
-                                                buttonColor, // <-- Splash color
-                                          ),
-                                          child: Center(
-                                              child: Icon(
-                                            Icons.edit,
-                                            color: backgroundColor,
-                                            size: 22.w,
-                                          )),
-                                        ))
+                                    editButton(
+                                      model.editExperience,
+                                    )
                                   ],
                                 ),
-                              )
-                            ], title: "EQUIPEMENTS", model: model),
-                            buildTile(children: [
-                              Container(
-                                color: docBackground,
-                                height: 10.h,
-                              ),
-                              model.documentLoader == true
-                                  ? SizedBox(
-                                      height: size(context).height / 2,
-                                      width: size(context).width,
-                                      child: ListView(
-                                        children: [
-                                          for (int i = 0; i <= 5; i++)
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 20,
-                                                      vertical: 10),
-                                              width: size(context).width,
-                                              height: 90.h,
-                                              child: Shimmer.fromColors(
-                                                baseColor: greyLighter2,
-                                                highlightColor: Colors.white,
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
+                                title: "Expériences".toUpperCase(),
+                                model: model),
+                            buildTile(
+                                controller: model.expanTileController3,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            left: 50.w,
+                                            right: 50.w,
+                                            bottom: 10.h),
+                                        child: Column(
+                                          children: const [
+                                            Text(
+                                                "TANFOGLIO STOCK III\n GLOCK 17 GEN 5\n MUNITIONS CCI MINI-MAG\n CALIBRE\n Lunette de protectio\n Oreillette anti-bruit \n Cibles et patches"),
+                                          ],
+                                        ),
+                                      ),
+                                      editButton(
+                                        model.editExperience,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                title: "EQUIPEMENTS",
+                                model: model),
+                            buildTile(
+                                controller: model.expanTileController4,
+                                child: model.documentLoader == true
+                                    ? SizedBox(
+                                        height: size(context).height / 2,
+                                        width: size(context).width,
+                                        child: ListView(
+                                          children: [
+                                            for (int i = 0; i <= 5; i++)
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 20,
+                                                        vertical: 10),
+                                                width: size(context).width,
+                                                height: 90.h,
+                                                child: Shimmer.fromColors(
+                                                  baseColor: greyLighter2,
+                                                  highlightColor: Colors.white,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
+                                          ],
+                                        ))
+                                    : Column(
+                                        children: [
+                                          ...model.documentTypes
+                                              .map((e) => DocumentCardView(
+                                                    expiration: model
+                                                        .expirationDate(e.id!),
+                                                    isValid: model.isNew(e.id!),
+                                                    cardColor: model
+                                                            .isProcessing(e.id!)
+                                                        ? greyLight3
+                                                        : kcWhite,
+                                                    onTap: () {
+                                                      model.uploadDocument(
+                                                          documentTypeModel: e);
+                                                    },
+                                                    documentTypeModel: e,
+                                                  ))
+                                              .toList()
                                         ],
-                                      ))
-                                  : Column(
-                                      children: [
-                                        ...model.documentTypes
-                                            .map((e) => DocumentCardView(
-                                                  expiration: model
-                                                      .expirationDate(e.id!),
-                                                  isValid: model.isNew(e.id!),
-                                                  cardColor:
-                                                      model.isProcessing(e.id!)
-                                                          ? greyLight3
-                                                          : kcWhite,
-                                                  onTap: () {
-                                                    model.uploadDocument(
-                                                        documentTypeModel: e);
-                                                  },
-                                                  documentTypeModel: e,
-                                                ))
-                                            .toList()
-                                      ],
-                                    ),
-                              Container(
-                                color: docBackground,
-                                height: 10.h,
-                              ),
-                            ], title: "DOCUMENTS", model: model)
+                                      ),
+                                title: "DOCUMENTS",
+                                model: model)
                           ],
                         ),
                       ),
@@ -327,34 +271,45 @@ class ProfileView extends StatelessWidget {
   }
 
   Widget buildTile(
-      {required List<Widget> children,
+      {required ExpandedTileController controller,
+      required Widget child,
       required String title,
       required ProfileViewModel model}) {
-    return Container(
-      decoration: BoxDecoration(
+    return Center(
+      child: Container(
+        decoration: const BoxDecoration(
           border: Border(
-              bottom: BorderSide(
-                  style: BorderStyle.solid,
-                  color: Colors.grey.withOpacity(0.5)))),
-      child: ExpansionTile(
-          // tilePadding: const EdgeInsets.all(0),
-          onExpansionChanged: (x) {
-            if (x) {
-              //scroll down for lower view
-              if (title == "DOCUMENTS" || title == "EQUIPEMENTS") {
-                model.scrollDown();
-              }
-            }
-          },
-          collapsedTextColor: Colors.black,
-          collapsedIconColor: Colors.black,
-          iconColor: buttonColor,
-          textColor: buttonColor,
-          title: Text(
-            title,
-            style: TextStyle(fontSize: 17.sp),
+            bottom: BorderSide(width: 1.0, color: greyLight),
           ),
-          children: children),
+        ),
+        child: ExpandedTile(
+          onTap: model.ontapInfo,
+          trailing: null,
+          leading: Transform.rotate(
+            angle: model.angle, //set the angel
+            child: Container(
+              child: const Icon(
+                Icons.chevron_right_outlined,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          theme: const ExpandedTileThemeData(
+            headerColor: Colors.white,
+            headerPadding: EdgeInsets.all(15.0),
+            headerSplashColor: buttonColor,
+            contentBackgroundColor: greyLight3,
+            contentPadding: EdgeInsets.all(24.0),
+            contentRadius: 0,
+          ),
+          controller: controller,
+          title: Text(title),
+          content: child,
+          onLongTap: () {
+            debugPrint("long tapped!!");
+          },
+        ),
+      ),
     );
   }
 }
@@ -373,3 +328,22 @@ Widget infoContainer(String title, String value) => SizedBox(
         ],
       ),
     );
+Widget editButton(Function() ontap) => Positioned(
+    top: -5,
+    right: -15.w,
+    child: ElevatedButton(
+      onPressed: ontap,
+      style: ElevatedButton.styleFrom(
+        elevation: 0.2,
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.all(5),
+        primary: Colors.white, // <-- Button color
+        onPrimary: buttonColor, // <-- Splash color
+      ),
+      child: Center(
+          child: Icon(
+        Icons.edit,
+        color: backgroundColor,
+        size: 22.w,
+      )),
+    ));

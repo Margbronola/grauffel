@@ -63,7 +63,6 @@ class DocumentUploadView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: DocumentCardView(
                   onTap: () {},
-                  bgColor: kcWhite,
                   cardColor: greyLight3,
                   documentTypeModel: documentTypeModel,
                 ),
@@ -88,7 +87,6 @@ class DocumentUploadView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: DocumentCardView(
                   onTap: () {},
-                  bgColor: kcWhite,
                   documentTypeModel: documentTypeModel,
                 ),
               ),

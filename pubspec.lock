@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.4.1"
+  animate_icons:
+    dependency: "direct main"
+    description:
+      name: animate_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   archive:
     dependency: transitive
     description:
@@ -356,6 +363,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
+  flutter_expanded_tile:
+    dependency: "direct main"
+    description:
+      name: flutter_expanded_tile
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.6"
   flutter_facebook_auth:
     dependency: "direct main"
     description:

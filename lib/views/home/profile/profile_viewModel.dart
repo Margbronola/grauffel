@@ -7,11 +7,14 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/documentUpload/fileUpload/file_upload_view.dart';
 import 'package:egczacademy/views/home/profile/experience/experience_edit_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../services/document_service.dart';
 import 'edit/information_edit_view.dart';
+import 'package:animate_icons/animate_icons.dart';
+import 'dart:math';
 
 class ProfileViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
@@ -22,6 +25,12 @@ class ProfileViewModel extends ReactiveViewModel {
   final ScrollController scrollController = ScrollController();
   UserModel? get user => _userService.user;
 
+  late ExpandedTileController expanTileController1;
+  late ExpandedTileController expanTileController2;
+  late ExpandedTileController expanTileController3;
+  late ExpandedTileController expanTileController4;
+  AnimateIconController animatedIconController = AnimateIconController();
+
   List<DocumentTypeModel> get documentTypes =>
       _documentService.documenTypes ?? [];
   List<DocumentModel> get documents => _documentService.documents ?? [];
@@ -30,6 +39,15 @@ class ProfileViewModel extends ReactiveViewModel {
   String get userValidate => _userService.user!.verification! > 1
       ? "Compte non validé"
       : "Not Validated";
+  double angle = 90 * pi / 180;
+  void ontapInfo() {
+    if (angle == 90 * pi / 180) {
+      angle = 0;
+    } else {
+      angle = 90 * pi / 180;
+    }
+    notifyListeners();
+  }
 
   bool isProcessing(int documentTypeId) {
     return documents.any((element) {
@@ -88,11 +106,16 @@ class ProfileViewModel extends ReactiveViewModel {
 
   Future init() async {
     documentLoader = true;
+    expanTileController1 = ExpandedTileController(isExpanded: false);
+    expanTileController2 = ExpandedTileController(isExpanded: false);
+    expanTileController3 = ExpandedTileController(isExpanded: false);
+    expanTileController4 = ExpandedTileController(isExpanded: false);
     notifyListeners();
     await _documentService.fetch(
         userService: _userService, documentAPIService: _documentAPIService);
     print(documents);
     documentLoader = false;
+
     notifyListeners();
   }
 

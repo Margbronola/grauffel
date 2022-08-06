@@ -3,6 +3,7 @@ import 'package:egczacademy/models/time_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
 import '../../../../../app/app.locator.dart';
@@ -12,6 +13,7 @@ class SelectDateViewModel extends BaseViewModel {
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
   final DatePickerController controller = DatePickerController();
+  final ScrollController scrollController = ScrollController();
 
   DateTime _selectedValue = DateTime.now();
   final DateFormat formatter = DateFormat('yMMM');
@@ -21,23 +23,43 @@ class SelectDateViewModel extends BaseViewModel {
   List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
   List<TimeModel> selectedTime = [];
 
-  void forwardMonth() {
-    var newDate = DateTime(selectedDate.year, selectedDate.month + 1, 1);
-    controller.animateToDate(newDate);
+  DateTime currentDate = DateTime.now();
 
+  void forwardMonth() {
+    currentDate = DateTime(currentDate.year, currentDate.month + 1, 1);
+    controller.animateToDate(currentDate);
+    print(currentDate);
     notifyListeners();
   }
 
   void prevMonth() {
-    var newDate = DateTime(selectedDate.year, selectedDate.month - 1, 1);
-    controller.animateToDate(newDate);
+    currentDate = DateTime(currentDate.year, currentDate.month - 1, 1);
+    controller.animateToDate(currentDate);
+    print(currentDate);
     notifyListeners();
   }
 
-  Future init() async {
+  Future init(BuildContext context) async {
     setBusy(true);
     await fetchBookableActivity(DateTime.now());
     setBusy(false);
+
+    scrollController.addListener(() {
+      print(scrollController.offset);
+
+      final nextMOnth =
+          DateTime(currentDate.year, currentDate.month + 1, currentDate.day);
+
+      int offset = currentDate.difference(nextMOnth).inDays;
+      var nextMonthoffset = ((offset * 60) * -1);
+      if (scrollController.offset > nextMonthoffset) {
+        print("positive");
+      }
+
+      print(nextMonthoffset);
+      print("----");
+      print(scrollController.offset);
+    });
   }
 
   Future setDate(DateTime dateTime) async {

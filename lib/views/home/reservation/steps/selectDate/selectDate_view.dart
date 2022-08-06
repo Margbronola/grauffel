@@ -17,7 +17,7 @@ class SelectDateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SelectDateViewModel>.reactive(
-      onModelReady: (model) async => model.init(),
+      onModelReady: (model) async => model.init(context),
       builder: (context, model, child) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -68,6 +68,7 @@ class SelectDateView extends StatelessWidget {
                   height: 90.h,
                   child: DatePicker(
                     DateTime.now(),
+                    model.scrollController,
                     initialSelectedDate: DateTime.now(),
                     selectionColor: buttonColor,
                     selectedTextColor: Colors.white,

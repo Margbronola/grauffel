@@ -6,7 +6,7 @@ import '../../shared/color.dart';
 class DocumentCardView extends StatelessWidget {
   final Function() onTap;
   final DocumentTypeModel documentTypeModel;
-  final Color? bgColor;
+
   final bool isNEw;
   final bool isValid;
   final bool isViewed;
@@ -16,7 +16,6 @@ class DocumentCardView extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.documentTypeModel,
-    this.bgColor = docBackground,
     this.isNEw = false,
     this.isValid = false,
     this.isViewed = false,
@@ -28,10 +27,9 @@ class DocumentCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         height: 65.h,
-        color: bgColor,
         child: Card(
           elevation: 2,
           color: cardColor,

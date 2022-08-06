@@ -22,6 +22,8 @@ class DatePicker extends StatefulWidget {
   /// Text color for the selected Date
   final Color selectedTextColor;
 
+  final ScrollController scrollController;
+
   /// Background color for the selector
   final Color selectionColor;
 
@@ -59,7 +61,8 @@ class DatePicker extends StatefulWidget {
   final String locale;
 
   DatePicker(
-    this.startDate, {
+    this.startDate,
+    this.scrollController, {
     Key? key,
     this.width = 60,
     this.height = 80,
@@ -88,8 +91,6 @@ class DatePicker extends StatefulWidget {
 class _DatePickerState extends State<DatePicker> {
   DateTime? _currentDate;
 
-  ScrollController _controller = ScrollController();
-
   late final TextStyle selectedDateStyle;
   late final TextStyle selectedMonthStyle;
   late final TextStyle selectedDayStyle;
@@ -100,18 +101,6 @@ class _DatePickerState extends State<DatePicker> {
 
   @override
   void initState() {
-    _controller.addListener(() {
-      print(_controller.offset);
-      var date = DateTime.now();
-
-      final nextMOnth = new DateTime(date.year, date.month + 1, date.day);
-
-      int offset = date.difference(nextMOnth).inDays;
-      // if (_controller.offset == (offset * widget.width) + (offset * 6)) {
-      //   print("NEXTMONTH");
-      // }
-      print(_controller.offset);
-    });
     // Init the calendar locale
     initializeDateFormatting(widget.locale, null);
     // Set initial Values
@@ -145,7 +134,7 @@ class _DatePickerState extends State<DatePicker> {
       child: ListView.builder(
         itemCount: widget.daysCount,
         scrollDirection: Axis.horizontal,
-        controller: _controller,
+        controller: widget.scrollController,
         itemBuilder: (context, index) {
           // get the date object based on the index position
           // if widget.startDate is null then use the initialDateValue
@@ -243,7 +232,7 @@ class DatePickerController {
         'DatePickerController is not attached to any DatePicker View.');
 
     // jump to the current Date
-    _datePickerState!._controller
+    _datePickerState!.widget.scrollController
         .jumpTo(_calculateDateOffset(_datePickerState!._currentDate!));
   }
 
@@ -254,7 +243,7 @@ class DatePickerController {
         'DatePickerController is not attached to any DatePicker View.');
 
     // animate to the current date
-    _datePickerState!._controller.animateTo(
+    _datePickerState!.widget.scrollController.animateTo(
         _calculateDateOffset(_datePickerState!._currentDate!),
         duration: duration,
         curve: curve);
@@ -267,8 +256,10 @@ class DatePickerController {
     assert(_datePickerState != null,
         'DatePickerController is not attached to any DatePicker View.');
 
-    _datePickerState!._controller.animateTo(_calculateDateOffset(date),
-        duration: duration, curve: curve);
+    _datePickerState!.widget.scrollController.animateTo(
+        _calculateDateOffset(date),
+        duration: duration,
+        curve: curve);
   }
 
   /// Calculate the number of pixels that needs to be scrolled to go to the

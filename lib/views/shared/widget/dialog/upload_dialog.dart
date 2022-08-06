@@ -30,7 +30,6 @@ class UploadDialog extends StatelessWidget {
               DocumentCardView(
                 onTap: () {},
                 documentTypeModel: request!.data!,
-                bgColor: kcWhite,
                 cardColor: greyLight3,
               ),
               SizedBox(
