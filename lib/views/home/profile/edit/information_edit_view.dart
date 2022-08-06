@@ -38,35 +38,32 @@ class InformationEditView extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 50.w),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(
-                                width: 120.w,
-                                child: Stack(
-                                  children: [
-                                    model.user!.image != null
-                                        ? model.image != null
-                                            ? Image.asset(
-                                                model.image!.path,
-                                                scale: 5,
-                                              )
-                                            : Image.network(
-                                                "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                                fit: BoxFit.cover,
-                                                scale: 5,
-                                              )
-                                        : Image.asset(
-                                            profileImage,
-                                            scale: 5,
-                                          ),
-                                    Positioned(
-                                      bottom: -5,
-                                      right: -5,
-                                      child: IconButton(
-                                          onPressed: model.pickInGallary,
-                                          icon: const Icon(Icons.camera)),
-                                    )
-                                  ],
-                                ),
+                              Stack(
+                                children: [
+                                  model.user!.image != null
+                                      ? model.image != null
+                                          ? Image.asset(
+                                              model.image!.path,
+                                            )
+                                          : Image.network(
+                                              "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                              fit: BoxFit.fitWidth,
+                                              width: size(context).width,
+                                              height: size(context).height / 4,
+                                            )
+                                      : Image.asset(
+                                          profileImage,
+                                        ),
+                                  Positioned(
+                                    bottom: -5,
+                                    right: -5,
+                                    child: IconButton(
+                                        onPressed: model.pickInGallary,
+                                        icon: const Icon(Icons.camera)),
+                                  )
+                                ],
                               ),
                               SizedBox(height: size(context).height * 0.03),
                               TextFormField(
