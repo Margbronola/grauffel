@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../../../app/global.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/customButton.dart';
@@ -206,7 +206,7 @@ Widget gunCardView(
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
                           image: gunModel.image == null
-                              ? Image.asset("assets/images/gun.png")
+                              ? const AssetImage("assets/images/gun.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),

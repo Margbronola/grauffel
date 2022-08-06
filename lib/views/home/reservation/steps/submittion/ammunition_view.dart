@@ -197,7 +197,7 @@ Widget amminitionCard(
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
                           image: ammunition.image == null
-                              ? Image.asset("assets/images/bullet.png")
+                              ? const AssetImage("assets/images/bullet.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}"))),
