@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import '../../../../shared/color.dart';
 import '../../../../shared/customButton.dart';
 import '../../../../shared/ui_helper.dart';
+import '../../../../shared/widget/itemCard.dart';
 import 'submition_viewModel.dart';
 
 class SubmitionView extends StatelessWidget {
@@ -86,9 +87,20 @@ class SubmitionView extends StatelessWidget {
                       ),
                     ),
                     verticalSpaceMedium(),
-                    itemCard("gun"),
+                    const ItemCard(
+                      image: "gun",
+                      title: "Glock 19 Gen 5",
+                      brand: "Marque",
+                      reference: "Référence",
+                    ),
                     verticalSpaceSmall(),
-                    itemCard("bullet"),
+                    const ItemCard(
+                      image: "bullet",
+                      title: "9x19 - 9mm",
+                      brand: "Marque",
+                      reference: "Référence",
+                      extraButton: "3 boîtes de 50",
+                    ),
                     verticalSpaceMedium(),
                     SizedBox(
                         width: 310.w,
@@ -104,7 +116,7 @@ class SubmitionView extends StatelessWidget {
                     SizedBox(
                         width: 310.w,
                         child: CustomButton(
-                            title: "Réserversss", onTap: model.showCard)),
+                            title: "Réservers", onTap: model.showCard)),
                     verticalSpaceSmall(),
                     SizedBox(
                         width: 310.w,
@@ -125,80 +137,4 @@ class SubmitionView extends StatelessWidget {
       viewModelBuilder: () => SubmitionViewModel(),
     );
   }
-
-  Widget itemCard(String image) => Container(
-        width: 310.w,
-        height: 95.h,
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: greyLighter,
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: 97.w,
-              height: 77.h,
-              decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.only(bottomRight: Radius.circular(30)),
-                  color: kcWhite,
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/$image.png"))),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  child: Text(
-                    "Glock 19 Gen 5",
-                    overflow: TextOverflow.ellipsis,
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Référence",
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "SH2-BUSH-CER",
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  "Référence",
-                  style: ThemeData()
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 10.sp, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "SH2-BUSH-CER",
-                  style: ThemeData()
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 10.sp, fontWeight: FontWeight.bold),
-                ),
-              ],
-            )
-          ],
-        ),
-      );
 }

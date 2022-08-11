@@ -1,22 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/app/global.dart';
+
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
-import 'package:stacked/stacked.dart';
 import 'document_card_view.dart';
 import 'profile_viewModel.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  final bool isFromHome;
+  const ProfileView({
+    Key? key,
+    required this.isFromHome,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
-      onModelReady: (model) async => await model.init(),
+      onModelReady: (model) async => await model.init(isFromHome: isFromHome),
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
             ? const Center(

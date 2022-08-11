@@ -34,7 +34,10 @@ class HomeView extends StatelessWidget {
                 ),
                 actions: [
                   GestureDetector(
-                    child: const Icon(Icons.more_vert),
+                    child: const Icon(
+                      Icons.more_vert,
+                      size: 30,
+                    ),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -52,11 +55,13 @@ class HomeView extends StatelessWidget {
           children: <Widget>[
             ReservationView(
               gotoProfile: () {
-                model.onTap(2);
+                model.onTap(2, isFromReview: true);
               },
             ),
             const ReservationList(),
-            const ProfileView(),
+            ProfileView(
+              isFromHome: model.isFromReview,
+            ),
           ],
         ),
         bottomNavigationBar: BottomBarInspiredInside(

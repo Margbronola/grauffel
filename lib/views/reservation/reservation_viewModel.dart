@@ -3,6 +3,7 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
+import 'package:egczacademy/views/reservation/cardDetails/reserveCardDetails_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,6 +16,7 @@ class ReservationViewModel extends BaseViewModel {
   ScrollController scrolleController = ScrollController();
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final NavigationService _navigationService = locator<NavigationService>();
+  final DialogService _dialogService = locator<DialogService>();
   final UserService _userService = locator<UserService>();
 
   UserModel get user => _userService.user!;
@@ -52,7 +54,14 @@ class ReservationViewModel extends BaseViewModel {
   }
 
   void gotoProfile() {
-    _navigationService.navigateToView(const ProfileView());
+    _navigationService.navigateToView(const ProfileView(
+      isFromHome: false,
+    ));
+  }
+
+  void showCardDetails() async {
+    print("details");
+    _navigationService.navigateToView(const ReserveCardDetails());
   }
 
   List days = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];

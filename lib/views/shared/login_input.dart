@@ -34,7 +34,11 @@ class LoginInput extends StatelessWidget {
                     cursorColor: Colors.black,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                    style: const TextStyle(
+                        fontFamily: 'ProductSans',
+                        color: Colors.black,
+                        letterSpacing: 1.3,
+                        fontWeight: FontWeight.w500),
                     focusNode: model.emailFocusNode,
                     controller: model.emailController,
                     validator: (value) {
@@ -42,10 +46,16 @@ class LoginInput extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       label: RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                               text: 'Adresse mail',
-                              style: TextStyle(color: Colors.grey),
-                              children: [
+                              style: TextStyle(
+                                  fontFamily: 'ProductSans',
+                                  color: model.isEmailFucos
+                                      ? Colors.grey
+                                      : Colors.black,
+                                  letterSpacing: 1.3,
+                                  fontWeight: FontWeight.w700),
+                              children: const [
                             TextSpan(
                                 text: ' *',
                                 style: TextStyle(
@@ -56,12 +66,6 @@ class LoginInput extends StatelessWidget {
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
                       ),
-                      // labelText: "Adresse mail",
-                      labelStyle: TextStyle(
-                          color: Colors.grey,
-                          letterSpacing: 1.3,
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold),
                       hintStyle: const TextStyle(color: backgroundColor),
                       enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: backgroundColor),
@@ -77,7 +81,11 @@ class LoginInput extends StatelessWidget {
                       await model.loginButton();
                     },
                     focusNode: model.passwordFocusNode,
-                    style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                    style: const TextStyle(
+                        fontFamily: 'ProductSans',
+                        color: Colors.black,
+                        letterSpacing: 1.3,
+                        fontWeight: FontWeight.w500),
                     obscureText: !model.showPassword,
                     controller: model.passwordController,
                     validator: (value) {
@@ -85,28 +93,29 @@ class LoginInput extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       label: RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                               text: 'Mot de passe',
-                              style: TextStyle(color: Colors.grey),
-                              children: [
+                              style: TextStyle(
+                                  fontFamily: 'ProductSans',
+                                  color: model.isPasswordFucos
+                                      ? Colors.grey
+                                      : Colors.black,
+                                  letterSpacing: 1.3,
+                                  fontWeight: FontWeight.w700),
+                              children: const [
                             TextSpan(
                                 text: ' *',
                                 style: TextStyle(
                                   color: buttonColor,
                                 ))
                           ])),
-                      labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          letterSpacing: 1.3,
-                          fontSize: 15.sp),
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.black),
                       ),
+                      focusColor: Colors.grey,
                       enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: backgroundColor),
                       ),
-                      hintStyle: const TextStyle(color: backgroundColor),
                       suffixIcon: GestureDetector(
                         onTap: () {
                           model.toggle(cpass: false);

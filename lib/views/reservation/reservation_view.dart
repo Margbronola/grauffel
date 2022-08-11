@@ -53,11 +53,30 @@ class ReservationView extends StatelessWidget {
                                   //               "assets/images/user.jpeg"))),
                                   // ),
                                   horizontalSpaceSmall(),
-                                  Text(
-                                    "BONJOUR ${model.user.first_name}"
-                                        .toUpperCase(),
-                                    style: TextStyle(
-                                        color: kcWhite, fontSize: 20..sp),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "BONJOUR ".toUpperCase(),
+                                          style: TextStyle(
+                                            fontFamily: 'ProductSans',
+                                            color: kcWhite,
+                                            fontSize: 22.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          "${model.user.first_name},"
+                                              .toUpperCase(),
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: kcWhite,
+                                              fontSize: 22.sp,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
                               )),
@@ -69,10 +88,19 @@ class ReservationView extends StatelessWidget {
                           minHeight: 50,
                           maxHeight: 50,
                           child: AnimatedContainer(
+                              decoration:
+                                  BoxDecoration(color: buttonColor, boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ]),
                               duration: const Duration(milliseconds: 500),
                               height: !model.showHelp ? 0 : 67.h,
                               width: size(context).width,
-                              color: buttonColor,
                               child: GestureDetector(
                                 onTap: gotoProfile,
                                 child: Stack(
@@ -82,35 +110,23 @@ class ReservationView extends StatelessWidget {
                                         width: 56.w,
                                         child: Image.asset(
                                             "assets/images/help.png")),
+
+                                    //TODO: show only if user documents still not verify
                                     Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 38.w),
                                         child: Text(
-                                          "Des documents sont nécessaires pour accéder au stand de tir",
+                                          "Des documents sont nécessaires pour accéder au stand de tir ",
                                           style: TextStyle(
-                                              color: kcWhite, fontSize: 15.sp),
+                                            fontFamily: 'ProductSans',
+                                            color: kcWhite,
+                                            fontSize: 15.sp,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    // Positioned(
-                                    //     top: 5,
-                                    //     right: 5,
-                                    //     child: GestureDetector(
-                                    //       onTap: model.closeHelp,
-                                    //       child: Container(
-                                    //           width: 20.w,
-                                    //           height: 20.h,
-                                    //           decoration: BoxDecoration(
-                                    //               border: Border.all(
-                                    //                   color: kcWhite, width: 1),
-                                    //               shape: BoxShape.circle),
-                                    //           child: Icon(
-                                    //             Icons.close,
-                                    //             size: 15.w,
-                                    //           )),
-                                    //     ))
                                   ],
                                 ),
                               )),
@@ -121,7 +137,7 @@ class ReservationView extends StatelessWidget {
                   body: Column(
                     children: [
                       SizedBox(
-                        height: 120.h,
+                        height: 150.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -129,11 +145,13 @@ class ReservationView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  verticalSpaceSmall(),
+                                  verticalSpaceMedium(),
                                   Text(
                                     "Réservation(S)".toUpperCase(),
                                     style: TextStyle(
-                                        fontSize: 20.sp,
+                                        fontFamily: 'ProductSans',
+                                        color: backgroundColor,
+                                        fontSize: 25.sp,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Stack(
@@ -148,12 +166,22 @@ class ReservationView extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      const TabBar(
+                                      TabBar(
+                                        unselectedLabelStyle: TextStyle(
+                                          fontFamily: 'ProductSans',
+                                          color: backgroundColor,
+                                          fontSize: 20.sp,
+                                        ),
+                                        labelStyle: TextStyle(
+                                            fontFamily: 'ProductSans',
+                                            color: backgroundColor,
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.bold),
                                         unselectedLabelColor: Colors.grey,
                                         labelColor: backgroundColor,
                                         indicatorColor: buttonColor,
                                         indicatorWeight: 5,
-                                        tabs: [
+                                        tabs: const [
                                           Tab(
                                             text: "A venir",
                                           ),
@@ -188,12 +216,18 @@ class ReservationView extends StatelessWidget {
                                   : model.actives!.isEmpty
                                       ? Container(
                                           child: const Center(
-                                          child: Text("No Reservation yet"),
+                                          child: Text(
+                                            "Aucune réservation pour le moment",
+                                            style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                            ),
+                                          ),
                                         ))
                                       : ListView.builder(
                                           itemCount: model.actives!.length,
                                           itemBuilder: ((context, index) =>
                                               ReservationCard(
+                                                  onTap: model.showCardDetails,
                                                   isActive: true,
                                                   booking:
                                                       model.actives![index]))),
@@ -207,12 +241,23 @@ class ReservationView extends StatelessWidget {
                                         cardShimmer(),
                                       ],
                                     )
-                                  : ListView.builder(
-                                      itemCount: model.past!.length,
-                                      itemBuilder: ((context, index) =>
-                                          ReservationCard(
-                                              booking: model.past![index])),
-                                    ),
+                                  : model.past!.isEmpty
+                                      ? Container(
+                                          child: const Center(
+                                          child: Text(
+                                            "Aucune réservation pour le moment",
+                                            style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                            ),
+                                          ),
+                                        ))
+                                      : ListView.builder(
+                                          itemCount: model.past!.length,
+                                          itemBuilder: ((context, index) =>
+                                              ReservationCard(
+                                                  onTap: model.showCardDetails,
+                                                  booking: model.past![index])),
+                                        ),
                             ],
                           ),
                         ),

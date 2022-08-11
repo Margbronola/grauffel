@@ -29,6 +29,7 @@ class ProfileViewModel extends ReactiveViewModel {
   late ExpandedTileController expanTileController2;
   late ExpandedTileController expanTileController3;
   late ExpandedTileController expanTileController4;
+
   AnimateIconController animatedIconController = AnimateIconController();
 
   List<DocumentTypeModel> get documentTypes =>
@@ -110,12 +111,15 @@ class ProfileViewModel extends ReactiveViewModel {
     return "";
   }
 
-  Future init() async {
+  Future init({required bool isFromHome}) async {
     documentLoader = true;
     expanTileController1 = ExpandedTileController(isExpanded: false);
     expanTileController2 = ExpandedTileController(isExpanded: false);
     expanTileController3 = ExpandedTileController(isExpanded: false);
     expanTileController4 = ExpandedTileController(isExpanded: false);
+
+    autoOpenDocs(isFromHome: isFromHome);
+
     angles = [angle1, angle2, angle3, angle4];
     notifyListeners();
     await _documentService.fetch(
@@ -150,6 +154,14 @@ class ProfileViewModel extends ReactiveViewModel {
       documentTypeModel: documentTypeModel,
     ));
   }
+
+  void autoOpenDocs({bool isFromHome = false}) {
+    if (isFromHome) {
+      angle4 = 90 * pi / 180;
+      expanTileController4 = ExpandedTileController(isExpanded: true);
+    }
+  }
+
   //  _navigationService.navigateToView(DocumentUploadView(R
   //     documentTypeModel: documentTypeModel,
   //   ));

@@ -41,7 +41,12 @@ class Header extends StatelessWidget {
                 children: [
                   Text(
                     title.toUpperCase(),
-                    style: TextStyle(color: kcWhite, fontSize: 20..sp),
+                    style: TextStyle(
+                      color: kcWhite,
+                      fontSize: 26.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ProductSans',
+                    ),
                   )
                 ],
               ),

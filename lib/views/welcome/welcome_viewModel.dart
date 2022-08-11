@@ -64,6 +64,9 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
           ? "S'inscrire".toUpperCase()
           : "J'AI UN COMPTE";
 
+  bool isPasswordFucos = false;
+  bool isEmailFucos = false;
+
   @override
   void dispose() {
     emailController.dispose();
@@ -113,6 +116,17 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     cpasswordFocusNode = FocusNode();
     firstNameFocusNode = FocusNode();
     lastNameFocusNode = FocusNode();
+
+    passwordFocusNode.addListener(() {
+      isPasswordFucos = passwordFocusNode.hasFocus;
+      notifyListeners();
+    });
+
+    emailFocusNode.addListener(() {
+      isEmailFucos = emailFocusNode.hasFocus;
+      notifyListeners();
+    });
+
     controllerInputText = AnimationController(
         duration: const Duration(milliseconds: 300), vsync: vsync);
 

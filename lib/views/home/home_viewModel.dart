@@ -4,6 +4,9 @@ import 'package:stacked/stacked.dart';
 class HomeViewModel extends BaseViewModel {
   int selectedIndex = 0;
   PageController? pageController;
+  bool _isFromReview = false;
+
+  bool get isFromReview => _isFromReview;
 
   void initState() {
     pageController = PageController();
@@ -21,7 +24,9 @@ class HomeViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  void onTap(int index) {
+  void onTap(int index, {bool isFromReview = false}) {
+    _isFromReview = isFromReview;
+    notifyListeners();
     pageController!
         .animateToPage(index,
             duration: const Duration(milliseconds: 500), curve: Curves.ease)
