@@ -29,8 +29,12 @@ class ReservationList extends StatelessWidget {
                           itemCount: model.bookables.length,
                           itemBuilder: (context, index) => ReserveCard(
                               ontap: () {
-                                model.navigateToReservation(
-                                    bookable: model.bookables[index]);
+                                if (index == 3) {
+                                  model.navigateToReservationCell();
+                                } else {
+                                  model.navigateToReservation(
+                                      bookable: model.bookables[index]);
+                                }
                               },
                               reserve: ReserveModel(
                                   image: "mask1",

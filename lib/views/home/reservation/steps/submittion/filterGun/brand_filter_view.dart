@@ -24,17 +24,30 @@ class BrandFilterView extends StatelessWidget {
           elevation: 0,
           title: Text(
             "marque".toUpperCase(),
-            style: const TextStyle(color: backgroundColor),
+            style: TextStyle(
+              color: backgroundColor,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'ProductSans',
+              fontSize: 25.sp,
+            ),
           ),
           centerTitle: false,
           backgroundColor: kcWhite,
-          iconTheme: const IconThemeData(color: backgroundColor),
+          iconTheme: const IconThemeData(
+            color: backgroundColor,
+          ),
           actions: [
             TextButton(
               onPressed: model.uncheckAllBox,
               child: Text(
                 "Annuler\nfiltres".toUpperCase(),
-                style: const TextStyle(color: buttonColor),
+                style: TextStyle(
+                  color: buttonColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'ProductSans',
+                  fontSize: 14.sp,
+                ),
+                textAlign: TextAlign.end,
               ),
             ),
             horizontalSpaceSmall()
@@ -89,7 +102,13 @@ class BrandFilterView extends StatelessWidget {
                         itemCount: model.marque!.length,
                         itemBuilder: (context, index) => GFCheckboxListTile(
                           margin: const EdgeInsets.all(0),
-                          title: Text(model.marque![index].name!.toUpperCase()),
+                          title: Text(
+                            model.marque![index].name!.toUpperCase(),
+                            style: TextStyle(
+                              fontFamily: 'ProductSans',
+                              fontSize: 15.sp,
+                            ),
+                          ),
                           size: 20,
                           activeBgColor: buttonColor,
                           type: GFCheckboxType.square,

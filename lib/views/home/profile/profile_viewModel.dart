@@ -34,6 +34,7 @@ class ProfileViewModel extends ReactiveViewModel {
 
   List<DocumentTypeModel> get documentTypes =>
       _documentService.documenTypes ?? [];
+
   List<DocumentModel> get documents => _documentService.documents ?? [];
   bool documentLoader = false;
 
@@ -53,6 +54,20 @@ class ProfileViewModel extends ReactiveViewModel {
     } else {
       angles[index] = 90 * pi / 180;
     }
+
+    if (index != 0) {
+      expanTileController1.collapse();
+    }
+    if (index != 1) {
+      expanTileController2.collapse();
+    }
+    if (index != 2) {
+      expanTileController3.collapse();
+    }
+    if (index != 3) {
+      expanTileController4.collapse();
+    }
+
     notifyListeners();
   }
 
@@ -118,15 +133,14 @@ class ProfileViewModel extends ReactiveViewModel {
     expanTileController3 = ExpandedTileController(isExpanded: false);
     expanTileController4 = ExpandedTileController(isExpanded: false);
 
-    autoOpenDocs(isFromHome: isFromHome);
+    autoOpenDocs(isFromHome: isFromHome); //auto open docs
 
     angles = [angle1, angle2, angle3, angle4];
-    notifyListeners();
+
     await _documentService.fetch(
         userService: _userService, documentAPIService: _documentAPIService);
-    print(documents);
-    documentLoader = false;
 
+    documentLoader = false;
     notifyListeners();
   }
 

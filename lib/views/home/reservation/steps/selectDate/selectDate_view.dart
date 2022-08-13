@@ -27,19 +27,19 @@ class SelectDateView extends StatelessWidget {
             children: [
               verticalSpaceSmall(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Text(
-                  "Choisissez votre créneau",
-                  style: ThemeData()
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4),
+                child: Text("Choisissez votre créneau",
+                    style: ThemeData().textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                          color: backgroundColor,
+                          fontSize: 24.sp,
+                        )),
               ),
               verticalSpaceMedium(),
               Container(
-                color: greyLighter2,
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                color: customGrey,
+                padding: EdgeInsets.only(top: 15.w, right: 20, left: 20),
                 height: 60.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +53,12 @@ class SelectDateView extends StatelessWidget {
                     ),
                     Text(
                       model.headerDate(),
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'ProductSans',
+                        color: backgroundColor,
+                        fontSize: 18.sp,
+                      ),
                     ),
                     IconButton(
                       onPressed: model.forwardMonth,
@@ -66,22 +71,29 @@ class SelectDateView extends StatelessWidget {
                 ),
               ),
               Container(
-                color: greyLighter2,
-                padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                color: customGrey,
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
                   height: 90.h,
-                  child: DatePicker(
-                    model.currentDate,
-                    model.scrollController,
-                    initialSelectedDate: DateTime.now(),
-                    selectionColor: buttonColor,
-                    selectedTextColor: Colors.white,
-                    onDateChange: model.setDate,
-                    locale: 'fr_FR',
-                    controller: model.controller,
-                    daysCount: model.numDaysTotal,
-                    inactiveDates: model.inactive,
-                  ),
+                  child: DatePicker(model.currentDate, model.scrollController,
+                      selectionColor: buttonColor,
+                      deactivatedColor: Colors.grey,
+                      selectedTextColor: Colors.white,
+                      onDateChange: model.setDate,
+                      locale: 'fr_FR',
+                      controller: model.controller,
+                      daysCount: model.numDaysTotal,
+                      inactiveDates: model.inactive,
+                      dayTextStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                          color: model.currentDate
+                                      .toUtc()
+                                      .compareTo(DateTime.now().toUtc()) ==
+                                  0
+                              ? Colors.grey
+                              : backgroundColor,
+                          fontSize: 15.sp)),
                 ),
               ),
               model.isBusy
@@ -92,8 +104,7 @@ class SelectDateView extends StatelessWidget {
                       ),
                     )
                   : Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 20.h, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       height: 300.h,
                       child: GridView.count(
                         // Create a grid with 2 columns. If you change the scrollDirection to
@@ -117,21 +128,27 @@ class SelectDateView extends StatelessWidget {
                     )
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "${model.availableTimes.length} places ",
-                style: const TextStyle(
-                    color: buttonColor, fontWeight: FontWeight.bold),
-              ),
-              const Text(
-                "restantes",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
+          model.selectedTime.isNotEmpty
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${model.availableTimes.length} places ",
+                      style: TextStyle(
+                          color: buttonColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                          fontSize: 18.sp),
+                    ),
+                    Text("restantes",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                            fontSize: 18.sp))
+                  ],
+                )
+              : const SizedBox(),
           verticalSpaceMedium(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -158,17 +175,26 @@ Widget time(
       height: 60,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            elevation: 2,
+            elevation: 0,
             padding: const EdgeInsets.all(10),
+
             primary: avaiable > 0
                 ? isSelected
                     ? buttonColor
-                    : kcWhite
-                : Colors.white70, // <-- Button color
+                    : customGrey
+                : customDarkGrey, // <-- Button color
           ),
-          onPressed: avaiable > 0 ? onPress : null,
+          onPressed: avaiable > 0 ? onPress : () {},
           child: Text(
-            time,
-            style: TextStyle(color: isSelected ? kcWhite : backgroundColor),
+            "${time.split(":")[0]}h${time.split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"} - ${time.split("-")[1].split(":")[0]}h${time.split("-")[1].split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"}",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'ProductSans',
+                fontSize: 15.sp,
+                color: isSelected
+                    ? kcWhite
+                    : avaiable > 0
+                        ? backgroundColor
+                        : customTextGrey),
           )),
     );

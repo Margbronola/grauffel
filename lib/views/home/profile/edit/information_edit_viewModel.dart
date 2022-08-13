@@ -26,14 +26,53 @@ class InformationEditViewModel extends ReactiveViewModel {
   FocusNode codeNode = FocusNode();
   FocusNode villeNode = FocusNode();
 
+  bool isEmailFucos = false;
+  bool isDateFucos = false;
+  bool isNumberFucos = false;
+  bool isAddressFucos = false;
+  bool isPostalFucos = false;
+  bool isVilleFucos = false;
+
+  String dateFormat(DateTime date) {
+    // final DateFormat formatter = DateFormat('MMMM');
+    final String formatted = "${date.day}/${date.month}/${date.year}";
+    return formatted;
+  }
+
   void init() {
     if (user != null) {
       emailController.text = user!.email!;
-      dateController.text = user!.created_at.toString();
+      dateController.text = dateFormat(user!.created_at!);
       phoneController.text = user!.SIA_number.toString();
       addresscontroller.text = user!.address!;
       villeController.text = user!.country_id!.toString();
     }
+
+    emailFocusNode.addListener(() {
+      isEmailFucos = emailFocusNode.hasFocus;
+      notifyListeners();
+    });
+
+    dateNode.addListener(() {
+      isDateFucos = dateNode.hasFocus;
+      notifyListeners();
+    });
+    phoneNode.addListener(() {
+      isNumberFucos = phoneNode.hasFocus;
+      notifyListeners();
+    });
+    dateNode.addListener(() {
+      isDateFucos = dateNode.hasFocus;
+      notifyListeners();
+    });
+    addressNode.addListener(() {
+      isAddressFucos = addressNode.hasFocus;
+      notifyListeners();
+    });
+    villeNode.addListener(() {
+      isVilleFucos = villeNode.hasFocus;
+      notifyListeners();
+    });
   }
 
   @override

@@ -6,6 +6,7 @@ import 'package:egczacademy/views/home/reservation/steps/reserveSteps_view.dart'
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
+import 'reservation_cell/reservation_cell_view.dart';
 
 class ReservationListModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
@@ -19,12 +20,17 @@ class ReservationListModel extends BaseViewModel {
   Future init() async {
     setBusy(true);
     await fetchBookinngs();
+    await _bookingAPIService.fetchBookableTest();
     setBusy(false);
   }
 
   void navigateToReservation({required BookableModel bookable}) {
     _bookingService.setSelectedBookable = bookable;
     _navigationService.navigateToView(const ReserveStepsView());
+  }
+
+  void navigateToReservationCell() {
+    _navigationService.navigateToView(const ReservationCellView());
   }
 
   Future<void> fetchBookinngs() async {

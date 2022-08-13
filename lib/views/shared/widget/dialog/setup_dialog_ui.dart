@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/widget/dialog/confirmation_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/upload_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/change_pass-dialog.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -7,7 +8,15 @@ import 'arme_dialog.dart';
 import 'equipment_dialog.dart';
 import 'reserve_dialog.dart';
 
-enum DialogType { upload, arm, ammunition, equipments, reserve, changePass }
+enum DialogType {
+  upload,
+  arm,
+  ammunition,
+  equipments,
+  reserve,
+  changePass,
+  confirmation
+}
 
 void setupDialogUi() {
   final dialogService = locator<DialogService>();
@@ -24,6 +33,8 @@ void setupDialogUi() {
         ReserveDialog(request: sheetRequest, completer: completer),
     DialogType.changePass: (context, sheetRequest, completer) =>
         ChangePassDialog(request: sheetRequest, completer: completer),
+    DialogType.confirmation: (context, sheetRequest, completer) =>
+        ConfirmationDialog(request: sheetRequest, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

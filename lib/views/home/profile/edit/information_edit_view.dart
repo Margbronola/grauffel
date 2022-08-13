@@ -76,15 +76,33 @@ class InformationEditView extends StatelessWidget {
                                 validator: (value) {
                                   return Validator.validateEmail(value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Adresse mail',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: model.isEmailFucos
+                                                  ? Colors.grey
+                                                  : Colors.black,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.w700),
+                                          children: const [
+                                        TextSpan(
+                                            text: ' *',
+                                            style: TextStyle(
+                                              color: buttonColor,
+                                            ))
+                                      ])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
                                   ),
-                                  labelText: "Adresse mail*",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  alignLabelWithHint: true,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
                                   ),
                                   isDense: true,
                                 ),
@@ -100,14 +118,27 @@ class InformationEditView extends StatelessWidget {
                                 validator: (value) {
                                   return Validator.validateName(value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Date de naissance',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: model.isDateFucos
+                                                  ? Colors.grey
+                                                  : Colors.black,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.w700),
+                                          children: const [])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
                                   ),
-                                  labelText: "Date de naissance",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
                                   ),
                                   isDense: true,
                                 ),
@@ -124,15 +155,33 @@ class InformationEditView extends StatelessWidget {
                                   return Validator.validatePhoneNumber(
                                       value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Numéro de téléphone',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: model.isNumberFucos
+                                                  ? Colors.grey
+                                                  : Colors.black,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.w700),
+                                          children: const [
+                                        TextSpan(
+                                            text: ' *',
+                                            style: TextStyle(
+                                              color: buttonColor,
+                                            ))
+                                      ])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
                                   ),
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  labelText: "Numéro de téléphone*",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
                                   ),
                                   isDense: true,
                                 ),
@@ -148,14 +197,27 @@ class InformationEditView extends StatelessWidget {
                                 validator: (value) {
                                   return Validator.validateName(value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Adresse postale',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: model.isAddressFucos
+                                                  ? Colors.grey
+                                                  : Colors.black,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.w700),
+                                          children: const [])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
                                   ),
-                                  labelText: "Adresse postale",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
                                   ),
                                   isDense: true,
                                 ),
@@ -171,30 +233,43 @@ class InformationEditView extends StatelessWidget {
                                 validator: (value) {
                                   return Validator.validateName(value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Ville',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              color: model.isVilleFucos
+                                                  ? Colors.grey
+                                                  : Colors.black,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.w700),
+                                          children: const [])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
                                   ),
-                                  labelText: "Ville",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
                                   ),
                                   isDense: true,
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Padding(
+                                  padding: EdgeInsets.all(20.h),
+                                  child: CustomButton(
+                                      title: "Enregistrer".toUpperCase(),
+                                      onTap: model.save),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Padding(
-                        padding: EdgeInsets.all(20.h),
-                        child: CustomButton(
-                            title: "Enregistrer".toUpperCase(),
-                            onTap: model.save),
                       ),
                     ),
                   ],

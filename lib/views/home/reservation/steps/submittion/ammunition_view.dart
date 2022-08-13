@@ -36,9 +36,12 @@ class AmmunitionView extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            "Choisissez vos munitions".toUpperCase(),
+                            "Recommandé avec l'arme".toUpperCase(),
                             style: ThemeData().textTheme.bodyText1!.copyWith(
-                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                                  fontSize: 24.sp,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSans',
+                                ),
                           ),
                         ),
                         Row(
@@ -56,9 +59,13 @@ class AmmunitionView extends StatelessWidget {
                                 onPressed: model.marqueFilter,
                                 child: Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Marque',
-                                      style: TextStyle(color: backgroundColor),
+                                      style: TextStyle(
+                                          color: backgroundColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'ProductSans',
+                                          fontSize: 15.sp),
                                     ),
                                     model.filterMarqueIsActive
                                         ? Row(
@@ -90,9 +97,14 @@ class AmmunitionView extends StatelessWidget {
                                 onPressed: model.caliberFilter,
                                 child: Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Calibre',
-                                      style: TextStyle(color: backgroundColor),
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: backgroundColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'ProductSans',
+                                      ),
                                     ),
                                     model.filterCaliberIsActive
                                         ? Row(

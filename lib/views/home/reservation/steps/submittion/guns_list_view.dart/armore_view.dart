@@ -38,12 +38,17 @@ class ArmoreView extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            "Choix de l'arme",
+                            "Choisissez votre arme",
                             style: ThemeData().textTheme.bodyText1!.copyWith(
-                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSans',
+                                  fontSize: 24.sp,
+                                ),
                           ),
                         ),
-                        verticalSpaceSmall(),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Row(
                           children: [
                             OutlinedButton(
@@ -59,9 +64,15 @@ class ArmoreView extends StatelessWidget {
                                 onPressed: model.marqueFilter,
                                 child: Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Marque',
-                                      style: TextStyle(color: backgroundColor),
+                                      style: TextStyle(
+                                        color: backgroundColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                        fontFamily: 'ProductSans',
+                                        letterSpacing: 1.2,
+                                      ),
                                     ),
                                     model.filterMarqueIsActive
                                         ? Row(
@@ -93,9 +104,15 @@ class ArmoreView extends StatelessWidget {
                                 onPressed: model.caliberFilter,
                                 child: Row(
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Calibre',
-                                      style: TextStyle(color: backgroundColor),
+                                      style: TextStyle(
+                                        color: backgroundColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                        fontFamily: 'ProductSans',
+                                        letterSpacing: 1.2,
+                                      ),
                                     ),
                                     model.filterCaliberIsActive
                                         ? Row(
@@ -115,19 +132,25 @@ class ArmoreView extends StatelessWidget {
                                 )),
                           ],
                         ),
-                        verticalSpaceSmall(),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Expanded(
-                          child: GridView.count(
-                            mainAxisSpacing: 15,
-                            crossAxisSpacing: 20,
-                            crossAxisCount: 2,
-                            children:
-                                List.generate(model.guns!.length, (index) {
-                              return gunCardView(
-                                  index: index,
-                                  gunModel: model.guns![index],
-                                  model: model);
-                            }),
+                          child: Container(
+                            child: GridView.count(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                              crossAxisCount: 2,
+                              children:
+                                  List.generate(model.guns!.length, (index) {
+                                return gunCardView(
+                                    index: index,
+                                    gunModel: model.guns![index],
+                                    model: model);
+                              }),
+                            ),
                           ),
                         ),
                       ],
@@ -141,13 +164,15 @@ class ArmoreView extends StatelessWidget {
                 ),
                 verticalSpaceSmall(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 45.w,
+                  ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Continuer sans\narme".toUpperCase(),
+                        "j'ai déjá\nune arme".toUpperCase(),
                         style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 15.sp,
                             color: Colors.grey,

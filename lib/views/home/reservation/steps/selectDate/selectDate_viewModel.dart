@@ -4,6 +4,7 @@ import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:quiver/time.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
@@ -33,8 +34,8 @@ class SelectDateViewModel extends BaseViewModel {
   String headerDate() {
     final DateFormat formatter = DateFormat('MMMM');
     final String formatted =
-        "${formatter.format(currentDate)} ${currentDate.year}";
-    return formatted;
+        "${formatter.format(currentDate).i18n()} ${currentDate.year}";
+    return (formatted);
   }
 
   void forwardMonth() {
@@ -90,7 +91,7 @@ class SelectDateViewModel extends BaseViewModel {
   Future fetchBookableActivity(DateTime dateTime) async {
     await _bookingAPIService.fetchBookableActivity(
         token: _userService.token!,
-        date: DateTime.now(),
+        date: dateTime,
         activity_id:
             _bookingService.selectedBookable!.activitysalle![0].activity_id!,
         client_id: _userService.user!.id!);

@@ -19,6 +19,27 @@ class BookingAPIService {
   PagingModel? _pagingModel;
   final int _perPage = 10;
 
+  Future<void> fetchBookableTest() async {
+    _bookable = [
+      _bookable![0].copyWith(
+          name: "Tir 25 mètres",
+          description:
+              "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
+      _bookable![1].copyWith(
+          name: "Fun shoot",
+          description:
+              "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
+      _bookable![2].copyWith(
+          name: "Cours tsv",
+          description:
+              "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
+      _bookable![3].copyWith(
+          name: "Alvéoles",
+          description:
+              "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture")
+    ];
+  }
+
   Future<void> fetchMyBookings(
       {required String token, required String userId}) async {
     try {
@@ -105,6 +126,9 @@ class BookingAPIService {
           print("FETCH TIMEACTIVITY PASS");
           List time = data;
           _availableTime = time.map((e) => TimeModel.fromJson(e)).toList();
+
+          //TODO delete this before release
+          _availableTime![0] = _availableTime![0].copyWith(avaiable: 0);
           print(_availableTime);
         } catch (e) {
           print(e);

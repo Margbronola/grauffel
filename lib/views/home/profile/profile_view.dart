@@ -135,22 +135,49 @@ class ProfileView extends StatelessWidget {
                                           bottom: 10.h),
                                       child: Column(
                                         children: [
-                                          infoContainer("Adresse mail",
-                                              model.user!.email!),
-                                          SizedBox(
-                                            height: 5.h,
+                                          infoContainer(
+                                              "Adresse mail",
+                                              model.user!.email!,
+                                              double.infinity),
+                                          const SizedBox(
+                                            height: 8,
+                                          ),
+                                          infoContainer(
+                                              "Date de naissance",
+                                              "25/01/1972 - 50 ans",
+                                              double.infinity),
+                                          const SizedBox(
+                                            height: 8,
                                           ),
                                           infoContainer(
                                               "Numéro de téléphone",
-                                              model.user!.SIA_number ??
-                                                  "Not Specified"),
-                                          SizedBox(
-                                            height: 5.h,
+                                              model.user!.SIA_number!.isEmpty
+                                                  ? "Not Specified"
+                                                  : model.user!.SIA_number!,
+                                              double.infinity),
+                                          const SizedBox(
+                                            height: 8,
                                           ),
-                                          infoContainer("Adresse postale",
-                                              model.user!.address!),
-                                          SizedBox(
-                                            height: 5.h,
+                                          Container(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                infoContainer(
+                                                    "Adresse postale",
+                                                    model.user!.address!,
+                                                    100.w),
+                                                infoContainer(
+                                                    "CP", "73000", 80.w),
+                                                infoContainer(
+                                                    "Ville", "Paris", 80.w),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
                                           ),
                                         ],
                                       ),
@@ -171,9 +198,14 @@ class ProfileView extends StatelessWidget {
                                           right: 50.w,
                                           bottom: 10.h),
                                       child: Column(
-                                        children: const [
+                                        children: [
                                           Text(
-                                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. "),
+                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. ",
+                                            style: TextStyle(
+                                              fontSize: 14.sp,
+                                              fontFamily: 'ProductSans',
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -197,9 +229,14 @@ class ProfileView extends StatelessWidget {
                                             right: 50.w,
                                             bottom: 10.h),
                                         child: Column(
-                                          children: const [
+                                          children: [
                                             Text(
-                                                "TANFOGLIO STOCK III\n GLOCK 17 GEN 5\n MUNITIONS CCI MINI-MAG\n CALIBRE\n Lunette de protectio\n Oreillette anti-bruit \n Cibles et patches"),
+                                              "TANFOGLIO STOCK III\n GLOCK 17 GEN 5\n MUNITIONS CCI MINI-MAG\n CALIBRE\n Lunette de protectio\n Oreillette anti-bruit \n Cibles et patches",
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                fontFamily: 'ProductSans',
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -247,7 +284,17 @@ class ProfileView extends StatelessWidget {
                                           ],
                                         ))
                                     : Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
+                                          Text(
+                                            "Obligatoires",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: 'ProductSans',
+                                                fontSize: 15.sp),
+                                          ),
+                                          verticalSpaceSmall(),
                                           ...model.documentTypes
                                               .map((e) => DocumentCardView(
                                                     expiration: model
@@ -264,14 +311,53 @@ class ProfileView extends StatelessWidget {
                                                     documentTypeModel: e,
                                                   ))
                                               .toList()
+                                              .sublist(0, 2),
+                                          verticalSpaceMedium(),
+                                          Text(
+                                            "Autres documents",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: 'ProductSans',
+                                                fontSize: 15.sp),
+                                          ),
+                                          verticalSpaceSmall(),
+                                          ...model.documentTypes
+                                              .map((e) => DocumentCardView(
+                                                    expiration: model
+                                                        .expirationDate(e.id!),
+                                                    isValid: model.isNew(e.id!),
+                                                    cardColor: model
+                                                            .isProcessing(e.id!)
+                                                        ? greyLight3
+                                                        : kcWhite,
+                                                    onTap: () {
+                                                      model.uploadDocument(
+                                                          documentTypeModel: e);
+                                                    },
+                                                    documentTypeModel: e,
+                                                  ))
+                                              .toList()
+                                              .sublist(
+                                                  2, model.documentTypes.length)
                                         ],
                                       ),
                                 title: "DOCUMENTS",
-                                model: model)
+                                model: model),
                           ],
                         ),
                       ),
                     ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Se déconnecter",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.sp,
+                            fontFamily: 'ProductSans',
+                          ),
+                        )),
+                    verticalSpaceSmall()
                   ],
                 ),
               ),
@@ -316,7 +402,31 @@ class ProfileView extends StatelessWidget {
             contentRadius: 0,
           ),
           controller: controller,
-          title: Text(title),
+          title: title == "DOCUMENTS"
+              ? Row(
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontFamily: 'ProductSans',
+                      ),
+                    ),
+                    Text(" 0/2",
+                        style: TextStyle(
+                            fontSize: 15.sp,
+                            fontFamily: 'ProductSans',
+                            color: buttonColor,
+                            fontWeight: FontWeight.bold))
+                  ],
+                )
+              : Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    fontFamily: 'ProductSans',
+                  ),
+                ),
           content: child,
           onLongTap: () {
             debugPrint("long tapped!!");
@@ -327,17 +437,27 @@ class ProfileView extends StatelessWidget {
   }
 }
 
-Widget infoContainer(String title, String value) => SizedBox(
-      width: double.infinity,
+Widget infoContainer(String title, String value, double width) => SizedBox(
+      width: width,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: TextStyle(color: Colors.grey, fontSize: 13.sp),
+            style: TextStyle(
+              color: customDocGrey,
+              fontSize: 12.sp,
+              fontFamily: 'ProductSans',
+            ),
           ),
-          Text(value)
+          Text(
+            value,
+            style: TextStyle(
+                fontFamily: 'ProductSans',
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500),
+          )
         ],
       ),
     );
