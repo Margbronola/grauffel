@@ -80,19 +80,14 @@ class SelectDateView extends StatelessWidget {
                       deactivatedColor: Colors.grey,
                       selectedTextColor: Colors.white,
                       onDateChange: model.setDate,
+                      inactiveDates: [DateTime.now()],
                       locale: 'fr_FR',
                       controller: model.controller,
                       daysCount: model.numDaysTotal,
-                      inactiveDates: model.inactive,
                       dayTextStyle: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'ProductSans',
-                          color: model.currentDate
-                                      .toUtc()
-                                      .compareTo(DateTime.now().toUtc()) ==
-                                  0
-                              ? Colors.grey
-                              : backgroundColor,
+                          color: backgroundColor,
                           fontSize: 15.sp)),
                 ),
               ),
@@ -150,13 +145,16 @@ class SelectDateView extends StatelessWidget {
                 )
               : const SizedBox(),
           verticalSpaceMedium(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(
-                  width: 150.w,
-                  child: CustomButton(title: "Suivant", onTap: onTap)),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                    width: 150.w,
+                    child: CustomButton(title: "Suivant", onTap: onTap)),
+              ],
+            ),
           ),
           verticalSpaceSmall()
         ],

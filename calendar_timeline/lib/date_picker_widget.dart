@@ -175,17 +175,23 @@ class _DatePickerState extends State<DatePicker> {
           return DateWidget(
             date: date,
             monthTextStyle: isDeactivated
-                ? deactivatedMonthStyle
+                ? isSelected
+                    ? selectedMonthStyle
+                    : deactivatedMonthStyle
                 : isSelected
                     ? selectedMonthStyle
                     : widget.monthTextStyle,
             dateTextStyle: isDeactivated
-                ? deactivatedDateStyle
+                ? isSelected
+                    ? selectedDateStyle
+                    : deactivatedDateStyle
                 : isSelected
                     ? selectedDateStyle
                     : widget.dateTextStyle,
             dayTextStyle: isDeactivated
-                ? deactivatedDayStyle
+                ? isSelected
+                    ? selectedDayStyle
+                    : deactivatedDayStyle
                 : isSelected
                     ? selectedDayStyle
                     : widget.dayTextStyle,
@@ -195,7 +201,7 @@ class _DatePickerState extends State<DatePicker> {
                 isSelected ? widget.selectionColor : Colors.transparent,
             onDateSelected: (selectedDate) {
               // Don't notify listener if date is deactivated
-              if (isDeactivated) return;
+              // if (isDeactivated) return;
 
               // A date is selected
               if (widget.onDateChange != null) {

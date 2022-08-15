@@ -26,6 +26,7 @@ class SelectDateViewModel extends BaseViewModel {
   List<TimeModel> selectedTime = [];
 
   List<DateTime> inactive = [];
+  List<DateTime> activeDates = [];
 
   DateTime currentDate = DateTime.now().toUtc();
 
@@ -40,26 +41,35 @@ class SelectDateViewModel extends BaseViewModel {
 
   void forwardMonth() {
     currentDate = DateTime(currentDate.year, currentDate.month + 1, 1);
-    _selectedValue = currentDate;
     numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
     scrollController.animateTo(0,
         curve: Curves.easeIn, duration: const Duration(milliseconds: 300));
-    print(_selectedValue);
+
     notifyListeners();
   }
 
   void prevMonth() {
     if (currentDate.isAfter(DateTime.now())) {
       currentDate = DateTime(currentDate.year, currentDate.month - 1, 1);
-      _selectedValue = currentDate;
+
+      if (currentDate.month == DateTime.now().month) {
+        currentDate =
+            DateTime(currentDate.year, currentDate.month, DateTime.now().day);
+        print("SAME");
+        numDaysTotal =
+            DateTime(DateTime.now().year, DateTime.now().month, 0).day -
+                currentDate
+                    .difference(
+                        DateTime(DateTime.now().year, DateTime.now().month, 0))
+                    .inDays;
+      } else {
+        numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
+      }
 
       scrollController.animateTo(0,
           curve: Curves.easeIn, duration: const Duration(milliseconds: 300));
-
-      numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
-
-      print(numDaysTotal);
     }
+
     notifyListeners();
   }
 
@@ -69,9 +79,9 @@ class SelectDateViewModel extends BaseViewModel {
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
             .inDays;
 
-    for (int x = 1; x < DateTime.now().day; x++) {
-      inactive.add(DateTime(DateTime.now().year, DateTime.now().month, x));
-    }
+    // for (int x = 1; x <= DateTime.now().day; x++) {
+    //   inactive.add(DateTime(DateTime.now().year, DateTime.now().month, x));
+    // }
     setBusy(true);
     await fetchBookableActivity(DateTime.now());
     setBusy(false);
@@ -97,9 +107,9 @@ class SelectDateViewModel extends BaseViewModel {
         client_id: _userService.user!.id!);
   }
 
-  void setCalendar() {
-    _selectedValue = DateTime.now();
-  }
+  // void setCalendar() {
+  //   _selectedValue = DateTime.now();
+  // }
 
   void selectTime(TimeModel time) {
     if (!selectedTime.contains(time)) {
