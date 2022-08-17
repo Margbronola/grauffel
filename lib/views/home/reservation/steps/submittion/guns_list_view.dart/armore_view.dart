@@ -176,6 +176,7 @@ class ArmoreView extends StatelessWidget {
                         style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 15.sp,
                             color: Colors.grey,
+                            fontFamily: 'ProductSans',
                             fontWeight: FontWeight.bold),
                       ),
                       Container(
@@ -200,9 +201,7 @@ Widget gunCardView(
         required GunModel gunModel,
         required int index}) =>
     GestureDetector(
-      onTap: () {
-        model.showDetails(index);
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
             border: model.selectedIndex == null
@@ -230,8 +229,9 @@ Widget gunCardView(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
+                          opacity: 0.1,
                           image: gunModel.image == null
-                              ? const AssetImage("assets/images/gun.png")
+                              ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),
@@ -244,10 +244,11 @@ Widget gunCardView(
                   child: Text(
                     gunModel.model!,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    style: ThemeData().textTheme.bodyText1!.copyWith(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                        ),
                   ),
                 ),
                 const Spacer(),
@@ -258,12 +259,16 @@ Widget gunCardView(
                       "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       gunModel.brand!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )
@@ -273,22 +278,32 @@ Widget gunCardView(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.info,
-                  color: buttonColor,
+                GestureDetector(
+                  onTap: () {
+                    model.showDetails(index);
+                  },
+                  child: const Icon(
+                    Icons.info,
+                    color: buttonColor,
+                  ),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Calibre",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       gunModel.caliber!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )

@@ -29,6 +29,7 @@ class _WelcomeViewState extends State<WelcomeView>
             : Stack(
                 children: [
                   SingleChildScrollView(
+                    controller: model.scrollController,
                     child: SizedBox(
                       width: size(context).width,
                       height: size(context).height,

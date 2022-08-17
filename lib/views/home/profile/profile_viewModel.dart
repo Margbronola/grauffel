@@ -11,7 +11,11 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import '../../../app/app.router.dart';
+import '../../../services/authentication_service.dart';
 import '../../../services/document_service.dart';
+import '../../../services/firebase_auth_service.dart';
+import '../../../services/sharedpref_service.dart';
 import 'edit/information_edit_view.dart';
 import 'package:animate_icons/animate_icons.dart';
 import 'dart:math';
@@ -23,6 +27,12 @@ class ProfileViewModel extends ReactiveViewModel {
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
   final ScrollController scrollController = ScrollController();
+
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
+  final FireBaseAuthService _fireBaseAuthService =
+      locator<FireBaseAuthService>();
+  final SharedPrefService _sharedPrefService = locator<SharedPrefService>();
   UserModel? get user => _userService.user;
 
   late ExpandedTileController expanTileController1;
@@ -189,6 +199,19 @@ class ProfileViewModel extends ReactiveViewModel {
       );
     });
     notifyListeners();
+  }
+
+  void signOut() async {
+    print("signout firebase");
+    setBusy(true);
+    print(_userService.token);
+    await _fireBaseAuthService.logout();
+    await _authenticationService.logout(token: _sharedPrefService.prefsToken);
+    _sharedPrefService.clearAllPrefs();
+
+    _navigationService
+        .pushNamedAndRemoveUntil(Routes.welcomeView)!
+        .whenComplete(() => setBusy(false));
   }
 
   @override

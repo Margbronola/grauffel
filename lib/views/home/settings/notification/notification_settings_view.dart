@@ -30,7 +30,7 @@ class NotificationSettingsView extends StatelessWidget {
                 margin: EdgeInsets.zero,
                 child: Padding(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 30.w, vertical: 60.h),
+                      EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

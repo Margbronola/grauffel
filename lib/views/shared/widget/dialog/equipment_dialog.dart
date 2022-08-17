@@ -3,8 +3,6 @@ import 'package:egczacademy/views/shared/widget/dialog/dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../../app/global.dart';
-
 class EquipmentDetails extends StatelessWidget {
   final DialogRequest<EquipmentModel>? request;
   final Function(DialogResponse)? completer;
@@ -16,8 +14,7 @@ class EquipmentDetails extends StatelessWidget {
     return DialogWidget(
       title: request!.data!.name!,
       description: request!.data!.description!,
-      imageUrl:
-          "$urlServer/${request!.data!.image!.path}/${request!.data!.image!.filename}",
+      imageUrl: request!.data!.image!,
     );
   }
 }

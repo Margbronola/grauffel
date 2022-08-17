@@ -348,7 +348,7 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: model.signOut,
                         child: Text(
                           "Se déconnecter",
                           style: TextStyle(

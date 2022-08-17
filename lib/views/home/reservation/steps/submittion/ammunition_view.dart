@@ -36,13 +36,16 @@ class AmmunitionView extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            "Recommandé avec l'arme".toUpperCase(),
+                            "Recommandé avec l'arme",
                             style: ThemeData().textTheme.bodyText1!.copyWith(
                                   fontSize: 24.sp,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ProductSans',
                                 ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 5,
                         ),
                         Row(
                           children: [
@@ -124,19 +127,25 @@ class AmmunitionView extends StatelessWidget {
                                 )),
                           ],
                         ),
-                        verticalSpaceMedium(),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         Expanded(
-                          child: GridView.count(
-                            mainAxisSpacing: 15,
-                            crossAxisSpacing: 20,
-                            crossAxisCount: 2,
-                            children: List.generate(model.ammunitions!.length,
-                                (index) {
-                              return amminitionCard(
-                                  index: index,
-                                  ammunition: model.ammunitions![index],
-                                  model: model);
-                            }),
+                          child: Container(
+                            child: GridView.count(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                              crossAxisCount: 2,
+                              children: List.generate(model.ammunitions!.length,
+                                  (index) {
+                                return amminitionCard(
+                                    index: index,
+                                    ammunition: model.ammunitions![index],
+                                    model: model);
+                              }),
+                            ),
                           ),
                         ),
                       ],
@@ -156,10 +165,11 @@ class AmmunitionView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Continuer sans\narme".toUpperCase(),
+                        "J’ai déjà des\nmunitions".toUpperCase(),
                         style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 15.sp,
                             color: Colors.grey,
+                            fontFamily: 'ProductSans',
                             fontWeight: FontWeight.bold),
                       ),
                       Container(
@@ -180,9 +190,7 @@ Widget amminitionCard(
         required AmmunitionsModel ammunition,
         required int index}) =>
     GestureDetector(
-      onTap: () {
-        model.showDetails(index);
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
             border: model.selectedIndex == index
@@ -208,8 +216,9 @@ Widget amminitionCard(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
+                          opacity: 0.2,
                           image: ammunition.image == null
-                              ? const AssetImage("assets/images/bullet.png")
+                              ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}"))),
@@ -222,10 +231,11 @@ Widget amminitionCard(
                   child: Text(
                     ammunition.name!,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    style: ThemeData().textTheme.bodyText1!.copyWith(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                        ),
                   ),
                 ),
                 const Spacer(),
@@ -236,12 +246,16 @@ Widget amminitionCard(
                       "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       ammunition.brand!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )
@@ -251,9 +265,14 @@ Widget amminitionCard(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.info,
-                  color: buttonColor,
+                GestureDetector(
+                  onTap: () {
+                    model.showDetails(index);
+                  },
+                  child: const Icon(
+                    Icons.info,
+                    color: buttonColor,
+                  ),
                 ),
                 Column(
                   children: [
@@ -261,12 +280,16 @@ Widget amminitionCard(
                       "Calibre",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       ammunition.caliber!.name!,
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )

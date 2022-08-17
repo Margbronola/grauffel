@@ -1,13 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:egczacademy/models/image_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../app/global.dart';
 import '../../color.dart';
 
 class DialogWidget extends StatelessWidget {
   final String title;
   final String description;
-  final String? imageUrl;
+  final ImageModel? imageUrl;
   const DialogWidget({
     Key? key,
     required this.title,
@@ -53,12 +55,13 @@ class DialogWidget extends StatelessWidget {
                                   color: kcWhite,
                                   image: DecorationImage(
                                       fit: BoxFit.contain,
+                                      opacity: 0.1,
                                       image: imageUrl == null
-                                          ? Image.asset(
-                                                  "assets/images/equipment.png")
+                                          ? const AssetImage(
+                                                  "assets/images/noImage.png")
                                               as ImageProvider
                                           : CachedNetworkImageProvider(
-                                              imageUrl!))),
+                                              "$urlServer/${imageUrl!.path}/${imageUrl!.filename}"))),
                             ),
                             Icon(
                               Icons.arrow_forward_ios,

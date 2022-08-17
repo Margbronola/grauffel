@@ -11,6 +11,7 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../app/app.locator.dart';
 
 class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
+  ScrollController scrollController = ScrollController();
   final NavigationService _navigationService = locator<NavigationService>();
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
@@ -110,6 +111,10 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       notifyListeners();
     });
 
+    scrollController.addListener(() {
+      print(scrollController.offset);
+    });
+
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
@@ -119,11 +124,25 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
 
     passwordFocusNode.addListener(() {
       isPasswordFucos = passwordFocusNode.hasFocus;
+      if (passwordFocusNode.hasFocus) {
+        Future.delayed(const Duration(milliseconds: 600), () {
+          scrollController.animateTo(255,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeIn);
+        });
+      }
       notifyListeners();
     });
 
     emailFocusNode.addListener(() {
       isEmailFucos = emailFocusNode.hasFocus;
+      if (emailFocusNode.hasFocus) {
+        Future.delayed(const Duration(milliseconds: 500), () {
+          scrollController.animateTo(235,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeIn);
+        });
+      }
       notifyListeners();
     });
 

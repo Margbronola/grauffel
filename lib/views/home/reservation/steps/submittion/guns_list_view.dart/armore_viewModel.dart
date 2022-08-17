@@ -48,6 +48,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   }
 
   void showDetails(index) async {
+    print(guns![index]);
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
         data: guns![index],
@@ -59,7 +60,7 @@ class ArmoreViewModel extends ReactiveViewModel {
         _selectedIndex = index;
         notifyListeners();
       } else {
-        print("CANCE:");
+        print("cancel");
       }
     }
   }

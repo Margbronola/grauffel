@@ -79,7 +79,7 @@ class LoginHelper {
   Future<void> fbSignIn() async {
     try {
       final LoginResult result = await FacebookAuth.instance.login(
-        permissions: ['public_profile', 'email'],
+        permissions: ['email', 'public_profile'],
       );
       switch (result.status) {
         case LoginStatus.success:

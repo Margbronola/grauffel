@@ -5,6 +5,7 @@ import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import '../../../shared/validator.dart';
 
 class ReservationCellView extends StatelessWidget {
   const ReservationCellView({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class ReservationCellView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReservationCellViewModel>.reactive(
+      onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 90,
@@ -61,18 +63,43 @@ class ReservationCellView extends StatelessWidget {
                     fontWeight: FontWeight.w500),
               ),
               verticalSpaceLarge(),
-              Text(
-                "Exprimez votre demande*",
-                style: TextStyle(
-                    fontFamily: 'ProductSans',
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.bold),
-              ),
-              const TextField(
+              TextFormField(
+                maxLines: 3,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                focusNode: model.commentFocusNode,
+                controller: model.commentTextController,
+                validator: (value) {
+                  return Validator.validateName(value ?? "");
+                },
                 decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
+                  label: RichText(
+                      text: TextSpan(
+                          text: 'Exprimez votre demande',
+                          style: TextStyle(
+                              fontFamily: 'ProductSans',
+                              color: model.isCommentFucos
+                                  ? Colors.grey
+                                  : Colors.black,
+                              letterSpacing: 1.3,
+                              fontWeight: FontWeight.w700),
+                          children: const [
+                        TextSpan(
+                            text: ' *',
+                            style: TextStyle(
+                              color: buttonColor,
+                            ))
+                      ])),
+                  fillColor: Colors.black,
+                  focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black),
                   ),
+                  hintStyle: const TextStyle(color: backgroundColor),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: backgroundColor),
+                  ),
+                  isDense: true,
                 ),
               ),
               const Expanded(child: SizedBox()),

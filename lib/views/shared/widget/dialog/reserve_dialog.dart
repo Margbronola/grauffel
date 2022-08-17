@@ -47,25 +47,38 @@ class ReserveDialog extends StatelessWidget {
                     height: 38.h,
                   ),
                   verticalSpaceSmall(),
-                  const Text(
+                  Text(
                     "Votre réservation ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ProductSans',
+                    ),
                   ),
                   Text(
                     "PAS DE TIR 25 mètres",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: buttonColor,
-                        fontSize: 21.sp),
+                        fontFamily: 'ProductSans',
+                        fontSize: 22.sp),
                   ),
-                  const Text(
+                  Text(
                     "a été enregistrée !",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ProductSans',
+                    ),
                   ),
                   verticalSpaceLarge(),
                   Text(
-                    "Votre solde visible sur le site internet va être débité.",
-                    style: TextStyle(fontSize: 15.sp),
+                    "Votre solde visible sur le\nsite internet va être débité.",
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ProductSans',
+                    ),
                   ),
                   const Spacer(),
                   SizedBox(
@@ -78,18 +91,6 @@ class ReserveDialog extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-                top: 0,
-                right: 0,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.close,
-                    color: Colors.grey,
-                  ),
-                )),
           ],
         ));
   }

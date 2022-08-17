@@ -37,16 +37,22 @@ class EquipmentView extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            "Choix de l'arme",
+                            "Choisissez votre équipement",
                             style: ThemeData().textTheme.bodyText1!.copyWith(
-                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSans',
+                                  fontSize: 24.sp,
+                                ),
                           ),
                         ),
-                        verticalSpaceSmall(),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Expanded(
                           child: GridView.count(
-                            mainAxisSpacing: 15,
-                            crossAxisSpacing: 20,
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
                             crossAxisCount: 2,
                             children: List.generate(model.equipments!.length,
                                 (index) {
@@ -74,10 +80,11 @@ class EquipmentView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Continuer sans\narme".toUpperCase(),
+                        "J’ai déjà des\nmunitions".toUpperCase(),
                         style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 15.sp,
                             color: Colors.grey,
+                            fontFamily: 'ProductSans',
                             fontWeight: FontWeight.bold),
                       ),
                       Container(
@@ -127,7 +134,7 @@ Widget equipemntCardView(
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
                           image: equipmentModel.image == null
-                              ? Image.asset("assets/images/equipment.png")
+                              ? Image.asset("assets/images/noImage.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}"))),
@@ -140,10 +147,11 @@ Widget equipemntCardView(
                   child: Text(
                     equipmentModel.name!,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeData()
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    style: ThemeData().textTheme.bodyText1!.copyWith(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'ProductSans',
+                        ),
                   ),
                 ),
                 const Spacer(),
@@ -153,12 +161,17 @@ Widget equipemntCardView(
                     Text(
                       "Référence",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                     Text(
                       "SH2-BUSH-CER",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )
@@ -178,12 +191,16 @@ Widget equipemntCardView(
                       "Marque",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
                             fontSize: 10.sp,
+                            fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       "CZ",
                       style: ThemeData().textTheme.bodyText1!.copyWith(
-                          fontSize: 10.sp, fontWeight: FontWeight.bold),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'ProductSans',
+                          ),
                     ),
                   ],
                 )
