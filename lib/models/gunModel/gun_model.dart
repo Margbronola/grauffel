@@ -1,3 +1,5 @@
+import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
 import 'package:egczacademy/models/image_model.dart';
@@ -28,7 +30,8 @@ class GunModel with _$GunModel {
       BrandModel? brand,
       ImageModel? image,
       List? bookings,
-      List? ammunitions}) = _GunModel;
+      List<EquipmentModel>? equipments,
+      List<AmmunitionsModel>? ammunitions}) = _GunModel;
 
   factory GunModel.fromJson(Map<String, Object?> json) =>
       _$GunModelFromJson(json);

@@ -110,11 +110,11 @@ Widget equipemntCardView(
         required int index}) =>
     GestureDetector(
       onTap: () {
-        model.selectCard(index);
+        model.selectCard(equipmentModel);
       },
       child: Container(
         decoration: BoxDecoration(
-            border: model.selectedIndex == index
+            border: model.selectedEquipment.contains(equipmentModel)
                 ? Border.all(color: buttonColor, width: 2)
                 : null,
             color: greyLighter,

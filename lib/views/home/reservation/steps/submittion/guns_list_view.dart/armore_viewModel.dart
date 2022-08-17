@@ -9,6 +9,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../../app/app.locator.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
+import '../../../../../../services/booking_service.dart';
 import '../../../../../shared/widget/dialog/setup_dialog_ui.dart';
 import '../filterGun/caliber_filter/caliber_filter_view.dart';
 
@@ -20,8 +21,8 @@ class ArmoreViewModel extends ReactiveViewModel {
   final GunListService _gunListService = locator<GunListService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
-  int? _selectedIndex;
-  int? get selectedIndex => _selectedIndex;
+  final BookingService _bookingService = locator<BookingService>();
+
   List<GunModel>? get guns => _gunListService.guns;
 
   bool get loader => _gunListService.loader;
@@ -30,6 +31,8 @@ class ArmoreViewModel extends ReactiveViewModel {
   bool get filterCaliberIsActive => _gunListService.filterCaliberIds.isNotEmpty;
   int get filterCaliberIsActiveLength =>
       _gunListService.filterCaliberIds.length;
+
+  List<GunModel> get selectedGun => _bookingService.selectedGun;
 
   init() async {
     _gunListService.setBusy(true);
@@ -61,8 +64,12 @@ class ArmoreViewModel extends ReactiveViewModel {
     }
   }
 
-  void selectCard(int index) {
-    _selectedIndex = index;
+  void selectCard(GunModel selectedGun) {
+    if (_bookingService.selectedGun.contains(selectedGun)) {
+      _bookingService.selectedGun.remove(selectedGun);
+    } else {
+      _bookingService.selectedGun.add(selectedGun);
+    }
     notifyListeners();
   }
 

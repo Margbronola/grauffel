@@ -37,7 +37,8 @@ mixin _$GunModel {
   BrandModel? get brand => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
-  List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
+  List<EquipmentModel>? get equipments => throw _privateConstructorUsedError;
+  List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +66,8 @@ abstract class $GunModelCopyWith<$Res> {
       BrandModel? brand,
       ImageModel? image,
       List<dynamic>? bookings,
-      List<dynamic>? ammunitions});
+      List<EquipmentModel>? equipments,
+      List<AmmunitionsModel>? ammunitions});
 
   $CaliberModelCopyWith<$Res>? get caliber;
   $BrandModelCopyWith<$Res>? get brand;
@@ -97,6 +99,7 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
+    Object? equipments = freezed,
     Object? ammunitions = freezed,
   }) {
     return _then(_value.copyWith(
@@ -160,10 +163,14 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      equipments: equipments == freezed
+          ? _value.equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentModel>?,
       ammunitions: ammunitions == freezed
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<AmmunitionsModel>?,
     ));
   }
 
@@ -223,7 +230,8 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       BrandModel? brand,
       ImageModel? image,
       List<dynamic>? bookings,
-      List<dynamic>? ammunitions});
+      List<EquipmentModel>? equipments,
+      List<AmmunitionsModel>? ammunitions});
 
   @override
   $CaliberModelCopyWith<$Res>? get caliber;
@@ -260,6 +268,7 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
+    Object? equipments = freezed,
     Object? ammunitions = freezed,
   }) {
     return _then(_$_GunModel(
@@ -323,10 +332,14 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value._bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      equipments: equipments == freezed
+          ? _value._equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentModel>?,
       ammunitions: ammunitions == freezed
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<AmmunitionsModel>?,
     ));
   }
 }
@@ -350,8 +363,10 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       this.brand,
       this.image,
       final List<dynamic>? bookings,
-      final List<dynamic>? ammunitions})
+      final List<EquipmentModel>? equipments,
+      final List<AmmunitionsModel>? ammunitions})
       : _bookings = bookings,
+        _equipments = equipments,
         _ammunitions = ammunitions;
 
   factory _$_GunModel.fromJson(Map<String, dynamic> json) =>
@@ -397,9 +412,18 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _ammunitions;
+  final List<EquipmentModel>? _equipments;
   @override
-  List<dynamic>? get ammunitions {
+  List<EquipmentModel>? get equipments {
+    final value = _equipments;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<AmmunitionsModel>? _ammunitions;
+  @override
+  List<AmmunitionsModel>? get ammunitions {
     final value = _ammunitions;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -408,7 +432,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, ammunitions: $ammunitions)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, equipments: $equipments, ammunitions: $ammunitions)';
   }
 
   @override
@@ -431,6 +455,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       ..add(DiagnosticsProperty('brand', brand))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('bookings', bookings))
+      ..add(DiagnosticsProperty('equipments', equipments))
       ..add(DiagnosticsProperty('ammunitions', ammunitions));
   }
 
@@ -461,6 +486,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other._bookings, _bookings) &&
             const DeepCollectionEquality()
+                .equals(other._equipments, _equipments) &&
+            const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions));
   }
 
@@ -483,6 +510,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(_bookings),
+      const DeepCollectionEquality().hash(_equipments),
       const DeepCollectionEquality().hash(_ammunitions));
 
   @JsonKey(ignore: true)
@@ -513,7 +541,8 @@ abstract class _GunModel implements GunModel {
       final BrandModel? brand,
       final ImageModel? image,
       final List<dynamic>? bookings,
-      final List<dynamic>? ammunitions}) = _$_GunModel;
+      final List<EquipmentModel>? equipments,
+      final List<AmmunitionsModel>? ammunitions}) = _$_GunModel;
 
   factory _GunModel.fromJson(Map<String, dynamic> json) = _$_GunModel.fromJson;
 
@@ -549,7 +578,9 @@ abstract class _GunModel implements GunModel {
   @override
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
   @override
-  List<dynamic>? get ammunitions => throw _privateConstructorUsedError;
+  List<EquipmentModel>? get equipments => throw _privateConstructorUsedError;
+  @override
+  List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GunModelCopyWith<_$_GunModel> get copyWith =>

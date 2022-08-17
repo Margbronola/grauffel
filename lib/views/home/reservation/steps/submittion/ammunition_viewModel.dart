@@ -1,5 +1,6 @@
 import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
 import 'package:egczacademy/services/caliber_api_service.dart';
@@ -9,6 +10,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../../../app/app.locator.dart';
+import '../../../../../services/booking_service.dart';
 import '../../../../shared/widget/dialog/setup_dialog_ui.dart';
 import 'filterGun/caliber_filter/caliber_filter_view.dart';
 import 'filterGun/brand_filter_view.dart';
@@ -22,6 +24,7 @@ class AmmunitionViewModel extends BaseViewModel {
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final DialogService _dialogService = locator<DialogService>();
   final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
+  final BookingService _bookingService = locator<BookingService>();
 
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;
@@ -30,9 +33,20 @@ class AmmunitionViewModel extends BaseViewModel {
   int get filterCaliberIsActiveLength =>
       _gunListService.filterCaliberIds.length;
 
-  int? _selectedIndex;
-  int? get selectedIndex => _selectedIndex;
   List<AmmunitionsModel>? get ammunitions => _gunListService.ammunition;
+
+  List<AmmunitionsModel> get selectedAmmunition =>
+      _bookingService.selectedAmmunition;
+
+  bool get haveorderedGuns => _bookingService.selectedGun.isNotEmpty;
+
+  List<AmmunitionsModel> gunAmmunitionRecommended() {
+    List<AmmunitionsModel> gunAmmunitionRecommendedList = [];
+    for (GunModel gun in _bookingService.selectedGun) {
+      gunAmmunitionRecommendedList.addAll(gun.ammunitions!);
+    }
+    return gunAmmunitionRecommendedList;
+  }
 
   init() async {
     setBusy(true);
@@ -72,8 +86,12 @@ class AmmunitionViewModel extends BaseViewModel {
     }
   }
 
-  void selectCard(int index) {
-    _selectedIndex = index;
+  void selectCard(AmmunitionsModel ammunition) {
+    if (_bookingService.selectedAmmunition.contains(ammunition)) {
+      _bookingService.selectedAmmunition.remove(ammunition);
+    } else {
+      _bookingService.selectedAmmunition.add(ammunition);
+    }
     notifyListeners();
   }
 

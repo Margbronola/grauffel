@@ -1,4 +1,5 @@
 import 'package:egczacademy/models/equipment_model.dart';
+import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/equipments_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:stacked/stacked.dart';
@@ -12,8 +13,10 @@ class EquipmentViewModel extends BaseViewModel {
       locator<EquipmentsAPIService>();
   final DialogService _dialogService = locator<DialogService>();
   final UserService _userService = locator<UserService>();
-  int? _selectedIndex;
-  int? get selectedIndex => _selectedIndex;
+  final BookingService _bookingService = locator<BookingService>();
+
+  List<EquipmentModel> get selectedEquipment =>
+      _bookingService.selectedEquipment;
 
   void init() async {
     print(_userService.token);
@@ -42,8 +45,12 @@ class EquipmentViewModel extends BaseViewModel {
     }
   }
 
-  void selectCard(int index) {
-    _selectedIndex = index;
+  void selectCard(EquipmentModel equipment) {
+    if (_bookingService.selectedEquipment.contains(equipment)) {
+      _bookingService.selectedEquipment.remove(equipment);
+    } else {
+      _bookingService.selectedEquipment.add(equipment);
+    }
     notifyListeners();
   }
 }

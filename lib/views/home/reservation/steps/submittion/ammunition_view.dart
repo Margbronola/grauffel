@@ -37,10 +37,60 @@ class AmmunitionView extends StatelessWidget {
                         EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                     child: Column(
                       children: [
+                        model.haveorderedGuns
+                            ? Column(
+                                children: [
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: Text(
+                                      "Recommandé avec l'arme",
+                                      style: ThemeData()
+                                          .textTheme
+                                          .bodyText1!
+                                          .copyWith(
+                                            fontSize: 24.sp,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'ProductSans',
+                                          ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  SizedBox(
+                                    height: 140,
+                                    width: size(context).width,
+                                    child: GridView.count(
+                                      scrollDirection: Axis.horizontal,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 10,
+                                      crossAxisCount: 1,
+                                      childAspectRatio: 1,
+                                      children: List.generate(
+                                          model
+                                              .gunAmmunitionRecommended()
+                                              .length, (index) {
+                                        return amminitionCard(
+                                            index: index,
+                                            ammunition: model
+                                                    .gunAmmunitionRecommended()[
+                                                index],
+                                            model: model);
+                                      }),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : const SizedBox(),
+                        verticalSpaceSmall(),
                         SizedBox(
                           width: double.infinity,
                           child: Text(
-                            "Recommandé avec l'arme",
+                            model.haveorderedGuns
+                                ? "D'autres choix"
+                                : "Choisissez vos munitions",
                             style: ThemeData().textTheme.bodyText1!.copyWith(
                                   fontSize: 24.sp,
                                   fontWeight: FontWeight.bold,
@@ -200,11 +250,11 @@ Widget amminitionCard(
         required int index}) =>
     GestureDetector(
       onTap: () {
-        model.selectCard(index);
+        model.selectCard(ammunition);
       },
       child: Container(
         decoration: BoxDecoration(
-            border: model.selectedIndex == index
+            border: model.selectedAmmunition.contains(ammunition)
                 ? Border.all(color: buttonColor, width: 2)
                 : null,
             color: greyLighter,

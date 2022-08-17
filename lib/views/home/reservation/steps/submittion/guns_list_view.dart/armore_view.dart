@@ -206,15 +206,13 @@ Widget gunCardView(
         required int index}) =>
     GestureDetector(
       onTap: () {
-        model.selectCard(index);
+        model.selectCard(gunModel);
       },
       child: Container(
         decoration: BoxDecoration(
-            border: model.selectedIndex == null
-                ? null
-                : model.selectedIndex == index
-                    ? Border.all(color: buttonColor, width: 2)
-                    : null,
+            border: model.selectedGun.contains(gunModel)
+                ? Border.all(color: buttonColor, width: 2)
+                : null,
             color: greyLighter,
             borderRadius: BorderRadius.circular(5)),
         width: 161.w,
