@@ -65,12 +65,16 @@ class AmmunitionViewModel extends BaseViewModel {
 
     if (response != null) {
       if (response.confirmed) {
-        _selectedIndex = index;
-        notifyListeners();
+        print("confirm");
       } else {
         print("CANCE:");
       }
     }
+  }
+
+  void selectCard(int index) {
+    _selectedIndex = index;
+    notifyListeners();
   }
 
   void initFilter() {

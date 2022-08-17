@@ -20,16 +20,13 @@ class ArmoreViewModel extends ReactiveViewModel {
   final GunListService _gunListService = locator<GunListService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
-
   int? _selectedIndex;
   int? get selectedIndex => _selectedIndex;
   List<GunModel>? get guns => _gunListService.guns;
 
   bool get loader => _gunListService.loader;
-
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;
-
   bool get filterCaliberIsActive => _gunListService.filterCaliberIds.isNotEmpty;
   int get filterCaliberIsActiveLength =>
       _gunListService.filterCaliberIds.length;
@@ -57,12 +54,16 @@ class ArmoreViewModel extends ReactiveViewModel {
 
     if (response != null) {
       if (response.confirmed) {
-        _selectedIndex = index;
-        notifyListeners();
+        print("confirm");
       } else {
         print("cancel");
       }
     }
+  }
+
+  void selectCard(int index) {
+    _selectedIndex = index;
+    notifyListeners();
   }
 
   void marqueFilter() {

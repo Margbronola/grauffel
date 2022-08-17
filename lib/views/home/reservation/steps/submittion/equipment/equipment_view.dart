@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/models/equipment_model.dart';
-import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/models/equipment_model.dart';
+import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 
 import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
@@ -13,9 +14,11 @@ import 'equipment_viewModel.dart';
 
 class EquipmentView extends StatelessWidget {
   final Function() onTap;
+  final Function() skipTap;
   const EquipmentView({
     Key? key,
     required this.onTap,
+    required this.skipTap,
   }) : super(key: key);
 
   get kcWhite => null;
@@ -74,22 +77,23 @@ class EquipmentView extends StatelessWidget {
                 ),
                 verticalSpaceSmall(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.only(left: 45.w, right: 45.w, bottom: 20),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "J’ai déjà des\nmunitions".toUpperCase(),
-                        style: ThemeData().textTheme.bodyText1!.copyWith(
-                            fontSize: 15.sp,
-                            color: Colors.grey,
-                            fontFamily: 'ProductSans',
-                            fontWeight: FontWeight.bold),
+                      TextButton(
+                        onPressed: skipTap,
+                        child: Text(
+                          "J’ai déjà des\néquipements".toUpperCase(),
+                          style: ThemeData().textTheme.bodyText1!.copyWith(
+                              fontSize: 15.sp,
+                              color: Colors.grey,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      Container(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: CustomButton(title: "Suivant", onTap: onTap))
+                      CustomButton(title: "Suivant", onTap: onTap)
                     ],
                   ),
                 )
@@ -106,7 +110,7 @@ Widget equipemntCardView(
         required int index}) =>
     GestureDetector(
       onTap: () {
-        model.showDetails(index);
+        model.selectCard(index);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -181,9 +185,14 @@ Widget equipemntCardView(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.info,
-                  color: buttonColor,
+                GestureDetector(
+                  onTap: () {
+                    model.showDetails(index);
+                  },
+                  child: const Icon(
+                    Icons.info,
+                    color: buttonColor,
+                  ),
                 ),
                 Column(
                   children: [

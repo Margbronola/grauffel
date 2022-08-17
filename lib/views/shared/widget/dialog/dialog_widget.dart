@@ -55,7 +55,7 @@ class DialogWidget extends StatelessWidget {
                                   color: kcWhite,
                                   image: DecorationImage(
                                       fit: BoxFit.contain,
-                                      opacity: 0.1,
+                                      opacity: imageUrl == null ? 0.1 : 1.0,
                                       image: imageUrl == null
                                           ? const AssetImage(
                                                   "assets/images/noImage.png")

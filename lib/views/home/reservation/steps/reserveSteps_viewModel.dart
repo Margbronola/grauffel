@@ -37,4 +37,8 @@ class ReserveStepsViewModel extends BaseViewModel {
   void submitGuns(int index) {
     nextPage(index);
   }
+
+  void skipPage(int index) {
+    nextPage(index);
+  }
 }

@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 
 import '../../../../../../app/global.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
@@ -14,9 +15,11 @@ import 'armore_viewModel.dart';
 
 class ArmoreView extends StatelessWidget {
   final Function() onTap;
+  final Function() skipTap;
   const ArmoreView({
     Key? key,
     required this.onTap,
+    required this.skipTap,
   }) : super(key: key);
 
   get kcWhite => null;
@@ -164,28 +167,29 @@ class ArmoreView extends StatelessWidget {
                 ),
                 verticalSpaceSmall(),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 45.w,
-                  ),
+                  padding: EdgeInsets.only(left: 45.w, right: 45.w, bottom: 20),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "j'ai déjá\nune arme".toUpperCase(),
-                        style: ThemeData().textTheme.bodyText1!.copyWith(
-                            fontSize: 15.sp,
-                            color: Colors.grey,
-                            fontFamily: 'ProductSans',
-                            fontWeight: FontWeight.bold),
+                      TextButton(
+                        onPressed: () {
+                          skipTap();
+                        },
+                        child: Text(
+                          "j'ai déjá\nune arme".toUpperCase(),
+                          style: ThemeData().textTheme.bodyText1!.copyWith(
+                              fontSize: 15.sp,
+                              color: Colors.grey,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      Container(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: CustomButton(
-                              title: "Suivant",
-                              onTap: () {
-                                onTap();
-                              }))
+                      CustomButton(
+                          title: "Suivant",
+                          onTap: () {
+                            onTap();
+                          })
                     ],
                   ),
                 )
@@ -201,7 +205,9 @@ Widget gunCardView(
         required GunModel gunModel,
         required int index}) =>
     GestureDetector(
-      onTap: () {},
+      onTap: () {
+        model.selectCard(index);
+      },
       child: Container(
         decoration: BoxDecoration(
             border: model.selectedIndex == null

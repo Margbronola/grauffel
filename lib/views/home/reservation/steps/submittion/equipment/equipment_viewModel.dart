@@ -12,7 +12,9 @@ class EquipmentViewModel extends BaseViewModel {
       locator<EquipmentsAPIService>();
   final DialogService _dialogService = locator<DialogService>();
   final UserService _userService = locator<UserService>();
-  int? selectedIndex;
+  int? _selectedIndex;
+  int? get selectedIndex => _selectedIndex;
+
   void init() async {
     print(_userService.token);
     setBusy(true);
@@ -33,11 +35,15 @@ class EquipmentViewModel extends BaseViewModel {
 
     if (response != null) {
       if (response.confirmed) {
-        selectedIndex = index;
-        notifyListeners();
+        print("confirm");
       } else {
         print("CANCE:");
       }
     }
+  }
+
+  void selectCard(int index) {
+    _selectedIndex = index;
+    notifyListeners();
   }
 }

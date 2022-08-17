@@ -128,15 +128,24 @@ class ReserveStepsView extends StatelessWidget {
                       onTap: () {
                         model.submitEvents(2);
                       },
+                      skipTap: () {
+                        model.skipPage(2);
+                      },
                     ),
                     AmmunitionView(
                       onTap: () {
                         model.submitEvents(3);
                       },
+                      skipTap: () {
+                        model.skipPage(3);
+                      },
                     ),
                     EquipmentView(
                       onTap: () {
                         model.submitEvents(4);
+                      },
+                      skipTap: () {
+                        model.skipPage(4);
                       },
                     ),
                     const SubmitionView()
