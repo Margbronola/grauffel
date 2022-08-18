@@ -23,6 +23,7 @@ _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
       caliber: json['caliber'] == null
           ? null
           : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
+      perBox: json['perBox'] as int? ?? 1,
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -42,6 +43,7 @@ Map<String, dynamic> _$$_AmmunitionsModelToJson(_$_AmmunitionsModel instance) =>
       'image': instance.image,
       'brand': instance.brand,
       'caliber': instance.caliber,
+      'perBox': instance.perBox,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
     };

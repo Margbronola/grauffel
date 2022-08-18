@@ -14,7 +14,7 @@ class AmmunitionDetails extends StatelessWidget {
     return DialogWidget(
       title: request!.data!.name!,
       description: request!.data!.description!,
-      imageUrl: request!.data!.image!,
+      imageUrl: request!.data!.image,
     );
   }
 }

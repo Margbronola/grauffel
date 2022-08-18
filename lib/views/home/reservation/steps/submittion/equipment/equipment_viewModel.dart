@@ -16,7 +16,7 @@ class EquipmentViewModel extends BaseViewModel {
   final BookingService _bookingService = locator<BookingService>();
 
   List<EquipmentModel> get selectedEquipment =>
-      _bookingService.selectedEquipment;
+      _bookingService.getselectedEquipment;
 
   void init() async {
     print(_userService.token);
@@ -46,10 +46,10 @@ class EquipmentViewModel extends BaseViewModel {
   }
 
   void selectCard(EquipmentModel equipment) {
-    if (_bookingService.selectedEquipment.contains(equipment)) {
-      _bookingService.selectedEquipment.remove(equipment);
+    if (_bookingService.getselectedEquipment.contains(equipment)) {
+      _bookingService.getselectedEquipment.remove(equipment);
     } else {
-      _bookingService.selectedEquipment.add(equipment);
+      _bookingService.getselectedEquipment.add(equipment);
     }
     notifyListeners();
   }

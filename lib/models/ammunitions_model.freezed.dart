@@ -29,6 +29,7 @@ mixin _$AmmunitionsModel {
   ImageModel? get image => throw _privateConstructorUsedError;
   BrandModel? get brand => throw _privateConstructorUsedError;
   CaliberModel? get caliber => throw _privateConstructorUsedError;
+  int get perBox => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -53,6 +54,7 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
+      int perBox,
       DateTime? created_at,
       DateTime? updated_at});
 
@@ -81,6 +83,7 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
+    Object? perBox = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -121,6 +124,10 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
+      perBox: perBox == freezed
+          ? _value.perBox
+          : perBox // ignore: cast_nullable_to_non_nullable
+              as int,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -183,6 +190,7 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
       ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
+      int perBox,
       DateTime? created_at,
       DateTime? updated_at});
 
@@ -216,6 +224,7 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
+    Object? perBox = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -256,6 +265,10 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
+      perBox: perBox == freezed
+          ? _value.perBox
+          : perBox // ignore: cast_nullable_to_non_nullable
+              as int,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -281,6 +294,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       this.image,
       this.brand,
       this.caliber,
+      this.perBox = 1,
       this.created_at,
       this.updated_at});
 
@@ -306,13 +320,16 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
   @override
   final CaliberModel? caliber;
   @override
+  @JsonKey()
+  final int perBox;
+  @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, created_at: $created_at, updated_at: $updated_at)';
+    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, perBox: $perBox, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
@@ -330,6 +347,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
+            const DeepCollectionEquality().equals(other.perBox, perBox) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -349,6 +367,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(caliber),
+      const DeepCollectionEquality().hash(perBox),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at));
 
@@ -374,6 +393,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       final ImageModel? image,
       final BrandModel? brand,
       final CaliberModel? caliber,
+      final int perBox,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_AmmunitionsModel;
 
@@ -398,6 +418,8 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   BrandModel? get brand => throw _privateConstructorUsedError;
   @override
   CaliberModel? get caliber => throw _privateConstructorUsedError;
+  @override
+  int get perBox => throw _privateConstructorUsedError;
   @override
   DateTime? get created_at => throw _privateConstructorUsedError;
   @override

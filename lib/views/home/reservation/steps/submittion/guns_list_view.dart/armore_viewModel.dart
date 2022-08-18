@@ -32,7 +32,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   int get filterCaliberIsActiveLength =>
       _gunListService.filterCaliberIds.length;
 
-  List<GunModel> get selectedGun => _bookingService.selectedGun;
+  List<GunModel> get selectedGun => _bookingService.getselectedGun;
 
   init() async {
     _gunListService.setBusy(true);
@@ -65,10 +65,10 @@ class ArmoreViewModel extends ReactiveViewModel {
   }
 
   void selectCard(GunModel selectedGun) {
-    if (_bookingService.selectedGun.contains(selectedGun)) {
-      _bookingService.selectedGun.remove(selectedGun);
+    if (_bookingService.getselectedGun.contains(selectedGun)) {
+      _bookingService.getselectedGun.remove(selectedGun);
     } else {
-      _bookingService.selectedGun.add(selectedGun);
+      _bookingService.getselectedGun.add(selectedGun);
     }
     notifyListeners();
   }

@@ -35,7 +35,8 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   String dateFormat(DateTime date) {
     // final DateFormat formatter = DateFormat('MMMM');
-    final String formatted = "${date.day}/${date.month}/${date.year}";
+    final String formatted =
+        "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
     return formatted;
   }
 

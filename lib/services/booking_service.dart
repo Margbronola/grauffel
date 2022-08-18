@@ -10,7 +10,11 @@ class BookingService {
   set setSelectedBookable(value) => _selectedBookable = value;
   BookableModel? get selectedBookable => _selectedBookable;
 
-  List<GunModel> selectedGun = [];
-  List<AmmunitionsModel> selectedAmmunition = [];
-  List<EquipmentModel> selectedEquipment = [];
+  final List<GunModel> _selectedGun = [];
+  final List<AmmunitionsModel> _selectedAmmunition = [];
+  final List<EquipmentModel> _selectedEquipment = [];
+
+  List<GunModel> get getselectedGun => _selectedGun;
+  List<AmmunitionsModel> get getselectedAmmunition => _selectedAmmunition;
+  List<EquipmentModel> get getselectedEquipment => _selectedEquipment;
 }

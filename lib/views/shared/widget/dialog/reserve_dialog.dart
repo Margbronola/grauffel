@@ -34,9 +34,8 @@ class ReserveDialog extends StatelessWidget {
             Container(
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               height: size(context).height / 2.7.h,
-              width: 334.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

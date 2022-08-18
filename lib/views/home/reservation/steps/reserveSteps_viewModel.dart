@@ -1,14 +1,14 @@
+import 'package:egczacademy/services/booking_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../../app/app.locator.dart';
+
 class ReserveStepsViewModel extends BaseViewModel {
-  PageController? pageController;
+  final BookingService bookingService = locator<BookingService>();
+  PageController? pageController = PageController();
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
-
-  void init() {
-    pageController = PageController();
-  }
 
   void submitEvents(int index) {
     nextPage(index);
@@ -19,6 +19,20 @@ class ReserveStepsViewModel extends BaseViewModel {
   }
 
   void skipPage(int index) {
+    if (index == 2) {
+      //gun
+      bookingService.getselectedGun.clear();
+      notifyListeners();
+    } else if (index == 3) {
+      //ammunition
+      bookingService.getselectedAmmunition.clear();
+      notifyListeners();
+    } else if (index == 4) {
+      bookingService.getselectedEquipment.clear();
+      notifyListeners();
+      //equipment
+    }
+
     nextPage(index);
   }
 

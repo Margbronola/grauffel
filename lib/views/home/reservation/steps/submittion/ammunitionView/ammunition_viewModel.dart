@@ -6,14 +6,15 @@ import 'package:egczacademy/services/brand_api_service.dart';
 import 'package:egczacademy/services/caliber_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../../../app/app.locator.dart';
-import '../../../../../services/booking_service.dart';
-import '../../../../shared/widget/dialog/setup_dialog_ui.dart';
-import 'filterGun/caliber_filter/caliber_filter_view.dart';
-import 'filterGun/brand_filter_view.dart';
+import '../../../../../../app/app.locator.dart';
+import '../../../../../../services/booking_service.dart';
+import '../../../../../shared/widget/dialog/setup_dialog_ui.dart';
+import '../filterGun/brand_filter_view.dart';
+import '../filterGun/caliber_filter/caliber_filter_view.dart';
 
 class AmmunitionViewModel extends BaseViewModel {
   final AmmunitionAPIService _ammunitionAPIService =
@@ -34,15 +35,19 @@ class AmmunitionViewModel extends BaseViewModel {
       _gunListService.filterCaliberIds.length;
 
   List<AmmunitionsModel>? get ammunitions => _gunListService.ammunition;
-
   List<AmmunitionsModel> get selectedAmmunition =>
-      _bookingService.selectedAmmunition;
+      _bookingService.getselectedAmmunition;
 
-  bool get haveorderedGuns => _bookingService.selectedGun.isNotEmpty;
+  bool get haveorderedGuns => _bookingService.getselectedGun.isNotEmpty;
+
+  //paging
+  PageController? pageController = PageController();
+  int _selectedIndex = 0;
+  int get selectedIndex => _selectedIndex;
 
   List<AmmunitionsModel> gunAmmunitionRecommended() {
     List<AmmunitionsModel> gunAmmunitionRecommendedList = [];
-    for (GunModel gun in _bookingService.selectedGun) {
+    for (GunModel gun in _bookingService.getselectedGun) {
       gunAmmunitionRecommendedList.addAll(gun.ammunitions!);
     }
     return gunAmmunitionRecommendedList;
@@ -71,6 +76,10 @@ class AmmunitionViewModel extends BaseViewModel {
   }
 
   void showDetails(index) async {
+    print("HERE");
+    print(ammunitions![index].name!);
+    print(ammunitions![index].description);
+    print(ammunitions![index].image);
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
         data: ammunitions![index],
@@ -87,10 +96,10 @@ class AmmunitionViewModel extends BaseViewModel {
   }
 
   void selectCard(AmmunitionsModel ammunition) {
-    if (_bookingService.selectedAmmunition.contains(ammunition)) {
-      _bookingService.selectedAmmunition.remove(ammunition);
+    if (_bookingService.getselectedAmmunition.contains(ammunition)) {
+      removeAmmunition(ammunition);
     } else {
-      _bookingService.selectedAmmunition.add(ammunition);
+      _bookingService.getselectedAmmunition.add(ammunition);
     }
     notifyListeners();
   }
@@ -98,6 +107,53 @@ class AmmunitionViewModel extends BaseViewModel {
   void initFilter() {
     _gunListService.clearAall();
     _brandAPIService.reset();
+    notifyListeners();
+  }
+
+  void nextPage(int index) {
+    nextIndex(index);
+    pageController!.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
+    notifyListeners();
+  }
+
+  void nextIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+
+  void increaseBox(int index) {
+    _bookingService.getselectedAmmunition[index] =
+        _bookingService.getselectedAmmunition[index].copyWith(
+            perBox: _bookingService.getselectedAmmunition[index].perBox + 1);
+    notifyListeners();
+  }
+
+  void decreaseBox(int index) {
+    if (_bookingService.getselectedAmmunition[index].perBox > 1) {
+      _bookingService.getselectedAmmunition[index] =
+          _bookingService.getselectedAmmunition[index].copyWith(
+              perBox: _bookingService.getselectedAmmunition[index].perBox - 1);
+    }
+    notifyListeners();
+  }
+
+  void removeAmmunition(AmmunitionsModel ammunition) {
+    _bookingService.getselectedAmmunition.remove(ammunition);
+    if (_bookingService.getselectedAmmunition.isEmpty) {
+      nextPage(0);
+    }
+    notifyListeners();
+  }
+
+  void suivant(Function onTap) {
+    print("suivant");
+    print(_bookingService.getselectedAmmunition.length);
+    if (_bookingService.getselectedAmmunition.isNotEmpty) {
+      nextPage(1);
+    } else {
+      onTap();
+    }
     notifyListeners();
   }
 }

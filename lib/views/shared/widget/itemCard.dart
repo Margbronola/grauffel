@@ -25,7 +25,7 @@ class ItemCard extends StatelessWidget {
       children: [
         Container(
           width: size(context).width,
-          height: 94,
+          height: 110.h,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: greyLighter,
@@ -59,7 +59,7 @@ class ItemCard extends StatelessWidget {
                               fontWeight: FontWeight.w700),
                         ),
                       ),
-                      verticalSpaceMedium(),
+                      verticalSpaceSmall(),
                       Row(
                         children: [
                           Column(
@@ -81,24 +81,27 @@ class ItemCard extends StatelessWidget {
                               ),
                             ],
                           ),
-                          horizontalSpaceLarge(),
-                          Column(
-                            children: [
-                              const Text(
-                                "Marque",
-                                style: TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 8,
-                                ),
-                              ),
-                              Text(
-                                "CZ".toUpperCase(),
-                                style: const TextStyle(
+                          horizontalSpace(40.w),
+                          SizedBox(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Marque",
+                                  style: TextStyle(
                                     fontFamily: 'ProductSans',
                                     fontSize: 8,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                                  ),
+                                ),
+                                Text(
+                                  "CZ".toUpperCase(),
+                                  style: const TextStyle(
+                                      fontFamily: 'ProductSans',
+                                      fontSize: 8,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -117,7 +120,7 @@ class ItemCard extends StatelessWidget {
                 child: Container(
                   color: greyLight,
                   height: 25,
-                  width: 79,
+                  width: 92.w,
                   child: Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

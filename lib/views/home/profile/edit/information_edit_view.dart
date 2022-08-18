@@ -70,7 +70,11 @@ class InformationEditView extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.emailAddress,
                                 style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
+                                    color: backgroundColor,
+                                    fontSize: 15.sp,
+                                    fontFamily: 'ProductSans',
+                                    letterSpacing: 1.3,
+                                    fontWeight: FontWeight.bold),
                                 focusNode: model.emailFocusNode,
                                 controller: model.emailController,
                                 validator: (value) {
@@ -83,10 +87,11 @@ class InformationEditView extends StatelessWidget {
                                           style: TextStyle(
                                               fontFamily: 'ProductSans',
                                               color: model.isEmailFucos
-                                                  ? Colors.grey
-                                                  : Colors.black,
+                                                  ? Colors.black
+                                                  : Colors.grey,
+                                              fontSize: 12.sp,
                                               letterSpacing: 1.3,
-                                              fontWeight: FontWeight.w700),
+                                              fontWeight: FontWeight.bold),
                                           children: const [
                                         TextSpan(
                                             text: ' *',
@@ -112,7 +117,11 @@ class InformationEditView extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
                                 style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
+                                    color: backgroundColor,
+                                    fontSize: 15.sp,
+                                    fontFamily: 'ProductSans',
+                                    letterSpacing: 1.3,
+                                    fontWeight: FontWeight.bold),
                                 focusNode: model.dateNode,
                                 controller: model.dateController,
                                 validator: (value) {
@@ -124,11 +133,12 @@ class InformationEditView extends StatelessWidget {
                                           text: 'Date de naissance',
                                           style: TextStyle(
                                               fontFamily: 'ProductSans',
-                                              color: model.isDateFucos
-                                                  ? Colors.grey
-                                                  : Colors.black,
+                                              color: model.isEmailFucos
+                                                  ? Colors.black
+                                                  : Colors.grey,
+                                              fontSize: 12.sp,
                                               letterSpacing: 1.3,
-                                              fontWeight: FontWeight.w700),
+                                              fontWeight: FontWeight.bold),
                                           children: const [])),
                                   fillColor: Colors.black,
                                   focusedBorder: const UnderlineInputBorder(
@@ -148,7 +158,10 @@ class InformationEditView extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
                                 style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
+                                    fontFamily: 'ProductSans',
+                                    color: backgroundColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.sp),
                                 focusNode: model.phoneNode,
                                 controller: model.phoneController,
                                 validator: (value) {
@@ -161,11 +174,12 @@ class InformationEditView extends StatelessWidget {
                                           text: 'Numéro de téléphone',
                                           style: TextStyle(
                                               fontFamily: 'ProductSans',
+                                              fontSize: 12.sp,
                                               color: model.isNumberFucos
-                                                  ? Colors.grey
-                                                  : Colors.black,
+                                                  ? Colors.black
+                                                  : Colors.grey,
                                               letterSpacing: 1.3,
-                                              fontWeight: FontWeight.w700),
+                                              fontWeight: FontWeight.bold),
                                           children: const [
                                         TextSpan(
                                             text: ' *',
@@ -191,7 +205,10 @@ class InformationEditView extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
                                 style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
+                                    color: backgroundColor,
+                                    fontSize: 15.sp,
+                                    fontFamily: 'ProductSans',
+                                    fontWeight: FontWeight.bold),
                                 focusNode: model.addressNode,
                                 controller: model.addresscontroller,
                                 validator: (value) {
@@ -203,11 +220,12 @@ class InformationEditView extends StatelessWidget {
                                           text: 'Adresse postale',
                                           style: TextStyle(
                                               fontFamily: 'ProductSans',
+                                              fontSize: 12.sp,
                                               color: model.isAddressFucos
-                                                  ? Colors.grey
-                                                  : Colors.black,
+                                                  ? Colors.black
+                                                  : Colors.grey,
                                               letterSpacing: 1.3,
-                                              fontWeight: FontWeight.w700),
+                                              fontWeight: FontWeight.bold),
                                           children: const [])),
                                   fillColor: Colors.black,
                                   focusedBorder: const UnderlineInputBorder(
@@ -227,7 +245,10 @@ class InformationEditView extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
                                 style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
+                                    color: backgroundColor,
+                                    fontSize: 15.sp,
+                                    fontFamily: 'ProductSans',
+                                    fontWeight: FontWeight.bold),
                                 focusNode: model.villeNode,
                                 controller: model.villeController,
                                 validator: (value) {
@@ -239,11 +260,12 @@ class InformationEditView extends StatelessWidget {
                                           text: 'Ville',
                                           style: TextStyle(
                                               fontFamily: 'ProductSans',
+                                              fontSize: 12.sp,
                                               color: model.isVilleFucos
-                                                  ? Colors.grey
-                                                  : Colors.black,
+                                                  ? Colors.black
+                                                  : Colors.grey,
                                               letterSpacing: 1.3,
-                                              fontWeight: FontWeight.w700),
+                                              fontWeight: FontWeight.bold),
                                           children: const [])),
                                   fillColor: Colors.black,
                                   focusedBorder: const UnderlineInputBorder(
@@ -258,6 +280,7 @@ class InformationEditView extends StatelessWidget {
                                   isDense: true,
                                 ),
                               ),
+                              verticalSpaceMedium(),
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Padding(
