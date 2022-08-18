@@ -20,6 +20,7 @@ class FileUploadViewModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
+
   upLoadViaCamera(DocumentTypeModel documentTypeModel) {
     _navigationService.navigateToView(CameraView(
       documentTypeModel: documentTypeModel,

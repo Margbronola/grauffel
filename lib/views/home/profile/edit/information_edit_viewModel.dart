@@ -5,19 +5,22 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class InformationEditViewModel extends ReactiveViewModel {
   final UserAPIService _userAPIService = locator<UserAPIService>();
   final UserService _userService = locator<UserService>();
   final ImagePicker _picker = ImagePicker();
+  final NavigationService _navigationService = locator<NavigationService>();
   XFile? image;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController dateController = TextEditingController();
+  final TextEditingController birthdayController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addresscontroller = TextEditingController();
   final TextEditingController villeController = TextEditingController();
+  final TextEditingController codeController = TextEditingController();
 
   FocusNode emailFocusNode = FocusNode();
   FocusNode dateNode = FocusNode();
@@ -43,10 +46,11 @@ class InformationEditViewModel extends ReactiveViewModel {
   void init() {
     if (user != null) {
       emailController.text = user!.email!;
-      dateController.text = dateFormat(user!.created_at!);
-      phoneController.text = user!.SIA_number.toString();
+      birthdayController.text = user!.birthday!;
+      phoneController.text = user!.phone_number.toString();
+      codeController.text = user!.zipcode.toString();
       addresscontroller.text = user!.address!;
-      villeController.text = user!.country_id!.toString();
+      villeController.text = user!.city!.toString();
     }
 
     emailFocusNode.addListener(() {
@@ -70,6 +74,11 @@ class InformationEditViewModel extends ReactiveViewModel {
       isAddressFucos = addressNode.hasFocus;
       notifyListeners();
     });
+
+    addressNode.addListener(() {
+      isPostalFucos = codeNode.hasFocus;
+      notifyListeners();
+    });
     villeNode.addListener(() {
       isVilleFucos = villeNode.hasFocus;
       notifyListeners();
@@ -79,11 +88,11 @@ class InformationEditViewModel extends ReactiveViewModel {
   @override
   void dispose() {
     emailController.dispose();
-    dateController.dispose();
+    birthdayController.dispose();
     emailFocusNode.dispose();
     phoneController.dispose();
     addresscontroller.dispose();
-    // codeController.dispose();
+    codeController.dispose();
     villeController.dispose();
 
     dateNode.dispose();
@@ -96,19 +105,37 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   UserModel? get user => _userService.user!;
   void save() async {
+    print(
+        UserModel(address: addresscontroller.text, city: villeController.text));
     if (formKey.currentState!.validate()) {
+      print("validate");
+      setBusy(true);
       await _userAPIService.updateDetails(
-          userToEdit: UserModel(address: addresscontroller.text),
+          userToEdit: UserModel(
+            address: addresscontroller.text,
+            city: villeController.text,
+            phone_number: phoneController.text,
+            email: emailController.text,
+            birthday: birthdayController.text,
+            zipcode: codeController.text,
+          ),
           token: _userService.token!);
-    }
-    setBusy(true);
-    if (image != null) {
-      await _userAPIService.updateAvatar(
-          image: image, token: _userService.token!);
-    } else {
-      print(image);
-    }
 
+      if (image != null) {
+        await _userAPIService.updateAvatar(
+            image: image, token: _userService.token!);
+      }
+
+      await updateSuccess();
+      setBusy(false);
+
+      _navigationService.back();
+    } else {
+      print("cant valiedate");
+    }
+  }
+
+  Future updateSuccess() async {
     await _userAPIService
         .fethUserDetailsApi(token: _userService.token!)
         .then((value) {
@@ -116,8 +143,6 @@ class InformationEditViewModel extends ReactiveViewModel {
         _userService.updateUser(value);
       }
     });
-
-    setBusy(false);
   }
 
   void changeProfilePick() {}

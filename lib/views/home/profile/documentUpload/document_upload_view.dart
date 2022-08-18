@@ -35,7 +35,11 @@ class DocumentUploadView extends StatelessWidget {
               Text(
                 "Demande de\nremplacement".toUpperCase(),
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25.sp,
+                  fontFamily: 'ProductSans',
+                ),
               ),
               verticalSpaceMedium(),
               Image.asset(
@@ -54,6 +58,7 @@ class DocumentUploadView extends StatelessWidget {
                     style: TextStyle(
                         color: kcWhite,
                         fontSize: 15.sp,
+                        fontFamily: 'ProductSans',
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -62,6 +67,7 @@ class DocumentUploadView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: DocumentCardView(
+                  removeIcon: true,
                   onTap: () {},
                   cardColor: greyLight3,
                   documentTypeModel: documentTypeModel,
@@ -77,6 +83,7 @@ class DocumentUploadView extends StatelessWidget {
                     "Nouveau".toUpperCase(),
                     style: TextStyle(
                         color: kcWhite,
+                        fontFamily: 'ProductSans',
                         fontSize: 15.sp,
                         fontWeight: FontWeight.bold),
                   ),
@@ -90,21 +97,29 @@ class DocumentUploadView extends StatelessWidget {
                   documentTypeModel: documentTypeModel,
                 ),
               ),
-              MaterialButton(
-                textColor: backgroundColor,
-                onPressed: () {
-                  model.upLoadViaCamera(documentTypeModel);
-                },
-                child: const Text(
-                  "Upload as Photo",
-                ),
+              verticalSpaceSmall(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Fichier : ",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontFamily: 'ProductSans',
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                  Text(
+                    "",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontFamily: 'ProductSans',
+                      fontSize: 18.sp,
+                    ),
+                  ),
+                ],
               ),
-              MaterialButton(
-                onPressed: () {},
-                textColor: backgroundColor,
-                child: const Text("Upload as PDF"),
-              ),
-              verticalSpaceMedium(),
+              verticalSpaceLarge(),
               SizedBox(
                   width: 255.w,
                   child:

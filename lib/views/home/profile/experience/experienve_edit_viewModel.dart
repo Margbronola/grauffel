@@ -1,15 +1,59 @@
+import 'package:egczacademy/app/components/enum.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../../../app/app.locator.dart';
+import '../../../../models/user_model.dart';
+import '../../../../services/user_api_service.dart';
+import '../../../../services/user_service.dart';
 
 class ExperienceEditViewModel extends BaseViewModel {
+  final UserAPIService _userAPIService = locator<UserAPIService>();
+  final UserService _userService = locator<UserService>();
+  final NavigationService _navigationService = locator<NavigationService>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController experienceController = TextEditingController();
-  FocusNode experienceNode = FocusNode();
 
-  void init() {
-    experienceController.text =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. ";
+  final TextEditingController textController = TextEditingController();
+  FocusNode textNode = FocusNode();
+
+  void init(ExtraDetails details) {
+    if (details == ExtraDetails.experience) {
+      textController.text = _userService.user!.experience!;
+    } else {
+      textController.text = _userService.user!.equipment!;
+    }
   }
 
-  void save() {}
+  void save(ExtraDetails details) async {
+    if (formKey.currentState!.validate()) {
+      setBusy(true);
+      await _userAPIService.updateDetails(
+          userToEdit: details == ExtraDetails.experience
+              ? UserModel(
+                  experience: textController.text,
+                )
+              : UserModel(
+                  equipment: textController.text,
+                ),
+          token: _userService.token!);
+
+      await updateSuccess();
+      setBusy(false);
+
+      _navigationService.back();
+    } else {
+      print("cant valiedate");
+    }
+  }
+
+  Future updateSuccess() async {
+    await _userAPIService
+        .fethUserDetailsApi(token: _userService.token!)
+        .then((value) {
+      if (value != null) {
+        _userService.updateUser(value);
+      }
+    });
+  }
 }

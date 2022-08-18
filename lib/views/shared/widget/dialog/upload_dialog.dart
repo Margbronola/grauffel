@@ -22,12 +22,22 @@ class UploadDialog extends StatelessWidget {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: 200.h,
+          height: 250.h,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               verticalSpaceSmall(),
+              Text(
+                "Êtes-vous sûr de vouloir ajouter ce fichier ?",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                  fontFamily: 'ProductSans',
+                ),
+              ),
+              verticalSpaceSmall(),
               DocumentCardView(
+                removeIcon: true,
                 onTap: () {},
                 documentTypeModel: request!.data!,
                 cardColor: greyLight3,
@@ -54,7 +64,7 @@ class UploadDialog extends StatelessWidget {
                     SizedBox(
                       width: 170.w,
                       child: CustomButton(
-                          title: "Télécharger",
+                          title: "Ajouter",
                           onTap: () {
                             completer!(DialogResponse(confirmed: true));
                           }),

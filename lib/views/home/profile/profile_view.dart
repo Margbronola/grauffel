@@ -19,6 +19,9 @@ class ProfileView extends StatelessWidget {
     required this.isFromHome,
   }) : super(key: key);
 
+  //TODO: error arrows
+  //TODO: count docs
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
@@ -144,16 +147,16 @@ class ProfileView extends StatelessWidget {
                                           ),
                                           infoContainer(
                                               "Date de naissance",
-                                              "25/01/1972 - 50 ans",
+                                              "${model.user!.birthday} - 50 ans",
                                               double.infinity),
                                           const SizedBox(
                                             height: 8,
                                           ),
                                           infoContainer(
                                               "Numéro de téléphone",
-                                              model.user!.SIA_number!.isEmpty
+                                              model.user!.phone_number!.isEmpty
                                                   ? "Not Specified"
-                                                  : model.user!.SIA_number!,
+                                                  : model.user!.phone_number!,
                                               double.infinity),
                                           const SizedBox(
                                             height: 8,
@@ -167,12 +170,14 @@ class ProfileView extends StatelessWidget {
                                               children: [
                                                 infoContainer(
                                                     "Adresse postale",
-                                                    model.user!.address!,
+                                                    model.user!.zipcode!,
                                                     100.w),
+                                                //TODO: static
                                                 infoContainer(
                                                     "CP", "73000", 80.w),
-                                                infoContainer(
-                                                    "Ville", "Paris", 80.w),
+                                                //TODO: static
+                                                infoContainer("Ville",
+                                                    model.user!.city!, 80.w),
                                               ],
                                             ),
                                           ),
@@ -193,6 +198,8 @@ class ProfileView extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Container(
+                                      constraints:
+                                          BoxConstraints(minHeight: 50.h),
                                       padding: EdgeInsets.only(
                                           left: 50.w,
                                           right: 50.w,
@@ -200,7 +207,7 @@ class ProfileView extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           Text(
-                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus a nisi nec dapibus. Proin velit nulla, ultricies at leo quis, accumsan malesuada ipsum. Etiam porttitor pulvinar ipsum vel maximus. Morbi vitae malesuada tortor, ut rhoncus tellus. Morbi rhoncus metus eu diam venenatis interdum. ",
+                                            model.user!.experience!,
                                             style: TextStyle(
                                               fontSize: 14.sp,
                                               fontFamily: 'ProductSans',
@@ -224,6 +231,8 @@ class ProfileView extends StatelessWidget {
                                   child: Stack(
                                     children: [
                                       Container(
+                                        constraints:
+                                            BoxConstraints(minHeight: 50.h),
                                         padding: EdgeInsets.only(
                                             left: 50.w,
                                             right: 50.w,
@@ -231,7 +240,7 @@ class ProfileView extends StatelessWidget {
                                         child: Column(
                                           children: [
                                             Text(
-                                              "TANFOGLIO STOCK III\n GLOCK 17 GEN 5\n MUNITIONS CCI MINI-MAG\n CALIBRE\n Lunette de protectio\n Oreillette anti-bruit \n Cibles et patches",
+                                              model.user!.equipment!,
                                               style: TextStyle(
                                                 fontSize: 14.sp,
                                                 fontFamily: 'ProductSans',
@@ -241,7 +250,7 @@ class ProfileView extends StatelessWidget {
                                         ),
                                       ),
                                       editButton(
-                                        model.editExperience,
+                                        model.editEquipments,
                                       )
                                     ],
                                   ),
@@ -305,8 +314,17 @@ class ProfileView extends StatelessWidget {
                                                         ? greyLight3
                                                         : kcWhite,
                                                     onTap: () {
-                                                      model.uploadDocument(
-                                                          documentTypeModel: e);
+                                                      print("showdocsss");
+                                                      if (model.isProcessing(
+                                                          e.id!)) {
+                                                        model.editDocuments(
+                                                            documentTypeModel:
+                                                                e);
+                                                      } else {
+                                                        model.uploadDocument(
+                                                            documentTypeModel:
+                                                                e);
+                                                      }
                                                     },
                                                     documentTypeModel: e,
                                                   ))
@@ -331,8 +349,17 @@ class ProfileView extends StatelessWidget {
                                                         ? greyLight3
                                                         : kcWhite,
                                                     onTap: () {
-                                                      model.uploadDocument(
-                                                          documentTypeModel: e);
+                                                      print("showdocs");
+                                                      if (model.isProcessing(
+                                                          e.id!)) {
+                                                        model.editDocuments(
+                                                            documentTypeModel:
+                                                                e);
+                                                      } else {
+                                                        model.uploadDocument(
+                                                            documentTypeModel:
+                                                                e);
+                                                      }
                                                     },
                                                     documentTypeModel: e,
                                                   ))
@@ -450,6 +477,7 @@ Widget infoContainer(String title, String value, double width) => SizedBox(
               fontSize: 12.sp,
               fontFamily: 'ProductSans',
             ),
+            overflow: TextOverflow.ellipsis,
           ),
           Text(
             value,
@@ -457,6 +485,7 @@ Widget infoContainer(String title, String value, double width) => SizedBox(
                 fontFamily: 'ProductSans',
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w500),
+            overflow: TextOverflow.ellipsis,
           )
         ],
       ),

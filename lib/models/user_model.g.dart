@@ -25,6 +25,9 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       verification: json['verification'] as int?,
       payment_verification: json['payment_verification'] as int?,
       status: json['status'] as int?,
+      experience: json['experience'] as String?,
+      equipment: json['equipment'] as String?,
+      phone_number: json['phone_number'] as String?,
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -35,6 +38,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       image: json['image'] == null
           ? null
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+      birthday: json['birthday'] as String?,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -57,8 +61,12 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'verification': instance.verification,
       'payment_verification': instance.payment_verification,
       'status': instance.status,
+      'experience': instance.experience,
+      'equipment': instance.equipment,
+      'phone_number': instance.phone_number,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
       'firebase_id': instance.firebase_id,
       'image': instance.image,
+      'birthday': instance.birthday,
     };

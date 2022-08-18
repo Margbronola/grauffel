@@ -1,9 +1,11 @@
 import 'package:egczacademy/app/app.locator.dart';
+import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/models/document_model.dart';
 import 'package:egczacademy/models/document_type_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/document_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:egczacademy/views/home/profile/documentUpload/document_upload_view.dart';
 import 'package:egczacademy/views/home/profile/documentUpload/fileUpload/file_upload_view.dart';
 import 'package:egczacademy/views/home/profile/experience/experience_edit_view.dart';
 import 'package:flutter/material.dart';
@@ -170,11 +172,24 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   void editExperience() {
-    _navigationService.navigateToView(const ExperienceEditView());
+    _navigationService.navigateToView(const ExperienceEditView(
+      extraDetails: ExtraDetails.experience,
+    ));
+  }
+
+  void editEquipments() {
+    _navigationService.navigateToView(
+        const ExperienceEditView(extraDetails: ExtraDetails.equipments));
   }
 
   void uploadDocument({required DocumentTypeModel documentTypeModel}) {
     _navigationService.navigateToView(FileUploadView(
+      documentTypeModel: documentTypeModel,
+    ));
+  }
+
+  void editDocuments({required DocumentTypeModel documentTypeModel}) {
+    _navigationService.navigateToView(DocumentUploadView(
       documentTypeModel: documentTypeModel,
     ));
   }
@@ -185,10 +200,6 @@ class ProfileViewModel extends ReactiveViewModel {
       expanTileController4 = ExpandedTileController(isExpanded: true);
     }
   }
-
-  //  _navigationService.navigateToView(DocumentUploadView(R
-  //     documentTypeModel: documentTypeModel,
-  //   ));
 
   void scrollDown() {
     Future.delayed(const Duration(milliseconds: 300), () {

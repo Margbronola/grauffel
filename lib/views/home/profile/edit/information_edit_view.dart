@@ -65,7 +65,7 @@ class InformationEditView extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              SizedBox(height: size(context).height * 0.03),
+                              SizedBox(height: size(context).height * 0.02),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.emailAddress,
@@ -112,7 +112,7 @@ class InformationEditView extends StatelessWidget {
                                   isDense: true,
                                 ),
                               ),
-                              SizedBox(height: size(context).height * 0.03),
+                              SizedBox(height: size(context).height * 0.02),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
@@ -123,7 +123,7 @@ class InformationEditView extends StatelessWidget {
                                     letterSpacing: 1.3,
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.dateNode,
-                                controller: model.dateController,
+                                controller: model.birthdayController,
                                 validator: (value) {
                                   return Validator.validateName(value ?? "");
                                 },
@@ -153,7 +153,7 @@ class InformationEditView extends StatelessWidget {
                                   isDense: true,
                                 ),
                               ),
-                              SizedBox(height: size(context).height * 0.03),
+                              SizedBox(height: size(context).height * 0.02),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
@@ -200,7 +200,7 @@ class InformationEditView extends StatelessWidget {
                                   isDense: true,
                                 ),
                               ),
-                              SizedBox(height: size(context).height * 0.03),
+                              SizedBox(height: size(context).height * 0.02),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
@@ -240,7 +240,47 @@ class InformationEditView extends StatelessWidget {
                                   isDense: true,
                                 ),
                               ),
-                              SizedBox(height: size(context).height * 0.03),
+                              SizedBox(height: size(context).height * 0.02),
+                              TextFormField(
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.text,
+                                style: TextStyle(
+                                    color: backgroundColor,
+                                    fontSize: 15.sp,
+                                    fontFamily: 'ProductSans',
+                                    fontWeight: FontWeight.bold),
+                                focusNode: model.codeNode,
+                                controller: model.codeController,
+                                validator: (value) {
+                                  return Validator.validateName(value ?? "");
+                                },
+                                decoration: InputDecoration(
+                                  label: RichText(
+                                      text: TextSpan(
+                                          text: 'Code postale',
+                                          style: TextStyle(
+                                              fontFamily: 'ProductSans',
+                                              fontSize: 12.sp,
+                                              color: model.isPostalFucos
+                                                  ? Colors.black
+                                                  : Colors.grey,
+                                              letterSpacing: 1.3,
+                                              fontWeight: FontWeight.bold),
+                                          children: const [])),
+                                  fillColor: Colors.black,
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
+                                  hintStyle:
+                                      const TextStyle(color: backgroundColor),
+                                  enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: backgroundColor),
+                                  ),
+                                  isDense: true,
+                                ),
+                              ),
+                              SizedBox(height: size(context).height * 0.02),
                               TextFormField(
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,

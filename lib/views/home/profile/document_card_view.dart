@@ -10,6 +10,7 @@ class DocumentCardView extends StatelessWidget {
   final bool isNEw;
   final bool isValid;
   final bool isViewed;
+  final bool removeIcon;
   final String expiration;
   final Color? cardColor;
   const DocumentCardView({
@@ -19,6 +20,7 @@ class DocumentCardView extends StatelessWidget {
     this.isNEw = false,
     this.isValid = false,
     this.isViewed = false,
+    this.removeIcon = false,
     this.expiration = "",
     this.cardColor = kcWhite,
   }) : super(key: key);
@@ -61,23 +63,25 @@ class DocumentCardView extends StatelessWidget {
                     ),
                   ],
                 ),
-                isValid
-                    ? const Icon(
-                        Icons.check_circle_outline_sharp,
-                        color: buttonColor,
-                      )
-                    : DateTime.parse('1974-03-20 00:00:00.000')
-                            .isBefore(DateTime.now())
-                        ? Image.asset(
-                            "assets/images/docfile.png",
-                            height: 30.h,
-                            width: 23.w,
+                removeIcon
+                    ? const SizedBox()
+                    : isValid
+                        ? const Icon(
+                            Icons.check_circle_outline_sharp,
+                            color: buttonColor,
                           )
-                        : Image.asset(
-                            "assets/images/warning.png",
-                            height: 30.h,
-                            width: 23.w,
-                          ),
+                        : DateTime.parse('1974-03-20 00:00:00.000')
+                                .isBefore(DateTime.now())
+                            ? Image.asset(
+                                "assets/images/docfile.png",
+                                height: 30.h,
+                                width: 23.w,
+                              )
+                            : Image.asset(
+                                "assets/images/warning.png",
+                                height: 30.h,
+                                width: 23.w,
+                              ),
               ],
             ),
           ),

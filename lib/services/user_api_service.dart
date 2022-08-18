@@ -71,7 +71,7 @@ class UserAPIService {
     data.removeWhere(
       (key, value) => value == null,
     );
-
+    print("DATA");
     print(data);
     try {
       final respo = await http.post(Uri.parse("$urlApi/client/update-details"),

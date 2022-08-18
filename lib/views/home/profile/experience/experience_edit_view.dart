@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
+import 'package:egczacademy/app/components/enum.dart';
+
 import '../../../shared/color.dart';
 import '../../../shared/customButton.dart';
 import '../../../shared/ui_helper.dart';
@@ -9,12 +11,16 @@ import '../../../shared/validator.dart';
 import 'experienve_edit_viewModel.dart';
 
 class ExperienceEditView extends StatelessWidget {
-  const ExperienceEditView({Key? key}) : super(key: key);
+  final ExtraDetails extraDetails;
+  const ExperienceEditView({
+    Key? key,
+    required this.extraDetails,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ExperienceEditViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onModelReady: (model) => model.init(extraDetails),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
         appBar: AppBar(
@@ -41,23 +47,27 @@ class ExperienceEditView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextFormField(
-                                textInputAction: TextInputAction.next,
+                                textInputAction: TextInputAction.unspecified,
                                 keyboardType: TextInputType.text,
                                 maxLines: 15,
                                 style: TextStyle(
                                     color: backgroundColor, fontSize: 20.sp),
-                                focusNode: model.experienceNode,
-                                controller: model.experienceController,
+                                focusNode: model.textNode,
+                                controller: model.textController,
                                 validator: (value) {
                                   return Validator.validateName(value ?? "");
                                 },
-                                decoration: const InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
+                                decoration: InputDecoration(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(color: buttonColor),
                                   ),
-                                  labelText: "Expériences",
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  enabledBorder: UnderlineInputBorder(
+                                  labelText:
+                                      extraDetails == ExtraDetails.experience
+                                          ? "Expériences"
+                                          : "Equipements",
+                                  labelStyle:
+                                      const TextStyle(color: Colors.grey),
+                                  enabledBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.grey),
                                   ),
                                   isDense: true,
@@ -72,10 +82,13 @@ class ExperienceEditView extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                        padding: EdgeInsets.all(20.h),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 30),
                         child: CustomButton(
                             title: "Enregistrer".toUpperCase(),
-                            onTap: model.save),
+                            onTap: () {
+                              model.save(extraDetails);
+                            }),
                       ),
                     ),
                   ],
