@@ -21,26 +21,38 @@ class FileUploadViewModel extends BaseViewModel {
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
 
-  upLoadViaCamera(DocumentTypeModel documentTypeModel) {
+  upLoadViaCamera(DocumentTypeModel documentTypeModel, bool fromEditPage) {
     _navigationService.navigateToView(CameraView(
       documentTypeModel: documentTypeModel,
       onSelect: (value) async {
         if (value != null) {
-          await uploadFile(documentTypeModel, value);
+          if (fromEditPage) {
+            _documentService.setFile(value);
+            _navigationService.back();
+          } else {
+            await uploadFile(documentTypeModel, value);
+          }
         }
       },
     ));
   }
 
   Future uploadPDF(
-    DocumentTypeModel documentTypeModel,
-  ) async {
+      DocumentTypeModel documentTypeModel, bool fromEditPage) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
-      uploadFile(documentTypeModel, file);
+      _documentService.setFile(file);
+      print("FROMeditpage");
+      print(fromEditPage);
+      if (fromEditPage) {
+        _navigationService.back();
+      } else {
+        uploadFile(documentTypeModel, file);
+      }
     } else {
       print("cancel");
+
       // User canceled the picker
     }
   }

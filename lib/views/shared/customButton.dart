@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      width: 198.w,
+      width: 230.w,
       height: 46.h,
       child: MaterialButton(
         color: color ?? buttonColor,
@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontFamily: 'ProductSans',
                 letterSpacing: 1.130,
-                fontSize: 15.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),

@@ -1,22 +1,30 @@
-import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+
+import 'package:egczacademy/views/shared/color.dart';
+import 'package:egczacademy/views/shared/ui_helper.dart';
+
 import '../../../../../models/document_type_model.dart';
 import '../../../../shared/color.dart';
 import 'file_upload_viewModel.dart';
 
 class FileUploadView extends StatelessWidget {
   final DocumentTypeModel documentTypeModel;
-  const FileUploadView({required this.documentTypeModel, Key? key})
-      : super(key: key);
+  final bool fromEditPage;
+  const FileUploadView({
+    Key? key,
+    required this.documentTypeModel,
+    this.fromEditPage = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FileUploadViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            backgroundColor: backgroundColor,
+          ),
           body: Column(
             children: [
               Expanded(
@@ -114,7 +122,7 @@ class FileUploadView extends StatelessWidget {
                         verticalSpaceLarge(),
                         MaterialButton(
                           onPressed: () {
-                            model.uploadPDF(documentTypeModel);
+                            model.uploadPDF(documentTypeModel, fromEditPage);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -125,24 +133,28 @@ class FileUploadView extends StatelessWidget {
                                 size: 50,
                               ),
                               horizontalSpaceSmall(),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                      "Sélectionner les documents de la galerie.",
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                        "Sélectionner les documents de la galerie.",
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontFamily: 'ProductSans',
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        )),
+                                    Text(
+                                      "PNG, JPEG or PDF",
                                       style: TextStyle(
+                                        color: Colors.grey,
                                         fontFamily: 'ProductSans',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                    "PNG, JPEG or PDF",
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: 'ProductSans',
-                                    ),
-                                  )
-                                ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -154,7 +166,7 @@ class FileUploadView extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: MaterialButton(
                       onPressed: () {
-                        model.upLoadViaCamera(documentTypeModel);
+                        model.upLoadViaCamera(documentTypeModel, fromEditPage);
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),

@@ -22,7 +22,6 @@ class LoginInput extends StatelessWidget {
             child: CircularProgressIndicator(),
           )
         : Container(
-            height: 200.h,
             width: 354.w,
             color: kcWhite,
             padding: EdgeInsets.all(30.w),
