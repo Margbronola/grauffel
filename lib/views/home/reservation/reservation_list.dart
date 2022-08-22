@@ -25,23 +25,27 @@ class ReservationList extends StatelessWidget {
                   const Header(title: "réservation"),
                   verticalSpaceSmall(),
                   Expanded(
-                      child: ListView.builder(
-                          itemCount: model.bookables.length,
-                          itemBuilder: (context, index) => ReserveCard(
-                              ontap: () {
-                                if (index == 3) {
-                                  model.navigateToReservationCell();
-                                } else {
-                                  model.navigateToReservation(
-                                      bookable: model.bookables[index]);
-                                }
-                              },
-                              reserve: ReserveModel(
-                                  image: "mask1",
-                                  title: model.bookables[index].name!
-                                      .toUpperCase(),
-                                  description:
-                                      model.bookables[index].description!)))),
+                      child: model.bookables.isEmpty
+                          ? const Center(
+                              child: Text("Pas encore de réservation!"),
+                            )
+                          : ListView.builder(
+                              itemCount: model.bookables.length,
+                              itemBuilder: (context, index) => ReserveCard(
+                                  ontap: () {
+                                    if (index == 3) {
+                                      model.navigateToReservationCell();
+                                    } else {
+                                      model.navigateToReservation(
+                                          bookable: model.bookables[index]);
+                                    }
+                                  },
+                                  reserve: ReserveModel(
+                                      image: "mask1",
+                                      title: model.bookables[index].name!
+                                          .toUpperCase(),
+                                      description: model
+                                          .bookables[index].description!)))),
                 ],
               ),
       ),

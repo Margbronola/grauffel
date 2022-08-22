@@ -76,28 +76,6 @@ class HomeView extends StatelessWidget {
           itemStyle: ItemStyle.hexagon,
           animated: false,
         ),
-        // bottomNavigationBar: BottomBar(
-        //   selectedIndex: model.selectedIndex,
-        //   onTap: model.onTap,
-        //   items: const <BottomBarItem>[
-        //     BottomBarItem(
-        //       inactiveColor: Colors.black,
-        //       icon: Icon(Icons.home),
-        //       title: Text('Home'),
-        //       activeColor: Colors.red,
-        //     ),
-        //     BottomBarItem(
-        //       icon: Icon(Icons.calendar_month),
-        //       title: Text('Book'),
-        //       activeColor: buttonColor,
-        //     ),
-        //     BottomBarItem(
-        //       icon: Icon(Icons.person),
-        //       title: Text('Profile'),
-        //       activeColor: buttonColor,
-        //     ),
-        //   ],
-        // ),
       ),
       viewModelBuilder: () => HomeViewModel(),
     );

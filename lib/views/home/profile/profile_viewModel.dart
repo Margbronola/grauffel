@@ -69,15 +69,19 @@ class ProfileViewModel extends ReactiveViewModel {
 
     if (index != 0) {
       expanTileController1.collapse();
+      angles[0] = 0;
     }
     if (index != 1) {
       expanTileController2.collapse();
+      angles[1] = 0;
     }
     if (index != 2) {
       expanTileController3.collapse();
+      angles[2] = 0;
     }
     if (index != 3) {
       expanTileController4.collapse();
+      angles[3] = 0;
     }
 
     notifyListeners();
