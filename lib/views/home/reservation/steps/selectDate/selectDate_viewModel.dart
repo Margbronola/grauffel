@@ -84,6 +84,8 @@ class SelectDateViewModel extends BaseViewModel {
     // }
     setBusy(true);
     await fetchBookableActivity(DateTime.now());
+    // _bookingAPIService.availableTime!.sort();
+
     setBusy(false);
   }
 
@@ -113,7 +115,18 @@ class SelectDateViewModel extends BaseViewModel {
 
   void selectTime(TimeModel time) {
     if (!selectedTime.contains(time)) {
-      selectedTime.add(time);
+      if (selectedTime.isEmpty) {
+        selectedTime.add(time);
+      } else {
+        TimeModel shouldNext = availableTimes[
+            availableTimes.indexOf(selectedTime[selectedTime.length - 1]) + 1];
+
+        print(shouldNext);
+
+        if (time == shouldNext) {
+          selectedTime.add(time);
+        }
+      }
     } else {
       selectedTime.remove(time);
     }

@@ -5,7 +5,7 @@ import 'color.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   final Color? color;
   final Color? textColor;
   const CustomButton(
@@ -24,6 +24,7 @@ class CustomButton extends StatelessWidget {
       height: 46.h,
       child: MaterialButton(
         color: color ?? buttonColor,
+        disabledColor: customButtonGrey,
         onPressed: onTap,
         child: Center(
           child: Text(

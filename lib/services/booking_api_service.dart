@@ -142,4 +142,30 @@ class BookingAPIService {
       print("FETCH TIMEACTIVITY FAIL");
     }
   }
+
+  Future<void> book(
+      {required String token, required BookingModel booking}) async {
+    try {
+      final respo = await http.post(Uri.parse("$urlApi/bookings"),
+          headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer $token",
+          },
+          body: booking.toJson());
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        try {
+          print(data);
+        } catch (e) {
+          print(e);
+          print("FROMJSON FAIL");
+        }
+      } else {
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("FETCH BOOKIGNS FAIL");
+    }
+  }
 }

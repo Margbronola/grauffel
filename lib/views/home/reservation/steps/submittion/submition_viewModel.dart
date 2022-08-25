@@ -33,4 +33,6 @@ class SubmitionViewModel extends BaseViewModel {
       }
     }
   }
+
+  void reserve() {}
 }

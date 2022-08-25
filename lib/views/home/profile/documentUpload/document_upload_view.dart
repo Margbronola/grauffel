@@ -126,11 +126,14 @@ class DocumentUploadView extends StatelessWidget {
                         width: 255.w,
                         child: CustomButton(
                             title: "Valider la demande",
-                            onTap: () {
-                              model.uploadDoc(
-                                  documentType: documentTypeModel,
-                                  fileFront: model.file);
-                            }))
+                            textColor: kcWhite,
+                            onTap: model.file != null
+                                ? () {
+                                    model.uploadDoc(
+                                        documentType: documentTypeModel,
+                                        fileFront: model.file);
+                                  }
+                                : null))
                   ],
                 ),
               ),

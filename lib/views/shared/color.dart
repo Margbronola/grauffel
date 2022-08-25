@@ -11,6 +11,7 @@ const Color customGrey = Color(0xfff9f9f9);
 const Color customDarkGrey = Color(0xffe5e5e5);
 const Color customTextGrey = Color(0xffbcbcbc);
 const Color customDocGrey = Color(0xffa4a4a4);
+const Color customButtonGrey = Color(0xffdbdbdb);
 
 const Color greyLight = Color.fromARGB(105, 158, 158, 158);
 const Color greyLighter = Color.fromARGB(50, 158, 158, 158);

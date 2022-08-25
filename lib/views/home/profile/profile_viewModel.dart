@@ -89,7 +89,6 @@ class ProfileViewModel extends ReactiveViewModel {
 
   bool isProcessing(int documentTypeId) {
     return documents.any((element) {
-      print(element.client_document_type_id);
       return element.client_document_type_id == documentTypeId;
     });
   }
