@@ -12,8 +12,8 @@ class AmmunitionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DialogWidget(
-      title: request!.data!.name!,
-      description: request!.data!.description!,
+      title: request!.data!.name,
+      description: request!.data!.description,
       imageUrl: request!.data!.image,
     );
   }

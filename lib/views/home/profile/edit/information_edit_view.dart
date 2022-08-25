@@ -124,9 +124,6 @@ class InformationEditView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.dateNode,
                                 controller: model.birthdayController,
-                                validator: (value) {
-                                  return Validator.validateName(value ?? "");
-                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(
@@ -211,9 +208,6 @@ class InformationEditView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.addressNode,
                                 controller: model.addresscontroller,
-                                validator: (value) {
-                                  return Validator.validateName(value ?? "");
-                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(
@@ -251,9 +245,6 @@ class InformationEditView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.codeNode,
                                 controller: model.codeController,
-                                validator: (value) {
-                                  return Validator.validateName(value ?? "");
-                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(
@@ -291,9 +282,6 @@ class InformationEditView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.villeNode,
                                 controller: model.villeController,
-                                validator: (value) {
-                                  return Validator.validateName(value ?? "");
-                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(

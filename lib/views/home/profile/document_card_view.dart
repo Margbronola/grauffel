@@ -44,11 +44,11 @@ class DocumentCardView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      expiration == ""
-                          ? "Ajouter"
+                      isNEw
+                          ? "En cours de validation"
                           : isValid
                               ? "Validé ($expiration)"
-                              : "En cours de validation",
+                              : "Ajouter",
                       style: ThemeData().textTheme.headlineSmall!.copyWith(
                             color: buttonColor,
                             fontSize: 12.sp,

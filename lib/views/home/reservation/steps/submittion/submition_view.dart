@@ -154,7 +154,7 @@ class SubmitionView extends StatelessWidget {
                     SizedBox(
                         width: 310.w,
                         child: CustomButton(
-                            title: "Réservers", onTap: model.showCard)),
+                            title: "Réserver", onTap: model.showCard)),
                     verticalSpaceSmall(),
                     SizedBox(
                         width: 310.w,

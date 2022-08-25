@@ -11,8 +11,8 @@ class ArmDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DialogWidget(
-      title: request!.data!.model!,
-      description: request!.data!.description!,
+      title: request!.data!.model,
+      description: request!.data!.description,
       imageUrl: request!.data!.image,
     );
   }

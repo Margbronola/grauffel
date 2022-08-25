@@ -36,6 +36,7 @@ class AmmunitionView extends StatelessWidget {
               children: [
                 Expanded(
                   child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: model.pageController,
                     onPageChanged: model.nextIndex,
                     children: <Widget>[

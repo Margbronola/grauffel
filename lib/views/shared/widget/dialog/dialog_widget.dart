@@ -7,8 +7,8 @@ import '../../../../app/global.dart';
 import '../../color.dart';
 
 class DialogWidget extends StatelessWidget {
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
   final ImageModel? imageUrl;
   const DialogWidget({
     Key? key,
@@ -32,7 +32,7 @@ class DialogWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        title,
+                        title ?? "No Title",
                         style: TextStyle(
                             fontSize: 25.sp, fontWeight: FontWeight.bold),
                       ),
@@ -139,7 +139,7 @@ class DialogWidget extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 30.w, vertical: 20.h),
                         child: Text(
-                          description,
+                          description ?? "No Description",
                           maxLines: 14,
                           style: TextStyle(
                             fontSize: 11.sp,

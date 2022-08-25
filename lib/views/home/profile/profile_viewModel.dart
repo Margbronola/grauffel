@@ -87,6 +87,12 @@ class ProfileViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
+  String dateFormat(DateTime date) {
+    final String formatted =
+        "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
+    return formatted;
+  }
+
   bool isProcessing(int documentTypeId) {
     return documents.any((element) {
       return element.client_document_type_id == documentTypeId;

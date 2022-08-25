@@ -12,9 +12,9 @@ class EquipmentDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DialogWidget(
-      title: request!.data!.name!,
-      description: request!.data!.description!,
-      imageUrl: request!.data!.image!,
+      title: request!.data!.name,
+      description: request!.data!.description,
+      imageUrl: request!.data!.image,
     );
   }
 }

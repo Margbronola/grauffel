@@ -147,7 +147,7 @@ class ProfileView extends StatelessWidget {
                                           ),
                                           infoContainer(
                                               "Date de naissance",
-                                              "${model.user!.birthday} - 50 ans",
+                                              '${model.user!.birthday!.split("/")[0]}/${model.user!.birthday!.split("/")[1].length == 1 ? "0${model.user!.birthday!.split("/")[1]}" : model.user!.birthday!.split("/")[1]}/${model.user!.birthday!.split("/")[2]}',
                                               double.infinity),
                                           const SizedBox(
                                             height: 8,
