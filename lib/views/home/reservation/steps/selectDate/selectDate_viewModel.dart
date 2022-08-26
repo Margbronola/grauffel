@@ -79,12 +79,8 @@ class SelectDateViewModel extends BaseViewModel {
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
             .inDays;
 
-    // for (int x = 1; x <= DateTime.now().day; x++) {
-    //   inactive.add(DateTime(DateTime.now().year, DateTime.now().month, x));
-    // }
     setBusy(true);
     await fetchBookableActivity(DateTime.now());
-    // _bookingAPIService.availableTime!.sort();
 
     setBusy(false);
   }

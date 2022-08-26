@@ -81,6 +81,7 @@ class SelectDateView extends StatelessWidget {
                       selectedTextColor: Colors.white,
                       onDateChange: model.setDate,
                       inactiveDates: [DateTime.now()],
+                      initialSelectedDate: model.selectedDate,
                       locale: 'fr_FR',
                       controller: model.controller,
                       daysCount: model.numDaysTotal,
