@@ -126,11 +126,14 @@ class NotificationSettingsView extends StatelessWidget {
                       ),
                     ),
               const Expanded(child: SizedBox()),
-              CustomButton(
-                  title: "enregistrer",
-                  onTap: () {
-                    Navigator.pop(context);
-                  }),
+              SizedBox(
+                width: 220.w,
+                child: CustomButton(
+                    title: "enregistrer",
+                    onTap: () {
+                      Navigator.pop(context);
+                    }),
+              ),
               verticalSpaceLarge()
             ],
           ),

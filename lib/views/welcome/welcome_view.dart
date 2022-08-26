@@ -110,6 +110,9 @@ Widget welcomeCenter(WelcomeViewModel model) => Column(
                 ),
               ),
         verticalSpaceLarge(),
-        CustomButton(title: "J'ai un compte", onTap: model.jumpToLogin),
+        SizedBox(
+            width: 220.w,
+            child: CustomButton(
+                title: "J'ai un compte", onTap: model.jumpToLogin)),
       ],
     );

@@ -53,7 +53,7 @@ class DocumentCardView extends StatelessWidget {
                           : isViewed
                               ? isValid
                                   ? "Validé ($expiration)"
-                                  : "Refusé"
+                                  : "Refusé ($expiration)"
                               : "En cours de validation",
                       style: ThemeData().textTheme.headlineSmall!.copyWith(
                             color: buttonColor,
@@ -72,19 +72,41 @@ class DocumentCardView extends StatelessWidget {
                 removeIcon
                     ? const SizedBox()
                     : isValid
-                        ? const Icon(
-                            Icons.check_circle_outline_sharp,
-                            color: buttonColor,
-                          )
-                        : DateTime.parse('1974-03-20 00:00:00.000')
-                                .isBefore(DateTime.now())
-                            ? Image.asset(
-                                "assets/images/docfile.png",
-                                height: 30.h,
-                                width: 23.w,
+                        ? isProcess
+                            ? DateTime.parse(expiration)
+                                    .toUtc()
+                                    .subtract(const Duration(days: 30))
+                                    .isAfter(DateTime.now().toUtc())
+                                ? const Icon(
+                                    Icons.check_circle_outline_sharp,
+                                    color: buttonColor,
+                                  )
+                                : Image.asset(
+                                    "assets/images/warning.png",
+                                    height: 30.h,
+                                    width: 23.w,
+                                  )
+                            : const Icon(
+                                Icons.check_circle_outline_sharp,
+                                color: buttonColor,
                               )
+                        : isProcess
+                            ? DateTime.parse(expiration)
+                                    .toUtc()
+                                    .subtract(const Duration(days: 30))
+                                    .isAfter(DateTime.now().toUtc())
+                                ? Image.asset(
+                                    "assets/images/docfile.png",
+                                    height: 30.h,
+                                    width: 23.w,
+                                  )
+                                : Image.asset(
+                                    "assets/images/warning.png",
+                                    height: 30.h,
+                                    width: 23.w,
+                                  )
                             : Image.asset(
-                                "assets/images/warning.png",
+                                "assets/images/docfile.png",
                                 height: 30.h,
                                 width: 23.w,
                               ),

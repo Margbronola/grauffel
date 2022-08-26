@@ -50,9 +50,8 @@ class ProfileViewModel extends ReactiveViewModel {
   List<DocumentModel> get documents => _documentService.documents ?? [];
   bool documentLoader = false;
 
-  String get userValidate => _userService.user!.verification! > 1
-      ? "Compte non validé"
-      : "Not Validated";
+  String get userValidate =>
+      _userService.user!.verification! == 1 ? "Vérifié" : "Compte non validé";
   double angle1 = 0;
   double angle2 = 0;
   double angle3 = 0;

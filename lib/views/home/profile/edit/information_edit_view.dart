@@ -313,9 +313,12 @@ class InformationEditView extends StatelessWidget {
                                 alignment: Alignment.bottomCenter,
                                 child: Padding(
                                   padding: EdgeInsets.all(20.h),
-                                  child: CustomButton(
-                                      title: "Enregistrer".toUpperCase(),
-                                      onTap: model.save),
+                                  child: SizedBox(
+                                    width: 220.w,
+                                    child: CustomButton(
+                                        title: "Enregistrer".toUpperCase(),
+                                        onTap: model.save),
+                                  ),
                                 ),
                               ),
                             ],

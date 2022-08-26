@@ -51,8 +51,9 @@ class BookingAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH BOOKIGNS PASS");
+          print("FETCH BOOKINGS PASS");
           List fetchBookings = data['data'];
+          print(fetchBookings);
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
 
@@ -91,6 +92,11 @@ class BookingAPIService {
           List fetchBookings = data;
           _bookable =
               fetchBookings.map((e) => BookableModel.fromJson(e)).toList();
+
+          _bookable!.add(_bookable![0]);
+          _bookable!.add(_bookable![0]);
+          _bookable!.add(_bookable![0]);
+
           print(_bookings);
         } catch (e) {
           print(e);
@@ -128,7 +134,7 @@ class BookingAPIService {
           _availableTime = time.map((e) => TimeModel.fromJson(e)).toList();
 
           //TODO delete this before release
-          _availableTime![0] = _availableTime![0].copyWith(avaiable: 0);
+
           print(_availableTime);
         } catch (e) {
           print(e);

@@ -131,7 +131,10 @@ class LoginInput extends StatelessWidget {
                     ),
                   ),
                   verticalSpaceLarge(),
-                  CustomButton(title: "Se connecter", onTap: model.loginButton),
+                  SizedBox(
+                      width: 220.w,
+                      child: CustomButton(
+                          title: "Se connecter", onTap: model.loginButton)),
                 ],
               ),
             ),
