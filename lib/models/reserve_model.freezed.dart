@@ -170,7 +170,9 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReserveModelToJson(this);
+    return _$$_ReserveModelToJson(
+      this,
+    );
   }
 }
 
@@ -184,11 +186,11 @@ abstract class _ReserveModel implements ReserveModel {
       _$_ReserveModel.fromJson;
 
   @override
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$_ReserveModelCopyWith<_$_ReserveModel> get copyWith =>

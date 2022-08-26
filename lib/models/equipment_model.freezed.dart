@@ -331,7 +331,9 @@ class _$_EquipmentModel implements _EquipmentModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EquipmentModelToJson(this);
+    return _$$_EquipmentModelToJson(
+      this,
+    );
   }
 }
 
@@ -353,27 +355,27 @@ abstract class _EquipmentModel implements EquipmentModel {
       _$_EquipmentModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  int? get stocks => throw _privateConstructorUsedError;
+  int? get stocks;
   @override
-  int? get type => throw _privateConstructorUsedError;
+  int? get type;
   @override
-  int? get unlimited => throw _privateConstructorUsedError;
+  int? get unlimited;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  String? get type_name => throw _privateConstructorUsedError;
+  String? get type_name;
   @override
-  ImageModel? get image => throw _privateConstructorUsedError;
+  ImageModel? get image;
   @override
   @JsonKey(ignore: true)
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>

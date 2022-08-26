@@ -306,9 +306,16 @@ class ProfileView extends StatelessWidget {
                                           verticalSpaceSmall(),
                                           ...model.documentTypes
                                               .map((e) => DocumentCardView(
+                                                    isViewed:
+                                                        model.isViewed(e.id!),
+                                                    status: model.status(e.id!),
                                                     expiration: model
                                                         .expirationDate(e.id!),
-                                                    isValid: model.isNew(e.id!),
+                                                    isNEw: model.isNew(e.id!),
+                                                    isValid: model
+                                                        .isValidated(e.id!),
+                                                    isProcess: model
+                                                        .isProcessing(e.id!),
                                                     cardColor: model
                                                             .isProcessing(e.id!)
                                                         ? greyLight3
@@ -341,9 +348,16 @@ class ProfileView extends StatelessWidget {
                                           verticalSpaceSmall(),
                                           ...model.documentTypes
                                               .map((e) => DocumentCardView(
+                                                    isProcess: model
+                                                        .isProcessing(e.id!),
+                                                    isViewed:
+                                                        model.isViewed(e.id!),
+                                                    status: model.status(e.id!),
                                                     expiration: model
                                                         .expirationDate(e.id!),
-                                                    isValid: model.isNew(e.id!),
+                                                    isNEw: model.isNew(e.id!),
+                                                    isValid: model
+                                                        .isValidated(e.id!),
                                                     cardColor: model
                                                             .isProcessing(e.id!)
                                                         ? greyLight3

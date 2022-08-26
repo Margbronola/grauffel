@@ -52,7 +52,10 @@ class DocumentAPIService {
         List ofData = data['data'];
 
         try {
-          print(ofData);
+          for (var datum in ofData) {
+            print(datum);
+          }
+
           return ofData.map((e) => DocumentModel.fromJson(e)).toList();
         } catch (e) {
           print(e);

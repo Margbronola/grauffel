@@ -254,7 +254,9 @@ class _$_ImageModel with DiagnosticableTreeMixin implements _ImageModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageModelToJson(this);
+    return _$$_ImageModelToJson(
+      this,
+    );
   }
 }
 
@@ -272,19 +274,19 @@ abstract class _ImageModel implements ImageModel {
       _$_ImageModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get filename => throw _privateConstructorUsedError;
+  String? get filename;
   @override
-  String? get path => throw _privateConstructorUsedError;
+  String? get path;
   @override
-  int? get order => throw _privateConstructorUsedError;
+  int? get order;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_ImageModelCopyWith<_$_ImageModel> get copyWith =>

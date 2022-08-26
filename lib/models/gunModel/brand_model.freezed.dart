@@ -240,7 +240,9 @@ class _$_BrandModel implements _BrandModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BrandModelToJson(this);
+    return _$$_BrandModelToJson(
+      this,
+    );
   }
 }
 
@@ -258,19 +260,19 @@ abstract class _BrandModel implements BrandModel {
       _$_BrandModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get slug => throw _privateConstructorUsedError;
+  String? get slug;
   @override
-  int? get type_id => throw _privateConstructorUsedError;
+  int? get type_id;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_BrandModelCopyWith<_$_BrandModel> get copyWith =>

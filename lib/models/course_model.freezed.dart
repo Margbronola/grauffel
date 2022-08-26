@@ -576,7 +576,9 @@ class _$_CourseModel implements _CourseModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CourseModelToJson(this);
+    return _$$_CourseModelToJson(
+      this,
+    );
   }
 }
 
@@ -610,51 +612,51 @@ abstract class _CourseModel implements CourseModel {
       _$_CourseModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  int? get type_id => throw _privateConstructorUsedError;
+  int? get type_id;
   @override
-  int? get level_id => throw _privateConstructorUsedError;
+  int? get level_id;
   @override // activity
-  int? get max_persons => throw _privateConstructorUsedError;
+  int? get max_persons;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  DateTime? get date_from => throw _privateConstructorUsedError;
+  DateTime? get date_from;
   @override
-  DateTime? get date_to => throw _privateConstructorUsedError;
+  DateTime? get date_to;
   @override
-  String? get start_time => throw _privateConstructorUsedError;
+  String? get start_time;
   @override
-  String? get end_time => throw _privateConstructorUsedError;
+  String? get end_time;
   @override
-  String? get color_code => throw _privateConstructorUsedError;
+  String? get color_code;
   @override
-  List<int>? get period => throw _privateConstructorUsedError;
+  List<int>? get period;
   @override
-  int? get admin_id => throw _privateConstructorUsedError;
+  int? get admin_id;
   @override
-  int? get salle_id => throw _privateConstructorUsedError;
+  int? get salle_id;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  int? get active_booking_count => throw _privateConstructorUsedError;
+  int? get active_booking_count;
   @override
-  String? get status_name => throw _privateConstructorUsedError;
+  String? get status_name;
   @override
-  BrandModel? get type => throw _privateConstructorUsedError;
+  BrandModel? get type;
   @override
-  List<String>? get images => throw _privateConstructorUsedError;
+  List<String>? get images;
   @override
-  List<String>? get questions => throw _privateConstructorUsedError;
+  List<String>? get questions;
   @override
   @JsonKey(ignore: true)
   _$$_CourseModelCopyWith<_$_CourseModel> get copyWith =>

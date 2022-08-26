@@ -9,10 +9,12 @@ class DocumentCardView extends StatelessWidget {
 
   final bool isNEw;
   final bool isValid;
+  final bool status;
   final bool isViewed;
   final bool removeIcon;
   final String expiration;
   final Color? cardColor;
+  final bool isProcess;
   const DocumentCardView({
     Key? key,
     required this.onTap,
@@ -22,6 +24,8 @@ class DocumentCardView extends StatelessWidget {
     this.isViewed = false,
     this.removeIcon = false,
     this.expiration = "",
+    this.status = false,
+    this.isProcess = false,
     this.cardColor = kcWhite,
   }) : super(key: key);
 
@@ -44,11 +48,13 @@ class DocumentCardView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      isNEw
-                          ? "En cours de validation"
-                          : isValid
-                              ? "Validé ($expiration)"
-                              : "Ajouter",
+                      !isProcess
+                          ? "Ajouter"
+                          : isViewed
+                              ? isValid
+                                  ? "Validé ($expiration)"
+                                  : "Refusé"
+                              : "En cours de validation",
                       style: ThemeData().textTheme.headlineSmall!.copyWith(
                             color: buttonColor,
                             fontSize: 12.sp,

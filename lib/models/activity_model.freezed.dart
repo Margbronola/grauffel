@@ -416,7 +416,9 @@ class _$_ActivityModel implements _ActivityModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ActivityModelToJson(this);
+    return _$$_ActivityModelToJson(
+      this,
+    );
   }
 }
 
@@ -443,37 +445,37 @@ abstract class _ActivityModel implements ActivityModel {
       _$_ActivityModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  int? get capacity => throw _privateConstructorUsedError;
+  int? get capacity;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  int? get free_duration => throw _privateConstructorUsedError;
+  int? get free_duration;
   @override
-  int? get course_duration => throw _privateConstructorUsedError;
+  int? get course_duration;
   @override
-  int? get competition_duration => throw _privateConstructorUsedError;
+  int? get competition_duration;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  String? get image => throw _privateConstructorUsedError;
+  String? get image;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  bool? get has_relation => throw _privateConstructorUsedError;
+  bool? get has_relation;
   @override
-  bool? get has_salle => throw _privateConstructorUsedError;
+  bool? get has_salle;
   @override
-  bool? get is_active => throw _privateConstructorUsedError;
+  bool? get is_active;
   @override
-  List<SalleModel>? get salles => throw _privateConstructorUsedError;
+  List<SalleModel>? get salles;
   @override
   @JsonKey(ignore: true)
   _$$_ActivityModelCopyWith<_$_ActivityModel> get copyWith =>

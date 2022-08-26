@@ -520,7 +520,9 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GunModelToJson(this);
+    return _$$_GunModelToJson(
+      this,
+    );
   }
 }
 
@@ -547,40 +549,40 @@ abstract class _GunModel implements GunModel {
   factory _GunModel.fromJson(Map<String, dynamic> json) = _$_GunModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get model => throw _privateConstructorUsedError;
+  String? get model;
   @override
-  int? get brand_id => throw _privateConstructorUsedError;
+  int? get brand_id;
   @override
-  int? get caliber_id => throw _privateConstructorUsedError;
+  int? get caliber_id;
   @override
-  int? get mags_capacity => throw _privateConstructorUsedError;
+  int? get mags_capacity;
   @override
-  int? get reserve => throw _privateConstructorUsedError;
+  int? get reserve;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override //available_ammunition {}
-  bool? get reservable => throw _privateConstructorUsedError;
+  bool? get reservable;
   @override // relatedAmmo []
 // relatedEquipment []
-  CaliberModel? get caliber => throw _privateConstructorUsedError;
+  CaliberModel? get caliber;
   @override
-  BrandModel? get brand => throw _privateConstructorUsedError;
+  BrandModel? get brand;
   @override
-  ImageModel? get image => throw _privateConstructorUsedError;
+  ImageModel? get image;
   @override
-  List<dynamic>? get bookings => throw _privateConstructorUsedError;
+  List<dynamic>? get bookings;
   @override
-  List<EquipmentModel>? get equipments => throw _privateConstructorUsedError;
+  List<EquipmentModel>? get equipments;
   @override
-  List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
+  List<AmmunitionsModel>? get ammunitions;
   @override
   @JsonKey(ignore: true)
   _$$_GunModelCopyWith<_$_GunModel> get copyWith =>

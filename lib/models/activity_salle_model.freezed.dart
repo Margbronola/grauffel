@@ -297,7 +297,9 @@ class _$_ActivitySalleModel implements _ActivitySalleModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ActivitySalleModelToJson(this);
+    return _$$_ActivitySalleModelToJson(
+      this,
+    );
   }
 }
 
@@ -317,23 +319,23 @@ abstract class _ActivitySalleModel implements ActivitySalleModel {
       _$_ActivitySalleModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get date_start => throw _privateConstructorUsedError;
+  String? get date_start;
   @override
-  String? get date_end => throw _privateConstructorUsedError;
+  String? get date_end;
   @override
-  int? get capacity => throw _privateConstructorUsedError;
+  int? get capacity;
   @override
-  int? get activity_id => throw _privateConstructorUsedError;
+  int? get activity_id;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  ActivityModel? get activity => throw _privateConstructorUsedError;
+  ActivityModel? get activity;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_ActivitySalleModelCopyWith<_$_ActivitySalleModel> get copyWith =>

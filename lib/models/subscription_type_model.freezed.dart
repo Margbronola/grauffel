@@ -384,7 +384,9 @@ class _$_SubscriptionTypeModel implements _SubscriptionTypeModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubscriptionTypeModelToJson(this);
+    return _$$_SubscriptionTypeModelToJson(
+      this,
+    );
   }
 }
 
@@ -409,33 +411,33 @@ abstract class _SubscriptionTypeModel implements SubscriptionTypeModel {
       _$_SubscriptionTypeModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  int? get duration => throw _privateConstructorUsedError;
+  int? get duration;
   @override
-  int? get duration_type => throw _privateConstructorUsedError;
+  int? get duration_type;
   @override
-  double? get ammunition_discount => throw _privateConstructorUsedError;
+  double? get ammunition_discount;
   @override
-  double? get equipment_discount => throw _privateConstructorUsedError;
+  double? get equipment_discount;
   @override
-  double? get gun_discount => throw _privateConstructorUsedError;
+  double? get gun_discount;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  double? get price_per_hour => throw _privateConstructorUsedError;
+  double? get price_per_hour;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  double? get fcredit => throw _privateConstructorUsedError;
+  double? get fcredit;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  List<dynamic>? get allow_guns => throw _privateConstructorUsedError;
+  List<dynamic>? get allow_guns;
   @override
   @JsonKey(ignore: true)
   _$$_SubscriptionTypeModelCopyWith<_$_SubscriptionTypeModel> get copyWith =>

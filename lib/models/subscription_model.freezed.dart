@@ -318,7 +318,9 @@ class _$_SubscriptionModel implements _SubscriptionModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubscriptionModelToJson(this);
+    return _$$_SubscriptionModelToJson(
+      this,
+    );
   }
 }
 
@@ -339,26 +341,25 @@ abstract class _SubscriptionModel implements SubscriptionModel {
       _$_SubscriptionModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  int? get client_id => throw _privateConstructorUsedError;
+  int? get client_id;
   @override
-  int? get subscription_type_id => throw _privateConstructorUsedError;
+  int? get subscription_type_id;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  DateTime? get start_date => throw _privateConstructorUsedError;
+  DateTime? get start_date;
   @override
-  SubscriptionTypeModel? get subscription_type =>
-      throw _privateConstructorUsedError;
+  SubscriptionTypeModel? get subscription_type;
   @override
-  DateTime? get end_date => throw _privateConstructorUsedError;
+  DateTime? get end_date;
   @override
   @JsonKey(ignore: true)
   _$$_SubscriptionModelCopyWith<_$_SubscriptionModel> get copyWith =>

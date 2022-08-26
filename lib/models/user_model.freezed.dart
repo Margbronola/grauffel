@@ -643,7 +643,9 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserModelToJson(this);
+    return _$$_UserModelToJson(
+      this,
+    );
   }
 }
 
@@ -680,57 +682,57 @@ abstract class _UserModel implements UserModel {
       _$_UserModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar;
   @override
-  String? get fullname => throw _privateConstructorUsedError;
+  String? get fullname;
   @override
-  String? get first_name => throw _privateConstructorUsedError;
+  String? get first_name;
   @override
-  String? get last_name => throw _privateConstructorUsedError;
+  String? get last_name;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get password => throw _privateConstructorUsedError;
+  String? get password;
   @override
-  String? get c_password => throw _privateConstructorUsedError;
+  String? get c_password;
   @override
-  String? get address => throw _privateConstructorUsedError;
+  String? get address;
   @override
-  String? get zipcode => throw _privateConstructorUsedError;
+  String? get zipcode;
   @override
-  String? get city => throw _privateConstructorUsedError;
+  String? get city;
   @override
-  int? get country_id => throw _privateConstructorUsedError;
+  int? get country_id;
   @override
-  String? get SIA_number => throw _privateConstructorUsedError;
+  String? get SIA_number;
   @override
-  String? get FFTir_license_number => throw _privateConstructorUsedError;
+  String? get FFTir_license_number;
   @override
-  double? get credit_points => throw _privateConstructorUsedError;
+  double? get credit_points;
   @override
-  int? get verification => throw _privateConstructorUsedError;
+  int? get verification;
   @override
-  int? get payment_verification => throw _privateConstructorUsedError;
+  int? get payment_verification;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  String? get experience => throw _privateConstructorUsedError;
+  String? get experience;
   @override
-  String? get equipment => throw _privateConstructorUsedError;
+  String? get equipment;
   @override
-  String? get phone_number => throw _privateConstructorUsedError;
+  String? get phone_number;
   @override // SubscriptionModel? active_client_subscription,
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  String? get firebase_id => throw _privateConstructorUsedError;
+  String? get firebase_id;
   @override
-  ImageModel? get image => throw _privateConstructorUsedError;
+  ImageModel? get image;
   @override
-  String? get birthday => throw _privateConstructorUsedError;
+  String? get birthday;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

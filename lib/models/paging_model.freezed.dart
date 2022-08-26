@@ -205,15 +205,15 @@ abstract class _PagingModel implements PagingModel {
       final int? total}) = _$_PagingModel;
 
   @override
-  int? get current_page => throw _privateConstructorUsedError;
+  int? get current_page;
   @override
-  String? get first_page_url => throw _privateConstructorUsedError;
+  String? get first_page_url;
   @override
-  String? get next_page_url => throw _privateConstructorUsedError;
+  String? get next_page_url;
   @override
-  String? get prev_page_url => throw _privateConstructorUsedError;
+  String? get prev_page_url;
   @override
-  int? get total => throw _privateConstructorUsedError;
+  int? get total;
   @override
   @JsonKey(ignore: true)
   _$$_PagingModelCopyWith<_$_PagingModel> get copyWith =>

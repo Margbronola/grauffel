@@ -745,7 +745,9 @@ class _$_BookingModel implements _BookingModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BookingModelToJson(this);
+    return _$$_BookingModelToJson(
+      this,
+    );
   }
 }
 
@@ -787,67 +789,67 @@ abstract class _BookingModel implements BookingModel {
       _$_BookingModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  int? get bookable_id => throw _privateConstructorUsedError;
+  int? get bookable_id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  int? get client_id => throw _privateConstructorUsedError;
+  int? get client_id;
   @override
-  int? get activity_id => throw _privateConstructorUsedError;
+  int? get activity_id;
   @override
-  DateTime? get start => throw _privateConstructorUsedError;
+  DateTime? get start;
   @override
-  DateTime? get end => throw _privateConstructorUsedError;
+  DateTime? get end;
   @override
-  int? get cell_loc => throw _privateConstructorUsedError;
+  int? get cell_loc;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  int? get duration => throw _privateConstructorUsedError;
+  int? get duration;
   @override
-  double? get bookable_cost => throw _privateConstructorUsedError;
+  double? get bookable_cost;
   @override
-  double? get total_gun_cost => throw _privateConstructorUsedError;
+  double? get total_gun_cost;
   @override
-  double? get total_ammunition_cost => throw _privateConstructorUsedError;
+  double? get total_ammunition_cost;
   @override
-  double? get total_equipment_cost => throw _privateConstructorUsedError;
+  double? get total_equipment_cost;
   @override
-  double? get tax_included => throw _privateConstructorUsedError;
+  double? get tax_included;
   @override
-  double? get sub_total => throw _privateConstructorUsedError;
+  double? get sub_total;
   @override
-  double? get gun_discount => throw _privateConstructorUsedError;
+  double? get gun_discount;
   @override
-  double? get ammunition_discount => throw _privateConstructorUsedError;
+  double? get ammunition_discount;
   @override
-  double? get equipment_discount => throw _privateConstructorUsedError;
+  double? get equipment_discount;
   @override
-  double? get total_discount => throw _privateConstructorUsedError;
+  double? get total_discount;
   @override
-  double? get total_cost => throw _privateConstructorUsedError;
+  double? get total_cost;
   @override
-  String? get purchase_number => throw _privateConstructorUsedError;
+  String? get purchase_number;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  String? get status_name => throw _privateConstructorUsedError;
+  String? get status_name;
   @override
-  String? get morph_class => throw _privateConstructorUsedError;
+  String? get morph_class;
   @override
-  List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
+  List<AmmunitionsModel>? get ammunitions;
   @override
-  List<GunModel>? get guns => throw _privateConstructorUsedError;
+  List<GunModel>? get guns;
   @override
-  List<EquipmentModel>? get equipements => throw _privateConstructorUsedError;
+  List<EquipmentModel>? get equipements;
   @override
-  BookableModel? get bookable => throw _privateConstructorUsedError;
+  BookableModel? get bookable;
   @override
-  ActivityModel? get activity => throw _privateConstructorUsedError;
+  ActivityModel? get activity;
   @override
   @JsonKey(ignore: true)
   _$$_BookingModelCopyWith<_$_BookingModel> get copyWith =>

@@ -235,7 +235,9 @@ class _$_CaliberModel with DiagnosticableTreeMixin implements _CaliberModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CaliberModelToJson(this);
+    return _$$_CaliberModelToJson(
+      this,
+    );
   }
 }
 
@@ -252,17 +254,17 @@ abstract class _CaliberModel implements CaliberModel {
       _$_CaliberModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get metric => throw _privateConstructorUsedError;
+  String? get metric;
   @override
-  String? get typicalBulletDiameter => throw _privateConstructorUsedError;
+  String? get typicalBulletDiameter;
   @override
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
-  String? get updatedAt => throw _privateConstructorUsedError;
+  String? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_CaliberModelCopyWith<_$_CaliberModel> get copyWith =>

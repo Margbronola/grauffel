@@ -226,7 +226,9 @@ class _$_DocumentTypeModel implements _DocumentTypeModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentTypeModelToJson(this);
+    return _$$_DocumentTypeModelToJson(
+      this,
+    );
   }
 }
 
@@ -243,17 +245,17 @@ abstract class _DocumentTypeModel implements DocumentTypeModel {
       _$_DocumentTypeModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  int? get type => throw _privateConstructorUsedError;
+  int? get type;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentTypeModelCopyWith<_$_DocumentTypeModel> get copyWith =>

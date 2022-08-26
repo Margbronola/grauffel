@@ -394,7 +394,9 @@ class _$_SalleModel implements _SalleModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SalleModelToJson(this);
+    return _$$_SalleModelToJson(
+      this,
+    );
   }
 }
 
@@ -419,33 +421,33 @@ abstract class _SalleModel implements SalleModel {
       _$_SalleModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  String? get location => throw _privateConstructorUsedError;
+  String? get location;
   @override
-  String? get color_code => throw _privateConstructorUsedError;
+  String? get color_code;
   @override
-  int? get capacity => throw _privateConstructorUsedError;
+  int? get capacity;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
-  String? get status_name => throw _privateConstructorUsedError;
+  String? get status_name;
   @override
-  int? get activity_capacity => throw _privateConstructorUsedError;
+  int? get activity_capacity;
   @override
-  List<dynamic>? get bookings => throw _privateConstructorUsedError;
+  List<dynamic>? get bookings;
   @override
-  List<dynamic>? get activitysalle => throw _privateConstructorUsedError;
+  List<dynamic>? get activitysalle;
   @override
-  List<CourseModel>? get courses => throw _privateConstructorUsedError;
+  List<CourseModel>? get courses;
   @override
   @JsonKey(ignore: true)
   _$$_SalleModelCopyWith<_$_SalleModel> get copyWith =>

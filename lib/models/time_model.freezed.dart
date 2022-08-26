@@ -140,7 +140,9 @@ class _$_TimeModel implements _TimeModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TimeModelToJson(this);
+    return _$$_TimeModelToJson(
+      this,
+    );
   }
 }
 
@@ -152,9 +154,9 @@ abstract class _TimeModel implements TimeModel {
       _$_TimeModel.fromJson;
 
   @override
-  String? get time => throw _privateConstructorUsedError;
+  String? get time;
   @override
-  int? get avaiable => throw _privateConstructorUsedError;
+  int? get avaiable;
   @override
   @JsonKey(ignore: true)
   _$$_TimeModelCopyWith<_$_TimeModel> get copyWith =>

@@ -771,7 +771,9 @@ class _$_TransactionModel implements _TransactionModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TransactionModelToJson(this);
+    return _$$_TransactionModelToJson(
+      this,
+    );
   }
 }
 
@@ -817,76 +819,76 @@ abstract class _TransactionModel implements TransactionModel {
       _$_TransactionModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  int? get client_id => throw _privateConstructorUsedError;
+  int? get client_id;
   @override
-  String? get first_name => throw _privateConstructorUsedError;
+  String? get first_name;
   @override
-  String? get last_name => throw _privateConstructorUsedError;
+  String? get last_name;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get address => throw _privateConstructorUsedError;
+  String? get address;
   @override
-  String? get city => throw _privateConstructorUsedError;
+  String? get city;
   @override
-  String? get telephone => throw _privateConstructorUsedError;
+  String? get telephone;
   @override
-  String? get zipcode => throw _privateConstructorUsedError;
+  String? get zipcode;
   @override
-  String? get package_name => throw _privateConstructorUsedError;
+  String? get package_name;
   @override
-  String? get purchase_token => throw _privateConstructorUsedError;
+  String? get purchase_token;
   @override
-  int? get uuid => throw _privateConstructorUsedError;
+  int? get uuid;
   @override
-  int? get transaction_id => throw _privateConstructorUsedError;
+  int? get transaction_id;
   @override
-  int? get booking_id => throw _privateConstructorUsedError;
+  int? get booking_id;
   @override
-  int? get client_subscription_id => throw _privateConstructorUsedError;
+  int? get client_subscription_id;
   @override
-  String? get subscription_name => throw _privateConstructorUsedError;
+  String? get subscription_name;
   @override
-  double? get ammunition_discount => throw _privateConstructorUsedError;
+  double? get ammunition_discount;
   @override
-  double? get equipment_discount => throw _privateConstructorUsedError;
+  double? get equipment_discount;
   @override
-  double? get gun_discount => throw _privateConstructorUsedError;
+  double? get gun_discount;
   @override
-  double? get price_per_hour => throw _privateConstructorUsedError;
+  double? get price_per_hour;
   @override
-  double? get ook_cost => throw _privateConstructorUsedError;
+  double? get ook_cost;
   @override
-  double? get total_gun_cost => throw _privateConstructorUsedError;
+  double? get total_gun_cost;
   @override
-  double? get total_ammunition_cost => throw _privateConstructorUsedError;
+  double? get total_ammunition_cost;
   @override
-  double? get total_equipment_cost => throw _privateConstructorUsedError;
+  double? get total_equipment_cost;
   @override
-  double? get sub_total => throw _privateConstructorUsedError;
+  double? get sub_total;
   @override
-  double? get total_discount => throw _privateConstructorUsedError;
+  double? get total_discount;
   @override
-  String? get purchase_number => throw _privateConstructorUsedError;
+  String? get purchase_number;
   @override
-  String? get purchase_name => throw _privateConstructorUsedError;
+  String? get purchase_name;
   @override // payment_method
 // payment_method_type
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  double? get tax_included => throw _privateConstructorUsedError;
+  double? get tax_included;
   @override
-  double? get tax => throw _privateConstructorUsedError;
+  double? get tax;
   @override // payment_status
-  String? get reference_number => throw _privateConstructorUsedError;
+  String? get reference_number;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_TransactionModelCopyWith<_$_TransactionModel> get copyWith =>

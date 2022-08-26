@@ -121,6 +121,17 @@ class ProfileViewModel extends ReactiveViewModel {
         return false;
       });
 
+  bool status(int doctypeId) => documents.any((element) {
+        if (element.client_document_type_id == doctypeId) {
+          return documents
+                  .firstWhere(
+                      (element) => element.client_document_type_id == doctypeId)
+                  .status ==
+              1;
+        }
+        return false;
+      });
+
   bool isViewed(int doctypeId) => documents.any((element) {
         if (element.client_document_type_id == doctypeId) {
           return documents

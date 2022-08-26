@@ -36,5 +36,7 @@ class DocumentService with ReactiveServiceMixin {
         await documentAPIService.fetchDocumentTypes(token: userService.token!);
     _documents.value =
         await documentAPIService.fetchDocuments(token: userService.token!);
+    print("here");
+    print(documents);
   }
 }

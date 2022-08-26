@@ -32,6 +32,7 @@ mixin _$DocumentModel {
   int? get is_valid => throw _privateConstructorUsedError;
   int? get is_new => throw _privateConstructorUsedError;
   int? get is_viewed => throw _privateConstructorUsedError;
+  int? get status => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $DocumentModelCopyWith<$Res> {
       int? is_valid,
       int? is_new,
       int? is_viewed,
+      int? status,
       DateTime? updated_at});
 }
 
@@ -84,6 +86,7 @@ class _$DocumentModelCopyWithImpl<$Res>
     Object? is_valid = freezed,
     Object? is_new = freezed,
     Object? is_viewed = freezed,
+    Object? status = freezed,
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -135,6 +138,10 @@ class _$DocumentModelCopyWithImpl<$Res>
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -163,6 +170,7 @@ abstract class _$$_DocumentModelCopyWith<$Res>
       int? is_valid,
       int? is_new,
       int? is_viewed,
+      int? status,
       DateTime? updated_at});
 }
 
@@ -191,6 +199,7 @@ class __$$_DocumentModelCopyWithImpl<$Res>
     Object? is_valid = freezed,
     Object? is_new = freezed,
     Object? is_viewed = freezed,
+    Object? status = freezed,
     Object? updated_at = freezed,
   }) {
     return _then(_$_DocumentModel(
@@ -242,6 +251,10 @@ class __$$_DocumentModelCopyWithImpl<$Res>
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -266,6 +279,7 @@ class _$_DocumentModel implements _DocumentModel {
       this.is_valid,
       this.is_new,
       this.is_viewed,
+      this.status,
       this.updated_at});
 
   factory _$_DocumentModel.fromJson(Map<String, dynamic> json) =>
@@ -296,11 +310,13 @@ class _$_DocumentModel implements _DocumentModel {
   @override
   final int? is_viewed;
   @override
+  final int? status;
+  @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'DocumentModel(id: $id, client_id: $client_id, client_document_type_id: $client_document_type_id, path: $path, path2: $path2, image_base64_front: $image_base64_front, image_base64_back: $image_base64_back, expiration: $expiration, created_at: $created_at, is_valid: $is_valid, is_new: $is_new, is_viewed: $is_viewed, updated_at: $updated_at)';
+    return 'DocumentModel(id: $id, client_id: $client_id, client_document_type_id: $client_document_type_id, path: $path, path2: $path2, image_base64_front: $image_base64_front, image_base64_back: $image_base64_back, expiration: $expiration, created_at: $created_at, is_valid: $is_valid, is_new: $is_new, is_viewed: $is_viewed, status: $status, updated_at: $updated_at)';
   }
 
   @override
@@ -325,6 +341,7 @@ class _$_DocumentModel implements _DocumentModel {
             const DeepCollectionEquality().equals(other.is_valid, is_valid) &&
             const DeepCollectionEquality().equals(other.is_new, is_new) &&
             const DeepCollectionEquality().equals(other.is_viewed, is_viewed) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at));
   }
@@ -345,6 +362,7 @@ class _$_DocumentModel implements _DocumentModel {
       const DeepCollectionEquality().hash(is_valid),
       const DeepCollectionEquality().hash(is_new),
       const DeepCollectionEquality().hash(is_viewed),
+      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(updated_at));
 
   @JsonKey(ignore: true)
@@ -354,7 +372,9 @@ class _$_DocumentModel implements _DocumentModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentModelToJson(this);
+    return _$$_DocumentModelToJson(
+      this,
+    );
   }
 }
 
@@ -372,37 +392,40 @@ abstract class _DocumentModel implements DocumentModel {
       final int? is_valid,
       final int? is_new,
       final int? is_viewed,
+      final int? status,
       final DateTime? updated_at}) = _$_DocumentModel;
 
   factory _DocumentModel.fromJson(Map<String, dynamic> json) =
       _$_DocumentModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  int? get client_id => throw _privateConstructorUsedError;
+  int? get client_id;
   @override
-  int? get client_document_type_id => throw _privateConstructorUsedError;
+  int? get client_document_type_id;
   @override
-  String? get path => throw _privateConstructorUsedError;
+  String? get path;
   @override
-  String? get path2 => throw _privateConstructorUsedError;
+  String? get path2;
   @override
-  String? get image_base64_front => throw _privateConstructorUsedError;
+  String? get image_base64_front;
   @override
-  String? get image_base64_back => throw _privateConstructorUsedError;
+  String? get image_base64_back;
   @override
-  String? get expiration => throw _privateConstructorUsedError;
+  String? get expiration;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  int? get is_valid => throw _privateConstructorUsedError;
+  int? get is_valid;
   @override
-  int? get is_new => throw _privateConstructorUsedError;
+  int? get is_new;
   @override
-  int? get is_viewed => throw _privateConstructorUsedError;
+  int? get is_viewed;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  int? get status;
+  @override
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentModelCopyWith<_$_DocumentModel> get copyWith =>

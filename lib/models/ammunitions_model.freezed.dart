@@ -378,7 +378,9 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AmmunitionsModelToJson(this);
+    return _$$_AmmunitionsModelToJson(
+      this,
+    );
   }
 }
 
@@ -401,29 +403,29 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       _$_AmmunitionsModel.fromJson;
 
   @override
-  int? get id => throw _privateConstructorUsedError;
+  int? get id;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  double? get price => throw _privateConstructorUsedError;
+  double? get price;
   @override
-  int? get stock => throw _privateConstructorUsedError;
+  int? get stock;
   @override
-  int? get status => throw _privateConstructorUsedError;
+  int? get status;
   @override
-  ImageModel? get image => throw _privateConstructorUsedError;
+  ImageModel? get image;
   @override
-  BrandModel? get brand => throw _privateConstructorUsedError;
+  BrandModel? get brand;
   @override
-  CaliberModel? get caliber => throw _privateConstructorUsedError;
+  CaliberModel? get caliber;
   @override
-  int get perBox => throw _privateConstructorUsedError;
+  int get perBox;
   @override
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  DateTime? get created_at;
   @override
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$_AmmunitionsModelCopyWith<_$_AmmunitionsModel> get copyWith =>

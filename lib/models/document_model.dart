@@ -17,6 +17,7 @@ class DocumentModel with _$DocumentModel {
       int? is_valid,
       int? is_new,
       int? is_viewed,
+      int? status,
       DateTime? updated_at}) = _DocumentModel;
 
   factory DocumentModel.fromJson(Map<String, Object?> json) =>
