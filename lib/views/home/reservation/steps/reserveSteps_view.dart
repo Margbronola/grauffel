@@ -115,6 +115,7 @@ class ReserveStepsView extends StatelessWidget {
               ),
               Expanded(
                 child: PageView(
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: model.pageController,
                   onPageChanged: model.nextIndex,
                   children: <Widget>[

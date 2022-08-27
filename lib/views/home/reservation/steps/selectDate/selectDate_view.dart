@@ -153,7 +153,13 @@ class SelectDateView extends StatelessWidget {
               children: [
                 SizedBox(
                     width: 150.w,
-                    child: CustomButton(title: "Suivant", onTap: onTap)),
+                    child: CustomButton(
+                        title: "Suivant",
+                        onTap: model.selectedTime.isNotEmpty
+                            ? () {
+                                onTap();
+                              }
+                            : null)),
               ],
             ),
           ),

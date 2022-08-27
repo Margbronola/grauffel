@@ -21,6 +21,7 @@ import '../services/equipments_api_service.dart';
 import '../services/firebase_auth_service.dart';
 import '../services/gun_list_service.dart';
 import '../services/guns_api_service.dart';
+import '../services/home_paging_service.dart';
 import '../services/sharedpref_service.dart';
 import '../services/user_api_service.dart';
 import '../services/user_service.dart';
@@ -51,4 +52,5 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => DocumentAPIService());
   locator.registerLazySingleton(() => DocumentService());
   locator.registerLazySingleton(() => BookingService());
+  locator.registerLazySingleton(() => HomePagingService());
 }

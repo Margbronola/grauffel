@@ -35,6 +35,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   List<GunModel> get selectedGun => _bookingService.getselectedGun;
 
   init() async {
+    print(_bookingService.getselectedTimes.length);
     _gunListService.setBusy(true);
     initFilter();
     await _gunAPIService

@@ -74,9 +74,11 @@ class AmmunitionView extends StatelessWidget {
                       ),
                       CustomButton(
                           title: "Suivant",
-                          onTap: () {
-                            model.suivant(onTap);
-                          })
+                          onTap: model.selectedAmmunition.isNotEmpty
+                              ? () {
+                                  model.suivant(onTap);
+                                }
+                              : null)
                     ],
                   ),
                 )

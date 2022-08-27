@@ -84,7 +84,9 @@ class ReserveDialog extends StatelessWidget {
                     width: double.infinity,
                     child: CustomButton(
                         title: "voir mes réservations".toUpperCase(),
-                        onTap: () {}),
+                        onTap: () {
+                          completer!(DialogResponse(confirmed: true));
+                        }),
                   ),
                   verticalSpaceLarge(),
                 ],

@@ -42,7 +42,10 @@ class ItemCard extends StatelessWidget {
                         bottomRight: Radius.circular(30)),
                     color: kcWhite,
                     image: DecorationImage(
-                        image: AssetImage("assets/images/$image.png"))),
+                        image: image.isEmpty
+                            ? const AssetImage("assets/images/noImage.png")
+                                as ImageProvider
+                            : NetworkImage(image))),
               ),
               Expanded(
                 child: Padding(
@@ -50,10 +53,10 @@ class ItemCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         child: Text(
-                          "Glock 19 Gen 5",
-                          style: TextStyle(
+                          title,
+                          style: const TextStyle(
                               fontFamily: 'ProductSans',
                               fontSize: 10,
                               fontWeight: FontWeight.w700),
@@ -94,7 +97,7 @@ class ItemCard extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "CZ".toUpperCase(),
+                                  brand.toUpperCase(),
                                   style: const TextStyle(
                                       fontFamily: 'ProductSans',
                                       fontSize: 8,
@@ -124,15 +127,15 @@ class ItemCard extends StatelessWidget {
                   child: Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
-                        "3",
-                        style: TextStyle(
+                        extraButton!,
+                        style: const TextStyle(
                             fontFamily: 'ProductSans',
                             fontSize: 12,
                             fontWeight: FontWeight.bold),
                       ),
-                      Text(
+                      const Text(
                         " boîtes de 50",
                         style: TextStyle(
                             fontFamily: 'ProductSans',

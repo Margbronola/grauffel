@@ -10,20 +10,18 @@ import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
 import '../../../../../app/app.locator.dart';
 
-class SelectDateViewModel extends BaseViewModel {
+class SelectDateViewModel extends ReactiveViewModel {
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
   final DatePickerController controller = DatePickerController();
   final ScrollController scrollController = ScrollController();
 
-  DateTime _selectedValue = DateTime.now().toUtc();
   final DateFormat formatter = DateFormat('yMMM');
-  DateTime get selectedDate => _selectedValue;
-  String get monthYear => formatter.format(_selectedValue);
+  DateTime get selectedDate => _bookingService.getselectedDate;
 
   List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
-  List<TimeModel> selectedTime = [];
+  List<TimeModel> get selectedTime => _bookingService.getselectedTimes;
 
   List<DateTime> inactive = [];
   List<DateTime> activeDates = [];
@@ -89,10 +87,11 @@ class SelectDateViewModel extends BaseViewModel {
     if (dateTime.isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
       print("yes");
     } else {
-      _selectedValue = dateTime;
+      _bookingService.setSelectedDate = dateTime;
+      print(_bookingService.getselectedBookable);
+      print(_bookingService.getselectedDate);
       await await fetchBookableActivity(dateTime);
     }
-
     notifyListeners();
   }
 
@@ -101,7 +100,7 @@ class SelectDateViewModel extends BaseViewModel {
         token: _userService.token!,
         date: dateTime,
         activity_id:
-            _bookingService.selectedBookable!.activitysalle![0].activity_id!,
+            _bookingService.getselectedBookable!.activitysalle![0].activity_id!,
         client_id: _userService.user!.id!);
   }
 
@@ -110,29 +109,37 @@ class SelectDateViewModel extends BaseViewModel {
   // }
 
   void selectTime(TimeModel time) {
-    if (!selectedTime.contains(time)) {
-      if (selectedTime.isEmpty) {
-        selectedTime.add(time);
+    print(_bookingService.getselectedTimes.length);
+    if (!_bookingService.getselectedTimes.contains(time)) {
+      if (_bookingService.getselectedTimes.isEmpty) {
+        _bookingService.getselectedTimes.add(time);
+        notifyListeners();
       } else {
-        TimeModel shouldNext = availableTimes[
-            availableTimes.indexOf(selectedTime[selectedTime.length - 1]) + 1];
+        TimeModel shouldNext = availableTimes[availableTimes.indexOf(
+                _bookingService.getselectedTimes[
+                    _bookingService.getselectedTimes.length - 1]) +
+            1];
 
         print(shouldNext);
 
         if (time == shouldNext) {
-          selectedTime.add(time);
+          _bookingService.getselectedTimes.add(time);
         }
       }
     } else {
-      selectedTime.remove(time);
+      _bookingService.getselectedTimes.remove(time);
     }
     notifyListeners();
   }
 
   bool isSelected(TimeModel time) {
-    if (selectedTime.contains(time)) {
+    if (_bookingService.getselectedTimes.contains(time)) {
       return true;
     }
     return false;
   }
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_bookingService];
 }

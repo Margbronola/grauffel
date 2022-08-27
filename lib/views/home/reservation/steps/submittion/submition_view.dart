@@ -54,7 +54,7 @@ class SubmitionView extends StatelessWidget {
                             ),
                             verticalSpaceSmall(),
                             Text(
-                              "25 mètres",
+                              model.bookedModel.name!,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ProductSans',
@@ -70,7 +70,7 @@ class SubmitionView extends StatelessWidget {
                             ),
                             verticalSpaceSmall(),
                             Text(
-                              "sam. 23 mai",
+                              model.date(),
                               style: TextStyle(
                                   fontFamily: 'ProductSans',
                                   fontWeight: FontWeight.bold,
@@ -86,7 +86,7 @@ class SubmitionView extends StatelessWidget {
                             ),
                             verticalSpaceSmall(),
                             Text(
-                              "10h00 - 11h00",
+                              model.time(),
                               style: TextStyle(
                                   fontFamily: 'ProductSans',
                                   fontWeight: FontWeight.bold,
@@ -97,25 +97,50 @@ class SubmitionView extends StatelessWidget {
                       ],
                     ),
                     verticalSpaceMedium(),
-                    const ItemCard(
-                      image: "gun",
-                      title: "Glock 19 Gen 5",
-                      brand: "Marque",
-                      reference: "Référence",
-                    ),
-                    verticalSpaceSmall(),
-                    const ItemCard(
-                      image: "bullet",
-                      title: "9x19 - 9mm",
-                      brand: "Marque",
-                      reference: "Référence",
-                      extraButton: "3 boîtes de 50",
-                    ),
+                    //GunList
+                    Column(
+                        children: model.gunList
+                            .map((e) => Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: ItemCard(
+                                    image: "",
+                                    title: e.model!,
+                                    brand: e.brand!.name!,
+                                    reference: "Référence",
+                                  ),
+                                ))
+                            .toList()),
+
+                    Column(
+                        children: model.ammunitionList
+                            .map((e) => Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: ItemCard(
+                                    extraButton: e.perBox.toString(),
+                                    image: "",
+                                    title: e.name!,
+                                    brand: e.brand!.name!,
+                                    reference: "Référence",
+                                  ),
+                                ))
+                            .toList()),
+                    Column(
+                        children: model.equipmentList
+                            .map((e) => Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: ItemCard(
+                                    image: "",
+                                    title: e.name!,
+                                    brand: e.type.toString(),
+                                    reference: "Référence",
+                                  ),
+                                ))
+                            .toList()),
                     TextFormField(
                       maxLines: 3,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                      style: TextStyle(color: backgroundColor, fontSize: 10.sp),
                       focusNode: model.commentFocusNode,
                       controller: model.commentTextController,
                       validator: (value) {

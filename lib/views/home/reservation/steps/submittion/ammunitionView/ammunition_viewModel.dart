@@ -147,13 +147,16 @@ class AmmunitionViewModel extends BaseViewModel {
   }
 
   void suivant(Function onTap) {
-    print("suivant");
-    print(_bookingService.getselectedAmmunition.length);
     if (_bookingService.getselectedAmmunition.isNotEmpty) {
-      nextPage(1);
-    } else {
-      onTap();
+      if (selectedIndex == 0) {
+        nextPage(1);
+      } else {
+        onTap();
+      }
+      print("next");
     }
-    notifyListeners();
   }
+
+  @override
+  notifyListeners();
 }

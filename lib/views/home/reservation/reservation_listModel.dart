@@ -9,7 +9,6 @@ import '../../../app/app.locator.dart';
 import 'reservation_cell/reservation_cell_view.dart';
 
 class ReservationListModel extends BaseViewModel {
-  final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final BookingService _bookingService = locator<BookingService>();

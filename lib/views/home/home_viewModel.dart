@@ -1,36 +1,35 @@
+import 'package:egczacademy/app/app.locator.dart';
+import 'package:egczacademy/services/home_paging_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class HomeViewModel extends BaseViewModel {
-  int selectedIndex = 0;
-  PageController? pageController;
-  bool _isFromReview = false;
-
-  bool get isFromReview => _isFromReview;
+class HomeViewModel extends ReactiveViewModel {
+  final HomePagingService _homePagingService = locator<HomePagingService>();
+  int get selectedIndex => _homePagingService.selectedPage;
+  PageController get pageController => _homePagingService.pageController!;
+  bool get isFromReview => _homePagingService.isFromReview;
 
   void initState() {
-    pageController = PageController();
+    _homePagingService.setController(PageController());
   }
 
   void changePage(int index) {
-    selectedIndex = index;
+    _homePagingService.setPage(index);
     notifyListeners();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    pageController!.dispose();
+    _homePagingService.pageController!.dispose();
     super.dispose();
   }
 
   void onTap(int index, {bool isFromReview = false}) {
-    _isFromReview = isFromReview;
-    notifyListeners();
-    pageController!
-        .animateToPage(index,
-            duration: const Duration(milliseconds: 500), curve: Curves.ease)
-        .whenComplete(() => selectedIndex = index);
-    notifyListeners();
+    _homePagingService.onTap(index, isFromReview: isFromReview);
   }
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_homePagingService];
 }

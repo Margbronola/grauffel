@@ -187,9 +187,11 @@ class ArmoreView extends StatelessWidget {
                       ),
                       CustomButton(
                           title: "Suivant",
-                          onTap: () {
-                            onTap();
-                          })
+                          onTap: model.selectedGun.isNotEmpty
+                              ? () {
+                                  onTap();
+                                }
+                              : null)
                     ],
                   ),
                 )

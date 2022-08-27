@@ -93,7 +93,10 @@ class EquipmentView extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      CustomButton(title: "Suivant", onTap: onTap)
+                      CustomButton(
+                          title: "Suivant",
+                          onTap:
+                              model.selectedEquipment.isNotEmpty ? onTap : null)
                     ],
                   ),
                 )

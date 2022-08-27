@@ -1,5 +1,6 @@
 import 'package:egczacademy/services/document_service.dart';
 import 'package:egczacademy/services/firebase_auth_service.dart';
+import 'package:egczacademy/services/home_paging_service.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/welcome/welcome_view.dart';
@@ -76,6 +77,9 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: BookingService,
+  ),
+  LazySingleton(
+    classType: HomePagingService,
   ),
 ])
 class App {

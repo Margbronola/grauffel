@@ -123,7 +123,9 @@ class ReservationCard extends StatelessWidget {
                             height: 5.h,
                           ),
                           Text(
-                            "${booking.activity!.description}",
+                            booking.activity != null
+                                ? booking.activity!.description ?? ""
+                                : "",
                             style:
                                 ThemeData().textTheme.headlineSmall!.copyWith(
                                       color: Colors.grey,
