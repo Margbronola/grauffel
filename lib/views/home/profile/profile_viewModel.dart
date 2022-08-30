@@ -52,6 +52,7 @@ class ProfileViewModel extends ReactiveViewModel {
 
   String get userValidate =>
       _userService.user!.verification! == 1 ? "Vérifié" : "Compte non validé";
+
   double angle1 = 0;
   double angle2 = 0;
   double angle3 = 0;
@@ -96,6 +97,21 @@ class ProfileViewModel extends ReactiveViewModel {
     return documents.any((element) {
       return element.client_document_type_id == documentTypeId;
     });
+  }
+
+  int mandatoryNumberUploaded() {
+    int num = 0;
+    if (documents.any(
+        (element) => element.client_document_type_id == documentTypes[0].id)) {
+      num++;
+    }
+
+    if (documents.any(
+        (element) => element.client_document_type_id == documentTypes[1].id)) {
+      num++;
+    }
+
+    return num;
   }
 
   bool isNew(int doctypeId) => documents.any((element) {

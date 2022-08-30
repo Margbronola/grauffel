@@ -12,6 +12,8 @@ import '../../../../../app/app.locator.dart';
 import '../../../../../models/bookable_model.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../shared/widget/dialog/setup_dialog_ui.dart';
+
 class SubmitionViewModel extends ReactiveViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BookingService _bookingService = locator<BookingService>();
@@ -65,25 +67,62 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   void showCard() async {
-    print(user.credit_points);
-    print(bookedModel.price);
+    double allGunPrice = 0;
+    double allAmmunitionPrice = 0;
+    double allEquipmentPrice = 0;
 
-    // var response = await _dialogService.showCustomDialog(
-    //     mainButtonTitle: "ok",
-    //     variant: DialogType.reserve,
-    //     barrierDismissible: true);
+    allGunPrice = gunList
+        .map((e) => e.price!)
+        .toList()
+        .reduce((value, element) => value + element);
 
-    // if (response != null) {
-    //   if (response.confirmed) {
-    //     _navigationService.back();
-    //     _homePagingService.onTap(0);
-    //   } else {
-    //     print("cancel");
-    //   }
-    // }
+    allAmmunitionPrice = ammunitionList
+        .map((e) => e.price! * e.perBox)
+        .toList()
+        .reduce((value, element) => value + element);
+
+    allEquipmentPrice = ammunitionList
+        .map((e) => e.price!)
+        .toList()
+        .reduce((value, element) => value + element);
+
+    double total = bookedModel.price! +
+        allGunPrice +
+        allEquipmentPrice +
+        allAmmunitionPrice;
+
+    print("gunsPrice: $allGunPrice");
+    print("ammunition: $allAmmunitionPrice");
+    print("ammunition: $allEquipmentPrice");
+    print("total: $total");
+
+    if (user.credit_points! >= total) {
+      var response = await _dialogService.showCustomDialog(
+          mainButtonTitle: "ok",
+          variant: DialogType.reserve,
+          barrierDismissible: true);
+
+      if (response != null) {
+        if (response.confirmed) {
+          _navigationService.back();
+          _homePagingService.onTap(0);
+        }
+      }
+    } else {
+      var response = await _dialogService.showCustomDialog(
+          mainButtonTitle: "ok",
+          variant: DialogType.reservefail,
+          barrierDismissible: true);
+
+      if (response != null) {
+        if (response.confirmed) {
+          _navigationService.back();
+        } else {
+          _navigationService.back();
+        }
+      }
+    }
   }
-
-  void reserve() {}
 
   @override
   // TODO: implement reactiveServices

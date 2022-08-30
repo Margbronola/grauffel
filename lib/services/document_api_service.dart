@@ -11,7 +11,6 @@ class DocumentAPIService {
         image_base64_front: document.image_base64_front,
         image_base64_back: document.image_base64_back,
         client_id: document.client_id,
-        expiration: document.expiration,
         client_document_type_id: document.client_document_type_id);
     Map<String, dynamic> documentJson = docToUpload.toJson();
     documentJson.removeWhere((key, value) => value == null);

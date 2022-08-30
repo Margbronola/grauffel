@@ -33,10 +33,10 @@ class ReserveCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       image: DecorationImage(
-                          image: AssetImage(
-                            "assets/images/${reserve.image}.png",
-                          ),
-                          fit: BoxFit.cover)),
+                        image: AssetImage(
+                          reserve.image,
+                        ),
+                      )),
                 ),
                 Expanded(
                   child: Padding(

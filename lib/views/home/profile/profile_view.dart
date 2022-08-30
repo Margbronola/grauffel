@@ -453,7 +453,7 @@ class ProfileView extends StatelessWidget {
                         fontFamily: 'ProductSans',
                       ),
                     ),
-                    Text(" 0/2",
+                    Text(" ${model.mandatoryNumberUploaded()}/2",
                         style: TextStyle(
                             fontSize: 15.sp,
                             fontFamily: 'ProductSans',

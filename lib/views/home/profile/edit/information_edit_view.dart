@@ -124,6 +124,9 @@ class InformationEditView extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                                 focusNode: model.dateNode,
                                 controller: model.birthdayController,
+                                onTap: () {
+                                  model.showDatePicker(context);
+                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(

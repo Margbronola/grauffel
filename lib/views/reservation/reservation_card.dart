@@ -44,10 +44,7 @@ class ReservationCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            DateFormat('E')
-                                .format(booking.start!)
-                                .i18n()
-                                .toUpperCase(),
+                            "${DateFormat('E').format(booking.start!).i18n().toUpperCase()}.",
                             textAlign: TextAlign.center,
                             style:
                                 ThemeData().textTheme.headlineSmall!.copyWith(
@@ -145,7 +142,7 @@ class ReservationCard extends StatelessWidget {
               !isActive
                   ? const SizedBox()
                   : Positioned(
-                      bottom: 0,
+                      bottom: 15,
                       right: 0,
                       child: Container(
                         height: 29.h,

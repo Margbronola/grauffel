@@ -6,10 +6,10 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../color.dart';
 import '../../ui_helper.dart';
 
-class ReserveDialog extends StatelessWidget {
+class ReserveFailDialog extends StatelessWidget {
   final DialogRequest? request;
   final Function(DialogResponse)? completer;
-  const ReserveDialog({Key? key, this.request, this.completer})
+  const ReserveFailDialog({Key? key, this.request, this.completer})
       : super(key: key);
 
   @override
@@ -40,30 +40,25 @@ class ReserveDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpaceLarge(),
-                  Image.asset(
-                    "assets/images/calendar.png",
-                    width: 38.w,
-                    height: 38.h,
+                  Stack(
+                    children: [
+                      Positioned(
+                        top: 4,
+                        left: 4,
+                        child: Image.asset("assets/images/calendar.png",
+                            width: 38.w, height: 38.h, color: Colors.grey),
+                      ),
+                      Image.asset(
+                        "assets/images/topdate.png",
+                        color: buttonColor,
+                        width: 48.w,
+                        height: 48.h,
+                      ),
+                    ],
                   ),
                   verticalSpaceSmall(),
                   Text(
-                    "Votre réservation ",
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'ProductSans',
-                    ),
-                  ),
-                  Text(
-                    "PAS DE TIR 25 mètres",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: buttonColor,
-                        fontFamily: 'ProductSans',
-                        fontSize: 22.sp),
-                  ),
-                  Text(
-                    "a été enregistrée !",
+                    "Impossible de\nfaire une réservation...",
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
@@ -72,23 +67,33 @@ class ReserveDialog extends StatelessWidget {
                   ),
                   verticalSpaceLarge(),
                   Text(
-                    "Votre solde visible sur le\nsite internet va être débité.",
+                    "Vérifiez votre solde sur lesite internet puis réessayez.",
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                  const Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    child: CustomButton(
-                        title: "voir mes réservations".toUpperCase(),
-                        onTap: () {
-                          completer!(DialogResponse(confirmed: true));
-                        }),
-                  ),
                   verticalSpaceLarge(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomButton(
+                          title: "Réessayer".toUpperCase(),
+                          onTap: () {
+                            completer!(DialogResponse(confirmed: true));
+                          }),
+                    ],
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        completer!(DialogResponse(confirmed: false));
+                      },
+                      child: Center(
+                        child: Text(
+                          "Annuler".toUpperCase(),
+                        ),
+                      ))
                 ],
               ),
             ),

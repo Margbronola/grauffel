@@ -8,9 +8,11 @@ import '../app/global.dart';
 class AuthenticationService {
   Future<Map<String, dynamic>?> login(
       {required String firebase_token, required String device_name}) async {
+    print("login server");
     try {
       final respo = await http.post(Uri.parse("$urlApi/login"),
           body: {"firebase_token": firebase_token, "device_name": device_name});
+      print(respo.body);
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
@@ -29,7 +31,7 @@ class AuthenticationService {
         Fluttertoast.showToast(msg: "Successful Login");
       }
     } catch (e) {
-      print("fail");
+      print("server login fail");
       print(e);
       return null;
     }

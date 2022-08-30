@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:egczacademy/services/firebase_auth_service.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:egczacademy/views/welcome/welcome_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -67,10 +68,12 @@ class LoginHelper {
               goToHome();
             } else {
               showFail();
+              _navigationService.navigateToView(const WelcomeView());
             }
           });
         } else {
           showFail();
+          _navigationService.navigateToView(const WelcomeView());
         }
       });
     }

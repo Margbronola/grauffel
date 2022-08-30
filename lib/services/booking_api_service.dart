@@ -20,23 +20,50 @@ class BookingAPIService {
   final int _perPage = 10;
 
   Future<void> fetchBookableTest() async {
+    // _bookable = [
+    //   _bookable![0].copyWith(
+    //     name: "Tir 25 mètres",
+    //     description:
+    //         "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe",
+    //   ),
+    //   _bookable![1].copyWith(
+    //       name: "Fun shoot",
+    //       description:
+    //           "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
+    //   _bookable![2].copyWith(
+    //       name: "Cours tsv",
+    //       description:
+    //           "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
+    //   _bookable![3].copyWith(
+    //       name: "Alvéoles",
+    //       description:
+    //           "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture")
+    // ];
+
     _bookable = [
-      _bookable![0].copyWith(
-          name: "Tir 25 mètres",
-          description:
-              "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
-      _bookable![1].copyWith(
-          name: "Fun shoot",
-          description:
-              "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
-      _bookable![2].copyWith(
+      const BookableModel(
+        image: "assets/images/precision.jpg",
+        name: "Tir 25 mètres",
+        description:
+            "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe",
+      ),
+      const BookableModel(
+        image: "assets/images/funshoot.jpg",
+        name: "Fun shoot",
+        description:
+            "Réservez un PAS DE TIR pour pratiquer du tir statique sur cibles métalliques réactives",
+      ),
+      const BookableModel(
+          image: "assets/images/course.jpg",
           name: "Cours tsv",
           description:
               "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
-      _bookable![3].copyWith(
-          name: "Alvéoles",
-          description:
-              "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture")
+      const BookableModel(
+        image: "assets/images/alv.jpg",
+        name: "Alvéoles",
+        description:
+            "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture",
+      ),
     ];
   }
 

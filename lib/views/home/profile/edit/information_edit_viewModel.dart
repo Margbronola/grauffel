@@ -3,6 +3,7 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -35,6 +36,11 @@ class InformationEditViewModel extends ReactiveViewModel {
   bool isAddressFucos = false;
   bool isPostalFucos = false;
   bool isVilleFucos = false;
+
+  String MIN_DATETIME = '2019-05-15 20:10:55';
+  String MAX_DATETIME = '2019-07-01 12:30:40';
+  String INIT_DATETIME = '2019-05-16 09:00:58';
+  String DATE_FORMAT = 'd-MM-yyyy';
 
   String dateFormat(DateTime date) {
     // final DateFormat formatter = DateFormat('MMMM');
@@ -156,6 +162,27 @@ class InformationEditViewModel extends ReactiveViewModel {
     } catch (e) {
       print(e);
     }
+  }
+
+  void showDatePicker(context) {
+    DatePicker.showDatePicker(context,
+            showTitleActions: true,
+            minTime: DateTime(1990, 1, 1),
+            maxTime: DateTime(2022, 1, 1),
+            theme: const DatePickerTheme(
+                headerColor: Colors.orange,
+                backgroundColor: Colors.blue,
+                itemStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+                doneStyle: TextStyle(color: Colors.white, fontSize: 16)),
+            onChanged: (date) {
+      print('change $date in time zone ${date.timeZoneOffset.inHours}');
+    }, onConfirm: (date) {
+      print('confirm $date');
+    }, currentTime: DateTime.now(), locale: LocaleType.en)
+        .whenComplete(() => dateNode.unfocus());
   }
 
   @override

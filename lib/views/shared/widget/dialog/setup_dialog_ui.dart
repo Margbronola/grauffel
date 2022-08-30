@@ -1,4 +1,5 @@
 import 'package:egczacademy/views/shared/widget/dialog/confirmation_dialog.dart';
+import 'package:egczacademy/views/shared/widget/dialog/reserve_fail.dart';
 import 'package:egczacademy/views/shared/widget/dialog/upload_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/change_pass-dialog.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -14,6 +15,7 @@ enum DialogType {
   ammunition,
   equipments,
   reserve,
+  reservefail,
   changePass,
   confirmation
 }
@@ -35,6 +37,8 @@ void setupDialogUi() {
         ChangePassDialog(request: sheetRequest, completer: completer),
     DialogType.confirmation: (context, sheetRequest, completer) =>
         ConfirmationDialog(request: sheetRequest, completer: completer),
+    DialogType.reservefail: (context, sheetRequest, completer) =>
+        ReserveFailDialog(request: sheetRequest, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

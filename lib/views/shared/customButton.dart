@@ -18,23 +18,19 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      height: 46.h,
-      child: MaterialButton(
-        color: color ?? buttonColor,
-        disabledColor: customButtonGrey,
-        onPressed: onTap,
-        child: Center(
-          child: Text(
-            title.toUpperCase(),
-            style: TextStyle(
-                color: textColor ?? kcWhite,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'ProductSans',
-                letterSpacing: 1.130,
-                fontSize: 14.sp),
-          ),
+    return MaterialButton(
+      color: color ?? buttonColor,
+      disabledColor: customButtonGrey,
+      onPressed: onTap,
+      child: Center(
+        child: Text(
+          title.toUpperCase(),
+          style: TextStyle(
+              color: textColor ?? kcWhite,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'ProductSans',
+              letterSpacing: 1.130,
+              fontSize: 14.sp),
         ),
       ),
     );

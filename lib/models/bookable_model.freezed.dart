@@ -23,6 +23,7 @@ mixin _$BookableModel {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   int? get capacity => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
   int? get free_duration => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $BookableModelCopyWith<$Res> {
       {int? id,
       String? name,
       String? description,
+      String? image,
       int? capacity,
       double? price,
       int? free_duration,
@@ -76,6 +78,7 @@ class _$BookableModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? image = freezed,
     Object? capacity = freezed,
     Object? price = freezed,
     Object? free_duration = freezed,
@@ -99,6 +102,10 @@ class _$BookableModelCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
       capacity: capacity == freezed
           ? _value.capacity
@@ -155,6 +162,7 @@ abstract class _$$_BookableModelCopyWith<$Res>
       {int? id,
       String? name,
       String? description,
+      String? image,
       int? capacity,
       double? price,
       int? free_duration,
@@ -183,6 +191,7 @@ class __$$_BookableModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? image = freezed,
     Object? capacity = freezed,
     Object? price = freezed,
     Object? free_duration = freezed,
@@ -206,6 +215,10 @@ class __$$_BookableModelCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
       capacity: capacity == freezed
           ? _value.capacity
@@ -258,6 +271,7 @@ class _$_BookableModel implements _BookableModel {
       {this.id,
       this.name,
       this.description,
+      this.image,
       this.capacity,
       this.price,
       this.free_duration,
@@ -280,6 +294,8 @@ class _$_BookableModel implements _BookableModel {
   final String? name;
   @override
   final String? description;
+  @override
+  final String? image;
   @override
   final int? capacity;
   @override
@@ -316,7 +332,7 @@ class _$_BookableModel implements _BookableModel {
 
   @override
   String toString() {
-    return 'BookableModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, activitysalle: $activitysalle, created_at: $created_at, updated_at: $updated_at, salles: $salles)';
+    return 'BookableModel(id: $id, name: $name, description: $description, image: $image, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, activitysalle: $activitysalle, created_at: $created_at, updated_at: $updated_at, salles: $salles)';
   }
 
   @override
@@ -328,6 +344,7 @@ class _$_BookableModel implements _BookableModel {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.capacity, capacity) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
@@ -353,6 +370,7 @@ class _$_BookableModel implements _BookableModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(capacity),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(free_duration),
@@ -382,6 +400,7 @@ abstract class _BookableModel implements BookableModel {
       {final int? id,
       final String? name,
       final String? description,
+      final String? image,
       final int? capacity,
       final double? price,
       final int? free_duration,
@@ -402,6 +421,8 @@ abstract class _BookableModel implements BookableModel {
   String? get name;
   @override
   String? get description;
+  @override
+  String? get image;
   @override
   int? get capacity;
   @override

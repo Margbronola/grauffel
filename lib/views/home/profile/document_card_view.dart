@@ -81,11 +81,7 @@ class DocumentCardView extends StatelessWidget {
                                     Icons.check_circle_outline_sharp,
                                     color: buttonColor,
                                   )
-                                : Image.asset(
-                                    "assets/images/warning.png",
-                                    height: 30.h,
-                                    width: 23.w,
-                                  )
+                                : warning()
                             : const Icon(
                                 Icons.check_circle_outline_sharp,
                                 color: buttonColor,
@@ -100,11 +96,7 @@ class DocumentCardView extends StatelessWidget {
                                     height: 30.h,
                                     width: 23.w,
                                   )
-                                : Image.asset(
-                                    "assets/images/warning.png",
-                                    height: 30.h,
-                                    width: 23.w,
-                                  )
+                                : warning()
                             : Image.asset(
                                 "assets/images/docfile.png",
                                 height: 30.h,
@@ -118,3 +110,19 @@ class DocumentCardView extends StatelessWidget {
     );
   }
 }
+
+Widget warning() => Row(
+      children: [
+        Image.asset(
+          "assets/images/warning.png",
+          height: 30.h,
+          width: 23.w,
+        ),
+        Text(
+          "Bientôt\nexpiré",
+          textAlign: TextAlign.end,
+          style: TextStyle(
+              color: Colors.red, fontSize: 12.sp, fontWeight: FontWeight.bold),
+        )
+      ],
+    );

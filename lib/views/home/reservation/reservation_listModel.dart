@@ -18,7 +18,7 @@ class ReservationListModel extends BaseViewModel {
 
   Future init() async {
     setBusy(true);
-    await fetchBookinngs();
+    // await fetchBookinngs();
     await _bookingAPIService.fetchBookableTest();
     setBusy(false);
   }

@@ -10,6 +10,7 @@ class BookableModel with _$BookableModel {
       {int? id,
       String? name,
       String? description,
+      String? image,
       int? capacity,
       double? price,
       int? free_duration,
