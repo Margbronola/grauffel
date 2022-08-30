@@ -34,6 +34,10 @@ class SubmitionViewModel extends ReactiveViewModel {
 
   DateFormat? timeFormat;
 
+  void cancel() {
+    _navigationService.back();
+  }
+
   String time() {
     if (_bookingService.getselectedTimes.length > 1) {
       String time1 =
@@ -64,6 +68,12 @@ class SubmitionViewModel extends ReactiveViewModel {
     time();
     date();
     print(_bookingService.getselectedGun);
+  }
+
+  @override
+  void dispose() {
+    _bookingService.dispose();
+    super.dispose();
   }
 
   void showCard() async {

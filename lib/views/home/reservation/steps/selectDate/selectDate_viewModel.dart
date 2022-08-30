@@ -59,7 +59,8 @@ class SelectDateViewModel extends ReactiveViewModel {
                 currentDate
                     .difference(
                         DateTime(DateTime.now().year, DateTime.now().month, 0))
-                    .inDays;
+                    .inDays +
+                1;
       } else {
         numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
       }
@@ -75,7 +76,8 @@ class SelectDateViewModel extends ReactiveViewModel {
     numDaysTotal = DateTime(DateTime.now().year, DateTime.now().month, 0).day -
         currentDate
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
-            .inDays;
+            .inDays +
+        1;
 
     setBusy(true);
     await fetchBookableActivity(DateTime.now());

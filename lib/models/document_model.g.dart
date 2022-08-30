@@ -23,6 +23,7 @@ _$_DocumentModel _$$_DocumentModelFromJson(Map<String, dynamic> json) =>
       is_new: json['is_new'] as int?,
       is_viewed: json['is_viewed'] as int?,
       status: json['status'] as int?,
+      ismandatory: json['ismandatory'] as int?,
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
@@ -43,5 +44,6 @@ Map<String, dynamic> _$$_DocumentModelToJson(_$_DocumentModel instance) =>
       'is_new': instance.is_new,
       'is_viewed': instance.is_viewed,
       'status': instance.status,
+      'ismandatory': instance.ismandatory,
       'updated_at': instance.updated_at?.toIso8601String(),
     };

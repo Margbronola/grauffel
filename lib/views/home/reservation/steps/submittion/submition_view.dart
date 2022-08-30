@@ -184,7 +184,7 @@ class SubmitionView extends StatelessWidget {
                     SizedBox(
                         width: 310.w,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: model.cancel,
                             child: Text(
                               "Annuler".toUpperCase(),
                               style: const TextStyle(color: buttonColor),

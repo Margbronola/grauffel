@@ -10,6 +10,7 @@ class DocumentTypeModel with _$DocumentTypeModel {
       String? name,
       String? description,
       int? type,
+      int? ismandatory,
       DateTime? created_at,
       DateTime? updated_at}) = _DocumentTypeModel;
 

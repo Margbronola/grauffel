@@ -9,7 +9,7 @@ class HomeViewModel extends ReactiveViewModel {
   PageController get pageController => _homePagingService.pageController!;
   bool get isFromReview => _homePagingService.isFromReview;
 
-  void initState() {
+  void initState() async {
     _homePagingService.setController(PageController());
   }
 

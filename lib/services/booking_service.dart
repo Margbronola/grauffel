@@ -17,6 +17,15 @@ class BookingService with ReactiveServiceMixin {
     ]);
   }
 
+  void dispose() {
+    _selectedTimes.value.clear();
+    _selectedGun.value.clear();
+    _selectedAmmunition.value.clear();
+    _selectedEquipment.value.clear();
+    _selectedBookable.value = null;
+    _selectedDate.value = DateTime.now();
+  }
+
   final ReactiveValue<List<TimeModel>> _selectedTimes =
       ReactiveValue<List<TimeModel>>([]);
   List<TimeModel> get getselectedTimes => _selectedTimes.value;

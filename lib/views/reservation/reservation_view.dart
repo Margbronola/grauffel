@@ -43,15 +43,6 @@ class ReservationView extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  // Container(
-                                  //   height: 55.h,
-                                  //   width: 55.w,
-                                  //   decoration: const BoxDecoration(
-                                  //       shape: BoxShape.circle,
-                                  //       image: DecorationImage(
-                                  //           image: AssetImage(
-                                  //               "assets/images/user.jpeg"))),
-                                  // ),
                                   horizontalSpaceSmall(),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -85,51 +76,53 @@ class ReservationView extends StatelessWidget {
                       SliverPersistentHeader(
                         pinned: false,
                         delegate: SliverAppBarDelegate(
-                          minHeight: 50,
-                          maxHeight: 50,
-                          child: AnimatedContainer(
-                              decoration:
-                                  BoxDecoration(color: buttonColor, boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: const Offset(
-                                      0, 3), // changes position of shadow
-                                ),
-                              ]),
-                              duration: const Duration(milliseconds: 500),
-                              height: !model.showHelp ? 0 : 67.h,
-                              width: size(context).width,
-                              child: GestureDetector(
-                                onTap: gotoProfile,
-                                child: Stack(
-                                  children: [
-                                    SizedBox(
-                                        height: 67.h,
-                                        width: 56.w,
-                                        child: Image.asset(
-                                            "assets/images/help.png")),
+                          minHeight: model.isMandatoryPass() ? 0 : 50,
+                          maxHeight: model.isMandatoryPass() ? 0 : 50,
+                          child: model.isMandatoryPass()
+                              ? const SizedBox()
+                              : Container(
+                                  decoration: BoxDecoration(
+                                      color: buttonColor,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: const Offset(0,
+                                              3), // changes position of shadow
+                                        ),
+                                      ]),
+                                  height: !model.showHelp ? 0 : 67.h,
+                                  width: size(context).width,
+                                  child: GestureDetector(
+                                    onTap: gotoProfile,
+                                    child: Stack(
+                                      children: [
+                                        SizedBox(
+                                            height: 67.h,
+                                            width: 56.w,
+                                            child: Image.asset(
+                                                "assets/images/help.png")),
 
-                                    //TODO: show only if user documents still not verify
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 38.w),
-                                        child: Text(
-                                          "Des documents sont nécessaires pour accéder au stand de tir ",
-                                          style: TextStyle(
-                                            fontFamily: 'ProductSans',
-                                            color: kcWhite,
-                                            fontSize: 15.sp,
+                                        //TODO: show only if user documents still not verify
+                                        Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 38.w),
+                                            child: Text(
+                                              "Des documents sont nécessaires pour accéder au stand de tir ",
+                                              style: TextStyle(
+                                                fontFamily: 'ProductSans',
+                                                color: kcWhite,
+                                                fontSize: 15.sp,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              )),
+                                  )),
                         ),
                       ),
                     ];

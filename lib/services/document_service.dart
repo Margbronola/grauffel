@@ -23,7 +23,7 @@ class DocumentService with ReactiveServiceMixin {
 
   File? get file => _file.value;
   List<DocumentModel>? get documents => _documents.value;
-  List<DocumentTypeModel>? get documenTypes => _documenTypes.value;
+  List<DocumentTypeModel> get documenTypes => _documenTypes.value ?? [];
 
   setFile(File file) {
     _file.value = file;
@@ -38,5 +38,25 @@ class DocumentService with ReactiveServiceMixin {
         await documentAPIService.fetchDocuments(token: userService.token!);
     print("here");
     print(documents);
+  }
+
+  List<DocumentTypeModel> mandatoryDocumentTypes() {
+    return documenTypes.where((element) => element.ismandatory == 1).toList();
+  }
+
+  List<DocumentTypeModel> notMandatoryDocumentTypes() {
+    return documenTypes.where((e) => e.ismandatory != 1).toList();
+  }
+
+  int mandatoryNumberUploaded() {
+    int num = 0;
+    for (var x in mandatoryDocumentTypes()) {
+      if (documents!
+          .any((element) => element.client_document_type_id == x.id)) {
+        num++;
+      }
+    }
+
+    return num;
   }
 }

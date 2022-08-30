@@ -9,6 +9,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
+import '../../services/document_api_service.dart';
+import '../../services/document_service.dart';
 
 class ReservationViewModel extends BaseViewModel {
   bool showHelp = true;
@@ -18,6 +20,9 @@ class ReservationViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
   final UserService _userService = locator<UserService>();
+
+  final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
+  final DocumentService _documentService = locator<DocumentService>();
 
   UserModel get user => _userService.user!;
 
@@ -43,6 +48,8 @@ class ReservationViewModel extends BaseViewModel {
       print("Actives: ${actives!.length}");
       print("Past: ${past!.length}");
     });
+    await _documentService.fetch(
+        userService: _userService, documentAPIService: _documentAPIService);
     notifyListeners();
     setBusy(false);
   }
@@ -51,6 +58,11 @@ class ReservationViewModel extends BaseViewModel {
     print("HELP CLOSE");
     showHelp = false;
     notifyListeners();
+  }
+
+  bool isMandatoryPass() {
+    return _documentService.mandatoryDocumentTypes().length ==
+        _documentService.mandatoryNumberUploaded();
   }
 
   void gotoProfile() {

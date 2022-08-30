@@ -140,24 +140,31 @@ class ProfileView extends StatelessWidget {
                                         children: [
                                           infoContainer(
                                               "Adresse mail",
-                                              model.user!.email!,
+                                              model.user!.email ?? "",
                                               double.infinity),
                                           const SizedBox(
                                             height: 8,
                                           ),
-                                          infoContainer(
-                                              "Date de naissance",
-                                              '${model.user!.birthday!.split("/")[0]}/${model.user!.birthday!.split("/")[1].length == 1 ? "0${model.user!.birthday!.split("/")[1]}" : model.user!.birthday!.split("/")[1]}/${model.user!.birthday!.split("/")[2]}',
-                                              double.infinity),
+                                          model.user!.birthday != null
+                                              ? infoContainer(
+                                                  "Date de naissance",
+                                                  '${model.user!.birthday!.split("/")[0]}/${model.user!.birthday!.split("/")[1].length == 1 ? "0${model.user!.birthday!.split("/")[1]}" : model.user!.birthday!.split("/")[1]}/${model.user!.birthday!.split("/")[2]}',
+                                                  double.infinity)
+                                              : const SizedBox(),
                                           const SizedBox(
                                             height: 8,
                                           ),
-                                          infoContainer(
-                                              "Numéro de téléphone",
-                                              model.user!.phone_number!.isEmpty
-                                                  ? "Not Specified"
-                                                  : model.user!.phone_number!,
-                                              double.infinity),
+                                          model.user!.phone_number != null
+                                              ? infoContainer(
+                                                  "Numéro de téléphone",
+                                                  model.user!.phone_number!
+                                                          .isEmpty
+                                                      ? "Not Specified"
+                                                      : model.user!
+                                                              .phone_number ??
+                                                          "",
+                                                  double.infinity)
+                                              : const SizedBox(),
                                           const SizedBox(
                                             height: 8,
                                           ),
@@ -170,14 +177,16 @@ class ProfileView extends StatelessWidget {
                                               children: [
                                                 infoContainer(
                                                     "Adresse postale",
-                                                    model.user!.zipcode!,
+                                                    model.user!.zipcode ?? "",
                                                     100.w),
                                                 //TODO: static
                                                 infoContainer(
                                                     "CP", "73000", 80.w),
                                                 //TODO: static
-                                                infoContainer("Ville",
-                                                    model.user!.city!, 80.w),
+                                                infoContainer(
+                                                    "Ville",
+                                                    model.user!.city ?? "",
+                                                    80.w),
                                               ],
                                             ),
                                           ),
@@ -207,7 +216,7 @@ class ProfileView extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           Text(
-                                            model.user!.experience!,
+                                            model.user!.experience ?? "",
                                             style: TextStyle(
                                               fontSize: 14.sp,
                                               fontFamily: 'ProductSans',
@@ -240,7 +249,7 @@ class ProfileView extends StatelessWidget {
                                         child: Column(
                                           children: [
                                             Text(
-                                              model.user!.equipment!,
+                                              model.user!.equipment ?? "",
                                               style: TextStyle(
                                                 fontSize: 14.sp,
                                                 fontFamily: 'ProductSans',
@@ -304,7 +313,7 @@ class ProfileView extends StatelessWidget {
                                                 fontSize: 15.sp),
                                           ),
                                           verticalSpaceSmall(),
-                                          ...model.documentTypes
+                                          ...model.mandatoryDocumentTypes
                                               .map((e) => DocumentCardView(
                                                     isViewed:
                                                         model.isViewed(e.id!),
@@ -335,8 +344,7 @@ class ProfileView extends StatelessWidget {
                                                     },
                                                     documentTypeModel: e,
                                                   ))
-                                              .toList()
-                                              .sublist(0, 2),
+                                              .toList(),
                                           verticalSpaceMedium(),
                                           Text(
                                             "Autres documents",
@@ -378,8 +386,6 @@ class ProfileView extends StatelessWidget {
                                                     documentTypeModel: e,
                                                   ))
                                               .toList()
-                                              .sublist(
-                                                  2, model.documentTypes.length)
                                         ],
                                       ),
                                 title: "DOCUMENTS",
@@ -453,7 +459,8 @@ class ProfileView extends StatelessWidget {
                         fontFamily: 'ProductSans',
                       ),
                     ),
-                    Text(" ${model.mandatoryNumberUploaded()}/2",
+                    Text(
+                        " ${model.numUploadedDoc}/${model.mandatoryDocumentTypes.length}",
                         style: TextStyle(
                             fontSize: 15.sp,
                             fontFamily: 'ProductSans',

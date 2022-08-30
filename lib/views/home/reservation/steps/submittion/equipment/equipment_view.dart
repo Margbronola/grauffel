@@ -140,8 +140,9 @@ Widget equipemntCardView(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
+                          opacity: equipmentModel.image == null ? 0.2 : 1,
                           image: equipmentModel.image == null
-                              ? Image.asset("assets/images/noImage.png")
+                              ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
                                   "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}"))),

@@ -44,9 +44,6 @@ class ProfileViewModel extends ReactiveViewModel {
 
   AnimateIconController animatedIconController = AnimateIconController();
 
-  List<DocumentTypeModel> get documentTypes =>
-      _documentService.documenTypes ?? [];
-
   List<DocumentModel> get documents => _documentService.documents ?? [];
   bool documentLoader = false;
 
@@ -83,9 +80,16 @@ class ProfileViewModel extends ReactiveViewModel {
       expanTileController4.collapse();
       angles[3] = 0;
     }
-
     notifyListeners();
   }
+
+  List<DocumentTypeModel> get mandatoryDocumentTypes =>
+      _documentService.mandatoryDocumentTypes();
+
+  List<DocumentTypeModel> get documentTypes =>
+      _documentService.notMandatoryDocumentTypes();
+
+  int get numUploadedDoc => _documentService.mandatoryNumberUploaded();
 
   String dateFormat(DateTime date) {
     final String formatted =
@@ -97,21 +101,6 @@ class ProfileViewModel extends ReactiveViewModel {
     return documents.any((element) {
       return element.client_document_type_id == documentTypeId;
     });
-  }
-
-  int mandatoryNumberUploaded() {
-    int num = 0;
-    if (documents.any(
-        (element) => element.client_document_type_id == documentTypes[0].id)) {
-      num++;
-    }
-
-    if (documents.any(
-        (element) => element.client_document_type_id == documentTypes[1].id)) {
-      num++;
-    }
-
-    return num;
   }
 
   bool isNew(int doctypeId) => documents.any((element) {
@@ -181,6 +170,8 @@ class ProfileViewModel extends ReactiveViewModel {
     expanTileController4 = ExpandedTileController(isExpanded: false);
 
     autoOpenDocs(isFromHome: isFromHome); //auto open docs
+    print("USER");
+    print(user);
 
     angles = [angle1, angle2, angle3, angle4];
 

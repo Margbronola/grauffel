@@ -31,21 +31,28 @@ class DialogWidget extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        title ?? "No Title",
-                        style: TextStyle(
-                            fontSize: 25.sp, fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          title ?? "No Title",
+                          style: TextStyle(
+                              fontSize: 25.sp, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(
                         width: 277.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.arrow_back_ios,
-                              color: backgroundColor,
-                              size: 20.w,
-                            ),
+                            //TODO: show as list values to show arrows
+                            // imageUrl == null
+                            //     ? const SizedBox()
+                            //     : Icon(
+                            //         Icons.arrow_back_ios,
+                            //         color: backgroundColor,
+                            //         size: 20.w,
+                            //       ),
                             Container(
                               width: 230.w,
                               height: 230.h,
@@ -63,11 +70,13 @@ class DialogWidget extends StatelessWidget {
                                           : CachedNetworkImageProvider(
                                               "$urlServer/${imageUrl!.path}/${imageUrl!.filename}"))),
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: backgroundColor,
-                              size: 20.w,
-                            )
+                            // imageUrl == null
+                            //     ? const SizedBox()
+                            //     : Icon(
+                            //         Icons.arrow_forward_ios,
+                            //         color: backgroundColor,
+                            //         size: 20.w,
+                            //       )
                           ],
                         ),
                       ),

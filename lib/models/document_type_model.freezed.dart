@@ -24,6 +24,7 @@ mixin _$DocumentTypeModel {
   String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   int? get type => throw _privateConstructorUsedError;
+  int? get ismandatory => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -43,6 +44,7 @@ abstract class $DocumentTypeModelCopyWith<$Res> {
       String? name,
       String? description,
       int? type,
+      int? ismandatory,
       DateTime? created_at,
       DateTime? updated_at});
 }
@@ -62,6 +64,7 @@ class _$DocumentTypeModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? type = freezed,
+    Object? ismandatory = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -81,6 +84,10 @@ class _$DocumentTypeModelCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ismandatory: ismandatory == freezed
+          ? _value.ismandatory
+          : ismandatory // ignore: cast_nullable_to_non_nullable
               as int?,
       created_at: created_at == freezed
           ? _value.created_at
@@ -106,6 +113,7 @@ abstract class _$$_DocumentTypeModelCopyWith<$Res>
       String? name,
       String? description,
       int? type,
+      int? ismandatory,
       DateTime? created_at,
       DateTime? updated_at});
 }
@@ -127,6 +135,7 @@ class __$$_DocumentTypeModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? description = freezed,
     Object? type = freezed,
+    Object? ismandatory = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -146,6 +155,10 @@ class __$$_DocumentTypeModelCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ismandatory: ismandatory == freezed
+          ? _value.ismandatory
+          : ismandatory // ignore: cast_nullable_to_non_nullable
               as int?,
       created_at: created_at == freezed
           ? _value.created_at
@@ -167,6 +180,7 @@ class _$_DocumentTypeModel implements _DocumentTypeModel {
       this.name,
       this.description,
       this.type,
+      this.ismandatory,
       this.created_at,
       this.updated_at});
 
@@ -182,13 +196,15 @@ class _$_DocumentTypeModel implements _DocumentTypeModel {
   @override
   final int? type;
   @override
+  final int? ismandatory;
+  @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'DocumentTypeModel(id: $id, name: $name, description: $description, type: $type, created_at: $created_at, updated_at: $updated_at)';
+    return 'DocumentTypeModel(id: $id, name: $name, description: $description, type: $type, ismandatory: $ismandatory, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
@@ -201,6 +217,8 @@ class _$_DocumentTypeModel implements _DocumentTypeModel {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.ismandatory, ismandatory) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -215,6 +233,7 @@ class _$_DocumentTypeModel implements _DocumentTypeModel {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(ismandatory),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at));
 
@@ -238,6 +257,7 @@ abstract class _DocumentTypeModel implements DocumentTypeModel {
       final String? name,
       final String? description,
       final int? type,
+      final int? ismandatory,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_DocumentTypeModel;
 
@@ -252,6 +272,8 @@ abstract class _DocumentTypeModel implements DocumentTypeModel {
   String? get description;
   @override
   int? get type;
+  @override
+  int? get ismandatory;
   @override
   DateTime? get created_at;
   @override
