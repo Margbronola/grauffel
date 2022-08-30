@@ -23,6 +23,7 @@ class AuthenticationService {
           //TODO:DELETE PRINT
           print("LOGIN : $user");
           print("TOKEN : $token");
+          print("FIREBASE TOKEN: $firebase_token");
           return {'user': user, 'token': token};
         } catch (e) {
           print(e);

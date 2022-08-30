@@ -44,16 +44,20 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   String dateFormat(DateTime date) {
     // final DateFormat formatter = DateFormat('MMMM');
-    final String formatted =
-        "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
+
+    final String formatted = birthdayController.text = user!.birthday!.isEmpty
+        ? ""
+        : "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
     return formatted;
   }
 
   void init() {
+    print(user!.birthday!);
     if (user != null) {
       emailController.text = user!.email!;
-      birthdayController.text =
-          '${user!.birthday!.split("/")[0]}/${user!.birthday!.split("/")[1].length == 1 ? "0${user!.birthday!.split("/")[1]}" : user!.birthday!.split("/")[1]}/${user!.birthday!.split("/")[2]}';
+      birthdayController.text = user!.birthday!.isEmpty
+          ? ""
+          : '${user!.birthday!.split("-")[0]}/${user!.birthday!.split("-")[1].length == 1 ? "0${user!.birthday!.split("-")[1]}" : user!.birthday!.split("-")[1]}/${user!.birthday!.split("-")[2]}';
       phoneController.text = user!.phone_number.toString();
       codeController.text = user!.zipcode.toString();
       addresscontroller.text = user!.address!;

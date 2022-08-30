@@ -109,7 +109,8 @@ class ReservationCellView extends StatelessWidget {
                   SizedBox(
                       width: 242.w,
                       child: CustomButton(
-                          title: "Faire une demande", onTap: () {})),
+                          title: "Faire une demande",
+                          onTap: model.showModalSuccessReservation)),
                 ],
               )
             ],

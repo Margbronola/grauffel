@@ -14,7 +14,7 @@ const String instaLogo = "assets/images/insta.png";
 const String secureIcon = "assets/images/secure-payment.png";
 const String bigTriangle = "assets/images/triangleRight.png";
 const String smallTriangle = "assets/images/smallTriangle.png";
-const String profileImage = "assets/images/profile.png";
+const String profileImage = "assets/images/noImage.png";
 
 //PAGING
 const int gunsPerPage = 10;

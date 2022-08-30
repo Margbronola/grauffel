@@ -4,9 +4,7 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:egczacademy/app/global.dart';
-
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import 'document_card_view.dart';
@@ -77,7 +75,8 @@ class ProfileView extends StatelessWidget {
                                           )
                                         : Image.asset(
                                             profileImage,
-                                            scale: 5,
+                                            scale: 7,
+                                            color: Colors.white,
                                           ),
                                   ),
                                   horizontalSpaceMedium(),
@@ -145,10 +144,10 @@ class ProfileView extends StatelessWidget {
                                           const SizedBox(
                                             height: 8,
                                           ),
-                                          model.user!.birthday != null
+                                          model.user!.birthday!.isNotEmpty
                                               ? infoContainer(
                                                   "Date de naissance",
-                                                  '${model.user!.birthday!.split("/")[0]}/${model.user!.birthday!.split("/")[1].length == 1 ? "0${model.user!.birthday!.split("/")[1]}" : model.user!.birthday!.split("/")[1]}/${model.user!.birthday!.split("/")[2]}',
+                                                  '${model.user!.birthday!.split("-")[0]}/${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}',
                                                   double.infinity)
                                               : const SizedBox(),
                                           const SizedBox(

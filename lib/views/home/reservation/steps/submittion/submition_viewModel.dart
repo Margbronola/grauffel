@@ -39,7 +39,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   String time() {
-    if (_bookingService.getselectedTimes.length > 1) {
+    if (_bookingService.getselectedTimes.isNotEmpty) {
       String time1 =
           "${_bookingService.getselectedTimes[0].time!.split("-")[0].split(":")[0]}h${_bookingService.getselectedTimes[0].time!.split("-")[0].split(":")[1]}";
       String time2 =
