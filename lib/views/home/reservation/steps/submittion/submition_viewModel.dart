@@ -1,4 +1,5 @@
 import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/user_model.dart';
@@ -11,12 +12,13 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
 import '../../../../../models/bookable_model.dart';
 import 'package:intl/intl.dart';
-
+import '../../../../../services/booking_api_service.dart';
 import '../../../../shared/widget/dialog/setup_dialog_ui.dart';
 
 class SubmitionViewModel extends ReactiveViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BookingService _bookingService = locator<BookingService>();
+  final BookingAPIService _bookingApiService = locator<BookingAPIService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final HomePagingService _homePagingService = locator<HomePagingService>();
   final UserService _userService = locator<UserService>();
@@ -25,7 +27,6 @@ class SubmitionViewModel extends ReactiveViewModel {
   FocusNode commentFocusNode = FocusNode();
 
   BookableModel get bookedModel => _bookingService.getselectedBookable!;
-
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;
@@ -44,9 +45,7 @@ class SubmitionViewModel extends ReactiveViewModel {
           "${_bookingService.getselectedTimes[0].time!.split("-")[0].split(":")[0]}h${_bookingService.getselectedTimes[0].time!.split("-")[0].split(":")[1]}";
       String time2 =
           "${_bookingService.getselectedTimes[_bookingService.getselectedTimes.length - 1].time!.split("-")[1].split(":")[0]}h${_bookingService.getselectedTimes[_bookingService.getselectedTimes.length - 1].time!.split("-")[1].split(":")[1]}";
-
       print("$time1 - $time2");
-
       return "$time1 - $time2";
     }
     return "Unspicified";
@@ -114,6 +113,8 @@ class SubmitionViewModel extends ReactiveViewModel {
 
       if (response != null) {
         if (response.confirmed) {
+          _bookingApiService.book(
+              token: _userService.token!, booking: const BookingModel());
           _navigationService.back();
           _homePagingService.onTap(0);
         }
@@ -135,7 +136,6 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices =>
       [_bookingService, _homePagingService];
 }

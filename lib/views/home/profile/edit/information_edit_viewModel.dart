@@ -174,19 +174,22 @@ class InformationEditViewModel extends ReactiveViewModel {
             minTime: DateTime(1990, 1, 1),
             maxTime: DateTime(2022, 1, 1),
             theme: const DatePickerTheme(
-                headerColor: Colors.orange,
-                backgroundColor: Colors.blue,
+                // headerColor: Colors.orange,
+                // backgroundColor: Colors.blue,
                 itemStyle: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
-                doneStyle: TextStyle(color: Colors.white, fontSize: 16)),
+                doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
             onChanged: (date) {
       print('change $date in time zone ${date.timeZoneOffset.inHours}');
     }, onConfirm: (date) {
       print('confirm $date');
-    }, currentTime: DateTime.now(), locale: LocaleType.en)
-        .whenComplete(() => dateNode.unfocus());
+    }, currentTime: DateTime.now(), locale: LocaleType.fr)
+        .then((value) {
+      birthdayController.text = "${value!.year}-${value.month}-${value.day}";
+      dateNode.unfocus();
+    });
   }
 
   @override

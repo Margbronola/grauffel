@@ -41,7 +41,7 @@ class ReservationList extends StatelessWidget {
                                     }
                                   },
                                   reserve: ReserveModel(
-                                      image: model.bookables[index].image!,
+                                      image: model.bookables[index].image ?? "",
                                       title: model.bookables[index].name!
                                           .toUpperCase(),
                                       description: model

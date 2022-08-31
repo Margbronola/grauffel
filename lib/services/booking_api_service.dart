@@ -10,35 +10,32 @@ import '../models/paging_model.dart';
 class BookingAPIService {
   List<BookingModel>? _bookings;
   List<BookingModel>? get bookings => _bookings;
-
-  List<BookableModel>? _bookable;
+  List<BookableModel> _bookable = [];
   List<BookableModel>? get bookable => _bookable;
-
   List<TimeModel>? _availableTime;
   List<TimeModel>? get availableTime => _availableTime;
   PagingModel? _pagingModel;
   final int _perPage = 10;
 
   Future<void> fetchBookableTest() async {
-    print(_bookable!.length);
     _bookable = [
-      _bookable![0].copyWith(
+      const BookableModel(
         image: "assets/images/precision.jpg",
-        name: "Tir 25 mètres",
+        name: "Tir Précision",
         description:
             "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe",
       ),
-      _bookable![1].copyWith(
+      const BookableModel(
           image: "assets/images/funshoot.jpg",
           name: "Fun shoot",
           description:
               "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
-      _bookable![2].copyWith(
+      const BookableModel(
           image: "assets/images/course.jpg",
           name: "Cours tsv",
           description:
               "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
-      _bookable![3].copyWith(
+      const BookableModel(
           image: "assets/images/alv.jpg",
           name: "Alvéoles",
           description:
@@ -60,9 +57,10 @@ class BookingAPIService {
           print("FETCH BOOKINGS PASS");
           List fetchBookings = data['data'];
           print(fetchBookings);
+
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
-
+          print(_bookings);
           // _pagingModel = PagingModel(
           //   current_page: data['current_page'],
           //   first_page_url: data['first_page_url'],
@@ -87,23 +85,52 @@ class BookingAPIService {
 
   Future<void> fetchBookable({required String token}) async {
     try {
-      final respo = await http.get(Uri.parse("$urlApi/bookable"), headers: {
+      final respo = await http.get(Uri.parse("$urlApi/activities"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH BOOKABLE PASS");
-          List fetchBookings = data;
+          print("FETCH ACTIVITIES");
+          List fetchBookable = data;
+          for (var x in fetchBookable) {
+            print(x);
+          }
+
           _bookable =
-              fetchBookings.map((e) => BookableModel.fromJson(e)).toList();
+              fetchBookable.map((e) => BookableModel.fromJson(e)).toList();
 
-          _bookable!.add(_bookable![0]);
-          _bookable!.add(_bookable![0]);
-          _bookable!.add(_bookable![0]);
+          List<BookableModel> copy =
+              fetchBookable.map((e) => BookableModel.fromJson(e)).toList();
+          await fetchBookableTest();
+          if (copy
+              .where((element) => element.name!.toLowerCase() == "fun shoot")
+              .toList()
+              .isNotEmpty) {
+            print("found one");
 
-          print(_bookings);
+            _bookable[1] = copy
+                .firstWhere(
+                    (element) => element.name!.toLowerCase() == "fun shoot")
+                .copyWith(
+                  name: "funshoot",
+                  image: "assets/images/funshoot.jpg",
+                );
+          }
+
+          if (copy
+              .where(
+                  (element) => element.name!.toLowerCase() == "tir précision")
+              .toList()
+              .isNotEmpty) {
+            _bookable[0] = copy
+                .firstWhere(
+                    (element) => element.name!.toLowerCase() == "tir précision")
+                .copyWith(image: "assets/images/precision.jpg");
+          }
+
+          print(_bookable);
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");

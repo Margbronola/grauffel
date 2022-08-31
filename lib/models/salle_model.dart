@@ -20,6 +20,7 @@ class SalleModel with _$SalleModel {
       int? activity_capacity,
       List? bookings,
       List? activitysalle,
+      Map? pivot,
       List<CourseModel>? courses}) = _SalleModel;
 
   factory SalleModel.fromJson(Map<String, Object?> json) =>

@@ -33,6 +33,7 @@ mixin _$SalleModel {
   int? get activity_capacity => throw _privateConstructorUsedError;
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
   List<dynamic>? get activitysalle => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get pivot => throw _privateConstructorUsedError;
   List<CourseModel>? get courses => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $SalleModelCopyWith<$Res> {
       int? activity_capacity,
       List<dynamic>? bookings,
       List<dynamic>? activitysalle,
+      Map<dynamic, dynamic>? pivot,
       List<CourseModel>? courses});
 }
 
@@ -86,6 +88,7 @@ class _$SalleModelCopyWithImpl<$Res> implements $SalleModelCopyWith<$Res> {
     Object? activity_capacity = freezed,
     Object? bookings = freezed,
     Object? activitysalle = freezed,
+    Object? pivot = freezed,
     Object? courses = freezed,
   }) {
     return _then(_value.copyWith(
@@ -141,6 +144,10 @@ class _$SalleModelCopyWithImpl<$Res> implements $SalleModelCopyWith<$Res> {
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
       courses: courses == freezed
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
@@ -170,6 +177,7 @@ abstract class _$$_SalleModelCopyWith<$Res>
       int? activity_capacity,
       List<dynamic>? bookings,
       List<dynamic>? activitysalle,
+      Map<dynamic, dynamic>? pivot,
       List<CourseModel>? courses});
 }
 
@@ -198,6 +206,7 @@ class __$$_SalleModelCopyWithImpl<$Res> extends _$SalleModelCopyWithImpl<$Res>
     Object? activity_capacity = freezed,
     Object? bookings = freezed,
     Object? activitysalle = freezed,
+    Object? pivot = freezed,
     Object? courses = freezed,
   }) {
     return _then(_$_SalleModel(
@@ -253,6 +262,10 @@ class __$$_SalleModelCopyWithImpl<$Res> extends _$SalleModelCopyWithImpl<$Res>
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
+      pivot: pivot == freezed
+          ? _value._pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as Map<dynamic, dynamic>?,
       courses: courses == freezed
           ? _value._courses
           : courses // ignore: cast_nullable_to_non_nullable
@@ -278,9 +291,11 @@ class _$_SalleModel implements _SalleModel {
       this.activity_capacity,
       final List<dynamic>? bookings,
       final List<dynamic>? activitysalle,
+      final Map<dynamic, dynamic>? pivot,
       final List<CourseModel>? courses})
       : _bookings = bookings,
         _activitysalle = activitysalle,
+        _pivot = pivot,
         _courses = courses;
 
   factory _$_SalleModel.fromJson(Map<String, dynamic> json) =>
@@ -326,6 +341,15 @@ class _$_SalleModel implements _SalleModel {
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<dynamic, dynamic>? _pivot;
+  @override
+  Map<dynamic, dynamic>? get pivot {
+    final value = _pivot;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   final List<CourseModel>? _courses;
   @override
   List<CourseModel>? get courses {
@@ -337,7 +361,7 @@ class _$_SalleModel implements _SalleModel {
 
   @override
   String toString() {
-    return 'SalleModel(id: $id, name: $name, description: $description, location: $location, color_code: $color_code, capacity: $capacity, status: $status, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, activity_capacity: $activity_capacity, bookings: $bookings, activitysalle: $activitysalle, courses: $courses)';
+    return 'SalleModel(id: $id, name: $name, description: $description, location: $location, color_code: $color_code, capacity: $capacity, status: $status, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, activity_capacity: $activity_capacity, bookings: $bookings, activitysalle: $activitysalle, pivot: $pivot, courses: $courses)';
   }
 
   @override
@@ -365,6 +389,7 @@ class _$_SalleModel implements _SalleModel {
             const DeepCollectionEquality().equals(other._bookings, _bookings) &&
             const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
+            const DeepCollectionEquality().equals(other._pivot, _pivot) &&
             const DeepCollectionEquality().equals(other._courses, _courses));
   }
 
@@ -385,6 +410,7 @@ class _$_SalleModel implements _SalleModel {
       const DeepCollectionEquality().hash(activity_capacity),
       const DeepCollectionEquality().hash(_bookings),
       const DeepCollectionEquality().hash(_activitysalle),
+      const DeepCollectionEquality().hash(_pivot),
       const DeepCollectionEquality().hash(_courses));
 
   @JsonKey(ignore: true)
@@ -415,6 +441,7 @@ abstract class _SalleModel implements SalleModel {
       final int? activity_capacity,
       final List<dynamic>? bookings,
       final List<dynamic>? activitysalle,
+      final Map<dynamic, dynamic>? pivot,
       final List<CourseModel>? courses}) = _$_SalleModel;
 
   factory _SalleModel.fromJson(Map<String, dynamic> json) =
@@ -446,6 +473,8 @@ abstract class _SalleModel implements SalleModel {
   List<dynamic>? get bookings;
   @override
   List<dynamic>? get activitysalle;
+  @override
+  Map<dynamic, dynamic>? get pivot;
   @override
   List<CourseModel>? get courses;
   @override

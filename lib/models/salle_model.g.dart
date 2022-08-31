@@ -25,6 +25,7 @@ _$_SalleModel _$$_SalleModelFromJson(Map<String, dynamic> json) =>
       activity_capacity: json['activity_capacity'] as int?,
       bookings: json['bookings'] as List<dynamic>?,
       activitysalle: json['activitysalle'] as List<dynamic>?,
+      pivot: json['pivot'] as Map<String, dynamic>?,
       courses: (json['courses'] as List<dynamic>?)
           ?.map((e) => CourseModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -45,5 +46,6 @@ Map<String, dynamic> _$$_SalleModelToJson(_$_SalleModel instance) =>
       'activity_capacity': instance.activity_capacity,
       'bookings': instance.bookings,
       'activitysalle': instance.activitysalle,
+      'pivot': instance.pivot,
       'courses': instance.courses,
     };

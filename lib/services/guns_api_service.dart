@@ -21,6 +21,8 @@ class GunAPIService {
       if (brandIds.isNotEmpty) {
         url += "&brand_id=$brands";
       }
+      print("BRANDS");
+      print(brands);
     }
     if (caliberIds != null) {
       String calibers = caliberIds.join(', ');

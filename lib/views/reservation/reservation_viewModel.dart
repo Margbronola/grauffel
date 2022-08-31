@@ -38,11 +38,13 @@ class ReservationViewModel extends BaseViewModel {
         .whenComplete(() {
       if (_bookingAPIService.bookings != null) {
         actives = _bookingAPIService.bookings!
-            .where((e) => e.status_name == "active")
+            .where((e) => e.status_name!.toLowerCase() == "active")
             .toList();
+        print("ACTIVES");
+        print(actives!.length);
 
         past = _bookingAPIService.bookings!
-            .where((e) => e.status_name == "done")
+            .where((e) => e.status_name!.toLowerCase() == "done")
             .toList();
       }
       print("Actives: ${actives!.length}");
@@ -71,9 +73,11 @@ class ReservationViewModel extends BaseViewModel {
     ));
   }
 
-  void showCardDetails() async {
-    print("details");
-    _navigationService.navigateToView(const ReserveCardDetails());
+  void showCardDetails(int index, {bool isActive = false}) async {
+    _navigationService.navigateToView(ReserveCardDetails(
+      bookingModel: isActive ? actives![index] : actives![index],
+      user: _userService.user!,
+    ));
   }
 
   List days = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];

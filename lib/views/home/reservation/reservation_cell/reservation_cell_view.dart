@@ -42,10 +42,6 @@ class ReservationCellView extends StatelessWidget {
               ),
             ],
           ),
-          // leading: const Icon(
-          //   Icons.arrow_back,
-          //   color: kcWhite,
-          // ),
           backgroundColor: buttonColor,
           automaticallyImplyLeading: false,
         ),

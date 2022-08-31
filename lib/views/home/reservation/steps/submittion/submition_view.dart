@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import '../../../../../app/global.dart';
 import '../../../../shared/color.dart';
 import '../../../../shared/customButton.dart';
 import '../../../../shared/ui_helper.dart';
@@ -97,27 +98,27 @@ class SubmitionView extends StatelessWidget {
                       ],
                     ),
                     verticalSpaceMedium(),
-                    //GunList
                     Column(
                         children: model.gunList
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    image: "",
+                                    image:
+                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
                                     title: e.model!,
                                     brand: e.brand!.name!,
                                     reference: "Référence",
                                   ),
                                 ))
                             .toList()),
-
                     Column(
                         children: model.ammunitionList
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
                                     extraButton: e.perBox.toString(),
-                                    image: "",
+                                    image:
+                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
                                     title: e.name!,
                                     brand: e.brand!.name!,
                                     reference: "Référence",
@@ -129,7 +130,8 @@ class SubmitionView extends StatelessWidget {
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    image: "",
+                                    image:
+                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
                                     title: e.name!,
                                     brand: e.type.toString(),
                                     reference: "Référence",

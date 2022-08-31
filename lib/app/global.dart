@@ -3,7 +3,7 @@ import 'dart:io';
 
 const String urlApi = "$urlServer/api";
 const String urlServer = "https://back.eg-czacademy.com";
-
+const String oldServer = "https://dev.grauffel-app.studioseizh.com";
 const String imageOwner = "assets/images/owner.png";
 const String imageSmallLogo = "assets/images/logo1.png";
 const String imagelBigLogo = "assets/images/logo2.png";

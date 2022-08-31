@@ -13,26 +13,32 @@ class ReservationListModel extends BaseViewModel {
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
+  final DialogService _dialogService = locator<DialogService>();
 
   List<BookableModel> get bookables => _bookingAPIService.bookable!;
 
+  String firstCard = "Fun Shoot";
+  String secondCard = "Tir Précision";
+
   Future init() async {
-    setBusy(true);
-    await fetchBookinngs();
-    await _bookingAPIService.fetchBookableTest();
+    await _bookingAPIService.fetchBookable(token: _userService.token!);
+
     setBusy(false);
   }
 
   void navigateToReservation({required BookableModel bookable}) {
     _bookingService.setSelectedBookable = bookable;
-    _navigationService.navigateToView(const ReserveStepsView());
+    if (_bookingService.getselectedBookable != null) {
+      print("BOOKABLE");
+      print(bookable);
+      _navigationService.navigateToView(const ReserveStepsView());
+    } else {
+      _dialogService.showDialog(
+          description: "No TirPrecision or Fun Shoot Found from BO");
+    }
   }
 
   void navigateToReservationCell() {
     _navigationService.navigateToView(const ReservationCellView());
-  }
-
-  Future<void> fetchBookinngs() async {
-    await _bookingAPIService.fetchBookable(token: _userService.token!);
   }
 }

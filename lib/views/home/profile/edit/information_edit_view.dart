@@ -164,10 +164,6 @@ class InformationEditView extends StatelessWidget {
                                     fontSize: 15.sp),
                                 focusNode: model.phoneNode,
                                 controller: model.phoneController,
-                                validator: (value) {
-                                  return Validator.validatePhoneNumber(
-                                      value ?? "");
-                                },
                                 decoration: InputDecoration(
                                   label: RichText(
                                       text: TextSpan(
