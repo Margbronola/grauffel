@@ -35,7 +35,7 @@ class ReserveDialog extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              height: size(context).height / 2.3.h,
+              height: size(context).height / 3.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,7 +70,7 @@ class ReserveDialog extends StatelessWidget {
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                  verticalSpaceLarge(),
+                  verticalSpaceSmall(),
                   Text(
                     "Votre solde visible sur le\nsite internet va être débité.",
                     style: TextStyle(
@@ -79,7 +79,7 @@ class ReserveDialog extends StatelessWidget {
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                  const Spacer(),
+                  verticalSpaceSmall(),
                   SizedBox(
                     width: double.infinity,
                     child: CustomButton(
@@ -88,7 +88,6 @@ class ReserveDialog extends StatelessWidget {
                           completer!(DialogResponse(confirmed: true));
                         }),
                   ),
-                  verticalSpaceLarge(),
                 ],
               ),
             ),

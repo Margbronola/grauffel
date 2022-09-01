@@ -68,6 +68,7 @@ class LoginHelper {
               goToHome();
             } else {
               showFail();
+              print(value);
               _navigationService.navigateToView(const WelcomeView());
             }
           });

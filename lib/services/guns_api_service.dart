@@ -41,6 +41,7 @@ class GunAPIService {
         try {
           print("FETCH GUNS PASS");
           List fetchGuns = data['data'];
+          print(fetchGuns);
           _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
           _pagingModel = PagingModel(
             current_page: data['current_page'],

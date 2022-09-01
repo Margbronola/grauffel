@@ -49,7 +49,7 @@ mixin _$BookingModel {
   List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
   List<GunModel>? get guns => throw _privateConstructorUsedError;
   List<EquipmentModel>? get equipements => throw _privateConstructorUsedError;
-  BookableModel? get bookable => throw _privateConstructorUsedError;
+  ActivityModel? get bookable => throw _privateConstructorUsedError;
   ActivityModel? get activity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -93,10 +93,10 @@ abstract class $BookingModelCopyWith<$Res> {
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
-      BookableModel? bookable,
+      ActivityModel? bookable,
       ActivityModel? activity});
 
-  $BookableModelCopyWith<$Res>? get bookable;
+  $ActivityModelCopyWith<$Res>? get bookable;
   $ActivityModelCopyWith<$Res>? get activity;
 }
 
@@ -262,7 +262,7 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
       bookable: bookable == freezed
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
-              as BookableModel?,
+              as ActivityModel?,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
@@ -271,12 +271,12 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
   }
 
   @override
-  $BookableModelCopyWith<$Res>? get bookable {
+  $ActivityModelCopyWith<$Res>? get bookable {
     if (_value.bookable == null) {
       return null;
     }
 
-    return $BookableModelCopyWith<$Res>(_value.bookable!, (value) {
+    return $ActivityModelCopyWith<$Res>(_value.bookable!, (value) {
       return _then(_value.copyWith(bookable: value));
     });
   }
@@ -330,11 +330,11 @@ abstract class _$$_BookingModelCopyWith<$Res>
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
-      BookableModel? bookable,
+      ActivityModel? bookable,
       ActivityModel? activity});
 
   @override
-  $BookableModelCopyWith<$Res>? get bookable;
+  $ActivityModelCopyWith<$Res>? get bookable;
   @override
   $ActivityModelCopyWith<$Res>? get activity;
 }
@@ -504,7 +504,7 @@ class __$$_BookingModelCopyWithImpl<$Res>
       bookable: bookable == freezed
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
-              as BookableModel?,
+              as ActivityModel?,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
@@ -635,7 +635,7 @@ class _$_BookingModel implements _BookingModel {
   }
 
   @override
-  final BookableModel? bookable;
+  final ActivityModel? bookable;
   @override
   final ActivityModel? activity;
 
@@ -782,7 +782,7 @@ abstract class _BookingModel implements BookingModel {
       final List<AmmunitionsModel>? ammunitions,
       final List<GunModel>? guns,
       final List<EquipmentModel>? equipements,
-      final BookableModel? bookable,
+      final ActivityModel? bookable,
       final ActivityModel? activity}) = _$_BookingModel;
 
   factory _BookingModel.fromJson(Map<String, dynamic> json) =
@@ -847,7 +847,7 @@ abstract class _BookingModel implements BookingModel {
   @override
   List<EquipmentModel>? get equipements;
   @override
-  BookableModel? get bookable;
+  ActivityModel? get bookable;
   @override
   ActivityModel? get activity;
   @override

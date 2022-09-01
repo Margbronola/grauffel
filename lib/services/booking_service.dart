@@ -1,4 +1,4 @@
-import 'package:egczacademy/models/bookable_model.dart';
+import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:stacked/stacked.dart';
 
@@ -18,7 +18,8 @@ class BookingService with ReactiveServiceMixin {
   }
 
   void dispose() {
-    _selectedTimes.value.clear();
+    print("dispose");
+    _selectedTimes.value = null;
     _selectedGun.value.clear();
     _selectedAmmunition.value.clear();
     _selectedEquipment.value.clear();
@@ -26,9 +27,9 @@ class BookingService with ReactiveServiceMixin {
     _selectedDate.value = DateTime.now();
   }
 
-  final ReactiveValue<List<TimeModel>> _selectedTimes =
-      ReactiveValue<List<TimeModel>>([]);
-  List<TimeModel> get getselectedTimes => _selectedTimes.value;
+  final ReactiveValue<TimeModel?> _selectedTimes =
+      ReactiveValue<TimeModel?>(null);
+  TimeModel? get getselectedTimes => _selectedTimes.value;
 
   final ReactiveValue<List<GunModel>> _selectedGun =
       ReactiveValue<List<GunModel>>([]);
@@ -42,9 +43,9 @@ class BookingService with ReactiveServiceMixin {
       ReactiveValue<List<EquipmentModel>>([]);
   List<EquipmentModel> get getselectedEquipment => _selectedEquipment.value;
 
-  final ReactiveValue<BookableModel?> _selectedBookable =
-      ReactiveValue<BookableModel?>(null);
-  BookableModel? get getselectedBookable => _selectedBookable.value;
+  final ReactiveValue<ActivityModel?> _selectedBookable =
+      ReactiveValue<ActivityModel?>(null);
+  ActivityModel? get getselectedBookable => _selectedBookable.value;
 
   final ReactiveValue<DateTime> _selectedDate =
       ReactiveValue<DateTime>(DateTime.now());
@@ -52,4 +53,5 @@ class BookingService with ReactiveServiceMixin {
 
   set setSelectedBookable(value) => _selectedBookable.value = value;
   set setSelectedDate(value) => _selectedDate.value = value;
+  set setSelectedTime(value) => _selectedTimes.value = value;
 }

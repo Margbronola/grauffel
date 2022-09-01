@@ -22,6 +22,7 @@ TimeModel _$TimeModelFromJson(Map<String, dynamic> json) {
 mixin _$TimeModel {
   String? get time => throw _privateConstructorUsedError;
   int? get avaiable => throw _privateConstructorUsedError;
+  List<int>? get avalable_slots => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ mixin _$TimeModel {
 abstract class $TimeModelCopyWith<$Res> {
   factory $TimeModelCopyWith(TimeModel value, $Res Function(TimeModel) then) =
       _$TimeModelCopyWithImpl<$Res>;
-  $Res call({String? time, int? avaiable});
+  $Res call({String? time, int? avaiable, List<int>? avalable_slots});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$TimeModelCopyWithImpl<$Res> implements $TimeModelCopyWith<$Res> {
   $Res call({
     Object? time = freezed,
     Object? avaiable = freezed,
+    Object? avalable_slots = freezed,
   }) {
     return _then(_value.copyWith(
       time: time == freezed
@@ -58,6 +60,10 @@ class _$TimeModelCopyWithImpl<$Res> implements $TimeModelCopyWith<$Res> {
           ? _value.avaiable
           : avaiable // ignore: cast_nullable_to_non_nullable
               as int?,
+      avalable_slots: avalable_slots == freezed
+          ? _value.avalable_slots
+          : avalable_slots // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -68,7 +74,7 @@ abstract class _$$_TimeModelCopyWith<$Res> implements $TimeModelCopyWith<$Res> {
           _$_TimeModel value, $Res Function(_$_TimeModel) then) =
       __$$_TimeModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? time, int? avaiable});
+  $Res call({String? time, int? avaiable, List<int>? avalable_slots});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$_TimeModelCopyWithImpl<$Res> extends _$TimeModelCopyWithImpl<$Res>
   $Res call({
     Object? time = freezed,
     Object? avaiable = freezed,
+    Object? avalable_slots = freezed,
   }) {
     return _then(_$_TimeModel(
       time: time == freezed
@@ -95,6 +102,10 @@ class __$$_TimeModelCopyWithImpl<$Res> extends _$TimeModelCopyWithImpl<$Res>
           ? _value.avaiable
           : avaiable // ignore: cast_nullable_to_non_nullable
               as int?,
+      avalable_slots: avalable_slots == freezed
+          ? _value._avalable_slots
+          : avalable_slots // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -102,7 +113,9 @@ class __$$_TimeModelCopyWithImpl<$Res> extends _$TimeModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TimeModel implements _TimeModel {
-  const _$_TimeModel({this.time, this.avaiable});
+  const _$_TimeModel(
+      {this.time, this.avaiable, final List<int>? avalable_slots})
+      : _avalable_slots = avalable_slots;
 
   factory _$_TimeModel.fromJson(Map<String, dynamic> json) =>
       _$$_TimeModelFromJson(json);
@@ -111,10 +124,18 @@ class _$_TimeModel implements _TimeModel {
   final String? time;
   @override
   final int? avaiable;
+  final List<int>? _avalable_slots;
+  @override
+  List<int>? get avalable_slots {
+    final value = _avalable_slots;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'TimeModel(time: $time, avaiable: $avaiable)';
+    return 'TimeModel(time: $time, avaiable: $avaiable, avalable_slots: $avalable_slots)';
   }
 
   @override
@@ -123,7 +144,9 @@ class _$_TimeModel implements _TimeModel {
         (other.runtimeType == runtimeType &&
             other is _$_TimeModel &&
             const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality().equals(other.avaiable, avaiable));
+            const DeepCollectionEquality().equals(other.avaiable, avaiable) &&
+            const DeepCollectionEquality()
+                .equals(other._avalable_slots, _avalable_slots));
   }
 
   @JsonKey(ignore: true)
@@ -131,7 +154,8 @@ class _$_TimeModel implements _TimeModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(avaiable));
+      const DeepCollectionEquality().hash(avaiable),
+      const DeepCollectionEquality().hash(_avalable_slots));
 
   @JsonKey(ignore: true)
   @override
@@ -147,8 +171,10 @@ class _$_TimeModel implements _TimeModel {
 }
 
 abstract class _TimeModel implements TimeModel {
-  const factory _TimeModel({final String? time, final int? avaiable}) =
-      _$_TimeModel;
+  const factory _TimeModel(
+      {final String? time,
+      final int? avaiable,
+      final List<int>? avalable_slots}) = _$_TimeModel;
 
   factory _TimeModel.fromJson(Map<String, dynamic> json) =
       _$_TimeModel.fromJson;
@@ -157,6 +183,8 @@ abstract class _TimeModel implements TimeModel {
   String? get time;
   @override
   int? get avaiable;
+  @override
+  List<int>? get avalable_slots;
   @override
   @JsonKey(ignore: true)
   _$$_TimeModelCopyWith<_$_TimeModel> get copyWith =>

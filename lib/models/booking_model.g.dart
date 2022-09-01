@@ -52,7 +52,7 @@ _$_BookingModel _$$_BookingModelFromJson(Map<String, dynamic> json) =>
           .toList(),
       bookable: json['bookable'] == null
           ? null
-          : BookableModel.fromJson(json['bookable'] as Map<String, dynamic>),
+          : ActivityModel.fromJson(json['bookable'] as Map<String, dynamic>),
       activity: json['activity'] == null
           ? null
           : ActivityModel.fromJson(json['activity'] as Map<String, dynamic>),

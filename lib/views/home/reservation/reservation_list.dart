@@ -33,7 +33,8 @@ class ReservationList extends StatelessWidget {
                               itemCount: model.bookables.length,
                               itemBuilder: (context, index) => ReserveCard(
                                   ontap: () {
-                                    if (index == 3) {
+                                    if (model.bookables[index].name ==
+                                        "Alvéoles") {
                                       model.navigateToReservationCell();
                                     } else {
                                       model.navigateToReservation(

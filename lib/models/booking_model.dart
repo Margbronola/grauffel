@@ -1,6 +1,5 @@
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
-import 'package:egczacademy/models/bookable_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -40,8 +39,9 @@ class BookingModel with _$BookingModel {
     List<AmmunitionsModel>? ammunitions,
     List<GunModel>? guns,
     List<EquipmentModel>? equipements,
-    BookableModel? bookable,
+    ActivityModel? bookable,
     ActivityModel? activity,
+    // bool? has_armoury,
   }) = _BookingModel;
 
   factory BookingModel.fromJson(Map<String, Object?> json) =>

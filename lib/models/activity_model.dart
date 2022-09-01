@@ -1,6 +1,8 @@
 import 'package:egczacademy/models/salle_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'activity_salle_model.dart';
+
 part 'activity_model.freezed.dart';
 part 'activity_model.g.dart';
 
@@ -22,6 +24,7 @@ class ActivityModel with _$ActivityModel {
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles}) = _ActivityModel;
 
   factory ActivityModel.fromJson(Map<String, Object?> json) =>

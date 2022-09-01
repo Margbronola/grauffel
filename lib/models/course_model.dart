@@ -1,4 +1,4 @@
-import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:egczacademy/models/type_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'course_model.freezed.dart';
@@ -20,16 +20,17 @@ class CourseModel with _$CourseModel {
       String? end_time,
       String? color_code,
       List<int>? period,
-      int? admin_id,
-      int? salle_id,
+      String? admin_id,
+      String? salle_id,
       String? description,
       int? status,
       DateTime? created_at,
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
-      BrandModel? type,
+      TypeModel? type,
       List<String>? images,
+      DateTime? datetime,
       List<String>? questions}) = _CourseModel;
 
   factory CourseModel.fromJson(Map<String, Object?> json) =>

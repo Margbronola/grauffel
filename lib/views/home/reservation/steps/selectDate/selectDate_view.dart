@@ -124,12 +124,12 @@ class SelectDateView extends StatelessWidget {
                     )
             ],
           ),
-          model.selectedTime.isNotEmpty
+          model.selectedTime != null
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "${model.availableTimes.length} places ",
+                      "${model.selectedTime!.avaiable!} places ",
                       style: TextStyle(
                           color: buttonColor,
                           fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class SelectDateView extends StatelessWidget {
                     width: 150.w,
                     child: CustomButton(
                         title: "Suivant",
-                        onTap: model.selectedTime.isNotEmpty
+                        onTap: model.selectedTime != null
                             ? () {
                                 onTap();
                               }

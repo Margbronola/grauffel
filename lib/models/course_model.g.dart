@@ -24,8 +24,8 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
       end_time: json['end_time'] as String?,
       color_code: json['color_code'] as String?,
       period: (json['period'] as List<dynamic>?)?.map((e) => e as int).toList(),
-      admin_id: json['admin_id'] as int?,
-      salle_id: json['salle_id'] as int?,
+      admin_id: json['admin_id'] as String?,
+      salle_id: json['salle_id'] as String?,
       description: json['description'] as String?,
       status: json['status'] as int?,
       created_at: json['created_at'] == null
@@ -38,9 +38,12 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
       status_name: json['status_name'] as String?,
       type: json['type'] == null
           ? null
-          : BrandModel.fromJson(json['type'] as Map<String, dynamic>),
+          : TypeModel.fromJson(json['type'] as Map<String, dynamic>),
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      datetime: json['datetime'] == null
+          ? null
+          : DateTime.parse(json['datetime'] as String),
       questions: (json['questions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -70,5 +73,6 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'status_name': instance.status_name,
       'type': instance.type,
       'images': instance.images,
+      'datetime': instance.datetime?.toIso8601String(),
       'questions': instance.questions,
     };

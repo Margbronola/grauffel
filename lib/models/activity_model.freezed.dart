@@ -35,6 +35,8 @@ mixin _$ActivityModel {
   bool? get has_relation => throw _privateConstructorUsedError;
   bool? get has_salle => throw _privateConstructorUsedError;
   bool? get is_active => throw _privateConstructorUsedError;
+  List<ActivitySalleModel>? get activitysalle =>
+      throw _privateConstructorUsedError;
   List<SalleModel>? get salles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,6 +66,7 @@ abstract class $ActivityModelCopyWith<$Res> {
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 }
 
@@ -93,6 +96,7 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? has_relation = freezed,
     Object? has_salle = freezed,
     Object? is_active = freezed,
+    Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
     return _then(_value.copyWith(
@@ -156,6 +160,10 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      activitysalle: activitysalle == freezed
+          ? _value.activitysalle
+          : activitysalle // ignore: cast_nullable_to_non_nullable
+              as List<ActivitySalleModel>?,
       salles: salles == freezed
           ? _value.salles
           : salles // ignore: cast_nullable_to_non_nullable
@@ -187,6 +195,7 @@ abstract class _$$_ActivityModelCopyWith<$Res>
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 }
 
@@ -218,6 +227,7 @@ class __$$_ActivityModelCopyWithImpl<$Res>
     Object? has_relation = freezed,
     Object? has_salle = freezed,
     Object? is_active = freezed,
+    Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
     return _then(_$_ActivityModel(
@@ -281,6 +291,10 @@ class __$$_ActivityModelCopyWithImpl<$Res>
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      activitysalle: activitysalle == freezed
+          ? _value._activitysalle
+          : activitysalle // ignore: cast_nullable_to_non_nullable
+              as List<ActivitySalleModel>?,
       salles: salles == freezed
           ? _value._salles
           : salles // ignore: cast_nullable_to_non_nullable
@@ -308,8 +322,10 @@ class _$_ActivityModel implements _ActivityModel {
       this.has_relation,
       this.has_salle,
       this.is_active,
+      final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles})
-      : _salles = salles;
+      : _activitysalle = activitysalle,
+        _salles = salles;
 
   factory _$_ActivityModel.fromJson(Map<String, dynamic> json) =>
       _$$_ActivityModelFromJson(json);
@@ -344,6 +360,15 @@ class _$_ActivityModel implements _ActivityModel {
   final bool? has_salle;
   @override
   final bool? is_active;
+  final List<ActivitySalleModel>? _activitysalle;
+  @override
+  List<ActivitySalleModel>? get activitysalle {
+    final value = _activitysalle;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<SalleModel>? _salles;
   @override
   List<SalleModel>? get salles {
@@ -355,7 +380,7 @@ class _$_ActivityModel implements _ActivityModel {
 
   @override
   String toString() {
-    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, salles: $salles)';
+    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, activitysalle: $activitysalle, salles: $salles)';
   }
 
   @override
@@ -385,6 +410,8 @@ class _$_ActivityModel implements _ActivityModel {
                 .equals(other.has_relation, has_relation) &&
             const DeepCollectionEquality().equals(other.has_salle, has_salle) &&
             const DeepCollectionEquality().equals(other.is_active, is_active) &&
+            const DeepCollectionEquality()
+                .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality().equals(other._salles, _salles));
   }
 
@@ -407,6 +434,7 @@ class _$_ActivityModel implements _ActivityModel {
       const DeepCollectionEquality().hash(has_relation),
       const DeepCollectionEquality().hash(has_salle),
       const DeepCollectionEquality().hash(is_active),
+      const DeepCollectionEquality().hash(_activitysalle),
       const DeepCollectionEquality().hash(_salles));
 
   @JsonKey(ignore: true)
@@ -439,6 +467,7 @@ abstract class _ActivityModel implements ActivityModel {
       final bool? has_relation,
       final bool? has_salle,
       final bool? is_active,
+      final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles}) = _$_ActivityModel;
 
   factory _ActivityModel.fromJson(Map<String, dynamic> json) =
@@ -474,6 +503,8 @@ abstract class _ActivityModel implements ActivityModel {
   bool? get has_salle;
   @override
   bool? get is_active;
+  @override
+  List<ActivitySalleModel>? get activitysalle;
   @override
   List<SalleModel>? get salles;
   @override

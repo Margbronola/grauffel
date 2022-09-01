@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
+import 'package:egczacademy/services/courses_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
@@ -16,12 +17,13 @@ class SelectDateViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
   final DatePickerController controller = DatePickerController();
   final ScrollController scrollController = ScrollController();
+  final CourseAPIService _courseAPIService = locator<CourseAPIService>();
 
   final DateFormat formatter = DateFormat('yMMM');
   DateTime get selectedDate => _bookingService.getselectedDate;
 
-  List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
-  List<TimeModel> get selectedTime => _bookingService.getselectedTimes;
+  List<TimeModel> get availableTimes => _bookingAPIService.availableTime ?? [];
+  TimeModel? get selectedTime => _bookingService.getselectedTimes;
 
   List<DateTime> inactive = [];
   List<DateTime> activeDates = [];
@@ -80,7 +82,14 @@ class SelectDateViewModel extends ReactiveViewModel {
         1;
 
     setBusy(true);
-    await fetchBookableActivity(DateTime.now());
+    print(_bookingService.getselectedBookable!.name == "Cours tsv");
+    if (_bookingService.getselectedBookable!.name == "Cours tsv") {
+      _bookingAPIService.courseSetupTime(
+          courses: _courseAPIService.courses!,
+          date: _bookingService.getselectedDate);
+    } else {
+      await fetchBookableActivity(DateTime.now());
+    }
 
     setBusy(false);
   }
@@ -90,9 +99,12 @@ class SelectDateViewModel extends ReactiveViewModel {
       print("yes");
     } else {
       _bookingService.setSelectedDate = dateTime;
-      print(_bookingService.getselectedBookable);
-      print(_bookingService.getselectedDate);
-      await await fetchBookableActivity(dateTime);
+      if (_bookingService.getselectedBookable!.name == "Cours tsv") {
+        _bookingAPIService.courseSetupTime(
+            courses: _courseAPIService.courses!, date: dateTime);
+      } else {
+        await fetchBookableActivity(dateTime);
+      }
     }
     notifyListeners();
   }
@@ -102,8 +114,7 @@ class SelectDateViewModel extends ReactiveViewModel {
     await _bookingAPIService.fetchBookableActivity(
         token: _userService.token!,
         date: dateTime,
-        activity_id:
-            _bookingService.getselectedBookable!.activitysalle![0].activity_id!,
+        activity_id: _bookingService.getselectedBookable!.id!,
         client_id: _userService.user!.id!);
   }
 
@@ -112,34 +123,12 @@ class SelectDateViewModel extends ReactiveViewModel {
   // }
 
   void selectTime(TimeModel time) {
-    print(_bookingService.getselectedTimes.length);
-    if (!_bookingService.getselectedTimes.contains(time)) {
-      if (_bookingService.getselectedTimes.isEmpty) {
-        _bookingService.getselectedTimes.add(time);
-        notifyListeners();
-      } else {
-        TimeModel shouldNext = availableTimes[availableTimes.indexOf(
-                _bookingService.getselectedTimes[
-                    _bookingService.getselectedTimes.length - 1]) +
-            1];
-
-        print(shouldNext);
-
-        if (time == shouldNext) {
-          _bookingService.getselectedTimes.add(time);
-        }
-      }
-    } else {
-      _bookingService.getselectedTimes.remove(time);
-    }
+    _bookingService.setSelectedTime = time;
     notifyListeners();
   }
 
   bool isSelected(TimeModel time) {
-    if (_bookingService.getselectedTimes.contains(time)) {
-      return true;
-    }
-    return false;
+    return _bookingService.getselectedTimes == time;
   }
 
   @override
