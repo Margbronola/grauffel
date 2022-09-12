@@ -114,8 +114,7 @@ class SelectDateViewModel extends ReactiveViewModel {
     await _bookingAPIService.fetchBookableActivity(
         token: _userService.token!,
         date: dateTime,
-        activity_id: _bookingService.getselectedBookable!.id!,
-        client_id: _userService.user!.id!);
+        activity_id: _bookingService.getselectedBookable!.id!);
   }
 
   // void setCalendar() {

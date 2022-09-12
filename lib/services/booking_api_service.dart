@@ -54,8 +54,6 @@ class BookingAPIService {
         try {
           print("FETCH BOOKINGS PASS");
           List fetchBookings = data['data'];
-          print(fetchBookings);
-
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
           print(_bookings);
@@ -65,8 +63,6 @@ class BookingAPIService {
           //   next_page_url: data['next_page_url'],
           //   prev_page_url: data['prev_page_url'],
           // );
-
-          print(_bookings);
           // print(_pagingModel);
         } catch (e) {
           print(e);
@@ -96,9 +92,14 @@ class BookingAPIService {
 
           List<ActivityModel> copy =
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
-
+          print(fetchBookable);
           for (var x = 0; x <= _bookable.length - 1; x++) {
-            print(_bookable[x].name);
+            _bookable[x] = _bookable[x].copyWith(
+                description: _bookable[x]
+                    .description!
+                    .replaceAll("<p>", "")
+                    .replaceAll("</p>", ""));
+
             if (_bookable[x].name!.toLowerCase().startsWith("tir")) {
               _bookable[x] =
                   _bookable[x].copyWith(image: "assets/images/precision.jpg");
@@ -147,25 +148,22 @@ class BookingAPIService {
   //       .toList();
   // }
 
-  Future<void> fetchBookableActivity(
-      {required String token,
-      required DateTime date,
-      required int activity_id,
-      required int client_id}) async {
+  Future<void> fetchBookableActivity({
+    required String token,
+    required DateTime date,
+    required int activity_id,
+  }) async {
     print("ACTIVITY DATA");
-    print(date);
     print(activity_id);
-    print(client_id);
+
     try {
-      final respo =
-          await http.post(Uri.parse("$urlApi/bookable/activity"), body: {
-        "date": date.toString(),
-        "activity_id": activity_id.toString(),
-        "client_id": client_id.toString()
-      }, headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer $token",
-      });
+      final respo = await http.get(
+          Uri.parse(
+              "$urlApi/activity/$activity_id/timetable?date=${date.month}/${date.day}/${date.year}"),
+          headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer $token",
+          });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
@@ -174,7 +172,7 @@ class BookingAPIService {
           _availableTime = time.map((e) => TimeModel.fromJson(e)).toList();
 
           //TODO delete this before release
-
+          print(data);
           print(_availableTime);
         } catch (e) {
           print(e);

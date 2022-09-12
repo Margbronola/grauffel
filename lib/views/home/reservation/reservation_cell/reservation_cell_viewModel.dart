@@ -12,7 +12,7 @@ class ReservationCellViewModel extends BaseViewModel {
   final TextEditingController commentTextController = TextEditingController();
   bool isCommentFucos = false;
 
-  init() {
+  init() async {
     commentFocusNode.addListener(() {
       isCommentFucos = commentFocusNode.hasFocus;
       notifyListeners();

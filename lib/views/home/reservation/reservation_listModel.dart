@@ -23,6 +23,9 @@ class ReservationListModel extends BaseViewModel {
   String secondCard = "Tir Précision";
 
   Future init() async {
+    if (_bookingAPIService.bookable!.isEmpty) {
+      setBusy(true);
+    }
     await _bookingAPIService.fetchBookable(token: _userService.token!);
     await _courseAPIService.fetch(token: _userService.token!);
     notifyListeners();

@@ -30,7 +30,9 @@ class ReservationViewModel extends BaseViewModel {
   List<BookingModel>? past = [];
 
   init() async {
-    setBusy(true);
+    if (_bookingAPIService.bookings != null) {
+      setBusy(true);
+    }
     await _bookingAPIService
         .fetchMyBookings(
             token: _userService.token!,

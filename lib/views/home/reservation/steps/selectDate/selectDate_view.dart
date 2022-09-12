@@ -112,13 +112,13 @@ class SelectDateView extends StatelessWidget {
                         children:
                             List.generate(model.availableTimes.length, (index) {
                           return time(
-                              onPress: () {
-                                model.selectTime(model.availableTimes[index]);
-                              },
-                              isSelected:
-                                  model.isSelected(model.availableTimes[index]),
-                              time: model.availableTimes[index].time!,
-                              avaiable: model.availableTimes[index].avaiable!);
+                            onPress: () {
+                              model.selectTime(model.availableTimes[index]);
+                            },
+                            isSelected:
+                                model.isSelected(model.availableTimes[index]),
+                            time: model.availableTimes[index].time!,
+                          );
                         }),
                       ),
                     )
@@ -129,7 +129,7 @@ class SelectDateView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "${model.selectedTime!.avaiable!} places ",
+                      "${model.selectedTime!.available!} places ",
                       style: TextStyle(
                           color: buttonColor,
                           fontWeight: FontWeight.bold,
