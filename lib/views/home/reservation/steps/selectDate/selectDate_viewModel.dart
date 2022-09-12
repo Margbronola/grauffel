@@ -96,6 +96,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   }
 
   Future setDate(DateTime dateTime) async {
+    _bookingService.setSelectedTime = null;
     if (dateTime.isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
       print("yes");
     } else {

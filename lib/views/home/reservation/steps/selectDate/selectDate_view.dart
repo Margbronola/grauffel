@@ -112,6 +112,8 @@ class SelectDateView extends StatelessWidget {
                         children:
                             List.generate(model.availableTimes.length, (index) {
                           return time(
+                            selectedTime: model.selectedDate,
+                            avaiable: model.availableTimes[index].available!,
                             onPress: () {
                               model.selectTime(model.availableTimes[index]);
                             },
@@ -174,6 +176,7 @@ class SelectDateView extends StatelessWidget {
 Widget time(
         {int avaiable = 0,
         required String time,
+        required DateTime selectedTime,
         bool isSelected = false,
         required Function() onPress}) =>
     SizedBox(
@@ -182,14 +185,27 @@ Widget time(
           style: ElevatedButton.styleFrom(
             elevation: 0,
             padding: const EdgeInsets.all(10),
-
             primary: avaiable > 0
-                ? isSelected
-                    ? buttonColor
-                    : customGrey
+                ? selectedTime.toUtc().isAfter(DateTime.now().toUtc())
+                    ? isSelected
+                        ? buttonColor
+                        : customGrey
+                    : DateTime.now().hour < int.parse(time.split(":")[0])
+                        ? isSelected
+                            ? buttonColor
+                            : customGrey
+                        : isSelected
+                            ? buttonColor
+                            : customDarkGrey
                 : customDarkGrey, // <-- Button color
           ),
-          onPressed: avaiable > 0 ? onPress : () {},
+          onPressed: avaiable > 0
+              ? selectedTime.toUtc().isAfter(DateTime.now().toUtc())
+                  ? onPress
+                  : DateTime.now().hour < int.parse(time.split(":")[0])
+                      ? onPress
+                      : () {}
+              : () {},
           child: Text(
             "${time.split(":")[0]}h${time.split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"} - ${time.split("-")[1].split(":")[0]}h${time.split("-")[1].split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"}",
             style: TextStyle(

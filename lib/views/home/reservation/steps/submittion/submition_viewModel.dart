@@ -1,6 +1,5 @@
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
-import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
@@ -114,9 +113,19 @@ class SubmitionViewModel extends ReactiveViewModel {
       if (response != null) {
         if (response.confirmed) {
           _bookingApiService.book(
-              token: _userService.token!,
-              booking:
-                  BookingModel(activity: _bookingService.getselectedBookable));
+            token: _userService.token!,
+            date: _bookingService.getselectedDate,
+            time: _bookingService.getselectedTimes!.time!,
+            activityId: _bookingService.getselectedBookable!.id!,
+            guns:
+                _bookingService.getselectedGun.map((e) => e.toJson()).toList(),
+            ammunitions: _bookingService.getselectedAmmunition
+                .map((e) => e.toJson())
+                .toList(),
+            equipments: _bookingService.getselectedEquipment
+                .map((e) => e.toJson())
+                .toList(),
+          );
           // _navigationService.back();
           // _homePagingService.onTap(0);
         }

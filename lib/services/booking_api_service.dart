@@ -188,14 +188,26 @@ class BookingAPIService {
     }
   }
 
-  Future<void> book(
-      {required String token, required BookingModel booking}) async {
+  Future<void> book({
+    required String token,
+    required DateTime date,
+    required String time,
+    required int activityId,
+    required List<Map> guns,
+    required List<Map> ammunitions,
+    required List<Map> equipments,
+  }) async {
     try {
-      final respo = await http.post(Uri.parse("$urlApi/bookings"), headers: {
+      final respo = await http.post(Uri.parse("$urlApi/book/cell"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       }, body: {
-        "activity": booking.activity!.toJson()
+        "date": "${date.year}-${date.month}-${date.day}",
+        "time": time,
+        "activity_id": activityId.toString(),
+        "guns": guns.toString(),
+        "ammunitions": ammunitions.toString(),
+        "equipments": equipments.toString()
       });
       if (respo.statusCode == 200) {
         print("book pass");
