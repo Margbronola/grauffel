@@ -168,28 +168,34 @@ class InformationEditViewModel extends ReactiveViewModel {
     }
   }
 
-  void showDatePicker(context) {
-    DatePicker.showDatePicker(context,
-            showTitleActions: true,
-            minTime: DateTime(1990, 1, 1),
-            maxTime: DateTime(2022, 1, 1),
-            theme: const DatePickerTheme(
-                // headerColor: Colors.orange,
-                // backgroundColor: Colors.blue,
-                itemStyle: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-                doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
-            onChanged: (date) {
+  void showDatePicker(context) async {
+    print("Show date picker");
+    await DatePicker.showDatePicker(context,
+        showTitleActions: true,
+        minTime: DateTime(1990, 1, 1),
+        maxTime: DateTime(2022, 1, 1),
+        theme: const DatePickerTheme(
+            // headerColor: Colors.orange,
+            // backgroundColor: Colors.blue,
+            itemStyle: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+            doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
+        onChanged: (date) {
       print('change $date in time zone ${date.timeZoneOffset.inHours}');
     }, onConfirm: (date) {
-      print('confirm $date');
-    }, currentTime: DateTime.now(), locale: LocaleType.fr)
-        .then((value) {
-      birthdayController.text = "${value!.year}-${value.month}-${value.day}";
-      dateNode.unfocus();
-    });
+      dateNode.nextFocus();
+      birthdayController.text = "${date.year}-${date.month}-${date.day}";
+      notifyListeners();
+    }, onCancel: () {
+      print("cancel");
+      dateNode.nextFocus();
+      notifyListeners();
+    },
+        currentTime: DateTime(
+            int.parse(user!.birthday!.split("-")[0]),
+            int.parse(user!.birthday!.split("-")[1]),
+            int.parse(user!.birthday!.split("-")[2])),
+        locale: LocaleType.fr);
   }
 
   @override

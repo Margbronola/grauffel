@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -9,6 +10,8 @@ class ReserveStepsViewModel extends BaseViewModel {
   PageController? pageController = PageController();
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
+
+  bool get isCourse => bookingService.getselectedBookable!.name == courseTSV;
 
   void submitEvents(int index) {
     nextPage(index);

@@ -5,7 +5,6 @@ import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
-import '../models/course_model.dart';
 import '../models/paging_model.dart';
 
 class BookingAPIService {
@@ -32,7 +31,7 @@ class BookingAPIService {
   //           "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
   //   const BookableModel(
   //       image: "assets/images/course.jpg",
-  //       name: "Cours tsv",
+  //       name: courseTSV,
   //       description:
   //           "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
   //   const BookableModel(
@@ -110,25 +109,14 @@ class BookingAPIService {
             }
           }
 
-          if (copy
-              .where(
-                  (element) => element.name!.toLowerCase() == "tir précision")
-              .toList()
-              .isNotEmpty) {
-            _bookable[0] = copy
-                .firstWhere(
-                    (element) => element.name!.toLowerCase() == "tir précision")
-                .copyWith(image: "assets/images/precision.jpg");
-          }
-
-          _bookable.add(const ActivityModel(
+          _bookable.add(ActivityModel(
               image: "assets/images/course.jpg",
-              name: "Cours tsv",
+              name: courseTSV,
               description:
                   "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"));
-          _bookable.add(const ActivityModel(
+          _bookable.add(ActivityModel(
               image: "assets/images/alv.jpg",
-              name: "Alvéoles",
+              name: alveoles,
               description:
                   "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture"));
         } catch (e) {
@@ -144,21 +132,20 @@ class BookingAPIService {
     }
   }
 
-  void courseSetupTime(
-      {required List<CourseModel> courses, required DateTime date}) {
-    print("courseSetup");
-    courses = courses
-        .where((element) => element.datetime!.toUtc() == date.toUtc())
-        .toList();
-    _availableTime = courses
-        .map((e) => TimeModel(
-            time:
-                "${e.start_time!.replaceAll(":", "h")} - ${e.end_time!.replaceAll(":", "h")}"))
-        .toList();
+  // void courseSetupTime(
+  //     {required List<CourseModel> courses, required DateTime date}) {
+  //   print("courseSetup");
+  //   print(courses);
 
-    print(courses.length);
-    print(_availableTime!.length);
-  }
+  //   List<CourseModel> courseByDate = courses.where((element) {
+  //     return DateFormat.yMd().format(element.datetime!) ==
+  //         DateFormat.yMd().format(date);
+  //   }).toList();
+  //   _availableTime = courseByDate
+  //       .map((e) =>
+  //           TimeModel(avaiable: 1, time: "${e.start_time}:00-${e.end_time}:00"))
+  //       .toList();
+  // }
 
   Future<void> fetchBookableActivity(
       {required String token,

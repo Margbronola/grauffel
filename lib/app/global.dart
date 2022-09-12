@@ -25,3 +25,7 @@ String convertToBase64(File file) {
   String img64 = "data:image/$extension;base64,${base64Encode(bytes)}";
   return img64;
 }
+
+String courseTSV = "Cours tsv";
+String funShoot = "";
+String alveoles = "Alvéoles";

@@ -49,6 +49,7 @@ class ReserveCard extends StatelessWidget {
                         Text(
                           reserve.title,
                           maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                           style: ThemeData().textTheme.bodyText1!.copyWith(
                               fontSize: 18.sp,
                               color: buttonColor,
@@ -60,6 +61,8 @@ class ReserveCard extends StatelessWidget {
                         ),
                         Text(
                           reserve.description,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                           style: ThemeData().textTheme.bodyText1!.copyWith(
                                 fontSize: 12.sp,
                                 fontFamily: 'ProductSans',

@@ -10,6 +10,7 @@ import 'package:quiver/time.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
 import '../../../../../app/app.locator.dart';
+import '../../../../../app/global.dart';
 
 class SelectDateViewModel extends ReactiveViewModel {
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
@@ -82,11 +83,11 @@ class SelectDateViewModel extends ReactiveViewModel {
         1;
 
     setBusy(true);
-    print(_bookingService.getselectedBookable!.name == "Cours tsv");
-    if (_bookingService.getselectedBookable!.name == "Cours tsv") {
-      _bookingAPIService.courseSetupTime(
-          courses: _courseAPIService.courses!,
-          date: _bookingService.getselectedDate);
+    print(_bookingService.getselectedBookable!.name == courseTSV);
+    if (_bookingService.getselectedBookable!.name == courseTSV) {
+      // _bookingAPIService.courseSetupTime(
+      //     courses: _courseAPIService.courses!,
+      //     date: _bookingService.getselectedDate);
     } else {
       await fetchBookableActivity(DateTime.now());
     }
@@ -99,9 +100,9 @@ class SelectDateViewModel extends ReactiveViewModel {
       print("yes");
     } else {
       _bookingService.setSelectedDate = dateTime;
-      if (_bookingService.getselectedBookable!.name == "Cours tsv") {
-        _bookingAPIService.courseSetupTime(
-            courses: _courseAPIService.courses!, date: dateTime);
+      if (_bookingService.getselectedBookable!.name == courseTSV) {
+        // _bookingAPIService.courseSetupTime(
+        //     courses: _courseAPIService.courses!, date: dateTime);
       } else {
         await fetchBookableActivity(dateTime);
       }
@@ -110,7 +111,6 @@ class SelectDateViewModel extends ReactiveViewModel {
   }
 
   Future fetchBookableActivity(DateTime dateTime) async {
-    print(_bookingService.getselectedBookable!);
     await _bookingAPIService.fetchBookableActivity(
         token: _userService.token!,
         date: dateTime,

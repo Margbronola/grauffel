@@ -114,6 +114,7 @@ class InformationEditView extends StatelessWidget {
                               ),
                               SizedBox(height: size(context).height * 0.02),
                               TextFormField(
+                                readOnly: true,
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.text,
                                 style: TextStyle(
