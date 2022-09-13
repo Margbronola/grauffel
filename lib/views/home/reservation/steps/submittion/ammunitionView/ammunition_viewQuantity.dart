@@ -68,7 +68,11 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                   bottomRight: Radius.circular(30)),
                               image: DecorationImage(
                                   fit: BoxFit.fitHeight,
-                                  opacity: 0.2,
+                                  opacity:
+                                      model.selectedAmmunition[index].image ==
+                                              null
+                                          ? 0.2
+                                          : 1,
                                   image: model.selectedAmmunition[index]
                                               .image ==
                                           null

@@ -188,7 +188,7 @@ class BookingAPIService {
     }
   }
 
-  Future<void> book({
+  Future<bool> book({
     required String token,
     required DateTime date,
     required String time,
@@ -203,7 +203,7 @@ class BookingAPIService {
         "Authorization": "Bearer $token",
       }, body: {
         "date": "${date.year}-${date.month}-${date.day}",
-        "time": time,
+        "time": time.split("-")[0],
         "activity_id": activityId.toString(),
         "guns": guns.toString(),
         "ammunitions": ammunitions.toString(),
@@ -221,6 +221,7 @@ class BookingAPIService {
           print(e);
           print("FROMJSON FAIL");
         }
+        return true;
       } else {
         print(respo.body);
         print("SERVER FAIL");
@@ -229,5 +230,6 @@ class BookingAPIService {
       print(e);
       print("FETCH BOOKIGNS FAIL");
     }
+    return false;
   }
 }

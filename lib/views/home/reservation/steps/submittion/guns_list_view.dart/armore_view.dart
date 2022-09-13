@@ -235,7 +235,7 @@ Widget gunCardView(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
-                          opacity: 0.1,
+                          opacity: gunModel.image == null ? 0.1 : 1,
                           image: gunModel.image == null
                               ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider

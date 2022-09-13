@@ -73,7 +73,8 @@ class SubmitionViewModel extends ReactiveViewModel {
     super.dispose();
   }
 
-  void showCard() async {
+  void reserver() async {
+    setBusy(true);
     double allGunPrice = 0;
     double allAmmunitionPrice = 0;
     double allEquipmentPrice = 0;
@@ -104,30 +105,43 @@ class SubmitionViewModel extends ReactiveViewModel {
     print("total: $total");
     print(user.credit_points!);
 
-    if (user.credit_points! >= total) {
-      var response = await _dialogService.showCustomDialog(
-          mainButtonTitle: "ok",
-          variant: DialogType.reserve,
-          barrierDismissible: true);
+    bool isBooked = await _bookingApiService.book(
+      token: _userService.token!,
+      date: _bookingService.getselectedDate,
+      time: _bookingService.getselectedTimes!.time!,
+      activityId: _bookingService.getselectedBookable!.id!,
+      guns: _bookingService.getselectedGun.map((e) => e.toJson()).toList(),
+      ammunitions:
+          _bookingService.getselectedAmmunition.map((e) => e.toJson()).toList(),
+      equipments:
+          _bookingService.getselectedEquipment.map((e) => e.toJson()).toList(),
+    );
 
-      if (response != null) {
-        if (response.confirmed) {
-          _bookingApiService.book(
-            token: _userService.token!,
-            date: _bookingService.getselectedDate,
-            time: _bookingService.getselectedTimes!.time!,
-            activityId: _bookingService.getselectedBookable!.id!,
-            guns:
-                _bookingService.getselectedGun.map((e) => e.toJson()).toList(),
-            ammunitions: _bookingService.getselectedAmmunition
-                .map((e) => e.toJson())
-                .toList(),
-            equipments: _bookingService.getselectedEquipment
-                .map((e) => e.toJson())
-                .toList(),
-          );
-          // _navigationService.back();
-          // _homePagingService.onTap(0);
+    if (user.credit_points! >= total) {
+      if (isBooked) {
+        var response = await _dialogService.showCustomDialog(
+            mainButtonTitle: "ok",
+            variant: DialogType.reserve,
+            barrierDismissible: true);
+
+        if (response != null) {
+          if (response.confirmed) {
+            _navigationService.back();
+            _homePagingService.onTap(0);
+          }
+        }
+      } else {
+        var response = await _dialogService.showCustomDialog(
+            mainButtonTitle: "ok",
+            variant: DialogType.reservefail,
+            barrierDismissible: true);
+
+        if (response != null) {
+          if (response.confirmed) {
+            _navigationService.back();
+          } else {
+            _navigationService.back();
+          }
         }
       }
     } else {
@@ -144,6 +158,8 @@ class SubmitionViewModel extends ReactiveViewModel {
         }
       }
     }
+
+    setBusy(false);
   }
 
   @override

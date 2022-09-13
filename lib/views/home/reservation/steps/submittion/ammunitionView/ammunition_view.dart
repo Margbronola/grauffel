@@ -122,7 +122,7 @@ Widget amminitionCard(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
-                          opacity: 0.2,
+                          opacity: ammunition.image == null ? 0.1 : 1,
                           image: ammunition.image == null
                               ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider
