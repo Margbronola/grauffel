@@ -38,21 +38,21 @@ class ReservationViewModel extends BaseViewModel {
             token: _userService.token!,
             userId: _userService.user!.id.toString())
         .whenComplete(() {
-      // if (_bookingAPIService.bookings != null) {
-      //   actives = _bookingAPIService.bookings!
-      //       .where((e) => e.status_name!.toLowerCase() == "active")
-      //       .toList();
-      //   print("ACTIVES");
-      //   print(actives!.length);
+      if (_bookingAPIService.bookings != null) {
+        actives = _bookingAPIService.bookings!
+            .where((e) => e.status_name!.toLowerCase() == "active")
+            .toList();
+        print("ACTIVES");
+        print(actives!.length);
 
-      //   past = _bookingAPIService.bookings!
-      //       .where((e) =>
-      //           e.status_name!.toLowerCase() == "done" ||
-      //           e.status_name!.toLowerCase() == "cancel")
-      //       .toList();
+        past = _bookingAPIService.bookings!
+            .where((e) =>
+                e.status_name!.toLowerCase() == "done" ||
+                e.status_name!.toLowerCase() == "cancel")
+            .toList();
 
-      //   print(past);
-      // }
+        print(past);
+      }
       print("Actives: ${actives!.length}");
       print("Past: ${past!.length}");
     });

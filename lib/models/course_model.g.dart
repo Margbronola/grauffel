@@ -14,12 +14,8 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
       level_id: json['level_id'] as int?,
       max_persons: json['max_persons'] as int?,
       price: (json['price'] as num?)?.toDouble(),
-      date_from: json['date_from'] == null
-          ? null
-          : DateTime.parse(json['date_from'] as String),
-      date_to: json['date_to'] == null
-          ? null
-          : DateTime.parse(json['date_to'] as String),
+      date_from: json['date_from'] as String?,
+      date_to: json['date_to'] as String?,
       start_time: json['start_time'] as String?,
       end_time: json['end_time'] as String?,
       color_code: json['color_code'] as String?,
@@ -36,14 +32,8 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
       active_booking_count: json['active_booking_count'] as int?,
       status_name: json['status_name'] as String?,
-      type: json['type'] == null
-          ? null
-          : TypeModel.fromJson(json['type'] as Map<String, dynamic>),
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      datetime: json['datetime'] == null
-          ? null
-          : DateTime.parse(json['datetime'] as String),
       questions: (json['questions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -57,8 +47,8 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'level_id': instance.level_id,
       'max_persons': instance.max_persons,
       'price': instance.price,
-      'date_from': instance.date_from?.toIso8601String(),
-      'date_to': instance.date_to?.toIso8601String(),
+      'date_from': instance.date_from,
+      'date_to': instance.date_to,
       'start_time': instance.start_time,
       'end_time': instance.end_time,
       'color_code': instance.color_code,
@@ -71,8 +61,6 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'updated_at': instance.updated_at?.toIso8601String(),
       'active_booking_count': instance.active_booking_count,
       'status_name': instance.status_name,
-      'type': instance.type,
       'images': instance.images,
-      'datetime': instance.datetime?.toIso8601String(),
       'questions': instance.questions,
     };

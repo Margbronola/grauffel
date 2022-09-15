@@ -56,8 +56,8 @@ class BookingAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH BOOKINGS PASS");
-          List fetchBookings = data['data'];
+          print("FETCH BOOKINGS PASS 2");
+          List fetchBookings = data;
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
           print(_bookings);
@@ -96,13 +96,15 @@ class BookingAPIService {
 
           List<ActivityModel> copy =
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
-          print(fetchBookable);
+
           for (var x = 0; x <= _bookable.length - 1; x++) {
-            _bookable[x] = _bookable[x].copyWith(
-                description: _bookable[x]
-                    .description!
-                    .replaceAll("<p>", "")
-                    .replaceAll("</p>", ""));
+            if (_bookable[x].description != null) {
+              _bookable[x] = _bookable[x].copyWith(
+                  description: _bookable[x]
+                      .description!
+                      .replaceAll("<p>", "")
+                      .replaceAll("</p>", ""));
+            }
 
             if (_bookable[x].name!.toLowerCase().startsWith("tir")) {
               _bookable[x] =
@@ -126,7 +128,7 @@ class BookingAPIService {
                   "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture"));
         } catch (e) {
           print(e);
-          print("FROMJSON FAIL");
+          print("FROMJSON activities FAIL");
         }
       } else {
         print("SERVER FAIL");

@@ -11,11 +11,10 @@ class CourseModel with _$CourseModel {
       String? name,
       int? type_id,
       int? level_id,
-// activity
       int? max_persons,
       double? price,
-      DateTime? date_from,
-      DateTime? date_to,
+      String? date_from,
+      String? date_to,
       String? start_time,
       String? end_time,
       String? color_code,
@@ -28,9 +27,8 @@ class CourseModel with _$CourseModel {
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
-      TypeModel? type,
+      // TypeModel? type,
       List<String>? images,
-      DateTime? datetime,
       List<String>? questions}) = _CourseModel;
 
   factory CourseModel.fromJson(Map<String, Object?> json) =>
