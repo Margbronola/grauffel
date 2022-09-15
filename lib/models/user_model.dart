@@ -23,7 +23,7 @@ class UserModel with _$UserModel {
     int? country_id,
     String? SIA_number,
     String? FFTir_license_number,
-    double? credit_points,
+    String? credit_points,
     int? verification,
     int? payment_verification,
     int? status,

@@ -7,6 +7,7 @@ class FireBaseAuthService {
 
   Future<String?> signIn(
       {required String email, required String password}) async {
+    print("SIgnIN");
     try {
       UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -25,7 +26,10 @@ class FireBaseAuthService {
         Fluttertoast.showToast(msg: e.code);
       }
       return null;
+    } catch (e) {
+      print(e);
     }
+    return null;
   }
 
   // Future<bool>? signUp(

@@ -21,7 +21,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       country_id: json['country_id'] as int?,
       SIA_number: json['SIA_number'] as String?,
       FFTir_license_number: json['FFTir_license_number'] as String?,
-      credit_points: (json['credit_points'] as num?)?.toDouble(),
+      credit_points: json['credit_points'] as String?,
       verification: json['verification'] as int?,
       payment_verification: json['payment_verification'] as int?,
       status: json['status'] as int?,

@@ -190,7 +190,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          model.selectedAmmunition[index].perBox
+                                          model.selectedAmmunition[index].qty
                                               .toString(),
                                           style: ThemeData()
                                               .textTheme

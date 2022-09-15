@@ -4,14 +4,14 @@ import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 
 class ItemCard extends StatelessWidget {
-  final String image;
+  final String? image;
   final String title;
   final String brand;
   final String reference;
   final String? extraButton;
   const ItemCard({
     Key? key,
-    required this.image,
+    this.image,
     required this.title,
     required this.brand,
     required this.reference,
@@ -41,10 +41,10 @@ class ItemCard extends StatelessWidget {
                         bottomRight: Radius.circular(30)),
                     color: kcWhite,
                     image: DecorationImage(
-                        image: image.isEmpty
+                        image: image == null
                             ? const AssetImage("assets/images/noImage.png")
                                 as ImageProvider
-                            : NetworkImage(image))),
+                            : NetworkImage(image!))),
               ),
               Expanded(
                 child: Padding(

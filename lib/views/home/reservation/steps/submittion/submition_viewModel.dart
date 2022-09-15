@@ -85,7 +85,7 @@ class SubmitionViewModel extends ReactiveViewModel {
         .reduce((value, element) => value + element);
 
     allAmmunitionPrice = ammunitionList
-        .map((e) => e.price! * e.perBox)
+        .map((e) => e.price! * e.qty)
         .toList()
         .reduce((value, element) => value + element);
 
@@ -110,14 +110,12 @@ class SubmitionViewModel extends ReactiveViewModel {
       date: _bookingService.getselectedDate,
       time: _bookingService.getselectedTimes!.time!,
       activityId: _bookingService.getselectedBookable!.id!,
-      guns: _bookingService.getselectedGun.map((e) => e.toJson()).toList(),
-      ammunitions:
-          _bookingService.getselectedAmmunition.map((e) => e.toJson()).toList(),
-      equipments:
-          _bookingService.getselectedEquipment.map((e) => e.toJson()).toList(),
+      guns: _bookingService.getselectedGun,
+      ammunitions: _bookingService.getselectedAmmunition,
+      equipments: _bookingService.getselectedEquipment,
     );
 
-    if (user.credit_points! >= total) {
+    if (double.parse(user.credit_points!) >= total) {
       if (isBooked) {
         var response = await _dialogService.showCustomDialog(
             mainButtonTitle: "ok",

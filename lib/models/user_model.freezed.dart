@@ -34,7 +34,7 @@ mixin _$UserModel {
   int? get country_id => throw _privateConstructorUsedError;
   String? get SIA_number => throw _privateConstructorUsedError;
   String? get FFTir_license_number => throw _privateConstructorUsedError;
-  double? get credit_points => throw _privateConstructorUsedError;
+  String? get credit_points => throw _privateConstructorUsedError;
   int? get verification => throw _privateConstructorUsedError;
   int? get payment_verification => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $UserModelCopyWith<$Res> {
       int? country_id,
       String? SIA_number,
       String? FFTir_license_number,
-      double? credit_points,
+      String? credit_points,
       int? verification,
       int? payment_verification,
       int? status,
@@ -186,7 +186,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       credit_points: credit_points == freezed
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       verification: verification == freezed
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
@@ -267,7 +267,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       int? country_id,
       String? SIA_number,
       String? FFTir_license_number,
-      double? credit_points,
+      String? credit_points,
       int? verification,
       int? payment_verification,
       int? status,
@@ -383,7 +383,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       credit_points: credit_points == freezed
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as String?,
       verification: verification == freezed
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
@@ -495,7 +495,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   @override
   final String? FFTir_license_number;
   @override
-  final double? credit_points;
+  final String? credit_points;
   @override
   final int? verification;
   @override
@@ -665,7 +665,7 @@ abstract class _UserModel implements UserModel {
       final int? country_id,
       final String? SIA_number,
       final String? FFTir_license_number,
-      final double? credit_points,
+      final String? credit_points,
       final int? verification,
       final int? payment_verification,
       final int? status,
@@ -710,7 +710,7 @@ abstract class _UserModel implements UserModel {
   @override
   String? get FFTir_license_number;
   @override
-  double? get credit_points;
+  String? get credit_points;
   @override
   int? get verification;
   @override

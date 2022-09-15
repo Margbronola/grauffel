@@ -55,7 +55,7 @@ class SubmitionView extends StatelessWidget {
                             ),
                             verticalSpaceSmall(),
                             Text(
-                              model.bookedModel.name!,
+                              model.bookedModel.name ?? "",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ProductSans',
@@ -103,8 +103,9 @@ class SubmitionView extends StatelessWidget {
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    image:
-                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                    image: e.image != null
+                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
+                                        : null,
                                     title: e.model!,
                                     brand: e.brand!.name!,
                                     reference: "Référence",
@@ -116,9 +117,10 @@ class SubmitionView extends StatelessWidget {
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    extraButton: e.perBox.toString(),
-                                    image:
-                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                    extraButton: e.qty.toString(),
+                                    image: e.image != null
+                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
+                                        : null,
                                     title: e.name!,
                                     brand: e.brand!.name!,
                                     reference: "Référence",
@@ -130,8 +132,9 @@ class SubmitionView extends StatelessWidget {
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    image:
-                                        "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                    image: e.image != null
+                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
+                                        : null,
                                     title: e.name!,
                                     brand: e.type.toString(),
                                     reference: "Référence",

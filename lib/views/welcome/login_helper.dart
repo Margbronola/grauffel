@@ -55,6 +55,7 @@ class LoginHelper {
               email: isTest ? testEmail : email,
               password: isTest ? testPasswotd : password)
           .then((value) async {
+        print(value);
         if (value != null) {
           await _authenticationService
               .login(firebase_token: value, device_name: _deviceName)

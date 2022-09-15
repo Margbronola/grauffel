@@ -1,7 +1,11 @@
 import 'dart:convert';
 
 import 'package:egczacademy/models/activity_model.dart';
+import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:egczacademy/models/book_cell_model.dart';
 import 'package:egczacademy/models/booking_model.dart';
+import 'package:egczacademy/models/equipment_model.dart';
+import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
@@ -46,7 +50,7 @@ class BookingAPIService {
     try {
       final respo = await http
           .get(Uri.parse("$urlApi/bookings?client_id=$userId"), headers: {
-        "Accept": "application/json",
+        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
@@ -80,7 +84,7 @@ class BookingAPIService {
   Future<void> fetchBookable({required String token}) async {
     try {
       final respo = await http.get(Uri.parse("$urlApi/activities"), headers: {
-        "Accept": "application/json",
+        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
@@ -161,7 +165,7 @@ class BookingAPIService {
           Uri.parse(
               "$urlApi/activity/$activity_id/timetable?date=${date.month}/${date.day}/${date.year}"),
           headers: {
-            "Accept": "application/json",
+            "Content-Type": "application/json",
             "Authorization": "Bearer $token",
           });
       if (respo.statusCode == 200) {
@@ -193,22 +197,25 @@ class BookingAPIService {
     required DateTime date,
     required String time,
     required int activityId,
-    required List<Map> guns,
-    required List<Map> ammunitions,
-    required List<Map> equipments,
+    required List<GunModel> guns,
+    required List<AmmunitionsModel> ammunitions,
+    required List<EquipmentModel> equipments,
   }) async {
+    print(activityId);
     try {
-      final respo = await http.post(Uri.parse("$urlApi/book/cell"), headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer $token",
-      }, body: {
-        "date": "${date.year}-${date.month}-${date.day}",
-        "time": time.split("-")[0],
-        "activity_id": activityId.toString(),
-        "guns": guns.toString(),
-        "ammunitions": ammunitions.toString(),
-        "equipments": equipments.toString()
-      });
+      final respo = await http.post(Uri.parse("$urlApi/book/cell"),
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer $token",
+          },
+          body: json.encode(BookCellModel(
+                  date: "${date.year}-${date.month}-${date.day}",
+                  time: time.split("-")[0],
+                  activity_id: activityId,
+                  guns: guns,
+                  ammunition: ammunitions,
+                  equipements: equipments)
+              .toJson()));
       if (respo.statusCode == 200) {
         print("book pass");
 
@@ -225,6 +232,7 @@ class BookingAPIService {
       } else {
         print(respo.body);
         print("SERVER FAIL");
+        return false;
       }
     } catch (e) {
       print(e);
