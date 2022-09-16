@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import '../../../models/reserve_model.dart';
@@ -34,7 +35,7 @@ class ReservationList extends StatelessWidget {
                               itemBuilder: (context, index) => ReserveCard(
                                   ontap: () {
                                     if (model.bookables[index].name ==
-                                        "Alvéoles") {
+                                        alveoles) {
                                       model.navigateToReservationCell();
                                     } else {
                                       model.navigateToReservation(

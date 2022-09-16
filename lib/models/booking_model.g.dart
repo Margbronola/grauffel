@@ -13,6 +13,7 @@ _$_BookingModel _$$_BookingModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       client_id: json['client_id'] as int?,
       activity_id: json['activity_id'] as int?,
+      description: json['description'] as String?,
       start: json['start'] == null
           ? null
           : DateTime.parse(json['start'] as String),
@@ -53,9 +54,6 @@ _$_BookingModel _$$_BookingModelFromJson(Map<String, dynamic> json) =>
       bookable: json['bookable'] == null
           ? null
           : ActivityModel.fromJson(json['bookable'] as Map<String, dynamic>),
-      activity: json['activity'] == null
-          ? null
-          : ActivityModel.fromJson(json['activity'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_BookingModelToJson(_$_BookingModel instance) =>
@@ -65,6 +63,7 @@ Map<String, dynamic> _$$_BookingModelToJson(_$_BookingModel instance) =>
       'name': instance.name,
       'client_id': instance.client_id,
       'activity_id': instance.activity_id,
+      'description': instance.description,
       'start': instance.start?.toIso8601String(),
       'end': instance.end?.toIso8601String(),
       'cell_loc': instance.cell_loc,
@@ -90,5 +89,4 @@ Map<String, dynamic> _$$_BookingModelToJson(_$_BookingModel instance) =>
       'guns': instance.guns,
       'equipements': instance.equipements,
       'bookable': instance.bookable,
-      'activity': instance.activity,
     };

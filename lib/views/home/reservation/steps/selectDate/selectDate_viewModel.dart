@@ -10,7 +10,6 @@ import 'package:quiver/time.dart';
 import 'package:stacked/stacked.dart';
 import 'package:intl/intl.dart';
 import '../../../../../app/app.locator.dart';
-import '../../../../../app/global.dart';
 
 class SelectDateViewModel extends ReactiveViewModel {
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
@@ -83,14 +82,8 @@ class SelectDateViewModel extends ReactiveViewModel {
         1;
 
     setBusy(true);
-    print(_bookingService.getselectedBookable!.name == courseTSV);
-    if (_bookingService.getselectedBookable!.name == courseTSV) {
-      // _bookingAPIService.courseSetupTime(
-      //     courses: _courseAPIService.courses!,
-      //     date: _bookingService.getselectedDate);
-    } else {
-      await fetchBookableActivity(DateTime.now());
-    }
+    print(_bookingService.getselectedBookable!.status == 2);
+    await fetchBookableActivity(DateTime.now());
 
     setBusy(false);
   }
@@ -101,12 +94,7 @@ class SelectDateViewModel extends ReactiveViewModel {
       print("yes");
     } else {
       _bookingService.setSelectedDate = dateTime;
-      if (_bookingService.getselectedBookable!.name == courseTSV) {
-        // _bookingAPIService.courseSetupTime(
-        //     courses: _courseAPIService.courses!, date: dateTime);
-      } else {
-        await fetchBookableActivity(dateTime);
-      }
+      await fetchBookableActivity(dateTime);
     }
     notifyListeners();
   }

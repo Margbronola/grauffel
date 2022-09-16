@@ -35,6 +35,10 @@ mixin _$ActivityModel {
   bool? get has_relation => throw _privateConstructorUsedError;
   bool? get has_salle => throw _privateConstructorUsedError;
   bool? get is_active => throw _privateConstructorUsedError;
+  String? get date_from => throw _privateConstructorUsedError;
+  String? get date_to => throw _privateConstructorUsedError;
+  String? get start_time => throw _privateConstructorUsedError;
+  String? get end_time => throw _privateConstructorUsedError;
   List<ActivitySalleModel>? get activitysalle =>
       throw _privateConstructorUsedError;
   List<SalleModel>? get salles => throw _privateConstructorUsedError;
@@ -66,6 +70,10 @@ abstract class $ActivityModelCopyWith<$Res> {
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      String? date_from,
+      String? date_to,
+      String? start_time,
+      String? end_time,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 }
@@ -96,6 +104,10 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? has_relation = freezed,
     Object? has_salle = freezed,
     Object? is_active = freezed,
+    Object? date_from = freezed,
+    Object? date_to = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -160,6 +172,22 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      date_from: date_from == freezed
+          ? _value.date_from
+          : date_from // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date_to: date_to == freezed
+          ? _value.date_to
+          : date_to // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: start_time == freezed
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: end_time == freezed
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
       activitysalle: activitysalle == freezed
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -195,6 +223,10 @@ abstract class _$$_ActivityModelCopyWith<$Res>
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      String? date_from,
+      String? date_to,
+      String? start_time,
+      String? end_time,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 }
@@ -227,6 +259,10 @@ class __$$_ActivityModelCopyWithImpl<$Res>
     Object? has_relation = freezed,
     Object? has_salle = freezed,
     Object? is_active = freezed,
+    Object? date_from = freezed,
+    Object? date_to = freezed,
+    Object? start_time = freezed,
+    Object? end_time = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -291,6 +327,22 @@ class __$$_ActivityModelCopyWithImpl<$Res>
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      date_from: date_from == freezed
+          ? _value.date_from
+          : date_from // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date_to: date_to == freezed
+          ? _value.date_to
+          : date_to // ignore: cast_nullable_to_non_nullable
+              as String?,
+      start_time: start_time == freezed
+          ? _value.start_time
+          : start_time // ignore: cast_nullable_to_non_nullable
+              as String?,
+      end_time: end_time == freezed
+          ? _value.end_time
+          : end_time // ignore: cast_nullable_to_non_nullable
+              as String?,
       activitysalle: activitysalle == freezed
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -322,6 +374,10 @@ class _$_ActivityModel implements _ActivityModel {
       this.has_relation,
       this.has_salle,
       this.is_active,
+      this.date_from,
+      this.date_to,
+      this.start_time,
+      this.end_time,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles})
       : _activitysalle = activitysalle,
@@ -360,6 +416,14 @@ class _$_ActivityModel implements _ActivityModel {
   final bool? has_salle;
   @override
   final bool? is_active;
+  @override
+  final String? date_from;
+  @override
+  final String? date_to;
+  @override
+  final String? start_time;
+  @override
+  final String? end_time;
   final List<ActivitySalleModel>? _activitysalle;
   @override
   List<ActivitySalleModel>? get activitysalle {
@@ -380,7 +444,7 @@ class _$_ActivityModel implements _ActivityModel {
 
   @override
   String toString() {
-    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, activitysalle: $activitysalle, salles: $salles)';
+    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, activitysalle: $activitysalle, salles: $salles)';
   }
 
   @override
@@ -410,6 +474,11 @@ class _$_ActivityModel implements _ActivityModel {
                 .equals(other.has_relation, has_relation) &&
             const DeepCollectionEquality().equals(other.has_salle, has_salle) &&
             const DeepCollectionEquality().equals(other.is_active, is_active) &&
+            const DeepCollectionEquality().equals(other.date_from, date_from) &&
+            const DeepCollectionEquality().equals(other.date_to, date_to) &&
+            const DeepCollectionEquality()
+                .equals(other.start_time, start_time) &&
+            const DeepCollectionEquality().equals(other.end_time, end_time) &&
             const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality().equals(other._salles, _salles));
@@ -417,25 +486,30 @@ class _$_ActivityModel implements _ActivityModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(capacity),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(free_duration),
-      const DeepCollectionEquality().hash(course_duration),
-      const DeepCollectionEquality().hash(competition_duration),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(has_relation),
-      const DeepCollectionEquality().hash(has_salle),
-      const DeepCollectionEquality().hash(is_active),
-      const DeepCollectionEquality().hash(_activitysalle),
-      const DeepCollectionEquality().hash(_salles));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(description),
+        const DeepCollectionEquality().hash(capacity),
+        const DeepCollectionEquality().hash(price),
+        const DeepCollectionEquality().hash(free_duration),
+        const DeepCollectionEquality().hash(course_duration),
+        const DeepCollectionEquality().hash(competition_duration),
+        const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(image),
+        const DeepCollectionEquality().hash(created_at),
+        const DeepCollectionEquality().hash(updated_at),
+        const DeepCollectionEquality().hash(has_relation),
+        const DeepCollectionEquality().hash(has_salle),
+        const DeepCollectionEquality().hash(is_active),
+        const DeepCollectionEquality().hash(date_from),
+        const DeepCollectionEquality().hash(date_to),
+        const DeepCollectionEquality().hash(start_time),
+        const DeepCollectionEquality().hash(end_time),
+        const DeepCollectionEquality().hash(_activitysalle),
+        const DeepCollectionEquality().hash(_salles)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -467,6 +541,10 @@ abstract class _ActivityModel implements ActivityModel {
       final bool? has_relation,
       final bool? has_salle,
       final bool? is_active,
+      final String? date_from,
+      final String? date_to,
+      final String? start_time,
+      final String? end_time,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles}) = _$_ActivityModel;
 
@@ -503,6 +581,14 @@ abstract class _ActivityModel implements ActivityModel {
   bool? get has_salle;
   @override
   bool? get is_active;
+  @override
+  String? get date_from;
+  @override
+  String? get date_to;
+  @override
+  String? get start_time;
+  @override
+  String? get end_time;
   @override
   List<ActivitySalleModel>? get activitysalle;
   @override

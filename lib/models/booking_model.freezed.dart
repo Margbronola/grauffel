@@ -25,6 +25,7 @@ mixin _$BookingModel {
   String? get name => throw _privateConstructorUsedError;
   int? get client_id => throw _privateConstructorUsedError;
   int? get activity_id => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   DateTime? get start => throw _privateConstructorUsedError;
   DateTime? get end => throw _privateConstructorUsedError;
   int? get cell_loc => throw _privateConstructorUsedError;
@@ -50,7 +51,6 @@ mixin _$BookingModel {
   List<GunModel>? get guns => throw _privateConstructorUsedError;
   List<EquipmentModel>? get equipements => throw _privateConstructorUsedError;
   ActivityModel? get bookable => throw _privateConstructorUsedError;
-  ActivityModel? get activity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,6 +69,7 @@ abstract class $BookingModelCopyWith<$Res> {
       String? name,
       int? client_id,
       int? activity_id,
+      String? description,
       DateTime? start,
       DateTime? end,
       int? cell_loc,
@@ -93,11 +94,9 @@ abstract class $BookingModelCopyWith<$Res> {
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
-      ActivityModel? bookable,
-      ActivityModel? activity});
+      ActivityModel? bookable});
 
   $ActivityModelCopyWith<$Res>? get bookable;
-  $ActivityModelCopyWith<$Res>? get activity;
 }
 
 /// @nodoc
@@ -115,6 +114,7 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
     Object? name = freezed,
     Object? client_id = freezed,
     Object? activity_id = freezed,
+    Object? description = freezed,
     Object? start = freezed,
     Object? end = freezed,
     Object? cell_loc = freezed,
@@ -140,7 +140,6 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
     Object? guns = freezed,
     Object? equipements = freezed,
     Object? bookable = freezed,
-    Object? activity = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -163,6 +162,10 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       start: start == freezed
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -263,10 +266,6 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
-      activity: activity == freezed
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as ActivityModel?,
     ));
   }
 
@@ -278,17 +277,6 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
 
     return $ActivityModelCopyWith<$Res>(_value.bookable!, (value) {
       return _then(_value.copyWith(bookable: value));
-    });
-  }
-
-  @override
-  $ActivityModelCopyWith<$Res>? get activity {
-    if (_value.activity == null) {
-      return null;
-    }
-
-    return $ActivityModelCopyWith<$Res>(_value.activity!, (value) {
-      return _then(_value.copyWith(activity: value));
     });
   }
 }
@@ -306,6 +294,7 @@ abstract class _$$_BookingModelCopyWith<$Res>
       String? name,
       int? client_id,
       int? activity_id,
+      String? description,
       DateTime? start,
       DateTime? end,
       int? cell_loc,
@@ -330,13 +319,10 @@ abstract class _$$_BookingModelCopyWith<$Res>
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
-      ActivityModel? bookable,
-      ActivityModel? activity});
+      ActivityModel? bookable});
 
   @override
   $ActivityModelCopyWith<$Res>? get bookable;
-  @override
-  $ActivityModelCopyWith<$Res>? get activity;
 }
 
 /// @nodoc
@@ -357,6 +343,7 @@ class __$$_BookingModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? client_id = freezed,
     Object? activity_id = freezed,
+    Object? description = freezed,
     Object? start = freezed,
     Object? end = freezed,
     Object? cell_loc = freezed,
@@ -382,7 +369,6 @@ class __$$_BookingModelCopyWithImpl<$Res>
     Object? guns = freezed,
     Object? equipements = freezed,
     Object? bookable = freezed,
-    Object? activity = freezed,
   }) {
     return _then(_$_BookingModel(
       id: id == freezed
@@ -405,6 +391,10 @@ class __$$_BookingModelCopyWithImpl<$Res>
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       start: start == freezed
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -505,10 +495,6 @@ class __$$_BookingModelCopyWithImpl<$Res>
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
-      activity: activity == freezed
-          ? _value.activity
-          : activity // ignore: cast_nullable_to_non_nullable
-              as ActivityModel?,
     ));
   }
 }
@@ -522,6 +508,7 @@ class _$_BookingModel implements _BookingModel {
       this.name,
       this.client_id,
       this.activity_id,
+      this.description,
       this.start,
       this.end,
       this.cell_loc,
@@ -546,8 +533,7 @@ class _$_BookingModel implements _BookingModel {
       final List<AmmunitionsModel>? ammunitions,
       final List<GunModel>? guns,
       final List<EquipmentModel>? equipements,
-      this.bookable,
-      this.activity})
+      this.bookable})
       : _ammunitions = ammunitions,
         _guns = guns,
         _equipements = equipements;
@@ -565,6 +551,8 @@ class _$_BookingModel implements _BookingModel {
   final int? client_id;
   @override
   final int? activity_id;
+  @override
+  final String? description;
   @override
   final DateTime? start;
   @override
@@ -636,12 +624,10 @@ class _$_BookingModel implements _BookingModel {
 
   @override
   final ActivityModel? bookable;
-  @override
-  final ActivityModel? activity;
 
   @override
   String toString() {
-    return 'BookingModel(id: $id, bookable_id: $bookable_id, name: $name, client_id: $client_id, activity_id: $activity_id, start: $start, end: $end, cell_loc: $cell_loc, status: $status, duration: $duration, bookable_cost: $bookable_cost, total_gun_cost: $total_gun_cost, total_ammunition_cost: $total_ammunition_cost, total_equipment_cost: $total_equipment_cost, tax_included: $tax_included, sub_total: $sub_total, gun_discount: $gun_discount, ammunition_discount: $ammunition_discount, equipment_discount: $equipment_discount, total_discount: $total_discount, total_cost: $total_cost, purchase_number: $purchase_number, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, morph_class: $morph_class, ammunitions: $ammunitions, guns: $guns, equipements: $equipements, bookable: $bookable, activity: $activity)';
+    return 'BookingModel(id: $id, bookable_id: $bookable_id, name: $name, client_id: $client_id, activity_id: $activity_id, description: $description, start: $start, end: $end, cell_loc: $cell_loc, status: $status, duration: $duration, bookable_cost: $bookable_cost, total_gun_cost: $total_gun_cost, total_ammunition_cost: $total_ammunition_cost, total_equipment_cost: $total_equipment_cost, tax_included: $tax_included, sub_total: $sub_total, gun_discount: $gun_discount, ammunition_discount: $ammunition_discount, equipment_discount: $equipment_discount, total_discount: $total_discount, total_cost: $total_cost, purchase_number: $purchase_number, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, morph_class: $morph_class, ammunitions: $ammunitions, guns: $guns, equipements: $equipements, bookable: $bookable)';
   }
 
   @override
@@ -656,6 +642,8 @@ class _$_BookingModel implements _BookingModel {
             const DeepCollectionEquality().equals(other.client_id, client_id) &&
             const DeepCollectionEquality()
                 .equals(other.activity_id, activity_id) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.start, start) &&
             const DeepCollectionEquality().equals(other.end, end) &&
             const DeepCollectionEquality().equals(other.cell_loc, cell_loc) &&
@@ -697,8 +685,7 @@ class _$_BookingModel implements _BookingModel {
             const DeepCollectionEquality().equals(other._guns, _guns) &&
             const DeepCollectionEquality()
                 .equals(other._equipements, _equipements) &&
-            const DeepCollectionEquality().equals(other.bookable, bookable) &&
-            const DeepCollectionEquality().equals(other.activity, activity));
+            const DeepCollectionEquality().equals(other.bookable, bookable));
   }
 
   @JsonKey(ignore: true)
@@ -710,6 +697,7 @@ class _$_BookingModel implements _BookingModel {
         const DeepCollectionEquality().hash(name),
         const DeepCollectionEquality().hash(client_id),
         const DeepCollectionEquality().hash(activity_id),
+        const DeepCollectionEquality().hash(description),
         const DeepCollectionEquality().hash(start),
         const DeepCollectionEquality().hash(end),
         const DeepCollectionEquality().hash(cell_loc),
@@ -734,8 +722,7 @@ class _$_BookingModel implements _BookingModel {
         const DeepCollectionEquality().hash(_ammunitions),
         const DeepCollectionEquality().hash(_guns),
         const DeepCollectionEquality().hash(_equipements),
-        const DeepCollectionEquality().hash(bookable),
-        const DeepCollectionEquality().hash(activity)
+        const DeepCollectionEquality().hash(bookable)
       ]);
 
   @JsonKey(ignore: true)
@@ -758,6 +745,7 @@ abstract class _BookingModel implements BookingModel {
       final String? name,
       final int? client_id,
       final int? activity_id,
+      final String? description,
       final DateTime? start,
       final DateTime? end,
       final int? cell_loc,
@@ -782,8 +770,7 @@ abstract class _BookingModel implements BookingModel {
       final List<AmmunitionsModel>? ammunitions,
       final List<GunModel>? guns,
       final List<EquipmentModel>? equipements,
-      final ActivityModel? bookable,
-      final ActivityModel? activity}) = _$_BookingModel;
+      final ActivityModel? bookable}) = _$_BookingModel;
 
   factory _BookingModel.fromJson(Map<String, dynamic> json) =
       _$_BookingModel.fromJson;
@@ -798,6 +785,8 @@ abstract class _BookingModel implements BookingModel {
   int? get client_id;
   @override
   int? get activity_id;
+  @override
+  String? get description;
   @override
   DateTime? get start;
   @override
@@ -848,8 +837,6 @@ abstract class _BookingModel implements BookingModel {
   List<EquipmentModel>? get equipements;
   @override
   ActivityModel? get bookable;
-  @override
-  ActivityModel? get activity;
   @override
   @JsonKey(ignore: true)
   _$$_BookingModelCopyWith<_$_BookingModel> get copyWith =>

@@ -1,20 +1,17 @@
-import 'package:egczacademy/models/course_model.dart';
-import '../models/paging_model.dart';
-
 class CourseAPIService {
-  final int _perPage = 10;
-  PagingModel? _pagingModel;
-  PagingModel? get pagingModel => _pagingModel;
-  List<CourseModel>? _courses;
-  List<CourseModel>? get courses => _courses;
+  // final int _perPage = 10;
+  // PagingModel? _pagingModel;
+  // PagingModel? get pagingModel => _pagingModel;
+  // List<CourseModel>? _courses;
+  // List<CourseModel>? get courses => _courses;
 
-  void reset() {
-    if (_courses != null) {
-      print("RESETING");
-      _courses = null;
-      _pagingModel = null;
-    }
-  }
+  // void reset() {
+  //   if (_courses != null) {
+  //     print("RESETING");
+  //     _courses = null;
+  //     _pagingModel = null;
+  //   }
+  // }
 
   // Future loadMore({required String token, required int typeId}) async {
   //   if (pagingModel != null) {
@@ -28,43 +25,5 @@ class CourseAPIService {
   //       );
   //     }
   //   }
-  // }
-
-  // Future<void> fetch({required String token}) async {
-  //   try {
-  //     final respo = await http
-  //         .get(Uri.parse("$urlApi/courses?per_page=$_perPage"), headers: {
-  //       "Content-Type": "application/json",
-  //       "Authorization": "Bearer $token",
-  //     });
-  //     print("FETCH COURSES");
-  //     if (respo.statusCode == 200) {
-  //       var data = json.decode(respo.body);
-  //       try {
-  //         List fetchCouresList = data['data'];
-  //         _courses =
-  //             fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
-  //         // // _pagingModel = PagingModel(
-  //         // //   total: data['total'],
-  //         // //   current_page: data['current_page'],
-  //         // //   first_page_url: data['first_page_url'],
-  //         // //   next_page_url: data['next_page_url'],
-  //         // //   prev_page_url: data['prev_page_url'],
-
-  //         // // );
-
-  //       } catch (e) {
-  //         print(e);
-  //         print("FROMJSON FAIL");
-  //       }
-  //     } else {
-  //       print(respo.body);
-  //       print("SERVER FAIL");
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //     print("FETCH COURSES FAIL");
-  //   }
-  //   return;
   // }
 }

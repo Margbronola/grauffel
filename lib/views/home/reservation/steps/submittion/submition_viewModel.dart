@@ -27,6 +27,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   FocusNode commentFocusNode = FocusNode();
 
   ActivityModel get bookedModel => _bookingService.getselectedBookable!;
+  bool get isCourse => _bookingService.getselectedBookable!.status == 2;
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;
@@ -57,6 +58,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   bool isCommentFucos = false;
 
   void init() {
+    print('its not course');
     commentFocusNode.addListener(() {
       isCommentFucos = commentFocusNode.hasFocus;
       notifyListeners();
@@ -64,13 +66,34 @@ class SubmitionViewModel extends ReactiveViewModel {
 
     time();
     date();
-    print(_bookingService.getselectedGun);
   }
 
   @override
   void dispose() {
     _bookingService.dispose();
     super.dispose();
+  }
+
+  Future<bool> reserveBook() async {
+    return await _bookingApiService.book(
+      token: _userService.token!,
+      date: _bookingService.getselectedDate,
+      time: _bookingService.getselectedTimes!.time!,
+      activityId: _bookingService.getselectedBookable!.id!,
+      guns: _bookingService.getselectedGun,
+      ammunitions: _bookingService.getselectedAmmunition,
+      equipments: _bookingService.getselectedEquipment,
+    );
+  }
+
+  Future<bool> reserveCourse() async {
+    return await _bookingApiService.bookCourse(
+      course_id: _bookingService.getselectedBookable!.id!,
+      token: _userService.token!,
+      guns: _bookingService.getselectedGun,
+      ammunitions: _bookingService.getselectedAmmunition,
+      equipments: _bookingService.getselectedEquipment,
+    );
   }
 
   void reserver() async {
@@ -105,25 +128,19 @@ class SubmitionViewModel extends ReactiveViewModel {
     print("total: $total");
     print(user.credit_points!);
 
-    bool isBooked = await _bookingApiService.book(
-      token: _userService.token!,
-      date: _bookingService.getselectedDate,
-      time: _bookingService.getselectedTimes!.time!,
-      activityId: _bookingService.getselectedBookable!.id!,
-      guns: _bookingService.getselectedGun,
-      ammunitions: _bookingService.getselectedAmmunition,
-      equipments: _bookingService.getselectedEquipment,
-    );
+    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
 
     if (double.parse(user.credit_points!) >= total) {
       if (isBooked) {
         var response = await _dialogService.showCustomDialog(
             mainButtonTitle: "ok",
             variant: DialogType.reserve,
-            barrierDismissible: true);
+            barrierDismissible: false);
 
         if (response != null) {
           if (response.confirmed) {
+            _bookingApiService.fetchActivesAndPast(
+                _userService.token, _userService.user!.id.toString());
             _navigationService.back();
             _homePagingService.onTap(0);
           }
@@ -132,7 +149,7 @@ class SubmitionViewModel extends ReactiveViewModel {
         var response = await _dialogService.showCustomDialog(
             mainButtonTitle: "ok",
             variant: DialogType.reservefail,
-            barrierDismissible: true);
+            barrierDismissible: false);
 
         if (response != null) {
           if (response.confirmed) {

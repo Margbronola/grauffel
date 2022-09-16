@@ -27,9 +27,8 @@ class CourseModel with _$CourseModel {
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
-      // TypeModel? type,
-      List<String>? images,
-      List<String>? questions}) = _CourseModel;
+      TypeModel? type,
+      List<dynamic>? questions}) = _CourseModel;
 
   factory CourseModel.fromJson(Map<String, Object?> json) =>
       _$CourseModelFromJson(json);

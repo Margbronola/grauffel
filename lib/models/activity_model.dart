@@ -24,6 +24,10 @@ class ActivityModel with _$ActivityModel {
       bool? has_relation,
       bool? has_salle,
       bool? is_active,
+      String? date_from,
+      String? date_to,
+      String? start_time,
+      String? end_time,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles}) = _ActivityModel;
 

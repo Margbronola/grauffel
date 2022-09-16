@@ -64,10 +64,10 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             verticalSpaceMedium(),
-            Text(
-              widget.user.first_name!,
-              style: TextStyle(fontFamily: 'ProductSans', fontSize: 22.sp),
-            ),
+            // Text(
+            //   widget.user.first_name!,
+            //   style: TextStyle(fontFamily: 'ProductSans', fontSize: 22.sp),
+            // ),
             Text(
               "Vous avez réservé".toUpperCase(),
               style: TextStyle(fontFamily: 'ProductSans', fontSize: 22.sp),
@@ -136,8 +136,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                     .map((e) => Padding(
                           padding: EdgeInsets.only(bottom: 10.h),
                           child: ItemCard(
-                            image:
-                                "$urlServer/${e.image!.path}/${e.image!.filename}",
+                            image: e.image == null
+                                ? null
+                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
                             title: e.model!,
                             brand: e.brand!.name!,
                             reference: "Référence",
@@ -151,8 +152,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                           padding: EdgeInsets.only(bottom: 10.h),
                           child: ItemCard(
                             extraButton: e.qty.toString(),
-                            image:
-                                "$urlServer/${e.image!.path}/${e.image!.filename}",
+                            image: e.image == null
+                                ? null
+                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
                             title: e.name!,
                             brand: e.brand!.name!,
                             reference: "Référence",
@@ -164,8 +166,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                     .map((e) => Padding(
                           padding: EdgeInsets.only(bottom: 10.h),
                           child: ItemCard(
-                            image:
-                                "$urlServer/${e.image!.path}/${e.image!.filename}",
+                            image: e.image == null
+                                ? null
+                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
                             title: e.name!,
                             brand: e.type.toString(),
                             reference: "Référence",

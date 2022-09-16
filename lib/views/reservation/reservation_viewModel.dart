@@ -1,4 +1,3 @@
-import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
@@ -9,6 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
+import '../../models/booking_model.dart';
 import '../../services/document_api_service.dart';
 import '../../services/document_service.dart';
 
@@ -26,40 +26,19 @@ class ReservationViewModel extends BaseViewModel {
 
   UserModel get user => _userService.user!;
 
-  List<BookingModel>? actives = [];
-  List<BookingModel>? past = [];
+  List<BookingModel>? get actives => _bookingAPIService.actives;
+  List<BookingModel>? get past => _bookingAPIService.past;
 
   init() async {
-    if (_bookingAPIService.bookings != null) {
+    if (_bookingAPIService.bookings == null) {
       setBusy(true);
+      _bookingAPIService.fetchActivesAndPast(
+          _userService.token, _userService.user!.id.toString());
+      await _documentService.fetch(
+          userService: _userService, documentAPIService: _documentAPIService);
+      notifyListeners();
+      setBusy(false);
     }
-    await _bookingAPIService
-        .fetchMyBookings(
-            token: _userService.token!,
-            userId: _userService.user!.id.toString())
-        .whenComplete(() {
-      if (_bookingAPIService.bookings != null) {
-        actives = _bookingAPIService.bookings!
-            .where((e) => e.status_name!.toLowerCase() == "active")
-            .toList();
-        print("ACTIVES");
-        print(actives!.length);
-
-        past = _bookingAPIService.bookings!
-            .where((e) =>
-                e.status_name!.toLowerCase() == "done" ||
-                e.status_name!.toLowerCase() == "cancel")
-            .toList();
-
-        print(past);
-      }
-      print("Actives: ${actives!.length}");
-      print("Past: ${past!.length}");
-    });
-    await _documentService.fetch(
-        userService: _userService, documentAPIService: _documentAPIService);
-    notifyListeners();
-    setBusy(false);
   }
 
   void closeHelp() {
@@ -81,7 +60,9 @@ class ReservationViewModel extends BaseViewModel {
 
   void showCardDetails(int index, {bool isActive = false}) async {
     _navigationService.navigateToView(ReserveCardDetails(
-      bookingModel: isActive ? actives![index] : actives![index],
+      bookingModel: isActive
+          ? _bookingAPIService.actives![index]
+          : _bookingAPIService.actives![index],
       user: _userService.user!,
     ));
   }

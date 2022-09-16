@@ -39,10 +39,9 @@ mixin _$CourseModel {
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   int? get active_booking_count => throw _privateConstructorUsedError;
-  String? get status_name =>
-      throw _privateConstructorUsedError; // TypeModel? type,
-  List<String>? get images => throw _privateConstructorUsedError;
-  List<String>? get questions => throw _privateConstructorUsedError;
+  String? get status_name => throw _privateConstructorUsedError;
+  TypeModel? get type => throw _privateConstructorUsedError;
+  List<dynamic>? get questions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -76,8 +75,10 @@ abstract class $CourseModelCopyWith<$Res> {
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
-      List<String>? images,
-      List<String>? questions});
+      TypeModel? type,
+      List<dynamic>? questions});
+
+  $TypeModelCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -110,7 +111,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? updated_at = freezed,
     Object? active_booking_count = freezed,
     Object? status_name = freezed,
-    Object? images = freezed,
+    Object? type = freezed,
     Object? questions = freezed,
   }) {
     return _then(_value.copyWith(
@@ -194,15 +195,26 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TypeModel?,
       questions: questions == freezed
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
     ));
+  }
+
+  @override
+  $TypeModelCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $TypeModelCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value));
+    });
   }
 }
 
@@ -234,8 +246,11 @@ abstract class _$$_CourseModelCopyWith<$Res>
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
-      List<String>? images,
-      List<String>? questions});
+      TypeModel? type,
+      List<dynamic>? questions});
+
+  @override
+  $TypeModelCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -270,7 +285,7 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
     Object? active_booking_count = freezed,
     Object? status_name = freezed,
-    Object? images = freezed,
+    Object? type = freezed,
     Object? questions = freezed,
   }) {
     return _then(_$_CourseModel(
@@ -354,14 +369,14 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: images == freezed
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as TypeModel?,
       questions: questions == freezed
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<dynamic>?,
     ));
   }
 }
@@ -390,10 +405,9 @@ class _$_CourseModel implements _CourseModel {
       this.updated_at,
       this.active_booking_count,
       this.status_name,
-      final List<String>? images,
-      final List<String>? questions})
+      this.type,
+      final List<dynamic>? questions})
       : _period = period,
-        _images = images,
         _questions = questions;
 
   factory _$_CourseModel.fromJson(Map<String, dynamic> json) =>
@@ -446,20 +460,11 @@ class _$_CourseModel implements _CourseModel {
   final int? active_booking_count;
   @override
   final String? status_name;
-// TypeModel? type,
-  final List<String>? _images;
-// TypeModel? type,
   @override
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _questions;
+  final TypeModel? type;
+  final List<dynamic>? _questions;
   @override
-  List<String>? get questions {
+  List<dynamic>? get questions {
     final value = _questions;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -468,7 +473,7 @@ class _$_CourseModel implements _CourseModel {
 
   @override
   String toString() {
-    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, active_booking_count: $active_booking_count, status_name: $status_name, images: $images, questions: $questions)';
+    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, active_booking_count: $active_booking_count, status_name: $status_name, type: $type, questions: $questions)';
   }
 
   @override
@@ -504,7 +509,7 @@ class _$_CourseModel implements _CourseModel {
                 .equals(other.active_booking_count, active_booking_count) &&
             const DeepCollectionEquality()
                 .equals(other.status_name, status_name) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions));
   }
@@ -533,7 +538,7 @@ class _$_CourseModel implements _CourseModel {
         const DeepCollectionEquality().hash(updated_at),
         const DeepCollectionEquality().hash(active_booking_count),
         const DeepCollectionEquality().hash(status_name),
-        const DeepCollectionEquality().hash(_images),
+        const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(_questions)
       ]);
 
@@ -572,8 +577,8 @@ abstract class _CourseModel implements CourseModel {
       final DateTime? updated_at,
       final int? active_booking_count,
       final String? status_name,
-      final List<String>? images,
-      final List<String>? questions}) = _$_CourseModel;
+      final TypeModel? type,
+      final List<dynamic>? questions}) = _$_CourseModel;
 
   factory _CourseModel.fromJson(Map<String, dynamic> json) =
       _$_CourseModel.fromJson;
@@ -618,10 +623,10 @@ abstract class _CourseModel implements CourseModel {
   int? get active_booking_count;
   @override
   String? get status_name;
-  @override // TypeModel? type,
-  List<String>? get images;
   @override
-  List<String>? get questions;
+  TypeModel? get type;
+  @override
+  List<dynamic>? get questions;
   @override
   @JsonKey(ignore: true)
   _$$_CourseModelCopyWith<_$_CourseModel> get copyWith =>

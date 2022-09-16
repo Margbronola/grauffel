@@ -14,8 +14,8 @@ class BookCellModel with _$BookCellModel {
       String? time,
       int? activity_id,
       List<GunModel>? guns,
-      List<AmmunitionsModel>? ammunition,
-      List<EquipmentModel>? equipements
+      List<AmmunitionsModel>? ammunitions,
+      List<EquipmentModel>? equipments
 
 // activity
       }) = _BookCellModel;

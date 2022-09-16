@@ -86,13 +86,15 @@ class SubmitionView extends StatelessWidget {
                               width: 27.w,
                             ),
                             verticalSpaceSmall(),
-                            Text(
-                              model.time(),
-                              style: TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13.sp),
-                            )
+                            model.bookedModel.name == courseTSV
+                                ? const SizedBox()
+                                : Text(
+                                    model.time(),
+                                    style: TextStyle(
+                                        fontFamily: 'ProductSans',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13.sp),
+                                  )
                           ],
                         ),
                       ],

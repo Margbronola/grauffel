@@ -3,14 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-import 'package:egczacademy/views/home/reservation/steps/selectDate/selectDate_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/equipment_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/guns_list_view.dart/armore_view.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/submition_view.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'reserveSteps_viewModel.dart';
-import 'submittion/ammunitionView/ammunition_view.dart';
 
 class ReserveStepsView extends StatelessWidget {
   const ReserveStepsView({
@@ -20,6 +15,7 @@ class ReserveStepsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReserveStepsViewModel>.reactive(
+      onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         body: Container(
           color: kcWhite,
@@ -79,36 +75,7 @@ class ReserveStepsView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        square(
-                            pageIndex: model.selectedIndex,
-                            index: 0,
-                            title: "Date"),
-                        divider(
-                          pageIndex: model.selectedIndex,
-                          index: 0,
-                        ),
-                        square(
-                            pageIndex: model.selectedIndex,
-                            index: 1,
-                            title: "Arme"),
-                        divider(
-                          pageIndex: model.selectedIndex,
-                          index: 1,
-                        ),
-                        square(
-                            pageIndex: model.selectedIndex,
-                            index: 2,
-                            title: "Munitons"),
-                        divider(
-                          pageIndex: model.selectedIndex,
-                          index: 2,
-                        ),
-                        square(
-                            pageIndex: model.selectedIndex,
-                            index: 3,
-                            title: "Equipement"),
-                      ],
+                      children: boxes(model),
                     ),
                   ],
                 ),
@@ -118,38 +85,7 @@ class ReserveStepsView extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   controller: model.pageController,
                   onPageChanged: model.nextIndex,
-                  children: <Widget>[
-                    SelectDateView(
-                      onTap: () {
-                        model.submitEvents(1);
-                      },
-                    ),
-                    ArmoreView(
-                      onTap: () {
-                        model.submitEvents(2);
-                      },
-                      skipTap: () {
-                        model.skipPage(2);
-                      },
-                    ),
-                    AmmunitionView(
-                      onTap: () {
-                        model.submitEvents(3);
-                      },
-                      skipTap: () {
-                        model.skipPage(3);
-                      },
-                    ),
-                    EquipmentView(
-                      onTap: () {
-                        model.submitEvents(4);
-                      },
-                      skipTap: () {
-                        model.skipPage(4);
-                      },
-                    ),
-                    const SubmitionView()
-                  ],
+                  children: model.pages,
                 ),
               ),
             ],
@@ -158,6 +94,45 @@ class ReserveStepsView extends StatelessWidget {
       ),
       viewModelBuilder: () => ReserveStepsViewModel(),
     );
+  }
+
+  List<Widget> boxes(ReserveStepsViewModel model) {
+    List<Widget> data = [];
+    if (model.isCourse) {
+      data = [
+        square(pageIndex: model.selectedIndex, index: 0, title: "Arme"),
+        divider(
+          pageIndex: model.selectedIndex,
+          index: 0,
+        ),
+        square(pageIndex: model.selectedIndex, index: 1, title: "Munitons"),
+        divider(
+          pageIndex: model.selectedIndex,
+          index: 1,
+        ),
+        square(pageIndex: model.selectedIndex, index: 2, title: "Equipement"),
+      ];
+    } else {
+      data = [
+        square(pageIndex: model.selectedIndex, index: 0, title: "Date"),
+        divider(
+          pageIndex: model.selectedIndex,
+          index: 0,
+        ),
+        square(pageIndex: model.selectedIndex, index: 1, title: "Arme"),
+        divider(
+          pageIndex: model.selectedIndex,
+          index: 1,
+        ),
+        square(pageIndex: model.selectedIndex, index: 2, title: "Munitons"),
+        divider(
+          pageIndex: model.selectedIndex,
+          index: 2,
+        ),
+        square(pageIndex: model.selectedIndex, index: 3, title: "Equipement"),
+      ];
+    }
+    return data;
   }
 
   Widget square(

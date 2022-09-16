@@ -27,6 +27,10 @@ _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
       has_relation: json['has_relation'] as bool?,
       has_salle: json['has_salle'] as bool?,
       is_active: json['is_active'] as bool?,
+      date_from: json['date_from'] as String?,
+      date_to: json['date_to'] as String?,
+      start_time: json['start_time'] as String?,
+      end_time: json['end_time'] as String?,
       activitysalle: (json['activitysalle'] as List<dynamic>?)
           ?.map((e) => ActivitySalleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -52,6 +56,10 @@ Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
       'has_relation': instance.has_relation,
       'has_salle': instance.has_salle,
       'is_active': instance.is_active,
+      'date_from': instance.date_from,
+      'date_to': instance.date_to,
+      'start_time': instance.start_time,
+      'end_time': instance.end_time,
       'activitysalle': instance.activitysalle,
       'salles': instance.salles,
     };

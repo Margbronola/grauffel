@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/book_cell_model.dart';
+import 'package:egczacademy/models/book_course_model.dart';
 import 'package:egczacademy/models/booking_model.dart';
+import 'package:egczacademy/models/course_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
@@ -16,10 +18,37 @@ class BookingAPIService {
   List<BookingModel>? get bookings => _bookings;
   List<ActivityModel> _bookable = [];
   List<ActivityModel>? get bookable => _bookable;
+
+  List<CourseModel> _bookableCourse = [];
+  List<CourseModel>? get bookableCourse => _bookableCourse;
+
   List<TimeModel>? _availableTime;
   List<TimeModel>? get availableTime => _availableTime;
   PagingModel? _pagingModel;
   final int _perPage = 10;
+
+  List<BookingModel>? actives = [];
+  List<BookingModel>? past = [];
+
+  fetchActivesAndPast(token, id) async {
+    await fetchMyBookings(token: token, userId: id).whenComplete(() {
+      if (bookings != null) {
+        actives = bookings!
+            .where((e) => e.status_name!.toLowerCase() == "active")
+            .toList();
+        print("ACTIVES");
+        print(actives!.length);
+
+        past = bookings!
+            .where((e) =>
+                e.status_name!.toLowerCase() == "done" ||
+                e.status_name!.toLowerCase() == "cancel")
+            .toList();
+      }
+      print("Actives: ${actives!.length}");
+      print("Past: ${past!.length}");
+    });
+  }
 
   // _bookable = [
   //   const BookableModel(
@@ -116,11 +145,23 @@ class BookingAPIService {
             }
           }
 
-          _bookable.add(ActivityModel(
-              image: "assets/images/course.jpg",
-              name: courseTSV,
-              description:
-                  "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"));
+          for (CourseModel x in _bookableCourse) {
+            x = x.copyWith(
+                description: x.description!
+                    .replaceAll("<p>", "")
+                    .replaceAll("</p>", ""));
+            _bookable.add(ActivityModel(
+                id: x.id,
+                image: "assets/images/course.jpg",
+                name: x.name,
+                start_time: x.start_time,
+                end_time: x.end_time,
+                date_from: x.date_from,
+                date_to: x.date_to,
+                price: x.price,
+                status: 2,
+                description: x.description));
+          }
           _bookable.add(ActivityModel(
               image: "assets/images/alv.jpg",
               name: alveoles,
@@ -139,20 +180,34 @@ class BookingAPIService {
     }
   }
 
-  // void courseSetupTime(
-  //     {required List<CourseModel> courses, required DateTime date}) {
-  //   print("courseSetup");
-  //   print(courses);
-
-  //   List<CourseModel> courseByDate = courses.where((element) {
-  //     return DateFormat.yMd().format(element.datetime!) ==
-  //         DateFormat.yMd().format(date);
-  //   }).toList();
-  //   _availableTime = courseByDate
-  //       .map((e) =>
-  //           TimeModel(avaiable: 1, time: "${e.start_time}:00-${e.end_time}:00"))
-  //       .toList();
-  // }
+  Future<void> fetch({required String token}) async {
+    try {
+      final respo =
+          await http.get(Uri.parse("$urlApi/active/courses"), headers: {
+        "Authorization": "Bearer $token",
+      });
+      print("FETCH COURSES");
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        try {
+          print(data);
+          List fetchCouresList = data;
+          _bookableCourse =
+              fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
+        } catch (e) {
+          print(e);
+          print("FROMJSON FAIL");
+        }
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+      }
+    } catch (e) {
+      print(e);
+      print("FETCH COURSES FAIL");
+    }
+    return;
+  }
 
   Future<void> fetchBookableActivity({
     required String token,
@@ -215,8 +270,52 @@ class BookingAPIService {
                   time: time.split("-")[0],
                   activity_id: activityId,
                   guns: guns,
-                  ammunition: ammunitions,
-                  equipements: equipments)
+                  ammunitions: ammunitions,
+                  equipments: equipments)
+              .toJson()));
+      if (respo.statusCode == 200) {
+        print("book pass");
+
+        var data = json.decode(respo.body);
+        print(data);
+        try {
+          print("BOOKING SEND");
+          print(data);
+        } catch (e) {
+          print(e);
+          print("FROMJSON FAIL");
+        }
+        return true;
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      print("FETCH BOOKIGNS FAIL");
+    }
+    return false;
+  }
+
+  Future<bool> bookCourse({
+    required int course_id,
+    required String token,
+    required List<GunModel> guns,
+    required List<AmmunitionsModel> ammunitions,
+    required List<EquipmentModel> equipments,
+  }) async {
+    try {
+      final respo = await http.post(Uri.parse("$urlApi/book/course"),
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer $token",
+          },
+          body: json.encode(BookCourseModel(
+                  course_id: course_id,
+                  guns: guns,
+                  ammunitions: ammunitions,
+                  equipments: equipments)
               .toJson()));
       if (respo.statusCode == 200) {
         print("book pass");

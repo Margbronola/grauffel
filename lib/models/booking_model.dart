@@ -15,6 +15,7 @@ class BookingModel with _$BookingModel {
     String? name,
     int? client_id,
     int? activity_id,
+    String? description,
     DateTime? start,
     DateTime? end,
     int? cell_loc,
@@ -40,7 +41,6 @@ class BookingModel with _$BookingModel {
     List<GunModel>? guns,
     List<EquipmentModel>? equipements,
     ActivityModel? bookable,
-    ActivityModel? activity,
     // bool? has_armoury,
   }) = _BookingModel;
 

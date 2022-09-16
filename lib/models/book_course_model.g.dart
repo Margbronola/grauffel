@@ -1,16 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'book_cell_model.dart';
+part of 'book_course_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BookCellModel _$$_BookCellModelFromJson(Map<String, dynamic> json) =>
-    _$_BookCellModel(
-      date: json['date'] as String?,
-      time: json['time'] as String?,
-      activity_id: json['activity_id'] as int?,
+_$_BookCourseModel _$$_BookCourseModelFromJson(Map<String, dynamic> json) =>
+    _$_BookCourseModel(
+      course_id: json['course_id'] as int?,
       guns: (json['guns'] as List<dynamic>?)
           ?.map((e) => GunModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -22,11 +20,9 @@ _$_BookCellModel _$$_BookCellModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_BookCellModelToJson(_$_BookCellModel instance) =>
+Map<String, dynamic> _$$_BookCourseModelToJson(_$_BookCourseModel instance) =>
     <String, dynamic>{
-      'date': instance.date,
-      'time': instance.time,
-      'activity_id': instance.activity_id,
+      'course_id': instance.course_id,
       'guns': instance.guns,
       'ammunitions': instance.ammunitions,
       'equipments': instance.equipments,
