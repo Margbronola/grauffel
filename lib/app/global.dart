@@ -31,3 +31,10 @@ String convertToBase64(File file) {
 String courseTSV = "Cours tsv";
 String funShoot = "";
 String alveoles = "Alvéoles";
+
+String removeHtmlTags(String? text) => text == null
+    ? ""
+    : text
+        .replaceAll("<p>", "")
+        .replaceAll("</p>", "")
+        .replaceAll("<strong>", "");

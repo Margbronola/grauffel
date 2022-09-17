@@ -84,12 +84,15 @@ class BookingAPIService {
       });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+        // debugPrint(data);
         try {
           print("FETCH BOOKINGS PASS 2");
+
           List fetchBookings = data;
+
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
-          print(_bookings);
+
           // _pagingModel = PagingModel(
           //   current_page: data['current_page'],
           //   first_page_url: data['first_page_url'],
@@ -129,10 +132,7 @@ class BookingAPIService {
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {
               _bookable[x] = _bookable[x].copyWith(
-                  description: _bookable[x]
-                      .description!
-                      .replaceAll("<p>", "")
-                      .replaceAll("</p>", ""));
+                  description: removeHtmlTags(_bookable[x].description!));
             }
 
             if (_bookable[x].name!.toLowerCase().startsWith("tir")) {
@@ -146,10 +146,7 @@ class BookingAPIService {
           }
 
           for (CourseModel x in _bookableCourse) {
-            x = x.copyWith(
-                description: x.description!
-                    .replaceAll("<p>", "")
-                    .replaceAll("</p>", ""));
+            x = x.copyWith(description: removeHtmlTags(x.description!));
             _bookable.add(ActivityModel(
                 id: x.id,
                 image: "assets/images/course.jpg",

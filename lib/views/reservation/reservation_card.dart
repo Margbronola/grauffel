@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -119,20 +120,22 @@ class ReservationCard extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(
-                            booking.activity != null
-                                ? booking.activity!.description ?? ""
-                                : "",
-                            style:
-                                ThemeData().textTheme.headlineSmall!.copyWith(
-                                      color: Colors.grey,
-                                      fontFamily: 'ProductSans',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12.sp,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                            maxLines: 3,
-                          ),
+                          SizedBox(
+                            width: 220.w,
+                            child: Text(
+                              removeHtmlTags(booking.bookable!.description),
+                              style:
+                                  ThemeData().textTheme.headlineSmall!.copyWith(
+                                        color: Colors.grey,
+                                        fontFamily: 'ProductSans',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12.sp,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                              maxLines: 4,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          )
                         ],
                       ),
                     )
