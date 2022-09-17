@@ -1,8 +1,9 @@
-import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:localization/localization.dart';
+
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
@@ -11,11 +12,14 @@ class ReservationCard extends StatelessWidget {
   final BookingModel booking;
   final bool isActive;
   final Function()? onTap;
+  final Function()? cancelBook;
+
   const ReservationCard({
     Key? key,
     required this.booking,
     this.isActive = false,
-    this.onTap,
+    required this.onTap,
+    required this.cancelBook,
   }) : super(key: key);
 
   @override
@@ -145,18 +149,13 @@ class ReservationCard extends StatelessWidget {
               !isActive
                   ? const SizedBox()
                   : Positioned(
-                      bottom: 15,
+                      bottom: 5,
                       right: 0,
-                      child: Container(
-                        height: 29.h,
-                        width: 91.w,
-                        decoration: const BoxDecoration(
-                            // color: buttonColor,
-                            borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(5.0),
-                          bottomRight: Radius.circular(5.0),
-                        )),
-                        child: Center(
+                      child: Center(
+                        child: TextButton(
+                          onPressed: () {
+                            cancelBook!();
+                          },
                           child: Text(
                             "Annuler".toUpperCase(),
                             style: ThemeData()

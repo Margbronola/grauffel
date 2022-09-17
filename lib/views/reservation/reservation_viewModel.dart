@@ -3,7 +3,7 @@ import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/reservation/cardDetails/reserveCardDetails_view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -11,10 +11,12 @@ import '../../app/app.locator.dart';
 import '../../models/booking_model.dart';
 import '../../services/document_api_service.dart';
 import '../../services/document_service.dart';
+import '../../services/home_paging_service.dart';
 
-class ReservationViewModel extends BaseViewModel {
+class ReservationViewModel extends ReactiveViewModel {
   bool showHelp = true;
   bool absorb = false;
+  final HomePagingService _homePagingService = locator<HomePagingService>();
   ScrollController scrolleController = ScrollController();
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final NavigationService _navigationService = locator<NavigationService>();
@@ -30,15 +32,17 @@ class ReservationViewModel extends BaseViewModel {
   List<BookingModel>? get past => _bookingAPIService.past;
 
   init() async {
-    if (_bookingAPIService.bookings == null) {
+    if (_homePagingService.isRefresh) {
       setBusy(true);
-      _bookingAPIService.fetchActivesAndPast(
+      await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
-      await _documentService.fetch(
-          userService: _userService, documentAPIService: _documentAPIService);
-      notifyListeners();
+      // _documentService.fetch(
+      //     userService: _userService, documentAPIService: _documentAPIService);
+
+      _homePagingService.setRefresh(false);
       setBusy(false);
     }
+    notifyListeners();
   }
 
   void closeHelp() {
@@ -58,6 +62,22 @@ class ReservationViewModel extends BaseViewModel {
     ));
   }
 
+  Future cancelBook(int bookingId) async {
+    print("CANCEL");
+    bool cancel = await _bookingAPIService.cancelBook(
+        booking_id: bookingId,
+        token: _userService.token!,
+        user_id: _userService.user!.id!.toString());
+    if (cancel) {
+      _dialogService.showDialog(description: "Canceling your booking now");
+    } else {
+      _dialogService.showDialog(description: "Something wrong");
+    }
+    _homePagingService.setRefresh(true);
+    init();
+    notifyListeners();
+  }
+
   void showCardDetails(int index, {bool isActive = false}) async {
     _navigationService.navigateToView(ReserveCardDetails(
       bookingModel: isActive
@@ -68,4 +88,8 @@ class ReservationViewModel extends BaseViewModel {
   }
 
   List days = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_homePagingService];
 }

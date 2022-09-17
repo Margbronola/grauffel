@@ -98,72 +98,58 @@ class SubmitionViewModel extends ReactiveViewModel {
 
   void reserver() async {
     setBusy(true);
-    double allGunPrice = 0;
-    double allAmmunitionPrice = 0;
-    double allEquipmentPrice = 0;
+    // double allGunPrice = 0;
+    // double allAmmunitionPrice = 0;
+    // double allEquipmentPrice = 0;
 
-    allGunPrice = gunList
-        .map((e) => e.price!)
-        .toList()
-        .reduce((value, element) => value + element);
+    // allGunPrice = gunList
+    //     .map((e) => e.price!)
+    //     .toList()
+    //     .reduce((value, element) => value + element);
 
-    allAmmunitionPrice = ammunitionList
-        .map((e) => e.price! * e.qty)
-        .toList()
-        .reduce((value, element) => value + element);
+    // allAmmunitionPrice = ammunitionList
+    //     .map((e) => e.price! * e.qty)
+    //     .toList()
+    //     .reduce((value, element) => value + element);
 
-    allEquipmentPrice = ammunitionList
-        .map((e) => e.price!)
-        .toList()
-        .reduce((value, element) => value + element);
+    // allEquipmentPrice = ammunitionList
+    //     .map((e) => e.price!)
+    //     .toList()
+    //     .reduce((value, element) => value + element);
 
-    double total = bookedModel.price! +
-        allGunPrice +
-        allEquipmentPrice +
-        allAmmunitionPrice;
+    // double total = bookedModel.price! +
+    //     allGunPrice +
+    //     allEquipmentPrice +
+    //     allAmmunitionPrice;
 
-    print("gunsPrice: $allGunPrice");
-    print("ammunition: $allAmmunitionPrice");
-    print("ammunition: $allEquipmentPrice");
-    print("total: $total");
-    print(user.credit_points!);
+    // print("gunsPrice: $allGunPrice");
+    // print("ammunition: $allAmmunitionPrice");
+    // print("ammunition: $allEquipmentPrice");
+    // print("total: $total");
+    // print(user.credit_points!);
 
     bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
 
-    if (double.parse(user.credit_points!) >= total) {
-      if (isBooked) {
-        var response = await _dialogService.showCustomDialog(
-            mainButtonTitle: "ok",
-            variant: DialogType.reserve,
-            barrierDismissible: false);
+    if (isBooked) {
+      var response = await _dialogService.showCustomDialog(
+          mainButtonTitle: "ok",
+          variant: DialogType.reserve,
+          barrierDismissible: false);
 
-        if (response != null) {
-          if (response.confirmed) {
-            _bookingApiService.fetchActivesAndPast(
-                _userService.token, _userService.user!.id.toString());
-            _navigationService.back();
-            _homePagingService.onTap(0);
-          }
-        }
-      } else {
-        var response = await _dialogService.showCustomDialog(
-            mainButtonTitle: "ok",
-            variant: DialogType.reservefail,
-            barrierDismissible: false);
-
-        if (response != null) {
-          if (response.confirmed) {
-            _navigationService.back();
-          } else {
-            _navigationService.back();
-          }
+      if (response != null) {
+        if (response.confirmed) {
+          _bookingApiService.fetchActivesAndPast(
+              _userService.token, _userService.user!.id.toString());
+          _navigationService.back();
+          _homePagingService.setRefresh(true);
+          _homePagingService.onTap(0);
         }
       }
     } else {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
           variant: DialogType.reservefail,
-          barrierDismissible: true);
+          barrierDismissible: false);
 
       if (response != null) {
         if (response.confirmed) {

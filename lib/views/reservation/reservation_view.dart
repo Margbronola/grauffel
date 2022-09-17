@@ -224,6 +224,9 @@ class ReservationView extends StatelessWidget {
                                                     model
                                                         .showCardDetails(index);
                                                   },
+                                                  cancelBook: () =>
+                                                      model.cancelBook(model
+                                                          .actives![index].id!),
                                                   isActive: true,
                                                   booking:
                                                       model.actives![index]))),
@@ -251,6 +254,9 @@ class ReservationView extends StatelessWidget {
                                           itemCount: model.past!.length,
                                           itemBuilder: ((context, index) =>
                                               ReservationCard(
+                                                  cancelBook: (() =>
+                                                      model.cancelBook(model
+                                                          .past![index].id!)),
                                                   onTap: () {
                                                     model
                                                         .showCardDetails(index);

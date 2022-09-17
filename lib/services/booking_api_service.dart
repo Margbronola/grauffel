@@ -246,6 +246,43 @@ class BookingAPIService {
     }
   }
 
+  Future<bool> cancelBook(
+      {required int booking_id,
+      required String token,
+      required String user_id}) async {
+    try {
+      final respo = await http.get(
+        Uri.parse("$urlApi/bookings/$booking_id/cancel"),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
+        },
+      );
+      if (respo.statusCode == 200) {
+        print("bookcancel pass");
+
+        var data = json.decode(respo.body);
+
+        try {
+          print("bookcancel SEND");
+          print(data);
+        } catch (e) {
+          print(e);
+          print("FROMJSON FAIL");
+        }
+        return true;
+      } else {
+        print(respo.body);
+        print("SERVER FAIL");
+        return false;
+      }
+    } catch (e) {
+      print(e);
+      print("FETCH bookcancel FAIL");
+    }
+    return false;
+  }
+
   Future<bool> book({
     required String token,
     required DateTime date,

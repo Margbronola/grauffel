@@ -177,7 +177,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                     .toList()),
             verticalSpaceMedium(),
             Text(
-              widget.bookingModel.bookable!.description!,
+              widget.bookingModel.bookable!.description ?? "",
               style: const TextStyle(
                   fontFamily: 'ProductSans',
                   fontSize: 14,
