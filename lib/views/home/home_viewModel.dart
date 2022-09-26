@@ -1,5 +1,7 @@
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
+import 'package:egczacademy/services/local_notification_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -9,8 +11,34 @@ class HomeViewModel extends ReactiveViewModel {
   PageController get pageController => _homePagingService.pageController!;
   bool get isFromReview => _homePagingService.isFromReview;
 
-  void initState() async {
+  void initState(context) async {
     _homePagingService.setController(PageController());
+
+    String? token = await FirebaseMessaging.instance.getToken();
+    print("Message token: ${token!}");
+
+    //FOREGRUOUND
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      LocalNotificationService.initialize();
+
+      LocalNotificationService.display(message);
+    });
+
+    //BACK
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {
+      print("OPENEd");
+      if (event.notification != null) {
+        print("ROUTE HERE");
+        final routeMessage = event.data["route"];
+
+        if (routeMessage == "red") {
+          print("RED ROUTE");
+        } else {
+          print("NOTE RED ROUTE");
+        }
+        print(routeMessage);
+      }
+    });
   }
 
   void changePage(int index) {

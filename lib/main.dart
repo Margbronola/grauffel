@@ -1,6 +1,7 @@
 import 'package:egczacademy/firebase_options.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,22 +11,34 @@ import 'package:localization/localization.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/app.locator.dart';
 import 'app/app.router.dart';
+import 'services/local_notification_service.dart';
 import 'views/shared/widget/dialog/initialize_prefs.dart';
 import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'views/shared/widget/pallete.dart';
 
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print(message.data.toString());
+  print(message.notification!.title.toString());
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupLocator();
   await initializePrefs();
-  setupDialogUi();
 
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  FirebaseMessaging.instance.getInitialMessage();
+  LocalNotificationService.requestPermissions();
+
+  setupDialogUi();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   //API, Documents
   //TODO:FCM TOKEN/clients/save-fcm and /clients/remove-fcm
 

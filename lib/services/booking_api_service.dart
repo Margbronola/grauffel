@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/book_cell_model.dart';
@@ -42,7 +41,8 @@ class BookingAPIService {
         past = bookings!
             .where((e) =>
                 e.status_name!.toLowerCase() == "done" ||
-                e.status_name!.toLowerCase() == "cancel")
+                e.status_name!.toLowerCase() == "cancelled invoiced" ||
+                e.status_name!.toLowerCase() == "cancelled and refunded")
             .toList();
       }
       print("Actives: ${actives!.length}");
