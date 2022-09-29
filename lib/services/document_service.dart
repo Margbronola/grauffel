@@ -48,7 +48,7 @@ class DocumentService with ReactiveServiceMixin {
     return documenTypes.where((e) => e.ismandatory != 1).toList();
   }
 
-  int mandatoryNumberUploaded() {
+  int? mandatoryNumberUploaded() {
     int num = 0;
     for (var x in mandatoryDocumentTypes()) {
       if (documents!

@@ -36,7 +36,7 @@ class NotificationSettingsView extends StatelessWidget {
                     children: [
                       Expanded(
                           child: Text(
-                        "Autoriser les notifications push",
+                        "Autoriser les notifications push", //Allow push notifications
                         style: TextStyle(
                             fontFamily: 'ProductSans', fontSize: 15.sp),
                       )),
@@ -63,7 +63,7 @@ class NotificationSettingsView extends StatelessWidget {
                         children: [
                           verticalSpaceMedium(),
                           Text(
-                            "Toutes les notification sont inactives.\nActive-les grâce au bouton.",
+                            "Toutes les notification sont inactives.\nActive-les grâce au bouton.", // All notifications are inactive.\nActivate them using the button.
                             style: TextStyle(
                                 fontFamily: 'ProductSans', fontSize: 15.sp),
                           ),
@@ -80,7 +80,7 @@ class NotificationSettingsView extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "Recevoir une notification pour me \nrappeler une réservation 1h avant ",
+                                  "Receive a notification to Nremind me of a reservation 1 hour before",
                                   style: TextStyle(
                                       fontFamily: 'ProductSans',
                                       fontSize: 15.sp),

@@ -22,7 +22,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   final DateFormat formatter = DateFormat('yMMM');
   DateTime get selectedDate => _bookingService.getselectedDate;
 
-  List<TimeModel> get availableTimes => _bookingAPIService.availableTime ?? [];
+  List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
   TimeModel? get selectedTime => _bookingService.getselectedTimes;
 
   List<DateTime> inactive = [];
@@ -75,6 +75,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   }
 
   Future init(BuildContext context) async {
+    print("INIT");
     numDaysTotal = DateTime(DateTime.now().year, DateTime.now().month, 0).day -
         currentDate
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
@@ -82,7 +83,7 @@ class SelectDateViewModel extends ReactiveViewModel {
         1;
 
     setBusy(true);
-    print(_bookingService.getselectedBookable!.status == 2);
+
     await fetchBookableActivity(DateTime.now());
 
     setBusy(false);

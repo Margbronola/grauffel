@@ -8,13 +8,19 @@ class GunAPIService {
   List<GunModel>? _guns;
   List<GunModel>? get guns => _guns;
   PagingModel? _pagingModel;
-  final int _perPage = 10;
+  PagingModel? get pagingModel => _pagingModel;
+  final int _perPage = 6;
 
   Future<void> fetchAllGuns(
       {required String token,
+      bool fetchMore = false,
       List<int>? brandIds,
       List<int>? caliberIds}) async {
     String url = "$urlApi/guns?per_page=$_perPage";
+
+    if (fetchMore) {
+      url = "${_pagingModel!.next_page_url}&per_page=$_perPage";
+    }
 
     if (brandIds != null) {
       String brands = brandIds.join(', ');
@@ -41,14 +47,20 @@ class GunAPIService {
         try {
           print("FETCH GUNS PASS");
           List fetchGuns = data['data'];
-          print(fetchGuns);
-          _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
+
+          if (fetchMore) {
+            print("FETCHING morel");
+            _guns!.addAll(fetchGuns.map((e) => GunModel.fromJson(e)).toList());
+          } else {
+            _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
+          }
+
           _pagingModel = PagingModel(
-            current_page: data['current_page'],
-            first_page_url: data['first_page_url'],
-            next_page_url: data['next_page_url'],
-            prev_page_url: data['prev_page_url'],
-          );
+              current_page: data['current_page'],
+              first_page_url: data['first_page_url'],
+              next_page_url: data['next_page_url'],
+              prev_page_url: data['prev_page_url'],
+              total: data['total']);
 
           print(_guns);
           print(_pagingModel);

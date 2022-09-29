@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewList.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewQuantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +11,7 @@ import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/customButton.dart';
 import '../../../../../shared/ui_helper.dart';
+import 'ammunition_viewList.dart';
 import 'ammunition_viewModel.dart';
 
 class AmmunitionView extends StatelessWidget {

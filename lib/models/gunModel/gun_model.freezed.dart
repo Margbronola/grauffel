@@ -37,7 +37,7 @@ mixin _$GunModel {
   BrandModel? get brand => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
   List<dynamic>? get bookings => throw _privateConstructorUsedError;
-  int? get qty => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
   List<EquipmentModel>? get equipments => throw _privateConstructorUsedError;
   List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
 
@@ -67,7 +67,7 @@ abstract class $GunModelCopyWith<$Res> {
       BrandModel? brand,
       ImageModel? image,
       List<dynamic>? bookings,
-      int? qty,
+      int? quantity,
       List<EquipmentModel>? equipments,
       List<AmmunitionsModel>? ammunitions});
 
@@ -101,7 +101,7 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? equipments = freezed,
     Object? ammunitions = freezed,
   }) {
@@ -166,9 +166,9 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
       equipments: equipments == freezed
           ? _value.equipments
@@ -237,7 +237,7 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       BrandModel? brand,
       ImageModel? image,
       List<dynamic>? bookings,
-      int? qty,
+      int? quantity,
       List<EquipmentModel>? equipments,
       List<AmmunitionsModel>? ammunitions});
 
@@ -276,7 +276,7 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? image = freezed,
     Object? bookings = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? equipments = freezed,
     Object? ammunitions = freezed,
   }) {
@@ -341,9 +341,9 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value._bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
       equipments: equipments == freezed
           ? _value._equipments
@@ -376,7 +376,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       this.brand,
       this.image,
       final List<dynamic>? bookings,
-      this.qty = 1,
+      this.quantity = 1,
       final List<EquipmentModel>? equipments,
       final List<AmmunitionsModel>? ammunitions})
       : _bookings = bookings,
@@ -428,7 +428,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   @JsonKey()
-  final int? qty;
+  final int? quantity;
   final List<EquipmentModel>? _equipments;
   @override
   List<EquipmentModel>? get equipments {
@@ -449,7 +449,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, qty: $qty, equipments: $equipments, ammunitions: $ammunitions)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, quantity: $quantity, equipments: $equipments, ammunitions: $ammunitions)';
   }
 
   @override
@@ -472,7 +472,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       ..add(DiagnosticsProperty('brand', brand))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('bookings', bookings))
-      ..add(DiagnosticsProperty('qty', qty))
+      ..add(DiagnosticsProperty('quantity', quantity))
       ..add(DiagnosticsProperty('equipments', equipments))
       ..add(DiagnosticsProperty('ammunitions', ammunitions));
   }
@@ -503,7 +503,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other._bookings, _bookings) &&
-            const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other._equipments, _equipments) &&
             const DeepCollectionEquality()
@@ -529,7 +529,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(_bookings),
-      const DeepCollectionEquality().hash(qty),
+      const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(_equipments),
       const DeepCollectionEquality().hash(_ammunitions));
 
@@ -563,7 +563,7 @@ abstract class _GunModel implements GunModel {
       final BrandModel? brand,
       final ImageModel? image,
       final List<dynamic>? bookings,
-      final int? qty,
+      final int? quantity,
       final List<EquipmentModel>? equipments,
       final List<AmmunitionsModel>? ammunitions}) = _$_GunModel;
 
@@ -601,7 +601,7 @@ abstract class _GunModel implements GunModel {
   @override
   List<dynamic>? get bookings;
   @override
-  int? get qty;
+  int? get quantity;
   @override
   List<EquipmentModel>? get equipments;
   @override

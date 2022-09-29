@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
@@ -139,21 +140,36 @@ class ArmoreView extends StatelessWidget {
                           height: 5,
                         ),
                         Expanded(
-                          child: Container(
-                            child: GridView.count(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              mainAxisSpacing: 10,
-                              crossAxisSpacing: 10,
-                              crossAxisCount: 2,
-                              children:
-                                  List.generate(model.guns!.length, (index) {
-                                return gunCardView(
-                                    index: index,
-                                    gunModel: model.guns![index],
-                                    model: model);
-                              }),
-                            ),
+                          child: Column(
+                            children: [
+                              LazyLoadScrollView(
+                                  isLoading: model.isloadDone,
+                                  onEndOfPage: () => model.loadMore(),
+                                  scrollOffset: 100,
+                                  child: Expanded(
+                                    child: GridView.count(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 10,
+                                      crossAxisCount: 2,
+                                      children: List.generate(
+                                          model.guns!.length, (index) {
+                                        return gunCardView(
+                                            index: index,
+                                            gunModel: model.guns![index],
+                                            model: model);
+                                      }),
+                                    ),
+                                  )),
+                              if (model.isloadDone == true)
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
                       ],

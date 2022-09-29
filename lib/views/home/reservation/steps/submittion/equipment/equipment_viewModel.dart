@@ -19,7 +19,6 @@ class EquipmentViewModel extends BaseViewModel {
       _bookingService.getselectedEquipment;
 
   void init() async {
-    print(_userService.token);
     setBusy(true);
     await _equipmentsAPIService.fetchAllEquipments(
       token: _userService.token!,
@@ -42,6 +41,20 @@ class EquipmentViewModel extends BaseViewModel {
       } else {
         print("CANCE:");
       }
+    }
+  }
+
+  bool _isloadDone = false;
+  bool get isloadDone => _isloadDone;
+
+  void loadMore() async {
+    if (_equipmentsAPIService.pagingModel!.total != equipments!.length) {
+      _isloadDone = true;
+      notifyListeners();
+      await _equipmentsAPIService.fetchAllEquipments(
+          token: _userService.token!, fetchMore: true);
+      _isloadDone = false;
+      notifyListeners();
     }
   }
 

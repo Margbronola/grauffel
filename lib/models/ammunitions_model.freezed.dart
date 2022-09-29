@@ -29,7 +29,7 @@ mixin _$AmmunitionsModel {
   ImageModel? get image => throw _privateConstructorUsedError;
   BrandModel? get brand => throw _privateConstructorUsedError;
   CaliberModel? get caliber => throw _privateConstructorUsedError;
-  int get qty => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -54,7 +54,7 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
-      int qty,
+      int quantity,
       DateTime? created_at,
       DateTime? updated_at});
 
@@ -83,7 +83,7 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -124,9 +124,9 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       created_at: created_at == freezed
           ? _value.created_at
@@ -190,7 +190,7 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
       ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
-      int qty,
+      int quantity,
       DateTime? created_at,
       DateTime? updated_at});
 
@@ -224,7 +224,7 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -265,9 +265,9 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       created_at: created_at == freezed
           ? _value.created_at
@@ -294,7 +294,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       this.image,
       this.brand,
       this.caliber,
-      this.qty = 1,
+      this.quantity = 1,
       this.created_at,
       this.updated_at});
 
@@ -321,7 +321,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
   final CaliberModel? caliber;
   @override
   @JsonKey()
-  final int qty;
+  final int quantity;
   @override
   final DateTime? created_at;
   @override
@@ -329,7 +329,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
 
   @override
   String toString() {
-    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, qty: $qty, created_at: $created_at, updated_at: $updated_at)';
+    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, quantity: $quantity, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
@@ -347,7 +347,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
-            const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -367,7 +367,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(caliber),
-      const DeepCollectionEquality().hash(qty),
+      const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at));
 
@@ -395,7 +395,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       final ImageModel? image,
       final BrandModel? brand,
       final CaliberModel? caliber,
-      final int qty,
+      final int quantity,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_AmmunitionsModel;
 
@@ -421,7 +421,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   @override
   CaliberModel? get caliber;
   @override
-  int get qty;
+  int get quantity;
   @override
   DateTime? get created_at;
   @override

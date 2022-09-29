@@ -26,8 +26,8 @@ class SubmitionViewModel extends ReactiveViewModel {
   UserModel get user => _userService.user!;
   FocusNode commentFocusNode = FocusNode();
 
-  ActivityModel get bookedModel => _bookingService.getselectedBookable!;
-  bool get isCourse => _bookingService.getselectedBookable!.status == 2;
+  ActivityModel? get bookedModel => _bookingService.getselectedBookable!;
+  bool get isCourse => bookedModel!.status == 2;
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;
@@ -98,35 +98,6 @@ class SubmitionViewModel extends ReactiveViewModel {
 
   void reserver() async {
     setBusy(true);
-    // double allGunPrice = 0;
-    // double allAmmunitionPrice = 0;
-    // double allEquipmentPrice = 0;
-
-    // allGunPrice = gunList
-    //     .map((e) => e.price!)
-    //     .toList()
-    //     .reduce((value, element) => value + element);
-
-    // allAmmunitionPrice = ammunitionList
-    //     .map((e) => e.price! * e.qty)
-    //     .toList()
-    //     .reduce((value, element) => value + element);
-
-    // allEquipmentPrice = ammunitionList
-    //     .map((e) => e.price!)
-    //     .toList()
-    //     .reduce((value, element) => value + element);
-
-    // double total = bookedModel.price! +
-    //     allGunPrice +
-    //     allEquipmentPrice +
-    //     allAmmunitionPrice;
-
-    // print("gunsPrice: $allGunPrice");
-    // print("ammunition: $allAmmunitionPrice");
-    // print("ammunition: $allEquipmentPrice");
-    // print("total: $total");
-    // print(user.credit_points!);
 
     bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
 

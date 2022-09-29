@@ -89,7 +89,7 @@ class ProfileViewModel extends ReactiveViewModel {
   List<DocumentTypeModel> get documentTypes =>
       _documentService.notMandatoryDocumentTypes();
 
-  int get numUploadedDoc => _documentService.mandatoryNumberUploaded();
+  int get numUploadedDoc => _documentService.mandatoryNumberUploaded() ?? 0;
 
   String dateFormat(DateTime date) {
     final String formatted =

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/models/equipment_model.dart';
@@ -52,18 +53,37 @@ class EquipmentView extends StatelessWidget {
                           height: 10,
                         ),
                         Expanded(
-                          child: GridView.count(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            crossAxisCount: 2,
-                            children: List.generate(model.equipments!.length,
-                                (index) {
-                              return equipemntCardView(
-                                  index: index,
-                                  equipmentModel: model.equipments![index],
-                                  model: model);
-                            }),
+                          child: Column(
+                            children: [
+                              LazyLoadScrollView(
+                                  isLoading: model.isloadDone,
+                                  onEndOfPage: () => model.loadMore(),
+                                  scrollOffset: 100,
+                                  child: Expanded(
+                                    child: GridView.count(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 10,
+                                      crossAxisCount: 2,
+                                      children: List.generate(
+                                          model.equipments!.length, (index) {
+                                        return equipemntCardView(
+                                            index: index,
+                                            equipmentModel:
+                                                model.equipments![index],
+                                            model: model);
+                                      }),
+                                    ),
+                                  )),
+                              if (model.isloadDone == true)
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
                       ],

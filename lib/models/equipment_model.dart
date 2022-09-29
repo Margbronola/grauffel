@@ -15,7 +15,7 @@ class EquipmentModel with _$EquipmentModel {
       int? type,
       int? unlimited,
       DateTime? created_at,
-      @Default(1) int qty,
+      @Default(1) int quantity,
       DateTime? updated_at,
       String? type_name,
       ImageModel? image}) = _EquipmentModel;

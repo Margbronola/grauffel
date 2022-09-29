@@ -28,7 +28,7 @@ mixin _$EquipmentModel {
   int? get type => throw _privateConstructorUsedError;
   int? get unlimited => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
-  int get qty => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   String? get type_name => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $EquipmentModelCopyWith<$Res> {
       int? type,
       int? unlimited,
       DateTime? created_at,
-      int qty,
+      int quantity,
       DateTime? updated_at,
       String? type_name,
       ImageModel? image});
@@ -80,7 +80,7 @@ class _$EquipmentModelCopyWithImpl<$Res>
     Object? type = freezed,
     Object? unlimited = freezed,
     Object? created_at = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? updated_at = freezed,
     Object? type_name = freezed,
     Object? image = freezed,
@@ -118,9 +118,9 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       updated_at: updated_at == freezed
           ? _value.updated_at
@@ -165,7 +165,7 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       int? type,
       int? unlimited,
       DateTime? created_at,
-      int qty,
+      int quantity,
       DateTime? updated_at,
       String? type_name,
       ImageModel? image});
@@ -195,7 +195,7 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
     Object? type = freezed,
     Object? unlimited = freezed,
     Object? created_at = freezed,
-    Object? qty = freezed,
+    Object? quantity = freezed,
     Object? updated_at = freezed,
     Object? type_name = freezed,
     Object? image = freezed,
@@ -233,9 +233,9 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      qty: qty == freezed
-          ? _value.qty
-          : qty // ignore: cast_nullable_to_non_nullable
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
               as int,
       updated_at: updated_at == freezed
           ? _value.updated_at
@@ -265,7 +265,7 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.type,
       this.unlimited,
       this.created_at,
-      this.qty = 1,
+      this.quantity = 1,
       this.updated_at,
       this.type_name,
       this.image});
@@ -291,7 +291,7 @@ class _$_EquipmentModel implements _EquipmentModel {
   final DateTime? created_at;
   @override
   @JsonKey()
-  final int qty;
+  final int quantity;
   @override
   final DateTime? updated_at;
   @override
@@ -301,7 +301,7 @@ class _$_EquipmentModel implements _EquipmentModel {
 
   @override
   String toString() {
-    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, qty: $qty, updated_at: $updated_at, type_name: $type_name, image: $image)';
+    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, type_name: $type_name, image: $image)';
   }
 
   @override
@@ -319,7 +319,7 @@ class _$_EquipmentModel implements _EquipmentModel {
             const DeepCollectionEquality().equals(other.unlimited, unlimited) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
             const DeepCollectionEquality().equals(other.type_name, type_name) &&
@@ -338,7 +338,7 @@ class _$_EquipmentModel implements _EquipmentModel {
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(unlimited),
       const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(qty),
+      const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(updated_at),
       const DeepCollectionEquality().hash(type_name),
       const DeepCollectionEquality().hash(image));
@@ -366,7 +366,7 @@ abstract class _EquipmentModel implements EquipmentModel {
       final int? type,
       final int? unlimited,
       final DateTime? created_at,
-      final int qty,
+      final int quantity,
       final DateTime? updated_at,
       final String? type_name,
       final ImageModel? image}) = _$_EquipmentModel;
@@ -391,7 +391,7 @@ abstract class _EquipmentModel implements EquipmentModel {
   @override
   DateTime? get created_at;
   @override
-  int get qty;
+  int get quantity;
   @override
   DateTime? get updated_at;
   @override

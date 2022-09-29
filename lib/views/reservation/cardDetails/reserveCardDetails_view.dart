@@ -151,7 +151,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                     .map((e) => Padding(
                           padding: EdgeInsets.only(bottom: 10.h),
                           child: ItemCard(
-                            extraButton: e.qty.toString(),
+                            extraButton: e.quantity.toString(),
                             image: e.image == null
                                 ? null
                                 : "$urlServer/${e.image!.path}/${e.image!.filename}",

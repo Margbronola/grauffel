@@ -17,10 +17,8 @@ import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'views/shared/widget/pallete.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
-  print(message.data.toString());
-  print(message.notification!.title.toString());
+  //TODO: redirect in docs page
 }
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -39,9 +37,6 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  //API, Documents
-  //TODO:FCM TOKEN/clients/save-fcm and /clients/remove-fcm
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -58,16 +53,6 @@ class MyApp extends StatelessWidget {
       designSize: const Size(428, 926),
       builder: (context, child) => MaterialApp(
         localeResolutionCallback: (locale, supportedLocales) {
-          // if (supportedLocales.contains(locale)) {
-          //   return locale;
-          // }
-
-          // // define pt_BR as default when de language code is 'pt'
-          // if (locale?.languageCode == 'pt') {
-          //   return const Locale('pt', 'BR');
-          // }
-
-          // default language
           return const Locale('fr', 'FR');
         },
         supportedLocales: const [
@@ -75,11 +60,9 @@ class MyApp extends StatelessWidget {
           Locale('fr', 'FR'),
         ],
         localizationsDelegates: [
-          // delegate from flutter_localization
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
-          // delegate from localization package.
           LocalJsonLocalization.delegate,
         ],
         debugShowCheckedModeBanner: false,

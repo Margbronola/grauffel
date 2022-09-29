@@ -24,7 +24,6 @@ class ArmoreViewModel extends ReactiveViewModel {
   final BookingService _bookingService = locator<BookingService>();
 
   List<GunModel>? get guns => _gunListService.guns;
-
   bool get loader => _gunListService.loader;
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
   int get filterMarqueLength => _gunListService.filterMarqueIds.length;
@@ -45,6 +44,20 @@ class ArmoreViewModel extends ReactiveViewModel {
 
     await _gunListService.setGunList(_gunAPIService.guns);
     _gunListService.setBusy(false);
+  }
+
+  bool _isloadDone = false;
+  bool get isloadDone => _isloadDone;
+
+  void loadMore() async {
+    if (_gunAPIService.pagingModel!.total != guns!.length) {
+      _isloadDone = true;
+      notifyListeners();
+      await _gunAPIService.fetchAllGuns(
+          token: _userService.token!, fetchMore: true);
+      _isloadDone = false;
+      notifyListeners();
+    }
   }
 
   void showDetails(index) async {

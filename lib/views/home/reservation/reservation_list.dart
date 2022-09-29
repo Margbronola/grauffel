@@ -41,6 +41,7 @@ class ReservationList extends StatelessWidget {
                                       model.navigateToReservation(
                                           bookable: model.bookables[index]);
                                     }
+                                    print(model.bookables[index]);
                                   },
                                   reserve: ReserveModel(
                                       image: model.bookables[index].image ?? "",

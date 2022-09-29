@@ -55,7 +55,7 @@ class SubmitionView extends StatelessWidget {
                             ),
                             verticalSpaceSmall(),
                             Text(
-                              model.bookedModel.name ?? "",
+                              model.bookedModel!.name ?? "",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'ProductSans',
@@ -86,7 +86,7 @@ class SubmitionView extends StatelessWidget {
                               width: 27.w,
                             ),
                             verticalSpaceSmall(),
-                            model.bookedModel.name == courseTSV
+                            model.bookedModel!.name == courseTSV
                                 ? const SizedBox()
                                 : Text(
                                     model.time(),
@@ -119,7 +119,7 @@ class SubmitionView extends StatelessWidget {
                             .map((e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
-                                    extraButton: e.qty.toString(),
+                                    extraButton: e.quantity.toString(),
                                     image: e.image != null
                                         ? "$urlServer/${e.image!.path}/${e.image!.filename}"
                                         : null,

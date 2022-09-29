@@ -21,7 +21,7 @@ class BookingAPIService {
   List<CourseModel> _bookableCourse = [];
   List<CourseModel>? get bookableCourse => _bookableCourse;
 
-  List<TimeModel>? _availableTime;
+  List<TimeModel> _availableTime = [];
   List<TimeModel>? get availableTime => _availableTime;
   PagingModel? _pagingModel;
   final int _perPage = 10;
@@ -212,8 +212,6 @@ class BookingAPIService {
     required int activity_id,
   }) async {
     print("ACTIVITY DATA");
-    print(activity_id);
-
     try {
       final respo = await http.get(
           Uri.parse(

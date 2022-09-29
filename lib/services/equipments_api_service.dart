@@ -9,12 +9,18 @@ class EquipmentsAPIService {
   List<EquipmentModel>? _equipments;
   List<EquipmentModel>? get equipments => _equipments;
   PagingModel? _pagingModel;
-  final int _perPage = 10;
+  PagingModel? get pagingModel => _pagingModel;
+  final int _perPage = 6;
 
-  Future<void> fetchAllEquipments({required String token}) async {
+  Future<void> fetchAllEquipments(
+      {required String token, bool fetchMore = false}) async {
+    String url = "$urlApi/equipments?per_page=$_perPage";
+
+    if (fetchMore) {
+      url = "${_pagingModel!.next_page_url}&per_page=$_perPage";
+    }
     try {
-      final respo = await http
-          .get(Uri.parse("$urlApi/equipments?per_page=$_perPage"), headers: {
+      final respo = await http.get(Uri.parse(url), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
@@ -23,13 +29,22 @@ class EquipmentsAPIService {
         try {
           print("FETCH EQUIPMENTS PASS");
           List fertchEquipment = data['data'];
-          _equipments =
-              fertchEquipment.map((e) => EquipmentModel.fromJson(e)).toList();
+
+          if (fetchMore) {
+            _equipments!.addAll(fertchEquipment
+                .map((e) => EquipmentModel.fromJson(e))
+                .toList());
+          } else {
+            _equipments =
+                fertchEquipment.map((e) => EquipmentModel.fromJson(e)).toList();
+          }
+
           _pagingModel = PagingModel(
             current_page: data['current_page'],
             first_page_url: data['first_page_url'],
             next_page_url: data['next_page_url'],
             prev_page_url: data['prev_page_url'],
+            total: data['total'],
           );
 
           print(_equipments);

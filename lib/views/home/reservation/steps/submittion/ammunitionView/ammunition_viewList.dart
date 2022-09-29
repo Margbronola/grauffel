@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewModel.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 import '../../../../../shared/color.dart';
 import '../../../../../shared/ui_helper.dart';
@@ -21,7 +22,7 @@ class AmmunitionViewList extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         children: [
-          model.haveorderedGuns
+          model.haveorderedGuns && model.gunAmmunitionRecommended().isNotEmpty
               ? Column(
                   children: [
                     SizedBox(
@@ -160,19 +161,35 @@ class AmmunitionViewList extends StatelessWidget {
             height: 5,
           ),
           Expanded(
-            child: Container(
-              child: GridView.count(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: List.generate(model.ammunitions!.length, (index) {
-                  return amminitionCard(
-                      index: index,
-                      ammunition: model.ammunitions![index],
-                      model: model);
-                }),
-              ),
+            child: Column(
+              children: [
+                LazyLoadScrollView(
+                    isLoading: model.isloadDone,
+                    onEndOfPage: () => model.loadMore(),
+                    scrollOffset: 100,
+                    child: Expanded(
+                      child: GridView.count(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        crossAxisCount: 2,
+                        children:
+                            List.generate(model.ammunitions!.length, (index) {
+                          return amminitionCard(
+                              index: index,
+                              ammunition: model.ammunitions![index],
+                              model: model);
+                        }),
+                      ),
+                    )),
+                if (model.isloadDone == true)
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+              ],
             ),
           ),
         ],
