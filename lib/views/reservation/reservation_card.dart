@@ -34,8 +34,7 @@ class ReservationCard extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -102,16 +101,15 @@ class ReservationCard extends StatelessWidget {
                       width: 3,
                     ),
                     horizontalSpaceMedium(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5,
-                      ),
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             "${booking.name}".toUpperCase(),
+                            overflow: TextOverflow.clip,
+                            maxLines: 2,
                             style: ThemeData()
                                 .textTheme
                                 .headlineSmall!
@@ -124,21 +122,18 @@ class ReservationCard extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          SizedBox(
-                            width: 220.w,
-                            child: Text(
-                              removeHtmlTags(booking.bookable!.description),
-                              style:
-                                  ThemeData().textTheme.headlineSmall!.copyWith(
-                                        color: Colors.grey,
-                                        fontFamily: 'ProductSans',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12.sp,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                              maxLines: 4,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                          Text(
+                            removeHtmlTags(booking.bookable!.description),
+                            overflow: TextOverflow.fade,
+                            style:
+                                ThemeData().textTheme.headlineSmall!.copyWith(
+                                      color: Colors.grey,
+                                      fontFamily: 'ProductSans',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                            maxLines: 4,
                           )
                         ],
                       ),
@@ -149,7 +144,7 @@ class ReservationCard extends StatelessWidget {
               !isActive
                   ? const SizedBox()
                   : Positioned(
-                      bottom: 5,
+                      bottom: 3,
                       right: 0,
                       child: Center(
                         child: TextButton(

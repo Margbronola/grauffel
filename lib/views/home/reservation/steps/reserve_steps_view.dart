@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
-import 'reserveSteps_view_model.dart';
+import 'reserve_steps_view_model.dart';
 
 class ReserveStepsView extends StatelessWidget {
   const ReserveStepsView({

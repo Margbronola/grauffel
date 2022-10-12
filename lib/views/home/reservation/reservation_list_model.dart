@@ -2,7 +2,7 @@ import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/user_service.dart';
-import 'package:egczacademy/views/home/reservation/steps/reserveSteps_view.dart';
+import 'package:egczacademy/views/home/reservation/steps/reserve_steps_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';

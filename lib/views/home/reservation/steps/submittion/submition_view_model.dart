@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
@@ -48,7 +46,6 @@ class SubmitionViewModel extends ReactiveViewModel {
         "${_bookingService.getselectedTimes!.time!.split("-")[0].split(":")[0]}h${_bookingService.getselectedTimes!.time!.split("-")[0].split(":")[1]}";
     String time2 =
         "${_bookingService.getselectedTimes!.time!.split("-")[1].split(":")[0]}h${_bookingService.getselectedTimes!.time!.split("-")[1].split(":")[1]}";
-    // print("$time1 - $time2");
     return "$time1 - $time2";
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'course_list_viewModel.dart';
+import 'course_list_view_model.dart';
 
 class CourseListView extends StatelessWidget {
   const CourseListView({Key? key}) : super(key: key);

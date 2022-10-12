@@ -55,6 +55,7 @@ class HomeView extends StatelessWidget {
           controller: model.pageController,
           onPageChanged: model.changePage,
           children: <Widget>[
+            //pages
             ReservationView(
               gotoProfile: () {
                 model.onTap(2, isFromReview: true);
