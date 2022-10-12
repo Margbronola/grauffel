@@ -29,7 +29,7 @@ class DocumentAPIService {
         var data = json.decode(respo.body);
         return true;
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL uploadDocument");
       }
     } catch (e) {
       print(e);
@@ -61,7 +61,7 @@ class DocumentAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchDocuments");
       }
     } catch (e) {
       print(e);
@@ -91,7 +91,7 @@ class DocumentAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchDocumentTypes");
       }
     } catch (e) {
       print(e);

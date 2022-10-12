@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
+import 'dart:io';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
-import 'package:egczacademy/models/book_cell_model.dart';
 import 'package:egczacademy/models/book_course_model.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/course_model.dart';
@@ -86,9 +88,10 @@ class BookingAPIService {
         var data = json.decode(respo.body);
         // debugPrint(data);
         try {
+          print("RESERVATION DATA: $data");
           print("FETCH BOOKINGS PASS 2");
 
-          List fetchBookings = data;
+          List fetchBookings = data['data'];
 
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
@@ -101,11 +104,12 @@ class BookingAPIService {
           // );
           // print(_pagingModel);
         } catch (e) {
+          print("MAYDA ERROR $e");
           print(e);
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchMyBookings");
       }
     } catch (e) {
       print(e);
@@ -116,7 +120,7 @@ class BookingAPIService {
   Future<void> fetchBookable({required String token}) async {
     try {
       final respo = await http.get(Uri.parse("$urlApi/activities"), headers: {
-        "Content-Type": "application/json",
+        "Content-type": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
@@ -169,7 +173,7 @@ class BookingAPIService {
           print("FROMJSON activities FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchBookable");
       }
     } catch (e) {
       print(e);
@@ -197,7 +201,7 @@ class BookingAPIService {
         }
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL fetch courses");
       }
     } catch (e) {
       print(e);
@@ -236,7 +240,7 @@ class BookingAPIService {
         }
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchBookableActivity");
       }
     } catch (e) {
       print(e);
@@ -271,7 +275,7 @@ class BookingAPIService {
         return true;
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL cancelBook");
         return false;
       }
     } catch (e) {
@@ -290,44 +294,45 @@ class BookingAPIService {
     required List<AmmunitionsModel> ammunitions,
     required List<EquipmentModel> equipments,
   }) async {
-    print(activityId);
     try {
-      final respo = await http.post(Uri.parse("$urlApi/book/cell"),
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer $token",
-          },
-          body: json.encode(BookCellModel(
-                  date: "${date.year}-${date.month}-${date.day}",
-                  time: time.split("-")[0],
-                  activity_id: activityId,
-                  guns: guns,
-                  ammunitions: ammunitions,
-                  equipments: equipments)
-              .toJson()));
-      if (respo.statusCode == 200) {
-        print("book pass");
-
-        var data = json.decode(respo.body);
-        print(data);
-        try {
-          print("BOOKING SEND");
-          print(data);
-        } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
-        }
-        return true;
-      } else {
-        print(respo.body);
-        print("SERVER FAIL");
-        return false;
-      }
+      final Map bod = {
+        "date": "${date.year}-${date.month}-${date.day}",
+        "time": time.split("-")[0],
+        "activity_id": activityId.toString(),
+        "guns": guns.map((e) => e.toJson()).toList(),
+        "ammunitions": ammunitions.map((e) => e.toJson()).toList(),
+        "equipments": equipments.map((e) => e.toJson()).toList(),
+      };
+      return await http
+          .post(
+        Uri.parse("$urlApi/book/cell"),
+        headers: {
+          HttpHeaders.authorizationHeader: "Bearer $token",
+          "Content-type": "application/json",
+        },
+        body: json.encode(bod),
+        // body: json.decode(
+        //   json.encode(
+        // BookCellModel(
+        //         date: "${date.year}-${date.month}-${date.day}",
+        //         time: time.split("-")[0],
+        //         activity_id: activityId,
+        //         guns: guns,
+        //         ammunitions: ammunitions,
+        //         equipments: equipments)
+        //     .toJson(),
+        //   ),
+        // ),
+      )
+          .then((response) {
+        var data = json.decode(response.body);
+        print("DATA : $data");
+        return response.statusCode == 200;
+      });
     } catch (e) {
-      print(e);
-      print("FETCH BOOKIGNS FAIL");
+      print("ERROR BOOK! : $e");
+      return false;
     }
-    return false;
   }
 
   Future<bool> bookCourse({
@@ -364,7 +369,7 @@ class BookingAPIService {
         return true;
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL bookCourses");
         return false;
       }
     } catch (e) {

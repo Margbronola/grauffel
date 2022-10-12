@@ -60,7 +60,7 @@ class ProfileView extends StatelessWidget {
                                 children: [
                                   SizedBox(
                                     width: 100.w,
-                                    child: model.user!.image != null
+                                    child: model.user?.image != null
                                         ? CachedNetworkImage(
                                             imageUrl:
                                                 "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
@@ -120,277 +120,261 @@ class ProfileView extends StatelessWidget {
                           ],
                         )),
                     Expanded(
-                      child: Container(
-                        child: ListView(
-                          padding: EdgeInsets.zero,
-                          controller: model.scrollController,
-                          children: [
-                            buildTile(
-                                index: 0,
-                                controller: model.expanTileController1,
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                          left: 50.w,
-                                          right: 50.w,
-                                          bottom: 10.h),
-                                      child: Column(
-                                        children: [
-                                          infoContainer(
-                                              "Adresse mail",
-                                              model.user!.email ?? "",
-                                              double.infinity),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          model.user!.birthday!.isNotEmpty
-                                              ? infoContainer(
-                                                  "Date de naissance",
-                                                  '${model.user!.birthday!.split("-")[0]}/${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}',
-                                                  double.infinity)
-                                              : const SizedBox(),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          model.user!.phone_number != null
-                                              ? infoContainer(
-                                                  "Numéro de téléphone",
-                                                  model.user!.phone_number!
-                                                          .isEmpty
-                                                      ? "Not Specified"
-                                                      : model.user!
-                                                              .phone_number ??
-                                                          "",
-                                                  double.infinity)
-                                              : const SizedBox(),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                infoContainer(
-                                                    "Adresse postale",
-                                                    model.user!.zipcode ?? "",
-                                                    100.w),
-                                                //TODO: static
-                                                infoContainer(
-                                                    "CP", "73000", 80.w),
-                                                //TODO: static
-                                                infoContainer(
-                                                    "Ville",
-                                                    model.user!.city ?? "",
-                                                    80.w),
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    editButton(model.editInformation)
-                                  ],
-                                ),
-                                title: "INFORMATION PERSONNELLES",
-                                model: model),
-                            buildTile(
-                                index: 1,
-                                controller: model.expanTileController2,
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      constraints:
-                                          BoxConstraints(minHeight: 50.h),
-                                      padding: EdgeInsets.only(
-                                          left: 50.w,
-                                          right: 50.w,
-                                          bottom: 10.h),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            model.user!.experience ?? "",
-                                            style: TextStyle(
-                                              fontSize: 14.sp,
-                                              fontFamily: 'ProductSans',
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    editButton(
-                                      model.editExperience,
-                                    )
-                                  ],
-                                ),
-                                title: "Expériences".toUpperCase(),
-                                model: model),
-                            buildTile(
-                                index: 2,
-                                controller: model.expanTileController3,
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: Stack(
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        controller: model.scrollController,
+                        children: [
+                          buildTile(
+                            index: 0,
+                            controller: model.expanTileController1,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      left: 50.w, right: 50.w, bottom: 10.h),
+                                  child: Column(
                                     children: [
-                                      Container(
-                                        constraints:
-                                            BoxConstraints(minHeight: 50.h),
-                                        padding: EdgeInsets.only(
-                                            left: 50.w,
-                                            right: 50.w,
-                                            bottom: 10.h),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              model.user!.equipment ?? "",
-                                              style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontFamily: 'ProductSans',
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                      infoContainer(
+                                          "Adresse mail",
+                                          model.user?.email ?? "",
+                                          double.infinity),
+                                      const SizedBox(
+                                        height: 8,
                                       ),
-                                      editButton(
-                                        model.editEquipments,
-                                      )
+                                      model.user!.birthday!.isNotEmpty
+                                          ? infoContainer(
+                                              "Date de naissance",
+                                              '${model.user!.birthday!.split("-")[0]}/${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}',
+                                              double.infinity)
+                                          : const SizedBox(),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      model.user?.phone_number != null
+                                          ? infoContainer(
+                                              "Numéro de téléphone",
+                                              model.user!.phone_number!.isEmpty
+                                                  ? "Not Specified"
+                                                  : model.user!.phone_number ??
+                                                      "",
+                                              double.infinity)
+                                          : const SizedBox(),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          infoContainer("Adresse postale",
+                                              model.user!.zipcode ?? "", 100.w),
+                                          //TODO: static
+                                          infoContainer("CP", "73000", 80.w),
+                                          //TODO: static
+                                          infoContainer("Ville",
+                                              model.user!.city ?? "", 80.w),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
                                     ],
                                   ),
                                 ),
-                                title: "EQUIPEMENTS",
-                                model: model),
-                            buildTile(
-                                index: 3,
-                                controller: model.expanTileController4,
-                                child: model.documentLoader == true
-                                    ? SizedBox(
-                                        height: size(context).height / 2,
-                                        width: size(context).width,
-                                        child: ListView(
-                                          children: [
-                                            for (int i = 0; i <= 5; i++)
-                                              Container(
-                                                decoration: BoxDecoration(
+                                editButton(model.editInformation)
+                              ],
+                            ),
+                            title: "INFORMATION PERSONNELLES",
+                            model: model,
+                          ),
+                          buildTile(
+                            index: 1,
+                            controller: model.expanTileController2,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  constraints: BoxConstraints(minHeight: 50.h),
+                                  padding: EdgeInsets.only(
+                                      left: 50.w, right: 50.w, bottom: 10.h),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        model.user!.experience ?? "",
+                                        style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontFamily: 'ProductSans',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                editButton(
+                                  model.editExperience,
+                                )
+                              ],
+                            ),
+                            title: "Expériences".toUpperCase(),
+                            model: model,
+                          ),
+                          buildTile(
+                            index: 2,
+                            controller: model.expanTileController3,
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    constraints:
+                                        BoxConstraints(minHeight: 50.h),
+                                    padding: EdgeInsets.only(
+                                        left: 50.w, right: 50.w, bottom: 10.h),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          model.user!.equipment ?? "",
+                                          style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontFamily: 'ProductSans',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  editButton(
+                                    model.editEquipments,
+                                  )
+                                ],
+                              ),
+                            ),
+                            title: "EQUIPEMENTS",
+                            model: model,
+                          ),
+                          buildTile(
+                              index: 3,
+                              controller: model.expanTileController4,
+                              child: model.documentLoader == true
+                                  ? SizedBox(
+                                      height: size(context).height / 2,
+                                      width: size(context).width,
+                                      child: ListView(
+                                        children: [
+                                          for (int i = 0; i <= 5; i++)
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  10,
+                                                ),
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 20,
+                                                vertical: 10,
+                                              ),
+                                              width: size(context).width,
+                                              height: 90.h,
+                                              child: Shimmer.fromColors(
+                                                baseColor: greyLighter2,
+                                                highlightColor: Colors.white,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            10)),
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 20,
-                                                        vertical: 10),
-                                                width: size(context).width,
-                                                height: 90.h,
-                                                child: Shimmer.fromColors(
-                                                  baseColor: greyLighter2,
-                                                  highlightColor: Colors.white,
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10)),
+                                                      10,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                          ],
-                                        ))
-                                    : Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Obligatoires",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontFamily: 'ProductSans',
-                                                fontSize: 15.sp),
-                                          ),
-                                          verticalSpaceSmall(),
-                                          ...model.mandatoryDocumentTypes
-                                              .map((e) => DocumentCardView(
-                                                    isViewed:
-                                                        model.isViewed(e.id!),
-                                                    status: model.status(e.id!),
-                                                    expiration: model
-                                                        .expirationDate(e.id!),
-                                                    isNEw: model.isNew(e.id!),
-                                                    isValid: model
-                                                        .isValidated(e.id!),
-                                                    isProcess: model
-                                                        .isProcessing(e.id!),
-                                                    cardColor: model
-                                                            .isProcessing(e.id!)
-                                                        ? greyLight3
-                                                        : kcWhite,
-                                                    onTap: () {
-                                                      print("showdocsss");
-                                                      if (model.isProcessing(
-                                                          e.id!)) {
-                                                        model.editDocuments(
-                                                            documentTypeModel:
-                                                                e);
-                                                      } else {
-                                                        model.uploadDocument(
-                                                            documentTypeModel:
-                                                                e);
-                                                      }
-                                                    },
-                                                    documentTypeModel: e,
-                                                  ))
-                                              .toList(),
-                                          verticalSpaceMedium(),
-                                          Text(
-                                            "Autres documents",
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontFamily: 'ProductSans',
-                                                fontSize: 15.sp),
-                                          ),
-                                          verticalSpaceSmall(),
-                                          ...model.documentTypes
-                                              .map((e) => DocumentCardView(
-                                                    isProcess: model
-                                                        .isProcessing(e.id!),
-                                                    isViewed:
-                                                        model.isViewed(e.id!),
-                                                    status: model.status(e.id!),
-                                                    expiration: model
-                                                        .expirationDate(e.id!),
-                                                    isNEw: model.isNew(e.id!),
-                                                    isValid: model
-                                                        .isValidated(e.id!),
-                                                    cardColor: model
-                                                            .isProcessing(e.id!)
-                                                        ? greyLight3
-                                                        : kcWhite,
-                                                    onTap: () {
-                                                      print("showdocs");
-                                                      if (model.isProcessing(
-                                                          e.id!)) {
-                                                        model.editDocuments(
-                                                            documentTypeModel:
-                                                                e);
-                                                      } else {
-                                                        model.uploadDocument(
-                                                            documentTypeModel:
-                                                                e);
-                                                      }
-                                                    },
-                                                    documentTypeModel: e,
-                                                  ))
-                                              .toList()
+                                            ),
                                         ],
-                                      ),
-                                title: "DOCUMENTS",
-                                model: model),
-                          ],
-                        ),
+                                      ))
+                                  : Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Obligatoires",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontFamily: 'ProductSans',
+                                              fontSize: 15.sp),
+                                        ),
+                                        verticalSpaceSmall(),
+                                        ...model.mandatoryDocumentTypes
+                                            .map((e) => DocumentCardView(
+                                                  isViewed:
+                                                      model.isViewed(e.id!),
+                                                  status: model.status(e.id!),
+                                                  expiration: model
+                                                      .expirationDate(e.id!),
+                                                  isNEw: model.isNew(e.id!),
+                                                  isValid:
+                                                      model.isValidated(e.id!),
+                                                  isProcess:
+                                                      model.isProcessing(e.id!),
+                                                  cardColor:
+                                                      model.isProcessing(e.id!)
+                                                          ? greyLight3
+                                                          : kcWhite,
+                                                  onTap: () {
+                                                    print("showdocsss");
+                                                    if (model
+                                                        .isProcessing(e.id!)) {
+                                                      model.editDocuments(
+                                                          documentTypeModel: e);
+                                                    } else {
+                                                      model.uploadDocument(
+                                                          documentTypeModel: e);
+                                                    }
+                                                  },
+                                                  documentTypeModel: e,
+                                                ))
+                                            .toList(),
+                                        verticalSpaceMedium(),
+                                        Text(
+                                          "Autres documents",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontFamily: 'ProductSans',
+                                              fontSize: 15.sp),
+                                        ),
+                                        verticalSpaceSmall(),
+                                        ...model.documentTypes
+                                            .map((e) => DocumentCardView(
+                                                  isProcess:
+                                                      model.isProcessing(e.id!),
+                                                  isViewed:
+                                                      model.isViewed(e.id!),
+                                                  status: model.status(e.id!),
+                                                  expiration: model
+                                                      .expirationDate(e.id!),
+                                                  isNEw: model.isNew(e.id!),
+                                                  isValid:
+                                                      model.isValidated(e.id!),
+                                                  cardColor:
+                                                      model.isProcessing(e.id!)
+                                                          ? greyLight3
+                                                          : kcWhite,
+                                                  onTap: () {
+                                                    if (model
+                                                        .isProcessing(e.id!)) {
+                                                      model.editDocuments(
+                                                          documentTypeModel: e);
+                                                    } else {
+                                                      model.uploadDocument(
+                                                          documentTypeModel: e);
+                                                    }
+                                                  },
+                                                  documentTypeModel: e,
+                                                ))
+                                            .toList()
+                                      ],
+                                    ),
+                              title: "DOCUMENTS",
+                              model: model),
+                        ],
                       ),
                     ),
                     TextButton(
@@ -432,11 +416,9 @@ class ProfileView extends StatelessWidget {
           trailing: null,
           leading: Transform.rotate(
             angle: model.angles[index], //set the angel
-            child: Container(
-              child: const Icon(
-                Icons.chevron_right_outlined,
-                color: Colors.black,
-              ),
+            child: const Icon(
+              Icons.chevron_right_outlined,
+              color: Colors.black,
             ),
           ),
           theme: const ExpandedTileThemeData(
@@ -459,12 +441,14 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                        " ${model.numUploadedDoc}/${model.mandatoryDocumentTypes.length}",
-                        style: TextStyle(
-                            fontSize: 15.sp,
-                            fontFamily: 'ProductSans',
-                            color: buttonColor,
-                            fontWeight: FontWeight.bold))
+                      " ${model.numUploadedDoc}/${model.mandatoryDocumentTypes.length}",
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        fontFamily: 'ProductSans',
+                        color: buttonColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
                   ],
                 )
               : Text(
@@ -510,22 +494,25 @@ Widget infoContainer(String title, String value, double width) => SizedBox(
         ],
       ),
     );
+
 Widget editButton(Function() ontap) => Positioned(
-    top: -5,
-    right: -15.w,
-    child: ElevatedButton(
-      onPressed: ontap,
-      style: ElevatedButton.styleFrom(
-        elevation: 0.2,
-        shape: const CircleBorder(),
-        padding: const EdgeInsets.all(5),
-        primary: Colors.white, // <-- Button color
-        onPrimary: buttonColor, // <-- Splash color
-      ),
-      child: Center(
+      top: -5,
+      right: -15.w,
+      child: ElevatedButton(
+        onPressed: ontap,
+        style: ElevatedButton.styleFrom(
+          elevation: 0.2,
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(5),
+          primary: Colors.white, // <-- Button color
+          onPrimary: buttonColor, // <-- Splash color
+        ),
+        child: Center(
           child: Icon(
-        Icons.edit,
-        color: backgroundColor,
-        size: 22.w,
-      )),
-    ));
+            Icons.edit,
+            color: backgroundColor,
+            size: 22.w,
+          ),
+        ),
+      ),
+    );

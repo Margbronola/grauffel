@@ -84,25 +84,28 @@ class ItemCard extends StatelessWidget {
                             ],
                           ),
                           horizontalSpace(40.w),
-                          SizedBox(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Marque",
-                                  style: TextStyle(
-                                    fontFamily: 'ProductSans',
-                                    fontSize: 8,
-                                  ),
-                                ),
-                                Text(
-                                  brand.toUpperCase(),
-                                  style: const TextStyle(
+                          Expanded(
+                            child: SizedBox(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Marque",
+                                    style: TextStyle(
                                       fontFamily: 'ProductSans',
                                       fontSize: 8,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                                    ),
+                                  ),
+                                  Text(
+                                    brand.toUpperCase(),
+                                    style: const TextStyle(
+                                        fontFamily: 'ProductSans',
+                                        height: 1,
+                                        fontSize: 8,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         ],

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:egczacademy/models/transaction_model.dart';
 import 'package:egczacademy/models/user_model.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
@@ -27,7 +28,7 @@ class UserAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetch user details");
       }
     } catch (e) {
       print(e);
@@ -57,7 +58,7 @@ class UserAPIService {
           print("CHANGE AVATAR FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL updateAvatar");
       }
     } catch (e) {
       print(e);
@@ -71,16 +72,15 @@ class UserAPIService {
     data.removeWhere(
       (key, value) => value == null,
     );
-    print("DATA");
-    print(data);
+    print("DATA $data");
     try {
       final respo = await http.post(Uri.parse("$urlApi/client/update-details"),
-          body: data,
+          body: data['experience'],
           headers: {
             "Accept": "application/json",
             "Authorization": "Bearer $token",
           });
-
+      print("STATUSCODE ${respo.statusCode}");
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
 
@@ -92,7 +92,7 @@ class UserAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAILED updateDetails");
       }
     } catch (e) {
       print(e);
@@ -123,7 +123,7 @@ class UserAPIService {
         return true;
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL update password");
       }
     } catch (e) {
       print(e);
@@ -147,7 +147,7 @@ class UserAPIService {
         return transactions.map((e) => TransactionModel.fromJson(e)).toList();
       } else {
         print(respo.body);
-        print("SERVER FAIL");
+        print("SERVER FAIL Fetch History");
       }
     } catch (e) {
       print(e);
@@ -156,63 +156,54 @@ class UserAPIService {
     return null;
   }
 
-  Future<bool> saveFCMToken({
-    required String fcmToken,
+  bool _notificationStatus = false;
+  bool get noticationStatus => _notificationStatus;
+
+  set noticationStatus(bool value) => _notificationStatus = value;
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  Future<void> saveFCM({
     required String token,
   }) async {
+    var fcmToken = await messaging.getToken();
+    print(fcmToken);
+    print(token);
     try {
       final respo =
-          await http.post(Uri.parse("$urlApi/clients/save-fcm"), body: {
+          await http.post(Uri.parse("$urlApi/client/save-fcm"), body: {
         "token": fcmToken,
       }, headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
-
-      if (respo.statusCode == 200) {
-        var data = json.decode(respo.body);
-        print(data);
-
-        print("SAVE FCM PASS");
-        return true;
-      } else {
-        print(respo.body);
-        print("SERVER FAIL");
-      }
+      var data = json.decode(respo.body);
+      print("$data");
     } catch (e) {
       print(e);
-      print("SAVE FCM  FAIL");
+      print("saveFCM FAIL");
     }
-    return false;
+    _notificationStatus = true;
+    print(noticationStatus);
   }
 
-  Future<bool> removeFCMToken({
-    required String fcmToken,
+  Future<void> removeFCMToken({
     required String token,
   }) async {
+    var fcmToken = await messaging.getToken();
     try {
       final respo =
-          await http.post(Uri.parse("$urlApi/clients/remove-fcm"), body: {
+          await http.post(Uri.parse("$urlApi/client/remove-fcm"), body: {
         "token": fcmToken,
       }, headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
-
-      if (respo.statusCode == 200) {
-        var data = json.decode(respo.body);
-        print(data);
-
-        print("REMOVE FCM PASS");
-        return true;
-      } else {
-        print(respo.body);
-        print("SERVER FAIL");
-      }
+      var data = json.decode(respo.body);
+      print("$data");
     } catch (e) {
       print(e);
       print("REMOVE FCM  FAIL");
     }
-    return false;
+    _notificationStatus = false;
   }
 }

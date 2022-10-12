@@ -50,9 +50,10 @@ class DocumentService with ReactiveServiceMixin {
 
   int? mandatoryNumberUploaded() {
     int num = 0;
-    for (var x in mandatoryDocumentTypes()) {
+    if (documents == null) return num;
+    for (DocumentTypeModel doc in mandatoryDocumentTypes()) {
       if (documents!
-          .any((element) => element.client_document_type_id == x.id)) {
+          .any((element) => element.client_document_type_id == doc.id)) {
         num++;
       }
     }

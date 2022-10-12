@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+import 'user_api_service.dart';
+
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  static bool _notificationsEnabled = false;
+  static const bool _notificationsEnabled = false;
 
   static void initialize() {
     const InitializationSettings initializationSettings =
@@ -23,37 +23,31 @@ class LocalNotificationService {
     _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-  static Future<void> requestPermissions() async {
+  static Future<void> requestPermissions(
+      UserAPIService userAPIService, String token) async {
     print("PERMISSIONS CHECKING");
-    if (Platform.isIOS) {
-      await _flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              IOSFlutterLocalNotificationsPlugin>()
-          ?.requestPermissions(
-            alert: true,
-            badge: true,
-            sound: true,
-            critical: true,
-          );
-      await _flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              MacOSFlutterLocalNotificationsPlugin>()
-          ?.requestPermissions(
-            alert: true,
-            badge: true,
-            sound: true,
-            critical: true,
-          );
-    } else if (Platform.isAndroid) {
-      final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
-          _flutterLocalNotificationsPlugin
-              .resolvePlatformSpecificImplementation<
-                  AndroidFlutterLocalNotificationsPlugin>();
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
 
-      final bool? granted = await androidImplementation?.requestPermission();
-
-      _notificationsEnabled = granted ?? false;
-      print("Android");
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print("NOTIFICATION ON");
+      userAPIService.saveFCM(token: token);
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
+      print("NOTIFICATION OFF");
+      userAPIService.removeFCMToken(token: token);
+    } else {
+      print("NOTIFICATION OFF");
+      userAPIService.removeFCMToken(token: token);
+      print('User declined or has not accepted permission');
     }
   }
 

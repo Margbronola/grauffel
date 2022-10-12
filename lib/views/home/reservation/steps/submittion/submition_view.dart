@@ -41,7 +41,7 @@ class SubmitionView extends StatelessWidget {
               ),
               verticalSpaceSmall(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
                     Row(
@@ -57,9 +57,10 @@ class SubmitionView extends StatelessWidget {
                             Text(
                               model.bookedModel!.name ?? "",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 13.sp),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'ProductSans',
+                                fontSize: 13.sp,
+                              ),
                             )
                           ],
                         ),
@@ -73,9 +74,10 @@ class SubmitionView extends StatelessWidget {
                             Text(
                               model.date(),
                               style: TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13.sp),
+                                fontFamily: 'ProductSans',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13.sp,
+                              ),
                             )
                           ],
                         ),
@@ -91,9 +93,10 @@ class SubmitionView extends StatelessWidget {
                                 : Text(
                                     model.time(),
                                     style: TextStyle(
-                                        fontFamily: 'ProductSans',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13.sp),
+                                      fontFamily: 'ProductSans',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13.sp,
+                                    ),
                                   )
                           ],
                         ),
@@ -116,33 +119,38 @@ class SubmitionView extends StatelessWidget {
                             .toList()),
                     Column(
                         children: model.ammunitionList
-                            .map((e) => Padding(
-                                  padding: EdgeInsets.only(bottom: 10.h),
-                                  child: ItemCard(
-                                    extraButton: e.quantity.toString(),
-                                    image: e.image != null
-                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
-                                        : null,
-                                    title: e.name!,
-                                    brand: e.brand!.name!,
-                                    reference: "Référence",
-                                  ),
-                                ))
+                            .map(
+                              (e) => Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: ItemCard(
+                                  extraButton: e.quantity.toString(),
+                                  image: e.image != null
+                                      ? "$urlServer/${e.image!.path}/${e.image!.filename}"
+                                      : null,
+                                  title: e.name!,
+                                  brand: e.brand!.name!,
+                                  reference: "Référence",
+                                ),
+                              ),
+                            )
                             .toList()),
                     Column(
-                        children: model.equipmentList
-                            .map((e) => Padding(
-                                  padding: EdgeInsets.only(bottom: 10.h),
-                                  child: ItemCard(
-                                    image: e.image != null
-                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
-                                        : null,
-                                    title: e.name!,
-                                    brand: e.type.toString(),
-                                    reference: "Référence",
-                                  ),
-                                ))
-                            .toList()),
+                      children: model.equipmentList
+                          .map(
+                            (e) => Padding(
+                              padding: EdgeInsets.only(bottom: 10.h),
+                              child: ItemCard(
+                                image: e.image != null
+                                    ? "$urlServer/${e.image!.path}/${e.image!.filename}"
+                                    : null,
+                                title: e.name!,
+                                brand: e.type.toString(),
+                                reference: "Référence",
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
                     TextFormField(
                       maxLines: 3,
                       textInputAction: TextInputAction.next,
@@ -155,22 +163,25 @@ class SubmitionView extends StatelessWidget {
                       },
                       decoration: InputDecoration(
                         label: RichText(
-                            text: TextSpan(
-                                text: 'Commentaire',
-                                style: TextStyle(
-                                    fontFamily: 'ProductSans',
-                                    color: model.isCommentFucos
-                                        ? Colors.grey
-                                        : Colors.black,
-                                    letterSpacing: 1.3,
-                                    fontWeight: FontWeight.w700),
-                                children: const [
+                          text: TextSpan(
+                            text: 'Commentaire',
+                            style: TextStyle(
+                                fontFamily: 'ProductSans',
+                                color: model.isCommentFucos
+                                    ? Colors.grey
+                                    : Colors.black,
+                                letterSpacing: 1.3,
+                                fontWeight: FontWeight.w700),
+                            children: const [
                               TextSpan(
-                                  text: ' *',
-                                  style: TextStyle(
-                                    color: buttonColor,
-                                  ))
-                            ])),
+                                text: ' *',
+                                style: TextStyle(
+                                  color: buttonColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         fillColor: Colors.black,
                         focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
@@ -184,18 +195,23 @@ class SubmitionView extends StatelessWidget {
                     ),
                     verticalSpaceMedium(),
                     SizedBox(
-                        width: 310.w,
-                        child: CustomButton(
-                            title: "Réserver", onTap: model.reserver)),
+                      width: 310.w,
+                      child: CustomButton(
+                        title: "Réserver",
+                        onTap: model.reserver,
+                      ),
+                    ),
                     verticalSpaceSmall(),
                     SizedBox(
-                        width: 310.w,
-                        child: TextButton(
-                            onPressed: model.cancel,
-                            child: Text(
-                              "Annuler".toUpperCase(),
-                              style: const TextStyle(color: buttonColor),
-                            ))),
+                      width: 310.w,
+                      child: TextButton(
+                        onPressed: model.cancel,
+                        child: Text(
+                          "Annuler".toUpperCase(),
+                          style: const TextStyle(color: buttonColor),
+                        ),
+                      ),
+                    ),
                     verticalSpaceMedium()
                   ],
                 ),

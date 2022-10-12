@@ -66,7 +66,7 @@ class CaliberAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchCaliber");
       }
     } catch (e) {
       print(e);

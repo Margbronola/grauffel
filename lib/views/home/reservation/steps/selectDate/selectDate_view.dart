@@ -74,7 +74,7 @@ class SelectDateView extends StatelessWidget {
                 color: customGrey,
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
-                  height: 90.h,
+                  height: 95.h,
                   child: DatePicker(model.currentDate, model.scrollController,
                       selectionColor: buttonColor,
                       deactivatedColor: Colors.grey,
@@ -92,38 +92,38 @@ class SelectDateView extends StatelessWidget {
                           fontSize: 15.sp)),
                 ),
               ),
-              // model.isBusy
-              //     ? SizedBox(
-              //         height: 300.h,
-              //         child: const Center(
-              //           child: CircularProgressIndicator(),
-              //         ),
-              //       )
-              //     : Container(
-              //         padding: const EdgeInsets.symmetric(horizontal: 20),
-              //         height: 300.h,
-              //         child: GridView.count(
-              //           // Create a grid with 2 columns. If you change the scrollDirection to
-              //           // horizontal, this produces 2 rows.
-              //           crossAxisCount: 2,
-              //           mainAxisSpacing: 5,
-              //           crossAxisSpacing: 5,
-              //           childAspectRatio: 2 / 0.5,
-              //           children:
-              //               List.generate(model.availableTimes.length, (index) {
-              //             return time(
-              //               selectedTime: model.selectedDate,
-              //               avaiable: model.availableTimes[index].available!,
-              //               onPress: () {
-              //                 model.selectTime(model.availableTimes[index]);
-              //               },
-              //               isSelected:
-              //                   model.isSelected(model.availableTimes[index]),
-              //               time: model.availableTimes[index].time!,
-              //             );
-              //           }),
-              //         ),
-              //       )
+              model.isBusy
+                  ? SizedBox(
+                      height: 300.h,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      height: 300.h,
+                      child: GridView.count(
+                        // Create a grid with 2 columns. If you change the scrollDirection to
+                        // horizontal, this produces 2 rows.
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
+                        childAspectRatio: 2 / 0.5,
+                        children:
+                            List.generate(model.availableTimes.length, (index) {
+                          return time(
+                            selectedTime: model.selectedDate,
+                            avaiable: model.availableTimes[index].available!,
+                            onPress: () {
+                              model.selectTime(model.availableTimes[index]);
+                            },
+                            isSelected:
+                                model.isSelected(model.availableTimes[index]),
+                            time: model.availableTimes[index].time!,
+                          );
+                        }),
+                      ),
+                    )
             ],
           ),
           model.selectedTime != null

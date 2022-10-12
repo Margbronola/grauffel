@@ -19,9 +19,13 @@ class ExperienceEditViewModel extends BaseViewModel {
 
   void init(ExtraDetails details) {
     if (details == ExtraDetails.experience) {
-      textController.text = _userService.user!.experience!;
+      if (_userService.user?.experience != null) {
+        textController.text = _userService.user!.experience!;
+      }
     } else {
-      textController.text = _userService.user!.equipment!;
+      if (_userService.user?.equipment != null) {
+        textController.text = _userService.user!.equipment!;
+      }
     }
   }
 

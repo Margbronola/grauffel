@@ -13,6 +13,7 @@ class NotificationSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<NotificationSettingsViewModel>.reactive(
+      onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           iconTheme: const IconThemeData(color: backgroundColor),
@@ -73,55 +74,55 @@ class NotificationSettingsView extends StatelessWidget {
                   : Padding(
                       padding: EdgeInsets.symmetric(horizontal: 30.w),
                       child: Column(
-                        children: [
-                          verticalSpaceMedium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "Receive a notification to Nremind me of a reservation 1 hour before",
-                                  style: TextStyle(
-                                      fontFamily: 'ProductSans',
-                                      fontSize: 15.sp),
-                                ),
-                              ),
-                              GFToggle(
-                                onChanged: (x) {},
-                                value: true,
-                                // enabledThumbColor: buttonColor,
-                                enabledTrackColor: buttonColor,
-                                enabledText: "",
-                                disabledText: "",
-                                boxShape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(0),
-                                type: GFToggleType.custom,
-                              ),
-                            ],
-                          ),
-                          verticalSpaceMedium(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                  child: Text(
-                                "Recevoir une notification en cas\nd'annulation",
-                                style: TextStyle(
-                                    fontFamily: 'ProductSans', fontSize: 15.sp),
-                              )),
-                              GFToggle(
-                                onChanged: (x) {},
-                                value: true,
-                                // enabledThumbColor: buttonColor,
-                                enabledTrackColor: buttonColor,
-                                enabledText: "",
-                                disabledText: "",
-                                boxShape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.circular(0),
-                                type: GFToggleType.custom,
-                              ),
-                            ],
-                          ),
+                        children: const [
+                          // verticalSpaceMedium(),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Expanded(
+                          //       child: Text(
+                          //         "Receive a notification to Nremind me of a reservation 1 hour before",
+                          //         style: TextStyle(
+                          //             fontFamily: 'ProductSans',
+                          //             fontSize: 15.sp),
+                          //       ),
+                          //     ),
+                          //     GFToggle(
+                          //       onChanged: model.toggleNotificationOnn,
+                          //       value: model.notificationOnn,
+                          //       // enabledThumbColor: buttonColor,
+                          //       enabledTrackColor: buttonColor,
+                          //       enabledText: "",
+                          //       disabledText: "",
+                          //       boxShape: BoxShape.rectangle,
+                          //       borderRadius: BorderRadius.circular(0),
+                          //       type: GFToggleType.custom,
+                          //     ),
+                          //   ],
+                          // ),
+                          // verticalSpaceMedium(),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Expanded(
+                          //         child: Text(
+                          //       "Recevoir une notification en cas\nd'annulation",
+                          //       style: TextStyle(
+                          //           fontFamily: 'ProductSans', fontSize: 15.sp),
+                          //     )),
+                          //     GFToggle(
+                          //       onChanged: model.toggleNotificationOnn,
+                          //       value: model.notificationOnn,
+                          //       // enabledThumbColor: buttonColor,
+                          //       enabledTrackColor: buttonColor,
+                          //       enabledText: "",
+                          //       disabledText: "",
+                          //       boxShape: BoxShape.rectangle,
+                          //       borderRadius: BorderRadius.circular(0),
+                          //       type: GFToggleType.custom,
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),

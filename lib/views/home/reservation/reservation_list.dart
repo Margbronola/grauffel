@@ -26,30 +26,31 @@ class ReservationList extends StatelessWidget {
                   const Header(title: "réservation"),
                   verticalSpaceSmall(),
                   Expanded(
-                      child: model.bookables.isEmpty
-                          ? const Center(
-                              child: Text("Pas encore de réservation!"),
-                            )
-                          : ListView.builder(
-                              itemCount: model.bookables.length,
-                              itemBuilder: (context, index) => ReserveCard(
-                                  ontap: () {
-                                    if (model.bookables[index].name ==
-                                        alveoles) {
-                                      model.navigateToReservationCell();
-                                    } else {
-                                      model.navigateToReservation(
-                                          bookable: model.bookables[index]);
-                                    }
-                                    print(model.bookables[index]);
-                                  },
-                                  reserve: ReserveModel(
-                                      image: model.bookables[index].image ?? "",
-                                      title: model.bookables[index].name!
-                                          .toUpperCase(),
-                                      description:
-                                          model.bookables[index].description ??
-                                              "")))),
+                    child: model.bookables.isEmpty
+                        ? const Center(
+                            child: Text("Pas encore de réservation!"),
+                          )
+                        : ListView.builder(
+                            itemCount: model.bookables.length,
+                            itemBuilder: (context, index) => ReserveCard(
+                              ontap: () {
+                                if (model.bookables[index].name == alveoles) {
+                                  model.navigateToReservationCell();
+                                } else {
+                                  model.navigateToReservation(
+                                      bookable: model.bookables[index]);
+                                }
+                                print(model.bookables[index]);
+                              },
+                              reserve: ReserveModel(
+                                  image: model.bookables[index].image ?? "",
+                                  title: model.bookables[index].name!
+                                      .toUpperCase(),
+                                  description:
+                                      model.bookables[index].description ?? ""),
+                            ),
+                          ),
+                  ),
                 ],
               ),
       ),

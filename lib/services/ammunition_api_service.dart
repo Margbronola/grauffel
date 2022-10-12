@@ -75,7 +75,7 @@ class AmmunitionAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchAllAmunition");
       }
     } catch (e) {
       print(e);

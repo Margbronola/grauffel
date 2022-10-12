@@ -69,7 +69,7 @@ class GunAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetch all guns");
       }
     } catch (e) {
       print(e);

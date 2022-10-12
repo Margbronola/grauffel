@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:egczacademy/models/booking_model.dart';
-
 import '../../../app/global.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
@@ -24,6 +23,13 @@ class ReserveCardDetails extends StatefulWidget {
 }
 
 class _ReserveCardDetailsState extends State<ReserveCardDetails> {
+  String htmlToText(
+      {required String htmlFormatData, bool withNewLine = false}) {
+    return htmlFormatData
+        .replaceAll(RegExp("<.*?>"), withNewLine ? "\n" : "")
+        .replaceAll("\t", "");
+  }
+
   String time() {
     String time1 =
         "${widget.bookingModel.start.toString().split(" ")[1].split(":")[0]}h${widget.bookingModel.start.toString().split(" ")[1].split(":")[1]}";
@@ -177,7 +183,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                     .toList()),
             verticalSpaceMedium(),
             Text(
-              widget.bookingModel.bookable!.description ?? "",
+              htmlToText(
+                  htmlFormatData:
+                      widget.bookingModel.bookable!.description ?? ""),
               style: const TextStyle(
                   fontFamily: 'ProductSans',
                   fontSize: 14,

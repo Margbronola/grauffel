@@ -5,6 +5,7 @@ import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/home/reservation/reservation_list.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../reservation/reservation_view.dart';
@@ -17,6 +18,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return ViewModelBuilder<HomeViewModel>.reactive(
       onModelReady: (model) => model.initState(context),
       builder: (context, model, child) => Scaffold(

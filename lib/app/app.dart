@@ -85,6 +85,9 @@ import '../views/splash/splash_view.dart';
   LazySingleton(
     classType: CourseAPIService,
   ),
+  // LazySingleton(
+  //   classType: FireBaseMessagingService,
+  // ),
 ])
 class App {
   /** This class has no puporse besides housing the annotation that generates the required functionality **/

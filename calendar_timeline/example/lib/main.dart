@@ -29,7 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   DateTime _selectedValue = DateTime.now();
 
-
   @override
   void initState() {
     super.initState();
@@ -38,12 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.replay),
-        onPressed: () {
-          _controller.animateToSelection();
-        },
-      ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.replay),
+          onPressed: () {
+            _controller.animateToSelection();
+          },
+        ),
         appBar: AppBar(
           title: Text(widget.title!),
         ),
@@ -61,28 +60,28 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: EdgeInsets.all(20),
               ),
-              Container(
-                child: DatePicker(
-                  DateTime.now(),
-                  width: 60,
-                  height: 80,
-                  controller: _controller,
-                  initialSelectedDate: DateTime.now(),
-                  selectionColor: Colors.black,
-                  selectedTextColor: Colors.white,
-                  inactiveDates: [
-                    DateTime.now().add(Duration(days: 3)),
-                    DateTime.now().add(Duration(days: 4)),
-                    DateTime.now().add(Duration(days: 7))
-                  ],
-                  onDateChange: (date) {
-                    // New date selected
-                    setState(() {
-                      _selectedValue = date;
-                    });
-                  },
-                ),
-              ),
+              // Container(
+              //   child: DatePicker(
+              //     DateTime.now(),
+              //     width: 60,
+              //     height: 80,
+              //     controller: _controller,
+              //     initialSelectedDate: DateTime.now(),
+              //     selectionColor: Colors.black,
+              //     selectedTextColor: Colors.white,
+              //     inactiveDates: [
+              //       DateTime.now().add(Duration(days: 3)),
+              //       DateTime.now().add(Duration(days: 4)),
+              //       DateTime.now().add(Duration(days: 7))
+              //     ],
+              //     onDateChange: (date) {
+              //       // New date selected
+              //       setState(() {
+              //         _selectedValue = date;
+              //       });
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ));

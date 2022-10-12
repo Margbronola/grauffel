@@ -55,7 +55,7 @@ class BrandAPIService {
           );
           print(_pagingModel);
           if (_brands == null) {
-            print("FIRST FETCH");
+            print("FIRST FETCH fetch brands");
             _brands =
                 fetchBrandList.map((e) => BrandModel.fromJson(e)).toList();
           } else {

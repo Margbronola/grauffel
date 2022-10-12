@@ -106,7 +106,7 @@ Widget amminitionCard(
             borderRadius: BorderRadius.circular(5)),
         width: 161.w,
         height: 167.h,
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -114,7 +114,7 @@ Widget amminitionCard(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 97.w,
+                  width: 85.w,
                   height: 77.h,
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(

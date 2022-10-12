@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
@@ -7,7 +9,7 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
 import 'package:egczacademy/services/user_service.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../../app/app.locator.dart';
@@ -46,7 +48,7 @@ class SubmitionViewModel extends ReactiveViewModel {
         "${_bookingService.getselectedTimes!.time!.split("-")[0].split(":")[0]}h${_bookingService.getselectedTimes!.time!.split("-")[0].split(":")[1]}";
     String time2 =
         "${_bookingService.getselectedTimes!.time!.split("-")[1].split(":")[0]}h${_bookingService.getselectedTimes!.time!.split("-")[1].split(":")[1]}";
-    print("$time1 - $time2");
+    // print("$time1 - $time2");
     return "$time1 - $time2";
   }
 
@@ -75,7 +77,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   Future<bool> reserveBook() async {
-    return await _bookingApiService.book(
+    bool ff = await _bookingApiService.book(
       token: _userService.token!,
       date: _bookingService.getselectedDate,
       time: _bookingService.getselectedTimes!.time!,
@@ -84,6 +86,7 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
+    return ff;
   }
 
   Future<bool> reserveCourse() async {
@@ -97,9 +100,12 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   void reserver() async {
-    setBusy(true);
-
+    loadingWidget:
+    const Center(
+      child: CircularProgressIndicator.adaptive(),
+    );
     bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
+    setBusy(true);
 
     if (isBooked) {
       var response = await _dialogService.showCustomDialog(

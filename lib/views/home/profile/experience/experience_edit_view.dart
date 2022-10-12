@@ -32,69 +32,78 @@ class ExperienceEditView extends StatelessWidget {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : SizedBox(
-                // color: kcWhite,
-                height: size(context).height,
-                width: size(context).width,
-                child: Stack(
-                  children: [
-                    SingleChildScrollView(
-                      child: Form(
-                        key: model.formKey,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 50.w),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextFormField(
-                                textInputAction: TextInputAction.unspecified,
-                                keyboardType: TextInputType.text,
-                                maxLines: 15,
-                                style: TextStyle(
-                                    color: backgroundColor, fontSize: 20.sp),
-                                focusNode: model.textNode,
-                                controller: model.textController,
-                                validator: (value) {
-                                  return Validator.validateName(value ?? "");
-                                },
-                                decoration: InputDecoration(
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(color: buttonColor),
+            : GestureDetector(
+                onTap: () => FocusScope.of(context).unfocus(),
+                child: SizedBox(
+                  height: size(context).height,
+                  width: size(context).width,
+                  child: Stack(
+                    children: [
+                      SingleChildScrollView(
+                        child: Form(
+                          key: model.formKey,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 50.w),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextFormField(
+                                  textInputAction: TextInputAction.unspecified,
+                                  keyboardType: TextInputType.text,
+                                  maxLines: 15,
+                                  minLines: 1,
+                                  style: TextStyle(
+                                      color: backgroundColor, fontSize: 20.sp),
+                                  focusNode: model.textNode,
+                                  controller: model.textController,
+                                  validator: (value) {
+                                    if (value != null) {
+                                      return Validator.validateName(value);
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: buttonColor),
+                                    ),
+                                    labelText:
+                                        extraDetails == ExtraDetails.experience
+                                            ? "Expériences"
+                                            : "Equipements",
+                                    labelStyle:
+                                        const TextStyle(color: Colors.grey),
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.grey),
+                                    ),
+                                    isDense: true,
                                   ),
-                                  labelText:
-                                      extraDetails == ExtraDetails.experience
-                                          ? "Expériences"
-                                          : "Equipements",
-                                  labelStyle:
-                                      const TextStyle(color: Colors.grey),
-                                  enabledBorder: const UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
-                                  ),
-                                  isDense: true,
                                 ),
-                              ),
-                              SizedBox(height: size(context).height * 0.03),
-                            ],
+                                SizedBox(height: size(context).height * 0.03),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 30),
-                        child: SizedBox(
-                          width: 220.w,
-                          child: CustomButton(
-                              title: "Enregistrer".toUpperCase(),
-                              onTap: () {
-                                model.save(extraDetails);
-                              }),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 30),
+                          child: SizedBox(
+                            width: 220.w,
+                            height: 70.w,
+                            child: CustomButton(
+                                title: "Enregistrer".toUpperCase(),
+                                onTap: () {
+                                  model.save(extraDetails);
+                                }),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
       ),

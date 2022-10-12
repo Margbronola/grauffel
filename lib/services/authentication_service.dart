@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
@@ -8,10 +7,13 @@ import '../app/global.dart';
 class AuthenticationService {
   Future<Map<String, dynamic>?> login(
       {required String firebase_token, required String device_name}) async {
-    print("login server");
+    print("firbase_token: $firebase_token");
+    print("AuthenticationService.login");
     try {
-      final respo = await http.post(Uri.parse("$urlApi/login"),
-          body: {"firebase_token": firebase_token, "device_name": device_name});
+      final respo = await http.post(Uri.parse("$urlApi/login"), body: {
+        "firebase_token": firebase_token,
+        "device_name": device_name,
+      });
       print(respo.body);
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
@@ -40,28 +42,30 @@ class AuthenticationService {
   }
 
   //server register
-  Future<String?> register({required UserModel userModel}) async {
-    try {
-      Map user = userModel.toJson();
-      user.removeWhere((key, value) => value == null);
-      final respo = await http.post(Uri.parse("$urlApi/register"), body: user);
-      if (respo.statusCode == 200) {
-        var data = json.decode(respo.body);
-        print(data);
-        print("success");
-        Fluttertoast.showToast(msg: "Successful Sign Unp");
-        return data;
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-      return null;
-    }
-    return null;
-  }
+  // Future<String?> register({required UserModel userModel}) async {
+  //   try {
+  //     Map user = userModel.toJson();
+  //     user.removeWhere((key, value) => value == null);
+  //     final respo = await http.post(Uri.parse("$urlApi/register"), body: user);
+  //     if (respo.statusCode == 200) {
+  //       var data = json.decode(respo.body);
+  //       print(data);
+  //       print("success");
+  //       Fluttertoast.showToast(msg: "Successful Sign Unp");
+  //       return data;
+  //     }
+  //   } catch (e) {
+  //     debugPrint(e.toString());
+  //     return null;
+  //   }
+  //   return null;
+  // }
 
-  Future<bool> logout({required String token}) async {
+  Future<bool> logout({required String token, String? fcm_token}) async {
     try {
-      final respo = await http.post(Uri.parse("$urlApi/logout"), headers: {
+      final respo = await http.post(Uri.parse("$urlApi/logout"), body: {
+        "fcm_token": fcm_token
+      }, headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
@@ -72,7 +76,7 @@ class AuthenticationService {
         return true;
       }
     } catch (e) {
-      print(e);
+      print("FAIL TO LOGOUT: $e");
     }
     return false;
   }

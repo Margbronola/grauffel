@@ -8,6 +8,7 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/documentUpload/document_upload_view.dart';
 import 'package:egczacademy/views/home/profile/documentUpload/fileUpload/file_upload_view.dart';
 import 'package:egczacademy/views/home/profile/experience/experience_edit_view.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,7 +30,6 @@ class ProfileViewModel extends ReactiveViewModel {
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
   final ScrollController scrollController = ScrollController();
-
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final FireBaseAuthService _fireBaseAuthService =
@@ -48,7 +48,7 @@ class ProfileViewModel extends ReactiveViewModel {
   bool documentLoader = false;
 
   String get userValidate =>
-      _userService.user!.verification! == 1 ? "Vérifié" : "Compte non validé";
+      _userService.user?.verification == 1 ? "Vérifié" : "Compte non validé";
 
   double angle1 = 0;
   double angle2 = 0;
@@ -239,16 +239,31 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   void signOut() async {
-    print("signout firebase");
-    setBusy(true);
-    print(_userService.token);
-    await _fireBaseAuthService.logout();
-    await _authenticationService.logout(token: _sharedPrefService.prefsToken);
-    _sharedPrefService.clearAllPrefs();
+    try {
+      String? token;
+      try {
+        FirebaseMessaging messaging = FirebaseMessaging.instance;
+        token = await messaging.getToken() ?? "";
+      } catch (e) {
+        token = "";
+      }
+      print("signout firebase");
+      setBusy(true);
+      print(_userService.token);
+      await _fireBaseAuthService.logout();
+      await _authenticationService.logout(
+        token: _sharedPrefService.prefsToken,
+        fcm_token: token,
+      );
+      _sharedPrefService.clearAllPrefs();
 
-    _navigationService
-        .pushNamedAndRemoveUntil(Routes.welcomeView)!
-        .whenComplete(() => setBusy(false));
+      _navigationService
+          .pushNamedAndRemoveUntil(Routes.welcomeView)!
+          .whenComplete(() => setBusy(false));
+    } catch (e) {
+      print("ERROR LOGOUT: $e");
+      return;
+    }
   }
 
   @override

@@ -54,7 +54,7 @@ class EquipmentsAPIService {
           print("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        print("SERVER FAIL fetchAllEquipments");
       }
     } catch (e) {
       print(e);

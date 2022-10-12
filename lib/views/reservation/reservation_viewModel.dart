@@ -36,8 +36,6 @@ class ReservationViewModel extends ReactiveViewModel {
       setBusy(true);
       await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
-      // _documentService.fetch(
-      //     userService: _userService, documentAPIService: _documentAPIService);
 
       _homePagingService.setRefresh(false);
       setBusy(false);

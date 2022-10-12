@@ -7,11 +7,13 @@ class FireBaseAuthService {
 
   Future<String?> signIn(
       {required String email, required String password}) async {
-    print("SIgnIN");
+    print("SIgnIN Firebase");
     try {
       UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+
       print("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
+
       return await user.user!.getIdToken();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -27,6 +29,7 @@ class FireBaseAuthService {
       }
       return null;
     } catch (e) {
+      print("firebase fail");
       print(e);
     }
     return null;

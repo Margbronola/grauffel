@@ -5,13 +5,29 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../services/user_api_service.dart';
+import '../../services/user_service.dart';
+
 class HomeViewModel extends ReactiveViewModel {
   final HomePagingService _homePagingService = locator<HomePagingService>();
   int get selectedIndex => _homePagingService.selectedPage;
   PageController get pageController => _homePagingService.pageController!;
   bool get isFromReview => _homePagingService.isFromReview;
 
+  final UserAPIService _userAPIService = locator<UserAPIService>(); //
+  final UserService userService = locator<UserService>(); //
+
+  Future<void> backgroundHandler(RemoteMessage message) async {
+    //TODO: redirect in docs page
+  }
+
   void initState(context) async {
+    FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+    FirebaseMessaging.instance.getInitialMessage();
+    LocalNotificationService.requestPermissions(
+      _userAPIService,
+      userService.token!,
+    );
     _homePagingService.setController(PageController());
 
     String? token = await FirebaseMessaging.instance.getToken();

@@ -73,35 +73,37 @@ class DocumentCardView extends StatelessWidget {
                     ? const SizedBox()
                     : isValid
                         ? isProcess
-                            ? DateTime.parse(expiration)
-                                    .toUtc()
-                                    .subtract(const Duration(days: 30))
-                                    .isAfter(DateTime.now().toUtc())
-                                ? const Icon(
+                            ? expiration != "null"
+                                ? DateTime.parse(expiration)
+                                        .toUtc()
+                                        .subtract(const Duration(days: 30))
+                                        .isAfter(DateTime.now().toUtc())
+                                    ? const Icon(
+                                        Icons.check_circle_outline_sharp,
+                                        color: buttonColor,
+                                      )
+                                    : warning()
+                                : const Icon(
                                     Icons.check_circle_outline_sharp,
                                     color: buttonColor,
                                   )
-                                : warning()
-                            : const Icon(
-                                Icons.check_circle_outline_sharp,
-                                color: buttonColor,
-                              )
-                        : isProcess
-                            ? DateTime.parse(expiration)
-                                    .toUtc()
-                                    .subtract(const Duration(days: 30))
-                                    .isAfter(DateTime.now().toUtc())
-                                ? Image.asset(
+                            : isProcess
+                                ? DateTime.parse(expiration)
+                                        .toUtc()
+                                        .subtract(const Duration(days: 30))
+                                        .isAfter(DateTime.now().toUtc())
+                                    ? Image.asset(
+                                        "assets/images/docfile.png",
+                                        height: 30.h,
+                                        width: 23.w,
+                                      )
+                                    : warning()
+                                : Image.asset(
                                     "assets/images/docfile.png",
                                     height: 30.h,
                                     width: 23.w,
                                   )
-                                : warning()
-                            : Image.asset(
-                                "assets/images/docfile.png",
-                                height: 30.h,
-                                width: 23.w,
-                              ),
+                        : const SizedBox()
               ],
             ),
           ),
