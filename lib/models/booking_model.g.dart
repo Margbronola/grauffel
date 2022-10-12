@@ -42,6 +42,9 @@ _$_BookingModel _$$_BookingModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
       status_name: json['status_name'] as String?,
       morph_class: json['morph_class'] as String?,
+      admin: json['admin'] == null
+          ? null
+          : AdminModel.fromJson(json['admin'] as Map<String, dynamic>),
       ammunitions: (json['ammunitions'] as List<dynamic>?)
           ?.map((e) => AmmunitionsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -85,6 +88,7 @@ Map<String, dynamic> _$$_BookingModelToJson(_$_BookingModel instance) =>
       'updated_at': instance.updated_at?.toIso8601String(),
       'status_name': instance.status_name,
       'morph_class': instance.morph_class,
+      'admin': instance.admin,
       'ammunitions': instance.ammunitions,
       'guns': instance.guns,
       'equipements': instance.equipements,

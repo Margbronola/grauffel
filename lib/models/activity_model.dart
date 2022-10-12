@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/admin_model.dart';
 import 'package:egczacademy/models/salle_model.dart';
 import 'package:egczacademy/models/type_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,6 +31,7 @@ class ActivityModel with _$ActivityModel {
       String? start_time,
       String? end_time,
       TypeModel? type,
+      AdminModel? admin,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles}) = _ActivityModel;
 

@@ -6,11 +6,14 @@ import '../ui_helper.dart';
 
 class ReserveCard extends StatelessWidget {
   final ReserveModel reserve;
+  final bool isCourse;
   final Function() ontap;
+
   const ReserveCard({
     Key? key,
     required this.reserve,
     required this.ontap,
+    required this.isCourse,
   }) : super(key: key);
 
   @override
@@ -59,6 +62,13 @@ class ReserveCard extends StatelessWidget {
                         const SizedBox(
                           height: 5,
                         ),
+                        // !isCourse
+                        //     ? Row(
+                        //         children: const [
+
+                        //           Text("data")],
+                        //       )
+                        //     :
                         Text(
                           reserve.description,
                           maxLines: 3,

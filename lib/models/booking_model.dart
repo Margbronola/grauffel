@@ -1,4 +1,5 @@
 import 'package:egczacademy/models/activity_model.dart';
+import 'package:egczacademy/models/admin_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
@@ -37,6 +38,7 @@ class BookingModel with _$BookingModel {
     DateTime? updated_at,
     String? status_name,
     String? morph_class,
+    AdminModel? admin,
     List<AmmunitionsModel>? ammunitions,
     List<GunModel>? guns,
     List<EquipmentModel>? equipements,

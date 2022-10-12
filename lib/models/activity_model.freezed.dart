@@ -40,6 +40,7 @@ mixin _$ActivityModel {
   String? get start_time => throw _privateConstructorUsedError;
   String? get end_time => throw _privateConstructorUsedError;
   TypeModel? get type => throw _privateConstructorUsedError;
+  AdminModel? get admin => throw _privateConstructorUsedError;
   List<ActivitySalleModel>? get activitysalle =>
       throw _privateConstructorUsedError;
   List<SalleModel>? get salles => throw _privateConstructorUsedError;
@@ -76,10 +77,12 @@ abstract class $ActivityModelCopyWith<$Res> {
       String? start_time,
       String? end_time,
       TypeModel? type,
+      AdminModel? admin,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 
   $TypeModelCopyWith<$Res>? get type;
+  $AdminModelCopyWith<$Res>? get admin;
 }
 
 /// @nodoc
@@ -113,6 +116,7 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? start_time = freezed,
     Object? end_time = freezed,
     Object? type = freezed,
+    Object? admin = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -197,6 +201,10 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       activitysalle: activitysalle == freezed
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -216,6 +224,17 @@ class _$ActivityModelCopyWithImpl<$Res>
 
     return $TypeModelCopyWith<$Res>(_value.type!, (value) {
       return _then(_value.copyWith(type: value));
+    });
+  }
+
+  @override
+  $AdminModelCopyWith<$Res>? get admin {
+    if (_value.admin == null) {
+      return null;
+    }
+
+    return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
+      return _then(_value.copyWith(admin: value));
     });
   }
 }
@@ -248,11 +267,14 @@ abstract class _$$_ActivityModelCopyWith<$Res>
       String? start_time,
       String? end_time,
       TypeModel? type,
+      AdminModel? admin,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 
   @override
   $TypeModelCopyWith<$Res>? get type;
+  @override
+  $AdminModelCopyWith<$Res>? get admin;
 }
 
 /// @nodoc
@@ -288,6 +310,7 @@ class __$$_ActivityModelCopyWithImpl<$Res>
     Object? start_time = freezed,
     Object? end_time = freezed,
     Object? type = freezed,
+    Object? admin = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -372,6 +395,10 @@ class __$$_ActivityModelCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       activitysalle: activitysalle == freezed
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -408,6 +435,7 @@ class _$_ActivityModel implements _ActivityModel {
       this.start_time,
       this.end_time,
       this.type,
+      this.admin,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles})
       : _activitysalle = activitysalle,
@@ -456,6 +484,8 @@ class _$_ActivityModel implements _ActivityModel {
   final String? end_time;
   @override
   final TypeModel? type;
+  @override
+  final AdminModel? admin;
   final List<ActivitySalleModel>? _activitysalle;
   @override
   List<ActivitySalleModel>? get activitysalle {
@@ -476,7 +506,7 @@ class _$_ActivityModel implements _ActivityModel {
 
   @override
   String toString() {
-    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, type: $type, activitysalle: $activitysalle, salles: $salles)';
+    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, type: $type, admin: $admin, activitysalle: $activitysalle, salles: $salles)';
   }
 
   @override
@@ -512,6 +542,7 @@ class _$_ActivityModel implements _ActivityModel {
                 .equals(other.start_time, start_time) &&
             const DeepCollectionEquality().equals(other.end_time, end_time) &&
             const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.admin, admin) &&
             const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality().equals(other._salles, _salles));
@@ -541,6 +572,7 @@ class _$_ActivityModel implements _ActivityModel {
         const DeepCollectionEquality().hash(start_time),
         const DeepCollectionEquality().hash(end_time),
         const DeepCollectionEquality().hash(type),
+        const DeepCollectionEquality().hash(admin),
         const DeepCollectionEquality().hash(_activitysalle),
         const DeepCollectionEquality().hash(_salles)
       ]);
@@ -580,6 +612,7 @@ abstract class _ActivityModel implements ActivityModel {
       final String? start_time,
       final String? end_time,
       final TypeModel? type,
+      final AdminModel? admin,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles}) = _$_ActivityModel;
 
@@ -626,6 +659,8 @@ abstract class _ActivityModel implements ActivityModel {
   String? get end_time;
   @override
   TypeModel? get type;
+  @override
+  AdminModel? get admin;
   @override
   List<ActivitySalleModel>? get activitysalle;
   @override

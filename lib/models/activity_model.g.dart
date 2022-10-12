@@ -34,6 +34,9 @@ _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
       type: json['type'] == null
           ? null
           : TypeModel.fromJson(json['type'] as Map<String, dynamic>),
+      admin: json['admin'] == null
+          ? null
+          : AdminModel.fromJson(json['admin'] as Map<String, dynamic>),
       activitysalle: (json['activitysalle'] as List<dynamic>?)
           ?.map((e) => ActivitySalleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -64,6 +67,7 @@ Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
       'start_time': instance.start_time,
       'end_time': instance.end_time,
       'type': instance.type,
+      'admin': instance.admin,
       'activitysalle': instance.activitysalle,
       'salles': instance.salles,
     };

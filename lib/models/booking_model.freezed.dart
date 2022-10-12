@@ -47,6 +47,7 @@ mixin _$BookingModel {
   DateTime? get updated_at => throw _privateConstructorUsedError;
   String? get status_name => throw _privateConstructorUsedError;
   String? get morph_class => throw _privateConstructorUsedError;
+  AdminModel? get admin => throw _privateConstructorUsedError;
   List<AmmunitionsModel>? get ammunitions => throw _privateConstructorUsedError;
   List<GunModel>? get guns => throw _privateConstructorUsedError;
   List<EquipmentModel>? get equipements => throw _privateConstructorUsedError;
@@ -91,11 +92,13 @@ abstract class $BookingModelCopyWith<$Res> {
       DateTime? updated_at,
       String? status_name,
       String? morph_class,
+      AdminModel? admin,
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
       ActivityModel? bookable});
 
+  $AdminModelCopyWith<$Res>? get admin;
   $ActivityModelCopyWith<$Res>? get bookable;
 }
 
@@ -136,6 +139,7 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
     Object? updated_at = freezed,
     Object? status_name = freezed,
     Object? morph_class = freezed,
+    Object? admin = freezed,
     Object? ammunitions = freezed,
     Object? guns = freezed,
     Object? equipements = freezed,
@@ -250,6 +254,10 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
           ? _value.morph_class
           : morph_class // ignore: cast_nullable_to_non_nullable
               as String?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       ammunitions: ammunitions == freezed
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
@@ -267,6 +275,17 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
           : bookable // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
     ));
+  }
+
+  @override
+  $AdminModelCopyWith<$Res>? get admin {
+    if (_value.admin == null) {
+      return null;
+    }
+
+    return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
+      return _then(_value.copyWith(admin: value));
+    });
   }
 
   @override
@@ -316,11 +335,14 @@ abstract class _$$_BookingModelCopyWith<$Res>
       DateTime? updated_at,
       String? status_name,
       String? morph_class,
+      AdminModel? admin,
       List<AmmunitionsModel>? ammunitions,
       List<GunModel>? guns,
       List<EquipmentModel>? equipements,
       ActivityModel? bookable});
 
+  @override
+  $AdminModelCopyWith<$Res>? get admin;
   @override
   $ActivityModelCopyWith<$Res>? get bookable;
 }
@@ -365,6 +387,7 @@ class __$$_BookingModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
     Object? status_name = freezed,
     Object? morph_class = freezed,
+    Object? admin = freezed,
     Object? ammunitions = freezed,
     Object? guns = freezed,
     Object? equipements = freezed,
@@ -479,6 +502,10 @@ class __$$_BookingModelCopyWithImpl<$Res>
           ? _value.morph_class
           : morph_class // ignore: cast_nullable_to_non_nullable
               as String?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       ammunitions: ammunitions == freezed
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
@@ -530,6 +557,7 @@ class _$_BookingModel implements _BookingModel {
       this.updated_at,
       this.status_name,
       this.morph_class,
+      this.admin,
       final List<AmmunitionsModel>? ammunitions,
       final List<GunModel>? guns,
       final List<EquipmentModel>? equipements,
@@ -595,6 +623,8 @@ class _$_BookingModel implements _BookingModel {
   final String? status_name;
   @override
   final String? morph_class;
+  @override
+  final AdminModel? admin;
   final List<AmmunitionsModel>? _ammunitions;
   @override
   List<AmmunitionsModel>? get ammunitions {
@@ -627,7 +657,7 @@ class _$_BookingModel implements _BookingModel {
 
   @override
   String toString() {
-    return 'BookingModel(id: $id, bookable_id: $bookable_id, name: $name, client_id: $client_id, activity_id: $activity_id, description: $description, start: $start, end: $end, cell_loc: $cell_loc, status: $status, duration: $duration, bookable_cost: $bookable_cost, total_gun_cost: $total_gun_cost, total_ammunition_cost: $total_ammunition_cost, total_equipment_cost: $total_equipment_cost, tax_included: $tax_included, sub_total: $sub_total, gun_discount: $gun_discount, ammunition_discount: $ammunition_discount, equipment_discount: $equipment_discount, total_discount: $total_discount, total_cost: $total_cost, purchase_number: $purchase_number, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, morph_class: $morph_class, ammunitions: $ammunitions, guns: $guns, equipements: $equipements, bookable: $bookable)';
+    return 'BookingModel(id: $id, bookable_id: $bookable_id, name: $name, client_id: $client_id, activity_id: $activity_id, description: $description, start: $start, end: $end, cell_loc: $cell_loc, status: $status, duration: $duration, bookable_cost: $bookable_cost, total_gun_cost: $total_gun_cost, total_ammunition_cost: $total_ammunition_cost, total_equipment_cost: $total_equipment_cost, tax_included: $tax_included, sub_total: $sub_total, gun_discount: $gun_discount, ammunition_discount: $ammunition_discount, equipment_discount: $equipment_discount, total_discount: $total_discount, total_cost: $total_cost, purchase_number: $purchase_number, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, morph_class: $morph_class, admin: $admin, ammunitions: $ammunitions, guns: $guns, equipements: $equipements, bookable: $bookable)';
   }
 
   @override
@@ -680,6 +710,7 @@ class _$_BookingModel implements _BookingModel {
                 .equals(other.status_name, status_name) &&
             const DeepCollectionEquality()
                 .equals(other.morph_class, morph_class) &&
+            const DeepCollectionEquality().equals(other.admin, admin) &&
             const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions) &&
             const DeepCollectionEquality().equals(other._guns, _guns) &&
@@ -719,6 +750,7 @@ class _$_BookingModel implements _BookingModel {
         const DeepCollectionEquality().hash(updated_at),
         const DeepCollectionEquality().hash(status_name),
         const DeepCollectionEquality().hash(morph_class),
+        const DeepCollectionEquality().hash(admin),
         const DeepCollectionEquality().hash(_ammunitions),
         const DeepCollectionEquality().hash(_guns),
         const DeepCollectionEquality().hash(_equipements),
@@ -767,6 +799,7 @@ abstract class _BookingModel implements BookingModel {
       final DateTime? updated_at,
       final String? status_name,
       final String? morph_class,
+      final AdminModel? admin,
       final List<AmmunitionsModel>? ammunitions,
       final List<GunModel>? guns,
       final List<EquipmentModel>? equipements,
@@ -829,6 +862,8 @@ abstract class _BookingModel implements BookingModel {
   String? get status_name;
   @override
   String? get morph_class;
+  @override
+  AdminModel? get admin;
   @override
   List<AmmunitionsModel>? get ammunitions;
   @override
