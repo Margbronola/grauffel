@@ -38,7 +38,7 @@ Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>
       'type': instance.type,
       'unlimited': instance.unlimited,
       'created_at': instance.created_at?.toIso8601String(),
-      'qty': instance.quantity,
+      'quantity': instance.quantity,
       'updated_at': instance.updated_at?.toIso8601String(),
       'type_name': instance.type_name,
       'image': instance.image,

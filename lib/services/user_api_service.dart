@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:egczacademy/models/transaction_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-
 import '../app/global.dart';
 
 class UserAPIService {
@@ -174,8 +172,9 @@ class UserAPIService {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
-      var data = json.decode(respo.body);
-      debugPrint("$data");
+      if (respo.statusCode == 200) {
+        debugPrint("saveFCM pass");
+      }
     } catch (e) {
       debugPrint(e.toString());
       debugPrint("saveFCM FAIL");
@@ -195,10 +194,12 @@ class UserAPIService {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
       });
-      var data = json.decode(respo.body);
-      debugPrint("$data");
+      if (respo.statusCode == 200) {
+        debugPrint("removeFCM pass");
+      }
     } catch (e) {
       debugPrint(e.toString());
+      debugPrint(fcmToken);
       debugPrint("REMOVE FCM  FAIL");
     }
     _notificationStatus = false;

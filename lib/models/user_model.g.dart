@@ -8,13 +8,10 @@ part of 'user_model.dart';
 
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       id: json['id'] as int?,
-      avatar: json['avatar'] as String?,
       fullname: json['fullname'] as String?,
       first_name: json['first_name'] as String?,
       last_name: json['last_name'] as String?,
       email: json['email'] as String?,
-      password: json['password'] as String?,
-      c_password: json['c_password'] as String?,
       address: json['address'] as String?,
       zipcode: json['zipcode'] as String?,
       city: json['city'] as String?,
@@ -28,12 +25,6 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       experience: json['experience'] as String?,
       equipment: json['equipment'] as String?,
       phone_number: json['phone_number'] as String?,
-      created_at: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updated_at: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
       firebase_id: json['firebase_id'] as String?,
       image: json['image'] == null
           ? null
@@ -44,13 +35,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'avatar': instance.avatar,
       'fullname': instance.fullname,
       'first_name': instance.first_name,
       'last_name': instance.last_name,
       'email': instance.email,
-      'password': instance.password,
-      'c_password': instance.c_password,
       'address': instance.address,
       'zipcode': instance.zipcode,
       'city': instance.city,
@@ -64,8 +52,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'experience': instance.experience,
       'equipment': instance.equipment,
       'phone_number': instance.phone_number,
-      'created_at': instance.created_at?.toIso8601String(),
-      'updated_at': instance.updated_at?.toIso8601String(),
       'firebase_id': instance.firebase_id,
       'image': instance.image,
       'birthday': instance.birthday,

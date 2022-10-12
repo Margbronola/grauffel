@@ -19,7 +19,7 @@ class NotificationSettingsViewModel extends BaseViewModel {
   }
 
   void toggleNotificationOnn(bool? value) async {
-    debugPrint("TOGGLED: $value");
+    print("TOGGLE");
     if (value != null) {
       if (value) {
         notificationOnn = value;
@@ -29,6 +29,7 @@ class NotificationSettingsViewModel extends BaseViewModel {
         );
         notifyListeners();
       } else {
+        notificationOnn = value;
         _userAPIService.removeFCMToken(
           token: _userService.token!,
         );

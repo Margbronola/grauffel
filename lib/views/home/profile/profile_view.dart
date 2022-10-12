@@ -19,7 +19,6 @@ class ProfileView extends StatelessWidget {
 
   //TODO: error arrows
   //TODO: count docs
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(

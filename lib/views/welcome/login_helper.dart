@@ -49,15 +49,16 @@ class LoginHelper {
         .signIn(email: email, password: password)
         .then((value) async {
       debugPrint(value);
+      debugPrint("data jere");
       if (value != null) {
         await _authenticationService
             .login(firebaseToken: value, deviceName: _deviceName)
             .then((value) async {
+          debugPrint("LOGIN DATA $value");
           if (value != null) {
             _userService.updateUser(value[_userMapKey]);
             _userService.updateToken(value[_tokenMapKey]);
-            debugPrint(value[_tokenMapKey]);
-            debugPrint(value[_userMapKey]);
+
             await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
             goToHome();
           } else {

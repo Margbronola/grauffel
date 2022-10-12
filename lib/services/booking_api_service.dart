@@ -10,6 +10,7 @@ import 'package:egczacademy/models/course_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 
@@ -88,7 +89,7 @@ class BookingAPIService {
           print("RESERVATION DATA: $data");
           print("FETCH BOOKINGS PASS 2");
 
-          List fetchBookings = data['data'];
+          List fetchBookings = data;
 
           _bookings =
               fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
@@ -101,7 +102,6 @@ class BookingAPIService {
           // );
           // print(_pagingModel);
         } catch (e) {
-          print("MAYDA ERROR $e");
           print(e);
           print("FROMJSON FAIL");
         }
@@ -127,6 +127,10 @@ class BookingAPIService {
           _bookable =
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
 
+          print(_bookable);
+          print("here");
+          print(_bookableCourse);
+
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {
               _bookable[x] = _bookable[x].copyWith(
@@ -143,28 +147,46 @@ class BookingAPIService {
             }
           }
 
+          //cours
+          //initiation
+          //entrainement
+          //stage
+
           for (CourseModel x in _bookableCourse) {
-            x = x.copyWith(description: removeHtmlTags(x.description!));
-            _bookable.add(ActivityModel(
-                id: x.id,
-                image: "assets/images/course.jpg",
-                name: x.name,
-                start_time: x.start_time,
-                end_time: x.end_time,
-                date_from: x.date_from,
-                date_to: x.date_to,
-                price: x.price,
-                status: 2,
-                description: x.description));
+            if (x.type!.name == "stage" || x.type!.name == "initiation") {
+              if (x.description != null) {
+                x = x.copyWith(description: removeHtmlTags(x.description!));
+              }
+
+              DateTime parseDt = DateTime.parse(x.date_from!);
+
+              if (!DateTime.now()
+                  .subtract(const Duration(days: 1))
+                  .isAfter(parseDt)) {
+                _bookable.add(ActivityModel(
+                    type: x.type,
+                    id: x.id,
+                    image: "assets/images/course.jpg",
+                    name: x.name,
+                    start_time: x.start_time,
+                    end_time: x.end_time,
+                    date_from: x.date_from,
+                    date_to: x.date_to,
+                    price: x.price,
+                    status: x.status,
+                    description: x.description));
+              }
+            }
           }
-          _bookable.add(ActivityModel(
-              image: "assets/images/alv.jpg",
-              name: alveoles,
-              description:
-                  "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture"));
+
+          // _bookable.add(ActivityModel(
+          //     image: "assets/images/alv.jpg",
+          //     name: alveoles,
+          //     description:
+          //         "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture"));
         } catch (e) {
           print(e);
-          print("FROMJSON activities FAIL");
+          print("add FAIL");
         }
       } else {
         print("SERVER FAIL fetchBookable");
@@ -185,8 +207,8 @@ class BookingAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print(data);
           List fetchCouresList = data;
+
           _bookableCourse =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
         } catch (e) {
@@ -286,6 +308,7 @@ class BookingAPIService {
     required List<AmmunitionsModel> ammunitions,
     required List<EquipmentModel> equipments,
   }) async {
+    debugPrint("book");
     try {
       final Map bod = {
         "date": "${date.year}-${date.month}-${date.day}",
@@ -334,6 +357,7 @@ class BookingAPIService {
     required List<AmmunitionsModel> ammunitions,
     required List<EquipmentModel> equipments,
   }) async {
+    debugPrint("bookcourse");
     try {
       final respo = await http.post(Uri.parse("$urlApi/book/course"),
           headers: {

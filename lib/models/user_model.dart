@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-
 import 'image_model.dart';
-
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
@@ -10,13 +8,11 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   const factory UserModel({
     int? id,
-    String? avatar,
+    // String? avatar,
     String? fullname,
     String? first_name,
     String? last_name,
     String? email,
-    String? password,
-    String? c_password,
     String? address,
     String? zipcode,
     String? city,
@@ -31,8 +27,8 @@ class UserModel with _$UserModel {
     String? equipment,
     String? phone_number,
     // SubscriptionModel? active_client_subscription,
-    DateTime? created_at,
-    DateTime? updated_at,
+    // DateTime? created_at,
+    // DateTime? updated_at,
     String? firebase_id,
     ImageModel? image,
     String? birthday,

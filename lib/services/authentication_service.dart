@@ -14,12 +14,14 @@ class AuthenticationService {
       final respo = await http.post(Uri.parse("$urlApi/login"), body: {
         "firebase_token": firebaseToken,
         "device_name": deviceName,
+      }, headers: {
+        "Accept": "application/json",
       });
-      debugPrint(respo.body);
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+        Fluttertoast.showToast(msg: "Successful Login");
+
         try {
-          debugPrint(data['client']);
           UserModel user = UserModel.fromJson(data['client']);
           String token = data['access_token'];
 
@@ -28,7 +30,6 @@ class AuthenticationService {
           debugPrint(e.toString());
           debugPrint("convert fail");
         }
-        Fluttertoast.showToast(msg: "Successful Login");
       }
     } catch (e) {
       debugPrint("server login fail");

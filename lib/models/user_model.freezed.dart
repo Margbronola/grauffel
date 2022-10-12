@@ -20,14 +20,11 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int? get id => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError; // String? avatar,
   String? get fullname => throw _privateConstructorUsedError;
   String? get first_name => throw _privateConstructorUsedError;
   String? get last_name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
-  String? get c_password => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
   String? get zipcode => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
@@ -42,8 +39,8 @@ mixin _$UserModel {
   String? get equipment => throw _privateConstructorUsedError;
   String? get phone_number =>
       throw _privateConstructorUsedError; // SubscriptionModel? active_client_subscription,
-  DateTime? get created_at => throw _privateConstructorUsedError;
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+// DateTime? created_at,
+// DateTime? updated_at,
   String? get firebase_id => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
   String? get birthday => throw _privateConstructorUsedError;
@@ -60,13 +57,10 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res>;
   $Res call(
       {int? id,
-      String? avatar,
       String? fullname,
       String? first_name,
       String? last_name,
       String? email,
-      String? password,
-      String? c_password,
       String? address,
       String? zipcode,
       String? city,
@@ -80,8 +74,6 @@ abstract class $UserModelCopyWith<$Res> {
       String? experience,
       String? equipment,
       String? phone_number,
-      DateTime? created_at,
-      DateTime? updated_at,
       String? firebase_id,
       ImageModel? image,
       String? birthday});
@@ -100,13 +92,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? avatar = freezed,
     Object? fullname = freezed,
     Object? first_name = freezed,
     Object? last_name = freezed,
     Object? email = freezed,
-    Object? password = freezed,
-    Object? c_password = freezed,
     Object? address = freezed,
     Object? zipcode = freezed,
     Object? city = freezed,
@@ -120,8 +109,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
@@ -131,10 +118,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      avatar: avatar == freezed
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
       fullname: fullname == freezed
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
@@ -150,14 +133,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      c_password: c_password == freezed
-          ? _value.c_password
-          : c_password // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -211,14 +186,6 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       firebase_id: firebase_id == freezed
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
@@ -254,13 +221,10 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   @override
   $Res call(
       {int? id,
-      String? avatar,
       String? fullname,
       String? first_name,
       String? last_name,
       String? email,
-      String? password,
-      String? c_password,
       String? address,
       String? zipcode,
       String? city,
@@ -274,8 +238,6 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? experience,
       String? equipment,
       String? phone_number,
-      DateTime? created_at,
-      DateTime? updated_at,
       String? firebase_id,
       ImageModel? image,
       String? birthday});
@@ -297,13 +259,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? avatar = freezed,
     Object? fullname = freezed,
     Object? first_name = freezed,
     Object? last_name = freezed,
     Object? email = freezed,
-    Object? password = freezed,
-    Object? c_password = freezed,
     Object? address = freezed,
     Object? zipcode = freezed,
     Object? city = freezed,
@@ -317,8 +276,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
@@ -328,10 +285,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      avatar: avatar == freezed
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
       fullname: fullname == freezed
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
@@ -347,14 +300,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      c_password: c_password == freezed
-          ? _value.c_password
-          : c_password // ignore: cast_nullable_to_non_nullable
               as String?,
       address: address == freezed
           ? _value.address
@@ -408,14 +353,6 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
       firebase_id: firebase_id == freezed
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
@@ -437,13 +374,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   const _$_UserModel(
       {this.id,
-      this.avatar,
       this.fullname,
       this.first_name,
       this.last_name,
       this.email,
-      this.password,
-      this.c_password,
       this.address,
       this.zipcode,
       this.city,
@@ -457,8 +391,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       this.experience,
       this.equipment,
       this.phone_number,
-      this.created_at,
-      this.updated_at,
       this.firebase_id,
       this.image,
       this.birthday});
@@ -468,8 +400,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   final int? id;
-  @override
-  final String? avatar;
+// String? avatar,
   @override
   final String? fullname;
   @override
@@ -478,10 +409,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   final String? last_name;
   @override
   final String? email;
-  @override
-  final String? password;
-  @override
-  final String? c_password;
   @override
   final String? address;
   @override
@@ -509,10 +436,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   @override
   final String? phone_number;
 // SubscriptionModel? active_client_subscription,
-  @override
-  final DateTime? created_at;
-  @override
-  final DateTime? updated_at;
+// DateTime? created_at,
+// DateTime? updated_at,
   @override
   final String? firebase_id;
   @override
@@ -522,7 +447,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(id: $id, avatar: $avatar, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, password: $password, c_password: $c_password, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, experience: $experience, equipment: $equipment, phone_number: $phone_number, created_at: $created_at, updated_at: $updated_at, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, experience: $experience, equipment: $equipment, phone_number: $phone_number, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
   }
 
   @override
@@ -531,13 +456,10 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
     properties
       ..add(DiagnosticsProperty('type', 'UserModel'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('avatar', avatar))
       ..add(DiagnosticsProperty('fullname', fullname))
       ..add(DiagnosticsProperty('first_name', first_name))
       ..add(DiagnosticsProperty('last_name', last_name))
       ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('c_password', c_password))
       ..add(DiagnosticsProperty('address', address))
       ..add(DiagnosticsProperty('zipcode', zipcode))
       ..add(DiagnosticsProperty('city', city))
@@ -551,8 +473,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       ..add(DiagnosticsProperty('experience', experience))
       ..add(DiagnosticsProperty('equipment', equipment))
       ..add(DiagnosticsProperty('phone_number', phone_number))
-      ..add(DiagnosticsProperty('created_at', created_at))
-      ..add(DiagnosticsProperty('updated_at', updated_at))
       ..add(DiagnosticsProperty('firebase_id', firebase_id))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('birthday', birthday));
@@ -564,15 +484,11 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar) &&
             const DeepCollectionEquality().equals(other.fullname, fullname) &&
             const DeepCollectionEquality()
                 .equals(other.first_name, first_name) &&
             const DeepCollectionEquality().equals(other.last_name, last_name) &&
             const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality()
-                .equals(other.c_password, c_password) &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
             const DeepCollectionEquality().equals(other.city, city) &&
@@ -595,10 +511,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other.phone_number, phone_number) &&
             const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
                 .equals(other.firebase_id, firebase_id) &&
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.birthday, birthday));
@@ -609,13 +521,10 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   int get hashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(avatar),
         const DeepCollectionEquality().hash(fullname),
         const DeepCollectionEquality().hash(first_name),
         const DeepCollectionEquality().hash(last_name),
         const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(password),
-        const DeepCollectionEquality().hash(c_password),
         const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(zipcode),
         const DeepCollectionEquality().hash(city),
@@ -629,8 +538,6 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         const DeepCollectionEquality().hash(experience),
         const DeepCollectionEquality().hash(equipment),
         const DeepCollectionEquality().hash(phone_number),
-        const DeepCollectionEquality().hash(created_at),
-        const DeepCollectionEquality().hash(updated_at),
         const DeepCollectionEquality().hash(firebase_id),
         const DeepCollectionEquality().hash(image),
         const DeepCollectionEquality().hash(birthday)
@@ -652,13 +559,10 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {final int? id,
-      final String? avatar,
       final String? fullname,
       final String? first_name,
       final String? last_name,
       final String? email,
-      final String? password,
-      final String? c_password,
       final String? address,
       final String? zipcode,
       final String? city,
@@ -672,8 +576,6 @@ abstract class _UserModel implements UserModel {
       final String? experience,
       final String? equipment,
       final String? phone_number,
-      final DateTime? created_at,
-      final DateTime? updated_at,
       final String? firebase_id,
       final ImageModel? image,
       final String? birthday}) = _$_UserModel;
@@ -683,9 +585,7 @@ abstract class _UserModel implements UserModel {
 
   @override
   int? get id;
-  @override
-  String? get avatar;
-  @override
+  @override // String? avatar,
   String? get fullname;
   @override
   String? get first_name;
@@ -693,10 +593,6 @@ abstract class _UserModel implements UserModel {
   String? get last_name;
   @override
   String? get email;
-  @override
-  String? get password;
-  @override
-  String? get c_password;
   @override
   String? get address;
   @override
@@ -724,10 +620,8 @@ abstract class _UserModel implements UserModel {
   @override
   String? get phone_number;
   @override // SubscriptionModel? active_client_subscription,
-  DateTime? get created_at;
-  @override
-  DateTime? get updated_at;
-  @override
+// DateTime? created_at,
+// DateTime? updated_at,
   String? get firebase_id;
   @override
   ImageModel? get image;

@@ -27,7 +27,9 @@ class SubmitionViewModel extends ReactiveViewModel {
   FocusNode commentFocusNode = FocusNode();
 
   ActivityModel? get bookedModel => _bookingService.getselectedBookable!;
-  bool get isCourse => bookedModel!.status == 2;
+  bool get isCourse =>
+      bookedModel!.type!.name == "initiation" ||
+      bookedModel!.type!.name == "stage";
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;
@@ -57,7 +59,6 @@ class SubmitionViewModel extends ReactiveViewModel {
   bool isCommentFucos = false;
 
   void init() {
-    print('its not course');
     commentFocusNode.addListener(() {
       isCommentFucos = commentFocusNode.hasFocus;
       notifyListeners();

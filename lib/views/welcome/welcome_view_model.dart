@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/views/welcome/login_helper.dart';
 import 'package:egczacademy/views/welcome/regsiter_helper.dart';
 import 'package:flutter/material.dart';
@@ -233,7 +232,7 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       setBusy(true);
       await login(
           email: emailController.text, password: passwordController.text);
-      // setBusy(false);
+      setBusy(false);
     } else {
       flexSize = 540;
       debugPrint("error");
@@ -241,10 +240,10 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     notifyListeners();
   }
 
-  void registerButton(UserModel userModel) async {
-    debugPrint("REGISTER");
-    setBusy(true);
-    await register(formKey: formKey, user: userModel);
-    setBusy(false);
-  }
+  // void registerButton(UserModel userModel) async {
+  //   debugPrint("REGISTER");
+  //   setBusy(true);
+  //   await register(formKey: formKey, user: userModel);
+  //   setBusy(false);
+  // }
 }

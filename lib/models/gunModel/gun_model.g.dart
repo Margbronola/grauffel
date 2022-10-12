@@ -58,7 +58,7 @@ Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
       'brand': instance.brand,
       'image': instance.image,
       'bookings': instance.bookings,
-      'qty': instance.quantity,
+      'quantity': instance.quantity,
       'equipments': instance.equipments,
       'ammunitions': instance.ammunitions,
     };

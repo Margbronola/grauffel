@@ -31,6 +31,9 @@ _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
       date_to: json['date_to'] as String?,
       start_time: json['start_time'] as String?,
       end_time: json['end_time'] as String?,
+      type: json['type'] == null
+          ? null
+          : TypeModel.fromJson(json['type'] as Map<String, dynamic>),
       activitysalle: (json['activitysalle'] as List<dynamic>?)
           ?.map((e) => ActivitySalleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -60,6 +63,7 @@ Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
       'date_to': instance.date_to,
       'start_time': instance.start_time,
       'end_time': instance.end_time,
+      'type': instance.type,
       'activitysalle': instance.activitysalle,
       'salles': instance.salles,
     };
