@@ -1,6 +1,7 @@
 import 'package:egczacademy/views/history/transaction_view.dart';
 import 'package:egczacademy/views/home/settings/notification/notification_settings_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,9 +19,9 @@ class SettingsViewModel extends BaseViewModel {
         await _dialogService.showCustomDialog(variant: DialogType.changePass);
 
     if (response!.confirmed) {
-      print("updated");
+      debugPrint("updated");
     } else {
-      print("cancel");
+      debugPrint("cancel");
     }
   }
 
@@ -45,7 +46,7 @@ class SettingsViewModel extends BaseViewModel {
         additionalButtonTitle: "Annuler");
 
     if (response!.confirmed) {
-      print("Confirm");
+      debugPrint("Confirm");
     } else {
       // _navigationService.back();
     }

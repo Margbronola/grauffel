@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/app.locator.dart';
-import 'selectDate/selectDate_view.dart';
+import 'selectDate/select_date_view.dart';
 import 'submittion/ammunitionView/ammunition_view.dart';
 import 'submittion/equipment/equipment_view.dart';
 import 'submittion/guns_list_view.dart/armore_view.dart';

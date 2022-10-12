@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../app/global.dart';
 import '../../../shared/color.dart';
-import '../../../shared/customButton.dart';
+import '../../../shared/custom_button.dart';
 import '../../../shared/ui_helper.dart';
 import '../../../shared/validator.dart';
-import 'information_edit_viewModel.dart';
+import 'information_edit_view_model.dart';
 
 class InformationEditView extends StatelessWidget {
   const InformationEditView({Key? key}) : super(key: key);

@@ -3,8 +3,8 @@ import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'package:egczacademy/views/home/reservation/steps/selectDate/selectDate_viewModel.dart';
-import '../../../../shared/customButton.dart';
+import 'package:egczacademy/views/home/reservation/steps/selectDate/select_date_view_model.dart';
+import '../../../../shared/custom_button.dart';
 import '../../../../shared/ui_helper.dart';
 
 class SelectDateView extends StatelessWidget {

@@ -1,16 +1,10 @@
 import 'package:egczacademy/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:stacked_services/stacked_services.dart';
 
-import '../../app/app.locator.dart';
-import '../../services/authentication_service.dart';
 import '../shared/color.dart';
 
 class RegisterHelper {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
-  final NavigationService _navigationService = locator<NavigationService>();
   void showFail() {
     Fluttertoast.showToast(
         msg: "Regsiter fail",
@@ -25,7 +19,7 @@ class RegisterHelper {
   Future<void> register(
       {required GlobalKey<FormState> formKey, required UserModel user}) async {
     if (formKey.currentState!.validate() == true) {
-      print("You can register now");
+      debugPrint("You can register now");
       // _authenticationService.register(userModel: user).then((value) {
       //   if (value) {
       //     _navigationService.navigateToView(Home());

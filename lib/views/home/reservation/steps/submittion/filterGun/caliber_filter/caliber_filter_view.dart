@@ -6,7 +6,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../../../../shared/color.dart';
 import '../../../../../../shared/ui_helper.dart';
-import 'caliber_filter_viewModel.dart';
+import 'caliber_filter_view_model.dart';
 
 class CaliberFilterView extends StatelessWidget {
   const CaliberFilterView({Key? key}) : super(key: key);

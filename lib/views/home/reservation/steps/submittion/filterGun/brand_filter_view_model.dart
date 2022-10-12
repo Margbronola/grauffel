@@ -30,7 +30,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
   void init({required FilterList filterList}) async {
     setBusy(true);
     if (_brandAPIService.brands == null) {
-      print("fetching");
+      debugPrint("fetching");
       await _brandAPIService.fetch(
           token: _userService.token!,
           typeId: filterList == FilterList.gun ? 2 : 1);
@@ -100,7 +100,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
     Function eq = const ListEquality().equals;
 
     if (!eq(copyFilterMarqueIds, _gunListService.filterMarqueIds)) {
-      print("pass");
+      debugPrint("pass");
       _gunListService.setBusy(true);
       await filterGun();
       _gunListService.setBusy(false);

@@ -1,5 +1,6 @@
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/time_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 
 import '../models/ammunitions_model.dart';
@@ -18,7 +19,7 @@ class BookingService with ReactiveServiceMixin {
   }
 
   void dispose() {
-    print("dispose");
+    debugPrint("dispose");
     _selectedTimes.value = null;
     _selectedGun.value.clear();
     _selectedAmmunition.value.clear();

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:egczacademy/models/paging_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/gunModel/gun_model.dart';
@@ -27,8 +28,8 @@ class GunAPIService {
       if (brandIds.isNotEmpty) {
         url += "&brand_id=$brands";
       }
-      print("BRANDS");
-      print(brands);
+      debugPrint("BRANDS");
+      debugPrint(brands);
     }
     if (caliberIds != null) {
       String calibers = caliberIds.join(', ');
@@ -36,7 +37,7 @@ class GunAPIService {
         url += "&caliber_id=$calibers";
       }
     }
-    print("URL $url");
+    debugPrint("URL $url");
     try {
       final respo = await http.get(Uri.parse(url), headers: {
         "Accept": "application/json",
@@ -45,11 +46,11 @@ class GunAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH GUNS PASS");
+          debugPrint("FETCH GUNS PASS");
           List fetchGuns = data['data'];
 
           if (fetchMore) {
-            print("FETCHING morel");
+            debugPrint("FETCHING morel");
             _guns!.addAll(fetchGuns.map((e) => GunModel.fromJson(e)).toList());
           } else {
             _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
@@ -61,19 +62,16 @@ class GunAPIService {
               next_page_url: data['next_page_url'],
               prev_page_url: data['prev_page_url'],
               total: data['total']);
-
-          print(_guns);
-          print(_pagingModel);
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL fetch all guns");
+        debugPrint("SERVER FAIL fetch all guns");
       }
     } catch (e) {
-      print(e);
-      print("FETCH GUNS FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH GUNS FAIL");
     }
   }
 }

@@ -1,8 +1,8 @@
-import 'package:egczacademy/views/shared/customLoader.dart';
+import 'package:egczacademy/views/shared/custom_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'splash_viewModel.dart';
+import 'splash_view_model.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({Key? key}) : super(key: key);

@@ -6,7 +6,7 @@ import 'package:egczacademy/models/booking_model.dart';
 import '../../../app/global.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
-import '../../shared/widget/itemCard.dart';
+import '../../shared/widget/item_card.dart';
 
 class ReserveCardDetails extends StatefulWidget {
   final BookingModel bookingModel;
@@ -35,7 +35,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
         "${widget.bookingModel.start.toString().split(" ")[1].split(":")[0]}h${widget.bookingModel.start.toString().split(" ")[1].split(":")[1]}";
     String time2 =
         "${widget.bookingModel.end.toString().split(" ")[1].split(":")[0]}h${widget.bookingModel.end.toString().split(" ")[1].split(":")[1]}";
-    print("$time1 - $time2");
+    debugPrint("$time1 - $time2");
     return "$time1 - $time2";
   }
 

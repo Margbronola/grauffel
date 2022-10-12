@@ -1,5 +1,6 @@
 import 'package:egczacademy/models/transaction_model.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../app/app.locator.dart';
@@ -10,7 +11,7 @@ class TransactionViewModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   List<TransactionModel>? transactions;
   void init() async {
-    print("FETCHING HISTORY");
+    debugPrint("FETCHING HISTORY");
     await fetchHistory();
   }
 

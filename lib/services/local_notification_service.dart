@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'user_api_service.dart';
@@ -8,7 +9,6 @@ import 'user_api_service.dart';
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  static const bool _notificationsEnabled = false;
 
   static void initialize() {
     const InitializationSettings initializationSettings =
@@ -25,7 +25,7 @@ class LocalNotificationService {
 
   static Future<void> requestPermissions(
       UserAPIService userAPIService, String token) async {
-    print("PERMISSIONS CHECKING");
+    debugPrint("PERMISSIONS CHECKING");
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -38,16 +38,16 @@ class LocalNotificationService {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print("NOTIFICATION ON");
+      debugPrint("NOTIFICATION ON");
       userAPIService.saveFCM(token: token);
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.provisional) {
-      print("NOTIFICATION OFF");
+      debugPrint("NOTIFICATION OFF");
       userAPIService.removeFCMToken(token: token);
     } else {
-      print("NOTIFICATION OFF");
+      debugPrint("NOTIFICATION OFF");
       userAPIService.removeFCMToken(token: token);
-      print('User declined or has not accepted permission');
+      debugPrint('User declined or has not accepted permission');
     }
   }
 

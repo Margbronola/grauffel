@@ -7,7 +7,7 @@ import 'package:egczacademy/views/shared/ui_helper.dart';
 
 import '../../../../../models/document_type_model.dart';
 import '../../../../shared/color.dart';
-import 'file_upload_viewModel.dart';
+import 'file_upload_view_model.dart';
 
 class FileUploadView extends StatelessWidget {
   final DocumentTypeModel documentTypeModel;

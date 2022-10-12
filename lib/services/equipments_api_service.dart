@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:egczacademy/models/equipment_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/paging_model.dart';
@@ -27,7 +28,7 @@ class EquipmentsAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH EQUIPMENTS PASS");
+          debugPrint("FETCH EQUIPMENTS PASS");
           List fertchEquipment = data['data'];
 
           if (fetchMore) {
@@ -46,19 +47,16 @@ class EquipmentsAPIService {
             prev_page_url: data['prev_page_url'],
             total: data['total'],
           );
-
-          print(_equipments);
-          print(_pagingModel);
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL fetchAllEquipments");
+        debugPrint("SERVER FAIL fetchAllEquipments");
       }
     } catch (e) {
-      print(e);
-      print("FETCH EQUIPMENTS FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH EQUIPMENTS FAIL");
     }
   }
 }

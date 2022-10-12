@@ -170,8 +170,7 @@ class ProfileViewModel extends ReactiveViewModel {
     expanTileController4 = ExpandedTileController(isExpanded: false);
 
     autoOpenDocs(isFromHome: isFromHome); //auto open docs
-    print("USER");
-    print(user);
+    debugPrint("USER");
 
     angles = [angle1, angle2, angle3, angle4];
 
@@ -247,13 +246,13 @@ class ProfileViewModel extends ReactiveViewModel {
       } catch (e) {
         token = "";
       }
-      print("signout firebase");
+      debugPrint("signout firebase");
       setBusy(true);
-      print(_userService.token);
+      debugPrint(_userService.token);
       await _fireBaseAuthService.logout();
       await _authenticationService.logout(
         token: _sharedPrefService.prefsToken,
-        fcm_token: token,
+        fcmToken: token,
       );
       _sharedPrefService.clearAllPrefs();
 
@@ -261,7 +260,7 @@ class ProfileViewModel extends ReactiveViewModel {
           .pushNamedAndRemoveUntil(Routes.welcomeView)!
           .whenComplete(() => setBusy(false));
     } catch (e) {
-      print("ERROR LOGOUT: $e");
+      debugPrint("ERROR LOGOUT: $e");
       return;
     }
   }

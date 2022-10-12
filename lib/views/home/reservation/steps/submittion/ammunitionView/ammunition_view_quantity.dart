@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewModel.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_model.dart';
 
 import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
@@ -204,7 +204,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                         GestureDetector(
                                           onTap: () {
                                             model.increaseBox(index);
-                                            print("increas");
+                                            debugPrint("increas");
                                           },
                                           child: Image.asset(
                                             "assets/images/forward.png",

@@ -44,41 +44,32 @@ class LoginHelper {
     _navigationService.navigateToView(const HomeView());
   }
 
-  Future<void> login(
-      {isTest = false, required String email, required String password}) async {
-    if (!isTest) {
-      //TODO: testRemove
-      String testEmail = "john@gmail.com";
-      String testPasswotd = "123123";
-      await _fireBaseAuthService
-          .signIn(
-              email: isTest ? testEmail : email,
-              password: isTest ? testPasswotd : password)
-          .then((value) async {
-        print(value);
-        if (value != null) {
-          await _authenticationService
-              .login(firebase_token: value, device_name: _deviceName)
-              .then((value) async {
-            if (value != null) {
-              _userService.updateUser(value[_userMapKey]);
-              _userService.updateToken(value[_tokenMapKey]);
-              print(value[_tokenMapKey]);
-              print(value[_userMapKey]);
-              await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
-              goToHome();
-            } else {
-              showFail();
-              print(value);
-              _navigationService.navigateToView(const WelcomeView());
-            }
-          });
-        } else {
-          showFail();
-          _navigationService.navigateToView(const WelcomeView());
-        }
-      });
-    }
+  Future<void> login({required String email, required String password}) async {
+    await _fireBaseAuthService
+        .signIn(email: email, password: password)
+        .then((value) async {
+      debugPrint(value);
+      if (value != null) {
+        await _authenticationService
+            .login(firebaseToken: value, deviceName: _deviceName)
+            .then((value) async {
+          if (value != null) {
+            _userService.updateUser(value[_userMapKey]);
+            _userService.updateToken(value[_tokenMapKey]);
+            debugPrint(value[_tokenMapKey]);
+            debugPrint(value[_userMapKey]);
+            await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
+            goToHome();
+          } else {
+            showFail();
+            _navigationService.navigateToView(const WelcomeView());
+          }
+        });
+      } else {
+        showFail();
+        _navigationService.navigateToView(const WelcomeView());
+      }
+    });
   }
 
   Future<void> fbSignIn() async {
@@ -96,14 +87,14 @@ class LoginHelper {
           if (firebaseUser != null) {
             await _authenticationService
                 .login(
-                    firebase_token: await firebaseUser.getIdToken(),
-                    device_name: _deviceName)
+                    firebaseToken: await firebaseUser.getIdToken(),
+                    deviceName: _deviceName)
                 .then((value) async {
               if (value != null) {
                 _userService.updateUser(value[_userMapKey]);
                 _userService.updateToken(value[_tokenMapKey]);
-                print(value[_tokenMapKey]);
-                print(value[_userMapKey]);
+                debugPrint(value[_tokenMapKey]);
+                debugPrint(value[_userMapKey]);
                 await _sharedPrefService.saveToken(token: value[_tokenMapKey]);
                 goToHome();
               } else {

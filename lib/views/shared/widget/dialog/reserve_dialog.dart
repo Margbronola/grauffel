@@ -1,5 +1,5 @@
 import 'package:egczacademy/app/global.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked_services/stacked_services.dart';

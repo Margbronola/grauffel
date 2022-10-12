@@ -5,10 +5,10 @@ import 'package:stacked/stacked.dart';
 import 'package:egczacademy/app/components/enum.dart';
 
 import '../../../shared/color.dart';
-import '../../../shared/customButton.dart';
+import '../../../shared/custom_button.dart';
 import '../../../shared/ui_helper.dart';
 import '../../../shared/validator.dart';
-import 'experienve_edit_viewModel.dart';
+import 'experienve_edit_view_model.dart';
 
 class ExperienceEditView extends StatelessWidget {
   final ExtraDetails extraDetails;

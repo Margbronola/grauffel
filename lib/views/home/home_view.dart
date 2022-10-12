@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../reservation/reservation_view.dart';
 import '../shared/ui_helper.dart';
-import 'home_viewModel.dart';
+import 'home_view_model.dart';
 import 'settings/settings_view.dart';
 
 class HomeView extends StatelessWidget {

@@ -3,7 +3,6 @@ import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
-import 'package:egczacademy/services/caliber_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,6 @@ class AmmunitionViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final DialogService _dialogService = locator<DialogService>();
-  final CaliberAPIService _caliberAPIService = locator<CaliberAPIService>();
   final BookingService _bookingService = locator<BookingService>();
 
   bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
@@ -90,10 +88,10 @@ class AmmunitionViewModel extends BaseViewModel {
   }
 
   void showDetails(index) async {
-    print("HERE");
-    print(ammunitions![index].name!);
-    print(ammunitions![index].description);
-    print(ammunitions![index].image);
+    debugPrint("HERE");
+    debugPrint(ammunitions![index].name!);
+    debugPrint(ammunitions![index].description);
+
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
         data: ammunitions![index],
@@ -102,9 +100,9 @@ class AmmunitionViewModel extends BaseViewModel {
 
     if (response != null) {
       if (response.confirmed) {
-        print("confirm");
+        debugPrint("confirm");
       } else {
-        print("CANCE:");
+        debugPrint("CANCE:");
       }
     }
   }
@@ -165,10 +163,10 @@ class AmmunitionViewModel extends BaseViewModel {
   void suivant(Function onTap) {
     if (_bookingService.getselectedAmmunition.isNotEmpty) {
       if (selectedIndex == 0) {
-        print("its zero");
+        debugPrint("its zero");
         nextPage(1);
       } else {
-        print("not zero");
+        debugPrint("not zero");
         onTap();
       }
     }

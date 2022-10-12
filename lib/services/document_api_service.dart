@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:egczacademy/models/document_model.dart';
 import 'package:egczacademy/models/document_type_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 
@@ -26,14 +27,13 @@ class DocumentAPIService {
         "client_document_type_id": document.client_document_type_id.toString()
       });
       if (respo.statusCode == 200 || respo.statusCode == 201) {
-        var data = json.decode(respo.body);
         return true;
       } else {
-        print("SERVER FAIL uploadDocument");
+        debugPrint("SERVER FAIL uploadDocument");
       }
     } catch (e) {
-      print(e);
-      print("UPLOAD DOCS FAIL");
+      debugPrint(e.toString());
+      debugPrint("UPLOAD DOCS FAIL");
     }
     return false;
   }
@@ -46,26 +46,26 @@ class DocumentAPIService {
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
-        print("FETCH DOCS PASS");
+        debugPrint("FETCH DOCS PASS");
         var data = json.decode(respo.body);
         List ofData = data['data'];
 
         try {
           for (var datum in ofData) {
-            print(datum);
+            debugPrint(datum);
           }
 
           return ofData.map((e) => DocumentModel.fromJson(e)).toList();
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL fetchDocuments");
+        debugPrint("SERVER FAIL fetchDocuments");
       }
     } catch (e) {
-      print(e);
-      print("FETCH DOCS FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH DOCS FAIL");
     }
     return null;
   }
@@ -81,21 +81,20 @@ class DocumentAPIService {
       if (respo.statusCode == 200) {
         List data = json.decode(respo.body);
 
-        print("FETCH DOCSTYPE PASS");
+        debugPrint("FETCH DOCSTYPE PASS");
 
         try {
-          print(data);
           return data.map((e) => DocumentTypeModel.fromJson(e)).toList();
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL fetchDocumentTypes");
+        debugPrint("SERVER FAIL fetchDocumentTypes");
       }
     } catch (e) {
-      print(e);
-      print("FETCH DOCSTYPE FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH DOCSTYPE FAIL");
     }
     return null;
   }

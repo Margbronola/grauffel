@@ -4,11 +4,11 @@ import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/models/document_type_model.dart';
 import 'package:egczacademy/views/home/profile/document_card_view.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/custom_button.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 
 import '../../../shared/color.dart';
-import 'document_upload_viewModel.dart';
+import 'document_upload_view_model.dart';
 
 class DocumentUploadView extends StatelessWidget {
   final DocumentTypeModel documentTypeModel;

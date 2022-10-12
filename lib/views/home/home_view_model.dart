@@ -31,7 +31,7 @@ class HomeViewModel extends ReactiveViewModel {
     _homePagingService.setController(PageController());
 
     String? token = await FirebaseMessaging.instance.getToken();
-    print("Message token: ${token!}");
+    debugPrint("Message token: ${token!}");
 
     //FOREGRUOUND
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -42,17 +42,17 @@ class HomeViewModel extends ReactiveViewModel {
 
     //BACK
     FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      print("OPENEd");
+      debugPrint("OPENEd");
       if (event.notification != null) {
-        print("ROUTE HERE");
+        debugPrint("ROUTE HERE");
         final routeMessage = event.data["route"];
 
         if (routeMessage == "red") {
-          print("RED ROUTE");
+          debugPrint("RED ROUTE");
         } else {
-          print("NOTE RED ROUTE");
+          debugPrint("NOTE RED ROUTE");
         }
-        print(routeMessage);
+        debugPrint(routeMessage);
       }
     });
   }

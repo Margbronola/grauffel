@@ -37,11 +37,6 @@ class InformationEditViewModel extends ReactiveViewModel {
   bool isPostalFucos = false;
   bool isVilleFucos = false;
 
-  String MIN_DATETIME = '2019-05-15 20:10:55';
-  String MAX_DATETIME = '2019-07-01 12:30:40';
-  String INIT_DATETIME = '2019-05-16 09:00:58';
-  String DATE_FORMAT = 'd-MM-yyyy';
-
   String dateFormat(DateTime date) {
     // final DateFormat formatter = DateFormat('MMMM');
 
@@ -52,7 +47,7 @@ class InformationEditViewModel extends ReactiveViewModel {
   }
 
   void init() {
-    print(user!.birthday!);
+    debugPrint(user!.birthday!);
     if (user != null) {
       emailController.text = user!.email!;
       birthdayController.text = user!.birthday!.isEmpty
@@ -116,10 +111,8 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   UserModel? get user => _userService.user!;
   void save() async {
-    print(
-        UserModel(address: addresscontroller.text, city: villeController.text));
     if (formKey.currentState!.validate()) {
-      print("validate");
+      debugPrint("validate");
       setBusy(true);
       await _userAPIService.updateDetails(
           userToEdit: UserModel(
@@ -142,7 +135,7 @@ class InformationEditViewModel extends ReactiveViewModel {
 
       _navigationService.back();
     } else {
-      print("cant valiedate");
+      debugPrint("cant valiedate");
     }
   }
 
@@ -161,15 +154,15 @@ class InformationEditViewModel extends ReactiveViewModel {
     try {
       image = await _picker.pickImage(source: ImageSource.gallery);
 
-      print("image : $image");
+      debugPrint("image : $image");
       notifyListeners();
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 
   void showDatePicker(context) async {
-    print("Show date picker");
+    debugPrint("Show date picker");
     await DatePicker.showDatePicker(context,
         showTitleActions: true,
         minTime: DateTime(1990, 1, 1),
@@ -181,13 +174,13 @@ class InformationEditViewModel extends ReactiveViewModel {
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
             doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
         onChanged: (date) {
-      print('change $date in time zone ${date.timeZoneOffset.inHours}');
+      debugPrint('change $date in time zone ${date.timeZoneOffset.inHours}');
     }, onConfirm: (date) {
       dateNode.nextFocus();
       birthdayController.text = "${date.year}-${date.month}-${date.day}";
       notifyListeners();
     }, onCancel: () {
-      print("cancel");
+      debugPrint("cancel");
       dateNode.nextFocus();
       notifyListeners();
     },

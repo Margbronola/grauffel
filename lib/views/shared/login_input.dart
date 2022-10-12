@@ -3,9 +3,9 @@ import 'package:egczacademy/views/shared/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../welcome/welcome_viewModel.dart';
+import '../welcome/welcome_view_model.dart';
 import 'color.dart';
-import 'customButton.dart';
+import 'custom_button.dart';
 
 class LoginInput extends StatelessWidget {
   final WelcomeViewModel model;
@@ -77,7 +77,7 @@ class LoginInput extends StatelessWidget {
                   TextFormField(
                     cursorColor: Colors.black,
                     onFieldSubmitted: (String text) async {
-                      print("login");
+                      debugPrint("login");
                       await model.loginButton();
                     },
                     focusNode: model.passwordFocusNode,

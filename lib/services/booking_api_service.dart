@@ -12,7 +12,6 @@ import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
-import '../models/paging_model.dart';
 
 class BookingAPIService {
   List<BookingModel>? _bookings;
@@ -25,8 +24,6 @@ class BookingAPIService {
 
   List<TimeModel> _availableTime = [];
   List<TimeModel>? get availableTime => _availableTime;
-  PagingModel? _pagingModel;
-  final int _perPage = 10;
 
   List<BookingModel>? actives = [];
   List<BookingModel>? past = [];
@@ -130,9 +127,6 @@ class BookingAPIService {
           _bookable =
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
 
-          List<ActivityModel> copy =
-              fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
-
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {
               _bookable[x] = _bookable[x].copyWith(
@@ -213,13 +207,13 @@ class BookingAPIService {
   Future<void> fetchBookableActivity({
     required String token,
     required DateTime date,
-    required int activity_id,
+    required int activityId,
   }) async {
     print("ACTIVITY DATA");
     try {
       final respo = await http.get(
           Uri.parse(
-              "$urlApi/activity/$activity_id/timetable?date=${date.month}/${date.day}/${date.year}"),
+              "$urlApi/activity/$activityId/timetable?date=${date.month}/${date.day}/${date.year}"),
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer $token",
@@ -249,12 +243,10 @@ class BookingAPIService {
   }
 
   Future<bool> cancelBook(
-      {required int booking_id,
-      required String token,
-      required String user_id}) async {
+      {required int bookingId, required String token}) async {
     try {
       final respo = await http.get(
-        Uri.parse("$urlApi/bookings/$booking_id/cancel"),
+        Uri.parse("$urlApi/bookings/$bookingId/cancel"),
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
@@ -336,7 +328,7 @@ class BookingAPIService {
   }
 
   Future<bool> bookCourse({
-    required int course_id,
+    required int courseId,
     required String token,
     required List<GunModel> guns,
     required List<AmmunitionsModel> ammunitions,
@@ -349,7 +341,7 @@ class BookingAPIService {
             "Authorization": "Bearer $token",
           },
           body: json.encode(BookCourseModel(
-                  course_id: course_id,
+                  course_id: courseId,
                   guns: guns,
                   ammunitions: ammunitions,
                   equipments: equipments)

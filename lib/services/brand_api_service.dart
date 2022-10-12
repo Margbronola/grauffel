@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/paging_model.dart';
@@ -13,7 +14,7 @@ class BrandAPIService {
 
   void reset() {
     if (_brands != null) {
-      print("RESETING");
+      debugPrint("RESETING");
       _brands = null;
       _pagingModel = null;
     }
@@ -25,7 +26,6 @@ class BrandAPIService {
         _pagingModel = _pagingModel!.copyWith(
           current_page: _pagingModel!.current_page! + 1,
         );
-        print(_pagingModel!.current_page!);
         await fetch(token: token, typeId: typeId);
       }
     }
@@ -43,8 +43,8 @@ class BrandAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print(data);
-          print("FETCH BRANDS PASS");
+          debugPrint(data);
+          debugPrint("FETCH BRANDS PASS");
           List fetchBrandList = data['data'];
           _pagingModel = PagingModel(
             total: data['total'],
@@ -53,26 +53,26 @@ class BrandAPIService {
             next_page_url: data['next_page_url'],
             prev_page_url: data['prev_page_url'],
           );
-          print(_pagingModel);
+
           if (_brands == null) {
-            print("FIRST FETCH fetch brands");
+            debugPrint("FIRST FETCH fetch brands");
             _brands =
                 fetchBrandList.map((e) => BrandModel.fromJson(e)).toList();
           } else {
-            print("APPEND");
+            debugPrint("APPEND");
             _brands!.addAll(
                 fetchBrandList.map((e) => BrandModel.fromJson(e)).toList());
           }
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL");
+        debugPrint("SERVER FAIL");
       }
     } catch (e) {
-      print(e);
-      print("FETCH BRANDS FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH BRANDS FAIL");
     }
     return;
   }

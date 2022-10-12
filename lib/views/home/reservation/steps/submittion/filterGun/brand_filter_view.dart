@@ -6,7 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
-import 'brand_filter_viewModel.dart';
+import 'brand_filter_view_model.dart';
 
 class BrandFilterView extends StatelessWidget {
   final FilterList filterListType;

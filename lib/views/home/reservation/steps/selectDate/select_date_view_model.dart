@@ -2,7 +2,6 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
-import 'package:egczacademy/services/courses_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
@@ -17,7 +16,6 @@ class SelectDateViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
   final DatePickerController controller = DatePickerController();
   final ScrollController scrollController = ScrollController();
-  final CourseAPIService _courseAPIService = locator<CourseAPIService>();
 
   final DateFormat formatter = DateFormat('yMMM');
   DateTime get selectedDate => _bookingService.getselectedDate;
@@ -55,7 +53,7 @@ class SelectDateViewModel extends ReactiveViewModel {
       if (currentDate.month == DateTime.now().month) {
         currentDate =
             DateTime(currentDate.year, currentDate.month, DateTime.now().day);
-        print("SAME");
+        debugPrint("SAME");
         numDaysTotal =
             DateTime(DateTime.now().year, DateTime.now().month, 0).day -
                 currentDate
@@ -75,7 +73,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   }
 
   Future init(BuildContext context) async {
-    print("INIT");
+    debugPrint("INIT");
     numDaysTotal = DateTime(DateTime.now().year, DateTime.now().month, 0).day -
         currentDate
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
@@ -92,7 +90,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   Future setDate(DateTime dateTime) async {
     _bookingService.setSelectedTime = null;
     if (dateTime.isBefore(DateTime.now().subtract(const Duration(days: 1)))) {
-      print("yes");
+      debugPrint("yes");
     } else {
       _bookingService.setSelectedDate = dateTime;
       await fetchBookableActivity(dateTime);
@@ -104,7 +102,7 @@ class SelectDateViewModel extends ReactiveViewModel {
     await _bookingAPIService.fetchBookableActivity(
         token: _userService.token!,
         date: dateTime,
-        activity_id: _bookingService.getselectedBookable!.id!);
+        activityId: _bookingService.getselectedBookable!.id!);
   }
 
   // void setCalendar() {

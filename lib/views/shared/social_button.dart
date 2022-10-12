@@ -49,14 +49,14 @@ class SocialButton extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Text(
           "Copyright © 2022 EG-CZ ACADEMY",
           style: TextStyle(color: kcWhite, fontSize: 10.sp),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         )
       ],
@@ -74,12 +74,12 @@ class SocialButton extends StatelessWidget {
   Widget circleButton({required Widget child, required Function() onTap}) =>
       ElevatedButton(
         onPressed: onTap,
-        child: Center(child: child),
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(5),
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(5),
           primary: Colors.transparent, // <-- Button color
           onPrimary: Colors.white10, // <-- Splash color
         ),
+        child: Center(child: child),
       );
 }

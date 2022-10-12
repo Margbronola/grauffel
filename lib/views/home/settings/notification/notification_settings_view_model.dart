@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../app/app.locator.dart';
@@ -12,13 +13,13 @@ class NotificationSettingsViewModel extends BaseViewModel {
   bool notificationOnn = false;
 
   void init() {
-    notificationOnn = _userAPIService.noticationStatus;
-    print("NotificationStatus: $notificationOnn");
+    notificationOnn = _userAPIService.notificationStatus;
+    debugPrint("NotificationStatus: $notificationOnn");
     notifyListeners();
   }
 
   void toggleNotificationOnn(bool? value) async {
-    print("TOGGLED: $value");
+    debugPrint("TOGGLED: $value");
     if (value != null) {
       if (value) {
         notificationOnn = value;

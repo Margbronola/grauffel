@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'package:egczacademy/views/shared/widget/guns/weaponCardModel.dart';
+import 'package:egczacademy/views/shared/widget/guns/weapon_card_model.dart';
 import '../../color.dart';
 
 class WeaponCardView extends StatelessWidget {
@@ -29,7 +29,7 @@ class WeaponCardView extends StatelessWidget {
               borderRadius: BorderRadius.circular(5)),
           width: 161.w,
           height: 167.h,
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,8 +40,8 @@ class WeaponCardView extends StatelessWidget {
                     width: 97.w,
                     height: 77.h,
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.only(bottomRight: Radius.circular(30)),
+                        borderRadius: const BorderRadius.only(
+                            bottomRight: Radius.circular(30)),
                         color: kcWhite,
                         image: DecorationImage(
                             image:
@@ -59,7 +59,7 @@ class WeaponCardView extends StatelessWidget {
                           fontSize: 15.sp, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../shared/color.dart';
-import '../../shared/customLoader.dart';
+import '../../shared/custom_loader.dart';
 import '../../shared/widget/header/header.dart';
-import 'settings_viewModel.dart';
+import 'settings_view_model.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);

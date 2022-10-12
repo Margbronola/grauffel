@@ -9,9 +9,9 @@ import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 
 import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
-import '../../../../../shared/customButton.dart';
+import '../../../../../shared/custom_button.dart';
 import '../../../../../shared/ui_helper.dart';
-import 'equipment_viewModel.dart';
+import 'equipment_view_model.dart';
 
 class EquipmentView extends StatelessWidget {
   final Function() onTap;

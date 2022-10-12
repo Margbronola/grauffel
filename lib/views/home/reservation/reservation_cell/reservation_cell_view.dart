@@ -1,6 +1,6 @@
 import 'package:egczacademy/views/home/reservation/reservation_cell/reservation_cell_viewModel.dart';
 import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/custom_button.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

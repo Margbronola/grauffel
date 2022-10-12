@@ -8,7 +8,7 @@ import 'package:egczacademy/views/shared/ui_helper.dart';
 import '../shared/color.dart';
 import '../shared/widget/app_delegate.dart';
 import 'reservation_card.dart';
-import 'reservation_viewModel.dart';
+import 'reservation_view_model.dart';
 
 class ReservationView extends StatelessWidget {
   final Function() gotoProfile;
@@ -207,15 +207,14 @@ class ReservationView extends StatelessWidget {
                                       ],
                                     )
                                   : model.actives!.isEmpty
-                                      ? Container(
-                                          child: const Center(
+                                      ? const Center(
                                           child: Text(
                                             "Aucune réservation pour le moment",
                                             style: TextStyle(
                                               fontFamily: 'ProductSans',
                                             ),
                                           ),
-                                        ))
+                                        )
                                       : ListView.builder(
                                           itemCount: model.actives!.length,
                                           itemBuilder: ((context, index) =>
@@ -241,15 +240,14 @@ class ReservationView extends StatelessWidget {
                                       ],
                                     )
                                   : model.past!.isEmpty
-                                      ? Container(
-                                          child: const Center(
+                                      ? const Center(
                                           child: Text(
                                             "Aucune réservation pour le moment",
                                             style: TextStyle(
                                               fontFamily: 'ProductSans',
                                             ),
                                           ),
-                                        ))
+                                        )
                                       : ListView.builder(
                                           itemCount: model.past!.length,
                                           itemBuilder: ((context, index) =>

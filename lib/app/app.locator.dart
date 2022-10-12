@@ -6,9 +6,8 @@
 
 // ignore_for_file: public_member_api_docs
 
-import 'package:stacked_core/stacked_core.dart';
+import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-
 import '../services/ammunition_api_service.dart';
 import '../services/authentication_service.dart';
 import '../services/booking_api_service.dart';

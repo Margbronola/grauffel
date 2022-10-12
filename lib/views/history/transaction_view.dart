@@ -2,7 +2,7 @@ import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import 'transaction_viewModel.dart';
+import 'transaction_view_model.dart';
 
 class TransactionView extends StatelessWidget {
   const TransactionView({Key? key}) : super(key: key);
@@ -21,19 +21,15 @@ class TransactionView extends StatelessWidget {
                 child: CircularProgressIndicator(),
               )
             : model.transactions!.isEmpty
-                ? Container(
-                    child: const Center(
-                      child: Text("No transactions"),
-                    ),
+                ? const Center(
+                    child: Text("No transactions"),
                   )
-                : Container(
-                    child: ListView(
-                      children: model.transactions!
-                          .map((e) => ListTile(
-                                title: Text(e.first_name!),
-                              ))
-                          .toList(),
-                    ),
+                : ListView(
+                    children: model.transactions!
+                        .map((e) => ListTile(
+                              title: Text(e.first_name!),
+                            ))
+                        .toList(),
                   ),
       ),
       viewModelBuilder: () => TransactionViewModel(),

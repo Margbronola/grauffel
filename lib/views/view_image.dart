@@ -11,6 +11,6 @@ class ViewImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(child: Image.file(image!)));
+    return Scaffold(body: Image.file(image!));
   }
 }

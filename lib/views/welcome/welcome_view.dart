@@ -1,14 +1,14 @@
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
-import 'package:egczacademy/views/shared/customLoader.dart';
+import 'package:egczacademy/views/shared/custom_button.dart';
+import 'package:egczacademy/views/shared/custom_loader.dart';
 import 'package:egczacademy/views/shared/login_input.dart';
-import 'package:egczacademy/views/shared/socialButton.dart';
+import 'package:egczacademy/views/shared/social_button.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'welcome_viewModel.dart';
+import 'welcome_view_model.dart';
 
 class WelcomeView extends StatefulWidget {
   const WelcomeView({Key? key}) : super(key: key);

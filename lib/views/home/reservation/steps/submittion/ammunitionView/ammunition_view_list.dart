@@ -1,7 +1,7 @@
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view.dart';
 import 'package:flutter/material.dart';
 
-import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewModel.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';

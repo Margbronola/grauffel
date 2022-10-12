@@ -8,7 +8,7 @@ import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/models/document_type_model.dart';
 
-import 'camera_viewModel.dart';
+import 'camera_view_model.dart';
 
 class CameraView extends StatelessWidget {
   final DocumentTypeModel documentTypeModel;

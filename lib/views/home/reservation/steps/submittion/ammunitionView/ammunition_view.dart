@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_viewQuantity.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -9,10 +9,10 @@ import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 
 import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
-import '../../../../../shared/customButton.dart';
+import '../../../../../shared/custom_button.dart';
 import '../../../../../shared/ui_helper.dart';
-import 'ammunition_viewList.dart';
-import 'ammunition_viewModel.dart';
+import 'ammunition_view_list.dart';
+import 'ammunition_view_model.dart';
 
 class AmmunitionView extends StatelessWidget {
   final Function() onTap;

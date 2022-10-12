@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefService {
   Future<void> initializePrefs() async {
-    print("PREFS SET");
+    debugPrint("PREFS SET");
     prefs = await SharedPreferences.getInstance();
   }
 
@@ -18,6 +19,6 @@ class SharedPrefService {
 
   clearAllPrefs() {
     prefs!.clear();
-    print("CLEAR PREFS");
+    debugPrint("CLEAR PREFS");
   }
 }

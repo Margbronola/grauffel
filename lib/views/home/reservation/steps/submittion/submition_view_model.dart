@@ -91,7 +91,7 @@ class SubmitionViewModel extends ReactiveViewModel {
 
   Future<bool> reserveCourse() async {
     return await _bookingApiService.bookCourse(
-      course_id: _bookingService.getselectedBookable!.id!,
+      courseId: _bookingService.getselectedBookable!.id!,
       token: _userService.token!,
       guns: _bookingService.getselectedGun,
       ammunitions: _bookingService.getselectedAmmunition,
@@ -100,7 +100,6 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   void reserver() async {
-    loadingWidget:
     const Center(
       child: CircularProgressIndicator.adaptive(),
     );

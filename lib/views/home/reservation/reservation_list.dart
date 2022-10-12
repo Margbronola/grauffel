@@ -5,8 +5,8 @@ import '../../../models/reserve_model.dart';
 import '../../shared/color.dart';
 import 'package:stacked/stacked.dart';
 import '../../shared/widget/header/header.dart';
-import '../../shared/widget/reserveCard.dart';
-import 'reservation_listModel.dart';
+import '../../shared/widget/reserve_card.dart';
+import 'reservation_list_model.dart';
 
 class ReservationList extends StatelessWidget {
   const ReservationList({Key? key}) : super(key: key);
@@ -40,7 +40,6 @@ class ReservationList extends StatelessWidget {
                                   model.navigateToReservation(
                                       bookable: model.bookables[index]);
                                 }
-                                print(model.bookables[index]);
                               },
                               reserve: ReserveModel(
                                   image: model.bookables[index].image ?? "",

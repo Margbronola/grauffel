@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/paging_model.dart';
@@ -24,8 +25,8 @@ class AmmunitionAPIService {
       if (brandIds.isNotEmpty) {
         url += "&brand_id=$brands";
       }
-      print("BRANDS");
-      print(brands);
+      debugPrint("BRANDS");
+      debugPrint(brands);
     }
     if (caliberIds != null) {
       String calibers = caliberIds.join(', ');
@@ -45,11 +46,11 @@ class AmmunitionAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          print("FETCH AMMUNITION PASS");
+          debugPrint("FETCH AMMUNITION PASS");
           List fetchAmmunition = data['data'];
 
           if (fetchMore) {
-            print("FETCHING morel");
+            debugPrint("FETCHING morel");
 
             _ammunitions!.addAll(fetchAmmunition
                 .map((e) => AmmunitionsModel.fromJson(e))
@@ -67,19 +68,16 @@ class AmmunitionAPIService {
             prev_page_url: data['prev_page_url'],
             total: data['total'],
           );
-
-          print(_ammunitions);
-          print(_pagingModel);
         } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
         }
       } else {
-        print("SERVER FAIL fetchAllAmunition");
+        debugPrint("SERVER FAIL fetchAllAmunition");
       }
     } catch (e) {
-      print(e);
-      print("FETCH AMMUNITION FAIL");
+      debugPrint(e.toString());
+      debugPrint("FETCH AMMUNITION FAIL");
     }
   }
 }

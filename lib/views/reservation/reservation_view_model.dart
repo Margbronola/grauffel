@@ -2,14 +2,13 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
-import 'package:egczacademy/views/reservation/cardDetails/reserveCardDetails_view.dart';
+import 'package:egczacademy/views/reservation/cardDetails/reserve_card_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
 import '../../models/booking_model.dart';
-import '../../services/document_api_service.dart';
 import '../../services/document_service.dart';
 import '../../services/home_paging_service.dart';
 
@@ -22,8 +21,6 @@ class ReservationViewModel extends ReactiveViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
   final UserService _userService = locator<UserService>();
-
-  final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
 
   UserModel get user => _userService.user!;
@@ -44,7 +41,7 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   void closeHelp() {
-    print("HELP CLOSE");
+    debugPrint("HELP CLOSE");
     showHelp = false;
     notifyListeners();
   }
@@ -61,11 +58,11 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   Future cancelBook(int bookingId) async {
-    print("CANCEL");
+    debugPrint("CANCEL");
     bool cancel = await _bookingAPIService.cancelBook(
-        booking_id: bookingId,
-        token: _userService.token!,
-        user_id: _userService.user!.id!.toString());
+      bookingId: bookingId,
+      token: _userService.token!,
+    );
     if (cancel) {
       _dialogService.showDialog(description: "Canceling your booking now");
     } else {

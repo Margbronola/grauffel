@@ -16,13 +16,12 @@ class SplashViewModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   init() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      print("HASKEY ${_sharedPrefService.hasKeyToken}");
+      debugPrint("HASKEY ${_sharedPrefService.hasKeyToken}");
       if (_sharedPrefService.hasKeyToken) {
-        print("FETCHING ${_sharedPrefService.prefsToken}");
+        debugPrint("FETCHING ${_sharedPrefService.prefsToken}");
         UserModel? user = await _userAPIService.fethUserDetailsApi(
             token: _sharedPrefService.prefsToken);
         if (user != null) {
-          print(user);
           _userService.updateUser(user);
           _userService.updateToken(_sharedPrefService.prefsToken);
           _navigationService.pushNamedAndRemoveUntil(Routes.homeView);

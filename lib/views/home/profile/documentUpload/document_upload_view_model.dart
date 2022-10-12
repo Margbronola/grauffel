@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:egczacademy/models/document_type_model.dart';
 import 'package:egczacademy/services/document_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -37,7 +38,7 @@ class DocumentUploadViewModel extends BaseViewModel {
       File? fileBack,
       required DocumentTypeModel documentType}) async {
     setBusy(true);
-    print("Upload doc");
+    debugPrint("Upload doc");
     DocumentModel documents = DocumentModel(
         client_document_type_id: documentType.id,
         client_id: _userService.user!.id!,
@@ -45,8 +46,6 @@ class DocumentUploadViewModel extends BaseViewModel {
             fileFront != null ? convertToBase64(fileFront) : null,
         image_base64_back: fileBack != null ? convertToBase64(fileBack) : null,
         expiration: DateTime.now().add(const Duration(days: 30)).toString());
-
-    print(documents);
 
     await _documentAPIService
         .uploadDocument(token: _userService.token!, document: documents)

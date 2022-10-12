@@ -1,11 +1,11 @@
 import 'package:egczacademy/views/shared/color.dart';
-import 'package:egczacademy/views/shared/customButton.dart';
+import 'package:egczacademy/views/shared/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:stacked/stacked.dart';
 import '../../../shared/ui_helper.dart';
-import 'notification_settings_viewModel.dart';
+import 'notification_settings_view_model.dart';
 
 class NotificationSettingsView extends StatelessWidget {
   const NotificationSettingsView({Key? key}) : super(key: key);

@@ -31,7 +31,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   void init() async {
     setBusy(true);
     if (_caliberAPIService.caliber == null) {
-      print("fetching");
+      debugPrint("fetching");
       await fetchCalibers();
     }
 
@@ -106,7 +106,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
     Function eq = const ListEquality().equals;
 
     if (!eq(copyFilterCaliberIds, _gunListService.filterCaliberIds)) {
-      print("pass");
+      debugPrint("pass");
       _gunListService.setBusy(true);
       await filterGun();
       _gunListService.setBusy(false);

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
 import '../../color.dart';
-import '../../customButton.dart';
+import '../../custom_button.dart';
 import '../../ui_helper.dart';
 import '../../validator.dart';
 

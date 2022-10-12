@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:egczacademy/services/document_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
 import '../models/document_model.dart';
@@ -36,8 +37,8 @@ class DocumentService with ReactiveServiceMixin {
         await documentAPIService.fetchDocumentTypes(token: userService.token!);
     _documents.value =
         await documentAPIService.fetchDocuments(token: userService.token!);
-    print("here");
-    print(documents);
+    debugPrint("here");
+    debugPrint("$documents");
   }
 
   List<DocumentTypeModel> mandatoryDocumentTypes() {

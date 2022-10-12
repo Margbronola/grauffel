@@ -1,21 +1,15 @@
 import 'dart:async';
 import 'package:egczacademy/models/user_model.dart';
-import 'package:egczacademy/services/authentication_service.dart';
 import 'package:egczacademy/views/welcome/login_helper.dart';
 import 'package:egczacademy/views/welcome/regsiter_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import '../../app/app.locator.dart';
 
 class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   ScrollController scrollController = ScrollController();
-  final NavigationService _navigationService = locator<NavigationService>();
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
-  final DialogService _dialogService = locator<DialogService>();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final PageController pageController = PageController();
@@ -112,7 +106,7 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     });
 
     scrollController.addListener(() {
-      print(scrollController.offset);
+      debugPrint(scrollController.offset.toString());
     });
 
     emailFocusNode = FocusNode();
@@ -202,7 +196,7 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   }
 
   void animateToRegister() async {
-    print("ANIMATEREGISTER");
+    debugPrint("ANIMATEREGISTER");
     if (isLoginView) {
       controllerInputText.reverse().then((value) {
         isRegisterView = true;
@@ -233,24 +227,22 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   }
 
   Future loginButton() async {
-    print("login button");
+    debugPrint("login button");
     if (formKey.currentState!.validate()) {
       flexSize = 440;
       setBusy(true);
       await login(
-          isTest: false,
-          email: emailController.text,
-          password: passwordController.text);
+          email: emailController.text, password: passwordController.text);
       // setBusy(false);
     } else {
       flexSize = 540;
-      print("error");
+      debugPrint("error");
     }
     notifyListeners();
   }
 
   void registerButton(UserModel userModel) async {
-    print("REGISTER");
+    debugPrint("REGISTER");
     setBusy(true);
     await register(formKey: formKey, user: userModel);
     setBusy(false);

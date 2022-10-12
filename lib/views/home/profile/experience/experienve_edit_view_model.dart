@@ -47,7 +47,7 @@ class ExperienceEditViewModel extends BaseViewModel {
 
       _navigationService.back();
     } else {
-      print("cant valiedate");
+      debugPrint("cant valiedate");
     }
   }
 

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../color.dart';
-import '../../customButton.dart';
+import '../../custom_button.dart';
 
 class UploadDialog extends StatelessWidget {
   final DialogRequest<DocumentTypeModel?>? request;

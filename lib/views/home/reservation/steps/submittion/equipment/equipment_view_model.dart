@@ -2,6 +2,7 @@ import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/equipments_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -37,9 +38,9 @@ class EquipmentViewModel extends BaseViewModel {
 
     if (response != null) {
       if (response.confirmed) {
-        print("confirm");
+        debugPrint("confirm");
       } else {
-        print("CANCE:");
+        debugPrint("CANCE:");
       }
     }
   }

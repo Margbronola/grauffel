@@ -6,6 +6,7 @@ import 'package:egczacademy/services/document_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -43,15 +44,14 @@ class FileUploadViewModel extends BaseViewModel {
     if (result != null) {
       File file = File(result.files.single.path!);
       _documentService.setFile(file);
-      print("FROMeditpage");
-      print(fromEditPage);
+      debugPrint("FROMeditpage");
       if (fromEditPage) {
         _navigationService.back();
       } else {
         uploadFile(documentTypeModel, file);
       }
     } else {
-      print("cancel");
+      debugPrint("cancel");
 
       // User canceled the picker
     }
@@ -70,7 +70,7 @@ class FileUploadViewModel extends BaseViewModel {
       {File? fileFront,
       File? fileBack,
       required DocumentTypeModel documentType}) async {
-    print("Upload doc");
+    debugPrint("Upload doc");
     DocumentModel documents = DocumentModel(
         client_document_type_id: documentType.id,
         client_id: _userService.user!.id!,
@@ -78,8 +78,6 @@ class FileUploadViewModel extends BaseViewModel {
             fileFront != null ? convertToBase64(fileFront) : null,
         image_base64_back: fileBack != null ? convertToBase64(fileBack) : null,
         expiration: DateTime.now().add(const Duration(days: 30)).toString());
-
-    print(documents);
 
     await _documentAPIService
         .uploadDocument(token: _userService.token!, document: documents)

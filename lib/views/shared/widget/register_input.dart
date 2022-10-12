@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:egczacademy/views/welcome/welcome_viewModel.dart';
+import 'package:egczacademy/views/welcome/welcome_view_model.dart';
 
 import '../color.dart';
 import '../ui_helper.dart';

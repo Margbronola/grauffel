@@ -8,7 +8,7 @@ import 'package:egczacademy/app/global.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import 'document_card_view.dart';
-import 'profile_viewModel.dart';
+import 'profile_view_model.dart';
 
 class ProfileView extends StatelessWidget {
   final bool isFromHome;
@@ -319,7 +319,7 @@ class ProfileView extends StatelessWidget {
                                                           ? greyLight3
                                                           : kcWhite,
                                                   onTap: () {
-                                                    print("showdocsss");
+                                                    debugPrint("showdocsss");
                                                     if (model
                                                         .isProcessing(e.id!)) {
                                                       model.editDocuments(

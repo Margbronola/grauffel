@@ -2,7 +2,7 @@ import 'package:egczacademy/views/shared/widget/dialog/confirmation_dialog.dart'
 import 'package:egczacademy/views/shared/widget/dialog/reservation_succes_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/reserve_fail.dart';
 import 'package:egczacademy/views/shared/widget/dialog/upload_dialog.dart';
-import 'package:egczacademy/views/shared/widget/dialog/change_pass-dialog.dart';
+import 'package:egczacademy/views/shared/widget/dialog/change_pass_dialog.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
 import 'ammunition_dialog.dart';

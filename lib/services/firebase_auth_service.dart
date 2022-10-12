@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class FireBaseAuthService {
@@ -7,12 +8,12 @@ class FireBaseAuthService {
 
   Future<String?> signIn(
       {required String email, required String password}) async {
-    print("SIgnIN Firebase");
+    debugPrint("SIgnIN Firebase");
     try {
       UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
 
-      print("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
+      debugPrint("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
 
       return await user.user!.getIdToken();
     } on FirebaseAuthException catch (e) {
@@ -29,8 +30,8 @@ class FireBaseAuthService {
       }
       return null;
     } catch (e) {
-      print("firebase fail");
-      print(e);
+      debugPrint("firebase fail");
+      debugPrint(e.toString());
     }
     return null;
   }

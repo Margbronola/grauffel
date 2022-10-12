@@ -10,9 +10,9 @@ import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import '../../../../../../app/global.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/color.dart';
-import '../../../../../shared/customButton.dart';
+import '../../../../../shared/custom_button.dart';
 import '../../../../../shared/ui_helper.dart';
-import 'armore_viewModel.dart';
+import 'armore_view_model.dart';
 
 class ArmoreView extends StatelessWidget {
   final Function() onTap;
