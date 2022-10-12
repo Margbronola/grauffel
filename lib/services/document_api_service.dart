@@ -16,16 +16,27 @@ class DocumentAPIService {
     Map<String, dynamic> documentJson = docToUpload.toJson();
     documentJson.removeWhere((key, value) => value == null);
     try {
-      final respo =
-          await http.post(Uri.parse("$urlApi/client/document"), headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer $token",
-      }, body: {
-        "image_base64_front": document.image_base64_front,
-        "client_id": document.client_id.toString(),
-        "expiration": document.expiration,
-        "client_document_type_id": document.client_document_type_id.toString()
-      });
+      final respo = await http.post(Uri.parse("$urlApi/client/document"),
+          headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer $token",
+          },
+          body: document.image_base64_back != null
+              ? {
+                  "image_base64_front": document.image_base64_front,
+                  "image_base64_back": document.image_base64_back,
+                  "client_id": document.client_id.toString(),
+                  "expiration": document.expiration,
+                  "client_document_type_id":
+                      document.client_document_type_id.toString()
+                }
+              : {
+                  "image_base64_front": document.image_base64_front,
+                  "client_id": document.client_id.toString(),
+                  "expiration": document.expiration,
+                  "client_document_type_id":
+                      document.client_document_type_id.toString()
+                });
       if (respo.statusCode == 200 || respo.statusCode == 201) {
         return true;
       } else {
@@ -51,10 +62,6 @@ class DocumentAPIService {
         List ofData = data['data'];
 
         try {
-          for (var datum in ofData) {
-            debugPrint(datum);
-          }
-
           return ofData.map((e) => DocumentModel.fromJson(e)).toList();
         } catch (e) {
           debugPrint(e.toString());

@@ -322,10 +322,12 @@ class ProfileView extends StatelessWidget {
                                                     if (model
                                                         .isProcessing(e.id!)) {
                                                       model.editDocuments(
-                                                          documentTypeModel: e);
+                                                          documentTypeModel: e,
+                                                          isEmpty: false);
                                                     } else {
-                                                      model.uploadDocument(
-                                                          documentTypeModel: e);
+                                                      model.editDocuments(
+                                                          documentTypeModel: e,
+                                                          isEmpty: true);
                                                     }
                                                   },
                                                   documentTypeModel: e,
@@ -360,10 +362,12 @@ class ProfileView extends StatelessWidget {
                                                     if (model
                                                         .isProcessing(e.id!)) {
                                                       model.editDocuments(
-                                                          documentTypeModel: e);
+                                                          documentTypeModel: e,
+                                                          isEmpty: false);
                                                     } else {
-                                                      model.uploadDocument(
-                                                          documentTypeModel: e);
+                                                      model.editDocuments(
+                                                          documentTypeModel: e,
+                                                          isEmpty: true);
                                                     }
                                                   },
                                                   documentTypeModel: e,

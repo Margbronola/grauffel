@@ -22,33 +22,54 @@ class FileUploadViewModel extends BaseViewModel {
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
 
-  upLoadViaCamera(DocumentTypeModel documentTypeModel, bool fromEditPage) {
+  File? fileFront;
+  File? fileBack;
+
+  bool get disableFloat => fileFront == null || fileBack == null;
+
+  void upload(DocumentTypeModel documentTypeModel) async {
+    await uploadDoc(
+        documentType: documentTypeModel,
+        fileFront: fileFront,
+        fileBack: fileBack);
+  }
+
+  upLoadViaCamera(DocumentTypeModel documentTypeModel, bool fromEditPage,
+      int selectedCard) {
     _navigationService.navigateToView(CameraView(
       documentTypeModel: documentTypeModel,
       onSelect: (value) async {
         if (value != null) {
           if (fromEditPage) {
-            _documentService.setFile(value);
+            if (selectedCard == 0) {
+              _documentService.setFileFront(value);
+            } else {
+              _documentService.setFileBack(value);
+            }
             _navigationService.back();
           } else {
-            await uploadFile(documentTypeModel, value);
+            await uploadFile(documentTypeModel, value, selectedCard);
           }
         }
       },
     ));
   }
 
-  Future uploadPDF(
-      DocumentTypeModel documentTypeModel, bool fromEditPage) async {
+  Future uploadPDF(DocumentTypeModel documentTypeModel, bool fromEditPage,
+      int selectedCard) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
-      _documentService.setFile(file);
+      if (selectedCard == 0) {
+        _documentService.setFileFront(file);
+      } else {
+        _documentService.setFileBack(file);
+      }
       debugPrint("FROMeditpage");
       if (fromEditPage) {
         _navigationService.back();
       } else {
-        uploadFile(documentTypeModel, file);
+        uploadFile(documentTypeModel, file, selectedCard);
       }
     } else {
       debugPrint("cancel");
@@ -57,12 +78,19 @@ class FileUploadViewModel extends BaseViewModel {
     }
   }
 
-  Future uploadFile(DocumentTypeModel documentTypeModel, File? file) async {
+  Future uploadFile(
+      DocumentTypeModel documentTypeModel, File? file, int selectedCard) async {
     var upload = await _dialogService.showCustomDialog(
         variant: DialogType.upload, data: documentTypeModel);
 
     if (upload!.confirmed) {
-      await uploadDoc(documentType: documentTypeModel, fileFront: file);
+      if (selectedCard == 0) {
+        fileFront = file;
+      } else {
+        fileBack = file;
+      }
+
+      notifyListeners();
     }
   }
 

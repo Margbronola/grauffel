@@ -19,16 +19,31 @@ class DocumentUploadViewModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
 
-  File? file;
+  File? fileFront;
+  File? fileBack;
 
   void uploadDocument({required DocumentTypeModel documentTypeModel}) {
     _navigationService
         .navigateToView(FileUploadView(
       documentTypeModel: documentTypeModel,
       fromEditPage: true,
+      selectedCard: 0,
     ))!
         .then((value) {
-      file = _documentService.file;
+      fileFront = _documentService.fileFront;
+      notifyListeners();
+    });
+  }
+
+  void uploadDocument2({required DocumentTypeModel documentTypeModel}) {
+    _navigationService
+        .navigateToView(FileUploadView(
+      documentTypeModel: documentTypeModel,
+      fromEditPage: true,
+      selectedCard: 1,
+    ))!
+        .then((value) {
+      fileBack = _documentService.fileBack;
       notifyListeners();
     });
   }

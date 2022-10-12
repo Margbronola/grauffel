@@ -6,7 +6,6 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/document_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/documentUpload/document_upload_view.dart';
-import 'package:egczacademy/views/home/profile/documentUpload/fileUpload/file_upload_view.dart';
 import 'package:egczacademy/views/home/profile/experience/experience_edit_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -130,7 +129,7 @@ class ProfileViewModel extends ReactiveViewModel {
           return documents
                   .firstWhere(
                       (element) => element.client_document_type_id == doctypeId)
-                  .status ==
+                  .is_new ==
               1;
         }
         return false;
@@ -207,15 +206,17 @@ class ProfileViewModel extends ReactiveViewModel {
         const ExperienceEditView(extraDetails: ExtraDetails.equipments));
   }
 
-  void uploadDocument({required DocumentTypeModel documentTypeModel}) {
-    _navigationService.navigateToView(FileUploadView(
-      documentTypeModel: documentTypeModel,
-    ));
-  }
+  // void uploadDocument({required DocumentTypeModel documentTypeModel}) {
+  //   _navigationService.navigateToView(FileUploadView(
+  //     documentTypeModel: documentTypeModel,
+  //   ));
+  // }
 
-  void editDocuments({required DocumentTypeModel documentTypeModel}) {
+  void editDocuments(
+      {required DocumentTypeModel documentTypeModel, required bool isEmpty}) {
     _navigationService.navigateToView(DocumentUploadView(
       documentTypeModel: documentTypeModel,
+      isEmpty: isEmpty,
     ));
   }
 

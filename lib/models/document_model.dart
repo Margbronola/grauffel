@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'client_documents_types_model.dart';
 part 'document_model.freezed.dart';
 part 'document_model.g.dart';
 
@@ -8,17 +10,16 @@ class DocumentModel with _$DocumentModel {
       {int? id,
       int? client_id,
       int? client_document_type_id,
-      String? path,
-      String? path2,
       String? image_base64_front,
       String? image_base64_back,
+      String? path,
+      String? path2,
       String? expiration,
       DateTime? created_at,
       int? is_valid,
       int? is_new,
       int? is_viewed,
-      int? status,
-      int? ismandatory,
+      ClientDocumentsTypesModel? client_document_types,
       DateTime? updated_at}) = _DocumentModel;
 
   factory DocumentModel.fromJson(Map<String, Object?> json) =>

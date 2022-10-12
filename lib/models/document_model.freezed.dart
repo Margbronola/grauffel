@@ -23,17 +23,17 @@ mixin _$DocumentModel {
   int? get id => throw _privateConstructorUsedError;
   int? get client_id => throw _privateConstructorUsedError;
   int? get client_document_type_id => throw _privateConstructorUsedError;
-  String? get path => throw _privateConstructorUsedError;
-  String? get path2 => throw _privateConstructorUsedError;
   String? get image_base64_front => throw _privateConstructorUsedError;
   String? get image_base64_back => throw _privateConstructorUsedError;
+  String? get path => throw _privateConstructorUsedError;
+  String? get path2 => throw _privateConstructorUsedError;
   String? get expiration => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   int? get is_valid => throw _privateConstructorUsedError;
   int? get is_new => throw _privateConstructorUsedError;
   int? get is_viewed => throw _privateConstructorUsedError;
-  int? get status => throw _privateConstructorUsedError;
-  int? get ismandatory => throw _privateConstructorUsedError;
+  ClientDocumentsTypesModel? get client_document_types =>
+      throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,18 +51,19 @@ abstract class $DocumentModelCopyWith<$Res> {
       {int? id,
       int? client_id,
       int? client_document_type_id,
-      String? path,
-      String? path2,
       String? image_base64_front,
       String? image_base64_back,
+      String? path,
+      String? path2,
       String? expiration,
       DateTime? created_at,
       int? is_valid,
       int? is_new,
       int? is_viewed,
-      int? status,
-      int? ismandatory,
+      ClientDocumentsTypesModel? client_document_types,
       DateTime? updated_at});
+
+  $ClientDocumentsTypesModelCopyWith<$Res>? get client_document_types;
 }
 
 /// @nodoc
@@ -79,17 +80,16 @@ class _$DocumentModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? client_id = freezed,
     Object? client_document_type_id = freezed,
-    Object? path = freezed,
-    Object? path2 = freezed,
     Object? image_base64_front = freezed,
     Object? image_base64_back = freezed,
+    Object? path = freezed,
+    Object? path2 = freezed,
     Object? expiration = freezed,
     Object? created_at = freezed,
     Object? is_valid = freezed,
     Object? is_new = freezed,
     Object? is_viewed = freezed,
-    Object? status = freezed,
-    Object? ismandatory = freezed,
+    Object? client_document_types = freezed,
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -105,14 +105,6 @@ class _$DocumentModelCopyWithImpl<$Res>
           ? _value.client_document_type_id
           : client_document_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
-      path2: path2 == freezed
-          ? _value.path2
-          : path2 // ignore: cast_nullable_to_non_nullable
-              as String?,
       image_base64_front: image_base64_front == freezed
           ? _value.image_base64_front
           : image_base64_front // ignore: cast_nullable_to_non_nullable
@@ -120,6 +112,14 @@ class _$DocumentModelCopyWithImpl<$Res>
       image_base64_back: image_base64_back == freezed
           ? _value.image_base64_back
           : image_base64_back // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path2: path2 == freezed
+          ? _value.path2
+          : path2 // ignore: cast_nullable_to_non_nullable
               as String?,
       expiration: expiration == freezed
           ? _value.expiration
@@ -141,19 +141,27 @@ class _$DocumentModelCopyWithImpl<$Res>
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ismandatory: ismandatory == freezed
-          ? _value.ismandatory
-          : ismandatory // ignore: cast_nullable_to_non_nullable
-              as int?,
+      client_document_types: client_document_types == freezed
+          ? _value.client_document_types
+          : client_document_types // ignore: cast_nullable_to_non_nullable
+              as ClientDocumentsTypesModel?,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
+  }
+
+  @override
+  $ClientDocumentsTypesModelCopyWith<$Res>? get client_document_types {
+    if (_value.client_document_types == null) {
+      return null;
+    }
+
+    return $ClientDocumentsTypesModelCopyWith<$Res>(
+        _value.client_document_types!, (value) {
+      return _then(_value.copyWith(client_document_types: value));
+    });
   }
 }
 
@@ -168,18 +176,20 @@ abstract class _$$_DocumentModelCopyWith<$Res>
       {int? id,
       int? client_id,
       int? client_document_type_id,
-      String? path,
-      String? path2,
       String? image_base64_front,
       String? image_base64_back,
+      String? path,
+      String? path2,
       String? expiration,
       DateTime? created_at,
       int? is_valid,
       int? is_new,
       int? is_viewed,
-      int? status,
-      int? ismandatory,
+      ClientDocumentsTypesModel? client_document_types,
       DateTime? updated_at});
+
+  @override
+  $ClientDocumentsTypesModelCopyWith<$Res>? get client_document_types;
 }
 
 /// @nodoc
@@ -198,17 +208,16 @@ class __$$_DocumentModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? client_id = freezed,
     Object? client_document_type_id = freezed,
-    Object? path = freezed,
-    Object? path2 = freezed,
     Object? image_base64_front = freezed,
     Object? image_base64_back = freezed,
+    Object? path = freezed,
+    Object? path2 = freezed,
     Object? expiration = freezed,
     Object? created_at = freezed,
     Object? is_valid = freezed,
     Object? is_new = freezed,
     Object? is_viewed = freezed,
-    Object? status = freezed,
-    Object? ismandatory = freezed,
+    Object? client_document_types = freezed,
     Object? updated_at = freezed,
   }) {
     return _then(_$_DocumentModel(
@@ -224,14 +233,6 @@ class __$$_DocumentModelCopyWithImpl<$Res>
           ? _value.client_document_type_id
           : client_document_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String?,
-      path2: path2 == freezed
-          ? _value.path2
-          : path2 // ignore: cast_nullable_to_non_nullable
-              as String?,
       image_base64_front: image_base64_front == freezed
           ? _value.image_base64_front
           : image_base64_front // ignore: cast_nullable_to_non_nullable
@@ -239,6 +240,14 @@ class __$$_DocumentModelCopyWithImpl<$Res>
       image_base64_back: image_base64_back == freezed
           ? _value.image_base64_back
           : image_base64_back // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
+      path2: path2 == freezed
+          ? _value.path2
+          : path2 // ignore: cast_nullable_to_non_nullable
               as String?,
       expiration: expiration == freezed
           ? _value.expiration
@@ -260,14 +269,10 @@ class __$$_DocumentModelCopyWithImpl<$Res>
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ismandatory: ismandatory == freezed
-          ? _value.ismandatory
-          : ismandatory // ignore: cast_nullable_to_non_nullable
-              as int?,
+      client_document_types: client_document_types == freezed
+          ? _value.client_document_types
+          : client_document_types // ignore: cast_nullable_to_non_nullable
+              as ClientDocumentsTypesModel?,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -283,17 +288,16 @@ class _$_DocumentModel implements _DocumentModel {
       {this.id,
       this.client_id,
       this.client_document_type_id,
-      this.path,
-      this.path2,
       this.image_base64_front,
       this.image_base64_back,
+      this.path,
+      this.path2,
       this.expiration,
       this.created_at,
       this.is_valid,
       this.is_new,
       this.is_viewed,
-      this.status,
-      this.ismandatory,
+      this.client_document_types,
       this.updated_at});
 
   factory _$_DocumentModel.fromJson(Map<String, dynamic> json) =>
@@ -306,13 +310,13 @@ class _$_DocumentModel implements _DocumentModel {
   @override
   final int? client_document_type_id;
   @override
-  final String? path;
-  @override
-  final String? path2;
-  @override
   final String? image_base64_front;
   @override
   final String? image_base64_back;
+  @override
+  final String? path;
+  @override
+  final String? path2;
   @override
   final String? expiration;
   @override
@@ -324,15 +328,13 @@ class _$_DocumentModel implements _DocumentModel {
   @override
   final int? is_viewed;
   @override
-  final int? status;
-  @override
-  final int? ismandatory;
+  final ClientDocumentsTypesModel? client_document_types;
   @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'DocumentModel(id: $id, client_id: $client_id, client_document_type_id: $client_document_type_id, path: $path, path2: $path2, image_base64_front: $image_base64_front, image_base64_back: $image_base64_back, expiration: $expiration, created_at: $created_at, is_valid: $is_valid, is_new: $is_new, is_viewed: $is_viewed, status: $status, ismandatory: $ismandatory, updated_at: $updated_at)';
+    return 'DocumentModel(id: $id, client_id: $client_id, client_document_type_id: $client_document_type_id, image_base64_front: $image_base64_front, image_base64_back: $image_base64_back, path: $path, path2: $path2, expiration: $expiration, created_at: $created_at, is_valid: $is_valid, is_new: $is_new, is_viewed: $is_viewed, client_document_types: $client_document_types, updated_at: $updated_at)';
   }
 
   @override
@@ -344,12 +346,12 @@ class _$_DocumentModel implements _DocumentModel {
             const DeepCollectionEquality().equals(other.client_id, client_id) &&
             const DeepCollectionEquality().equals(
                 other.client_document_type_id, client_document_type_id) &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.path2, path2) &&
             const DeepCollectionEquality()
                 .equals(other.image_base64_front, image_base64_front) &&
             const DeepCollectionEquality()
                 .equals(other.image_base64_back, image_base64_back) &&
+            const DeepCollectionEquality().equals(other.path, path) &&
+            const DeepCollectionEquality().equals(other.path2, path2) &&
             const DeepCollectionEquality()
                 .equals(other.expiration, expiration) &&
             const DeepCollectionEquality()
@@ -357,9 +359,8 @@ class _$_DocumentModel implements _DocumentModel {
             const DeepCollectionEquality().equals(other.is_valid, is_valid) &&
             const DeepCollectionEquality().equals(other.is_new, is_new) &&
             const DeepCollectionEquality().equals(other.is_viewed, is_viewed) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
-                .equals(other.ismandatory, ismandatory) &&
+                .equals(other.client_document_types, client_document_types) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at));
   }
@@ -371,17 +372,16 @@ class _$_DocumentModel implements _DocumentModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(client_id),
       const DeepCollectionEquality().hash(client_document_type_id),
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(path2),
       const DeepCollectionEquality().hash(image_base64_front),
       const DeepCollectionEquality().hash(image_base64_back),
+      const DeepCollectionEquality().hash(path),
+      const DeepCollectionEquality().hash(path2),
       const DeepCollectionEquality().hash(expiration),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(is_valid),
       const DeepCollectionEquality().hash(is_new),
       const DeepCollectionEquality().hash(is_viewed),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(ismandatory),
+      const DeepCollectionEquality().hash(client_document_types),
       const DeepCollectionEquality().hash(updated_at));
 
   @JsonKey(ignore: true)
@@ -402,17 +402,16 @@ abstract class _DocumentModel implements DocumentModel {
       {final int? id,
       final int? client_id,
       final int? client_document_type_id,
-      final String? path,
-      final String? path2,
       final String? image_base64_front,
       final String? image_base64_back,
+      final String? path,
+      final String? path2,
       final String? expiration,
       final DateTime? created_at,
       final int? is_valid,
       final int? is_new,
       final int? is_viewed,
-      final int? status,
-      final int? ismandatory,
+      final ClientDocumentsTypesModel? client_document_types,
       final DateTime? updated_at}) = _$_DocumentModel;
 
   factory _DocumentModel.fromJson(Map<String, dynamic> json) =
@@ -425,13 +424,13 @@ abstract class _DocumentModel implements DocumentModel {
   @override
   int? get client_document_type_id;
   @override
-  String? get path;
-  @override
-  String? get path2;
-  @override
   String? get image_base64_front;
   @override
   String? get image_base64_back;
+  @override
+  String? get path;
+  @override
+  String? get path2;
   @override
   String? get expiration;
   @override
@@ -443,9 +442,7 @@ abstract class _DocumentModel implements DocumentModel {
   @override
   int? get is_viewed;
   @override
-  int? get status;
-  @override
-  int? get ismandatory;
+  ClientDocumentsTypesModel? get client_document_types;
   @override
   DateTime? get updated_at;
   @override

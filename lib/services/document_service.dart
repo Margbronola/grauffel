@@ -11,10 +11,11 @@ import '../models/document_type_model.dart';
 class DocumentService with ReactiveServiceMixin {
   DocumentService() {
     //3
-    listenToReactiveValues([_documents, _documenTypes, _file]);
+    listenToReactiveValues([_documents, _documenTypes, _fileFront, _fileBack]);
   }
 
-  final ReactiveValue<File?> _file = ReactiveValue<File?>(null);
+  final ReactiveValue<File?> _fileFront = ReactiveValue<File?>(null);
+  final ReactiveValue<File?> _fileBack = ReactiveValue<File?>(null);
 
   //2
   final ReactiveValue<List<DocumentModel>?> _documents =
@@ -22,12 +23,18 @@ class DocumentService with ReactiveServiceMixin {
   final ReactiveValue<List<DocumentTypeModel>?> _documenTypes =
       ReactiveValue<List<DocumentTypeModel>?>(null);
 
-  File? get file => _file.value;
+  File? get fileFront => _fileFront.value;
+  File? get fileBack => _fileBack.value;
+
   List<DocumentModel>? get documents => _documents.value;
   List<DocumentTypeModel> get documenTypes => _documenTypes.value ?? [];
 
-  setFile(File file) {
-    _file.value = file;
+  setFileFront(File file) {
+    _fileFront.value = file;
+  }
+
+  setFileBack(File file) {
+    _fileBack.value = file;
   }
 
   Future fetch(
