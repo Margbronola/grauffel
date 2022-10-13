@@ -25,12 +25,15 @@ class SocialButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               circleButton(
-                onTap: fbTap,
-                child: Image.asset(
-                  fbLogo,
-                  height: 30.h,
-                ),
-              ),
+                  onTap: fbTap,
+                  child: Row(children: [
+                    Image.asset(
+                      fbLogo,
+                      height: 30.h,
+                    ),
+                    const SizedBox(width: 5),
+                    const Text("Facebook SignIn")
+                  ])),
               // customDivider(),
               // circleButton(
               //   onTap: logoTap,
@@ -38,14 +41,14 @@ class SocialButton extends StatelessWidget {
               //     imageSmallLogo,
               //   ),
               // ),
-              customDivider(),
-              circleButton(
-                onTap: instaTap,
-                child: Image.asset(
-                  instaLogo,
-                  height: 30.h,
-                ),
-              )
+              // customDivider(),
+              // circleButton(
+              //   onTap: instaTap,
+              //   child: Image.asset(
+              //     instaLogo,
+              //     height: 30.h,
+              //   ),
+              // )
             ],
           ),
         ),
