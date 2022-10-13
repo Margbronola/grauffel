@@ -43,6 +43,20 @@ class ReservationList extends StatelessWidget {
                                 }
                               },
                               reserve: ReserveModel(
+                                  dateTo: model.bookables[index].date_to ?? "",
+                                  dateFrom:
+                                      model.bookables[index].date_from ?? "",
+                                  startTime:
+                                      model.bookables[index].start_time ?? "",
+                                  endTime:
+                                      model.bookables[index].end_time ?? "",
+                                  instructor:
+                                      model.bookables[index].admin != null
+                                          ? model.bookables[index].admin!
+                                                  .fullname ??
+                                              ""
+                                          : "",
+                                  restantes: 10,
                                   image: model.bookables[index].image ?? "",
                                   title: model.bookables[index].name!
                                       .toUpperCase(),

@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/admin_model.dart';
 import 'package:egczacademy/models/type_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -27,6 +28,7 @@ class CourseModel with _$CourseModel {
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
+      AdminModel? admin,
       TypeModel? type,
       List<dynamic>? questions}) = _CourseModel;
 

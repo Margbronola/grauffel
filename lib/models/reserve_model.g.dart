@@ -11,6 +11,12 @@ _$_ReserveModel _$$_ReserveModelFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
+      dateTo: json['dateTo'] as String,
+      dateFrom: json['dateFrom'] as String,
+      startTime: json['startTime'] as String,
+      endTime: json['endTime'] as String,
+      instructor: json['instructor'] as String,
+      restantes: json['restantes'] as int,
     );
 
 Map<String, dynamic> _$$_ReserveModelToJson(_$_ReserveModel instance) =>
@@ -18,4 +24,10 @@ Map<String, dynamic> _$$_ReserveModelToJson(_$_ReserveModel instance) =>
       'image': instance.image,
       'title': instance.title,
       'description': instance.description,
+      'dateTo': instance.dateTo,
+      'dateFrom': instance.dateFrom,
+      'startTime': instance.startTime,
+      'endTime': instance.endTime,
+      'instructor': instance.instructor,
+      'restantes': instance.restantes,
     };

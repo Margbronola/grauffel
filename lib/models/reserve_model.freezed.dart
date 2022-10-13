@@ -23,6 +23,12 @@ mixin _$ReserveModel {
   String get image => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get dateTo => throw _privateConstructorUsedError;
+  String get dateFrom => throw _privateConstructorUsedError;
+  String get startTime => throw _privateConstructorUsedError;
+  String get endTime => throw _privateConstructorUsedError;
+  String get instructor => throw _privateConstructorUsedError;
+  int get restantes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +41,16 @@ abstract class $ReserveModelCopyWith<$Res> {
   factory $ReserveModelCopyWith(
           ReserveModel value, $Res Function(ReserveModel) then) =
       _$ReserveModelCopyWithImpl<$Res>;
-  $Res call({String image, String title, String description});
+  $Res call(
+      {String image,
+      String title,
+      String description,
+      String dateTo,
+      String dateFrom,
+      String startTime,
+      String endTime,
+      String instructor,
+      int restantes});
 }
 
 /// @nodoc
@@ -51,6 +66,12 @@ class _$ReserveModelCopyWithImpl<$Res> implements $ReserveModelCopyWith<$Res> {
     Object? image = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? dateTo = freezed,
+    Object? dateFrom = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
+    Object? instructor = freezed,
+    Object? restantes = freezed,
   }) {
     return _then(_value.copyWith(
       image: image == freezed
@@ -65,6 +86,30 @@ class _$ReserveModelCopyWithImpl<$Res> implements $ReserveModelCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      dateTo: dateTo == freezed
+          ? _value.dateTo
+          : dateTo // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateFrom: dateFrom == freezed
+          ? _value.dateFrom
+          : dateFrom // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: startTime == freezed
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: endTime == freezed
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      instructor: instructor == freezed
+          ? _value.instructor
+          : instructor // ignore: cast_nullable_to_non_nullable
+              as String,
+      restantes: restantes == freezed
+          ? _value.restantes
+          : restantes // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -76,7 +121,16 @@ abstract class _$$_ReserveModelCopyWith<$Res>
           _$_ReserveModel value, $Res Function(_$_ReserveModel) then) =
       __$$_ReserveModelCopyWithImpl<$Res>;
   @override
-  $Res call({String image, String title, String description});
+  $Res call(
+      {String image,
+      String title,
+      String description,
+      String dateTo,
+      String dateFrom,
+      String startTime,
+      String endTime,
+      String instructor,
+      int restantes});
 }
 
 /// @nodoc
@@ -95,6 +149,12 @@ class __$$_ReserveModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? dateTo = freezed,
+    Object? dateFrom = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
+    Object? instructor = freezed,
+    Object? restantes = freezed,
   }) {
     return _then(_$_ReserveModel(
       image: image == freezed
@@ -109,6 +169,30 @@ class __$$_ReserveModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      dateTo: dateTo == freezed
+          ? _value.dateTo
+          : dateTo // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateFrom: dateFrom == freezed
+          ? _value.dateFrom
+          : dateFrom // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: startTime == freezed
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: endTime == freezed
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      instructor: instructor == freezed
+          ? _value.instructor
+          : instructor // ignore: cast_nullable_to_non_nullable
+              as String,
+      restantes: restantes == freezed
+          ? _value.restantes
+          : restantes // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -117,7 +201,15 @@ class __$$_ReserveModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
   const _$_ReserveModel(
-      {required this.image, required this.title, required this.description});
+      {required this.image,
+      required this.title,
+      required this.description,
+      required this.dateTo,
+      required this.dateFrom,
+      required this.startTime,
+      required this.endTime,
+      required this.instructor,
+      required this.restantes});
 
   factory _$_ReserveModel.fromJson(Map<String, dynamic> json) =>
       _$$_ReserveModelFromJson(json);
@@ -128,10 +220,22 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
   final String title;
   @override
   final String description;
+  @override
+  final String dateTo;
+  @override
+  final String dateFrom;
+  @override
+  final String startTime;
+  @override
+  final String endTime;
+  @override
+  final String instructor;
+  @override
+  final int restantes;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ReserveModel(image: $image, title: $title, description: $description)';
+    return 'ReserveModel(image: $image, title: $title, description: $description, dateTo: $dateTo, dateFrom: $dateFrom, startTime: $startTime, endTime: $endTime, instructor: $instructor, restantes: $restantes)';
   }
 
   @override
@@ -141,7 +245,13 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
       ..add(DiagnosticsProperty('type', 'ReserveModel'))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('description', description));
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('dateTo', dateTo))
+      ..add(DiagnosticsProperty('dateFrom', dateFrom))
+      ..add(DiagnosticsProperty('startTime', startTime))
+      ..add(DiagnosticsProperty('endTime', endTime))
+      ..add(DiagnosticsProperty('instructor', instructor))
+      ..add(DiagnosticsProperty('restantes', restantes));
   }
 
   @override
@@ -152,7 +262,14 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
             const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
-                .equals(other.description, description));
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.dateTo, dateTo) &&
+            const DeepCollectionEquality().equals(other.dateFrom, dateFrom) &&
+            const DeepCollectionEquality().equals(other.startTime, startTime) &&
+            const DeepCollectionEquality().equals(other.endTime, endTime) &&
+            const DeepCollectionEquality()
+                .equals(other.instructor, instructor) &&
+            const DeepCollectionEquality().equals(other.restantes, restantes));
   }
 
   @JsonKey(ignore: true)
@@ -161,7 +278,13 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
       runtimeType,
       const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description));
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(dateTo),
+      const DeepCollectionEquality().hash(dateFrom),
+      const DeepCollectionEquality().hash(startTime),
+      const DeepCollectionEquality().hash(endTime),
+      const DeepCollectionEquality().hash(instructor),
+      const DeepCollectionEquality().hash(restantes));
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +303,13 @@ abstract class _ReserveModel implements ReserveModel {
   const factory _ReserveModel(
       {required final String image,
       required final String title,
-      required final String description}) = _$_ReserveModel;
+      required final String description,
+      required final String dateTo,
+      required final String dateFrom,
+      required final String startTime,
+      required final String endTime,
+      required final String instructor,
+      required final int restantes}) = _$_ReserveModel;
 
   factory _ReserveModel.fromJson(Map<String, dynamic> json) =
       _$_ReserveModel.fromJson;
@@ -191,6 +320,18 @@ abstract class _ReserveModel implements ReserveModel {
   String get title;
   @override
   String get description;
+  @override
+  String get dateTo;
+  @override
+  String get dateFrom;
+  @override
+  String get startTime;
+  @override
+  String get endTime;
+  @override
+  String get instructor;
+  @override
+  int get restantes;
   @override
   @JsonKey(ignore: true)
   _$$_ReserveModelCopyWith<_$_ReserveModel> get copyWith =>

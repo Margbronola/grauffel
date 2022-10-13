@@ -10,6 +10,12 @@ class ReserveModel with _$ReserveModel {
     required String image,
     required String title,
     required String description,
+    required String dateTo,
+    required String dateFrom,
+    required String startTime,
+    required String endTime,
+    required String instructor,
+    required int restantes,
   }) = _ReserveModel;
 
   factory ReserveModel.fromJson(Map<String, Object?> json) =>

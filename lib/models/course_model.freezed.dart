@@ -40,6 +40,7 @@ mixin _$CourseModel {
   DateTime? get updated_at => throw _privateConstructorUsedError;
   int? get active_booking_count => throw _privateConstructorUsedError;
   String? get status_name => throw _privateConstructorUsedError;
+  AdminModel? get admin => throw _privateConstructorUsedError;
   TypeModel? get type => throw _privateConstructorUsedError;
   List<dynamic>? get questions => throw _privateConstructorUsedError;
 
@@ -75,9 +76,11 @@ abstract class $CourseModelCopyWith<$Res> {
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
+      AdminModel? admin,
       TypeModel? type,
       List<dynamic>? questions});
 
+  $AdminModelCopyWith<$Res>? get admin;
   $TypeModelCopyWith<$Res>? get type;
 }
 
@@ -111,6 +114,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? updated_at = freezed,
     Object? active_booking_count = freezed,
     Object? status_name = freezed,
+    Object? admin = freezed,
     Object? type = freezed,
     Object? questions = freezed,
   }) {
@@ -195,6 +199,10 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -204,6 +212,17 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           : questions // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
     ));
+  }
+
+  @override
+  $AdminModelCopyWith<$Res>? get admin {
+    if (_value.admin == null) {
+      return null;
+    }
+
+    return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
+      return _then(_value.copyWith(admin: value));
+    });
   }
 
   @override
@@ -246,9 +265,12 @@ abstract class _$$_CourseModelCopyWith<$Res>
       DateTime? updated_at,
       int? active_booking_count,
       String? status_name,
+      AdminModel? admin,
       TypeModel? type,
       List<dynamic>? questions});
 
+  @override
+  $AdminModelCopyWith<$Res>? get admin;
   @override
   $TypeModelCopyWith<$Res>? get type;
 }
@@ -285,6 +307,7 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
     Object? active_booking_count = freezed,
     Object? status_name = freezed,
+    Object? admin = freezed,
     Object? type = freezed,
     Object? questions = freezed,
   }) {
@@ -369,6 +392,10 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
+      admin: admin == freezed
+          ? _value.admin
+          : admin // ignore: cast_nullable_to_non_nullable
+              as AdminModel?,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -405,6 +432,7 @@ class _$_CourseModel implements _CourseModel {
       this.updated_at,
       this.active_booking_count,
       this.status_name,
+      this.admin,
       this.type,
       final List<dynamic>? questions})
       : _period = period,
@@ -461,6 +489,8 @@ class _$_CourseModel implements _CourseModel {
   @override
   final String? status_name;
   @override
+  final AdminModel? admin;
+  @override
   final TypeModel? type;
   final List<dynamic>? _questions;
   @override
@@ -473,7 +503,7 @@ class _$_CourseModel implements _CourseModel {
 
   @override
   String toString() {
-    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, active_booking_count: $active_booking_count, status_name: $status_name, type: $type, questions: $questions)';
+    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, active_booking_count: $active_booking_count, status_name: $status_name, admin: $admin, type: $type, questions: $questions)';
   }
 
   @override
@@ -509,6 +539,7 @@ class _$_CourseModel implements _CourseModel {
                 .equals(other.active_booking_count, active_booking_count) &&
             const DeepCollectionEquality()
                 .equals(other.status_name, status_name) &&
+            const DeepCollectionEquality().equals(other.admin, admin) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions));
@@ -538,6 +569,7 @@ class _$_CourseModel implements _CourseModel {
         const DeepCollectionEquality().hash(updated_at),
         const DeepCollectionEquality().hash(active_booking_count),
         const DeepCollectionEquality().hash(status_name),
+        const DeepCollectionEquality().hash(admin),
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(_questions)
       ]);
@@ -577,6 +609,7 @@ abstract class _CourseModel implements CourseModel {
       final DateTime? updated_at,
       final int? active_booking_count,
       final String? status_name,
+      final AdminModel? admin,
       final TypeModel? type,
       final List<dynamic>? questions}) = _$_CourseModel;
 
@@ -623,6 +656,8 @@ abstract class _CourseModel implements CourseModel {
   int? get active_booking_count;
   @override
   String? get status_name;
+  @override
+  AdminModel? get admin;
   @override
   TypeModel? get type;
   @override

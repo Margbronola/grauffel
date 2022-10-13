@@ -32,6 +32,9 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updated_at'] as String),
       active_booking_count: json['active_booking_count'] as int?,
       status_name: json['status_name'] as String?,
+      admin: json['admin'] == null
+          ? null
+          : AdminModel.fromJson(json['admin'] as Map<String, dynamic>),
       type: json['type'] == null
           ? null
           : TypeModel.fromJson(json['type'] as Map<String, dynamic>),
@@ -60,6 +63,7 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'updated_at': instance.updated_at?.toIso8601String(),
       'active_booking_count': instance.active_booking_count,
       'status_name': instance.status_name,
+      'admin': instance.admin,
       'type': instance.type,
       'questions': instance.questions,
     };

@@ -164,6 +164,7 @@ class BookingAPIService {
                   .subtract(const Duration(days: 1))
                   .isAfter(parseDt)) {
                 _bookable.add(ActivityModel(
+                    admin: x.admin,
                     type: x.type,
                     id: x.id,
                     image: "assets/images/course.jpg",
@@ -211,6 +212,36 @@ class BookingAPIService {
 
           _bookableCourse =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
+        } catch (e) {
+          print(e);
+          print("FROMJSON FAIL");
+        }
+      } else {
+        print(respo.body);
+        print("SERVER FAIL fetch courses");
+      }
+    } catch (e) {
+      print(e);
+      print("FETCH COURSES FAIL");
+    }
+    return;
+  }
+
+  Future<void> fetchBookingExist(
+      {required String token, required String courseId}) async {
+    try {
+      final respo =
+          await http.post(Uri.parse("$urlApi/courses/bookings"), headers: {
+        "Authorization": "Bearer $token",
+      }, body: {
+        "course": true,
+        "id": courseId
+      });
+      print("Is course exist");
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        try {
+          debugPrint(data);
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");
