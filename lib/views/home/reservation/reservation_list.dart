@@ -1,4 +1,3 @@
-import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import '../../../models/reserve_model.dart';
@@ -34,9 +33,14 @@ class ReservationList extends StatelessWidget {
                             itemCount: model.bookables.length,
                             itemBuilder: (context, index) => ReserveCard(
                               isCourse: model.bookables[index].type == null,
-                              ontap: () {
-                                if (model.bookables[index].name == alveoles) {
-                                  model.navigateToReservationCell();
+                              ontap: () async {
+                                int isExist = await model.checkExistBooking(
+                                    model.bookables[index].id!);
+                                debugPrint("Card Reserve click");
+                                print(isExist);
+                                if (isExist == 1) {
+                                  //show notif
+                                  model.showExistDialog();
                                 } else {
                                   model.navigateToReservation(
                                       bookable: model.bookables[index]);

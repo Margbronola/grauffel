@@ -46,6 +46,9 @@ class InformationEditView extends StatelessWidget {
                                       ? model.image != null
                                           ? Image.asset(
                                               model.image!.path,
+                                              fit: BoxFit.fitWidth,
+                                              width: size(context).width,
+                                              height: size(context).height / 4,
                                             )
                                           : Image.network(
                                               "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
@@ -61,7 +64,10 @@ class InformationEditView extends StatelessWidget {
                                     right: -5,
                                     child: IconButton(
                                         onPressed: model.pickInGallary,
-                                        icon: const Icon(Icons.camera)),
+                                        icon: const Icon(
+                                          Icons.camera,
+                                          color: buttonColor,
+                                        )),
                                   )
                                 ],
                               ),

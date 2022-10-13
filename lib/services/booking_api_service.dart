@@ -227,21 +227,22 @@ class BookingAPIService {
     return;
   }
 
-  Future<void> fetchBookingExist(
-      {required String token, required String courseId}) async {
+  Future<int> isBookingExist(
+      {required String token, required int courseId}) async {
     try {
       final respo =
           await http.post(Uri.parse("$urlApi/courses/bookings"), headers: {
         "Authorization": "Bearer $token",
       }, body: {
-        "course": true,
-        "id": courseId
+        "course": "true",
+        "id": courseId.toString()
       });
-      print("Is course exist");
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+
+        debugPrint("data $data");
         try {
-          debugPrint(data);
+          return 1;
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");
@@ -252,9 +253,9 @@ class BookingAPIService {
       }
     } catch (e) {
       print(e);
-      print("FETCH COURSES FAIL");
+      print("FETCH EXISTBOOK FAIL");
     }
-    return;
+    return 0;
   }
 
   Future<void> fetchBookableActivity({

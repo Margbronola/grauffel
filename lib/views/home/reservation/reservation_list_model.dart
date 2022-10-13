@@ -6,7 +6,6 @@ import 'package:egczacademy/views/home/reservation/steps/reserve_steps_view.dart
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
-import 'reservation_cell/reservation_cell_view.dart';
 
 class ReservationListModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
@@ -15,9 +14,7 @@ class ReservationListModel extends BaseViewModel {
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
   final DialogService _dialogService = locator<DialogService>();
-
   List<ActivityModel> get bookables => _bookingAPIService.bookable!;
-
   String firstCard = "Fun Shoot";
   String secondCard = "Tir Précision";
 
@@ -32,6 +29,15 @@ class ReservationListModel extends BaseViewModel {
     setBusy(false);
   }
 
+  void showExistDialog() {
+    _dialogService.showDialog(description: "Vous avez déjà réservé ce cours.");
+  }
+
+  Future<int> checkExistBooking(int courseId) async {
+    return await _bookingAPIService.isBookingExist(
+        token: _userService.token!, courseId: courseId);
+  }
+
   void navigateToReservation({required ActivityModel bookable}) {
     _bookingService.setSelectedBookable = bookable;
     if (_bookingService.getselectedBookable != null) {
@@ -42,7 +48,7 @@ class ReservationListModel extends BaseViewModel {
     }
   }
 
-  void navigateToReservationCell() {
-    _navigationService.navigateToView(const ReservationCellView());
-  }
+  // void navigateToReservationCell() {
+  //   _navigationService.navigateToView(const ReservationCellView());
+  // }
 }

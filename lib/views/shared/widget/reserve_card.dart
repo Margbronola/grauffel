@@ -112,8 +112,8 @@ class _ReserveCardState extends State<ReserveCard> {
                                     ),
                                     Text(
                                         "Votre instructeur : ${widget.reserve.instructor}"),
-                                    Text(
-                                        "Nombre de places restantes : ${widget.reserve.restantes}")
+                                    // Text(
+                                    //     "Nombre de places restantes : ${widget.reserve.restantes}")
                                   ],
                                 ),
                               )
