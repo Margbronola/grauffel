@@ -128,6 +128,7 @@ class NotificationSettingsView extends StatelessWidget {
                     ),
               const Expanded(child: SizedBox()),
               SizedBox(
+                height: 60.h,
                 width: 220.w,
                 child: CustomButton(
                     title: "enregistrer",

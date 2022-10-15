@@ -15,6 +15,7 @@ class AmmunitionDetails extends StatelessWidget {
       title: request!.data!.name,
       description: request!.data!.description,
       imageUrl: request!.data!.image,
+      brandName: request!.data!.brand!.name,
     );
   }
 }

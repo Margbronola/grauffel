@@ -37,7 +37,7 @@ class ReservationView extends StatelessWidget {
                         automaticallyImplyLeading: false,
                         flexibleSpace: FlexibleSpaceBar(
                           background: Container(
-                              height: 60.h,
+                              height: 0.h,
                               width: size(context).width,
                               color: backgroundColor,
                               child: Row(

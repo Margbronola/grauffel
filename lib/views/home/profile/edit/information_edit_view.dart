@@ -40,43 +40,51 @@ class InformationEditView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Stack(
-                                children: [
-                                  model.user!.image != null
-                                      ? model.image != null
-                                          ? Image.asset(
-                                              model.image!.path,
-                                              fit: BoxFit.fitWidth,
-                                              width: size(context).width,
-                                              height: size(context).height / 4,
-                                            )
-                                          : Image.network(
-                                              "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                              fit: BoxFit.fitWidth,
-                                              width: size(context).width,
-                                              height: size(context).height / 4,
-                                            )
-                                      : Image.asset(
-                                          profileImage,
+                              SizedBox(
+                                height: 190.w,
+                                width: 190.w,
+                                child: Center(
+                                  child: Stack(
+                                    children: [
+                                      SizedBox(
+                                        height: 150.w,
+                                        width: 150.w,
+                                        child: model.user!.image != null
+                                            ? model.image != null
+                                                ? Image.asset(
+                                                    model.image!.path,
+                                                    fit: BoxFit.fitWidth,
+                                                    scale: 5,
+                                                  )
+                                                : Image.network(
+                                                    "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                                    fit: BoxFit.fitWidth,
+                                                  )
+                                            : Image.asset(
+                                                profileImage,
+                                              ),
+                                      ),
+                                      Positioned(
+                                        right: 0,
+                                        bottom: 0,
+                                        child: Card(
+                                          color: Colors.white,
+                                          elevation: 5,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(100.0),
+                                          ),
+                                          child: IconButton(
+                                              onPressed: model.pickInGallary,
+                                              icon: const Icon(
+                                                Icons.camera,
+                                                color: buttonColor,
+                                              )),
                                         ),
-                                  Positioned(
-                                    left: 20,
-                                    bottom: 20,
-                                    child: Container(
-                                      width: 60.w,
-                                      height: 60.w,
-                                      decoration: const BoxDecoration(
-                                          color: Colors.black12,
-                                          shape: BoxShape.circle),
-                                      child: IconButton(
-                                          onPressed: model.pickInGallary,
-                                          icon: const Icon(
-                                            Icons.camera,
-                                            color: buttonColor,
-                                          )),
-                                    ),
-                                  )
-                                ],
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
                               SizedBox(height: size(context).height * 0.02),
                               TextFormField(
@@ -327,6 +335,7 @@ class InformationEditView extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.all(20.h),
                                   child: SizedBox(
+                                    height: 60.h,
                                     width: 220.w,
                                     child: CustomButton(
                                         title: "Enregistrer".toUpperCase(),

@@ -92,8 +92,8 @@ class ExperienceEditView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 30),
                           child: SizedBox(
+                            height: 60.h,
                             width: 220.w,
-                            height: 70.w,
                             child: CustomButton(
                                 title: "Enregistrer".toUpperCase(),
                                 onTap: () {

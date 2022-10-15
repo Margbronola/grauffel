@@ -14,6 +14,7 @@ class ArmDetails extends StatelessWidget {
       title: request!.data!.model,
       description: request!.data!.description,
       imageUrl: request!.data!.image,
+         brandName: request!.data!.brand!.name,
     );
   }
 }

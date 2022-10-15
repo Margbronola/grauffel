@@ -4,7 +4,7 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
-import 'package:egczacademy/app/global.dart';
+import '../../../app/global.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import 'document_card_view.dart';
@@ -24,6 +24,87 @@ class ProfileView extends StatelessWidget {
     return ViewModelBuilder<ProfileViewModel>.reactive(
       onModelReady: (model) async => await model.init(isFromHome: isFromHome),
       builder: (context, model, child) => Scaffold(
+          body: NestedScrollView(
+        headerSliverBuilder: (context, value) {
+          return [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Stack(
+                  children: [
+                    Positioned(
+                      right: 0,
+                      child: Image.asset(
+                        imagelBigLogo,
+                        scale: 2,
+                        color: kcWhite.withOpacity(0.4),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.black.withOpacity(0.5),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 100.w,
+                            child: model.user?.image != null
+                                ? CachedNetworkImage(
+                                    imageUrl:
+                                        "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  )
+                                : Image.asset(
+                                    profileImage,
+                                    scale: 7,
+                                    color: Colors.white,
+                                  ),
+                          ),
+                          horizontalSpaceMedium(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                model.user!.fullname ?? "",
+                                style: TextStyle(
+                                  color: kcWhite,
+                                  fontSize: 22.sp,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    secureIcon,
+                                    color: buttonColor,
+                                    scale: 3,
+                                  ),
+                                  horizontalSpaceSmall(),
+                                  Text(
+                                    model.userValidate,
+                                    style: ThemeData()
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(
+                                          color: kcWhite,
+                                          fontSize: 15.sp,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ];
+        },
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(
@@ -37,87 +118,6 @@ class ProfileView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                        padding: EdgeInsets.only(top: 35.h),
-                        color: backgroundColor,
-                        height: 140.h,
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              right: 0,
-                              child: Image.asset(
-                                imagelBigLogo,
-                                scale: 2,
-                                color: kcWhite.withOpacity(0.4),
-                              ),
-                            ),
-                            Container(
-                              color: Colors.black.withOpacity(0.9),
-                              height: 140.h,
-                              padding: EdgeInsets.symmetric(horizontal: 20.w),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 100.w,
-                                    child: model.user?.image != null
-                                        ? CachedNetworkImage(
-                                            imageUrl:
-                                                "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                            placeholder: (context, url) =>
-                                                const Center(
-                                                    child:
-                                                        CircularProgressIndicator
-                                                            .adaptive()),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    const Icon(Icons.error),
-                                          )
-                                        : Image.asset(
-                                            profileImage,
-                                            scale: 7,
-                                            color: Colors.white,
-                                          ),
-                                  ),
-                                  horizontalSpaceMedium(),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        model.user!.fullname ?? "",
-                                        style: TextStyle(
-                                          color: kcWhite,
-                                          fontSize: 22.sp,
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            secureIcon,
-                                            color: buttonColor,
-                                            scale: 3,
-                                          ),
-                                          horizontalSpaceSmall(),
-                                          Text(
-                                            model.userValidate,
-                                            style: ThemeData()
-                                                .textTheme
-                                                .headlineSmall!
-                                                .copyWith(
-                                                  color: kcWhite,
-                                                  fontSize: 15.sp,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )),
                     Expanded(
                       child: ListView(
                         padding: EdgeInsets.zero,
@@ -394,7 +394,7 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
               ),
-      ),
+      )),
       viewModelBuilder: () => ProfileViewModel(),
     );
   }

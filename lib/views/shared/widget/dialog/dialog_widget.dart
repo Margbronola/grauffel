@@ -9,11 +9,13 @@ import '../../color.dart';
 class DialogWidget extends StatelessWidget {
   final String? title;
   final String? description;
+  final String? brandName;
   final ImageModel? imageUrl;
   const DialogWidget({
     Key? key,
     required this.title,
     required this.description,
+    required this.brandName,
     this.imageUrl,
   }) : super(key: key);
 
@@ -103,7 +105,7 @@ class DialogWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Référence",
+                                brandName!,
                                 style:
                                     TextStyle(color: kcWhite, fontSize: 11.sp),
                               ),
