@@ -130,7 +130,7 @@ class ReservationView extends StatelessWidget {
                   body: Column(
                     children: [
                       SizedBox(
-                        height: 150.h,
+                        height: 155.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -200,9 +200,13 @@ class ReservationView extends StatelessWidget {
                                   ? ListView(
                                       children: [
                                         cardShimmer(),
-                                        verticalSpaceSmall(),
+                                        SizedBox(
+                                          height: 5.h,
+                                        ),
                                         cardShimmer(),
-                                        verticalSpaceSmall(),
+                                        SizedBox(
+                                          height: 5.h,
+                                        ),
                                         cardShimmer(),
                                       ],
                                     )
@@ -223,9 +227,10 @@ class ReservationView extends StatelessWidget {
                                                     model
                                                         .showCardDetails(index);
                                                   },
-                                                  cancelBook: () =>
-                                                      model.cancelBook(model
-                                                          .actives![index].id!),
+                                                  cancelBook: () {
+                                                    model.cancelBook(model
+                                                        .actives![index].id!);
+                                                  },
                                                   isActive: true,
                                                   booking:
                                                       model.actives![index]))),

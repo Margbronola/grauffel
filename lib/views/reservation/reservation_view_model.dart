@@ -58,18 +58,23 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   Future cancelBook(int bookingId) async {
-    debugPrint("CANCEL");
-    bool cancel = await _bookingAPIService.cancelBook(
-      bookingId: bookingId,
-      token: _userService.token!,
-    );
-    if (cancel) {
-      _dialogService.showDialog(description: "Canceling your booking now");
-    } else {
-      _dialogService.showDialog(description: "Something wrong");
+    var response = await _dialogService.showDialog(
+        buttonTitle: "d'accord",
+        cancelTitle: "annuler",
+        description: "Annulez votre réservation maintenant?");
+
+    if (response != null) {
+      if (response.confirmed) {
+        setBusy(true);
+        await _bookingAPIService.cancelBook(
+          bookingId: bookingId,
+          token: _userService.token!,
+        );
+        _bookingAPIService.actives!
+            .removeWhere((element) => element.id == bookingId);
+        setBusy(false);
+      }
     }
-    _homePagingService.setRefresh(true);
-    init();
     notifyListeners();
   }
 

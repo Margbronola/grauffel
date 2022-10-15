@@ -8,7 +8,7 @@ import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 
-class ReservationCard extends StatelessWidget {
+class ReservationCard extends StatefulWidget {
   final BookingModel booking;
   final bool isActive;
   final Function()? onTap;
@@ -23,14 +23,27 @@ class ReservationCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ReservationCard> createState() => _ReservationCardState();
+}
+
+class _ReservationCardState extends State<ReservationCard> {
+  String dateFormat(String date) {
+    DateTime dateFormated = DateTime.parse(date);
+    final DateFormat formatter = DateFormat('MMMM');
+    final String formattedMonth = formatter.format(dateFormated);
+
+    return "${dateFormated.day} $formattedMonth ${dateFormated.year}";
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 170.h,
+      height: 180.h,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: widget.onTap,
         child: Card(
-          elevation: isActive ? 5 : null,
-          color: isActive ? Colors.white : Colors.white60,
+          elevation: widget.isActive ? 5 : null,
+          color: widget.isActive ? Colors.white : Colors.white60,
           child: Stack(
             children: [
               Container(
@@ -48,7 +61,7 @@ class ReservationCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "${DateFormat('E').format(booking.start!).i18n().toUpperCase()}.",
+                            "${DateFormat('E').format(widget.booking.start!).i18n().toUpperCase()}.",
                             textAlign: TextAlign.center,
                             style:
                                 ThemeData().textTheme.headlineSmall!.copyWith(
@@ -59,7 +72,7 @@ class ReservationCard extends StatelessWidget {
                                     ),
                           ),
                           Text(
-                            "${DateFormat('dd').format(booking.start!)} ${DateFormat('MMM').format(booking.start!).toUpperCase()}",
+                            "${DateFormat('dd').format(widget.booking.start!)} ${DateFormat('MMM').format(widget.booking.start!).toUpperCase()}",
                             textAlign: TextAlign.center,
                             style:
                                 ThemeData().textTheme.headlineSmall!.copyWith(
@@ -71,7 +84,7 @@ class ReservationCard extends StatelessWidget {
                           ),
                           verticalSpaceSmall(),
                           Text(
-                            "${booking.start!.hour}h${booking.start!.minute.toString().length > 1 ? booking.start!.minute : ("0${booking.start!.minute}")}",
+                            "${widget.booking.start!.hour}h${widget.booking.start!.minute.toString().length > 1 ? widget.booking.start!.minute : ("0${widget.booking.start!.minute}")}",
                             style: ThemeData()
                                 .textTheme
                                 .headlineSmall!
@@ -82,7 +95,7 @@ class ReservationCard extends StatelessWidget {
                                     fontSize: 16.sp),
                           ),
                           Text(
-                            "${booking.end!.hour}h${booking.end!.minute.toString().length > 1 ? booking.end!.minute : ("0${booking.end!.minute}")}",
+                            "${widget.booking.end!.hour}h${widget.booking.end!.minute.toString().length > 1 ? widget.booking.end!.minute : ("0${widget.booking.end!.minute}")}",
                             style: ThemeData()
                                 .textTheme
                                 .headlineSmall!
@@ -107,7 +120,7 @@ class ReservationCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "${booking.name}".toUpperCase(),
+                            "${widget.booking.name}".toUpperCase(),
                             overflow: TextOverflow.clip,
                             maxLines: 2,
                             style: ThemeData()
@@ -122,26 +135,51 @@ class ReservationCard extends StatelessWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(
-                            removeHtmlTags(booking.bookable!.description),
-                            overflow: TextOverflow.fade,
-                            style:
-                                ThemeData().textTheme.headlineSmall!.copyWith(
-                                      color: Colors.grey,
-                                      fontFamily: 'ProductSans',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12.sp,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                            maxLines: 4,
-                          )
+                          widget.booking.bookable!.description == null
+                              ? FittedBox(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.calendar_month,
+                                            color: buttonColor,
+                                          ),
+                                          horizontalSpaceSmall(),
+                                          Text(
+                                            "du ${dateFormat(widget.booking.start.toString())} au ${dateFormat(widget.booking.end.toString())}",
+                                            overflow: TextOverflow.clip,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Text(
+                                  removeHtmlTags(
+                                      widget.booking.bookable!.description),
+                                  overflow: TextOverflow.fade,
+                                  style: ThemeData()
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Colors.grey,
+                                        fontFamily: 'ProductSans',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12.sp,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                  maxLines: 4,
+                                )
                         ],
                       ),
                     )
                   ],
                 ),
               ),
-              !isActive
+              !widget.isActive
                   ? const SizedBox()
                   : Positioned(
                       bottom: 3,
@@ -149,7 +187,7 @@ class ReservationCard extends StatelessWidget {
                       child: Center(
                         child: TextButton(
                           onPressed: () {
-                            cancelBook!();
+                            widget.cancelBook!();
                           },
                           child: Text(
                             "Annuler".toUpperCase(),

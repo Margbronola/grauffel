@@ -29,7 +29,7 @@ class ArmoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ArmoreViewModel>.reactive(
       onModelReady: (model) async => model.init(),
-      builder: (context, model, child) => model.loader
+      builder: (context, model, child) => model.isBusy
           ? const StepeShimmerLoader()
           : Column(
               children: [

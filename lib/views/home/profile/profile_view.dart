@@ -193,7 +193,7 @@ class ProfileView extends StatelessWidget {
                             child: Stack(
                               children: [
                                 Container(
-                                  constraints: BoxConstraints(minHeight: 50.h),
+                                  constraints: BoxConstraints(minHeight: 60.h),
                                   padding: EdgeInsets.only(
                                       left: 50.w, right: 50.w, bottom: 10.h),
                                   child: Column(
@@ -225,7 +225,7 @@ class ProfileView extends StatelessWidget {
                                 children: [
                                   Container(
                                     constraints:
-                                        BoxConstraints(minHeight: 50.h),
+                                        BoxConstraints(minHeight: 60.h),
                                     padding: EdgeInsets.only(
                                         left: 50.w, right: 50.w, bottom: 10.h),
                                     child: Column(

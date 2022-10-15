@@ -47,7 +47,6 @@ class InformationEditViewModel extends ReactiveViewModel {
   }
 
   void init() {
-    debugPrint(user!.birthday!);
     if (user != null) {
       emailController.text = user!.email!;
       birthdayController.text = user!.birthday!.isEmpty

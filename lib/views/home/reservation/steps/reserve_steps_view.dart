@@ -40,8 +40,8 @@ class ReserveStepsView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Positioned(
-                        top: 40,
+                      Align(
+                        alignment: Alignment.center,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

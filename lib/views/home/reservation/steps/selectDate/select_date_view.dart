@@ -39,9 +39,9 @@ class SelectDateView extends StatelessWidget {
               verticalSpaceMedium(),
               Container(
                 color: customGrey,
-                padding: EdgeInsets.only(top: 15.w, right: 20, left: 20),
-                height: 60.h,
+                height: 70.h,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
@@ -74,7 +74,7 @@ class SelectDateView extends StatelessWidget {
                 color: customGrey,
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
-                  height: 95.h,
+                  height: 100.h,
                   child: DatePicker(model.currentDate, model.scrollController,
                       selectionColor: buttonColor,
                       deactivatedColor: Colors.grey,
@@ -100,7 +100,8 @@ class SelectDateView extends StatelessWidget {
                       ),
                     )
                   : Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                       height: 300.h,
                       child: GridView.count(
                         // Create a grid with 2 columns. If you change the scrollDirection to
@@ -147,9 +148,11 @@ class SelectDateView extends StatelessWidget {
                   ],
                 )
               : const SizedBox(),
-          verticalSpaceMedium(),
+          SizedBox(
+            height: 5.h,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

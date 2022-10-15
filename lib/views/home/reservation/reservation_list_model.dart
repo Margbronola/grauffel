@@ -3,6 +3,7 @@ import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/reservation/steps/reserve_steps_view.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
@@ -15,6 +16,7 @@ class ReservationListModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   final DialogService _dialogService = locator<DialogService>();
   List<ActivityModel> get bookables => _bookingAPIService.bookable!;
+
   String firstCard = "Fun Shoot";
   String secondCard = "Tir Précision";
 
@@ -38,7 +40,21 @@ class ReservationListModel extends BaseViewModel {
         token: _userService.token!, courseId: courseId);
   }
 
-  void navigateToReservation({required ActivityModel bookable}) {
+  Future cardSelected(int index) async {
+    setBusy(true);
+    int isExist = await checkExistBooking(bookables[index].id!);
+    debugPrint("Card Reserve click");
+    print(isExist);
+    if (isExist == 1) {
+      showExistDialog();
+    } else {
+      debugPrint("click");
+      navigateToReservation(bookable: bookables[index]);
+    }
+    setBusy(false);
+  }
+
+  void navigateToReservation({required ActivityModel bookable}) async {
     _bookingService.setSelectedBookable = bookable;
     if (_bookingService.getselectedBookable != null) {
       _navigationService.navigateToView(const ReserveStepsView());

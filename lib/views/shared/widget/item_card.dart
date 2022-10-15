@@ -24,7 +24,7 @@ class ItemCard extends StatelessWidget {
       children: [
         Container(
           width: size(context).width,
-          height: 110.h,
+          height: 145.h,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: greyLighter,
@@ -125,7 +125,7 @@ class ItemCard extends StatelessWidget {
                 child: Container(
                   color: greyLight,
                   height: 25,
-                  width: 92.w,
+                  width: 95.w,
                   child: Center(
                       child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

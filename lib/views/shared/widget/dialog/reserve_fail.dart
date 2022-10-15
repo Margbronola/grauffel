@@ -34,7 +34,7 @@ class ReserveFailDialog extends StatelessWidget {
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            height: size(context).height / 2.1.h,
+            height: 550.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

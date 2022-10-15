@@ -23,38 +23,6 @@ class ReserveStepsViewModel extends BaseViewModel {
   List<Widget> pages = [];
 
   void init() {
-    pages = [
-      SelectDateView(
-        onTap: () {
-          submitEvents(1);
-        },
-      ),
-      ArmoreView(
-        onTap: () {
-          submitEvents(2);
-        },
-        skipTap: () {
-          skipPage(2);
-        },
-      ),
-      AmmunitionView(
-        onTap: () {
-          submitEvents(3);
-        },
-        skipTap: () {
-          skipPage(3);
-        },
-      ),
-      EquipmentView(
-        onTap: () {
-          submitEvents(4);
-        },
-        skipTap: () {
-          skipPage(4);
-        },
-      ),
-      const SubmitionView()
-    ];
     if (isCourse) {
       bookingService.setSelectedDate =
           DateTime.parse(bookingService.getselectedBookable!.date_from!);
@@ -85,6 +53,40 @@ class ReserveStepsViewModel extends BaseViewModel {
           },
           skipTap: () {
             skipPage(3);
+          },
+        ),
+        const SubmitionView()
+      ];
+    } else {
+      bookingService.setSelectedTime = null;
+      pages = [
+        SelectDateView(
+          onTap: () {
+            submitEvents(1);
+          },
+        ),
+        ArmoreView(
+          onTap: () {
+            submitEvents(2);
+          },
+          skipTap: () {
+            skipPage(2);
+          },
+        ),
+        AmmunitionView(
+          onTap: () {
+            submitEvents(3);
+          },
+          skipTap: () {
+            skipPage(3);
+          },
+        ),
+        EquipmentView(
+          onTap: () {
+            submitEvents(4);
+          },
+          skipTap: () {
+            skipPage(4);
           },
         ),
         const SubmitionView()

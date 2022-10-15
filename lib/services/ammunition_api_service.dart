@@ -18,7 +18,7 @@ class AmmunitionAPIService {
       bool fetchMore = false,
       List<int>? brandIds,
       List<int>? caliberIds}) async {
-    String url = "$urlApi/ammunitions?per_page=$_perPage";
+    String url = "$urlApi/ammunitions?per_page=$_perPage&nobook=true";
 
     if (brandIds != null) {
       String brands = brandIds.join(', ');

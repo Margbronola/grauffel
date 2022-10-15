@@ -18,7 +18,7 @@ class EquipmentsAPIService {
     String url = "$urlApi/equipments?per_page=$_perPage";
 
     if (fetchMore) {
-      url = "${_pagingModel!.next_page_url}&per_page=$_perPage";
+      url = "${_pagingModel!.next_page_url}&per_page=$_perPage&nobook=true";
     }
     try {
       final respo = await http.get(Uri.parse(url), headers: {

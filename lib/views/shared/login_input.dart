@@ -24,7 +24,7 @@ class LoginInput extends StatelessWidget {
         : Container(
             width: 354.w,
             color: kcWhite,
-            padding: EdgeInsets.all(30.w),
+            padding: EdgeInsets.symmetric(vertical: 30.w, horizontal: 25.h),
             child: Form(
               key: model.formKey,
               child: Column(
@@ -130,7 +130,9 @@ class LoginInput extends StatelessWidget {
                       isDense: true,
                     ),
                   ),
-                  verticalSpaceLarge(),
+                  SizedBox(
+                    height: 30.h,
+                  ),
                   SizedBox(
                       width: 220.w,
                       child: CustomButton(

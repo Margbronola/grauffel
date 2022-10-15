@@ -340,9 +340,9 @@ class BookingAPIService {
     required List<AmmunitionsModel> ammunitions,
     required List<EquipmentModel> equipments,
   }) async {
-    debugPrint("book");
+    debugPrint("book api");
     try {
-      final Map bod = {
+      final Map body = {
         "date": "${date.year}-${date.month}-${date.day}",
         "time": time.split("-")[0],
         "activity_id": activityId.toString(),
@@ -350,34 +350,25 @@ class BookingAPIService {
         "ammunitions": ammunitions.map((e) => e.toJson()).toList(),
         "equipments": equipments.map((e) => e.toJson()).toList(),
       };
-      return await http
-          .post(
+      final respo = await http.post(
         Uri.parse("$urlApi/book/cell"),
         headers: {
           HttpHeaders.authorizationHeader: "Bearer $token",
           "Content-type": "application/json",
         },
-        body: json.encode(bod),
-        // body: json.decode(
-        //   json.encode(
-        // BookCellModel(
-        //         date: "${date.year}-${date.month}-${date.day}",
-        //         time: time.split("-")[0],
-        //         activity_id: activityId,
-        //         guns: guns,
-        //         ammunitions: ammunitions,
-        //         equipments: equipments)
-        //     .toJson(),
-        //   ),
-        // ),
-      )
-          .then((response) {
-        var data = json.decode(response.body);
-        print("DATA : $data");
-        return response.statusCode == 200;
-      });
+        body: json.encode(body),
+      );
+
+      if (respo.statusCode == 200) {
+        return true;
+      } else {
+        print(respo.body);
+
+        return false;
+      }
     } catch (e) {
-      print("ERROR BOOK! : $e");
+      print(e);
+
       return false;
     }
   }

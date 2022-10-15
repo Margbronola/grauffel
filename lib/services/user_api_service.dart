@@ -68,23 +68,23 @@ class UserAPIService {
   Future<void> updateDetails(
       {required UserModel userToEdit, required String token}) async {
     Map data = userToEdit.toJson();
+    print(data);
     data.removeWhere(
       (key, value) => value == null,
     );
-    debugPrint("DATA $data");
+
     try {
       final respo = await http.post(Uri.parse("$urlApi/client/update-details"),
-          body: data['experience'],
+          body: data,
           headers: {
             "Accept": "application/json",
             "Authorization": "Bearer $token",
           });
-      debugPrint("STATUSCODE ${respo.statusCode}");
+      print(respo.body);
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
 
         try {
-          debugPrint(data);
           debugPrint("UPDATE USER PASS");
         } catch (e) {
           debugPrint(e.toString());

@@ -16,15 +16,14 @@ class ReservationList extends StatelessWidget {
       onModelReady: (model) async => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
-        body: model.isBusy
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(
-                children: [
-                  const Header(title: "réservation"),
-                  verticalSpaceSmall(),
-                  Expanded(
+        body: Column(
+          children: [
+            const Header(title: "réservation"),
+            verticalSpaceSmall(),
+            model.isBusy
+                ? const Expanded(
+                    child: Center(child: CircularProgressIndicator()))
+                : Expanded(
                     child: model.bookables.isEmpty
                         ? const Center(
                             child: Text("Pas encore de réservation!"),
@@ -33,18 +32,8 @@ class ReservationList extends StatelessWidget {
                             itemCount: model.bookables.length,
                             itemBuilder: (context, index) => ReserveCard(
                               isCourse: model.bookables[index].type == null,
-                              ontap: () async {
-                                int isExist = await model.checkExistBooking(
-                                    model.bookables[index].id!);
-                                debugPrint("Card Reserve click");
-                                print(isExist);
-                                if (isExist == 1) {
-                                  //show notif
-                                  model.showExistDialog();
-                                } else {
-                                  model.navigateToReservation(
-                                      bookable: model.bookables[index]);
-                                }
+                              ontap: () {
+                                model.cardSelected(index);
                               },
                               reserve: ReserveModel(
                                   dateTo: model.bookables[index].date_to ?? "",
@@ -69,8 +58,8 @@ class ReservationList extends StatelessWidget {
                             ),
                           ),
                   ),
-                ],
-              ),
+          ],
+        ),
       ),
       viewModelBuilder: () => ReservationListModel(),
     );

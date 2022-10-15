@@ -36,10 +36,10 @@ class ExperienceEditViewModel extends BaseViewModel {
           userToEdit: details == ExtraDetails.experience
               ? UserModel(
                   experience: textController.text,
-                )
+                  email: _userService.user!.email)
               : UserModel(
                   equipment: textController.text,
-                ),
+                  email: _userService.user!.email),
           token: _userService.token!);
 
       await updateSuccess();

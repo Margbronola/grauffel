@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/widget/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class SocialButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              circleButton(
+              CircleButton(
                   onTap: fbTap,
                   child: Row(children: [
                     Image.asset(
@@ -32,7 +33,10 @@ class SocialButton extends StatelessWidget {
                       height: 30.h,
                     ),
                     const SizedBox(width: 5),
-                    const Text("Facebook SignIn")
+                    const Text(
+                      "Facebook",
+                      style: TextStyle(color: kcWhite),
+                    )
                   ])),
               // customDivider(),
               // circleButton(
@@ -72,17 +76,5 @@ class SocialButton extends StatelessWidget {
           color: kcWhite,
           thickness: 1.5,
         ),
-      );
-
-  Widget circleButton({required Widget child, required Function() onTap}) =>
-      ElevatedButton(
-        onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-          padding: const EdgeInsets.all(5),
-          primary: Colors.transparent, // <-- Button color
-          onPrimary: Colors.white10, // <-- Splash color
-        ),
-        child: Center(child: child),
       );
 }

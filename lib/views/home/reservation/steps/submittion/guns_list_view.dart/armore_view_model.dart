@@ -33,7 +33,7 @@ class ArmoreViewModel extends ReactiveViewModel {
   List<GunModel> get selectedGun => _bookingService.getselectedGun;
 
   init() async {
-    _gunListService.setBusy(true);
+    setBusy(true);
     initFilter();
     await _gunAPIService
         .fetchAllGuns(
@@ -42,7 +42,7 @@ class ArmoreViewModel extends ReactiveViewModel {
         .then((value) => null);
 
     await _gunListService.setGunList(_gunAPIService.guns);
-    _gunListService.setBusy(false);
+    setBusy(false);
   }
 
   bool _isloadDone = false;

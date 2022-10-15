@@ -65,7 +65,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
+        padding: EdgeInsets.symmetric(horizontal: 40.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

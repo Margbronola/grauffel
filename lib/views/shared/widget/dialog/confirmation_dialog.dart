@@ -19,8 +19,8 @@ class ConfirmationDialog extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-          height: 200.h,
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          height: 250.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -35,7 +35,7 @@ class ConfirmationDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 100.w,
+                      width: 110.w,
                       child: MaterialButton(
                         onPressed: () {
                           completer!(DialogResponse(confirmed: false));
@@ -48,7 +48,7 @@ class ConfirmationDialog extends StatelessWidget {
                     ),
                     horizontalSpaceSmall(),
                     SizedBox(
-                      width: 170.w,
+                      width: 160.w,
                       child: CustomButton(
                           title: request!.mainButtonTitle!,
                           onTap: () {

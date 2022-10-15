@@ -27,9 +27,10 @@ class SubmitionViewModel extends ReactiveViewModel {
   FocusNode commentFocusNode = FocusNode();
 
   ActivityModel? get bookedModel => _bookingService.getselectedBookable!;
-  bool get isCourse =>
-      bookedModel!.type!.name == "initiation" ||
-      bookedModel!.type!.name == "stage";
+  bool get isCourse => bookedModel!.type == null
+      ? false
+      : bookedModel!.type!.name == "initiation" ||
+          bookedModel!.type!.name == "stage";
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;
@@ -84,6 +85,7 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
+
     return ff;
   }
 
@@ -98,11 +100,8 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   void reserver() async {
-    const Center(
-      child: CircularProgressIndicator.adaptive(),
-    );
-    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
     setBusy(true);
+    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
 
     if (isBooked) {
       var response = await _dialogService.showCustomDialog(

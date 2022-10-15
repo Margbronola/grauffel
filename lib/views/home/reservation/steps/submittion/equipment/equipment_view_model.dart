@@ -16,6 +16,10 @@ class EquipmentViewModel extends BaseViewModel {
   final UserService _userService = locator<UserService>();
   final BookingService _bookingService = locator<BookingService>();
 
+  PageController? pageController = PageController();
+  int _selectedIndex = 0;
+  int get selectedIndex => _selectedIndex;
+
   List<EquipmentModel> get selectedEquipment =>
       _bookingService.getselectedEquipment;
 
@@ -25,6 +29,42 @@ class EquipmentViewModel extends BaseViewModel {
       token: _userService.token!,
     );
     setBusy(false);
+  }
+
+  void increaseQuantity(int index) {
+    equipments![index] = equipments![index].copyWith(
+        quantity: equipments![index].quantity + 1,
+        qty: equipments![index].qty + 1);
+    notifyListeners();
+  }
+
+  void decreaseQuantity(int index) {
+    if (_equipmentsAPIService.equipments![index].quantity > 1) {
+      equipments![index] = equipments![index].copyWith(
+          quantity: equipments![index].quantity - 1,
+          qty: equipments![index].qty - 1);
+      notifyListeners();
+    }
+  }
+
+  void nextIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+
+  void nextPage(int index) {
+    nextIndex(index);
+    pageController!.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
+    notifyListeners();
+  }
+
+  void removeEquipment(EquipmentModel equipment) {
+    _bookingService.getselectedEquipment.remove(equipment);
+    if (_bookingService.getselectedEquipment.isEmpty) {
+      nextPage(0);
+    }
+    notifyListeners();
   }
 
   List<EquipmentModel>? get equipments => _equipmentsAPIService.equipments;
@@ -59,7 +99,7 @@ class EquipmentViewModel extends BaseViewModel {
     }
   }
 
-  void selectCard(EquipmentModel equipment) {
+  void selectCard(EquipmentModel equipment) async {
     if (_bookingService.getselectedEquipment.contains(equipment)) {
       _bookingService.getselectedEquipment.remove(equipment);
     } else {

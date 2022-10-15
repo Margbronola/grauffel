@@ -60,14 +60,21 @@ class InformationEditView extends StatelessWidget {
                                           profileImage,
                                         ),
                                   Positioned(
-                                    bottom: -5,
-                                    right: -5,
-                                    child: IconButton(
-                                        onPressed: model.pickInGallary,
-                                        icon: const Icon(
-                                          Icons.camera,
-                                          color: buttonColor,
-                                        )),
+                                    left: 20,
+                                    bottom: 20,
+                                    child: Container(
+                                      width: 60.w,
+                                      height: 60.w,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.black12,
+                                          shape: BoxShape.circle),
+                                      child: IconButton(
+                                          onPressed: model.pickInGallary,
+                                          icon: const Icon(
+                                            Icons.camera,
+                                            color: buttonColor,
+                                          )),
+                                    ),
                                   )
                                 ],
                               ),
