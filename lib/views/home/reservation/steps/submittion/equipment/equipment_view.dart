@@ -1,13 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/equipment_view_list.dart';
+import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/equipment_view_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:stacked/stacked.dart';
-
-import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
-
-import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/custom_button.dart';
 import '../../../../../shared/ui_helper.dart';
@@ -21,9 +17,7 @@ class EquipmentView extends StatelessWidget {
     required this.onTap,
     required this.skipTap,
   }) : super(key: key);
-
   get kcWhite => null;
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<EquipmentViewModel>.reactive(
@@ -33,62 +27,14 @@ class EquipmentView extends StatelessWidget {
           : Column(
               children: [
                 Expanded(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            "Choisissez votre équipement",
-                            style: ThemeData().textTheme.bodyText1!.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 24.sp,
-                                ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              LazyLoadScrollView(
-                                  isLoading: model.isloadDone,
-                                  onEndOfPage: () => model.loadMore(),
-                                  scrollOffset: 100,
-                                  child: Expanded(
-                                    child: GridView.count(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      mainAxisSpacing: 5,
-                                      childAspectRatio: 1 / 1,
-                                      crossAxisSpacing: 10,
-                                      crossAxisCount: 2,
-                                      children: List.generate(
-                                          model.equipments!.length, (index) {
-                                        return equipemntCardView(
-                                            index: index,
-                                            equipmentModel:
-                                                model.equipments![index],
-                                            model: model);
-                                      }),
-                                    ),
-                                  )),
-                              if (model.isloadDone == true)
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: model.pageController,
+                    onPageChanged: model.nextIndex,
+                    children: <Widget>[
+                      EquipmentViewList(model: model),
+                      EquipmentViewQuantity(model: model)
+                    ],
                   ),
                 ),
                 const Divider(
@@ -116,8 +62,12 @@ class EquipmentView extends StatelessWidget {
                       ),
                       CustomButton(
                           title: "Suivant",
-                          onTap:
-                              model.selectedEquipment.isNotEmpty ? onTap : null)
+                          onTap: model.selectedEquipment.isNotEmpty
+                              ? () {
+                                  debugPrint("x");
+                                  model.suivant(onTap);
+                                }
+                              : null)
                     ],
                   ),
                 )
@@ -127,194 +77,3 @@ class EquipmentView extends StatelessWidget {
     );
   }
 }
-
-Widget equipemntCardView(
-        {required EquipmentViewModel model,
-        required EquipmentModel equipmentModel,
-        required int index}) =>
-    GestureDetector(
-      onTap: () async {
-        model.selectCard(equipmentModel);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-            border: model.selectedEquipment.contains(equipmentModel)
-                ? Border.all(color: buttonColor, width: 2)
-                : null,
-            color: greyLighter,
-            borderRadius: BorderRadius.circular(5)),
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  model.showDetails(index);
-                                },
-                                child: const Icon(
-                                  Icons.info,
-                                  color: buttonColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            width: 97.w,
-                            height: 77.h,
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(30)),
-                                color: kcWhite,
-                                image: DecorationImage(
-                                    fit: BoxFit.fitHeight,
-                                    opacity:
-                                        equipmentModel.image == null ? 0.2 : 1,
-                                    image: equipmentModel.image == null
-                                        ? const AssetImage(
-                                                "assets/images/noImage.png")
-                                            as ImageProvider
-                                        : CachedNetworkImageProvider(
-                                            "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}"))),
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          SizedBox(
-                            width: 100.w,
-                            child: Text(
-                              equipmentModel.name!,
-                              overflow: TextOverflow.ellipsis,
-                              style: ThemeData().textTheme.bodyText1!.copyWith(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'ProductSans',
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      SizedBox(
-                        width: 80,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Référence",
-                                    style: ThemeData()
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          fontSize: 10.sp,
-                                          fontFamily: 'ProductSans',
-                                        ),
-                                  ),
-                                  Text(
-                                    equipmentModel.name!,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: ThemeData()
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'ProductSans',
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Marque",
-                                    style: ThemeData()
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          fontSize: 10.sp,
-                                          fontFamily: 'ProductSans',
-                                        ),
-                                  ),
-                                  Text(
-                                    equipmentModel.brand!.name!,
-                                    overflow: TextOverflow.clip,
-                                    style: ThemeData()
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'ProductSans',
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            // SizedBox(
-            //   height: 5.h,
-            // ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   crossAxisAlignment: CrossAxisAlignment.end,
-            //   children: [
-            //     GestureDetector(
-            //       onTap: () {
-            //         model.decreaseQuantity(index);
-            //       },
-            //       child: Image.asset(
-            //         "assets/images/backward.png",
-            //         width: 16.w,
-            //         height: 25.h,
-            //       ),
-            //     ),
-            //     Text(
-            //       equipmentModel.quantity.toString(),
-            //       style: ThemeData().textTheme.bodyText1!.copyWith(
-            //           fontSize: 20.sp,
-            //           fontFamily: 'ProductSans',
-            //           color: buttonColor),
-            //     ),
-            //     GestureDetector(
-            //       onTap: () {
-            //         model.increaseQuantity(index);
-            //         debugPrint("increas");
-            //       },
-            //       child: Image.asset(
-            //         "assets/images/forward.png",
-            //         width: 16.w,
-            //         height: 25.h,
-            //       ),
-            //     ),
-            //   ],
-            // ),
-          ],
-        ),
-      ),
-    );

@@ -24,6 +24,7 @@ _$_AmmunitionsModel _$$_AmmunitionsModelFromJson(Map<String, dynamic> json) =>
           ? null
           : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
       quantity: json['quantity'] as int? ?? 1,
+      qty: json['qty'] as int? ?? 1,
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -44,6 +45,7 @@ Map<String, dynamic> _$$_AmmunitionsModelToJson(_$_AmmunitionsModel instance) =>
       'brand': instance.brand,
       'caliber': instance.caliber,
       'quantity': instance.quantity,
+      'qty': instance.qty,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
     };

@@ -31,6 +31,7 @@ class GunModel with _$GunModel {
       ImageModel? image,
       List? bookings,
       @Default(1) int? quantity,
+      @Default(1) int? qty,
       List<EquipmentModel>? equipments,
       List<AmmunitionsModel>? ammunitions}) = _GunModel;
 

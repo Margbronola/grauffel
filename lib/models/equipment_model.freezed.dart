@@ -30,6 +30,8 @@ mixin _$EquipmentModel {
   DateTime? get created_at => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
+  BrandModel? get brand => throw _privateConstructorUsedError;
+  int? get qty => throw _privateConstructorUsedError;
   String? get type_name => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
 
@@ -55,9 +57,12 @@ abstract class $EquipmentModelCopyWith<$Res> {
       DateTime? created_at,
       int quantity,
       DateTime? updated_at,
+      BrandModel? brand,
+      int? qty,
       String? type_name,
       ImageModel? image});
 
+  $BrandModelCopyWith<$Res>? get brand;
   $ImageModelCopyWith<$Res>? get image;
 }
 
@@ -82,6 +87,8 @@ class _$EquipmentModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? quantity = freezed,
     Object? updated_at = freezed,
+    Object? brand = freezed,
+    Object? qty = freezed,
     Object? type_name = freezed,
     Object? image = freezed,
   }) {
@@ -126,6 +133,14 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as BrandModel?,
+      qty: qty == freezed
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
       type_name: type_name == freezed
           ? _value.type_name
           : type_name // ignore: cast_nullable_to_non_nullable
@@ -135,6 +150,17 @@ class _$EquipmentModelCopyWithImpl<$Res>
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
     ));
+  }
+
+  @override
+  $BrandModelCopyWith<$Res>? get brand {
+    if (_value.brand == null) {
+      return null;
+    }
+
+    return $BrandModelCopyWith<$Res>(_value.brand!, (value) {
+      return _then(_value.copyWith(brand: value));
+    });
   }
 
   @override
@@ -167,9 +193,13 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       DateTime? created_at,
       int quantity,
       DateTime? updated_at,
+      BrandModel? brand,
+      int? qty,
       String? type_name,
       ImageModel? image});
 
+  @override
+  $BrandModelCopyWith<$Res>? get brand;
   @override
   $ImageModelCopyWith<$Res>? get image;
 }
@@ -197,6 +227,8 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? quantity = freezed,
     Object? updated_at = freezed,
+    Object? brand = freezed,
+    Object? qty = freezed,
     Object? type_name = freezed,
     Object? image = freezed,
   }) {
@@ -241,6 +273,14 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      brand: brand == freezed
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as BrandModel?,
+      qty: qty == freezed
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int?,
       type_name: type_name == freezed
           ? _value.type_name
           : type_name // ignore: cast_nullable_to_non_nullable
@@ -267,6 +307,8 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.created_at,
       this.quantity = 1,
       this.updated_at,
+      this.brand,
+      this.qty = 1,
       this.type_name,
       this.image});
 
@@ -295,13 +337,18 @@ class _$_EquipmentModel implements _EquipmentModel {
   @override
   final DateTime? updated_at;
   @override
+  final BrandModel? brand;
+  @override
+  @JsonKey()
+  final int? qty;
+  @override
   final String? type_name;
   @override
   final ImageModel? image;
 
   @override
   String toString() {
-    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, type_name: $type_name, image: $image)';
+    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, brand: $brand, qty: $qty, type_name: $type_name, image: $image)';
   }
 
   @override
@@ -322,6 +369,8 @@ class _$_EquipmentModel implements _EquipmentModel {
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.qty, qty) &&
             const DeepCollectionEquality().equals(other.type_name, type_name) &&
             const DeepCollectionEquality().equals(other.image, image));
   }
@@ -340,6 +389,8 @@ class _$_EquipmentModel implements _EquipmentModel {
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(updated_at),
+      const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(qty),
       const DeepCollectionEquality().hash(type_name),
       const DeepCollectionEquality().hash(image));
 
@@ -368,6 +419,8 @@ abstract class _EquipmentModel implements EquipmentModel {
       final DateTime? created_at,
       final int quantity,
       final DateTime? updated_at,
+      final BrandModel? brand,
+      final int? qty,
       final String? type_name,
       final ImageModel? image}) = _$_EquipmentModel;
 
@@ -394,6 +447,10 @@ abstract class _EquipmentModel implements EquipmentModel {
   int get quantity;
   @override
   DateTime? get updated_at;
+  @override
+  BrandModel? get brand;
+  @override
+  int? get qty;
   @override
   String? get type_name;
   @override

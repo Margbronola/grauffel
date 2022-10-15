@@ -31,20 +31,33 @@ class EquipmentViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-  void increaseQuantity(int index) {
-    equipments![index] = equipments![index].copyWith(
-        quantity: equipments![index].quantity + 1,
-        qty: equipments![index].qty + 1);
-    notifyListeners();
+  void suivant(Function onTap) {
+    if (_bookingService.getselectedEquipment.isNotEmpty) {
+      if (selectedIndex == 0) {
+        debugPrint("its zero");
+        nextPage(1);
+      } else {
+        debugPrint("not zero");
+        onTap();
+      }
+    }
   }
 
   void decreaseQuantity(int index) {
-    if (_equipmentsAPIService.equipments![index].quantity > 1) {
-      equipments![index] = equipments![index].copyWith(
-          quantity: equipments![index].quantity - 1,
-          qty: equipments![index].qty - 1);
-      notifyListeners();
+    if (_bookingService.getselectedEquipment[index].quantity > 1) {
+      _bookingService.getselectedEquipment[index] =
+          _bookingService.getselectedEquipment[index].copyWith(
+              quantity:
+                  _bookingService.getselectedEquipment[index].quantity - 1);
     }
+    notifyListeners();
+  }
+
+  void increaseQuantity(int index) {
+    _bookingService.getselectedEquipment[index] =
+        _bookingService.getselectedEquipment[index].copyWith(
+            quantity: _bookingService.getselectedEquipment[index].quantity + 1);
+    notifyListeners();
   }
 
   void nextIndex(int index) {

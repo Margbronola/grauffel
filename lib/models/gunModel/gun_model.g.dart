@@ -33,6 +33,7 @@ _$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
       bookings: json['bookings'] as List<dynamic>?,
       quantity: json['quantity'] as int? ?? 1,
+      qty: json['qty'] as int? ?? 1,
       equipments: (json['equipments'] as List<dynamic>?)
           ?.map((e) => EquipmentModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -59,6 +60,7 @@ Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
       'image': instance.image,
       'bookings': instance.bookings,
       'quantity': instance.quantity,
+      'qty': instance.qty,
       'equipments': instance.equipments,
       'ammunitions': instance.ammunitions,
     };

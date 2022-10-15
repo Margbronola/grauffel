@@ -19,6 +19,7 @@ class AmmunitionsModel with _$AmmunitionsModel {
       BrandModel? brand,
       CaliberModel? caliber,
       @Default(1) int quantity,
+      @Default(1) int qty,
       DateTime? created_at,
       DateTime? updated_at}) = _AmmunitionsModel;
   //pivot

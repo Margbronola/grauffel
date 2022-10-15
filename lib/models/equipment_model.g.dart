@@ -22,6 +22,10 @@ _$_EquipmentModel _$$_EquipmentModelFromJson(Map<String, dynamic> json) =>
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      brand: json['brand'] == null
+          ? null
+          : BrandModel.fromJson(json['brand'] as Map<String, dynamic>),
+      qty: json['qty'] as int? ?? 1,
       type_name: json['type_name'] as String?,
       image: json['image'] == null
           ? null
@@ -40,6 +44,8 @@ Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>
       'created_at': instance.created_at?.toIso8601String(),
       'quantity': instance.quantity,
       'updated_at': instance.updated_at?.toIso8601String(),
+      'brand': instance.brand,
+      'qty': instance.qty,
       'type_name': instance.type_name,
       'image': instance.image,
     };

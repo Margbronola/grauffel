@@ -89,21 +89,6 @@ class EquipmentViewQuantity extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
-                                      width: 100.w,
-                                      child: Text(
-                                        model.selectedEquipment[index].name!,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: ThemeData()
-                                            .textTheme
-                                            .bodyText1!
-                                            .copyWith(
-                                              fontSize: 10.sp,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'ProductSans',
-                                            ),
-                                      ),
-                                    ),
                                     const Spacer(),
                                     Column(
                                       crossAxisAlignment:
@@ -143,6 +128,7 @@ class EquipmentViewQuantity extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Référence",
+                                      overflow: TextOverflow.clip,
                                       style: ThemeData()
                                           .textTheme
                                           .bodyText1!
@@ -213,17 +199,6 @@ class EquipmentViewQuantity extends StatelessWidget {
                                     ),
                                     const SizedBox(
                                       height: 3,
-                                    ),
-                                    Text(
-                                      "boites",
-                                      style: ThemeData()
-                                          .textTheme
-                                          .bodyText1!
-                                          .copyWith(
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'ProductSans',
-                                          ),
                                     ),
                                   ],
                                 ),
