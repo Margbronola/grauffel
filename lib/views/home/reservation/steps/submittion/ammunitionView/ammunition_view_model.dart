@@ -25,12 +25,13 @@ class AmmunitionViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BookingService _bookingService = locator<BookingService>();
 
-  bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
-  int get filterMarqueLength => _gunListService.filterMarqueIds.length;
+  bool get filterMarqueIsActive => _gunListService.filterMarqueIds!.isNotEmpty;
+  int get filterMarqueLength => _gunListService.filterMarqueIds!.length;
 
-  bool get filterCaliberIsActive => _gunListService.filterCaliberIds.isNotEmpty;
+  bool get filterCaliberIsActive =>
+      _gunListService.filterCaliberIds!.isNotEmpty;
   int get filterCaliberIsActiveLength =>
-      _gunListService.filterCaliberIds.length;
+      _gunListService.filterCaliberIds!.length;
 
   List<AmmunitionsModel>? get ammunitions => _gunListService.ammunition;
   List<AmmunitionsModel> get selectedAmmunition =>

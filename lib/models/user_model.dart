@@ -1,5 +1,5 @@
+import 'package:egczacademy/models/gunModel/country_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'image_model.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -29,6 +29,7 @@ class UserModel with _$UserModel {
     // SubscriptionModel? active_client_subscription,
     // DateTime? created_at,
     // DateTime? updated_at,
+    CountryModel? country,
     String? firebase_id,
     ImageModel? image,
     String? birthday,

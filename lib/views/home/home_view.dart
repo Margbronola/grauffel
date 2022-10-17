@@ -2,7 +2,7 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
-import 'package:egczacademy/views/home/reservation/reservation_list.dart';
+import 'package:egczacademy/views/home/reservation/reservation_pageview.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -57,7 +57,7 @@ class HomeView extends StatelessWidget {
                 model.onTap(2, isFromReview: true);
               },
             ),
-            const ReservationList(),
+            const ReservationPageView(),
             ProfileView(
               isFromHome: model.isFromReview,
             ),

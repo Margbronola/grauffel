@@ -49,8 +49,6 @@ class UserAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          debugPrint(data);
-
           debugPrint("CHANGE AVATAR");
         } catch (e) {
           debugPrint(e.toString());

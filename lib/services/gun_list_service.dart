@@ -5,7 +5,8 @@ import 'package:stacked/stacked.dart';
 
 class GunListService with ReactiveServiceMixin {
   GunListService() {
-    listenToReactiveValues([_guns, _loader, _ammunition]);
+    listenToReactiveValues(
+        [_guns, _loader, _ammunition, _filterMarqueIds, _filterCaliberIds]);
   }
 
   final ReactiveValue<bool> _loader = ReactiveValue<bool>(false);
@@ -21,6 +22,14 @@ class GunListService with ReactiveServiceMixin {
       ReactiveValue<List<AmmunitionsModel>?>(null);
   List<AmmunitionsModel>? get ammunition => _ammunition.value;
 
+  final ReactiveValue<List<int>?> _filterMarqueIds =
+      ReactiveValue<List<int>?>([]);
+  List<int>? get filterMarqueIds => _filterMarqueIds.value;
+
+  final ReactiveValue<List<int>?> _filterCaliberIds =
+      ReactiveValue<List<int>?>([]);
+  List<int>? get filterCaliberIds => _filterCaliberIds.value;
+
   Future setGunList(List<GunModel>? guns) async {
     if (guns != null) {
       _guns.value = guns;
@@ -33,39 +42,33 @@ class GunListService with ReactiveServiceMixin {
     }
   }
 
-  final List<int> _filterMarqueIds = [];
-  final List<int> _filterCaliberIds = [];
-
-  List<int> get filterMarqueIds => _filterMarqueIds;
-  List<int> get filterCaliberIds => _filterCaliberIds;
-
   void addFilter(int id, {required Filter filterType}) {
     if (filterType == Filter.marque) {
-      _filterMarqueIds.add(id);
+      _filterMarqueIds.value!.add(id);
     } else {
-      _filterCaliberIds.add(id);
+      _filterCaliberIds.value!.add(id);
     }
   }
 
   void removeFilter(int id, {required Filter filterType}) {
     if (filterType == Filter.marque) {
-      _filterMarqueIds.remove(id);
+      _filterMarqueIds.value!.remove(id);
     } else {
-      _filterCaliberIds.remove(id);
+      _filterCaliberIds.value!.remove(id);
     }
   }
 
   void clearFilter({required Filter filterType}) {
     if (filterType == Filter.marque) {
-      _filterMarqueIds.clear();
+      _filterMarqueIds.value!.clear();
     } else {
-      _filterCaliberIds.clear();
+      _filterCaliberIds.value!.clear();
     }
   }
 
   void clearAall() {
-    _filterMarqueIds.clear();
-    _filterCaliberIds.clear();
+    _filterMarqueIds.value!.clear();
+    _filterCaliberIds.value!.clear();
   }
 
   void setBusy(bool isBusy) {

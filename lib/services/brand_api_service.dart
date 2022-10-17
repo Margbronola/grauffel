@@ -43,7 +43,6 @@ class BrandAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          debugPrint(data);
           debugPrint("FETCH BRANDS PASS");
           List fetchBrandList = data['data'];
           _pagingModel = PagingModel(

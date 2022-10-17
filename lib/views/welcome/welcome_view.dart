@@ -36,24 +36,21 @@ class _WelcomeViewState extends State<WelcomeView>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                AnimatedContainer(
-                                    duration: const Duration(milliseconds: 400),
-                                    child: Image.asset(
-                                      imagelBigLogo,
-                                      width: 200.w,
-                                    )),
-                              ],
-                            ),
+                          AnimatedContainer(
+                              duration: const Duration(milliseconds: 400),
+                              child: Image.asset(
+                                imagelBigLogo,
+                                width: 200.w,
+                              )),
+                          SizedBox(
+                            height: 50.h,
                           ),
                           SizedBox(
                             height: model.flexSize.h,
                             child: Padding(
                               padding: const EdgeInsets.all(20),
                               child: PageView(
+                                physics: const NeverScrollableScrollPhysics(),
                                 controller: model.pageController,
                                 children: [
                                   welcomeCenter(model),
@@ -74,16 +71,6 @@ class _WelcomeViewState extends State<WelcomeView>
                       ),
                     ),
                   ),
-                  model.isLoginView
-                      ? Positioned(
-                          top: 30.h,
-                          left: 10.w,
-                          child: BackButton(
-                            onPressed: model.back,
-                            color: kcWhite,
-                          ),
-                        )
-                      : const SizedBox(),
                 ],
               ),
       ),

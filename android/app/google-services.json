@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:711105303968:android:7101f17d24a7010b5440c5",
         "android_client_info": {
-          "package_name": "com.ericgrauffel.grauffelmobile"
+          "package_name": "com.grauffel.egczacademy"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "711105303968-heukfdhkpvv3k7n3 6mhqs27i75fcfiqa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ericgrauffel.grauffelmobile",
+            "package_name": "com.grauffel.egczacademy",
             "certificate_hash": "d10f4d7c2d9394fadcf6a625afdcf67d82da4d1d"
           }
         },
@@ -42,7 +42,7 @@
               "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.ericgrauffel.grauffelmobile"
+                "bundle_id": "com.grauffel.egczacademy"
               }
             }
           ]
@@ -78,7 +78,7 @@
               "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.ericgrauffel.grauffelmobile"
+                "bundle_id": "com.grauffel.egczacademy"
               }
             }
           ]

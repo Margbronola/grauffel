@@ -53,7 +53,9 @@ class DocumentService with ReactiveServiceMixin {
   }
 
   List<DocumentTypeModel> notMandatoryDocumentTypes() {
-    return documenTypes.where((e) => e.ismandatory != 1).toList();
+    var docs = documenTypes.where((e) => e.ismandatory != 1).toList();
+
+    return docs;
   }
 
   int? mandatoryNumberUploaded() {

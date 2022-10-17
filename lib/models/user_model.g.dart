@@ -25,6 +25,9 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       experience: json['experience'] as String?,
       equipment: json['equipment'] as String?,
       phone_number: json['phone_number'] as String?,
+      country: json['country'] == null
+          ? null
+          : CountryModel.fromJson(json['country'] as Map<String, dynamic>),
       firebase_id: json['firebase_id'] as String?,
       image: json['image'] == null
           ? null
@@ -52,6 +55,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'experience': instance.experience,
       'equipment': instance.equipment,
       'phone_number': instance.phone_number,
+      'country': instance.country,
       'firebase_id': instance.firebase_id,
       'image': instance.image,
       'birthday': instance.birthday,

@@ -5,7 +5,6 @@ import '../../../../../app/global.dart';
 import '../../../../shared/color.dart';
 import '../../../../shared/custom_button.dart';
 import '../../../../shared/ui_helper.dart';
-import '../../../../shared/validator.dart';
 import '../../../../shared/widget/item_card.dart';
 import 'submition_view_model.dart';
 
@@ -154,48 +153,48 @@ class SubmitionView extends StatelessWidget {
                               )
                               .toList(),
                         ),
-                        TextFormField(
-                          textInputAction: TextInputAction.next,
-                          keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
-                              color: backgroundColor, fontSize: 17.sp),
-                          focusNode: model.commentFocusNode,
-                          controller: model.commentTextController,
-                          validator: (value) {
-                            return Validator.validateName(value ?? "");
-                          },
-                          decoration: InputDecoration(
-                            label: RichText(
-                              text: TextSpan(
-                                text: 'Commentaire',
-                                style: TextStyle(
-                                    fontFamily: 'ProductSans',
-                                    color: model.isCommentFucos
-                                        ? Colors.grey
-                                        : Colors.black,
-                                    letterSpacing: 1.3,
-                                    fontWeight: FontWeight.w700),
-                                children: const [
-                                  TextSpan(
-                                    text: ' *',
-                                    style: TextStyle(
-                                      color: buttonColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            fillColor: Colors.black,
-                            focusedBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                            hintStyle: const TextStyle(color: backgroundColor),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: backgroundColor),
-                            ),
-                            isDense: true,
-                          ),
-                        ),
+                        // TextFormField(
+                        //   textInputAction: TextInputAction.next,
+                        //   keyboardType: TextInputType.emailAddress,
+                        //   style: TextStyle(
+                        //       color: backgroundColor, fontSize: 17.sp),
+                        //   focusNode: model.commentFocusNode,
+                        //   controller: model.commentTextController,
+                        //   validator: (value) {
+                        //     return Validator.validateName(value ?? "");
+                        //   },
+                        //   decoration: InputDecoration(
+                        //     label: RichText(
+                        //       text: TextSpan(
+                        //         text: 'Commentaire',
+                        //         style: TextStyle(
+                        //             fontFamily: 'ProductSans',
+                        //             color: model.isCommentFucos
+                        //                 ? Colors.grey
+                        //                 : Colors.black,
+                        //             letterSpacing: 1.3,
+                        //             fontWeight: FontWeight.w700),
+                        //         children: const [
+                        //           TextSpan(
+                        //             text: ' *',
+                        //             style: TextStyle(
+                        //               color: buttonColor,
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //     fillColor: Colors.black,
+                        //     focusedBorder: const UnderlineInputBorder(
+                        //       borderSide: BorderSide(color: Colors.black),
+                        //     ),
+                        //     hintStyle: const TextStyle(color: backgroundColor),
+                        //     enabledBorder: const UnderlineInputBorder(
+                        //       borderSide: BorderSide(color: backgroundColor),
+                        //     ),
+                        //     isDense: true,
+                        //   ),
+                        // ),
                         verticalSpaceMedium(),
                         SizedBox(
                           width: 310.w,

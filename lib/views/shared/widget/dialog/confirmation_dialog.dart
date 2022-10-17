@@ -19,8 +19,8 @@ class ConfirmationDialog extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-          height: 250.h,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          height: 240.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -34,19 +34,21 @@ class ConfirmationDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 110.w,
-                      child: MaterialButton(
-                        onPressed: () {
-                          completer!(DialogResponse(confirmed: false));
-                        },
-                        child: Text(
-                          request!.additionalButtonTitle!,
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                    horizontalSpaceSmall(),
+                    request!.additionalButtonTitle != null
+                        ? SizedBox(
+                            width: 110.w,
+                            child: MaterialButton(
+                              onPressed: () {
+                                completer!(DialogResponse(confirmed: false));
+                              },
+                              child: Text(
+                                request!.additionalButtonTitle!,
+                                style: const TextStyle(color: Colors.grey),
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
+                    const Spacer(),
                     SizedBox(
                       width: 160.w,
                       child: CustomButton(

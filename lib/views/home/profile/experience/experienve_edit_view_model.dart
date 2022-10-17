@@ -21,10 +21,16 @@ class ExperienceEditViewModel extends BaseViewModel {
     if (details == ExtraDetails.experience) {
       if (_userService.user?.experience != null) {
         textController.text = _userService.user!.experience!;
+      } else {
+        textController.text =
+            "Merci de partager avec nous vos expériences au niveau de notre sport";
       }
     } else {
       if (_userService.user?.equipment != null) {
         textController.text = _userService.user!.equipment!;
+      } else {
+        textController.text =
+            "Merci de partager avec nous les équipements que vous possédez";
       }
     }
   }

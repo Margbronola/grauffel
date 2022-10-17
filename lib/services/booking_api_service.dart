@@ -17,11 +17,15 @@ import '../app/global.dart';
 class BookingAPIService {
   List<BookingModel>? _bookings;
   List<BookingModel>? get bookings => _bookings;
+
+  List<CourseModel> _courses = [];
+  List<CourseModel>? get courses => _courses;
+
   List<ActivityModel> _bookable = [];
   List<ActivityModel>? get bookable => _bookable;
 
-  List<CourseModel> _bookableCourse = [];
-  List<CourseModel>? get bookableCourse => _bookableCourse;
+  final List<ActivityModel> _bookableCourse = [];
+  List<ActivityModel>? get bookableCourse => _bookableCourse;
 
   List<TimeModel> _availableTime = [];
   List<TimeModel>? get availableTime => _availableTime;
@@ -84,7 +88,7 @@ class BookingAPIService {
       });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
-        // debugPrint(data);
+
         try {
           print("RESERVATION DATA: $data");
           print("FETCH BOOKINGS PASS 2");
@@ -129,7 +133,6 @@ class BookingAPIService {
 
           print(_bookable);
           print("here");
-          print(_bookableCourse);
 
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {
@@ -152,33 +155,33 @@ class BookingAPIService {
           //entrainement
           //stage
 
-          for (CourseModel x in _bookableCourse) {
-            if (x.type!.name == "stage" || x.type!.name == "initiation") {
-              if (x.description != null) {
-                x = x.copyWith(description: removeHtmlTags(x.description!));
-              }
+          // for (CourseModel x in _courses) {
+          //   if (x.type!.name == "stage" || x.type!.name == "initiation") {
+          //     if (x.description != null) {
+          //       x = x.copyWith(description: removeHtmlTags(x.description!));
+          //     }
 
-              DateTime parseDt = DateTime.parse(x.date_from!);
+          //     DateTime parseDt = DateTime.parse(x.date_from!);
 
-              if (!DateTime.now()
-                  .subtract(const Duration(days: 1))
-                  .isAfter(parseDt)) {
-                _bookable.add(ActivityModel(
-                    admin: x.admin,
-                    type: x.type,
-                    id: x.id,
-                    image: "assets/images/course.jpg",
-                    name: x.name,
-                    start_time: x.start_time,
-                    end_time: x.end_time,
-                    date_from: x.date_from,
-                    date_to: x.date_to,
-                    price: x.price,
-                    status: x.status,
-                    description: x.description));
-              }
-            }
-          }
+          //     if (!DateTime.now()
+          //         .subtract(const Duration(days: 1))
+          //         .isAfter(parseDt)) {
+          //       _bookable.add(ActivityModel(
+          //           admin: x.admin,
+          //           type: x.type,
+          //           id: x.id,
+          //           image: "assets/images/course.jpg",
+          //           name: x.name,
+          //           start_time: x.start_time,
+          //           end_time: x.end_time,
+          //           date_from: x.date_from,
+          //           date_to: x.date_to,
+          //           price: x.price,
+          //           status: x.status,
+          //           description: x.description));
+          //     }
+          //   }
+          // }
 
           // _bookable.add(ActivityModel(
           //     image: "assets/images/alv.jpg",
@@ -198,7 +201,7 @@ class BookingAPIService {
     }
   }
 
-  Future<void> fetch({required String token}) async {
+  Future<void> fetchCourses({required String token}) async {
     try {
       final respo =
           await http.get(Uri.parse("$urlApi/active/courses"), headers: {
@@ -210,8 +213,30 @@ class BookingAPIService {
         try {
           List fetchCouresList = data;
 
-          _bookableCourse =
+          _courses =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
+
+          for (CourseModel x in _courses) {
+            DateTime parseDt = DateTime.parse(x.date_from!);
+
+            if (!DateTime.now()
+                .subtract(const Duration(days: 1))
+                .isAfter(parseDt)) {
+              _bookableCourse.add(ActivityModel(
+                  admin: x.admin,
+                  type: x.type,
+                  id: x.id,
+                  image: "assets/images/course.jpg",
+                  name: x.name,
+                  start_time: x.start_time,
+                  end_time: x.end_time,
+                  date_from: x.date_from,
+                  date_to: x.date_to,
+                  price: x.price,
+                  status: x.status,
+                  description: x.description));
+            }
+          }
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");

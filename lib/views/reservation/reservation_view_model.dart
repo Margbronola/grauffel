@@ -24,7 +24,6 @@ class ReservationViewModel extends ReactiveViewModel {
   final DocumentService _documentService = locator<DocumentService>();
 
   UserModel get user => _userService.user!;
-
   List<BookingModel>? get actives => _bookingAPIService.actives;
   List<BookingModel>? get past => _bookingAPIService.past;
 
@@ -59,9 +58,10 @@ class ReservationViewModel extends ReactiveViewModel {
 
   Future cancelBook(int bookingId) async {
     var response = await _dialogService.showDialog(
-        buttonTitle: "d'accord",
-        cancelTitle: "annuler",
-        description: "Annulez votre réservation maintenant?");
+      description: "Annulez votre réservation maintenant?",
+      buttonTitle: "d'accord",
+      cancelTitle: "annuler",
+    );
 
     if (response != null) {
       if (response.confirmed) {

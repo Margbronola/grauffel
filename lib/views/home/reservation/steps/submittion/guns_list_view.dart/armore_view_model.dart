@@ -24,11 +24,12 @@ class ArmoreViewModel extends ReactiveViewModel {
 
   List<GunModel>? get guns => _gunListService.guns;
   bool get loader => _gunListService.loader;
-  bool get filterMarqueIsActive => _gunListService.filterMarqueIds.isNotEmpty;
-  int get filterMarqueLength => _gunListService.filterMarqueIds.length;
-  bool get filterCaliberIsActive => _gunListService.filterCaliberIds.isNotEmpty;
+  bool get filterMarqueIsActive => _gunListService.filterMarqueIds!.isNotEmpty;
+  int get filterMarqueLength => _gunListService.filterMarqueIds!.length;
+  bool get filterCaliberIsActive =>
+      _gunListService.filterCaliberIds!.isNotEmpty;
   int get filterCaliberIsActiveLength =>
-      _gunListService.filterCaliberIds.length;
+      _gunListService.filterCaliberIds!.length;
 
   List<GunModel> get selectedGun => _bookingService.getselectedGun;
 

@@ -41,6 +41,7 @@ mixin _$UserModel {
       throw _privateConstructorUsedError; // SubscriptionModel? active_client_subscription,
 // DateTime? created_at,
 // DateTime? updated_at,
+  CountryModel? get country => throw _privateConstructorUsedError;
   String? get firebase_id => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
   String? get birthday => throw _privateConstructorUsedError;
@@ -74,10 +75,12 @@ abstract class $UserModelCopyWith<$Res> {
       String? experience,
       String? equipment,
       String? phone_number,
+      CountryModel? country,
       String? firebase_id,
       ImageModel? image,
       String? birthday});
 
+  $CountryModelCopyWith<$Res>? get country;
   $ImageModelCopyWith<$Res>? get image;
 }
 
@@ -109,6 +112,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
+    Object? country = freezed,
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
@@ -186,6 +190,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as CountryModel?,
       firebase_id: firebase_id == freezed
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
@@ -199,6 +207,17 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  $CountryModelCopyWith<$Res>? get country {
+    if (_value.country == null) {
+      return null;
+    }
+
+    return $CountryModelCopyWith<$Res>(_value.country!, (value) {
+      return _then(_value.copyWith(country: value));
+    });
   }
 
   @override
@@ -238,10 +257,13 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? experience,
       String? equipment,
       String? phone_number,
+      CountryModel? country,
       String? firebase_id,
       ImageModel? image,
       String? birthday});
 
+  @override
+  $CountryModelCopyWith<$Res>? get country;
   @override
   $ImageModelCopyWith<$Res>? get image;
 }
@@ -276,6 +298,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
+    Object? country = freezed,
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
@@ -353,6 +376,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as CountryModel?,
       firebase_id: firebase_id == freezed
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
@@ -371,7 +398,7 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
+class _$_UserModel implements _UserModel {
   const _$_UserModel(
       {this.id,
       this.fullname,
@@ -391,6 +418,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
       this.experience,
       this.equipment,
       this.phone_number,
+      this.country,
       this.firebase_id,
       this.image,
       this.birthday});
@@ -439,6 +467,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
 // DateTime? created_at,
 // DateTime? updated_at,
   @override
+  final CountryModel? country;
+  @override
   final String? firebase_id;
   @override
   final ImageModel? image;
@@ -446,36 +476,8 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
   final String? birthday;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, experience: $experience, equipment: $equipment, phone_number: $phone_number, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserModel'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('fullname', fullname))
-      ..add(DiagnosticsProperty('first_name', first_name))
-      ..add(DiagnosticsProperty('last_name', last_name))
-      ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('zipcode', zipcode))
-      ..add(DiagnosticsProperty('city', city))
-      ..add(DiagnosticsProperty('country_id', country_id))
-      ..add(DiagnosticsProperty('SIA_number', SIA_number))
-      ..add(DiagnosticsProperty('FFTir_license_number', FFTir_license_number))
-      ..add(DiagnosticsProperty('credit_points', credit_points))
-      ..add(DiagnosticsProperty('verification', verification))
-      ..add(DiagnosticsProperty('payment_verification', payment_verification))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('experience', experience))
-      ..add(DiagnosticsProperty('equipment', equipment))
-      ..add(DiagnosticsProperty('phone_number', phone_number))
-      ..add(DiagnosticsProperty('firebase_id', firebase_id))
-      ..add(DiagnosticsProperty('image', image))
-      ..add(DiagnosticsProperty('birthday', birthday));
+  String toString() {
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
   }
 
   @override
@@ -510,6 +512,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
             const DeepCollectionEquality().equals(other.equipment, equipment) &&
             const DeepCollectionEquality()
                 .equals(other.phone_number, phone_number) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality()
                 .equals(other.firebase_id, firebase_id) &&
             const DeepCollectionEquality().equals(other.image, image) &&
@@ -538,6 +541,7 @@ class _$_UserModel with DiagnosticableTreeMixin implements _UserModel {
         const DeepCollectionEquality().hash(experience),
         const DeepCollectionEquality().hash(equipment),
         const DeepCollectionEquality().hash(phone_number),
+        const DeepCollectionEquality().hash(country),
         const DeepCollectionEquality().hash(firebase_id),
         const DeepCollectionEquality().hash(image),
         const DeepCollectionEquality().hash(birthday)
@@ -576,6 +580,7 @@ abstract class _UserModel implements UserModel {
       final String? experience,
       final String? equipment,
       final String? phone_number,
+      final CountryModel? country,
       final String? firebase_id,
       final ImageModel? image,
       final String? birthday}) = _$_UserModel;
@@ -622,6 +627,8 @@ abstract class _UserModel implements UserModel {
   @override // SubscriptionModel? active_client_subscription,
 // DateTime? created_at,
 // DateTime? updated_at,
+  CountryModel? get country;
+  @override
   String? get firebase_id;
   @override
   ImageModel? get image;

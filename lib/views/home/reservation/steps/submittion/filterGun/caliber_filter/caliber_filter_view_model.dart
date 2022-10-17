@@ -17,7 +17,6 @@ class CaliberFilterViewModel extends ReactiveViewModel {
 
   List<CaliberModel>? get calibers => _caliberAPIService.caliber;
   List copyFilterCaliberIds = [];
-
   late ScrollController controller;
 
   bool isLoadMoreRunning = false;
@@ -35,8 +34,8 @@ class CaliberFilterViewModel extends ReactiveViewModel {
       await fetchCalibers();
     }
 
-    if (_gunListService.filterMarqueIds.isNotEmpty) {
-      copyFilterCaliberIds = _gunListService.filterCaliberIds.toList();
+    if (_gunListService.filterMarqueIds!.isNotEmpty) {
+      copyFilterCaliberIds = _gunListService.filterCaliberIds!.toList();
     }
 
     controller = ScrollController()
@@ -75,7 +74,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   }
 
   bool checked(int index) {
-    return _gunListService.filterCaliberIds.contains(calibers![index].id);
+    return _gunListService.filterCaliberIds!.contains(calibers![index].id);
   }
 
   Future check(bool? isCheck, index) async {
@@ -90,6 +89,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
             filterType: Filter.calibre);
       }
     }
+    print("check");
     notifyListeners();
   }
 
@@ -99,6 +99,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
         brandIds: _gunListService.filterMarqueIds,
         caliberIds: _gunListService.filterCaliberIds);
     _gunListService.setGunList(_gunAPIService.guns);
+    notifyListeners();
   }
 
   @override
@@ -111,6 +112,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
       await filterGun();
       _gunListService.setBusy(false);
     }
+
     super.dispose();
   }
 

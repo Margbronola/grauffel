@@ -36,8 +36,8 @@ class BrandFilterViewModel extends ReactiveViewModel {
           typeId: filterList == FilterList.gun ? 2 : 1);
     }
 
-    if (_gunListService.filterMarqueIds.isNotEmpty) {
-      copyFilterMarqueIds = _gunListService.filterMarqueIds.toList();
+    if (_gunListService.filterMarqueIds!.isNotEmpty) {
+      copyFilterMarqueIds = _gunListService.filterMarqueIds!.toList();
     }
     controller = ScrollController()
       ..addListener(() async {
@@ -77,7 +77,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   bool checked(int index) {
-    return _gunListService.filterMarqueIds.contains(marque![index].id);
+    return _gunListService.filterMarqueIds!.contains(marque![index].id);
   }
 
   Future<bool> loadMore(FilterList filterList) async {

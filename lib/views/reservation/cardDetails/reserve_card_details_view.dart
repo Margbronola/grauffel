@@ -137,60 +137,66 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
             ),
             verticalSpaceMedium(),
             //GunList
-            Column(
-                children: widget.bookingModel.guns!
-                    .map((e) => Padding(
-                          padding: EdgeInsets.only(bottom: 10.h),
-                          child: ItemCard(
-                            image: e.image == null
-                                ? null
-                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
-                            title: e.model!,
-                            brand: e.brand!.name!,
-                            reference: "Référence",
-                          ),
-                        ))
-                    .toList()),
-
-            Column(
-                children: widget.bookingModel.ammunitions!
-                    .map((e) => Padding(
-                          padding: EdgeInsets.only(bottom: 10.h),
-                          child: ItemCard(
-                            extraButton: e.quantity.toString(),
-                            image: e.image == null
-                                ? null
-                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
-                            title: e.name!,
-                            brand: e.brand!.name!,
-                            reference: "Référence",
-                          ),
-                        ))
-                    .toList()),
-            Column(
-                children: widget.bookingModel.equipements!
-                    .map((e) => Padding(
-                          padding: EdgeInsets.only(bottom: 10.h),
-                          child: ItemCard(
-                            image: e.image == null
-                                ? null
-                                : "$urlServer/${e.image!.path}/${e.image!.filename}",
-                            title: e.name!,
-                            brand: e.type.toString(),
-                            reference: "Référence",
-                          ),
-                        ))
-                    .toList()),
-            verticalSpaceMedium(),
-            Text(
-              htmlToText(
-                  htmlFormatData:
-                      widget.bookingModel.bookable!.description ?? ""),
-              style: const TextStyle(
-                  fontFamily: 'ProductSans',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
-            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  Column(
+                      children: widget.bookingModel.guns!
+                          .map((e) => Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: ItemCard(
+                                  image: e.image == null
+                                      ? null
+                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                  title: e.model!,
+                                  brand: e.brand!.name!,
+                                  reference: "Référence",
+                                ),
+                              ))
+                          .toList()),
+                  Column(
+                      children: widget.bookingModel.ammunitions!
+                          .map((e) => Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: ItemCard(
+                                  extraButton: e.quantity.toString(),
+                                  image: e.image == null
+                                      ? null
+                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                  title: e.name!,
+                                  brand: e.brand!.name!,
+                                  reference: "Référence",
+                                ),
+                              ))
+                          .toList()),
+                  Column(
+                      children: widget.bookingModel.equipements!
+                          .map((e) => Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: ItemCard(
+                                  image: e.image == null
+                                      ? null
+                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                  title: e.name!,
+                                  brand: e.type.toString(),
+                                  reference: "Référence",
+                                ),
+                              ))
+                          .toList()),
+                  verticalSpaceMedium(),
+                  Text(
+                    htmlToText(
+                        htmlFormatData:
+                            widget.bookingModel.bookable!.description ?? ""),
+                    style: const TextStyle(
+                        fontFamily: 'ProductSans',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  verticalSpaceMedium(),
+                ],
+              ),
+            )
           ],
         ),
       ),

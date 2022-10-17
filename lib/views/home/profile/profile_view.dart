@@ -140,7 +140,7 @@ class ProfileView extends StatelessWidget {
                                       const SizedBox(
                                         height: 8,
                                       ),
-                                      model.user!.birthday!.isNotEmpty
+                                      model.user!.birthday != null
                                           ? infoContainer(
                                               "Date de naissance",
                                               '${model.user!.birthday!.split("-")[0]}/${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}',
@@ -166,13 +166,19 @@ class ProfileView extends StatelessWidget {
                                             MainAxisAlignment.spaceBetween,
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          infoContainer("Adresse postale",
+                                          infoContainer("Code postale",
                                               model.user!.zipcode ?? "", 100.w),
                                           //TODO: static
-                                          infoContainer("CP", "73000", 80.w),
+                                          infoContainer("City",
+                                              model.user!.city ?? '', 80.w),
                                           //TODO: static
-                                          infoContainer("Ville",
-                                              model.user!.city ?? "", 80.w),
+                                          infoContainer(
+                                              "Ville",
+                                              model.user!.country != null
+                                                  ? model.user!.country!.name ??
+                                                      ""
+                                                  : "",
+                                              80.w),
                                         ],
                                       ),
                                       const SizedBox(

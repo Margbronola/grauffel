@@ -91,7 +91,20 @@ class DocumentAPIService {
         debugPrint("FETCH DOCSTYPE PASS");
 
         try {
-          return data.map((e) => DocumentTypeModel.fromJson(e)).toList();
+          var newdata = data.map((e) => DocumentTypeModel.fromJson(e)).toList();
+
+          newdata = newdata.map((e) {
+            if (e.id == 5) {
+              e = e.copyWith(name: "Certificat médical");
+            }
+
+            if (e.id == 7) {
+              e = e.copyWith(name: "Copie de votre licence (arme)");
+            }
+            return e;
+          }).toList();
+
+          return newdata;
         } catch (e) {
           debugPrint(e.toString());
           debugPrint("FROMJSON FAIL");
