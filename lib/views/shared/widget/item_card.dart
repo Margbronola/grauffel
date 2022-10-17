@@ -9,12 +9,14 @@ class ItemCard extends StatelessWidget {
   final String brand;
   final String reference;
   final String? extraButton;
+  final String? titleQuantity;
   const ItemCard({
     Key? key,
     this.image,
     required this.title,
     required this.brand,
     required this.reference,
+    required this.titleQuantity,
     this.extraButton,
   }) : super(key: key);
 
@@ -62,53 +64,60 @@ class ItemCard extends StatelessWidget {
                         ),
                       ),
                       verticalSpaceSmall(),
-                      Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "Référence",
-                                style: TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 8,
-                                ),
-                              ),
-                              Text(
-                                "SH2-BUSH-CER".toUpperCase(),
-                                style: const TextStyle(
-                                    fontFamily: 'ProductSans',
-                                    fontSize: 8,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          horizontalSpace(40.w),
-                          Expanded(
-                            child: SizedBox(
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    "Marque",
+                                    "Référence",
                                     style: TextStyle(
                                       fontFamily: 'ProductSans',
                                       fontSize: 8,
                                     ),
                                   ),
-                                  Text(
-                                    brand.toUpperCase(),
-                                    style: const TextStyle(
-                                        fontFamily: 'ProductSans',
-                                        height: 1,
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.bold),
+                                  Expanded(
+                                    child: Text(
+                                      title,
+                                      overflow: TextOverflow.clip,
+                                      style: const TextStyle(
+                                          fontFamily: 'ProductSans',
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          )
-                        ],
+                            horizontalSpace(40.w),
+                            Expanded(
+                              child: SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Marque",
+                                      style: TextStyle(
+                                        fontFamily: 'ProductSans',
+                                        fontSize: 8,
+                                      ),
+                                    ),
+                                    Text(
+                                      brand.toUpperCase(),
+                                      style: const TextStyle(
+                                          fontFamily: 'ProductSans',
+                                          height: 1,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -137,9 +146,9 @@ class ItemCard extends StatelessWidget {
                             fontSize: 12,
                             fontWeight: FontWeight.bold),
                       ),
-                      const Text(
-                        " boîtes de 50",
-                        style: TextStyle(
+                      Text(
+                        titleQuantity!,
+                        style: const TextStyle(
                             fontFamily: 'ProductSans',
                             fontSize: 8,
                             fontWeight: FontWeight.bold),

@@ -18,6 +18,15 @@ class EquipmentViewList extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         children: [
+          MaterialButton(
+              color: Colors.red,
+              child: const Text(
+                "check",
+              ),
+              onPressed: () {
+                print(model.selectedAmmunition);
+                print("check");
+              }),
           SizedBox(
             width: double.infinity,
             child: Text(

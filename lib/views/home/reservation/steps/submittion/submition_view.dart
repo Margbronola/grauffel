@@ -116,6 +116,7 @@ class SubmitionView extends StatelessWidget {
                                         title: e.model!,
                                         brand: e.brand!.name!,
                                         reference: "Référence",
+                                        titleQuantity: "",
                                       ),
                                     ))
                                 .toList()),
@@ -126,6 +127,7 @@ class SubmitionView extends StatelessWidget {
                                     padding: EdgeInsets.only(bottom: 10.h),
                                     child: ItemCard(
                                       extraButton: e.quantity.toString(),
+                                      titleQuantity: " boîtes de 50",
                                       image: e.image != null
                                           ? "$urlServer/${e.image!.path}/${e.image!.filename}"
                                           : null,
@@ -142,6 +144,9 @@ class SubmitionView extends StatelessWidget {
                                 (e) => Padding(
                                   padding: EdgeInsets.only(bottom: 10.h),
                                   child: ItemCard(
+                                    extraButton: e.quantity.toString(),
+                                    titleQuantity:
+                                        e.quantity > 1 ? " pièces" : " pièce",
                                     image: e.image != null
                                         ? "$urlServer/${e.image!.path}/${e.image!.filename}"
                                         : null,

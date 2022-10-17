@@ -151,6 +151,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                                   title: e.model!,
                                   brand: e.brand!.name!,
                                   reference: "Référence",
+                                  titleQuantity: "",
                                 ),
                               ))
                           .toList()),
@@ -159,6 +160,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                           .map((e) => Padding(
                                 padding: EdgeInsets.only(bottom: 10.h),
                                 child: ItemCard(
+                                  titleQuantity: " boîtes de 50",
                                   extraButton: e.quantity.toString(),
                                   image: e.image == null
                                       ? null
@@ -174,6 +176,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                           .map((e) => Padding(
                                 padding: EdgeInsets.only(bottom: 10.h),
                                 child: ItemCard(
+                                  titleQuantity:
+                                      e.quantity > 1 ? " pièces" : " pièce",
+                                  extraButton: e.quantity.toString(),
                                   image: e.image == null
                                       ? null
                                       : "$urlServer/${e.image!.path}/${e.image!.filename}",

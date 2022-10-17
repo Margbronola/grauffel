@@ -138,8 +138,8 @@ class AmmunitionViewModel extends BaseViewModel {
   void increaseBox(int index) {
     _bookingService.getselectedAmmunition[index] =
         _bookingService.getselectedAmmunition[index].copyWith(
-            quantity:
-                _bookingService.getselectedAmmunition[index].quantity + 1);
+            quantity: _bookingService.getselectedAmmunition[index].quantity + 1,
+            qty: _bookingService.getselectedAmmunition[index].qty + 1);
     notifyListeners();
   }
 
@@ -148,7 +148,8 @@ class AmmunitionViewModel extends BaseViewModel {
       _bookingService.getselectedAmmunition[index] =
           _bookingService.getselectedAmmunition[index].copyWith(
               quantity:
-                  _bookingService.getselectedAmmunition[index].quantity - 1);
+                  _bookingService.getselectedAmmunition[index].quantity - 1,
+              qty: _bookingService.getselectedAmmunition[index].qty - 1);
     }
     notifyListeners();
   }

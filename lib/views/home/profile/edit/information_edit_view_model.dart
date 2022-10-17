@@ -192,6 +192,40 @@ class InformationEditViewModel extends ReactiveViewModel {
     }
   }
 
+  void showDatePicker2(context) async {
+    debugPrint("Show date picker");
+    await DatePicker.showDatePicker(
+      context,
+      showTitleActions: true,
+      locale: LocaleType.fr,
+      currentTime: DateTime(
+        int.parse(user!.birthday!.split("-")[0]),
+        int.parse(user!.birthday!.split("-")[1]),
+        int.parse(user!.birthday!.split("-")[2]),
+      ),
+      minTime: DateTime(1990, 1, 1),
+      maxTime: DateTime(2022, 1, 1),
+      theme: const DatePickerTheme(
+          // headerColor: Colors.orange,
+          // backgroundColor: Colors.blue,
+          itemStyle: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+          doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
+      onChanged: (date) {
+        debugPrint('change $date in time zone ${date.timeZoneOffset.inHours}');
+      },
+      onConfirm: (date) {
+        birthdayController.text = "${date.year}-${date.month}-${date.day}";
+        notifyListeners();
+      },
+      onCancel: () {
+        debugPrint("cancel");
+        dateNode.nextFocus();
+        notifyListeners();
+      },
+    );
+  }
+
   void showDatePicker(context) async {
     debugPrint("Show date picker");
     await DatePicker.showPicker(

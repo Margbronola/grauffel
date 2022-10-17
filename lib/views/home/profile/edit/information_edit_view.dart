@@ -229,7 +229,7 @@ class InformationEditView extends StatelessWidget {
                                   SizedBox(height: size(context).height * 0.02),
                                   TextFormField(
                                     readOnly: true,
-                                    textInputAction: TextInputAction.next,
+                                    // textInputAction: TextInputAction.next,
                                     keyboardType: TextInputType.text,
                                     style: TextStyle(
                                         color: backgroundColor,
@@ -240,7 +240,7 @@ class InformationEditView extends StatelessWidget {
                                     focusNode: model.dateNode,
                                     controller: model.birthdayController,
                                     onTap: () {
-                                      model.showDatePicker(context);
+                                      model.showDatePicker2(context);
                                     },
                                     decoration: InputDecoration(
                                       label: RichText(

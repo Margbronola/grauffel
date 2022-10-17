@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/equipments_api_service.dart';
@@ -22,6 +23,8 @@ class EquipmentViewModel extends BaseViewModel {
 
   List<EquipmentModel> get selectedEquipment =>
       _bookingService.getselectedEquipment;
+  List<AmmunitionsModel> get selectedAmmunition =>
+      _bookingService.getselectedAmmunition;
 
   void init() async {
     setBusy(true);
@@ -48,7 +51,8 @@ class EquipmentViewModel extends BaseViewModel {
       _bookingService.getselectedEquipment[index] =
           _bookingService.getselectedEquipment[index].copyWith(
               quantity:
-                  _bookingService.getselectedEquipment[index].quantity - 1);
+                  _bookingService.getselectedEquipment[index].quantity - 1,
+              qty: _bookingService.getselectedEquipment[index].qty! - 1);
     }
     notifyListeners();
   }
@@ -56,7 +60,8 @@ class EquipmentViewModel extends BaseViewModel {
   void increaseQuantity(int index) {
     _bookingService.getselectedEquipment[index] =
         _bookingService.getselectedEquipment[index].copyWith(
-            quantity: _bookingService.getselectedEquipment[index].quantity + 1);
+            quantity: _bookingService.getselectedEquipment[index].quantity + 1,
+            qty: _bookingService.getselectedEquipment[index].qty! + 1);
     notifyListeners();
   }
 
