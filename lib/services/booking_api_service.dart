@@ -303,10 +303,6 @@ class BookingAPIService {
           print("FETCH TIMEACTIVITY PASS");
           List time = data;
           _availableTime = time.map((e) => TimeModel.fromJson(e)).toList();
-
-          //TODO delete this before release
-          print(data);
-          print(_availableTime);
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");
@@ -367,14 +363,23 @@ class BookingAPIService {
   }) async {
     debugPrint("book api");
     try {
+      final List<Map<String, dynamic>> gunss =
+          guns.map((e) => e.toJson()).toList();
       final Map body = {
         "date": "${date.year}-${date.month}-${date.day}",
         "time": time.split("-")[0],
         "activity_id": activityId.toString(),
-        "guns": guns.map((e) => e.toJson()).toList(),
+        "guns": gunss,
         "ammunitions": ammunitions.map((e) => e.toJson()).toList(),
         "equipments": equipments.map((e) => e.toJson()).toList(),
       };
+      print("DATE : ${body['date']}");
+      print("GUNS : ${body['guns']}");
+      print("AMMO : ${body['ammunitions']}");
+      print("EQ : ${body['equipments']}");
+      print("TIME : ${body['time']}");
+      print("ACT : ${body['activity_id']}");
+
       final respo = await http.post(
         Uri.parse("$urlApi/book/cell"),
         headers: {
@@ -385,6 +390,7 @@ class BookingAPIService {
       );
 
       if (respo.statusCode == 200) {
+        print("BODY : $body");
         return true;
       } else {
         print(respo.body);
@@ -405,7 +411,6 @@ class BookingAPIService {
     required List<AmmunitionsModel> ammunitions,
     required List<EquipmentModel> equipments,
   }) async {
-    debugPrint("bookcourse");
     try {
       final respo = await http.post(Uri.parse("$urlApi/book/course"),
           headers: {
@@ -413,16 +418,15 @@ class BookingAPIService {
             "Authorization": "Bearer $token",
           },
           body: json.encode(BookCourseModel(
-                  course_id: courseId,
-                  guns: guns,
-                  ammunitions: ammunitions,
-                  equipments: equipments)
-              .toJson()));
+            course_id: courseId,
+            guns: guns,
+            ammunitions: ammunitions,
+            equipments: equipments,
+          ).toJson()));
       if (respo.statusCode == 200) {
         print("book pass");
-
         var data = json.decode(respo.body);
-        print(data);
+
         try {
           print("BOOKING SEND");
           print(data);

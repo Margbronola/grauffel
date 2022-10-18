@@ -32,7 +32,9 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
   bool showPassword = false;
   bool showNewPassword = false;
   bool showCPassword = false;
-
+  double additionalHeight1 = 0;
+  double additionalHeight2 = 0;
+  double additionalHeight3 = 0;
   void toggle(int index) {
     switch (index) {
       case 0:
@@ -59,18 +61,22 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
     return Dialog(
         child: Stack(
       children: [
-        Container(
+        AnimatedContainer(
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: size(context).height / 2.8.h,
+          height: size(context).height / 3.h +
+              additionalHeight1 +
+              additionalHeight2 +
+              additionalHeight3,
           width: 334.w,
+          duration: const Duration(milliseconds: 300),
           child: Form(
             key: formKey,
             child: Column(children: [
               verticalSpaceLarge(),
               Text(
-                "CHANGE PASSWORD",
+                "changer le mot de passe".toUpperCase(),
                 style: TextStyle(
                     color: backgroundColor,
                     fontSize: 20.sp,
@@ -90,7 +96,21 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                 obscureText: !showPassword,
                 controller: passwordController,
                 validator: (value) {
-                  return Validator.validatePassword(value ?? "");
+                  String? x = Validator.validatePassword(value ?? "");
+                  if (x != null) {
+                    if (additionalHeight1 == 0) {
+                      setState(() {
+                        additionalHeight1 += 30;
+                      });
+                    }
+                  } else {
+                    if (additionalHeight1 == 30) {
+                      setState(() {
+                        additionalHeight1 -= 30;
+                      });
+                    }
+                  }
+                  return x;
                 },
                 decoration: InputDecoration(
                   focusedBorder: const UnderlineInputBorder(
@@ -124,7 +144,21 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                 obscureText: !showNewPassword,
                 controller: newPassController,
                 validator: (value) {
-                  return Validator.validatePassword(value ?? "");
+                  String? x = Validator.validatePassword(value ?? "");
+                  if (x != null) {
+                    if (additionalHeight2 == 0) {
+                      setState(() {
+                        additionalHeight2 += 30;
+                      });
+                    }
+                  } else {
+                    if (additionalHeight2 == 30) {
+                      setState(() {
+                        additionalHeight2 -= 30;
+                      });
+                    }
+                  }
+                  return x;
                 },
                 decoration: InputDecoration(
                   focusedBorder: const UnderlineInputBorder(
@@ -158,7 +192,21 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                 obscureText: !showCPassword,
                 controller: cPassController,
                 validator: (value) {
-                  return Validator.validatePassword(value ?? "");
+                  String? x = Validator.validatePassword(value ?? "");
+                  if (x != null) {
+                    if (additionalHeight3 == 0) {
+                      setState(() {
+                        additionalHeight3 += 30;
+                      });
+                    }
+                  } else {
+                    if (additionalHeight3 == 30) {
+                      setState(() {
+                        additionalHeight3 -= 30;
+                      });
+                    }
+                  }
+                  return x;
                 },
                 decoration: InputDecoration(
                   focusedBorder: const UnderlineInputBorder(
@@ -181,7 +229,7 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                   isDense: true,
                 ),
               ),
-              verticalSpaceMedium(),
+              const Spacer(),
               CustomButton(
                   title: "Save",
                   onTap: () async {
@@ -195,10 +243,42 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                           .then((value) {
                         if (value) {
                           widget.completer!(DialogResponse(confirmed: true));
+                        } else {
+                          return AlertDialog(
+                            title: Text(
+                              'Save The Planet',
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: [
+                                  Text(
+                                    'Plant Tress and reduce Carbon Emission.',
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2,
+                                  ),
+                                  Text(
+                                    'Would you like to approve of this message?',
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('Approve'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
                         }
                       });
                     }
                   }),
+              verticalSpaceSmall()
             ]),
           ),
         ),

@@ -9,6 +9,33 @@ import 'package:image_picker/image_picker.dart';
 import '../app/global.dart';
 
 class UserAPIService {
+  Future<bool> deleteAccount({required String token}) async {
+    try {
+      final respo =
+          await http.delete(Uri.parse("$urlApi/client/delete"), headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer $token",
+      });
+
+      if (respo.statusCode == 200) {
+        var data = json.decode(respo.body);
+        try {
+          debugPrint("FETCH USER PASS");
+          return true;
+        } catch (e) {
+          debugPrint(e.toString());
+          debugPrint("FROMJSON FAIL");
+        }
+      } else {
+        debugPrint("SERVER FAIL fetch user details");
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      debugPrint("FETCH USER FAIL");
+    }
+    return false;
+  }
+
   Future<UserModel?> fethUserDetailsApi({required String token}) async {
     try {
       final respo =

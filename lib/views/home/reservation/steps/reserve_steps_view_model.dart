@@ -17,8 +17,9 @@ class ReserveStepsViewModel extends BaseViewModel {
   int get selectedIndex => _selectedIndex;
   bool get isCourse => bookingService.getselectedBookable!.type == null
       ? false
-      : bookingService.getselectedBookable!.type!.name == "initiation" ||
-          bookingService.getselectedBookable!.type!.name == "stage";
+      : bookingService.getselectedBookable!.type!.name == "cours" ||
+          bookingService.getselectedBookable!.type!.name == "stage" ||
+          bookingService.getselectedBookable!.type!.name == "entrainement";
 
   List<Widget> pages = [];
 

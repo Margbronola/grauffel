@@ -31,6 +31,7 @@ mixin _$AmmunitionsModel {
   CaliberModel? get caliber => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   int get qty => throw _privateConstructorUsedError;
+  PivotModel? get pivot => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
@@ -57,12 +58,14 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       CaliberModel? caliber,
       int quantity,
       int qty,
+      PivotModel? pivot,
       DateTime? created_at,
       DateTime? updated_at});
 
   $ImageModelCopyWith<$Res>? get image;
   $BrandModelCopyWith<$Res>? get brand;
   $CaliberModelCopyWith<$Res>? get caliber;
+  $PivotModelCopyWith<$Res>? get pivot;
 }
 
 /// @nodoc
@@ -87,6 +90,7 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
     Object? caliber = freezed,
     Object? quantity = freezed,
     Object? qty = freezed,
+    Object? pivot = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -135,6 +139,10 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -178,6 +186,17 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
       return _then(_value.copyWith(caliber: value));
     });
   }
+
+  @override
+  $PivotModelCopyWith<$Res>? get pivot {
+    if (_value.pivot == null) {
+      return null;
+    }
+
+    return $PivotModelCopyWith<$Res>(_value.pivot!, (value) {
+      return _then(_value.copyWith(pivot: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -199,6 +218,7 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
       CaliberModel? caliber,
       int quantity,
       int qty,
+      PivotModel? pivot,
       DateTime? created_at,
       DateTime? updated_at});
 
@@ -208,6 +228,8 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
   $BrandModelCopyWith<$Res>? get brand;
   @override
   $CaliberModelCopyWith<$Res>? get caliber;
+  @override
+  $PivotModelCopyWith<$Res>? get pivot;
 }
 
 /// @nodoc
@@ -234,6 +256,7 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
     Object? caliber = freezed,
     Object? quantity = freezed,
     Object? qty = freezed,
+    Object? pivot = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
   }) {
@@ -282,6 +305,10 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -309,6 +336,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       this.caliber,
       this.quantity = 1,
       this.qty = 1,
+      this.pivot,
       this.created_at,
       this.updated_at});
 
@@ -340,13 +368,15 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
   @JsonKey()
   final int qty;
   @override
+  final PivotModel? pivot;
+  @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, quantity: $quantity, qty: $qty, created_at: $created_at, updated_at: $updated_at)';
+    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, quantity: $quantity, qty: $qty, pivot: $pivot, created_at: $created_at, updated_at: $updated_at)';
   }
 
   @override
@@ -366,6 +396,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.qty, qty) &&
+            const DeepCollectionEquality().equals(other.pivot, pivot) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
@@ -387,6 +418,7 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       const DeepCollectionEquality().hash(caliber),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(qty),
+      const DeepCollectionEquality().hash(pivot),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(updated_at));
 
@@ -416,6 +448,7 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       final CaliberModel? caliber,
       final int quantity,
       final int qty,
+      final PivotModel? pivot,
       final DateTime? created_at,
       final DateTime? updated_at}) = _$_AmmunitionsModel;
 
@@ -444,6 +477,8 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   int get quantity;
   @override
   int get qty;
+  @override
+  PivotModel? get pivot;
   @override
   DateTime? get created_at;
   @override

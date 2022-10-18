@@ -29,7 +29,8 @@ mixin _$GunModel {
   double? get price => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
-  DateTime? get updated_at =>
+  DateTime? get updated_at => throw _privateConstructorUsedError;
+  PivotModel? get pivot =>
       throw _privateConstructorUsedError; //available_ammunition {}
   bool? get reservable => throw _privateConstructorUsedError; // relatedAmmo []
 // relatedEquipment []
@@ -63,6 +64,7 @@ abstract class $GunModelCopyWith<$Res> {
       String? description,
       DateTime? created_at,
       DateTime? updated_at,
+      PivotModel? pivot,
       bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
@@ -73,6 +75,7 @@ abstract class $GunModelCopyWith<$Res> {
       List<EquipmentModel>? equipments,
       List<AmmunitionsModel>? ammunitions});
 
+  $PivotModelCopyWith<$Res>? get pivot;
   $CaliberModelCopyWith<$Res>? get caliber;
   $BrandModelCopyWith<$Res>? get brand;
   $ImageModelCopyWith<$Res>? get image;
@@ -98,6 +101,7 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? description = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
+    Object? pivot = freezed,
     Object? reservable = freezed,
     Object? caliber = freezed,
     Object? brand = freezed,
@@ -149,6 +153,10 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       reservable: reservable == freezed
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
@@ -186,6 +194,17 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
     ));
+  }
+
+  @override
+  $PivotModelCopyWith<$Res>? get pivot {
+    if (_value.pivot == null) {
+      return null;
+    }
+
+    return $PivotModelCopyWith<$Res>(_value.pivot!, (value) {
+      return _then(_value.copyWith(pivot: value));
+    });
   }
 
   @override
@@ -239,6 +258,7 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       String? description,
       DateTime? created_at,
       DateTime? updated_at,
+      PivotModel? pivot,
       bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
@@ -249,6 +269,8 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       List<EquipmentModel>? equipments,
       List<AmmunitionsModel>? ammunitions});
 
+  @override
+  $PivotModelCopyWith<$Res>? get pivot;
   @override
   $CaliberModelCopyWith<$Res>? get caliber;
   @override
@@ -279,6 +301,7 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? description = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
+    Object? pivot = freezed,
     Object? reservable = freezed,
     Object? caliber = freezed,
     Object? brand = freezed,
@@ -330,6 +353,10 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       reservable: reservable == freezed
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
@@ -384,6 +411,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       this.description,
       this.created_at,
       this.updated_at,
+      this.pivot,
       this.reservable,
       this.caliber,
       this.brand,
@@ -420,6 +448,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
+  @override
+  final PivotModel? pivot;
 //available_ammunition {}
   @override
   final bool? reservable;
@@ -466,7 +496,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, quantity: $quantity, qty: $qty, equipments: $equipments, ammunitions: $ammunitions)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, mags_capacity: $mags_capacity, reserve: $reserve, price: $price, description: $description, created_at: $created_at, updated_at: $updated_at, pivot: $pivot, reservable: $reservable, caliber: $caliber, brand: $brand, image: $image, bookings: $bookings, quantity: $quantity, qty: $qty, equipments: $equipments, ammunitions: $ammunitions)';
   }
 
   @override
@@ -484,6 +514,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('created_at', created_at))
       ..add(DiagnosticsProperty('updated_at', updated_at))
+      ..add(DiagnosticsProperty('pivot', pivot))
       ..add(DiagnosticsProperty('reservable', reservable))
       ..add(DiagnosticsProperty('caliber', caliber))
       ..add(DiagnosticsProperty('brand', brand))
@@ -515,6 +546,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
+            const DeepCollectionEquality().equals(other.pivot, pivot) &&
             const DeepCollectionEquality()
                 .equals(other.reservable, reservable) &&
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
@@ -543,6 +575,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
         const DeepCollectionEquality().hash(description),
         const DeepCollectionEquality().hash(created_at),
         const DeepCollectionEquality().hash(updated_at),
+        const DeepCollectionEquality().hash(pivot),
         const DeepCollectionEquality().hash(reservable),
         const DeepCollectionEquality().hash(caliber),
         const DeepCollectionEquality().hash(brand),
@@ -579,6 +612,7 @@ abstract class _GunModel implements GunModel {
       final String? description,
       final DateTime? created_at,
       final DateTime? updated_at,
+      final PivotModel? pivot,
       final bool? reservable,
       final CaliberModel? caliber,
       final BrandModel? brand,
@@ -611,6 +645,8 @@ abstract class _GunModel implements GunModel {
   DateTime? get created_at;
   @override
   DateTime? get updated_at;
+  @override
+  PivotModel? get pivot;
   @override //available_ammunition {}
   bool? get reservable;
   @override // relatedAmmo []

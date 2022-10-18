@@ -58,10 +58,10 @@ class ReservationViewModel extends ReactiveViewModel {
 
   Future cancelBook(int bookingId) async {
     var response = await _dialogService.showDialog(
-      description: "Annulez votre réservation maintenant?",
-      buttonTitle: "d'accord",
-      cancelTitle: "annuler",
-    );
+        description: "Annulez votre réservation maintenant?",
+        buttonTitle: "d'accord",
+        cancelTitle: "annuler",
+        dialogPlatform: DialogPlatform.Material);
 
     if (response != null) {
       if (response.confirmed) {

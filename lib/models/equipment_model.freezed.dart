@@ -27,6 +27,7 @@ mixin _$EquipmentModel {
   int? get stocks => throw _privateConstructorUsedError;
   int? get type => throw _privateConstructorUsedError;
   int? get unlimited => throw _privateConstructorUsedError;
+  PivotModel? get pivot => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $EquipmentModelCopyWith<$Res> {
       int? stocks,
       int? type,
       int? unlimited,
+      PivotModel? pivot,
       DateTime? created_at,
       int quantity,
       DateTime? updated_at,
@@ -62,6 +64,7 @@ abstract class $EquipmentModelCopyWith<$Res> {
       String? type_name,
       ImageModel? image});
 
+  $PivotModelCopyWith<$Res>? get pivot;
   $BrandModelCopyWith<$Res>? get brand;
   $ImageModelCopyWith<$Res>? get image;
 }
@@ -84,6 +87,7 @@ class _$EquipmentModelCopyWithImpl<$Res>
     Object? stocks = freezed,
     Object? type = freezed,
     Object? unlimited = freezed,
+    Object? pivot = freezed,
     Object? created_at = freezed,
     Object? quantity = freezed,
     Object? updated_at = freezed,
@@ -121,6 +125,10 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.unlimited
           : unlimited // ignore: cast_nullable_to_non_nullable
               as int?,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -150,6 +158,17 @@ class _$EquipmentModelCopyWithImpl<$Res>
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
     ));
+  }
+
+  @override
+  $PivotModelCopyWith<$Res>? get pivot {
+    if (_value.pivot == null) {
+      return null;
+    }
+
+    return $PivotModelCopyWith<$Res>(_value.pivot!, (value) {
+      return _then(_value.copyWith(pivot: value));
+    });
   }
 
   @override
@@ -190,6 +209,7 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       int? stocks,
       int? type,
       int? unlimited,
+      PivotModel? pivot,
       DateTime? created_at,
       int quantity,
       DateTime? updated_at,
@@ -198,6 +218,8 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       String? type_name,
       ImageModel? image});
 
+  @override
+  $PivotModelCopyWith<$Res>? get pivot;
   @override
   $BrandModelCopyWith<$Res>? get brand;
   @override
@@ -224,6 +246,7 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
     Object? stocks = freezed,
     Object? type = freezed,
     Object? unlimited = freezed,
+    Object? pivot = freezed,
     Object? created_at = freezed,
     Object? quantity = freezed,
     Object? updated_at = freezed,
@@ -261,6 +284,10 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.unlimited
           : unlimited // ignore: cast_nullable_to_non_nullable
               as int?,
+      pivot: pivot == freezed
+          ? _value.pivot
+          : pivot // ignore: cast_nullable_to_non_nullable
+              as PivotModel?,
       created_at: created_at == freezed
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -304,6 +331,7 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.stocks,
       this.type,
       this.unlimited,
+      this.pivot,
       this.created_at,
       this.quantity = 1,
       this.updated_at,
@@ -330,6 +358,8 @@ class _$_EquipmentModel implements _EquipmentModel {
   @override
   final int? unlimited;
   @override
+  final PivotModel? pivot;
+  @override
   final DateTime? created_at;
   @override
   @JsonKey()
@@ -348,7 +378,7 @@ class _$_EquipmentModel implements _EquipmentModel {
 
   @override
   String toString() {
-    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, brand: $brand, qty: $qty, type_name: $type_name, image: $image)';
+    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, pivot: $pivot, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, brand: $brand, qty: $qty, type_name: $type_name, image: $image)';
   }
 
   @override
@@ -364,6 +394,7 @@ class _$_EquipmentModel implements _EquipmentModel {
             const DeepCollectionEquality().equals(other.stocks, stocks) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.unlimited, unlimited) &&
+            const DeepCollectionEquality().equals(other.pivot, pivot) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
@@ -386,6 +417,7 @@ class _$_EquipmentModel implements _EquipmentModel {
       const DeepCollectionEquality().hash(stocks),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(unlimited),
+      const DeepCollectionEquality().hash(pivot),
       const DeepCollectionEquality().hash(created_at),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(updated_at),
@@ -416,6 +448,7 @@ abstract class _EquipmentModel implements EquipmentModel {
       final int? stocks,
       final int? type,
       final int? unlimited,
+      final PivotModel? pivot,
       final DateTime? created_at,
       final int quantity,
       final DateTime? updated_at,
@@ -441,6 +474,8 @@ abstract class _EquipmentModel implements EquipmentModel {
   int? get type;
   @override
   int? get unlimited;
+  @override
+  PivotModel? get pivot;
   @override
   DateTime? get created_at;
   @override

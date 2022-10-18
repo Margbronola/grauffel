@@ -1,3 +1,4 @@
+import 'package:egczacademy/models/gunModel/pivot_model.dart';
 import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,6 +17,7 @@ class EquipmentModel with _$EquipmentModel {
       int? stocks,
       int? type,
       int? unlimited,
+      PivotModel? pivot,
       DateTime? created_at,
       @Default(1) int quantity,
       DateTime? updated_at,

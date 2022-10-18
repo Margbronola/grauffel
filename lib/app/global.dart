@@ -38,3 +38,11 @@ String removeHtmlTags(String? text) => text == null
         .replaceAll("<p>", "")
         .replaceAll("</p>", "")
         .replaceAll("<strong>", "");
+
+String dateFormat(DateTime date) {
+  // final DateFormat formatter = DateFormat('MMMM');
+
+  final String formatted =
+      "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
+  return formatted;
+}

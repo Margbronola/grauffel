@@ -52,7 +52,7 @@ class _ReserveCardState extends State<ReserveCard> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(
-                          widget.reserve.image,
+                          widget.reserve.image!,
                         ),
                       )),
                 ),
@@ -64,7 +64,7 @@ class _ReserveCardState extends State<ReserveCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.reserve.title,
+                          widget.reserve.title!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: ThemeData().textTheme.bodyText1!.copyWith(
@@ -89,7 +89,7 @@ class _ReserveCardState extends State<ReserveCard> {
                                         ),
                                         horizontalSpaceSmall(),
                                         Text(
-                                          "du ${dateFormat(widget.reserve.dateFrom)} au ${dateFormat(widget.reserve.dateTo)}",
+                                          "du ${dateFormat(widget.reserve.dateFrom!)} au ${dateFormat(widget.reserve.dateTo!)}",
                                           overflow: TextOverflow.clip,
                                         )
                                       ],
@@ -105,7 +105,7 @@ class _ReserveCardState extends State<ReserveCard> {
                                         ),
                                         horizontalSpaceSmall(),
                                         Text(
-                                          "${widget.reserve.startTime.split(":")[0]}h${widget.reserve.startTime.split(":")[1]} à ${widget.reserve.endTime.split(":")[0]}h${widget.reserve.endTime.split(":")[1]}",
+                                          "${widget.reserve.startTime!.split(":")[0]}h${widget.reserve.startTime!.split(":")[1]} à ${widget.reserve.endTime!.split(":")[0]}h${widget.reserve.endTime!.split(":")[1]}",
                                           overflow: TextOverflow.clip,
                                         )
                                       ],
@@ -118,7 +118,7 @@ class _ReserveCardState extends State<ReserveCard> {
                                 ),
                               )
                             : Text(
-                                widget.reserve.description,
+                                widget.reserve.description!,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style:

@@ -9,15 +9,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          dialogBackgroundColor: Colors.white,
+          cardColor: Colors.white,
+          dialogTheme: DialogTheme()),
       home: MyHomePage(title: 'Date Picker Timeline Demo'),
       supportedLocales: [
         Locale('de', 'DE'),
         Locale('fr', 'FR'),
         Locale('en', 'US'),
       ],
-      locale: Locale('de'),
+      locale: Locale('fr'),
     );
   }
 }

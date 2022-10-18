@@ -39,13 +39,10 @@ class SelectDateViewModel extends ReactiveViewModel {
 
   void forwardMonth() {
     currentDate = DateTime(currentDate.year, currentDate.month + 1, 1);
-
     numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
-
     print(numDaysTotal);
     scrollController.animateTo(0,
         curve: Curves.easeIn, duration: const Duration(milliseconds: 300));
-
     notifyListeners();
   }
 
@@ -62,7 +59,8 @@ class SelectDateViewModel extends ReactiveViewModel {
                 currentDate
                     .difference(
                         DateTime(DateTime.now().year, DateTime.now().month, 0))
-                    .inDays;
+                    .inDays +
+                2;
       } else {
         numDaysTotal = daysInMonth(currentDate.year, currentDate.month);
       }

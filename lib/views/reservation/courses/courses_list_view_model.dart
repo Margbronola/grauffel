@@ -58,6 +58,7 @@ class CoursesListViewModel extends BaseViewModel {
 
   void navigateToReservation({required ActivityModel bookable}) async {
     _bookingService.setSelectedBookable = bookable;
+    print(bookable);
     if (_bookingService.getselectedBookable != null) {
       _navigationService.navigateToView(const ReserveStepsView());
     }

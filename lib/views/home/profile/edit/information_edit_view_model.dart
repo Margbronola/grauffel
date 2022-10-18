@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../../../app/global.dart';
 import '../../../shared/widget/custom_picker.dart';
 
 class InformationEditViewModel extends ReactiveViewModel {
@@ -47,15 +48,6 @@ class InformationEditViewModel extends ReactiveViewModel {
   bool isfirstNameFucos = false;
   bool islastNameFucos = false;
   bool iscountryFucos = false;
-
-  String dateFormat(DateTime date) {
-    // final DateFormat formatter = DateFormat('MMMM');
-
-    final String formatted = birthdayController.text = user!.birthday!.isEmpty
-        ? ""
-        : "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
-    return formatted;
-  }
 
   void init() {
     if (user != null) {

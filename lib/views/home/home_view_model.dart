@@ -22,6 +22,7 @@ class HomeViewModel extends ReactiveViewModel {
   }
 
   void initState(context) async {
+    _homePagingService.setPage(0);
     FirebaseMessaging.onBackgroundMessage(backgroundHandler);
     FirebaseMessaging.instance.getInitialMessage();
     LocalNotificationService.requestPermissions(

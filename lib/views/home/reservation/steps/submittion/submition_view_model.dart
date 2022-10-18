@@ -29,8 +29,9 @@ class SubmitionViewModel extends ReactiveViewModel {
   ActivityModel? get bookedModel => _bookingService.getselectedBookable!;
   bool get isCourse => bookedModel!.type == null
       ? false
-      : bookedModel!.type!.name == "initiation" ||
-          bookedModel!.type!.name == "stage";
+      : bookedModel!.type!.name == "cours" ||
+          bookedModel!.type!.name == "stage" ||
+          bookedModel!.type!.name == "entrainement";
   List<GunModel> get gunList => _bookingService.getselectedGun;
   List<AmmunitionsModel> get ammunitionList =>
       _bookingService.getselectedAmmunition;

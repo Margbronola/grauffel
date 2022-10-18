@@ -1,3 +1,6 @@
+import 'package:egczacademy/services/authentication_service.dart';
+import 'package:egczacademy/services/user_api_service.dart';
+import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/history/transaction_view.dart';
 import 'package:egczacademy/views/home/settings/notification/notification_settings_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
@@ -11,6 +14,11 @@ class SettingsViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   final DialogService _dialogService = locator<DialogService>();
+
+  final UserAPIService _userAPIService = locator<UserAPIService>();
+  final UserService _userService = locator<UserService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
 
   final Uri _url = Uri.parse("https://www.eg-czacademy.com/fr/condition");
 
@@ -39,16 +47,23 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   void deleteAccount() async {
+    setBusy(true);
     var response = await _dialogService.showDialog(
         description: "Êtes vous sûr de vouloir supprimer votre compte ?",
         buttonTitle: "Confirmer",
         cancelTitle: "Annuler");
 
     if (response!.confirmed) {
-      debugPrint("Confirm");
+      bool deleted =
+          await _userAPIService.deleteAccount(token: _userService.token!);
+
+      if (deleted) {
+        _authenticationService.logout(token: _userService.token!);
+      }
     } else {
       // _navigationService.back();
     }
+    setBusy(false);
   }
 
   Future<void> launchUrlTerm() async {

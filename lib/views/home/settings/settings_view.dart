@@ -27,27 +27,31 @@ class SettingsView extends StatelessWidget {
                 Container(
                     color: kcWhite,
                     padding: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        MaterialButton(
-                          onPressed: model.goToNotificationSettings,
-                          child: settingTile("Notifications"),
-                        ),
-                        MaterialButton(
-                          onPressed: model.showChangeDialog,
-                          child: settingTile("Sécurité"),
-                        ),
-                        MaterialButton(
-                          onPressed: model.launchUrlTerm,
-                          child:
-                              settingTile("Conditions générales d'utilisation"),
-                        ),
-                        MaterialButton(
-                          onPressed: model.deleteAccount,
-                          child: settingTile("Supprimer mon compte"),
-                        ),
-                      ],
-                    )),
+                    child: model.isBusy
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Column(
+                            children: [
+                              MaterialButton(
+                                onPressed: model.goToNotificationSettings,
+                                child: settingTile("Notifications"),
+                              ),
+                              MaterialButton(
+                                onPressed: model.showChangeDialog,
+                                child: settingTile("Sécurité"),
+                              ),
+                              MaterialButton(
+                                onPressed: model.launchUrlTerm,
+                                child: settingTile(
+                                    "Conditions générales d'utilisation"),
+                              ),
+                              MaterialButton(
+                                onPressed: model.deleteAccount,
+                                child: settingTile("Supprimer mon compte"),
+                              ),
+                            ],
+                          )),
                 model.isBusy
                     ? const CustomLoader(
                         withBackground: false,

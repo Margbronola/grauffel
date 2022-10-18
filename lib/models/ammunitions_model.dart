@@ -3,6 +3,8 @@ import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'gunModel/pivot_model.dart';
+
 part 'ammunitions_model.freezed.dart';
 part 'ammunitions_model.g.dart';
 
@@ -20,6 +22,7 @@ class AmmunitionsModel with _$AmmunitionsModel {
       CaliberModel? caliber,
       @Default(1) int quantity,
       @Default(1) int qty,
+      PivotModel? pivot,
       DateTime? created_at,
       DateTime? updated_at}) = _AmmunitionsModel;
   //pivot

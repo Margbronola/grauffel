@@ -13,7 +13,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.locator.dart';
 import '../../services/authentication_service.dart';
-import '../home/home_view.dart';
 import '../shared/color.dart';
 
 class LoginHelper {
@@ -41,10 +40,13 @@ class LoginHelper {
   }
 
   void goToHome() {
-    _navigationService.navigateToView(const HomeView());
+    _navigationService.pushNamedAndRemoveUntil("/home-view");
   }
 
-  Future<void> login({required String email, required String password}) async {
+  Future<void> login({
+    required String email,
+    required String password,
+  }) async {
     await _fireBaseAuthService
         .signIn(email: email, password: password)
         .then((value) async {
@@ -63,7 +65,8 @@ class LoginHelper {
             goToHome();
           } else {
             showFail();
-            _navigationService.navigateToView(const WelcomeView());
+            _navigationService.navigateToView(const WelcomeView(),
+                popGesture: true);
           }
         });
       } else {

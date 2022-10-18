@@ -143,7 +143,7 @@ class ProfileView extends StatelessWidget {
                                       model.user!.birthday != null
                                           ? infoContainer(
                                               "Date de naissance",
-                                              '${model.user!.birthday!.split("-")[0]}/${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}',
+                                              '${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}/${model.user!.birthday!.split("-")[0]}',
                                               double.infinity)
                                           : const SizedBox(),
                                       const SizedBox(
@@ -168,10 +168,8 @@ class ProfileView extends StatelessWidget {
                                         children: [
                                           infoContainer("Code postale",
                                               model.user!.zipcode ?? "", 100.w),
-                                          //TODO: static
                                           infoContainer("City",
                                               model.user!.city ?? '', 80.w),
-                                          //TODO: static
                                           infoContainer(
                                               "Ville",
                                               model.user!.country != null

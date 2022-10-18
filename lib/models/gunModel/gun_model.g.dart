@@ -21,6 +21,9 @@ _$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      pivot: json['pivot'] == null
+          ? null
+          : PivotModel.fromJson(json['pivot'] as Map<String, dynamic>),
       reservable: json['reservable'] as bool?,
       caliber: json['caliber'] == null
           ? null
@@ -54,6 +57,7 @@ Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
       'description': instance.description,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
+      'pivot': instance.pivot,
       'reservable': instance.reservable,
       'caliber': instance.caliber,
       'brand': instance.brand,

@@ -15,6 +15,9 @@ _$_EquipmentModel _$$_EquipmentModelFromJson(Map<String, dynamic> json) =>
       stocks: json['stocks'] as int?,
       type: json['type'] as int?,
       unlimited: json['unlimited'] as int?,
+      pivot: json['pivot'] == null
+          ? null
+          : PivotModel.fromJson(json['pivot'] as Map<String, dynamic>),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -41,6 +44,7 @@ Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>
       'stocks': instance.stocks,
       'type': instance.type,
       'unlimited': instance.unlimited,
+      'pivot': instance.pivot,
       'created_at': instance.created_at?.toIso8601String(),
       'quantity': instance.quantity,
       'updated_at': instance.updated_at?.toIso8601String(),

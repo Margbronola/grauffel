@@ -81,6 +81,7 @@ Widget reservationCards(
                     model.cardSelected(model.bookableCourse.indexOf(e));
                   },
                   reserve: ReserveModel(
+                      type: e.type,
                       dateTo: e.date_to ?? "",
                       dateFrom: e.date_from ?? "",
                       startTime: e.start_time ?? "",

@@ -2,6 +2,7 @@ import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:egczacademy/models/gunModel/pivot_model.dart';
 import 'package:egczacademy/models/image_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
@@ -22,6 +23,7 @@ class GunModel with _$GunModel {
       String? description,
       DateTime? created_at,
       DateTime? updated_at,
+      PivotModel? pivot,
       //available_ammunition {}
       bool? reservable,
       // relatedAmmo []
