@@ -34,6 +34,10 @@ class SettingsView extends StatelessWidget {
                           child: settingTile("Notifications"),
                         ),
                         MaterialButton(
+                          onPressed: model.showChangeDialog,
+                          child: settingTile("Sécurité"),
+                        ),
+                        MaterialButton(
                           onPressed: model.launchUrlTerm,
                           child:
                               settingTile("Conditions générales d'utilisation"),

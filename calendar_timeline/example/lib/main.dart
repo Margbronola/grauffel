@@ -13,10 +13,11 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Date Picker Timeline Demo'),
       supportedLocales: [
+        Locale('de', 'DE'),
         Locale('fr', 'FR'),
         Locale('en', 'US'),
       ],
-      locale: Locale('fr'),
+      locale: Locale('de'),
     );
   }
 }

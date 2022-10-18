@@ -63,17 +63,30 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: size(context).height / 2.5.h,
+          height: size(context).height / 2.8.h,
           width: 334.w,
           child: Form(
             key: formKey,
             child: Column(children: [
               verticalSpaceLarge(),
-              const Text("CHANGE PASSWORD"),
+              Text(
+                "CHANGE PASSWORD",
+                style: TextStyle(
+                    color: backgroundColor,
+                    fontSize: 20.sp,
+                    fontFamily: 'ProductSans',
+                    letterSpacing: 1.3,
+                    fontWeight: FontWeight.bold),
+              ),
+              verticalSpaceMedium(),
               TextFormField(
                 onFieldSubmitted: (String text) {},
                 focusNode: passwordFocusNode,
-                style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  fontFamily: 'ProductSans',
+                  letterSpacing: 1.3,
+                ),
                 obscureText: !showPassword,
                 controller: passwordController,
                 validator: (value) {
@@ -103,7 +116,11 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
               TextFormField(
                 onFieldSubmitted: (String text) {},
                 focusNode: newPassFocusNode,
-                style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                style: TextStyle(
+                  fontFamily: 'ProductSans',
+                  letterSpacing: 1.3,
+                  fontSize: 15.sp,
+                ),
                 obscureText: !showNewPassword,
                 controller: newPassController,
                 validator: (value) {
@@ -126,14 +143,18 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                       color: Colors.grey,
                     ),
                   ),
-                  hintText: "New password",
+                  hintText: "Nouveau mot de passe",
                   isDense: true,
                 ),
               ),
               TextFormField(
                 onFieldSubmitted: (String text) {},
                 focusNode: cPassFocusNode,
-                style: TextStyle(color: backgroundColor, fontSize: 20.sp),
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  fontFamily: 'ProductSans',
+                  letterSpacing: 1.3,
+                ),
                 obscureText: !showCPassword,
                 controller: cPassController,
                 validator: (value) {
@@ -156,7 +177,7 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
                       color: Colors.grey,
                     ),
                   ),
-                  hintText: "Old password",
+                  hintText: "Ancien mot de passe",
                   isDense: true,
                 ),
               ),
