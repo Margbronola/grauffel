@@ -10,9 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          dialogBackgroundColor: Colors.white,
-          cardColor: Colors.white,
-          dialogTheme: DialogTheme()),
+          dialogTheme: DialogTheme(backgroundColor: Colors.white)),
       home: MyHomePage(title: 'Date Picker Timeline Demo'),
       supportedLocales: [
         Locale('de', 'DE'),

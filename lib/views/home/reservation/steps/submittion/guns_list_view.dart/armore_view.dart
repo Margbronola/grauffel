@@ -205,6 +205,7 @@ class ArmoreView extends StatelessWidget {
                           title: "Suivant",
                           onTap: model.selectedGun.isNotEmpty
                               ? () {
+                                  print(model.selectedGun);
                                   onTap();
                                 }
                               : null)
@@ -254,9 +255,15 @@ Widget gunCardView(
                           opacity: gunModel.image == null ? 0.1 : 1,
                           image: gunModel.image == null
                               ? const AssetImage("assets/images/noImage.png")
-                                  as ImageProvider
-                              : CachedNetworkImageProvider(
-                                  "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),
+                              : CachedNetworkImage(
+                                  imageUrl:
+                                      "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}",
+                                  placeholder: (context, url) => const Center(
+                                      child:
+                                          CircularProgressIndicator.adaptive()),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                ) as ImageProvider)),
                 ),
                 SizedBox(
                   height: 5.h,

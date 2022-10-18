@@ -104,20 +104,20 @@ class ReserveStepsViewModel extends BaseViewModel {
   }
 
   void skipPage(int index) {
-    if (index == 2) {
+    if (index == 1) {
       //gun
       bookingService.getselectedGun.clear();
       notifyListeners();
-    } else if (index == 3) {
+    } else if (index == 2) {
       //ammunition
       bookingService.getselectedAmmunition.clear();
       notifyListeners();
-    } else if (index == 4) {
+    } else if (index == 3) {
       bookingService.getselectedEquipment.clear();
       notifyListeners();
       //equipment
     }
-
+    debugPrint(index.toString());
     nextPage(index);
   }
 

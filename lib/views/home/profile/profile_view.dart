@@ -44,23 +44,31 @@ class ProfileView extends StatelessWidget {
                       color: Colors.black.withOpacity(0.5),
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: 100.w,
-                            child: model.user?.image != null
-                                ? CachedNetworkImage(
-                                    imageUrl:
-                                        "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator
-                                            .adaptive()),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                  )
-                                : Image.asset(
-                                    profileImage,
-                                    scale: 7,
-                                    color: Colors.white,
-                                  ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Container(
+                              width: 100.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: model.user?.image != null
+                                  ? CachedNetworkImage(
+                                      fit: BoxFit.cover,
+                                      imageUrl:
+                                          "$urlServer/${model.user!.image!.path}${model.user!.image!.filename}",
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                              child: CircularProgressIndicator
+                                                  .adaptive()),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    )
+                                  : Image.asset(
+                                      profileImage,
+                                      scale: 7,
+                                      color: Colors.white,
+                                    ),
+                            ),
                           ),
                           horizontalSpaceMedium(),
                           Column(

@@ -19,22 +19,45 @@ class ConfirmationDialog extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.h),
           height: 240.h,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    request!.title ?? "",
+                    style: TextStyle(
+                        fontFamily: 'ProductSans',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
+                  //this one is for icon
+                  request!.additionalButtonTitle == null
+                      ? const SizedBox()
+                      : request!.additionalButtonTitle == "warning"
+                          ? Icon(
+                              Icons.warning,
+                              color: Colors.yellow[600],
+                            )
+                          : const SizedBox()
+                ],
+              ),
+              verticalSpaceMedium(),
               Text(
-                request!.title!,
+                request!.description ?? "",
                 style: TextStyle(fontFamily: 'ProductSans', fontSize: 18.sp),
               ),
-              verticalSpaceSmall(),
+              const Spacer(),
               SizedBox(
                 height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    request!.additionalButtonTitle != null
+                    request!.secondaryButtonTitle != null
                         ? SizedBox(
                             width: 110.w,
                             child: MaterialButton(
@@ -42,7 +65,7 @@ class ConfirmationDialog extends StatelessWidget {
                                 completer!(DialogResponse(confirmed: false));
                               },
                               child: Text(
-                                request!.additionalButtonTitle!,
+                                request!.secondaryButtonTitle ?? "",
                                 style: const TextStyle(color: Colors.grey),
                               ),
                             ),
@@ -52,7 +75,7 @@ class ConfirmationDialog extends StatelessWidget {
                     SizedBox(
                       width: 160.w,
                       child: CustomButton(
-                          title: request!.mainButtonTitle!,
+                          title: request!.mainButtonTitle ?? "",
                           onTap: () {
                             completer!(DialogResponse(confirmed: true));
                           }),

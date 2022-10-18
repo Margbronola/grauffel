@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/widget/dialog/confirmation_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/reservation_succes_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/reserve_fail.dart';
 import 'package:egczacademy/views/shared/widget/dialog/upload_dialog.dart';
@@ -17,7 +18,7 @@ enum DialogType {
   reserve,
   reservefail,
   changePass,
-
+  confirmation,
   reservesuccess
 }
 
@@ -40,6 +41,8 @@ void setupDialogUi() {
         ReserveFailDialog(request: sheetRequest, completer: completer),
     DialogType.reservesuccess: (context, sheetRequest, completer) =>
         SuccesReservation(request: sheetRequest, completer: completer),
+    DialogType.confirmation: (context, sheetRequest, completer) =>
+        ConfirmationDialog(request: sheetRequest, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

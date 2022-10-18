@@ -110,13 +110,14 @@ class SubmitionViewModel extends ReactiveViewModel {
           variant: DialogType.reserve,
           barrierDismissible: false);
 
+      _navigationService.back();
+      _homePagingService.setRefresh(true);
+      _homePagingService.onTap(0);
+
       if (response != null) {
         if (response.confirmed) {
-          _bookingApiService.fetchActivesAndPast(
+          await _bookingApiService.fetchActivesAndPast(
               _userService.token, _userService.user!.id.toString());
-          _navigationService.back();
-          _homePagingService.setRefresh(true);
-          _homePagingService.onTap(0);
         }
       }
     } else {
@@ -124,14 +125,15 @@ class SubmitionViewModel extends ReactiveViewModel {
           mainButtonTitle: "ok",
           variant: DialogType.reservefail,
           barrierDismissible: false);
-
-      if (response != null) {
-        if (response.confirmed) {
-          _navigationService.back();
-        } else {
-          _navigationService.back();
-        }
-      }
+      _navigationService.back();
+      _homePagingService.onTap(0);
+      // if (response != null) {
+      //   if (response.confirmed) {
+      //     _navigationService.back();
+      //   } else {
+      //     _navigationService.back();
+      //   }
+      // }
     }
 
     setBusy(false);

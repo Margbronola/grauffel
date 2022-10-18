@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
-import 'package:egczacademy/models/book_course_model.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/course_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
@@ -13,6 +12,7 @@ import 'package:egczacademy/models/time_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
+import '../models/book_course_model.dart';
 
 class BookingAPIService {
   List<BookingModel>? _bookings;
@@ -425,15 +425,6 @@ class BookingAPIService {
           ).toJson()));
       if (respo.statusCode == 200) {
         print("book pass");
-        var data = json.decode(respo.body);
-
-        try {
-          print("BOOKING SEND");
-          print(data);
-        } catch (e) {
-          print(e);
-          print("FROMJSON FAIL");
-        }
         return true;
       } else {
         print(respo.body);

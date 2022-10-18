@@ -236,9 +236,15 @@ Widget amminitionCard(
                           opacity: ammunition.image == null ? 0.1 : 1,
                           image: ammunition.image == null
                               ? const AssetImage("assets/images/noImage.png")
-                              : CachedNetworkImageProvider(
-                                      "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}")
-                                  as ImageProvider)),
+                              : CachedNetworkImage(
+                                  imageUrl:
+                                      "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}",
+                                  placeholder: (context, url) => const Center(
+                                      child:
+                                          CircularProgressIndicator.adaptive()),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                ) as ImageProvider)),
                 ),
                 SizedBox(
                   height: 5.h,

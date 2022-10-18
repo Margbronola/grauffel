@@ -1,4 +1,5 @@
 import 'package:egczacademy/models/activity_model.dart';
+import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -65,8 +66,10 @@ class CoursesListViewModel extends BaseViewModel {
   }
 
   void showExistDialog() {
-    _dialogService.showDialog(
+    _dialogService.showCustomDialog(
+        title: "Réservation",
         description: "Vous avez déjà réservé ce cours.",
-        barrierDismissible: false);
+        mainButtonTitle: "d'accord",
+        variant: DialogType.confirmation);
   }
 }

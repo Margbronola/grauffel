@@ -3,7 +3,6 @@ import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/eq
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
-
 import '../../../../../../app/global.dart';
 import '../../../../../../models/equipment_model.dart';
 import '../../../../../shared/color.dart';
@@ -118,9 +117,18 @@ Widget equipemntCardView(
                                           image: equipmentModel.image == null
                                               ? const AssetImage(
                                                   "assets/images/noImage.png")
-                                              : CachedNetworkImageProvider(
-                                                      "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}")
-                                                  as ImageProvider)),
+                                              : CachedNetworkImage(
+                                                  imageUrl:
+                                                      "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}",
+                                                  placeholder: (context, url) =>
+                                                      const Center(
+                                                          child:
+                                                              CircularProgressIndicator
+                                                                  .adaptive()),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                ) as ImageProvider)),
                                 ),
                               ],
                             ),

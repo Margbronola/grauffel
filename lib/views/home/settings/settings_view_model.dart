@@ -48,10 +48,13 @@ class SettingsViewModel extends BaseViewModel {
 
   void deleteAccount() async {
     setBusy(true);
-    var response = await _dialogService.showDialog(
+    var response = await _dialogService.showCustomDialog(
+        title: "Supprimer le compte",
+        additionalButtonTitle: "warning",
         description: "Êtes vous sûr de vouloir supprimer votre compte ?",
-        buttonTitle: "Confirmer",
-        cancelTitle: "Annuler");
+        mainButtonTitle: "Confirmer",
+        secondaryButtonTitle: "Annuler",
+        variant: DialogType.confirmation);
 
     if (response!.confirmed) {
       bool deleted =

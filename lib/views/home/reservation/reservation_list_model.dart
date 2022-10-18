@@ -39,14 +39,6 @@ class ReservationListModel extends BaseViewModel {
     _bookingService.setSelectedBookable = bookable;
     if (_bookingService.getselectedBookable != null) {
       _navigationService.navigateToView(const ReserveStepsView());
-    } else {
-      _dialogService.showDialog(
-          description: "No TirPrecision or Fun Shoot Found from BO",
-          barrierDismissible: false);
     }
   }
-
-  // void navigateToReservationCell() {
-  //   _navigationService.navigateToView(const ReservationCellView());
-  // }
 }

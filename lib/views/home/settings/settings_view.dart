@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../shared/color.dart';
-import '../../shared/custom_loader.dart';
 import '../../shared/widget/header/header.dart';
 import 'settings_view_model.dart';
 
@@ -27,36 +26,27 @@ class SettingsView extends StatelessWidget {
                 Container(
                     color: kcWhite,
                     padding: const EdgeInsets.all(20),
-                    child: model.isBusy
-                        ? const Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : Column(
-                            children: [
-                              MaterialButton(
-                                onPressed: model.goToNotificationSettings,
-                                child: settingTile("Notifications"),
-                              ),
-                              MaterialButton(
-                                onPressed: model.showChangeDialog,
-                                child: settingTile("Sécurité"),
-                              ),
-                              MaterialButton(
-                                onPressed: model.launchUrlTerm,
-                                child: settingTile(
-                                    "Conditions générales d'utilisation"),
-                              ),
-                              MaterialButton(
-                                onPressed: model.deleteAccount,
-                                child: settingTile("Supprimer mon compte"),
-                              ),
-                            ],
-                          )),
-                model.isBusy
-                    ? const CustomLoader(
-                        withBackground: false,
-                      )
-                    : const SizedBox()
+                    child: Column(
+                      children: [
+                        MaterialButton(
+                          onPressed: model.goToNotificationSettings,
+                          child: settingTile("Notifications"),
+                        ),
+                        MaterialButton(
+                          onPressed: model.showChangeDialog,
+                          child: settingTile("Sécurité"),
+                        ),
+                        MaterialButton(
+                          onPressed: model.launchUrlTerm,
+                          child:
+                              settingTile("Conditions générales d'utilisation"),
+                        ),
+                        MaterialButton(
+                          onPressed: model.deleteAccount,
+                          child: settingTile("Supprimer mon compte"),
+                        ),
+                      ],
+                    )),
               ],
             ),
           ],

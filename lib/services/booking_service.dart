@@ -55,4 +55,6 @@ class BookingService with ReactiveServiceMixin {
   set setSelectedBookable(value) => _selectedBookable.value = value;
   set setSelectedDate(DateTime? value) => _selectedDate.value = value!;
   set setSelectedTime(TimeModel? value) => _selectedTimes.value = value;
+
+  // void purchaseGun(value) => _selectedGun.value.add(value);
 }

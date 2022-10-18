@@ -3,6 +3,7 @@ import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/reservation/cardDetails/reserve_card_details_view.dart';
+import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -29,12 +30,12 @@ class ReservationViewModel extends ReactiveViewModel {
 
   init() async {
     if (_homePagingService.isRefresh) {
-      setBusy(true);
+      _homePagingService.setRefresh(true);
       await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
 
+      _bookingAPIService.past!.sort((a, b) => a.start!.compareTo(b.start!));
       _homePagingService.setRefresh(false);
-      setBusy(false);
     }
     notifyListeners();
   }
@@ -57,11 +58,13 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   Future cancelBook(int bookingId) async {
-    var response = await _dialogService.showDialog(
+    var response = await _dialogService.showCustomDialog(
+        title: "Effacer",
+        additionalButtonTitle: "warning",
         description: "Annulez votre réservation maintenant?",
-        buttonTitle: "d'accord",
-        cancelTitle: "annuler",
-        dialogPlatform: DialogPlatform.Material);
+        mainButtonTitle: "d'accord",
+        secondaryButtonTitle: "annuler",
+        variant: DialogType.confirmation);
 
     if (response != null) {
       if (response.confirmed) {
@@ -82,7 +85,7 @@ class ReservationViewModel extends ReactiveViewModel {
     _navigationService.navigateToView(ReserveCardDetails(
       bookingModel: isActive
           ? _bookingAPIService.actives![index]
-          : _bookingAPIService.actives![index],
+          : _bookingAPIService.past![index],
       user: _userService.user!,
     ));
   }
