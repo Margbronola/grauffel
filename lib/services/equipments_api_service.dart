@@ -48,14 +48,14 @@ class EquipmentsAPIService {
             total: data['total'],
           );
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetchAllEquipments");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH EQUIPMENTS FAIL");
     }
   }

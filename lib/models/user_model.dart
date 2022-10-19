@@ -8,7 +8,6 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   const factory UserModel({
     int? id,
-    // String? avatar,
     String? fullname,
     String? first_name,
     String? last_name,
@@ -26,18 +25,10 @@ class UserModel with _$UserModel {
     String? experience,
     String? equipment,
     String? phone_number,
-    // SubscriptionModel? active_client_subscription,
-    // DateTime? created_at,
-    // DateTime? updated_at,
     CountryModel? country,
     String? firebase_id,
     ImageModel? image,
     String? birthday,
-    // "equipment": null,
-    // "level": null,
-    // "created_at": "2022-06-28T08:32:13.000000Z",
-    // "updated_at": "2022-06-28T08:36:46.000000Z",
-    // "display_name": "blue red (john@gmail.com)",
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, Object?> json) =>

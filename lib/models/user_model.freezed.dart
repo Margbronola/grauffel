@@ -20,7 +20,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int? get id => throw _privateConstructorUsedError; // String? avatar,
+  int? get id => throw _privateConstructorUsedError;
   String? get fullname => throw _privateConstructorUsedError;
   String? get first_name => throw _privateConstructorUsedError;
   String? get last_name => throw _privateConstructorUsedError;
@@ -37,10 +37,7 @@ mixin _$UserModel {
   int? get status => throw _privateConstructorUsedError;
   String? get experience => throw _privateConstructorUsedError;
   String? get equipment => throw _privateConstructorUsedError;
-  String? get phone_number =>
-      throw _privateConstructorUsedError; // SubscriptionModel? active_client_subscription,
-// DateTime? created_at,
-// DateTime? updated_at,
+  String? get phone_number => throw _privateConstructorUsedError;
   CountryModel? get country => throw _privateConstructorUsedError;
   String? get firebase_id => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
@@ -428,7 +425,6 @@ class _$_UserModel implements _UserModel {
 
   @override
   final int? id;
-// String? avatar,
   @override
   final String? fullname;
   @override
@@ -463,9 +459,6 @@ class _$_UserModel implements _UserModel {
   final String? equipment;
   @override
   final String? phone_number;
-// SubscriptionModel? active_client_subscription,
-// DateTime? created_at,
-// DateTime? updated_at,
   @override
   final CountryModel? country;
   @override
@@ -590,7 +583,7 @@ abstract class _UserModel implements UserModel {
 
   @override
   int? get id;
-  @override // String? avatar,
+  @override
   String? get fullname;
   @override
   String? get first_name;
@@ -624,9 +617,7 @@ abstract class _UserModel implements UserModel {
   String? get equipment;
   @override
   String? get phone_number;
-  @override // SubscriptionModel? active_client_subscription,
-// DateTime? created_at,
-// DateTime? updated_at,
+  @override
   CountryModel? get country;
   @override
   String? get firebase_id;

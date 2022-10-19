@@ -82,11 +82,9 @@ class ReservationViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
-  void showCardDetails(int index, {bool isActive = false}) async {
+  void showCardDetails({required BookingModel bookingModel}) async {
     _navigationService.navigateToView(ReserveCardDetails(
-      bookingModel: isActive
-          ? _bookingAPIService.actives![index]
-          : _bookingAPIService.past![index],
+      bookingModel: bookingModel,
       user: _userService.user!,
     ));
   }

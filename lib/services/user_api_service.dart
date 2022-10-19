@@ -20,17 +20,17 @@ class UserAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          debugPrint("FETCH USER PASS");
+          debugPrint("DELETE USER PASS");
           return true;
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetch user details");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH USER FAIL");
     }
     return false;
@@ -50,14 +50,14 @@ class UserAPIService {
           debugPrint("FETCH USER PASS");
           return UserModel.fromJson(data);
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetch user details");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH USER FAIL");
     }
     return null;
@@ -78,14 +78,14 @@ class UserAPIService {
         try {
           debugPrint("CHANGE AVATAR");
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("CHANGE AVATAR FAIL");
         }
       } else {
         debugPrint("SERVER FAIL updateAvatar");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("CHANGE AVATAR FAIL");
     }
   }
@@ -112,14 +112,14 @@ class UserAPIService {
         try {
           debugPrint("UPDATE USER PASS");
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAILED updateDetails");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("UPDATE USER FAIL");
     }
   }
@@ -148,7 +148,7 @@ class UserAPIService {
         debugPrint("SERVER FAIL update password");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("UPDATE PASSWORD FAIL");
     }
     return false;
@@ -172,7 +172,7 @@ class UserAPIService {
         debugPrint("SERVER FAIL Fetch History");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("UPDATE PASSWORD FAIL");
     }
     return null;
@@ -201,7 +201,7 @@ class UserAPIService {
         debugPrint("saveFCM pass");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("saveFCM FAIL");
     }
     _notificationStatus = true;
@@ -223,7 +223,7 @@ class UserAPIService {
         debugPrint("removeFCM pass");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint(fcmToken);
       debugPrint("REMOVE FCM  FAIL");
     }

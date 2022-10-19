@@ -31,7 +31,7 @@ class FireBaseAuthService {
       return null;
     } catch (e) {
       debugPrint("firebase fail");
-      debugPrint(e.toString());
+      print(e);
     }
     return null;
   }

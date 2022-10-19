@@ -69,14 +69,14 @@ class AmmunitionAPIService {
             total: data['total'],
           );
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetchAllAmunition");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH AMMUNITION FAIL");
     }
   }

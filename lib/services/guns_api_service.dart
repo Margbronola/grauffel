@@ -65,14 +65,14 @@ class GunAPIService {
               prev_page_url: data['prev_page_url'],
               total: data['total']);
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetch all guns");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH GUNS FAIL");
     }
   }

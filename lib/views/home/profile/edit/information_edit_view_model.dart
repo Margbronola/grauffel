@@ -180,7 +180,7 @@ class InformationEditViewModel extends ReactiveViewModel {
       debugPrint("image : $image");
       notifyListeners();
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
     }
   }
 

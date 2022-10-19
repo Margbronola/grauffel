@@ -43,7 +43,7 @@ class DocumentAPIService {
         debugPrint("SERVER FAIL uploadDocument");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("UPLOAD DOCS FAIL");
     }
     return false;
@@ -64,14 +64,14 @@ class DocumentAPIService {
         try {
           return ofData.map((e) => DocumentModel.fromJson(e)).toList();
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetchDocuments");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH DOCS FAIL");
     }
     return null;
@@ -106,14 +106,14 @@ class DocumentAPIService {
 
           return newdata;
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetchDocumentTypes");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH DOCSTYPE FAIL");
     }
     return null;

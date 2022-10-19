@@ -8,8 +8,8 @@ import '../app/global.dart';
 class AuthenticationService {
   Future<Map<String, dynamic>?> login(
       {required String firebaseToken, required String deviceName}) async {
-    debugPrint("firbase_token: $firebaseToken");
-    debugPrint("AuthenticationService.login");
+    print("firbase_token: $firebaseToken");
+    print("AuthenticationService.login");
     try {
       final respo = await http.post(Uri.parse("$urlApi/login"), body: {
         "firebase_token": firebaseToken,
@@ -20,20 +20,21 @@ class AuthenticationService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         Fluttertoast.showToast(msg: "Successful Login");
-
+        print("User Data: $data");
         try {
           UserModel user = UserModel.fromJson(data['client']);
           String token = data['access_token'];
 
           return {'user': user, 'token': token};
         } catch (e) {
-          debugPrint(e.toString());
-          debugPrint("convert fail");
+          print("User Data: $data");
+          print(e);
+          debugPrint("convert login fail here");
         }
       }
     } catch (e) {
       debugPrint("server login fail");
-      debugPrint(e.toString());
+      print(e);
       return null;
     }
     return null;
@@ -53,7 +54,7 @@ class AuthenticationService {
   //       return data;
   //     }
   //   } catch (e) {
-  //     debugPrint(e.toString());
+  // print(e);
   //     return null;
   //   }
   //   return null;

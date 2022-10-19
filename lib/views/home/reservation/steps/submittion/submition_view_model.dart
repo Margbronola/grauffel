@@ -102,9 +102,9 @@ class SubmitionViewModel extends ReactiveViewModel {
 
   Future<String?> _startClosing() async {
     await Future.delayed(const Duration(seconds: 5), () {
-      _navigationService.back();
       _homePagingService.setRefresh(true);
       _homePagingService.onTap(0);
+      _navigationService.back();
     });
     return 'Close Dialog by app';
   }
@@ -120,9 +120,9 @@ class SubmitionViewModel extends ReactiveViewModel {
           variant: DialogType.reserve,
           barrierDismissible: false);
 
-      _navigationService.back();
       _homePagingService.setRefresh(true);
       _homePagingService.onTap(0);
+      _navigationService.back();
 
       if (response != null) {
         if (response.confirmed) {
@@ -140,8 +140,9 @@ class SubmitionViewModel extends ReactiveViewModel {
           mainButtonTitle: "ok",
           variant: DialogType.reservefail,
           barrierDismissible: false);
-      _navigationService.back();
+
       _homePagingService.onTap(0);
+      _navigationService.back();
 
       _startClosing().timeout(
         const Duration(seconds: 1),

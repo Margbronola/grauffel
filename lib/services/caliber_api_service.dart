@@ -61,14 +61,14 @@ class CaliberAPIService {
                 fetchCaliberList.map((e) => CaliberModel.fromJson(e)).toList());
           }
         } catch (e) {
-          debugPrint(e.toString());
+          print(e);
           debugPrint("FROMJSON FAIL");
         }
       } else {
         debugPrint("SERVER FAIL fetchCaliber");
       }
     } catch (e) {
-      debugPrint(e.toString());
+      print(e);
       debugPrint("FETCH CALIBER FAIL");
     }
     return;
