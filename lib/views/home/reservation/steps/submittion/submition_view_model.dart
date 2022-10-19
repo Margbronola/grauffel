@@ -100,10 +100,20 @@ class SubmitionViewModel extends ReactiveViewModel {
     );
   }
 
+  Future<String?> _startClosing() async {
+    await Future.delayed(const Duration(seconds: 5), () {
+      _navigationService.back();
+      _homePagingService.setRefresh(true);
+      _homePagingService.onTap(0);
+    });
+    return 'Close Dialog by app';
+  }
+
   void reserver() async {
     setBusy(true);
-    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
 
+    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
+    _startClosing();
     if (isBooked) {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
@@ -120,6 +130,11 @@ class SubmitionViewModel extends ReactiveViewModel {
               _userService.token, _userService.user!.id.toString());
         }
       }
+
+      _startClosing().timeout(
+        const Duration(seconds: 1),
+        onTimeout: () => 'Manualy exit',
+      );
     } else {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
@@ -127,13 +142,11 @@ class SubmitionViewModel extends ReactiveViewModel {
           barrierDismissible: false);
       _navigationService.back();
       _homePagingService.onTap(0);
-      // if (response != null) {
-      //   if (response.confirmed) {
-      //     _navigationService.back();
-      //   } else {
-      //     _navigationService.back();
-      //   }
-      // }
+
+      _startClosing().timeout(
+        const Duration(seconds: 1),
+        onTimeout: () => 'Manualy exit',
+      );
     }
 
     setBusy(false);

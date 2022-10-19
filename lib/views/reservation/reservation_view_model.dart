@@ -35,6 +35,7 @@ class ReservationViewModel extends ReactiveViewModel {
           _userService.token, _userService.user!.id.toString());
 
       _bookingAPIService.past!.sort((a, b) => a.start!.compareTo(b.start!));
+      _bookingAPIService.actives!.sort((a, b) => a.start!.compareTo(b.start!));
       _homePagingService.setRefresh(false);
     }
     notifyListeners();

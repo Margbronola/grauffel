@@ -25,8 +25,17 @@ class ConfirmationDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  request!.additionalButtonTitle == null
+                      ? const SizedBox()
+                      : request!.additionalButtonTitle == "warning"
+                          ? Icon(
+                              Icons.warning,
+                              color: Colors.yellow[600],
+                            )
+                          : const SizedBox(),
+                  horizontalSpaceSmall(),
                   Text(
                     request!.title ?? "",
                     style: TextStyle(
@@ -36,14 +45,6 @@ class ConfirmationDialog extends StatelessWidget {
                         color: Colors.red),
                   ),
                   //this one is for icon
-                  request!.additionalButtonTitle == null
-                      ? const SizedBox()
-                      : request!.additionalButtonTitle == "warning"
-                          ? Icon(
-                              Icons.warning,
-                              color: Colors.yellow[600],
-                            )
-                          : const SizedBox()
                 ],
               ),
               verticalSpaceMedium(),

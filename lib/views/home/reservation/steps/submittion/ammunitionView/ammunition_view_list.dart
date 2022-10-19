@@ -224,27 +224,26 @@ Widget amminitionCard(
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 85.w,
-                  height: 77.h,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(30)),
-                      color: kcWhite,
-                      image: DecorationImage(
-                          fit: BoxFit.fitHeight,
-                          opacity: ammunition.image == null ? 0.1 : 1,
-                          image: ammunition.image == null
-                              ? const AssetImage("assets/images/noImage.png")
-                              : CachedNetworkImage(
-                                  imageUrl:
-                                      "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}",
-                                  placeholder: (context, url) => const Center(
-                                      child:
-                                          CircularProgressIndicator.adaptive()),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ) as ImageProvider)),
+                ClipRRect(
+                  borderRadius:
+                      const BorderRadius.only(bottomRight: Radius.circular(30)),
+                  child: Container(
+                      width: 85.w,
+                      height: 77.h,
+                      decoration: const BoxDecoration(
+                        color: kcWhite,
+                      ),
+                      child: ammunition.image == null
+                          ? Image.asset("assets/images/noImage.png")
+                          : CachedNetworkImage(
+                              fit: BoxFit.cover,
+                              imageUrl:
+                                  "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}",
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator.adaptive()),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            )),
                 ),
                 SizedBox(
                   height: 5.h,

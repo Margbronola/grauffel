@@ -65,7 +65,7 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: size(context).height / 3.h +
+          height: size(context).height / 1.9 +
               additionalHeight1 +
               additionalHeight2 +
               additionalHeight3,
@@ -74,7 +74,7 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
           child: Form(
             key: formKey,
             child: Column(children: [
-              verticalSpaceLarge(),
+              verticalSpaceSmall(),
               Text(
                 "changer le mot de passe".toUpperCase(),
                 style: TextStyle(

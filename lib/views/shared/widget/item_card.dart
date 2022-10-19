@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:egczacademy/views/shared/color.dart';
@@ -35,18 +36,25 @@ class ItemCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 97.w,
-                height: size(context).height,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(30)),
-                    color: kcWhite,
-                    image: DecorationImage(
-                        image: image == null
-                            ? const AssetImage("assets/images/noImage.png")
-                                as ImageProvider
-                            : NetworkImage(image!))),
+              ClipRRect(
+                borderRadius:
+                    const BorderRadius.only(bottomRight: Radius.circular(30)),
+                child: Container(
+                    width: 97.w,
+                    height: size(context).height,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(30))),
+                    child: image == null
+                        ? Image.asset("assets/images/noImage.png")
+                        : CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            imageUrl: image!,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator.adaptive()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          )),
               ),
               Expanded(
                 child: Padding(

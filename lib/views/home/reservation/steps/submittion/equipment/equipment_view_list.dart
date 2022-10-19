@@ -102,33 +102,31 @@ Widget equipemntCardView(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: 97.w,
-                                  height: 77.h,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          bottomRight: Radius.circular(30)),
-                                      color: kcWhite,
-                                      image: DecorationImage(
-                                          fit: BoxFit.fitHeight,
-                                          opacity: equipmentModel.image == null
-                                              ? 0.2
-                                              : 1,
-                                          image: equipmentModel.image == null
-                                              ? const AssetImage(
-                                                  "assets/images/noImage.png")
-                                              : CachedNetworkImage(
-                                                  imageUrl:
-                                                      "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}",
-                                                  placeholder: (context, url) =>
-                                                      const Center(
-                                                          child:
-                                                              CircularProgressIndicator
-                                                                  .adaptive()),
-                                                  errorWidget: (context, url,
-                                                          error) =>
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(30)),
+                                  child: Container(
+                                      width: 85.w,
+                                      height: 77.h,
+                                      decoration: const BoxDecoration(
+                                        color: kcWhite,
+                                      ),
+                                      child: equipmentModel.image == null
+                                          ? Image.asset(
+                                              "assets/images/noImage.png")
+                                          : CachedNetworkImage(
+                                              fit: BoxFit.cover,
+                                              imageUrl:
+                                                  "$urlServer/${equipmentModel.image!.path}/${equipmentModel.image!.filename}",
+                                              placeholder: (context, url) =>
+                                                  const Center(
+                                                      child:
+                                                          CircularProgressIndicator
+                                                              .adaptive()),
+                                              errorWidget:
+                                                  (context, url, error) =>
                                                       const Icon(Icons.error),
-                                                ) as ImageProvider)),
+                                            )),
                                 ),
                               ],
                             ),

@@ -58,27 +58,30 @@ class EquipmentViewQuantity extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Row(
                       children: [
-                        Container(
-                          height: 88.h,
-                          width: 88.w,
-                          decoration: BoxDecoration(
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Container(
+                            height: 88.h,
+                            width: 88.w,
+                            padding: const EdgeInsets.all(3),
+                            decoration: const BoxDecoration(
                               color: Colors.white,
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(30)),
-                              image: DecorationImage(
-                                  fit: BoxFit.fitHeight,
-                                  opacity:
-                                      model.selectedEquipment[index].image ==
-                                              null
-                                          ? 0.2
-                                          : 1,
-                                  image: model.selectedEquipment[index].image ==
-                                          null
-                                      ? const AssetImage(
-                                              "assets/images/noImage.png")
-                                          as ImageProvider
-                                      : CachedNetworkImageProvider(
-                                          "$urlServer/${model.selectedEquipment[index].image!.path}/${model.selectedEquipment[index].image!.filename}"))),
+                            ),
+                            child: model.selectedEquipment[index].image == null
+                                ? Image.asset("assets/images/noImage.png")
+                                : CachedNetworkImage(
+                                    fit: BoxFit.cover,
+                                    imageUrl:
+                                        "$urlServer/${model.selectedEquipment[index].image!.path}/${model.selectedEquipment[index].image!.filename}",
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive()),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                          ),
                         ),
                         horizontalSpaceSmall(),
                         Expanded(
