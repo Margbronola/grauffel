@@ -1,5 +1,8 @@
 import 'package:egczacademy/app/app.locator.dart';
+import 'package:egczacademy/app/global.dart';
+import 'package:egczacademy/models/gunModel/country_model.dart';
 import 'package:egczacademy/models/user_model.dart';
+import 'package:egczacademy/services/countries_service.dart';
 import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +11,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import '../../../../app/global.dart';
 import '../../../shared/widget/custom_picker.dart';
 
 class InformationEditViewModel extends ReactiveViewModel {
@@ -16,6 +18,7 @@ class InformationEditViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
   final ImagePicker _picker = ImagePicker();
   final NavigationService _navigationService = locator<NavigationService>();
+  final CountriesService _countriesService = locator<CountriesService>();
   XFile? image;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -48,8 +51,10 @@ class InformationEditViewModel extends ReactiveViewModel {
   bool isfirstNameFucos = false;
   bool islastNameFucos = false;
   bool iscountryFucos = false;
-
-  void init() {
+  List<CountryModel>? countries;
+  CountryModel? country;
+  int country_id = 0;
+  void init() async {
     if (user != null) {
       emailController.text = user!.email!;
       birthdayController.text = user!.birthday!.isEmpty
@@ -106,6 +111,11 @@ class InformationEditViewModel extends ReactiveViewModel {
       iscountryFucos = countryNode.hasFocus;
       notifyListeners();
     });
+
+    country_id = user!.country_id!;
+    country = user!.country;
+    countries =
+        await _countriesService.fetchCountries(token: _userService.token!);
   }
 
   @override
@@ -137,14 +147,24 @@ class InformationEditViewModel extends ReactiveViewModel {
     if (formKey.currentState!.validate()) {
       debugPrint("validate");
       setBusy(true);
-      await _userAPIService.updateDetails(
+
+      print(birthdayController.text);
+
+      birthdayController.text = birthdayController.text.replaceAll("-", "/");
+      String? birthday =
+          "${birthdayController.text.split("/")[2]}-${birthdayController.text.split("/")[1].length == 1 ? "0${birthdayController.text.split("/")[1]}" : birthdayController.text.split("/")[1]}-${birthdayController.text.split("/")[0]}";
+
+      bool update = await _userAPIService.updateDetails(
           userToEdit: UserModel(
+            email: emailController.text,
             address: addresscontroller.text,
             city: villeController.text,
             phone_number: phoneController.text,
-            email: emailController.text,
-            birthday: birthdayController.text,
+            birthday: birthday,
             zipcode: codeController.text,
+            first_name: firstNameController.text,
+            last_name: lastNameController.text,
+            country_id: country_id,
           ),
           token: _userService.token!);
 
@@ -152,8 +172,10 @@ class InformationEditViewModel extends ReactiveViewModel {
         await _userAPIService.updateAvatar(
             image: image, token: _userService.token!);
       }
+      if (update) {
+        await updateSuccess();
+      }
 
-      await updateSuccess();
       setBusy(false);
 
       _navigationService.back();
@@ -207,7 +229,7 @@ class InformationEditViewModel extends ReactiveViewModel {
         debugPrint('change $date in time zone ${date.timeZoneOffset.inHours}');
       },
       onConfirm: (date) {
-        birthdayController.text = "${date.year}-${date.month}-${date.day}";
+        birthdayController.text = "${date.day}-${date.month}-${date.year}";
         notifyListeners();
       },
       onCancel: () {
@@ -244,7 +266,7 @@ class InformationEditViewModel extends ReactiveViewModel {
       },
       onConfirm: (date) {
         dateNode.nextFocus();
-        birthdayController.text = "${date.year}-${date.month}-${date.day}";
+        birthdayController.text = "${date.day}-${date.month}-${date.year}";
         notifyListeners();
       },
       onCancel: () {
@@ -253,6 +275,13 @@ class InformationEditViewModel extends ReactiveViewModel {
         notifyListeners();
       },
     );
+  }
+
+  void countrySelect(int index) {
+    countryController.text = countries![index].name!;
+    country_id = countries![index].id!;
+    country = countries![index];
+    notifyListeners();
   }
 
   @override

@@ -43,6 +43,7 @@ class CaliberAPIService {
           });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+        print(data);
         try {
           debugPrint("FETCH CALIBER PASS");
           List fetchCaliberList = data['data'];

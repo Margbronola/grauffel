@@ -9,12 +9,16 @@ import '../../../../../../shared/ui_helper.dart';
 import 'caliber_filter_view_model.dart';
 
 class CaliberFilterView extends StatelessWidget {
-  const CaliberFilterView({Key? key}) : super(key: key);
+  final bool isGun;
+  const CaliberFilterView({
+    Key? key,
+    required this.isGun,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CaliberFilterViewModel>.reactive(
-      onModelReady: (model) async => model.init(),
+      onModelReady: (model) async => model.init(isGUn: isGun),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           elevation: 0,

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_picker/Picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../app/global.dart';
@@ -476,8 +477,30 @@ class InformationEditView extends StatelessWidget {
                                       SizedBox(
                                           height: size(context).height * 0.02),
                                       TextFormField(
+                                        readOnly: true,
                                         textInputAction: TextInputAction.next,
                                         keyboardType: TextInputType.text,
+                                        onTap: () {
+                                          print("tap");
+
+                                          Picker(
+                                                  adapter: PickerDataAdapter<
+                                                          String>(
+                                                      pickerdata: model
+                                                          .countries!
+                                                          .map((e) => e.name)
+                                                          .toList()),
+                                                  changeToFirst: true,
+                                                  hideHeader: false,
+                                                  onConfirm: (Picker picker,
+                                                      List value) {
+                                                    print(value);
+                                                    model.countrySelect(
+                                                        value[0]);
+                                                  })
+                                              .showModal(
+                                                  context); //_scaffoldKey.currentState);
+                                        },
                                         style: TextStyle(
                                             color: backgroundColor,
                                             fontSize: 15.sp,

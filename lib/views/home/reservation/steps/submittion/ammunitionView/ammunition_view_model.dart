@@ -38,7 +38,7 @@ class AmmunitionViewModel extends BaseViewModel {
       _bookingService.getselectedAmmunition;
 
   bool get haveorderedGuns => _bookingService.getselectedGun.isNotEmpty;
-
+  bool get loader => _gunListService.loader;
   //paging
   PageController? pageController = PageController();
   int _selectedIndex = 0;
@@ -81,11 +81,14 @@ class AmmunitionViewModel extends BaseViewModel {
   void marqueFilter() {
     _navigationService.navigateToView(const BrandFilterView(
       filterListType: FilterList.ammunition,
+      isGUn: false,
     ));
   }
 
   void caliberFilter() {
-    _navigationService.navigateToView(const CaliberFilterView());
+    _navigationService.navigateToView(const CaliberFilterView(
+      isGun: false,
+    ));
   }
 
   void showDetails(index) async {

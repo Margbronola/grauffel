@@ -231,7 +231,7 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
               ),
               const Spacer(),
               CustomButton(
-                  title: "Save",
+                  title: "Mettre à jour",
                   onTap: () async {
                     if (formKey.currentState!.validate()) {
                       await _userAPIService

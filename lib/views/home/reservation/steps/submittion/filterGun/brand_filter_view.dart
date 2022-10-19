@@ -3,22 +3,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
+
 import 'brand_filter_view_model.dart';
 
 class BrandFilterView extends StatelessWidget {
   final FilterList filterListType;
+  final bool isGUn;
   const BrandFilterView({
     Key? key,
     required this.filterListType,
+    required this.isGUn,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<BrandFilterViewModel>.reactive(
-      onModelReady: (model) async => model.init(filterList: filterListType),
+      onModelReady: (model) async =>
+          model.init(filterList: filterListType, isGUn: isGUn),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           elevation: 0,

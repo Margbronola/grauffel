@@ -16,6 +16,7 @@ import '../services/booking_api_service.dart';
 import '../services/booking_service.dart';
 import '../services/brand_api_service.dart';
 import '../services/caliber_api_service.dart';
+import '../services/countries_service.dart';
 import '../services/courses_api_service.dart';
 import '../services/document_api_service.dart';
 import '../services/document_service.dart';
@@ -56,4 +57,5 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => BookingService());
   locator.registerLazySingleton(() => HomePagingService());
   locator.registerLazySingleton(() => CourseAPIService());
+  locator.registerLazySingleton(() => CountriesService());
 }

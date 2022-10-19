@@ -1,4 +1,5 @@
 import 'package:egczacademy/models/gunModel/brand_model.dart';
+import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
@@ -6,13 +7,14 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../../app/app.locator.dart';
-import 'package:collection/collection.dart';
 import '../../../../../../app/components/enum.dart';
 
 class BrandFilterViewModel extends ReactiveViewModel {
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
   final UserService _userService = locator<UserService>();
   final GunAPIService _gunAPIService = locator<GunAPIService>();
+  final AmmunitionAPIService _ammunitionAPIService =
+      locator<AmmunitionAPIService>();
   final GunListService _gunListService = locator<GunListService>();
 
   late ScrollController controller;
@@ -27,8 +29,11 @@ class BrandFilterViewModel extends ReactiveViewModel {
   List<BrandModel>? get marque => _brandAPIService.brands;
   List copyFilterMarqueIds = [];
 
-  void init({required FilterList filterList}) async {
+  bool _isGunsList = true;
+
+  void init({required FilterList filterList, required bool isGUn}) async {
     setBusy(true);
+    _isGunsList = isGUn;
     if (_brandAPIService.brands == null) {
       debugPrint("fetching");
       await _brandAPIService.fetch(
@@ -59,6 +64,18 @@ class BrandFilterViewModel extends ReactiveViewModel {
         brandIds: _gunListService.filterMarqueIds,
         caliberIds: _gunListService.filterCaliberIds);
     _gunListService.setGunList(_gunAPIService.guns);
+    notifyListeners();
+    print("dispose guns");
+  }
+
+  Future<void> filterAmmunition() async {
+    await _ammunitionAPIService.fetchAllAmunition(
+        token: _userService.token!,
+        brandIds: _gunListService.filterMarqueIds,
+        caliberIds: _gunListService.filterCaliberIds);
+    _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions);
+    notifyListeners();
+    print("dispose calibers");
   }
 
   Future check(bool? isCheck, index) async {
@@ -77,6 +94,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   bool checked(int index) {
+    print("check");
     return _gunListService.filterMarqueIds!.contains(marque![index].id);
   }
 
@@ -91,20 +109,18 @@ class BrandFilterViewModel extends ReactiveViewModel {
         notifyListeners();
       }
     }
-
     return true;
   }
 
   @override
   void dispose() async {
-    Function eq = const ListEquality().equals;
-
-    if (!eq(copyFilterMarqueIds, _gunListService.filterMarqueIds)) {
-      debugPrint("pass");
-      _gunListService.setBusy(true);
+    _gunListService.setBusy(true);
+    if (_isGunsList) {
       await filterGun();
-      _gunListService.setBusy(false);
+    } else {
+      await filterAmmunition();
     }
+    _gunListService.setBusy(false);
 
     super.dispose();
   }

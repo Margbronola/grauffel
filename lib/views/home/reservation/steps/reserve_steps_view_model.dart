@@ -7,7 +7,7 @@ import '../../../../app/app.locator.dart';
 import 'selectDate/select_date_view.dart';
 import 'submittion/ammunitionView/ammunition_view.dart';
 import 'submittion/equipment/equipment_view.dart';
-import 'submittion/guns_list_view.dart/armore_view.dart';
+import 'submittion/gunsListVIew/armore_view.dart';
 import 'submittion/submition_view.dart';
 
 class ReserveStepsViewModel extends BaseViewModel {

@@ -1,8 +1,8 @@
+import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
-import 'package:egczacademy/views/reservation/cardDetails/reserve_card_details_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -12,6 +12,7 @@ import '../../app/app.locator.dart';
 import '../../models/booking_model.dart';
 import '../../services/document_service.dart';
 import '../../services/home_paging_service.dart';
+import 'cardDetails/reserve_card_details_view.dart';
 
 class ReservationViewModel extends ReactiveViewModel {
   bool showHelp = true;
@@ -83,6 +84,10 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   void showCardDetails({required BookingModel bookingModel}) async {
+    List<AmmunitionsModel> ammunitions = bookingModel.ammunitions!.toList();
+    ammunitions.removeWhere((element) => element.pivot!.quantity == 0);
+    bookingModel = bookingModel.copyWith(ammunitions: ammunitions);
+    print(bookingModel.ammunitions!.length);
     _navigationService.navigateToView(ReserveCardDetails(
       bookingModel: bookingModel,
       user: _userService.user!,

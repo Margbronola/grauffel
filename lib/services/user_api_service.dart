@@ -90,31 +90,42 @@ class UserAPIService {
     }
   }
 
-  Future<void> updateDetails(
+  Future<bool> updateDetails(
       {required UserModel userToEdit, required String token}) async {
-    Map data = userToEdit.toJson();
-    print(data);
+    Map<String, dynamic> data = userToEdit.toJson();
+
     data.removeWhere(
       (key, value) => value == null,
     );
 
-    try {
-      final respo = await http.post(Uri.parse("$urlApi/client/update-details"),
-          body: data,
-          headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer $token",
-          });
-      print(respo.body);
-      if (respo.statusCode == 200) {
-        var data = json.decode(respo.body);
+    data.forEach((key, value) async {
+      if (value.runtimeType != String) {
+        data.update(key, (value) => value.toString());
+      }
+    });
 
-        try {
-          debugPrint("UPDATE USER PASS");
-        } catch (e) {
-          print(e);
-          debugPrint("FROMJSON FAIL");
-        }
+    print("DATA");
+    print(data);
+
+    try {
+      final respo = await http.post(
+        Uri.parse("$urlApi/client/update-details"),
+        headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer $token",
+        },
+        body: data,
+      );
+      print("BODY ${respo.body}");
+      if (respo.statusCode == 200) {
+        // try {
+        debugPrint("UPDATE USER PASS");
+        return true;
+
+        // } catch (e) {
+        //   print(e);
+        //   debugPrint("FROMJSON FAIL");
+        // }
       } else {
         debugPrint("SERVER FAILED updateDetails");
       }
@@ -122,6 +133,7 @@ class UserAPIService {
       print(e);
       debugPrint("UPDATE USER FAIL");
     }
+    return false;
   }
 
   Future<bool> updatePassword(

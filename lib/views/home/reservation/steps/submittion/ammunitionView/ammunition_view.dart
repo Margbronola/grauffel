@@ -31,17 +31,22 @@ class AmmunitionView extends StatelessWidget {
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: PageView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: model.pageController,
-                    onPageChanged: model.nextIndex,
-                    children: <Widget>[
-                      AmmunitionViewList(model: model),
-                      AmmunitionViewQuantity(model: model)
-                    ],
-                  ),
-                ),
+                model.loader
+                    ? const Expanded(
+                        child: Center(
+                        child: CircularProgressIndicator(),
+                      ))
+                    : Expanded(
+                        child: PageView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: model.pageController,
+                          onPageChanged: model.nextIndex,
+                          children: <Widget>[
+                            AmmunitionViewList(model: model),
+                            AmmunitionViewQuantity(model: model)
+                          ],
+                        ),
+                      ),
                 const Divider(
                   color: greyLight,
                   thickness: 1,

@@ -1,3 +1,4 @@
+import 'package:egczacademy/services/countries_service.dart';
 import 'package:egczacademy/services/courses_api_service.dart';
 import 'package:egczacademy/services/document_service.dart';
 import 'package:egczacademy/services/firebase_auth_service.dart';
@@ -84,6 +85,9 @@ import '../views/splash/splash_view.dart';
   ),
   LazySingleton(
     classType: CourseAPIService,
+  ),
+  LazySingleton(
+    classType: CountriesService,
   ),
   // LazySingleton(
   //   classType: FireBaseMessagingService,

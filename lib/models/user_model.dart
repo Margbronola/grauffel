@@ -31,6 +31,6 @@ class UserModel with _$UserModel {
     String? birthday,
   }) = _UserModel;
 
-  factory UserModel.fromJson(Map<String, Object?> json) =>
+  factory UserModel.fromJson(Map<String, dynamic?> json) =>
       _$UserModelFromJson(json);
 }
