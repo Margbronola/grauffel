@@ -24,7 +24,7 @@ class AmmunitionViewList extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         children: [
-          model.haveorderedGuns && model.gunAmmunitionRecommended().isNotEmpty
+          model.haveorderedGuns && model.gunAmmunitionRecommendedList.isNotEmpty
               ? Column(
                   children: [
                     SizedBox(
@@ -52,11 +52,11 @@ class AmmunitionViewList extends StatelessWidget {
                         crossAxisCount: 1,
                         childAspectRatio: 1,
                         children: List.generate(
-                            model.gunAmmunitionRecommended().length, (index) {
+                            model.gunAmmunitionRecommendedList.length, (index) {
                           return amminitionCard(
                               index: index,
                               ammunition:
-                                  model.gunAmmunitionRecommended()[index],
+                                  model.gunAmmunitionRecommendedList[index],
                               model: model);
                         }),
                       ),

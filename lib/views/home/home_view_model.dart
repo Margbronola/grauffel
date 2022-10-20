@@ -37,7 +37,6 @@ class HomeViewModel extends ReactiveViewModel {
     //FOREGRUOUND
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       LocalNotificationService.initialize();
-
       LocalNotificationService.display(message);
     });
 

@@ -127,7 +127,6 @@ class CaliberFilterViewModel extends ReactiveViewModel {
       await filterAmmunition();
     }
     _gunListService.setBusy(false);
-
     super.dispose();
   }
 

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:egczacademy/views/shared/ui_helper.dart';
-
 import '../shared/color.dart';
 import '../shared/widget/app_delegate.dart';
 import 'reservation_card.dart';
@@ -209,66 +208,75 @@ class ReservationView extends StatelessWidget {
                                         cardShimmer(),
                                       ],
                                     )
-                                  : model.actives!.isEmpty
-                                      ? const Center(
-                                          child: Text(
-                                            "Aucune réservation pour le moment",
-                                            style: TextStyle(
-                                              fontFamily: 'ProductSans',
-                                            ),
-                                          ),
+                                  : refresherView(
+                                      model.actives!.isEmpty
+                                          ? const Center(
+                                              child: Text(
+                                                "Aucune réservation pour le moment",
+                                                style: TextStyle(
+                                                  fontFamily: 'ProductSans',
+                                                ),
+                                              ),
+                                            )
+                                          : ListView.builder(
+                                              itemCount: model.actives!.length,
+                                              itemBuilder: ((context, index) =>
+                                                  ReservationCard(
+                                                      onTap: () {
+                                                        model.showCardDetails(
+                                                          bookingModel: model
+                                                              .actives![index],
+                                                        );
+                                                      },
+                                                      cancelBook: () {
+                                                        model.cancelBook(model
+                                                            .actives![index]
+                                                            .id!);
+                                                      },
+                                                      isActive: true,
+                                                      booking: model
+                                                          .actives![index]))),
+                                      model,
+                                      true),
+                              refresherView(
+                                  model.isBusy
+                                      ? ListView(
+                                          children: [
+                                            cardShimmer(),
+                                            verticalSpaceSmall(),
+                                            cardShimmer(),
+                                            verticalSpaceSmall(),
+                                            cardShimmer(),
+                                          ],
                                         )
-                                      : ListView.builder(
-                                          itemCount: model.actives!.length,
-                                          itemBuilder: ((context, index) =>
-                                              ReservationCard(
-                                                  onTap: () {
-                                                    model.showCardDetails(
-                                                      bookingModel:
-                                                          model.actives![index],
-                                                    );
-                                                  },
-                                                  cancelBook: () {
-                                                    model.cancelBook(model
-                                                        .actives![index].id!);
-                                                  },
-                                                  isActive: true,
-                                                  booking:
-                                                      model.actives![index]))),
-                              model.isBusy
-                                  ? ListView(
-                                      children: [
-                                        cardShimmer(),
-                                        verticalSpaceSmall(),
-                                        cardShimmer(),
-                                        verticalSpaceSmall(),
-                                        cardShimmer(),
-                                      ],
-                                    )
-                                  : model.past!.isEmpty
-                                      ? const Center(
-                                          child: Text(
-                                            "Aucune réservation pour le moment",
-                                            style: TextStyle(
-                                              fontFamily: 'ProductSans',
+                                      : model.past!.isEmpty
+                                          ? const Center(
+                                              child: Text(
+                                                "Aucune réservation pour le moment",
+                                                style: TextStyle(
+                                                  fontFamily: 'ProductSans',
+                                                ),
+                                              ),
+                                            )
+                                          : ListView.builder(
+                                              itemCount: model.past!.length,
+                                              itemBuilder: ((context, index) =>
+                                                  ReservationCard(
+                                                      cancelBook: (() =>
+                                                          model.cancelBook(model
+                                                              .past![index]
+                                                              .id!)),
+                                                      onTap: () {
+                                                        model.showCardDetails(
+                                                          bookingModel: model
+                                                              .past![index],
+                                                        );
+                                                      },
+                                                      booking:
+                                                          model.past![index])),
                                             ),
-                                          ),
-                                        )
-                                      : ListView.builder(
-                                          itemCount: model.past!.length,
-                                          itemBuilder: ((context, index) =>
-                                              ReservationCard(
-                                                  cancelBook: (() =>
-                                                      model.cancelBook(model
-                                                          .past![index].id!)),
-                                                  onTap: () {
-                                                    model.showCardDetails(
-                                                      bookingModel:
-                                                          model.past![index],
-                                                    );
-                                                  },
-                                                  booking: model.past![index])),
-                                        ),
+                                  model,
+                                  false)
                             ],
                           ),
                         ),
@@ -282,6 +290,18 @@ class ReservationView extends StatelessWidget {
       viewModelBuilder: () => ReservationViewModel(),
     );
   }
+}
+
+Widget refresherView(Widget body, ReservationViewModel model, bool isActive) {
+  return SmartRefresher(
+      enablePullDown: true,
+      enablePullUp: false,
+      header: const WaterDropHeader(),
+      controller:
+          isActive ? model.refreshController1 : model.refreshController2,
+      onRefresh: model.onRefresh,
+      onLoading: model.onLoading,
+      child: body);
 }
 
 Widget cardShimmer() => Shimmer.fromColors(

@@ -114,13 +114,15 @@ class BrandFilterViewModel extends ReactiveViewModel {
 
   @override
   void dispose() async {
-    _gunListService.setBusy(true);
-    if (_isGunsList) {
-      await filterGun();
-    } else {
-      await filterAmmunition();
+    if (_gunListService.filterMarqueIds!.isNotEmpty) {
+      _gunListService.setBusy(true);
+      if (_isGunsList) {
+        await filterGun();
+      } else {
+        await filterAmmunition();
+      }
+      _gunListService.setBusy(false);
     }
-    _gunListService.setBusy(false);
 
     super.dispose();
   }

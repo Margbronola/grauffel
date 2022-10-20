@@ -15,7 +15,7 @@ import '../../../../../shared/widget/dialog/setup_dialog_ui.dart';
 import '../filterGun/brand_filter_view.dart';
 import '../filterGun/caliber_filter/caliber_filter_view.dart';
 
-class AmmunitionViewModel extends BaseViewModel {
+class AmmunitionViewModel extends ReactiveViewModel {
   final AmmunitionAPIService _ammunitionAPIService =
       locator<AmmunitionAPIService>();
   final UserService _userService = locator<UserService>();
@@ -43,13 +43,13 @@ class AmmunitionViewModel extends BaseViewModel {
   PageController? pageController = PageController();
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
-
-  List<AmmunitionsModel> gunAmmunitionRecommended() {
-    List<AmmunitionsModel> gunAmmunitionRecommendedList = [];
+  List<AmmunitionsModel> gunAmmunitionRecommendedList = [];
+  gunAmmunitionRecommended() async {
     for (GunModel gun in _bookingService.getselectedGun) {
       gunAmmunitionRecommendedList.addAll(gun.ammunitions!);
     }
-    return gunAmmunitionRecommendedList;
+    gunAmmunitionRecommendedList =
+        gunAmmunitionRecommendedList.toSet().toList();
   }
 
   init() async {
@@ -58,8 +58,11 @@ class AmmunitionViewModel extends BaseViewModel {
     await _ammunitionAPIService.fetchAllAmunition(
       token: _userService.token!,
     );
+    await gunAmmunitionRecommended();
 
-    await _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions);
+    await _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions!
+        .where((element) => gunAmmunitionRecommendedList.contains(element))
+        .toList());
     _gunListService.setBusy(false);
     setBusy(false);
   }
@@ -179,4 +182,8 @@ class AmmunitionViewModel extends BaseViewModel {
 
   @override
   notifyListeners();
+
+  @override
+  // TODO: implement reactiveServices
+  List<ReactiveServiceMixin> get reactiveServices => [_gunListService];
 }

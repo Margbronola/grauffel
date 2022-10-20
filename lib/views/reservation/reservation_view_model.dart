@@ -5,6 +5,7 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -32,14 +33,38 @@ class ReservationViewModel extends ReactiveViewModel {
   init() async {
     if (_homePagingService.isRefresh) {
       _homePagingService.setRefresh(true);
+
       await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
-
       _bookingAPIService.past!.sort((a, b) => a.start!.compareTo(b.start!));
       _bookingAPIService.actives!.sort((a, b) => a.start!.compareTo(b.start!));
       _homePagingService.setRefresh(false);
     }
     notifyListeners();
+  }
+
+  final RefreshController refreshController1 =
+      RefreshController(initialRefresh: false);
+
+  final RefreshController refreshController2 =
+      RefreshController(initialRefresh: false);
+
+  void onRefresh() async {
+    // monitor network fetch
+    await _bookingAPIService.fetchActivesAndPast(
+        _userService.token, _userService.user!.id.toString());
+    refreshController1.refreshCompleted();
+    refreshController2.refreshCompleted();
+  }
+
+  void onLoading() async {
+    // monitor network fetch
+    await Future.delayed(const Duration(milliseconds: 1000));
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+    await _bookingAPIService.fetchActivesAndPast(
+        _userService.token, _userService.user!.id.toString());
+    refreshController1.loadComplete();
+    refreshController2.refreshCompleted();
   }
 
   void closeHelp() {
