@@ -42,7 +42,6 @@ class ReservationListModel extends BaseViewModel {
     }
   }
 
-  //TODO: refresh
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 

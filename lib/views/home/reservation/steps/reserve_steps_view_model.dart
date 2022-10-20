@@ -144,8 +144,8 @@ class ReserveStepsViewModel extends BaseViewModel {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     pageController!.dispose();
+    bookingService.dispose();
     super.dispose();
   }
 }
