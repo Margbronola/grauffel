@@ -36,8 +36,7 @@ class ReservationViewModel extends ReactiveViewModel {
       //TODO setbusy
       await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
-      _bookingAPIService.past!.sort((a, b) => a.start!.compareTo(b.start!));
-      _bookingAPIService.actives!.sort((a, b) => a.start!.compareTo(b.start!));
+
       setBusy(false);
       _homePagingService.setRefresh(false);
     }
@@ -56,6 +55,7 @@ class ReservationViewModel extends ReactiveViewModel {
         _userService.token, _userService.user!.id.toString());
     refreshController1.refreshCompleted();
     refreshController2.refreshCompleted();
+    notifyListeners();
   }
 
   void onLoading() async {
@@ -66,6 +66,7 @@ class ReservationViewModel extends ReactiveViewModel {
         _userService.token, _userService.user!.id.toString());
     refreshController1.loadComplete();
     refreshController2.refreshCompleted();
+    notifyListeners();
   }
 
   void closeHelp() {

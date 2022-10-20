@@ -128,6 +128,15 @@ class ReserveStepsViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  void reversePage(int index) {
+    if (index < _selectedIndex) {
+      nextIndex(index);
+      pageController!.animateToPage(index,
+          duration: const Duration(milliseconds: 500), curve: Curves.ease);
+      notifyListeners();
+    }
+  }
+
   void nextIndex(int index) {
     _selectedIndex = index;
     notifyListeners();

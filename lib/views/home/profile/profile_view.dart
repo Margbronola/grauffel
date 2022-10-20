@@ -113,6 +113,7 @@ class ProfileView extends StatelessWidget {
             ),
           ];
         },
+        //TODO: add badge and license
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(
@@ -152,6 +153,35 @@ class ProfileView extends StatelessWidget {
                                           ? infoContainer(
                                               "Date de naissance",
                                               '${model.user!.birthday!.split("-")[1].length == 1 ? "0${model.user!.birthday!.split("-")[1]}" : model.user!.birthday!.split("-")[1]}/${model.user!.birthday!.split("-")[2]}/${model.user!.birthday!.split("-")[0]}',
+                                              double.infinity)
+                                          : const SizedBox(),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      model.user?.client_badge != null
+                                          ? infoContainer(
+                                              "Numéro de badge",
+                                              model.user!.client_badge!.isEmpty
+                                                  ? "Not Specified"
+                                                  : model.user!.client_badge ??
+                                                      "",
+                                              double.infinity,
+                                              isWithBadge: model
+                                                      .user!.reduced_mobility ==
+                                                  1)
+                                          : const SizedBox(),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      model.user?.FFTir_license_number != null
+                                          ? infoContainer(
+                                              "Numéro de Licence",
+                                              model.user!.FFTir_license_number!
+                                                      .isEmpty
+                                                  ? "Not Specified"
+                                                  : model.user!
+                                                          .FFTir_license_number ??
+                                                      "",
                                               double.infinity)
                                           : const SizedBox(),
                                       const SizedBox(
@@ -483,20 +513,32 @@ class ProfileView extends StatelessWidget {
   }
 }
 
-Widget infoContainer(String title, String value, double width) => SizedBox(
+Widget infoContainer(String title, String value, double width,
+        {bool isWithBadge = false}) =>
+    SizedBox(
       width: width,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: customDocGrey,
-              fontSize: 12.sp,
-              fontFamily: 'ProductSans',
-            ),
-            overflow: TextOverflow.ellipsis,
+          Row(
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  color: customDocGrey,
+                  fontSize: 12.sp,
+                  fontFamily: 'ProductSans',
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+              isWithBadge
+                  ? const Icon(
+                      Icons.accessible_forward_sharp,
+                      color: Colors.black,
+                    )
+                  : const SizedBox()
+            ],
           ),
           Text(
             value,

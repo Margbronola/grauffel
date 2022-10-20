@@ -41,6 +41,8 @@ mixin _$ActivityModel {
   String? get end_time => throw _privateConstructorUsedError;
   TypeModel? get type => throw _privateConstructorUsedError;
   AdminModel? get admin => throw _privateConstructorUsedError;
+  int? get max_persons => throw _privateConstructorUsedError;
+  int? get active_booking_count => throw _privateConstructorUsedError;
   List<ActivitySalleModel>? get activitysalle =>
       throw _privateConstructorUsedError;
   List<SalleModel>? get salles => throw _privateConstructorUsedError;
@@ -78,6 +80,8 @@ abstract class $ActivityModelCopyWith<$Res> {
       String? end_time,
       TypeModel? type,
       AdminModel? admin,
+      int? max_persons,
+      int? active_booking_count,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 
@@ -117,6 +121,8 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? end_time = freezed,
     Object? type = freezed,
     Object? admin = freezed,
+    Object? max_persons = freezed,
+    Object? active_booking_count = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -205,6 +211,14 @@ class _$ActivityModelCopyWithImpl<$Res>
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
+      max_persons: max_persons == freezed
+          ? _value.max_persons
+          : max_persons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_booking_count: active_booking_count == freezed
+          ? _value.active_booking_count
+          : active_booking_count // ignore: cast_nullable_to_non_nullable
+              as int?,
       activitysalle: activitysalle == freezed
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -268,6 +282,8 @@ abstract class _$$_ActivityModelCopyWith<$Res>
       String? end_time,
       TypeModel? type,
       AdminModel? admin,
+      int? max_persons,
+      int? active_booking_count,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles});
 
@@ -311,6 +327,8 @@ class __$$_ActivityModelCopyWithImpl<$Res>
     Object? end_time = freezed,
     Object? type = freezed,
     Object? admin = freezed,
+    Object? max_persons = freezed,
+    Object? active_booking_count = freezed,
     Object? activitysalle = freezed,
     Object? salles = freezed,
   }) {
@@ -399,6 +417,14 @@ class __$$_ActivityModelCopyWithImpl<$Res>
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
+      max_persons: max_persons == freezed
+          ? _value.max_persons
+          : max_persons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_booking_count: active_booking_count == freezed
+          ? _value.active_booking_count
+          : active_booking_count // ignore: cast_nullable_to_non_nullable
+              as int?,
       activitysalle: activitysalle == freezed
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
@@ -436,6 +462,8 @@ class _$_ActivityModel implements _ActivityModel {
       this.end_time,
       this.type,
       this.admin,
+      this.max_persons,
+      this.active_booking_count,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles})
       : _activitysalle = activitysalle,
@@ -486,6 +514,10 @@ class _$_ActivityModel implements _ActivityModel {
   final TypeModel? type;
   @override
   final AdminModel? admin;
+  @override
+  final int? max_persons;
+  @override
+  final int? active_booking_count;
   final List<ActivitySalleModel>? _activitysalle;
   @override
   List<ActivitySalleModel>? get activitysalle {
@@ -506,7 +538,7 @@ class _$_ActivityModel implements _ActivityModel {
 
   @override
   String toString() {
-    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, type: $type, admin: $admin, activitysalle: $activitysalle, salles: $salles)';
+    return 'ActivityModel(id: $id, name: $name, description: $description, capacity: $capacity, price: $price, free_duration: $free_duration, course_duration: $course_duration, competition_duration: $competition_duration, status: $status, image: $image, created_at: $created_at, updated_at: $updated_at, has_relation: $has_relation, has_salle: $has_salle, is_active: $is_active, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, type: $type, admin: $admin, max_persons: $max_persons, active_booking_count: $active_booking_count, activitysalle: $activitysalle, salles: $salles)';
   }
 
   @override
@@ -544,6 +576,10 @@ class _$_ActivityModel implements _ActivityModel {
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.admin, admin) &&
             const DeepCollectionEquality()
+                .equals(other.max_persons, max_persons) &&
+            const DeepCollectionEquality()
+                .equals(other.active_booking_count, active_booking_count) &&
+            const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality().equals(other._salles, _salles));
   }
@@ -573,6 +609,8 @@ class _$_ActivityModel implements _ActivityModel {
         const DeepCollectionEquality().hash(end_time),
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(admin),
+        const DeepCollectionEquality().hash(max_persons),
+        const DeepCollectionEquality().hash(active_booking_count),
         const DeepCollectionEquality().hash(_activitysalle),
         const DeepCollectionEquality().hash(_salles)
       ]);
@@ -613,6 +651,8 @@ abstract class _ActivityModel implements ActivityModel {
       final String? end_time,
       final TypeModel? type,
       final AdminModel? admin,
+      final int? max_persons,
+      final int? active_booking_count,
       final List<ActivitySalleModel>? activitysalle,
       final List<SalleModel>? salles}) = _$_ActivityModel;
 
@@ -661,6 +701,10 @@ abstract class _ActivityModel implements ActivityModel {
   TypeModel? get type;
   @override
   AdminModel? get admin;
+  @override
+  int? get max_persons;
+  @override
+  int? get active_booking_count;
   @override
   List<ActivitySalleModel>? get activitysalle;
   @override

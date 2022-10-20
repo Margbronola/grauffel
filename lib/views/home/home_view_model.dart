@@ -17,6 +17,8 @@ class HomeViewModel extends ReactiveViewModel {
   final UserAPIService _userAPIService = locator<UserAPIService>(); //
   final UserService userService = locator<UserService>(); //
 
+  bool get isProfilePage => _homePagingService.isProfileView;
+
   Future<void> backgroundHandler(RemoteMessage message) async {
     //TODO: redirect in docs page
   }
@@ -58,6 +60,7 @@ class HomeViewModel extends ReactiveViewModel {
   }
 
   void changePage(int index) {
+    print("changepage");
     _homePagingService.setPage(index);
     notifyListeners();
   }
@@ -70,6 +73,7 @@ class HomeViewModel extends ReactiveViewModel {
   }
 
   void onTap(int index, {bool isFromReview = false}) {
+    print("tap");
     _homePagingService.onTap(index, isFromReview: isFromReview);
   }
 

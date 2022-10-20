@@ -20,6 +20,8 @@ class HomePagingService with ReactiveServiceMixin {
   bool get isRefresh => _refresh.value;
   int get selectedPage => _selectedPage.value;
 
+  bool get isProfileView => _selectedPage.value == 2;
+
   PageController? get pageController => _pageController.value;
 
   setPage(int index) {

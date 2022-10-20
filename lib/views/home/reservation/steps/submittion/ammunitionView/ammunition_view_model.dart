@@ -33,7 +33,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
   int get filterCaliberIsActiveLength =>
       _gunListService.filterCaliberIds!.length;
 
-  List<AmmunitionsModel>? get ammunitions => _gunListService.ammunition;
+  List<AmmunitionsModel>? get ammunitions => _gunListService.ammunition!;
   List<AmmunitionsModel> get selectedAmmunition =>
       _bookingService.getselectedAmmunition;
 
@@ -60,9 +60,13 @@ class AmmunitionViewModel extends ReactiveViewModel {
     );
     await gunAmmunitionRecommended();
 
-    await _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions!
-        .where((element) => gunAmmunitionRecommendedList.contains(element))
-        .toList());
+    await _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions!);
+    List<int?> gunAmmunitionRecommendedListId =
+        gunAmmunitionRecommendedList.map((e) => e.id).toList();
+
+    ammunitions!.removeWhere(
+        (element) => gunAmmunitionRecommendedListId.contains(element.id));
+
     _gunListService.setBusy(false);
     setBusy(false);
   }

@@ -100,78 +100,116 @@ class ReserveStepsView extends StatelessWidget {
     List<Widget> data = [];
     if (model.isCourse) {
       data = [
-        square(pageIndex: model.selectedIndex, index: 0, title: "Arme"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 0,
+            title: "Arme",
+            model: model),
         divider(
           pageIndex: model.selectedIndex,
           index: 0,
         ),
-        square(pageIndex: model.selectedIndex, index: 1, title: "Munitons"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 1,
+            title: "Munitons",
+            model: model),
         divider(
           pageIndex: model.selectedIndex,
           index: 1,
         ),
-        square(pageIndex: model.selectedIndex, index: 2, title: "Equipement"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 2,
+            title: "Equipement",
+            model: model),
       ];
     } else {
       data = [
-        square(pageIndex: model.selectedIndex, index: 0, title: "Date"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 0,
+            title: "Date",
+            model: model),
         divider(
           pageIndex: model.selectedIndex,
           index: 0,
         ),
-        square(pageIndex: model.selectedIndex, index: 1, title: "Arme"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 1,
+            title: "Arme",
+            model: model),
         divider(
           pageIndex: model.selectedIndex,
           index: 1,
         ),
-        square(pageIndex: model.selectedIndex, index: 2, title: "Munitons"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 2,
+            title: "Munitons",
+            model: model),
         divider(
           pageIndex: model.selectedIndex,
           index: 2,
         ),
-        square(pageIndex: model.selectedIndex, index: 3, title: "Equipement"),
+        square(
+            pageIndex: model.selectedIndex,
+            index: 3,
+            title: "Equipement",
+            model: model),
       ];
     }
     return data;
   }
 
   Widget square(
-          {required int index, required String title, required pageIndex}) =>
-      Column(
-        children: [
-          Container(
-            width: 20.w,
-            height: 20.w,
-            decoration: BoxDecoration(
-              color: pageIndex == index
-                  ? kcWhite
-                  : pageIndex > index
-                      ? buttonColor
-                      : null,
-              border: pageIndex > index
-                  ? null
-                  : Border.all(
-                      color: kcWhite, style: BorderStyle.solid, width: 2),
+          {required int index,
+          required String title,
+          required pageIndex,
+          required ReserveStepsViewModel model}) =>
+      GestureDetector(
+        onTap: () {
+          model.reversePage(index);
+        },
+        child: Column(
+          children: [
+            Container(
+              width: 20.w,
+              height: 20.w,
+              decoration: BoxDecoration(
+                color: pageIndex == index
+                    ? kcWhite
+                    : pageIndex > index
+                        ? buttonColor
+                        : null,
+                border: pageIndex > index
+                    ? null
+                    : Border.all(
+                        color: kcWhite, style: BorderStyle.solid, width: 2),
+              ),
+              child: pageIndex > index
+                  ? Icon(
+                      Icons.check,
+                      size: 13.w,
+                      color: backgroundColor,
+                    )
+                  : null,
             ),
-            child: pageIndex > index
-                ? Icon(
-                    Icons.check,
-                    size: 13.w,
-                    color: backgroundColor,
-                  )
-                : null,
-          ),
-          SizedBox(
-            height: 4.h,
-          ),
-          Center(
-            child: Text(
-              title,
-              style: ThemeData().textTheme.headlineSmall!.copyWith(
-                  fontSize: 9.sp, color: kcWhite, fontWeight: FontWeight.bold),
+            SizedBox(
+              height: 4.h,
             ),
-          ),
-        ],
+            Center(
+              child: Text(
+                title,
+                style: ThemeData().textTheme.headlineSmall!.copyWith(
+                    fontSize: 9.sp,
+                    color: kcWhite,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
       );
   Widget divider({required int index, required pageIndex}) => SizedBox(
       width: 50.w,

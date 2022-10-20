@@ -37,6 +37,8 @@ _$_ActivityModel _$$_ActivityModelFromJson(Map<String, dynamic> json) =>
       admin: json['admin'] == null
           ? null
           : AdminModel.fromJson(json['admin'] as Map<String, dynamic>),
+      max_persons: json['max_persons'] as int?,
+      active_booking_count: json['active_booking_count'] as int?,
       activitysalle: (json['activitysalle'] as List<dynamic>?)
           ?.map((e) => ActivitySalleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -68,6 +70,8 @@ Map<String, dynamic> _$$_ActivityModelToJson(_$_ActivityModel instance) =>
       'end_time': instance.end_time,
       'type': instance.type,
       'admin': instance.admin,
+      'max_persons': instance.max_persons,
+      'active_booking_count': instance.active_booking_count,
       'activitysalle': instance.activitysalle,
       'salles': instance.salles,
     };

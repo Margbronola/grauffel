@@ -3,6 +3,7 @@ import 'package:egczacademy/views/reservation/courses/courses_list_view_model.da
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../models/reserve_model.dart';
 import '../../shared/color.dart';
 import 'package:stacked/stacked.dart';
@@ -11,6 +12,7 @@ import '../../shared/widget/reserve_card.dart';
 
 class CourseListView extends StatelessWidget {
   const CourseListView({Key? key}) : super(key: key);
+  //TODO refreshview
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +27,34 @@ class CourseListView extends StatelessWidget {
                 ? const Expanded(
                     child: Center(child: CircularProgressIndicator()))
                 : Expanded(
-                    child: model.bookableCourse.isEmpty
-                        ? const Center(
-                            child: Text("Pas encore de réservation!"),
-                          )
-                        : ListView(children: [
-                            reservationCards(
-                                model: model,
-                                values: model.cours,
-                                title: "Cours"),
-                            verticalSpaceMedium(),
-                            reservationCards(
-                                model: model,
-                                values: model.stages,
-                                title: "Stages"),
-                            verticalSpaceMedium(),
-                            reservationCards(
-                                model: model,
-                                values: model.entrainement,
-                                title: "Entrainement")
-                          ]),
+                    child: SmartRefresher(
+                      enablePullDown: true,
+                      enablePullUp: true,
+                      header: const WaterDropHeader(),
+                      controller: model.refreshController,
+                      onRefresh: model.onRefresh,
+                      onLoading: model.onLoading,
+                      child: model.bookableCourse.isEmpty
+                          ? const Center(
+                              child: Text("Pas encore de réservation!"),
+                            )
+                          : ListView(children: [
+                              reservationCards(
+                                  model: model,
+                                  values: model.cours,
+                                  title: "Cours"),
+                              verticalSpaceMedium(),
+                              reservationCards(
+                                  model: model,
+                                  values: model.stages,
+                                  title: "Stages"),
+                              verticalSpaceMedium(),
+                              reservationCards(
+                                  model: model,
+                                  values: model.entrainement,
+                                  title: "Entrainement")
+                            ]),
+                    ),
                   ),
           ],
         ),

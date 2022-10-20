@@ -21,32 +21,34 @@ class HomeView extends StatelessWidget {
     return ViewModelBuilder<HomeViewModel>.reactive(
       onModelReady: (model) => model.initState(context),
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 90,
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          leadingWidth: 150.w,
-          title: Image.asset(
-            imagelBigLogo,
-            width: 162.w,
-            height: 54.h,
-          ),
-          actions: [
-            GestureDetector(
-              child: const Icon(
-                Icons.more_vert,
-                size: 30,
+        appBar: model.isProfilePage
+            ? null
+            : AppBar(
+                toolbarHeight: 90,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                leadingWidth: 150.w,
+                title: Image.asset(
+                  imagelBigLogo,
+                  width: 162.w,
+                  height: 54.h,
+                ),
+                actions: [
+                  GestureDetector(
+                    child: const Icon(
+                      Icons.more_vert,
+                      size: 30,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SettingsView()));
+                    },
+                  ),
+                ],
+                automaticallyImplyLeading: false,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingsView()));
-              },
-            ),
-          ],
-          automaticallyImplyLeading: false,
-        ),
         body: PageView(
           controller: model.pageController,
           onPageChanged: model.changePage,

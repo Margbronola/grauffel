@@ -17,8 +17,10 @@ class SubmitionView extends StatelessWidget {
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => SingleChildScrollView(
         child: model.isBusy
-            ? const Center(
-                child: CircularProgressIndicator.adaptive(),
+            ? const Expanded(
+                child: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
               )
             : Column(
                 children: [

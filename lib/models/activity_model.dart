@@ -32,6 +32,8 @@ class ActivityModel with _$ActivityModel {
       String? end_time,
       TypeModel? type,
       AdminModel? admin,
+      int? max_persons,
+      int? active_booking_count,
       List<ActivitySalleModel>? activitysalle,
       List<SalleModel>? salles}) = _ActivityModel;
 

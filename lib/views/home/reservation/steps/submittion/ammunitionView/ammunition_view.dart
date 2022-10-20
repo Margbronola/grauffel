@@ -2,9 +2,7 @@ import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionVi
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
-
 import '../../../../../shared/color.dart';
 import '../../../../../shared/custom_button.dart';
 import '../../../../../shared/ui_helper.dart';

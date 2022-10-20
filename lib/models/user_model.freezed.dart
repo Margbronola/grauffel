@@ -32,9 +32,11 @@ mixin _$UserModel {
   String? get SIA_number => throw _privateConstructorUsedError;
   String? get FFTir_license_number => throw _privateConstructorUsedError;
   String? get credit_points => throw _privateConstructorUsedError;
+  String? get client_badge => throw _privateConstructorUsedError;
   int? get verification => throw _privateConstructorUsedError;
   int? get payment_verification => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
+  int? get reduced_mobility => throw _privateConstructorUsedError;
   String? get experience => throw _privateConstructorUsedError;
   String? get equipment => throw _privateConstructorUsedError;
   String? get phone_number => throw _privateConstructorUsedError;
@@ -66,9 +68,11 @@ abstract class $UserModelCopyWith<$Res> {
       String? SIA_number,
       String? FFTir_license_number,
       String? credit_points,
+      String? client_badge,
       int? verification,
       int? payment_verification,
       int? status,
+      int? reduced_mobility,
       String? experience,
       String? equipment,
       String? phone_number,
@@ -103,9 +107,11 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? SIA_number = freezed,
     Object? FFTir_license_number = freezed,
     Object? credit_points = freezed,
+    Object? client_badge = freezed,
     Object? verification = freezed,
     Object? payment_verification = freezed,
     Object? status = freezed,
+    Object? reduced_mobility = freezed,
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
@@ -163,6 +169,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
               as String?,
+      client_badge: client_badge == freezed
+          ? _value.client_badge
+          : client_badge // ignore: cast_nullable_to_non_nullable
+              as String?,
       verification: verification == freezed
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
@@ -174,6 +184,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reduced_mobility: reduced_mobility == freezed
+          ? _value.reduced_mobility
+          : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
       experience: experience == freezed
           ? _value.experience
@@ -248,9 +262,11 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? SIA_number,
       String? FFTir_license_number,
       String? credit_points,
+      String? client_badge,
       int? verification,
       int? payment_verification,
       int? status,
+      int? reduced_mobility,
       String? experience,
       String? equipment,
       String? phone_number,
@@ -289,9 +305,11 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? SIA_number = freezed,
     Object? FFTir_license_number = freezed,
     Object? credit_points = freezed,
+    Object? client_badge = freezed,
     Object? verification = freezed,
     Object? payment_verification = freezed,
     Object? status = freezed,
+    Object? reduced_mobility = freezed,
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
@@ -349,6 +367,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
               as String?,
+      client_badge: client_badge == freezed
+          ? _value.client_badge
+          : client_badge // ignore: cast_nullable_to_non_nullable
+              as String?,
       verification: verification == freezed
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
@@ -360,6 +382,10 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reduced_mobility: reduced_mobility == freezed
+          ? _value.reduced_mobility
+          : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
       experience: experience == freezed
           ? _value.experience
@@ -409,9 +435,11 @@ class _$_UserModel implements _UserModel {
       this.SIA_number,
       this.FFTir_license_number,
       this.credit_points,
+      this.client_badge,
       this.verification,
       this.payment_verification,
       this.status,
+      this.reduced_mobility,
       this.experience,
       this.equipment,
       this.phone_number,
@@ -448,11 +476,15 @@ class _$_UserModel implements _UserModel {
   @override
   final String? credit_points;
   @override
+  final String? client_badge;
+  @override
   final int? verification;
   @override
   final int? payment_verification;
   @override
   final int? status;
+  @override
+  final int? reduced_mobility;
   @override
   final String? experience;
   @override
@@ -470,7 +502,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, verification: $verification, payment_verification: $payment_verification, status: $status, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
   }
 
   @override
@@ -496,10 +528,14 @@ class _$_UserModel implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other.credit_points, credit_points) &&
             const DeepCollectionEquality()
+                .equals(other.client_badge, client_badge) &&
+            const DeepCollectionEquality()
                 .equals(other.verification, verification) &&
             const DeepCollectionEquality()
                 .equals(other.payment_verification, payment_verification) &&
             const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.reduced_mobility, reduced_mobility) &&
             const DeepCollectionEquality()
                 .equals(other.experience, experience) &&
             const DeepCollectionEquality().equals(other.equipment, equipment) &&
@@ -528,9 +564,11 @@ class _$_UserModel implements _UserModel {
         const DeepCollectionEquality().hash(SIA_number),
         const DeepCollectionEquality().hash(FFTir_license_number),
         const DeepCollectionEquality().hash(credit_points),
+        const DeepCollectionEquality().hash(client_badge),
         const DeepCollectionEquality().hash(verification),
         const DeepCollectionEquality().hash(payment_verification),
         const DeepCollectionEquality().hash(status),
+        const DeepCollectionEquality().hash(reduced_mobility),
         const DeepCollectionEquality().hash(experience),
         const DeepCollectionEquality().hash(equipment),
         const DeepCollectionEquality().hash(phone_number),
@@ -567,9 +605,11 @@ abstract class _UserModel implements UserModel {
       final String? SIA_number,
       final String? FFTir_license_number,
       final String? credit_points,
+      final String? client_badge,
       final int? verification,
       final int? payment_verification,
       final int? status,
+      final int? reduced_mobility,
       final String? experience,
       final String? equipment,
       final String? phone_number,
@@ -606,11 +646,15 @@ abstract class _UserModel implements UserModel {
   @override
   String? get credit_points;
   @override
+  String? get client_badge;
+  @override
   int? get verification;
   @override
   int? get payment_verification;
   @override
   int? get status;
+  @override
+  int? get reduced_mobility;
   @override
   String? get experience;
   @override

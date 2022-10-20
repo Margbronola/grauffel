@@ -65,11 +65,8 @@ class _ChangePassDialogState extends State<ChangePassDialog> {
           decoration: BoxDecoration(
               color: kcWhite, borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: size(context).height / 1.9 +
-              additionalHeight1 +
-              additionalHeight2 +
-              additionalHeight3,
-          width: 334.w,
+          height: size(context).height,
+          width: size(context).width,
           duration: const Duration(milliseconds: 300),
           child: Form(
             key: formKey,

@@ -49,6 +49,9 @@ class BookingAPIService {
                 e.status_name!.toLowerCase() == "cancelled invoiced" ||
                 e.status_name!.toLowerCase() == "cancelled and refunded")
             .toList();
+
+        actives!.sort((a, b) => a.start!.compareTo(b.start!));
+        past!.sort((a, b) => b.start!.compareTo(a.start!));
       }
       print("Actives: ${actives!.length}");
       print("Past: ${past!.length}");
@@ -235,7 +238,9 @@ class BookingAPIService {
                   date_to: x.date_to,
                   price: x.price,
                   status: x.status,
-                  description: x.description));
+                  description: x.description,
+                  active_booking_count: x.active_booking_count,
+                  max_persons: x.max_persons));
             }
           }
         } catch (e) {
