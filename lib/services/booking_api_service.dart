@@ -358,7 +358,7 @@ class BookingAPIService {
     return false;
   }
 
-  Future<bool> book({
+  Future<String> book({
     required String token,
     required DateTime date,
     required String time,
@@ -394,22 +394,21 @@ class BookingAPIService {
         },
         body: json.encode(body),
       );
-
+      var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
-        print("BODY : $body");
-        return true;
+        print("BODY : $data");
+        return "success";
       } else {
         print(respo.body);
-
-        return false;
+        print("CONVERSION JSON EROR IN BOOK");
+        return "";
       }
     } catch (e) {
-      print(e);
-      return false;
+      return e.toString();
     }
   }
 
-  Future<bool> bookCourse({
+  Future<String> bookCourse({
     required int courseId,
     required String token,
     required List<GunModel> guns,
@@ -428,18 +427,20 @@ class BookingAPIService {
             ammunitions: ammunitions,
             equipments: equipments,
           ).toJson()));
+
+      var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
         print("book pass");
-        return true;
+        return "success";
       } else {
         print(respo.body);
         print("SERVER FAIL bookCourses");
-        return false;
+        return "";
       }
     } catch (e) {
       print(e);
       print("FETCH BOOKIGNS FAIL");
+      return e.toString();
     }
-    return false;
   }
 }

@@ -20,6 +20,8 @@ class BrandFilterViewModel extends ReactiveViewModel {
   late ScrollController controller;
   bool isLoadMoreRunning = false;
 
+  int countCheck = 0;
+
   bool get hasNextPage => _brandAPIService.pagingModel != null
       ? _brandAPIService.pagingModel!.next_page_url != null
           ? true
@@ -95,6 +97,8 @@ class BrandFilterViewModel extends ReactiveViewModel {
 
   bool checked(int index) {
     print("check");
+    countCheck++;
+
     return _gunListService.filterMarqueIds!.contains(marque![index].id);
   }
 
@@ -114,13 +118,15 @@ class BrandFilterViewModel extends ReactiveViewModel {
 
   @override
   void dispose() async {
-    _gunListService.setBusy(true);
-    if (_isGunsList) {
-      await filterGun();
-    } else {
-      await filterAmmunition();
+    if (countCheck != 0) {
+      _gunListService.setBusy(true);
+      if (_isGunsList) {
+        await filterGun();
+      } else {
+        await filterAmmunition();
+      }
+      _gunListService.setBusy(false);
     }
-    _gunListService.setBusy(false);
     super.dispose();
   }
 

@@ -17,9 +17,7 @@ class TransactionView extends StatelessWidget {
         ),
         backgroundColor: kcWhite,
         body: model.isBusy || model.transactions == null
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const Center(child: CircularProgressIndicator.adaptive())
             : model.transactions!.isEmpty
                 ? const Center(
                     child: Text("No transactions"),

@@ -71,9 +71,7 @@ class InformationEditView extends StatelessWidget {
               ];
             },
             body: model.isBusy
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? const Center(child: CircularProgressIndicator.adaptive())
                 : SizedBox(
                     height: size(context).height,
                     width: size(context).width,

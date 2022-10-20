@@ -25,8 +25,8 @@ class SuccesReservation extends StatelessWidget {
                 child: Image.asset(
                   imageSmallLogo,
                   color: buttonColor,
-                  width: 200.w,
-                  height: 200.h,
+                  width: size(context).width / 2,
+                  height: size(context).width / 2,
                 ),
               ),
             ),

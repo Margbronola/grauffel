@@ -35,9 +35,8 @@ class ArmoreView extends StatelessWidget {
               children: [
                 model.loader
                     ? const Expanded(
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                        child:
+                            Center(child: CircularProgressIndicator.adaptive()),
                       )
                     : Expanded(
                         child: Container(
@@ -178,8 +177,8 @@ class ArmoreView extends StatelessWidget {
                                         padding: EdgeInsets.only(
                                             top: 10, bottom: 10),
                                         child: Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
+                                            child: CircularProgressIndicator
+                                                .adaptive()),
                                       ),
                                   ],
                                 ),

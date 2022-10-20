@@ -57,9 +57,7 @@ class EquipmentViewList extends StatelessWidget {
                 if (model.isloadDone == true)
                   const Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
+                    child: Center(child: CircularProgressIndicator.adaptive()),
                   ),
               ],
             ),

@@ -29,9 +29,7 @@ class ExperienceEditView extends StatelessWidget {
           elevation: 0,
         ),
         body: model.isBusy
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const Center(child: CircularProgressIndicator.adaptive())
             : GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
                 child: SizedBox(

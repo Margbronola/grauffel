@@ -31,9 +31,8 @@ class AmmunitionView extends StatelessWidget {
               children: [
                 model.loader
                     ? const Expanded(
-                        child: Center(
-                        child: CircularProgressIndicator(),
-                      ))
+                        child:
+                            Center(child: CircularProgressIndicator.adaptive()))
                     : Expanded(
                         child: PageView(
                           physics: const NeverScrollableScrollPhysics(),

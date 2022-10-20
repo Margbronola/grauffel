@@ -30,9 +30,7 @@ class DocumentUploadView extends StatelessWidget {
           elevation: 0,
         ),
         body: model.isBusy
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const Center(child: CircularProgressIndicator.adaptive())
             : SizedBox(
                 width: double.infinity,
                 child: Column(

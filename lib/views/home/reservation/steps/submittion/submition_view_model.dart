@@ -60,6 +60,8 @@ class SubmitionViewModel extends ReactiveViewModel {
   TextEditingController commentTextController = TextEditingController();
   bool isCommentFucos = false;
 
+  String errorString = "";
+
   void init() {
     commentFocusNode.addListener(() {
       isCommentFucos = commentFocusNode.hasFocus;
@@ -70,14 +72,8 @@ class SubmitionViewModel extends ReactiveViewModel {
     date();
   }
 
-  @override
-  void dispose() {
-    _bookingService.dispose();
-    super.dispose();
-  }
-
   Future<bool> reserveBook() async {
-    bool ff = await _bookingApiService.book(
+    errorString = await _bookingApiService.book(
       token: _userService.token!,
       date: _bookingService.getselectedDate,
       time: _bookingService.getselectedTimes!.time!,
@@ -86,18 +82,22 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-
-    return ff;
+    print("here");
+    print(errorString);
+    return errorString.isEmpty;
   }
 
   Future<bool> reserveCourse() async {
-    return await _bookingApiService.bookCourse(
+    errorString = await _bookingApiService.bookCourse(
       courseId: _bookingService.getselectedBookable!.id!,
       token: _userService.token!,
       guns: _bookingService.getselectedGun,
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
+    print("here");
+    print(errorString);
+    return errorString.isEmpty;
   }
 
   Future<String?> _startClosing() async {
@@ -112,20 +112,20 @@ class SubmitionViewModel extends ReactiveViewModel {
   void reserver() async {
     setBusy(true);
 
-    bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
-    //TODO: putback
-    // _startClosing();
-    if (isBooked) {
+    bool isBookedCourse =
+        isCourse ? await reserveCourse() : await reserveBook();
+
+    _startClosing();
+    if (isBookedCourse) {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
           variant: DialogType.reserve,
-          barrierDismissible: false);
-
+          barrierDismissible: false,
+          data: errorString);
       _homePagingService.setRefresh(true);
 
-      //TODO: putback
-      // _homePagingService.onTap(0);
-      // _navigationService.back();
+      _homePagingService.onTap(0);
+      _navigationService.back();
 
       if (response != null) {
         if (response.confirmed) {
@@ -142,11 +142,11 @@ class SubmitionViewModel extends ReactiveViewModel {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
           variant: DialogType.reservefail,
-          barrierDismissible: false);
+          barrierDismissible: false,
+          data: errorString);
 
-      //TODO: putback
-      // _homePagingService.onTap(0);
-      // _navigationService.back();
+      _homePagingService.onTap(0);
+      _navigationService.back();
 
       _startClosing().timeout(
         const Duration(seconds: 1),

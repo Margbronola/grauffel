@@ -96,9 +96,7 @@ class SelectDateView extends StatelessWidget {
                   ? SizedBox(
                       height: 300.h,
                       child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
+                          child: CircularProgressIndicator.adaptive()))
                   : Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),

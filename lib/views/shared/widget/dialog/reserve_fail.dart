@@ -26,15 +26,15 @@ class ReserveFailDialog extends StatelessWidget {
               child: Image.asset(
                 imageSmallLogo,
                 color: buttonColor,
-                width: size(context).width / 5,
-                height: size(context).width / 5,
+                width: size(context).width / 2,
+                height: size(context).width / 2,
               ),
             ),
           ),
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            height: 550.h,
+            height: size(context).height / 1.8,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -73,7 +73,32 @@ class ReserveFailDialog extends StatelessWidget {
                     fontFamily: 'ProductSans',
                   ),
                 ),
-                verticalSpaceLarge(),
+                verticalSpaceSmall(),
+                request!.data != null && request!.data == "no_stock"
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.info,
+                                color: Colors.grey[600],
+                              ),
+                              horizontalSpaceSmall(),
+                              Text(
+                                "Les stocks sont limités!",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSans',
+                                ),
+                              ),
+                            ],
+                          ),
+                          verticalSpaceSmall(),
+                        ],
+                      )
+                    : const SizedBox(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
