@@ -405,7 +405,6 @@ class BookingAPIService {
       }
     } catch (e) {
       print(e);
-
       return false;
     }
   }

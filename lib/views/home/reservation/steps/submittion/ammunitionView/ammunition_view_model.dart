@@ -146,10 +146,15 @@ class AmmunitionViewModel extends ReactiveViewModel {
   }
 
   void increaseBox(int index) {
-    _bookingService.getselectedAmmunition[index] =
-        _bookingService.getselectedAmmunition[index].copyWith(
-            quantity: _bookingService.getselectedAmmunition[index].quantity + 1,
-            qty: _bookingService.getselectedAmmunition[index].qty + 1);
+    if (_bookingService.getselectedAmmunition[index].quantity <
+        _bookingService.getselectedAmmunition[index].stock!) {
+      _bookingService.getselectedAmmunition[index] =
+          _bookingService.getselectedAmmunition[index].copyWith(
+              quantity:
+                  _bookingService.getselectedAmmunition[index].quantity + 1,
+              qty: _bookingService.getselectedAmmunition[index].qty + 1);
+    }
+
     notifyListeners();
   }
 

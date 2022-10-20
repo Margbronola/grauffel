@@ -113,7 +113,8 @@ class SubmitionViewModel extends ReactiveViewModel {
     setBusy(true);
 
     bool isBooked = isCourse ? await reserveCourse() : await reserveBook();
-    _startClosing();
+    //TODO: putback
+    // _startClosing();
     if (isBooked) {
       var response = await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
@@ -121,8 +122,10 @@ class SubmitionViewModel extends ReactiveViewModel {
           barrierDismissible: false);
 
       _homePagingService.setRefresh(true);
-      _homePagingService.onTap(0);
-      _navigationService.back();
+
+      //TODO: putback
+      // _homePagingService.onTap(0);
+      // _navigationService.back();
 
       if (response != null) {
         if (response.confirmed) {
@@ -141,8 +144,9 @@ class SubmitionViewModel extends ReactiveViewModel {
           variant: DialogType.reservefail,
           barrierDismissible: false);
 
-      _homePagingService.onTap(0);
-      _navigationService.back();
+      //TODO: putback
+      // _homePagingService.onTap(0);
+      // _navigationService.back();
 
       _startClosing().timeout(
         const Duration(seconds: 1),

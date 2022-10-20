@@ -58,10 +58,15 @@ class EquipmentViewModel extends BaseViewModel {
   }
 
   void increaseQuantity(int index) {
-    _bookingService.getselectedEquipment[index] =
-        _bookingService.getselectedEquipment[index].copyWith(
-            quantity: _bookingService.getselectedEquipment[index].quantity + 1,
-            qty: _bookingService.getselectedEquipment[index].qty! + 1);
+    if (_bookingService.getselectedEquipment[index].quantity <
+        _bookingService.getselectedEquipment[index].stocks!) {
+      _bookingService.getselectedEquipment[index] =
+          _bookingService.getselectedEquipment[index].copyWith(
+              quantity:
+                  _bookingService.getselectedEquipment[index].quantity + 1,
+              qty: _bookingService.getselectedEquipment[index].qty! + 1);
+    }
+
     notifyListeners();
   }
 

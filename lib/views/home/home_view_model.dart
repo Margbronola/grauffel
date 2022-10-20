@@ -1,4 +1,5 @@
 import 'package:egczacademy/app/app.locator.dart';
+import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
 import 'package:egczacademy/services/local_notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -10,6 +11,7 @@ import '../../services/user_service.dart';
 
 class HomeViewModel extends ReactiveViewModel {
   final HomePagingService _homePagingService = locator<HomePagingService>();
+  final BookingService _bookingService = locator<BookingService>();
   int get selectedIndex => _homePagingService.selectedPage;
   PageController get pageController => _homePagingService.pageController!;
   bool get isFromReview => _homePagingService.isFromReview;
@@ -75,6 +77,13 @@ class HomeViewModel extends ReactiveViewModel {
   void onTap(int index, {bool isFromReview = false}) {
     print("tap");
     _homePagingService.onTap(index, isFromReview: isFromReview);
+  }
+
+  @override
+  // TODO: implement disposed
+  bool get disposed {
+    _bookingService.dispose();
+    return super.disposed;
   }
 
   @override
