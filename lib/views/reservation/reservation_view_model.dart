@@ -32,12 +32,13 @@ class ReservationViewModel extends ReactiveViewModel {
 
   init() async {
     if (_homePagingService.isRefresh) {
-      _homePagingService.setRefresh(true);
-
+      setBusy(true);
+      //TODO setbusy
       await _bookingAPIService.fetchActivesAndPast(
           _userService.token, _userService.user!.id.toString());
       _bookingAPIService.past!.sort((a, b) => a.start!.compareTo(b.start!));
       _bookingAPIService.actives!.sort((a, b) => a.start!.compareTo(b.start!));
+      setBusy(false);
       _homePagingService.setRefresh(false);
     }
     notifyListeners();
