@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:egczacademy/models/booking_model.dart';
-import '../../../app/global.dart';
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import '../../shared/widget/item_card.dart';
@@ -145,13 +144,11 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                           .map((e) => Padding(
                                 padding: EdgeInsets.only(bottom: 10.h),
                                 child: ItemCard(
-                                  image: e.image == null
-                                      ? null
-                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                  image: e.image_thumb_url,
                                   title: e.model!,
                                   brand: e.brand!.name!,
                                   reference: "Référence",
-                                  extraButton: e.pivot!.quantity.toString(),
+                                  extraButton: null,
                                   titleQuantity: "",
                                 ),
                               ))
@@ -163,9 +160,7 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                                 child: ItemCard(
                                   titleQuantity: " boîtes de 50",
                                   extraButton: e.pivot!.quantity.toString(),
-                                  image: e.image == null
-                                      ? null
-                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                  image: e.image_thumb_url,
                                   title: e.name!,
                                   brand: e.brand!.name!,
                                   reference: "Référence",
@@ -180,9 +175,9 @@ class _ReserveCardDetailsState extends State<ReserveCardDetails> {
                                   titleQuantity:
                                       e.quantity > 1 ? " pièces" : " pièce",
                                   extraButton: e.pivot!.quantity.toString(),
-                                  image: e.image == null
+                                  image: e.image_thumb_url == null
                                       ? null
-                                      : "$urlServer/${e.image!.path}/${e.image!.filename}",
+                                      : e.image_thumb_url!,
                                   title: e.name!,
                                   brand: e.type.toString(),
                                   reference: "Référence",

@@ -13,6 +13,7 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
       type_id: json['type_id'] as int?,
       level_id: json['level_id'] as int?,
       max_persons: json['max_persons'] as int?,
+      active_booking_count: json['active_booking_count'] as int?,
       price: (json['price'] as num?)?.toDouble(),
       date_from: json['date_from'] as String?,
       date_to: json['date_to'] as String?,
@@ -30,7 +31,6 @@ _$_CourseModel _$$_CourseModelFromJson(Map<String, dynamic> json) =>
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      active_booking_count: json['active_booking_count'] as int?,
       status_name: json['status_name'] as String?,
       admin: json['admin'] == null
           ? null
@@ -48,6 +48,7 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'type_id': instance.type_id,
       'level_id': instance.level_id,
       'max_persons': instance.max_persons,
+      'active_booking_count': instance.active_booking_count,
       'price': instance.price,
       'date_from': instance.date_from,
       'date_to': instance.date_to,
@@ -61,7 +62,6 @@ Map<String, dynamic> _$$_CourseModelToJson(_$_CourseModel instance) =>
       'status': instance.status,
       'created_at': instance.created_at?.toIso8601String(),
       'updated_at': instance.updated_at?.toIso8601String(),
-      'active_booking_count': instance.active_booking_count,
       'status_name': instance.status_name,
       'admin': instance.admin,
       'type': instance.type,

@@ -2,7 +2,6 @@ import 'package:egczacademy/views/shared/widget/dialog/confirmation_dialog.dart'
 import 'package:egczacademy/views/shared/widget/dialog/reservation_succes_dialog.dart';
 import 'package:egczacademy/views/shared/widget/dialog/reserve_fail.dart';
 import 'package:egczacademy/views/shared/widget/dialog/upload_dialog.dart';
-import 'package:egczacademy/views/shared/widget/dialog/change_pass_dialog.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../../app/app.locator.dart';
 import 'ammunition_dialog.dart';
@@ -17,7 +16,7 @@ enum DialogType {
   equipments,
   reserve,
   reservefail,
-  changePass,
+  // changePass,
   confirmation,
   reservesuccess
 }
@@ -35,8 +34,8 @@ void setupDialogUi() {
         ArmDetails(request: sheetRequest, completer: completer),
     DialogType.reserve: (context, sheetRequest, completer) =>
         ReserveDialog(request: sheetRequest, completer: completer),
-    DialogType.changePass: (context, sheetRequest, completer) =>
-        ChangePassDialog(request: sheetRequest, completer: completer),
+    // DialogType.changePass: (context, sheetRequest, completer) =>
+    //     ChangePassDialog(request: sheetRequest, completer: completer),
     DialogType.reservefail: (context, sheetRequest, completer) =>
         ReserveFailDialog(request: sheetRequest, completer: completer),
     DialogType.reservesuccess: (context, sheetRequest, completer) =>

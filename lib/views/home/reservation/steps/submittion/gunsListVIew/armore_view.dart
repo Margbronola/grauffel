@@ -7,7 +7,6 @@ import 'package:stacked/stacked.dart';
 
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 
-import '../../../../../../app/global.dart';
 import '../../../../../../models/gunModel/gun_model.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/custom_button.dart';
@@ -262,12 +261,12 @@ Widget gunCardView(
                       color: kcWhite,
                       image: DecorationImage(
                           fit: BoxFit.fitHeight,
-                          opacity: gunModel.image == null ? 0.1 : 1,
-                          image: gunModel.image == null
+                          opacity: gunModel.image_thumb_url == null ? 0.1 : 1,
+                          image: gunModel.image_thumb_url == null
                               ? const AssetImage("assets/images/noImage.png")
                                   as ImageProvider
                               : CachedNetworkImageProvider(
-                                  "$urlServer/${gunModel.image!.path}/${gunModel.image!.filename}"))),
+                                  gunModel.image_thumb_url!))),
                 ),
                 SizedBox(
                   height: 5.h,

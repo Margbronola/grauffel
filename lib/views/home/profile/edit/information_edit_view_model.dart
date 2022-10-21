@@ -120,6 +120,7 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   @override
   void dispose() {
+    //controllers
     emailController.dispose();
     birthdayController.dispose();
     emailFocusNode.dispose();
@@ -130,7 +131,7 @@ class InformationEditViewModel extends ReactiveViewModel {
     firstNameController.dispose();
     lastNameController.dispose();
     countryController.dispose();
-
+    //node
     dateNode.dispose();
     phoneNode.dispose();
     addressNode.dispose();

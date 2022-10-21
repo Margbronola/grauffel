@@ -14,7 +14,8 @@ class BookingService with ReactiveServiceMixin {
       _selectedGun,
       _selectedAmmunition,
       _selectedBookable,
-      _selectedDate
+      _selectedDate,
+      _scrollController
     ]);
   }
 
@@ -25,8 +26,12 @@ class BookingService with ReactiveServiceMixin {
     _selectedAmmunition.value.clear();
     _selectedEquipment.value.clear();
     _selectedBookable.value = null;
-    _selectedDate.value = DateTime.now();
+    _selectedDate.value = null;
+    _scrollController.value!.dispose();
   }
+
+  final ReactiveValue<ScrollController?> _scrollController =
+      ReactiveValue<ScrollController?>(ScrollController());
 
   final ReactiveValue<TimeModel?> _selectedTimes =
       ReactiveValue<TimeModel?>(null);
@@ -48,12 +53,13 @@ class BookingService with ReactiveServiceMixin {
       ReactiveValue<ActivityModel?>(null);
   ActivityModel? get getselectedBookable => _selectedBookable.value;
 
-  final ReactiveValue<DateTime> _selectedDate =
-      ReactiveValue<DateTime>(DateTime.now());
-  DateTime get getselectedDate => _selectedDate.value;
+  final ReactiveValue<DateTime?> _selectedDate = ReactiveValue<DateTime?>(null);
+  DateTime? get getselectedDate => _selectedDate.value;
+
+  ScrollController? get scrollController => _scrollController.value;
 
   set setSelectedBookable(value) => _selectedBookable.value = value;
-  set setSelectedDate(DateTime? value) => _selectedDate.value = value!;
+  set setSelectedDate(DateTime? value) => _selectedDate.value = value;
   set setSelectedTime(TimeModel? value) => _selectedTimes.value = value;
 
   // void purchaseGun(value) => _selectedGun.value.add(value);

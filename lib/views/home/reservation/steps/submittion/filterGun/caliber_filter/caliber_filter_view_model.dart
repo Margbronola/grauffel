@@ -1,5 +1,6 @@
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
+import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/caliber_api_service.dart';
 import 'package:egczacademy/services/gun_list_service.dart';
 import 'package:egczacademy/services/guns_api_service.dart';
@@ -14,6 +15,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
   final GunListService _gunListService = locator<GunListService>();
   final GunAPIService _gunAPIService = locator<GunAPIService>();
+  final BookingService _bookingService = locator<BookingService>();
   final AmmunitionAPIService _ammunitionAPIService =
       locator<AmmunitionAPIService>();
 
@@ -80,11 +82,11 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   }
 
   bool checked(int index) {
-    countCheck++;
     return _gunListService.filterCaliberIds!.contains(calibers![index].id);
   }
 
   Future check(bool? isCheck, index) async {
+    countCheck++;
     if (isCheck!) {
       if (calibers!.isNotEmpty) {
         _gunListService.addFilter(calibers![index].id!,
@@ -102,6 +104,9 @@ class CaliberFilterViewModel extends ReactiveViewModel {
 
   Future<void> filterGun() async {
     await _gunAPIService.fetchAllGuns(
+        booked: _bookingService.getselectedBookable!,
+        date: _bookingService.getselectedDate.toString(),
+        time: _bookingService.getselectedTimes,
         token: _userService.token!,
         brandIds: _gunListService.filterMarqueIds,
         caliberIds: _gunListService.filterCaliberIds);

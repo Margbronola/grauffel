@@ -14,25 +14,22 @@ _$_EquipmentModel _$$_EquipmentModelFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       stocks: json['stocks'] as int?,
       type: json['type'] as int?,
-      unlimited: json['unlimited'] as int?,
       pivot: json['pivot'] == null
           ? null
           : PivotModel.fromJson(json['pivot'] as Map<String, dynamic>),
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
-      quantity: json['quantity'] as int? ?? 1,
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
       brand: json['brand'] == null
           ? null
           : BrandModel.fromJson(json['brand'] as Map<String, dynamic>),
+      quantity: json['quantity'] as int? ?? 1,
       qty: json['qty'] as int? ?? 1,
-      type_name: json['type_name'] as String?,
-      image: json['image'] == null
-          ? null
-          : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+      image_url: json['image_url'] as String?,
+      image_thumb_url: json['image_thumb_url'] as String?,
     );
 
 Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>
@@ -43,13 +40,12 @@ Map<String, dynamic> _$$_EquipmentModelToJson(_$_EquipmentModel instance) =>
       'description': instance.description,
       'stocks': instance.stocks,
       'type': instance.type,
-      'unlimited': instance.unlimited,
       'pivot': instance.pivot,
       'created_at': instance.created_at?.toIso8601String(),
-      'quantity': instance.quantity,
       'updated_at': instance.updated_at?.toIso8601String(),
       'brand': instance.brand,
+      'quantity': instance.quantity,
       'qty': instance.qty,
-      'type_name': instance.type_name,
-      'image': instance.image,
+      'image_url': instance.image_url,
+      'image_thumb_url': instance.image_thumb_url,
     };

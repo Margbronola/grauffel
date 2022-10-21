@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:egczacademy/views/shared/widget/menuButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,6 +105,8 @@ class ProfileView extends StatelessWidget {
                               ),
                             ],
                           ),
+                          const Spacer(),
+                          const MenuButton()
                         ],
                       ),
                     ),

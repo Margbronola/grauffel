@@ -41,6 +41,9 @@ class ArmoreViewModel extends ReactiveViewModel {
     initFilter();
     await _gunAPIService
         .fetchAllGuns(
+          booked: _bookingService.getselectedBookable!,
+          date: _bookingService.getselectedDate.toString(),
+          time: _bookingService.getselectedTimes,
           token: _userService.token!,
         )
         .then((value) => null);
@@ -57,7 +60,11 @@ class ArmoreViewModel extends ReactiveViewModel {
       _isloadDone = true;
 
       await _gunAPIService.fetchAllGuns(
-          token: _userService.token!, fetchMore: true);
+          booked: _bookingService.getselectedBookable!,
+          time: _bookingService.getselectedTimes,
+          date: _bookingService.getselectedDate.toString(),
+          token: _userService.token!,
+          fetchMore: true);
       _isloadDone = false;
       notifyListeners();
     }

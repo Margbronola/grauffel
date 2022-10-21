@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../../../../../shared/color.dart';
 import '../../../../../../shared/ui_helper.dart';
 import 'caliber_filter_view_model.dart';

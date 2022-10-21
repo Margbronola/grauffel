@@ -136,7 +136,6 @@ class BookingAPIService {
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
 
           print(_bookable);
-          print("here");
 
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {
@@ -394,10 +393,9 @@ class BookingAPIService {
         },
         body: json.encode(body),
       );
-      var data = json.decode(respo.body);
+
       if (respo.statusCode == 200) {
-        print("BODY : $data");
-        return "success";
+        return "";
       } else {
         print(respo.body);
         print("CONVERSION JSON EROR IN BOOK");
@@ -431,7 +429,7 @@ class BookingAPIService {
       var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
         print("book pass");
-        return "success";
+        return data["message"];
       } else {
         print(respo.body);
         print("SERVER FAIL bookCourses");

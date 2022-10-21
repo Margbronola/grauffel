@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_model.dart';
 
-import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/ui_helper.dart';
 
@@ -70,12 +69,14 @@ class AmmunitionViewQuantity extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(30)),
                             ),
-                            child: model.selectedAmmunition[index].image == null
+                            child: model.selectedAmmunition[index]
+                                        .image_thumb_url ==
+                                    null
                                 ? Image.asset("assets/images/noImage.png")
                                 : CachedNetworkImage(
                                     fit: BoxFit.cover,
-                                    imageUrl:
-                                        "$urlServer/${model.selectedAmmunition[index].image!.path}/${model.selectedAmmunition[index].image!.filename}",
+                                    imageUrl: model.selectedAmmunition[index]
+                                        .image_thumb_url!,
                                     placeholder: (context, url) => const Center(
                                         child: CircularProgressIndicator
                                             .adaptive()),

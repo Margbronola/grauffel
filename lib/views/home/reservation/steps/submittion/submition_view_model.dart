@@ -54,7 +54,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   String date() {
-    return DateFormat.MMMEd('fr').format(_bookingService.getselectedDate);
+    return DateFormat.MMMEd('fr').format(_bookingService.getselectedDate!);
   }
 
   TextEditingController commentTextController = TextEditingController();
@@ -75,14 +75,14 @@ class SubmitionViewModel extends ReactiveViewModel {
   Future<bool> reserveBook() async {
     errorString = await _bookingApiService.book(
       token: _userService.token!,
-      date: _bookingService.getselectedDate,
+      date: _bookingService.getselectedDate!,
       time: _bookingService.getselectedTimes!.time!,
       activityId: _bookingService.getselectedBookable!.id!,
       guns: _bookingService.getselectedGun,
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-    print("here");
+
     print(errorString);
     return errorString.isEmpty;
   }
@@ -95,7 +95,7 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-    print("here");
+
     print(errorString);
     return errorString.isEmpty;
   }

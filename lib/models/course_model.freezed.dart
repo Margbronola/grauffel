@@ -25,6 +25,7 @@ mixin _$CourseModel {
   int? get type_id => throw _privateConstructorUsedError;
   int? get level_id => throw _privateConstructorUsedError;
   int? get max_persons => throw _privateConstructorUsedError;
+  int? get active_booking_count => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
   String? get date_from => throw _privateConstructorUsedError;
   String? get date_to => throw _privateConstructorUsedError;
@@ -38,7 +39,6 @@ mixin _$CourseModel {
   int? get status => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
-  int? get active_booking_count => throw _privateConstructorUsedError;
   String? get status_name => throw _privateConstructorUsedError;
   AdminModel? get admin => throw _privateConstructorUsedError;
   TypeModel? get type => throw _privateConstructorUsedError;
@@ -61,6 +61,7 @@ abstract class $CourseModelCopyWith<$Res> {
       int? type_id,
       int? level_id,
       int? max_persons,
+      int? active_booking_count,
       double? price,
       String? date_from,
       String? date_to,
@@ -74,7 +75,6 @@ abstract class $CourseModelCopyWith<$Res> {
       int? status,
       DateTime? created_at,
       DateTime? updated_at,
-      int? active_booking_count,
       String? status_name,
       AdminModel? admin,
       TypeModel? type,
@@ -99,6 +99,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? type_id = freezed,
     Object? level_id = freezed,
     Object? max_persons = freezed,
+    Object? active_booking_count = freezed,
     Object? price = freezed,
     Object? date_from = freezed,
     Object? date_to = freezed,
@@ -112,7 +113,6 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? status = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
-    Object? active_booking_count = freezed,
     Object? status_name = freezed,
     Object? admin = freezed,
     Object? type = freezed,
@@ -138,6 +138,10 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
       max_persons: max_persons == freezed
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_booking_count: active_booking_count == freezed
+          ? _value.active_booking_count
+          : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
       price: price == freezed
           ? _value.price
@@ -191,10 +195,6 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      active_booking_count: active_booking_count == freezed
-          ? _value.active_booking_count
-          : active_booking_count // ignore: cast_nullable_to_non_nullable
-              as int?,
       status_name: status_name == freezed
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
@@ -250,6 +250,7 @@ abstract class _$$_CourseModelCopyWith<$Res>
       int? type_id,
       int? level_id,
       int? max_persons,
+      int? active_booking_count,
       double? price,
       String? date_from,
       String? date_to,
@@ -263,7 +264,6 @@ abstract class _$$_CourseModelCopyWith<$Res>
       int? status,
       DateTime? created_at,
       DateTime? updated_at,
-      int? active_booking_count,
       String? status_name,
       AdminModel? admin,
       TypeModel? type,
@@ -292,6 +292,7 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? type_id = freezed,
     Object? level_id = freezed,
     Object? max_persons = freezed,
+    Object? active_booking_count = freezed,
     Object? price = freezed,
     Object? date_from = freezed,
     Object? date_to = freezed,
@@ -305,7 +306,6 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? status = freezed,
     Object? created_at = freezed,
     Object? updated_at = freezed,
-    Object? active_booking_count = freezed,
     Object? status_name = freezed,
     Object? admin = freezed,
     Object? type = freezed,
@@ -331,6 +331,10 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
       max_persons: max_persons == freezed
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
+              as int?,
+      active_booking_count: active_booking_count == freezed
+          ? _value.active_booking_count
+          : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
       price: price == freezed
           ? _value.price
@@ -384,10 +388,6 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      active_booking_count: active_booking_count == freezed
-          ? _value.active_booking_count
-          : active_booking_count // ignore: cast_nullable_to_non_nullable
-              as int?,
       status_name: status_name == freezed
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
@@ -417,6 +417,7 @@ class _$_CourseModel implements _CourseModel {
       this.type_id,
       this.level_id,
       this.max_persons,
+      this.active_booking_count,
       this.price,
       this.date_from,
       this.date_to,
@@ -430,7 +431,6 @@ class _$_CourseModel implements _CourseModel {
       this.status,
       this.created_at,
       this.updated_at,
-      this.active_booking_count,
       this.status_name,
       this.admin,
       this.type,
@@ -451,6 +451,8 @@ class _$_CourseModel implements _CourseModel {
   final int? level_id;
   @override
   final int? max_persons;
+  @override
+  final int? active_booking_count;
   @override
   final double? price;
   @override
@@ -485,8 +487,6 @@ class _$_CourseModel implements _CourseModel {
   @override
   final DateTime? updated_at;
   @override
-  final int? active_booking_count;
-  @override
   final String? status_name;
   @override
   final AdminModel? admin;
@@ -503,7 +503,7 @@ class _$_CourseModel implements _CourseModel {
 
   @override
   String toString() {
-    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, active_booking_count: $active_booking_count, status_name: $status_name, admin: $admin, type: $type, questions: $questions)';
+    return 'CourseModel(id: $id, name: $name, type_id: $type_id, level_id: $level_id, max_persons: $max_persons, active_booking_count: $active_booking_count, price: $price, date_from: $date_from, date_to: $date_to, start_time: $start_time, end_time: $end_time, color_code: $color_code, period: $period, admin_id: $admin_id, salle_id: $salle_id, description: $description, status: $status, created_at: $created_at, updated_at: $updated_at, status_name: $status_name, admin: $admin, type: $type, questions: $questions)';
   }
 
   @override
@@ -517,6 +517,8 @@ class _$_CourseModel implements _CourseModel {
             const DeepCollectionEquality().equals(other.level_id, level_id) &&
             const DeepCollectionEquality()
                 .equals(other.max_persons, max_persons) &&
+            const DeepCollectionEquality()
+                .equals(other.active_booking_count, active_booking_count) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.date_from, date_from) &&
             const DeepCollectionEquality().equals(other.date_to, date_to) &&
@@ -536,8 +538,6 @@ class _$_CourseModel implements _CourseModel {
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
             const DeepCollectionEquality()
-                .equals(other.active_booking_count, active_booking_count) &&
-            const DeepCollectionEquality()
                 .equals(other.status_name, status_name) &&
             const DeepCollectionEquality().equals(other.admin, admin) &&
             const DeepCollectionEquality().equals(other.type, type) &&
@@ -554,6 +554,7 @@ class _$_CourseModel implements _CourseModel {
         const DeepCollectionEquality().hash(type_id),
         const DeepCollectionEquality().hash(level_id),
         const DeepCollectionEquality().hash(max_persons),
+        const DeepCollectionEquality().hash(active_booking_count),
         const DeepCollectionEquality().hash(price),
         const DeepCollectionEquality().hash(date_from),
         const DeepCollectionEquality().hash(date_to),
@@ -567,7 +568,6 @@ class _$_CourseModel implements _CourseModel {
         const DeepCollectionEquality().hash(status),
         const DeepCollectionEquality().hash(created_at),
         const DeepCollectionEquality().hash(updated_at),
-        const DeepCollectionEquality().hash(active_booking_count),
         const DeepCollectionEquality().hash(status_name),
         const DeepCollectionEquality().hash(admin),
         const DeepCollectionEquality().hash(type),
@@ -594,6 +594,7 @@ abstract class _CourseModel implements CourseModel {
       final int? type_id,
       final int? level_id,
       final int? max_persons,
+      final int? active_booking_count,
       final double? price,
       final String? date_from,
       final String? date_to,
@@ -607,7 +608,6 @@ abstract class _CourseModel implements CourseModel {
       final int? status,
       final DateTime? created_at,
       final DateTime? updated_at,
-      final int? active_booking_count,
       final String? status_name,
       final AdminModel? admin,
       final TypeModel? type,
@@ -626,6 +626,8 @@ abstract class _CourseModel implements CourseModel {
   int? get level_id;
   @override
   int? get max_persons;
+  @override
+  int? get active_booking_count;
   @override
   double? get price;
   @override
@@ -652,8 +654,6 @@ abstract class _CourseModel implements CourseModel {
   DateTime? get created_at;
   @override
   DateTime? get updated_at;
-  @override
-  int? get active_booking_count;
   @override
   String? get status_name;
   @override

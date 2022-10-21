@@ -15,10 +15,9 @@ class SelectDateViewModel extends ReactiveViewModel {
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
   final DatePickerController controller = DatePickerController();
-  final ScrollController scrollController = ScrollController();
-
+  late ScrollController scrollController = ScrollController();
   final DateFormat formatter = DateFormat('yMMM');
-  DateTime get selectedDate => _bookingService.getselectedDate;
+  DateTime selectedDate = DateTime.now();
 
   List<TimeModel> get availableTimes => _bookingAPIService.availableTime!;
   TimeModel? get selectedTime => _bookingService.getselectedTimes;
@@ -73,16 +72,27 @@ class SelectDateViewModel extends ReactiveViewModel {
   }
 
   Future init(BuildContext context) async {
-    debugPrint("INIT");
+    setBusy(true);
+    debugPrint("INIT SELECT DATE");
+
+    print(selectedDate);
+
     numDaysTotal = DateTime(DateTime.now().year, DateTime.now().month, 0).day -
         currentDate
             .difference(DateTime(DateTime.now().year, DateTime.now().month, 0))
             .inDays +
         2;
 
-    setBusy(true);
+    if (_bookingService.getselectedDate != null) {
+      await fetchBookableActivity(_bookingService.getselectedDate!);
+      selectedDate = _bookingService.getselectedDate!;
+      notifyListeners();
+    } else {
+      await fetchBookableActivity(selectedDate);
+      _bookingService.setSelectedDate = selectedDate;
 
-    await fetchBookableActivity(DateTime.now());
+      notifyListeners();
+    }
 
     setBusy(false);
   }
@@ -106,10 +116,6 @@ class SelectDateViewModel extends ReactiveViewModel {
         activityId: _bookingService.getselectedBookable!.id!);
     setBusy(false);
   }
-
-  // void setCalendar() {
-  //   _selectedValue = DateTime.now();
-  // }
 
   void selectTime(TimeModel time) {
     _bookingService.setSelectedTime = time;

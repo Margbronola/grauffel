@@ -3,8 +3,8 @@ import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/history/transaction_view.dart';
 import 'package:egczacademy/views/home/settings/notification/notification_settings_view.dart';
+import 'package:egczacademy/views/shared/widget/password/change_password_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,14 +23,15 @@ class SettingsViewModel extends BaseViewModel {
   final Uri _url = Uri.parse("https://www.eg-czacademy.com/fr/condition");
 
   void showChangeDialog() async {
-    var response =
-        await _dialogService.showCustomDialog(variant: DialogType.changePass);
+    _navigationService.navigateToView(const ChangePasswordView());
+    // var response =
+    //     await _dialogService.showCustomDialog(variant: DialogType.changePass);
 
-    if (response!.confirmed) {
-      debugPrint("updated");
-    } else {
-      debugPrint("cancel");
-    }
+    // if (response!.confirmed) {
+    //   debugPrint("updated");
+    // } else {
+    //   debugPrint("cancel");
+    // }
   }
 
   void showToken() async {

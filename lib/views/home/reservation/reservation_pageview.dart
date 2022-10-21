@@ -4,7 +4,6 @@ import 'package:egczacademy/views/reservation/courses/courses_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-
 import '../../shared/color.dart';
 import '../../shared/widget/header/header.dart';
 import '../../shared/ui_helper.dart';
@@ -36,7 +35,7 @@ class ReservationPageView extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 100.h,
+                    height: 110.h,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

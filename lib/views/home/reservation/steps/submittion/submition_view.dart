@@ -17,10 +17,8 @@ class SubmitionView extends StatelessWidget {
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => SingleChildScrollView(
         child: model.isBusy
-            ? const Expanded(
-                child: Center(
-                  child: CircularProgressIndicator.adaptive(),
-                ),
+            ? const Center(
+                child: CircularProgressIndicator.adaptive(),
               )
             : Column(
                 children: [
@@ -112,9 +110,7 @@ class SubmitionView extends StatelessWidget {
                                 .map((e) => Padding(
                                       padding: EdgeInsets.only(bottom: 10.h),
                                       child: ItemCard(
-                                        image: e.image != null
-                                            ? "$urlServer/${e.image!.path}/${e.image!.filename}"
-                                            : null,
+                                        image: e.image_thumb_url,
                                         title: e.model!,
                                         brand: e.brand!.name!,
                                         reference: "Référence",
@@ -130,9 +126,7 @@ class SubmitionView extends StatelessWidget {
                                     child: ItemCard(
                                       extraButton: e.quantity.toString(),
                                       titleQuantity: " boîtes de 50",
-                                      image: e.image != null
-                                          ? "$urlServer/${e.image!.path}/${e.image!.filename}"
-                                          : null,
+                                      image: e.image_thumb_url,
                                       title: e.name!,
                                       brand: e.brand!.name!,
                                       reference: "Référence",
@@ -149,9 +143,7 @@ class SubmitionView extends StatelessWidget {
                                     extraButton: e.quantity.toString(),
                                     titleQuantity:
                                         e.quantity > 1 ? " pièces" : " pièce",
-                                    image: e.image != null
-                                        ? "$urlServer/${e.image!.path}/${e.image!.filename}"
-                                        : null,
+                                    image: e.image_thumb_url,
                                     title: e.name!,
                                     brand: e.type.toString(),
                                     reference: "Référence",

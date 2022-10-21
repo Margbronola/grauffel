@@ -25,16 +25,16 @@ mixin _$EquipmentModel {
   double? get price => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   int? get stocks => throw _privateConstructorUsedError;
-  int? get type => throw _privateConstructorUsedError;
-  int? get unlimited => throw _privateConstructorUsedError;
+  int? get type => throw _privateConstructorUsedError; // int? unlimited,
   PivotModel? get pivot => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
   BrandModel? get brand => throw _privateConstructorUsedError;
-  int? get qty => throw _privateConstructorUsedError;
-  String? get type_name => throw _privateConstructorUsedError;
-  ImageModel? get image => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  int? get qty => throw _privateConstructorUsedError; // String? type_name,
+// ImageModel? image,
+  String? get image_url => throw _privateConstructorUsedError;
+  String? get image_thumb_url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,19 +54,17 @@ abstract class $EquipmentModelCopyWith<$Res> {
       String? description,
       int? stocks,
       int? type,
-      int? unlimited,
       PivotModel? pivot,
       DateTime? created_at,
-      int quantity,
       DateTime? updated_at,
       BrandModel? brand,
+      int quantity,
       int? qty,
-      String? type_name,
-      ImageModel? image});
+      String? image_url,
+      String? image_thumb_url});
 
   $PivotModelCopyWith<$Res>? get pivot;
   $BrandModelCopyWith<$Res>? get brand;
-  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -86,15 +84,14 @@ class _$EquipmentModelCopyWithImpl<$Res>
     Object? description = freezed,
     Object? stocks = freezed,
     Object? type = freezed,
-    Object? unlimited = freezed,
     Object? pivot = freezed,
     Object? created_at = freezed,
-    Object? quantity = freezed,
     Object? updated_at = freezed,
     Object? brand = freezed,
+    Object? quantity = freezed,
     Object? qty = freezed,
-    Object? type_name = freezed,
-    Object? image = freezed,
+    Object? image_url = freezed,
+    Object? image_thumb_url = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -121,10 +118,6 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      unlimited: unlimited == freezed
-          ? _value.unlimited
-          : unlimited // ignore: cast_nullable_to_non_nullable
-              as int?,
       pivot: pivot == freezed
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
@@ -133,10 +126,6 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      quantity: quantity == freezed
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -145,18 +134,22 @@ class _$EquipmentModelCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: qty == freezed
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      type_name: type_name == freezed
-          ? _value.type_name
-          : type_name // ignore: cast_nullable_to_non_nullable
+      image_url: image_url == freezed
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as ImageModel?,
+      image_thumb_url: image_thumb_url == freezed
+          ? _value.image_thumb_url
+          : image_thumb_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -181,17 +174,6 @@ class _$EquipmentModelCopyWithImpl<$Res>
       return _then(_value.copyWith(brand: value));
     });
   }
-
-  @override
-  $ImageModelCopyWith<$Res>? get image {
-    if (_value.image == null) {
-      return null;
-    }
-
-    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -208,22 +190,19 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
       String? description,
       int? stocks,
       int? type,
-      int? unlimited,
       PivotModel? pivot,
       DateTime? created_at,
-      int quantity,
       DateTime? updated_at,
       BrandModel? brand,
+      int quantity,
       int? qty,
-      String? type_name,
-      ImageModel? image});
+      String? image_url,
+      String? image_thumb_url});
 
   @override
   $PivotModelCopyWith<$Res>? get pivot;
   @override
   $BrandModelCopyWith<$Res>? get brand;
-  @override
-  $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
@@ -245,15 +224,14 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
     Object? description = freezed,
     Object? stocks = freezed,
     Object? type = freezed,
-    Object? unlimited = freezed,
     Object? pivot = freezed,
     Object? created_at = freezed,
-    Object? quantity = freezed,
     Object? updated_at = freezed,
     Object? brand = freezed,
+    Object? quantity = freezed,
     Object? qty = freezed,
-    Object? type_name = freezed,
-    Object? image = freezed,
+    Object? image_url = freezed,
+    Object? image_thumb_url = freezed,
   }) {
     return _then(_$_EquipmentModel(
       id: id == freezed
@@ -280,10 +258,6 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      unlimited: unlimited == freezed
-          ? _value.unlimited
-          : unlimited // ignore: cast_nullable_to_non_nullable
-              as int?,
       pivot: pivot == freezed
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
@@ -292,10 +266,6 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      quantity: quantity == freezed
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
       updated_at: updated_at == freezed
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -304,18 +274,22 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
       qty: qty == freezed
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      type_name: type_name == freezed
-          ? _value.type_name
-          : type_name // ignore: cast_nullable_to_non_nullable
+      image_url: image_url == freezed
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as ImageModel?,
+      image_thumb_url: image_thumb_url == freezed
+          ? _value.image_thumb_url
+          : image_thumb_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -330,15 +304,14 @@ class _$_EquipmentModel implements _EquipmentModel {
       this.description,
       this.stocks,
       this.type,
-      this.unlimited,
       this.pivot,
       this.created_at,
-      this.quantity = 1,
       this.updated_at,
       this.brand,
+      this.quantity = 1,
       this.qty = 1,
-      this.type_name,
-      this.image});
+      this.image_url,
+      this.image_thumb_url});
 
   factory _$_EquipmentModel.fromJson(Map<String, dynamic> json) =>
       _$$_EquipmentModelFromJson(json);
@@ -355,30 +328,31 @@ class _$_EquipmentModel implements _EquipmentModel {
   final int? stocks;
   @override
   final int? type;
-  @override
-  final int? unlimited;
+// int? unlimited,
   @override
   final PivotModel? pivot;
   @override
   final DateTime? created_at;
-  @override
-  @JsonKey()
-  final int quantity;
   @override
   final DateTime? updated_at;
   @override
   final BrandModel? brand;
   @override
   @JsonKey()
+  final int quantity;
+  @override
+  @JsonKey()
   final int? qty;
+// String? type_name,
+// ImageModel? image,
   @override
-  final String? type_name;
+  final String? image_url;
   @override
-  final ImageModel? image;
+  final String? image_thumb_url;
 
   @override
   String toString() {
-    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, unlimited: $unlimited, pivot: $pivot, created_at: $created_at, quantity: $quantity, updated_at: $updated_at, brand: $brand, qty: $qty, type_name: $type_name, image: $image)';
+    return 'EquipmentModel(id: $id, name: $name, price: $price, description: $description, stocks: $stocks, type: $type, pivot: $pivot, created_at: $created_at, updated_at: $updated_at, brand: $brand, quantity: $quantity, qty: $qty, image_url: $image_url, image_thumb_url: $image_thumb_url)';
   }
 
   @override
@@ -393,17 +367,17 @@ class _$_EquipmentModel implements _EquipmentModel {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.stocks, stocks) &&
             const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.unlimited, unlimited) &&
             const DeepCollectionEquality().equals(other.pivot, pivot) &&
             const DeepCollectionEquality()
                 .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other.updated_at, updated_at) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.qty, qty) &&
-            const DeepCollectionEquality().equals(other.type_name, type_name) &&
-            const DeepCollectionEquality().equals(other.image, image));
+            const DeepCollectionEquality().equals(other.image_url, image_url) &&
+            const DeepCollectionEquality()
+                .equals(other.image_thumb_url, image_thumb_url));
   }
 
   @JsonKey(ignore: true)
@@ -416,15 +390,14 @@ class _$_EquipmentModel implements _EquipmentModel {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(stocks),
       const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(unlimited),
       const DeepCollectionEquality().hash(pivot),
       const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(updated_at),
       const DeepCollectionEquality().hash(brand),
+      const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(qty),
-      const DeepCollectionEquality().hash(type_name),
-      const DeepCollectionEquality().hash(image));
+      const DeepCollectionEquality().hash(image_url),
+      const DeepCollectionEquality().hash(image_thumb_url));
 
   @JsonKey(ignore: true)
   @override
@@ -447,15 +420,14 @@ abstract class _EquipmentModel implements EquipmentModel {
       final String? description,
       final int? stocks,
       final int? type,
-      final int? unlimited,
       final PivotModel? pivot,
       final DateTime? created_at,
-      final int quantity,
       final DateTime? updated_at,
       final BrandModel? brand,
+      final int quantity,
       final int? qty,
-      final String? type_name,
-      final ImageModel? image}) = _$_EquipmentModel;
+      final String? image_url,
+      final String? image_thumb_url}) = _$_EquipmentModel;
 
   factory _EquipmentModel.fromJson(Map<String, dynamic> json) =
       _$_EquipmentModel.fromJson;
@@ -472,24 +444,23 @@ abstract class _EquipmentModel implements EquipmentModel {
   int? get stocks;
   @override
   int? get type;
-  @override
-  int? get unlimited;
-  @override
+  @override // int? unlimited,
   PivotModel? get pivot;
   @override
   DateTime? get created_at;
-  @override
-  int get quantity;
   @override
   DateTime? get updated_at;
   @override
   BrandModel? get brand;
   @override
+  int get quantity;
+  @override
   int? get qty;
+  @override // String? type_name,
+// ImageModel? image,
+  String? get image_url;
   @override
-  String? get type_name;
-  @override
-  ImageModel? get image;
+  String? get image_thumb_url;
   @override
   @JsonKey(ignore: true)
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>

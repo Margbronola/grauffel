@@ -102,6 +102,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
     debugPrint("HERE");
     debugPrint(ammunitions![index].name!);
     debugPrint(ammunitions![index].description);
+    debugPrint(ammunitions![index].image_url);
 
     var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../../../app/app.locator.dart';
 import '../../../../../../app/components/enum.dart';
+import '../../../../../../services/booking_service.dart';
 
 class BrandFilterViewModel extends ReactiveViewModel {
   final BrandAPIService _brandAPIService = locator<BrandAPIService>();
@@ -16,6 +17,8 @@ class BrandFilterViewModel extends ReactiveViewModel {
   final AmmunitionAPIService _ammunitionAPIService =
       locator<AmmunitionAPIService>();
   final GunListService _gunListService = locator<GunListService>();
+
+  final BookingService _bookingService = locator<BookingService>();
 
   late ScrollController controller;
   bool isLoadMoreRunning = false;
@@ -62,6 +65,9 @@ class BrandFilterViewModel extends ReactiveViewModel {
 
   Future<void> filterGun() async {
     await _gunAPIService.fetchAllGuns(
+        booked: _bookingService.getselectedBookable!,
+        date: _bookingService.getselectedDate.toString(),
+        time: _bookingService.getselectedTimes,
         token: _userService.token!,
         brandIds: _gunListService.filterMarqueIds,
         caliberIds: _gunListService.filterCaliberIds);
@@ -81,6 +87,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   Future check(bool? isCheck, index) async {
+    countCheck++;
     if (isCheck!) {
       if (marque!.isNotEmpty) {
         _gunListService.addFilter(marque![index].id!,
@@ -96,9 +103,6 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   bool checked(int index) {
-    print("check");
-    countCheck++;
-
     return _gunListService.filterMarqueIds!.contains(marque![index].id);
   }
 
@@ -118,6 +122,7 @@ class BrandFilterViewModel extends ReactiveViewModel {
 
   @override
   void dispose() async {
+    print("$countCheck");
     if (countCheck != 0) {
       _gunListService.setBusy(true);
       if (_isGunsList) {

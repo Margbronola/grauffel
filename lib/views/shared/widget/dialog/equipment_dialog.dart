@@ -14,7 +14,8 @@ class EquipmentDetails extends StatelessWidget {
     return DialogWidget(
         title: request!.data!.name,
         description: request!.data!.description,
-        imageUrl: request!.data!.image,
+        imageUrl: request!.data!.image_thumb_url,
+        calibre: "",
         brandName: request!.data!.brand!.name);
   }
 }

@@ -1,21 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:egczacademy/models/image_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../app/global.dart';
 import '../../color.dart';
 
 class DialogWidget extends StatelessWidget {
   final String? title;
   final String? description;
   final String? brandName;
-  final ImageModel? imageUrl;
+  final String? calibre;
+  final String? imageUrl;
   const DialogWidget({
     Key? key,
     required this.title,
     required this.description,
     required this.brandName,
+    required this.calibre,
     this.imageUrl,
   }) : super(key: key);
 
@@ -55,23 +55,32 @@ class DialogWidget extends StatelessWidget {
                             //         color: backgroundColor,
                             //         size: 20.w,
                             //       ),
-                            Container(
-                              width: 230.w,
-                              height: 230.h,
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                      bottomRight: Radius.circular(30)),
-                                  color: kcWhite,
-                                  image: DecorationImage(
-                                      fit: BoxFit.contain,
-                                      opacity: imageUrl == null ? 0.1 : 1.0,
-                                      image: imageUrl == null
-                                          ? const AssetImage(
-                                                  "assets/images/noImage.png")
-                                              as ImageProvider
-                                          : CachedNetworkImageProvider(
-                                              "$urlServer/${imageUrl!.path}/${imageUrl!.filename}"))),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Container(
+                                width: 230.w,
+                                height: 230.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: imageUrl != null
+                                    ? CachedNetworkImage(
+                                        fit: BoxFit.cover,
+                                        imageUrl: imageUrl!,
+                                        placeholder: (context, url) =>
+                                            const Center(
+                                                child: CircularProgressIndicator
+                                                    .adaptive()),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
+                                      )
+                                    : Image.asset(
+                                        "assets/images/noImage.png",
+                                        color: Colors.white,
+                                      ),
+                              ),
                             ),
+
                             // imageUrl == null
                             //     ? const SizedBox()
                             //     : Icon(
@@ -105,12 +114,12 @@ class DialogWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                brandName!,
+                                "Marque",
                                 style:
                                     TextStyle(color: kcWhite, fontSize: 11.sp),
                               ),
                               Text(
-                                "SH2-BUSH-CER",
+                                brandName!,
                                 style: TextStyle(
                                     color: kcWhite,
                                     fontSize: 11.sp,
@@ -119,23 +128,26 @@ class DialogWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Marque",
-                              style: TextStyle(color: kcWhite, fontSize: 11.sp),
-                            ),
-                            Text(
-                              "CZ",
-                              style: TextStyle(
-                                  color: kcWhite,
-                                  fontSize: 11.sp,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
+                        calibre == null
+                            ? const SizedBox()
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Calibre",
+                                    style: TextStyle(
+                                        color: kcWhite, fontSize: 11.sp),
+                                  ),
+                                  Text(
+                                    calibre ?? "",
+                                    style: TextStyle(
+                                        color: kcWhite,
+                                        fontSize: 11.sp,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
                       ],
                     ),
                   ),

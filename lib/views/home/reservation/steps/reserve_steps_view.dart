@@ -68,7 +68,6 @@ class ReserveStepsView extends StatelessWidget {
                 color: Colors.black,
                 width: size(context).width,
                 height: 75.h,
-                padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -172,47 +171,50 @@ class ReserveStepsView extends StatelessWidget {
         onTap: () {
           model.reversePage(index);
         },
-        child: Column(
-          children: [
-            Container(
-              width: 20.w,
-              height: 20.w,
-              decoration: BoxDecoration(
-                color: pageIndex == index
-                    ? kcWhite
-                    : pageIndex > index
-                        ? buttonColor
-                        : null,
-                border: pageIndex > index
-                    ? null
-                    : Border.all(
-                        color: kcWhite, style: BorderStyle.solid, width: 2),
+        child: SizedBox(
+          width: 50,
+          child: Column(
+            children: [
+              Container(
+                width: 20.w,
+                height: 20.w,
+                decoration: BoxDecoration(
+                  color: pageIndex == index
+                      ? kcWhite
+                      : pageIndex > index
+                          ? buttonColor
+                          : null,
+                  border: pageIndex > index
+                      ? null
+                      : Border.all(
+                          color: kcWhite, style: BorderStyle.solid, width: 2),
+                ),
+                child: pageIndex > index
+                    ? Icon(
+                        Icons.check,
+                        size: 13.w,
+                        color: backgroundColor,
+                      )
+                    : null,
               ),
-              child: pageIndex > index
-                  ? Icon(
-                      Icons.check,
-                      size: 13.w,
-                      color: backgroundColor,
-                    )
-                  : null,
-            ),
-            SizedBox(
-              height: 4.h,
-            ),
-            Center(
-              child: Text(
-                title,
-                style: ThemeData().textTheme.headlineSmall!.copyWith(
-                    fontSize: 9.sp,
-                    color: kcWhite,
-                    fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 4.h,
               ),
-            ),
-          ],
+              Center(
+                child: Text(
+                  title,
+                  style: ThemeData().textTheme.headlineSmall!.copyWith(
+                      fontSize: 9.sp,
+                      color: kcWhite,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
         ),
       );
   Widget divider({required int index, required pageIndex}) => SizedBox(
-      width: 50.w,
+      width: 45.w,
       height: 22.w,
       child: Divider(
         color: pageIndex > index ? buttonColor : kcWhite,

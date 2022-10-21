@@ -13,8 +13,9 @@ class ArmDetails extends StatelessWidget {
     return DialogWidget(
       title: request!.data!.model,
       description: request!.data!.description,
-      imageUrl: request!.data!.image,
-         brandName: request!.data!.brand!.name,
+      imageUrl: request!.data!.image_thumb_url,
+      brandName: request!.data!.brand!.name,
+      calibre: request!.data!.caliber!.name,
     );
   }
 }

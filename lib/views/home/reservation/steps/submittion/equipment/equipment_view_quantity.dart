@@ -3,7 +3,6 @@ import 'package:egczacademy/views/home/reservation/steps/submittion/equipment/eq
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../app/global.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/ui_helper.dart';
 
@@ -69,12 +68,14 @@ class EquipmentViewQuantity extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(30)),
                             ),
-                            child: model.selectedEquipment[index].image == null
+                            child: model.selectedEquipment[index]
+                                        .image_thumb_url ==
+                                    null
                                 ? Image.asset("assets/images/noImage.png")
                                 : CachedNetworkImage(
                                     fit: BoxFit.cover,
-                                    imageUrl:
-                                        "$urlServer/${model.selectedEquipment[index].image!.path}/${model.selectedEquipment[index].image!.filename}",
+                                    imageUrl: model.selectedEquipment[index]
+                                        .image_thumb_url!,
                                     placeholder: (context, url) => const Center(
                                         child: CircularProgressIndicator
                                             .adaptive()),

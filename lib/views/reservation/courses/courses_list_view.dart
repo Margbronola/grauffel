@@ -24,8 +24,7 @@ class CourseListView extends StatelessWidget {
           children: [
             verticalSpaceSmall(),
             model.isBusy
-                ? const Expanded(
-                    child: Center(child: CircularProgressIndicator.adaptive()))
+                ? const Center(child: CircularProgressIndicator.adaptive())
                 : Expanded(
                     child: SmartRefresher(
                       enablePullDown: true,

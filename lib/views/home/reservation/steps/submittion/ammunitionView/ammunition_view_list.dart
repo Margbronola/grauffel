@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
-import '../../../../../../app/global.dart';
 import '../../../../../../models/ammunitions_model.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/ui_helper.dart';
@@ -231,12 +230,11 @@ Widget amminitionCard(
                       decoration: const BoxDecoration(
                         color: kcWhite,
                       ),
-                      child: ammunition.image == null
+                      child: ammunition.image_thumb_url == null
                           ? Image.asset("assets/images/noImage.png")
                           : CachedNetworkImage(
                               fit: BoxFit.cover,
-                              imageUrl:
-                                  "$urlServer/${ammunition.image!.path}/${ammunition.image!.filename}",
+                              imageUrl: ammunition.image_thumb_url!,
                               placeholder: (context, url) => const Center(
                                   child: CircularProgressIndicator.adaptive()),
                               errorWidget: (context, url, error) =>

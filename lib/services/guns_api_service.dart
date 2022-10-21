@@ -1,9 +1,12 @@
 import 'dart:convert';
+
+import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/paging_model.dart';
+import 'package:egczacademy/models/time_model.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/gunModel/gun_model.dart';
+import 'package:http/http.dart' as http;
 
 class GunAPIService {
   List<GunModel>? _guns;
@@ -15,12 +18,36 @@ class GunAPIService {
   Future<void> fetchAllGuns(
       {required String token,
       bool fetchMore = false,
+      required ActivityModel booked,
+      required String date,
+      required TimeModel? time,
       List<int>? brandIds,
       List<int>? caliberIds}) async {
-    String url = "$urlApi/guns?per_page=$_perPage&nobook=true";
+    print(date);
+    print(time);
+    print(booked);
+
+    String startDate = "";
+    String endDate = "";
+    if (booked.type == null) {
+      startDate = "${date.split(" ")[0]} ${time!.time!.split("-")[0]}";
+      endDate = "${date.split(" ")[0]} ${time.time!.split("-")[1]}";
+    } else {
+      startDate = "${booked.date_from} ${booked.start_time}";
+      endDate = "${booked.date_to} ${booked.end_time}";
+    }
+
+    print("Date To pass");
+    print(startDate);
+    print(endDate);
+
+    //dateformat --> 2022-02-01 10:00
+    String url =
+        "$urlApi/guns?per_page=$_perPage&nobook=true&booking=true&start_date=$startDate&end_date=$endDate";
 
     if (fetchMore) {
-      url = "${_pagingModel!.next_page_url}&per_page=$_perPage";
+      url =
+          "${_pagingModel!.next_page_url}&per_page=$_perPage&nobook=true&booking=true&start_date=$startDate&end_date=$endDate";
     }
 
     if (brandIds != null) {

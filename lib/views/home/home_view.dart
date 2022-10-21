@@ -4,13 +4,13 @@ import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/home/reservation/reservation_pageview.dart';
 import 'package:egczacademy/views/shared/color.dart';
+import 'package:egczacademy/views/shared/widget/menuButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../reservation/reservation_view.dart';
 import 'home_view_model.dart';
-import 'settings/settings_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -33,20 +33,7 @@ class HomeView extends StatelessWidget {
                   width: 162.w,
                   height: 54.h,
                 ),
-                actions: [
-                  GestureDetector(
-                    child: const Icon(
-                      Icons.more_vert,
-                      size: 30,
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingsView()));
-                    },
-                  ),
-                ],
+                actions: const [MenuButton()],
                 automaticallyImplyLeading: false,
               ),
         body: PageView(

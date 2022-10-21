@@ -15,10 +15,14 @@ class EquipmentsAPIService {
 
   Future<void> fetchAllEquipments(
       {required String token, bool fetchMore = false}) async {
-    String url = "$urlApi/equipments?per_page=$_perPage";
+    String removeUnnessaryfields =
+        "&onlyfields=id,name,brand_id,image_id,description,price,stock,status";
+    String url =
+        "$urlApi/equipments?per_page=$_perPage&nobook=true$removeUnnessaryfields";
 
     if (fetchMore) {
-      url = "${_pagingModel!.next_page_url}&per_page=$_perPage&nobook=true";
+      url =
+          "${_pagingModel!.next_page_url}&per_page=$_perPage&nobook=true$removeUnnessaryfields";
     }
     try {
       final respo = await http.get(Uri.parse(url), headers: {

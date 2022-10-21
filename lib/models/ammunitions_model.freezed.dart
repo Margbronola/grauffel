@@ -26,14 +26,13 @@ mixin _$AmmunitionsModel {
   double? get price => throw _privateConstructorUsedError;
   int? get stock => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
-  ImageModel? get image => throw _privateConstructorUsedError;
   BrandModel? get brand => throw _privateConstructorUsedError;
   CaliberModel? get caliber => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   int get qty => throw _privateConstructorUsedError;
   PivotModel? get pivot => throw _privateConstructorUsedError;
-  DateTime? get created_at => throw _privateConstructorUsedError;
-  DateTime? get updated_at => throw _privateConstructorUsedError;
+  String? get image_url => throw _privateConstructorUsedError;
+  String? get image_thumb_url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,16 +52,14 @@ abstract class $AmmunitionsModelCopyWith<$Res> {
       double? price,
       int? stock,
       int? status,
-      ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
       int quantity,
       int qty,
       PivotModel? pivot,
-      DateTime? created_at,
-      DateTime? updated_at});
+      String? image_url,
+      String? image_thumb_url});
 
-  $ImageModelCopyWith<$Res>? get image;
   $BrandModelCopyWith<$Res>? get brand;
   $CaliberModelCopyWith<$Res>? get caliber;
   $PivotModelCopyWith<$Res>? get pivot;
@@ -85,14 +82,13 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
     Object? price = freezed,
     Object? stock = freezed,
     Object? status = freezed,
-    Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
     Object? quantity = freezed,
     Object? qty = freezed,
     Object? pivot = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
+    Object? image_url = freezed,
+    Object? image_thumb_url = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -119,10 +115,6 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as ImageModel?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -143,26 +135,15 @@ class _$AmmunitionsModelCopyWithImpl<$Res>
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      image_url: image_url == freezed
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image_thumb_url: image_thumb_url == freezed
+          ? _value.image_thumb_url
+          : image_thumb_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
-  }
-
-  @override
-  $ImageModelCopyWith<$Res>? get image {
-    if (_value.image == null) {
-      return null;
-    }
-
-    return $ImageModelCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value));
-    });
   }
 
   @override
@@ -213,17 +194,14 @@ abstract class _$$_AmmunitionsModelCopyWith<$Res>
       double? price,
       int? stock,
       int? status,
-      ImageModel? image,
       BrandModel? brand,
       CaliberModel? caliber,
       int quantity,
       int qty,
       PivotModel? pivot,
-      DateTime? created_at,
-      DateTime? updated_at});
+      String? image_url,
+      String? image_thumb_url});
 
-  @override
-  $ImageModelCopyWith<$Res>? get image;
   @override
   $BrandModelCopyWith<$Res>? get brand;
   @override
@@ -251,14 +229,13 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
     Object? price = freezed,
     Object? stock = freezed,
     Object? status = freezed,
-    Object? image = freezed,
     Object? brand = freezed,
     Object? caliber = freezed,
     Object? quantity = freezed,
     Object? qty = freezed,
     Object? pivot = freezed,
-    Object? created_at = freezed,
-    Object? updated_at = freezed,
+    Object? image_url = freezed,
+    Object? image_thumb_url = freezed,
   }) {
     return _then(_$_AmmunitionsModel(
       id: id == freezed
@@ -285,10 +262,6 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as ImageModel?,
       brand: brand == freezed
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
@@ -309,14 +282,14 @@ class __$$_AmmunitionsModelCopyWithImpl<$Res>
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      created_at: created_at == freezed
-          ? _value.created_at
-          : created_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated_at: updated_at == freezed
-          ? _value.updated_at
-          : updated_at // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      image_url: image_url == freezed
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image_thumb_url: image_thumb_url == freezed
+          ? _value.image_thumb_url
+          : image_thumb_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -331,14 +304,13 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       this.price,
       this.stock,
       this.status,
-      this.image,
       this.brand,
       this.caliber,
       this.quantity = 1,
       this.qty = 1,
       this.pivot,
-      this.created_at,
-      this.updated_at});
+      this.image_url,
+      this.image_thumb_url});
 
   factory _$_AmmunitionsModel.fromJson(Map<String, dynamic> json) =>
       _$$_AmmunitionsModelFromJson(json);
@@ -356,8 +328,6 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
   @override
   final int? status;
   @override
-  final ImageModel? image;
-  @override
   final BrandModel? brand;
   @override
   final CaliberModel? caliber;
@@ -370,13 +340,13 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
   @override
   final PivotModel? pivot;
   @override
-  final DateTime? created_at;
+  final String? image_url;
   @override
-  final DateTime? updated_at;
+  final String? image_thumb_url;
 
   @override
   String toString() {
-    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, image: $image, brand: $brand, caliber: $caliber, quantity: $quantity, qty: $qty, pivot: $pivot, created_at: $created_at, updated_at: $updated_at)';
+    return 'AmmunitionsModel(id: $id, name: $name, description: $description, price: $price, stock: $stock, status: $status, brand: $brand, caliber: $caliber, quantity: $quantity, qty: $qty, pivot: $pivot, image_url: $image_url, image_thumb_url: $image_thumb_url)';
   }
 
   @override
@@ -391,16 +361,14 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.stock, stock) &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality().equals(other.qty, qty) &&
             const DeepCollectionEquality().equals(other.pivot, pivot) &&
+            const DeepCollectionEquality().equals(other.image_url, image_url) &&
             const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+                .equals(other.image_thumb_url, image_thumb_url));
   }
 
   @JsonKey(ignore: true)
@@ -413,14 +381,13 @@ class _$_AmmunitionsModel implements _AmmunitionsModel {
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(stock),
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(image),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(caliber),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(qty),
       const DeepCollectionEquality().hash(pivot),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at));
+      const DeepCollectionEquality().hash(image_url),
+      const DeepCollectionEquality().hash(image_thumb_url));
 
   @JsonKey(ignore: true)
   @override
@@ -443,14 +410,13 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
       final double? price,
       final int? stock,
       final int? status,
-      final ImageModel? image,
       final BrandModel? brand,
       final CaliberModel? caliber,
       final int quantity,
       final int qty,
       final PivotModel? pivot,
-      final DateTime? created_at,
-      final DateTime? updated_at}) = _$_AmmunitionsModel;
+      final String? image_url,
+      final String? image_thumb_url}) = _$_AmmunitionsModel;
 
   factory _AmmunitionsModel.fromJson(Map<String, dynamic> json) =
       _$_AmmunitionsModel.fromJson;
@@ -468,8 +434,6 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   @override
   int? get status;
   @override
-  ImageModel? get image;
-  @override
   BrandModel? get brand;
   @override
   CaliberModel? get caliber;
@@ -480,9 +444,9 @@ abstract class _AmmunitionsModel implements AmmunitionsModel {
   @override
   PivotModel? get pivot;
   @override
-  DateTime? get created_at;
+  String? get image_url;
   @override
-  DateTime? get updated_at;
+  String? get image_thumb_url;
   @override
   @JsonKey(ignore: true)
   _$$_AmmunitionsModelCopyWith<_$_AmmunitionsModel> get copyWith =>
