@@ -186,8 +186,14 @@ class AmmunitionViewList extends StatelessWidget {
                 if (model.isloadDone == true)
                   const Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
-                      child:
-                          Center(child: CircularProgressIndicator.adaptive())),
+                      child: Center(
+                        child: CircularProgressIndicator.adaptive(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.black,
+                          ),
+                          backgroundColor: Colors.grey,
+                        ),
+                      )),
               ],
             ),
           ),
@@ -236,7 +242,13 @@ Widget amminitionCard(
                               fit: BoxFit.cover,
                               imageUrl: ammunition.image_thumb_url!,
                               placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator.adaptive()),
+                                child: CircularProgressIndicator.adaptive(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.black,
+                                  ),
+                                  backgroundColor: Colors.grey,
+                                ),
+                              ),
                               errorWidget: (context, url, error) =>
                                   const Icon(Icons.error),
                             )),

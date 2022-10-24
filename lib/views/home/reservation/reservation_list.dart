@@ -1,4 +1,5 @@
 import 'package:egczacademy/views/shared/ui_helper.dart';
+import 'package:egczacademy/views/shared/widget/myloader.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../models/reserve_model.dart';
@@ -20,8 +21,11 @@ class ReservationList extends StatelessWidget {
           children: [
             verticalSpaceSmall(),
             model.isBusy
-                ? const Expanded(
-                    child: Center(child: CircularProgressIndicator.adaptive()))
+                ? Expanded(
+                    child: Center(
+                        child: Myloader(
+                    logoColor: buttonColor.withOpacity(0.8),
+                  )))
                 : Expanded(
                     child: SmartRefresher(
                       enablePullDown: true,

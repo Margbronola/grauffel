@@ -129,8 +129,8 @@ class SubmitionViewModel extends ReactiveViewModel {
 
       if (response != null) {
         if (response.confirmed) {
-          await _bookingApiService.fetchActivesAndPast(
-              _userService.token, _userService.user!.id.toString());
+          await _bookingApiService.fetchBookingHistory(
+              token: _userService.token!);
         }
       }
 

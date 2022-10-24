@@ -71,7 +71,14 @@ class InformationEditView extends StatelessWidget {
               ];
             },
             body: model.isBusy
-                ? const Center(child: CircularProgressIndicator.adaptive())
+                ? const Center(
+                    child: CircularProgressIndicator.adaptive(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Colors.black,
+                      ),
+                      backgroundColor: Colors.grey,
+                    ),
+                  )
                 : SizedBox(
                     height: size(context).height,
                     width: size(context).width,

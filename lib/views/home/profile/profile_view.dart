@@ -29,6 +29,7 @@ class ProfileView extends StatelessWidget {
         headerSliverBuilder: (context, value) {
           return [
             SliverAppBar(
+              toolbarHeight: size(context).height * 0.1,
               automaticallyImplyLeading: false,
               flexibleSpace: FlexibleSpaceBar(
                 background: Stack(
@@ -120,6 +121,9 @@ class ProfileView extends StatelessWidget {
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.black,
+                  ),
                   backgroundColor: Colors.grey,
                 ),
               )

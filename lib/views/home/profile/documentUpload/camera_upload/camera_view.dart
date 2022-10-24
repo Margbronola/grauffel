@@ -26,7 +26,12 @@ class CameraView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: model.isBusy
             ? const Center(
-                child: CircularProgressIndicator.adaptive(),
+                child: CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.black,
+                  ),
+                  backgroundColor: Colors.grey,
+                ),
               )
             : FutureBuilder<List<CameraDescription>?>(
                 future: availableCameras(),
@@ -41,61 +46,74 @@ class CameraView extends StatelessWidget {
                           ));
                     }
                     return CameraOverlay(
-                      snapshot.data!.first,
-                      CardOverlay.byFormat(model.format),
-                      (XFile file) => showDialog(
-                        context: context,
-                        barrierColor: Colors.black,
-                        builder: (context) {
-                          CardOverlay overlay =
-                              CardOverlay.byFormat(model.format);
-                          return AlertDialog(
-                              actionsAlignment: MainAxisAlignment.center,
-                              backgroundColor: Colors.black,
-                              title: const Text('Capture',
-                                  style: TextStyle(color: Colors.white),
-                                  textAlign: TextAlign.center),
-                              actions: [
-                                OutlinedButton(
-                                    onPressed: () async {
-                                      onSelect(await model.selectDocument(
-                                          fileFront: File(file.path),
-                                          documentType: documentTypeModel));
-                                    },
-                                    child: const Icon(Icons.done)),
-                                OutlinedButton(
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(),
-                                    child: const Icon(Icons.repeat))
-                              ],
-                              content: SizedBox(
-                                  width: double.infinity,
-                                  child: AspectRatio(
-                                    aspectRatio: overlay.ratio!,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                        fit: BoxFit.fitWidth,
-                                        alignment: FractionalOffset.center,
-                                        image: FileImage(
-                                          File(file.path),
-                                        ),
-                                      )),
-                                    ),
-                                  )));
-                        },
-                      ),
-                      info:
-                          "Positionnez votre carte d'identité dans le rectangle et assurez-vous que l'image est parfaitement lisible.",
-                      label: "Numérisation de la carte d'identité",
-                      loadingWidget: const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                    );
+                        snapshot.data!.first,
+                        CardOverlay.byFormat(model.format),
+                        (XFile file) => showDialog(
+                              context: context,
+                              barrierColor: Colors.black,
+                              builder: (context) {
+                                CardOverlay overlay =
+                                    CardOverlay.byFormat(model.format);
+                                return AlertDialog(
+                                    actionsAlignment: MainAxisAlignment.center,
+                                    backgroundColor: Colors.black,
+                                    title: const Text('Capture',
+                                        style: TextStyle(color: Colors.white),
+                                        textAlign: TextAlign.center),
+                                    actions: [
+                                      OutlinedButton(
+                                          onPressed: () async {
+                                            onSelect(await model.selectDocument(
+                                                fileFront: File(file.path),
+                                                documentType:
+                                                    documentTypeModel));
+                                          },
+                                          child: const Icon(Icons.done)),
+                                      OutlinedButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          child: const Icon(Icons.repeat))
+                                    ],
+                                    content: SizedBox(
+                                        width: double.infinity,
+                                        child: AspectRatio(
+                                          aspectRatio: overlay.ratio!,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                              fit: BoxFit.fitWidth,
+                                              alignment:
+                                                  FractionalOffset.center,
+                                              image: FileImage(
+                                                File(file.path),
+                                              ),
+                                            )),
+                                          ),
+                                        )));
+                              },
+                            ),
+                        info:
+                            "Positionnez votre carte d'identité dans le rectangle et assurez-vous que l'image est parfaitement lisible.",
+                        label: "Numérisation de la carte d'identité",
+                        loadingWidget: const Center(
+                          child: CircularProgressIndicator.adaptive(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.black,
+                            ),
+                            backgroundColor: Colors.grey,
+                          ),
+                        ));
                   } else {
                     return const Align(
                         alignment: Alignment.center,
-                        child: CircularProgressIndicator.adaptive());
+                        child: Center(
+                          child: CircularProgressIndicator.adaptive(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.black,
+                            ),
+                            backgroundColor: Colors.grey,
+                          ),
+                        ));
                   }
                 },
               ),

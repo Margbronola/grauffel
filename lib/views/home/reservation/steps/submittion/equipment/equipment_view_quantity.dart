@@ -77,8 +77,14 @@ class EquipmentViewQuantity extends StatelessWidget {
                                     imageUrl: model.selectedEquipment[index]
                                         .image_thumb_url!,
                                     placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator
-                                            .adaptive()),
+                                      child: CircularProgressIndicator.adaptive(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          Colors.black,
+                                        ),
+                                        backgroundColor: Colors.grey,
+                                      ),
+                                    ),
                                     errorWidget: (context, url, error) =>
                                         const Icon(Icons.error),
                                   ),

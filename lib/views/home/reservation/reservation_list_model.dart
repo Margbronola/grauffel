@@ -24,7 +24,8 @@ class ReservationListModel extends BaseViewModel {
     if (_bookingAPIService.bookable!.isEmpty) {
       setBusy(true);
     }
-    await _bookingAPIService.fetchBookable(token: _userService.token!);
+    await _bookingAPIService.fetchBookable(
+        token: _userService.token!, fetchMore: false);
     notifyListeners();
     setBusy(false);
   }
@@ -47,7 +48,8 @@ class ReservationListModel extends BaseViewModel {
 
   void onRefresh() async {
     // monitor network fetch
-    await _bookingAPIService.fetchBookable(token: _userService.token!);
+    await _bookingAPIService.fetchBookable(
+        token: _userService.token!, fetchMore: false);
     // if failed,use refreshFailed()
     refreshController.refreshCompleted();
     notifyListeners();
@@ -58,7 +60,11 @@ class ReservationListModel extends BaseViewModel {
     // monitor network fetch
     // await _bookingAPIService.fetchBookable(token: _userService.token!);
     // if failed,use loadFailed(),if no data return,use LoadNodata()
-
+    if (_bookingAPIService.pagingModel!.total !=
+        _bookingAPIService.bookable!.length) {
+      await _bookingAPIService.fetchBookable(
+          token: _userService.token!, fetchMore: true);
+    }
     refreshController.loadComplete();
     notifyListeners();
   }

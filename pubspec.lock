@@ -291,7 +291,7 @@ packages:
   date_picker_timeline:
     dependency: "direct main"
     description:
-      path: calendar_timeline
+      path: "../calendar_timeline"
       relative: true
     source: path
     version: "1.2.3"
@@ -1016,7 +1016,7 @@ packages:
     source: hosted
     version: "4.1.0"
   rxdart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rxdart
       url: "https://pub.dartlang.org"

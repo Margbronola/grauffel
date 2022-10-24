@@ -4,7 +4,6 @@ description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -15,7 +14,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+11
+version: 1.0.0+12
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -34,7 +33,7 @@ dependencies:
   change_app_package_name: ^1.1.0
   cupertino_icons: ^1.0.2
   date_picker_timeline:
-    path: ./calendar_timeline/
+    path: ../calendar_timeline/
   file_picker: ^5.0.0
   firebase_analytics: ^9.3.5
   firebase_auth: ^3.3.20
@@ -68,6 +67,7 @@ dependencies:
   localization: ^2.1.0
   pull_to_refresh: ^2.0.0
   quiver: ^3.1.0
+  rxdart: ^0.27.5
   searchfield: ^0.6.5
   shared_preferences: ^2.0.15
   shimmer: ^2.0.0

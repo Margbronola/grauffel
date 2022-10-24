@@ -32,72 +32,76 @@ class ReservationPageView extends StatelessWidget {
             body: DefaultTabController(
               initialIndex: 0,
               length: 2,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 110.h,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              verticalSpaceSmall(),
-                              Stack(
-                                fit: StackFit.passthrough,
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                            color: greyLight, width: 5),
+              child: LayoutBuilder(builder: ((context, constraints) {
+                var w = constraints.maxWidth;
+                var h = constraints.maxHeight;
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: h / 11,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                verticalSpaceSmall(),
+                                Stack(
+                                  fit: StackFit.passthrough,
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                              color: greyLight, width: 5),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  TabBar(
-                                    unselectedLabelStyle: TextStyle(
-                                      fontFamily: 'ProductSans',
-                                      color: Colors.black,
-                                      fontSize: 20.sp,
-                                    ),
-                                    labelStyle: TextStyle(
+                                    TabBar(
+                                      unselectedLabelStyle: TextStyle(
                                         fontFamily: 'ProductSans',
                                         color: Colors.black,
                                         fontSize: 20.sp,
-                                        fontWeight: FontWeight.bold),
-                                    unselectedLabelColor: Colors.grey,
-                                    labelColor: Colors.black,
-                                    indicatorColor: buttonColor,
-                                    indicatorWeight: 5,
-                                    tabs: const [
-                                      Tab(
-                                        text: "Activités",
                                       ),
-                                      Tab(
-                                        text: "Cours & Stages",
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: kcWhite,
-                      child: const TabBarView(
-                        children: [ReservationList(), CourseListView()],
+                                      labelStyle: TextStyle(
+                                          fontFamily: 'ProductSans',
+                                          color: Colors.black,
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.bold),
+                                      unselectedLabelColor: Colors.grey,
+                                      labelColor: Colors.black,
+                                      indicatorColor: buttonColor,
+                                      indicatorWeight: 5,
+                                      tabs: const [
+                                        Tab(
+                                          text: "Activités",
+                                        ),
+                                        Tab(
+                                          text: "Cours & Stages",
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    Expanded(
+                      child: Container(
+                        color: kcWhite,
+                        child: const TabBarView(
+                          children: [ReservationList(), CourseListView()],
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              })),
             )),
       ),
       viewModelBuilder: () => ReservationPageViewModel(),

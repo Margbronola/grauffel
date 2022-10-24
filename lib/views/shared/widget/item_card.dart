@@ -51,7 +51,13 @@ class ItemCard extends StatelessWidget {
                             fit: BoxFit.cover,
                             imageUrl: image!,
                             placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator.adaptive()),
+                              child: CircularProgressIndicator.adaptive(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.black,
+                                ),
+                                backgroundColor: Colors.grey,
+                              ),
+                            ),
                             errorWidget: (context, url, error) =>
                                 const Icon(Icons.error),
                           )),

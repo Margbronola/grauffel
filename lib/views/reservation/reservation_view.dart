@@ -1,3 +1,7 @@
+import 'package:egczacademy/models/book_model.dart';
+import 'package:egczacademy/view_model/booking_vm.dart';
+import 'package:egczacademy/views/reservation/courses/new_reservation_card.dart';
+import 'package:egczacademy/views/shared/widget/myloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -6,7 +10,6 @@ import 'package:stacked/stacked.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
 import '../shared/color.dart';
 import '../shared/widget/app_delegate.dart';
-import 'reservation_card.dart';
 import 'reservation_view_model.dart';
 
 class ReservationView extends StatelessWidget {
@@ -15,7 +18,7 @@ class ReservationView extends StatelessWidget {
     Key? key,
     required this.gotoProfile,
   }) : super(key: key);
-
+  static final BookingVm _vm = BookingVm.instance;
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReservationViewModel>.reactive(
@@ -74,8 +77,12 @@ class ReservationView extends StatelessWidget {
                       SliverPersistentHeader(
                         pinned: false,
                         delegate: SliverAppBarDelegate(
-                          minHeight: model.isMandatoryPass() ? 0 : 50,
-                          maxHeight: model.isMandatoryPass() ? 0 : 50,
+                          minHeight: model.isMandatoryPass()
+                              ? 0
+                              : size(context).height * 0.06,
+                          maxHeight: model.isMandatoryPass()
+                              ? 0
+                              : size(context).height * 0.06,
                           child: model.isMandatoryPass()
                               ? const SizedBox()
                               : Container(
@@ -108,12 +115,12 @@ class ReservationView extends StatelessWidget {
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 38.w),
-                                            child: Text(
+                                            child: const Text(
                                               "Des documents sont nécessaires pour accéder au stand de tir ",
                                               style: TextStyle(
                                                 fontFamily: 'ProductSans',
                                                 color: kcWhite,
-                                                fontSize: 15.sp,
+                                                fontSize: 20,
                                               ),
                                             ),
                                           ),
@@ -191,94 +198,157 @@ class ReservationView extends StatelessWidget {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: TabBarView(
-                            children: [
-                              model.isBusy
-                                  ? ListView(
-                                      children: [
-                                        cardShimmer(),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        cardShimmer(),
-                                        SizedBox(
-                                          height: 5.h,
-                                        ),
-                                        cardShimmer(),
-                                      ],
-                                    )
-                                  : refresherView(
-                                      model.actives!.isEmpty
-                                          ? const Center(
-                                              child: Text(
-                                                "Aucune réservation pour le moment",
-                                                style: TextStyle(
-                                                  fontFamily: 'ProductSans',
-                                                ),
-                                              ),
-                                            )
-                                          : ListView.builder(
-                                              itemCount: model.actives!.length,
-                                              itemBuilder: ((context, index) =>
-                                                  ReservationCard(
-                                                      onTap: () {
-                                                        model.showCardDetails(
-                                                          bookingModel: model
-                                                              .actives![index],
-                                                        );
-                                                      },
-                                                      cancelBook: () {
-                                                        model.cancelBook(model
-                                                            .actives![index]
-                                                            .id!);
-                                                      },
-                                                      isActive: true,
-                                                      booking: model
-                                                          .actives![index]))),
-                                      model,
-                                      true),
-                              refresherView(
-                                  model.isBusy
-                                      ? ListView(
-                                          children: [
-                                            cardShimmer(),
-                                            verticalSpaceSmall(),
-                                            cardShimmer(),
-                                            verticalSpaceSmall(),
-                                            cardShimmer(),
-                                          ],
-                                        )
-                                      : model.past!.isEmpty
-                                          ? const Center(
-                                              child: Text(
-                                                "Aucune réservation pour le moment",
-                                                style: TextStyle(
-                                                  fontFamily: 'ProductSans',
-                                                ),
-                                              ),
-                                            )
-                                          : ListView.builder(
-                                              itemCount: model.past!.length,
-                                              itemBuilder: ((context, index) =>
-                                                  ReservationCard(
-                                                      cancelBook: (() =>
-                                                          model.cancelBook(model
-                                                              .past![index]
-                                                              .id!)),
-                                                      onTap: () {
-                                                        model.showCardDetails(
-                                                          bookingModel: model
-                                                              .past![index],
-                                                        );
-                                                      },
-                                                      booking:
-                                                          model.past![index])),
-                                            ),
-                                  model,
-                                  false)
-                            ],
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
                           ),
+                          child: StreamBuilder<List<BookModel>>(
+                            stream: _vm.stream,
+                            builder: (_, snapshot) {
+                              if (!snapshot.hasData || snapshot.hasError) {
+                                return Center(
+                                    child: Myloader(
+                                  logoColor: buttonColor.withOpacity(0.8),
+                                ));
+                              }
+                              final List<BookModel> data = snapshot.data!;
+                              final List<BookModel> active =
+                                  data.where((e) => e.status == 1).toList()
+                                    ..sort((a, b) {
+                                      return a.start.compareTo(b.start);
+                                    });
+
+                              final List<BookModel> past =
+                                  data.where((e) => e.status != 1).toList()
+                                    ..sort((b, a) {
+                                      return a.start.compareTo(b.start);
+                                    });
+
+                              return TabBarView(
+                                physics: const NeverScrollableScrollPhysics(),
+                                children: [
+                                  refresherView(
+                                    ListView.separated(
+                                      itemCount: active.length,
+                                      separatorBuilder: (_, i) => const Divider(
+                                        color: Colors.black54,
+                                      ),
+                                      itemBuilder: ((context, index) =>
+                                          NewReservationCard(
+                                            fromPast: false,
+                                            data: active[index],
+                                            model: model,
+                                          )),
+                                    ),
+                                    model,
+                                    true,
+                                  ),
+                                  refresherView(
+                                    ListView.separated(
+                                      itemCount: past.length,
+                                      separatorBuilder: (_, i) => const Divider(
+                                        color: Colors.black54,
+                                      ),
+                                      itemBuilder: ((context, index) =>
+                                          NewReservationCard(
+                                            fromPast: true,
+                                            data: past[index],
+                                            model: model,
+                                          )),
+                                    ),
+                                    model,
+                                    false,
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                          // child: TabBarView(
+                          //   children: [
+                          //     model.isBusy
+                          //         ? ListView(
+                          //             children: [
+                          //               cardShimmer(),
+                          //               SizedBox(
+                          //                 height: 5.h,
+                          //               ),
+                          //               cardShimmer(),
+                          //               SizedBox(
+                          //                 height: 5.h,
+                          //               ),
+                          //               cardShimmer(),
+                          //             ],
+                          //           )
+                          //         : refresherView(
+                          //             model.actives!.isEmpty
+                          //                 ? const Center(
+                          //                     child: Text(
+                          //                       "Aucune réservation pour le moment",
+                          //                       style: TextStyle(
+                          //                         fontFamily: 'ProductSans',
+                          //                       ),
+                          //                     ),
+                          //                   )
+                          // : ListView.builder(
+                          //     itemCount: model.actives!.length,
+                          //     itemBuilder: ((context, index) =>
+                          //         ReservationCard(
+                          //             onTap: () {
+                          //               model.showCardDetails(
+                          //                 bookingModel: model
+                          //                     .actives![index],
+                          //               );
+                          //             },
+                          //             cancelBook: () {
+                          //               model.cancelBook(model
+                          //                   .actives![index]
+                          //                   .id!);
+                          //             },
+                          //             isActive: true,
+                          //             booking: model
+                          //                 .actives![index]))),
+                          //             model,
+                          //             true),
+                          //     refresherView(
+                          //         model.isBusy
+                          //             ? ListView(
+                          //                 children: [
+                          //                   cardShimmer(),
+                          //                   verticalSpaceSmall(),
+                          //                   cardShimmer(),
+                          //                   verticalSpaceSmall(),
+                          //                   cardShimmer(),
+                          //                 ],
+                          //               )
+                          //             : model.past!.isEmpty
+                          //                 ? const Center(
+                          //                     child: Text(
+                          //                       "Aucune réservation pour le moment",
+                          //                       style: TextStyle(
+                          //                         fontFamily: 'ProductSans',
+                          //                       ),
+                          //                     ),
+                          //                   )
+                          //                 : ListView.builder(
+                          //                     itemCount: model.past!.length,
+                          //                     itemBuilder: ((context, index) =>
+                          //                         ReservationCard(
+                          //                             cancelBook: (() =>
+                          //                                 model.cancelBook(model
+                          //                                     .past![index]
+                          //                                     .id!)),
+                          //                             onTap: () {
+                          //                               model.showCardDetails(
+                          //                                 bookingModel: model
+                          //                                     .past![index],
+                          //                               );
+                          //                             },
+                          //                             booking:
+                          //                                 model.past![index])),
+                          //                   ),
+                          //         model,
+                          //         false)
+                          //   ],
+                          // ),
                         ),
                       ),
                     ],

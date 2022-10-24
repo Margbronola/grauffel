@@ -1,6 +1,7 @@
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/views/reservation/courses/courses_list_view_model.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
+import 'package:egczacademy/views/shared/widget/myloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -24,7 +25,12 @@ class CourseListView extends StatelessWidget {
           children: [
             verticalSpaceSmall(),
             model.isBusy
-                ? const Center(child: CircularProgressIndicator.adaptive())
+                ? Expanded(
+                    child: Center(
+                        child: Myloader(
+                      logoColor: buttonColor.withOpacity(0.8),
+                    )),
+                  )
                 : Expanded(
                     child: SmartRefresher(
                       enablePullDown: true,

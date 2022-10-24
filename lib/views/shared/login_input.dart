@@ -18,7 +18,14 @@ class LoginInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return model.isBusy
-        ? const Center(child: CircularProgressIndicator.adaptive())
+        ? const Center(
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                Colors.black,
+              ),
+              backgroundColor: Colors.grey,
+            ),
+          )
         : Container(
             width: 354.w,
             color: kcWhite,

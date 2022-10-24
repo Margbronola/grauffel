@@ -18,7 +18,12 @@ class SubmitionView extends StatelessWidget {
       builder: (context, model, child) => SingleChildScrollView(
         child: model.isBusy
             ? const Center(
-                child: CircularProgressIndicator.adaptive(),
+                child: CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.black,
+                  ),
+                  backgroundColor: Colors.grey,
+                ),
               )
             : Column(
                 children: [

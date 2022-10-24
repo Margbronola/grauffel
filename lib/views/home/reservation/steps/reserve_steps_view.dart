@@ -17,78 +17,80 @@ class ReserveStepsView extends StatelessWidget {
     return ViewModelBuilder<ReserveStepsViewModel>.reactive(
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          color: kcWhite,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                  height: 120.h,
-                  width: size(context).width,
-                  color: buttonColor,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 150,
-                        top: -100,
-                        child: Opacity(
-                          opacity: 0.1,
-                          child: Image.asset(
-                            imagelBigLogo,
-                            color: kcWhite,
-                            scale: 1,
+        backgroundColor: kcWhite,
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    height: constraints.maxHeight * .08,
+                    width: size(context).width,
+                    color: buttonColor,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 150,
+                          top: -100,
+                          child: Opacity(
+                            opacity: 0.1,
+                            child: Image.asset(
+                              imagelBigLogo,
+                              color: kcWhite,
+                              scale: 1,
+                            ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            BackButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            Text(
-                              "Réservation".toUpperCase(),
-                              style: TextStyle(
-                                color: kcWhite,
-                                fontSize: 26.sp,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'ProductSans',
+                        Align(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              BackButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
                               ),
-                            )
-                          ],
+                              Text(
+                                "Réservation".toUpperCase(),
+                                style: TextStyle(
+                                  color: kcWhite,
+                                  fontSize: 26.sp,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'ProductSans',
+                                ),
+                              )
+                            ],
+                          ),
                         ),
+                      ],
+                    )),
+                Container(
+                  color: Colors.black,
+                  width: size(context).width,
+                  height: constraints.maxHeight * 0.09,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: boxes(model),
                       ),
                     ],
-                  )),
-              Container(
-                color: Colors.black,
-                width: size(context).width,
-                height: 75.h,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: boxes(model),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: model.pageController,
-                  onPageChanged: model.nextIndex,
-                  children: model.pages,
+                Expanded(
+                  child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: model.pageController,
+                    onPageChanged: model.nextIndex,
+                    children: model.pages,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            );
+          },
         ),
       ),
       viewModelBuilder: () => ReserveStepsViewModel(),
@@ -172,7 +174,7 @@ class ReserveStepsView extends StatelessWidget {
           model.reversePage(index);
         },
         child: SizedBox(
-          width: 50,
+          width: 60.w,
           child: Column(
             children: [
               Container(

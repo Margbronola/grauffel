@@ -71,11 +71,13 @@ class SelectDateView extends StatelessWidget {
                 ),
               ),
               Container(
+                width: size(context).width,
                 color: customGrey,
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
                   height: 100.h,
                   child: DatePicker(model.currentDate, model.scrollController,
+                      width: size(context).width * 0.1,
                       selectionColor: buttonColor,
                       deactivatedColor: Colors.grey,
                       selectedTextColor: Colors.white,
@@ -96,7 +98,13 @@ class SelectDateView extends StatelessWidget {
                   ? SizedBox(
                       height: 300.h,
                       child: const Center(
-                          child: CircularProgressIndicator.adaptive()))
+                        child: CircularProgressIndicator.adaptive(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.black,
+                          ),
+                          backgroundColor: Colors.grey,
+                        ),
+                      ))
                   : Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),

@@ -1,3 +1,4 @@
+import 'package:egczacademy/views/shared/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:egczacademy/models/document_type_model.dart';
@@ -35,7 +36,7 @@ class DocumentCardView extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         width: double.infinity,
-        height: 65.h,
+        height: size(context).height * 0.08,
         child: Card(
           elevation: 2,
           color: cardColor,

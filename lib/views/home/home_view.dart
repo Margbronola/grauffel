@@ -1,6 +1,7 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:egczacademy/app/global.dart';
+import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
 import 'package:egczacademy/views/home/reservation/reservation_pageview.dart';
 import 'package:egczacademy/views/shared/color.dart';
@@ -12,14 +13,22 @@ import 'package:stacked/stacked.dart';
 import '../reservation/reservation_view.dart';
 import 'home_view_model.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> with BookingAPIService {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return ViewModelBuilder<HomeViewModel>.reactive(
-      onModelReady: (model) => model.initState(context),
+      onModelReady: (model) async {
+        model.initState(context);
+        await fetchBookingHistory(token: model.userService.token!);
+      },
       builder: (context, model, child) => Scaffold(
         appBar: model.isProfilePage
             ? null

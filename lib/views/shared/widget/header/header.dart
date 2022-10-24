@@ -16,7 +16,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 140.h,
+        height: size(context).height * 0.1,
         width: size(context).width,
         color: backgroundColor,
         child: Stack(

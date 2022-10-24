@@ -1,8 +1,8 @@
-import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:egczacademy/views/home/profile/profile_view.dart';
+import 'package:egczacademy/views/reservation/cardDetails/reserve_card_detais_view.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -13,7 +13,6 @@ import '../../app/app.locator.dart';
 import '../../models/booking_model.dart';
 import '../../services/document_service.dart';
 import '../../services/home_paging_service.dart';
-import 'cardDetails/reserve_card_details_view.dart';
 
 class ReservationViewModel extends ReactiveViewModel {
   bool showHelp = true;
@@ -34,8 +33,7 @@ class ReservationViewModel extends ReactiveViewModel {
     if (_homePagingService.isRefresh) {
       setBusy(true);
       //TODO setbusy
-      await _bookingAPIService.fetchActivesAndPast(
-          _userService.token, _userService.user!.id.toString());
+      await _bookingAPIService.fetchBookingHistory(token: _userService.token!);
 
       setBusy(false);
       _homePagingService.setRefresh(false);
@@ -51,25 +49,18 @@ class ReservationViewModel extends ReactiveViewModel {
 
   void onRefresh() async {
     // monitor network fetch
-    await _bookingAPIService.fetchActivesAndPast(
-        _userService.token, _userService.user!.id.toString());
+    await _bookingAPIService.fetchBookingHistory(token: _userService.token!);
     refreshController1.refreshCompleted();
     refreshController2.refreshCompleted();
     notifyListeners();
   }
 
   void onLoading() async {
-    // monitor network fetch
     print("Loadmre");
     print(_bookingAPIService.pagingModel);
     if (_bookingAPIService.pagingModel!.total !=
         _bookingAPIService.bookings!.length) {
-      print(_bookingAPIService.bookings!.length);
-      await Future.delayed(const Duration(milliseconds: 1000));
-      // if failed,use loadFailed(),if no data return,use LoadNodata()
-      await _bookingAPIService.fetchActivesAndPast(
-          _userService.token, _userService.user!.id.toString(),
-          fetchMore: true);
+      await _bookingAPIService.fetchBookingHistory(token: _userService.token!);
     } else {
       print("Max reach");
     }
@@ -119,16 +110,20 @@ class ReservationViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
-  void showCardDetails({required BookingModel bookingModel}) async {
-    List<AmmunitionsModel> ammunitions = bookingModel.ammunitions!.toList();
-    ammunitions.removeWhere((element) => element.pivot!.quantity == 0);
-    bookingModel = bookingModel.copyWith(ammunitions: ammunitions);
-    print(bookingModel.ammunitions!.length);
-    _navigationService.navigateToView(ReserveCardDetails(
-      bookingModel: bookingModel,
-      user: _userService.user!,
+  void showDetailsCardNew(int bookingID) async {
+    //TODO: show details
+    _navigationService.navigateToView(ReserveCardDetailsView(
+      bookId: bookingID,
     ));
   }
+
+  // void showCardDetails({required BookingModel bookingModel}) async {
+  //   List<AmmunitionsModel> ammunitions = bookingModel.ammunitions!.toList();
+  //   ammunitions.removeWhere((element) => element.pivot!.quantity == 0);
+  //   bookingModel = bookingModel.copyWith(ammunitions: ammunitions);
+  //   print(bookingModel.ammunitions!.length);
+
+  // }
 
   List days = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];
 

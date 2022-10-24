@@ -2,13 +2,16 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:egczacademy/extensions/string.dart';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
+import 'package:egczacademy/models/book_model.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/models/course_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
+import 'package:egczacademy/view_model/booking_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
@@ -37,43 +40,98 @@ class BookingAPIService {
   PagingModel? _pagingModel;
   PagingModel? get pagingModel => _pagingModel;
   final int _perPage = 6;
-
+  static final BookingVm _bookVM = BookingVm.instance;
   //TODO: specific for active only
   //TODO: specific fetch for past
+  Future<void> fetchBookingHistory({required String token}) async {
+    try {
+      print("FETCH?");
+      return await http.get("$urlApi/client-bookings?per_page=$_perPage".toUri,
+          headers: {
+            HttpHeaders.authorizationHeader: "Bearer $token",
+            "accept": "application/json"
+          }).then((response) {
+        if (response.statusCode == 200) {
+          print("OK MAN DIDI");
+          List data = json.decode(response.body);
 
-  fetchActivesAndPast(token, id, {fetchMore = false}) async {
-    await fetchMyBookings(token: token, userId: id, fetchMore: fetchMore)
-        .whenComplete(() {
-      if (bookings != null) {
-        actives = bookings!
-            .where((e) => e.status_name!.toLowerCase() == "active")
-            .toList();
+          print(data);
 
-        print("ACTIVES");
-        print(actives!.length);
+          _bookVM.populate(data.map((e) => BookModel.fromJson(e)).toList());
 
-        past = bookings!
-            .where((e) =>
-                e.status_name!.toLowerCase() == "done" ||
-                e.status_name!.toLowerCase() == "cancelled invoiced" ||
-                e.status_name!.toLowerCase() == "cancelled and refunded")
-            .toList();
-
-        actives!.sort((a, b) => a.start!.compareTo(b.start!));
-        past!.sort((a, b) => b.start!.compareTo(a.start!));
-      }
-      print("Actives: ${actives!.length}");
-      print("Past: ${past!.length}");
-    });
+          // _pagingModel = PagingModel(
+          //     current_page: data['current_page'],
+          //     first_page_url: data['first_page_url'],
+          //     next_page_url: data['next_page_url'],
+          //     prev_page_url: data['prev_page_url'],
+          //     total: data['total']);
+          return;
+        }
+        return;
+      });
+    } catch (e) {
+      print("ERREUR RECUPERATION SUR HISTORIQUE de booking : $e");
+      return;
+    }
   }
+
+  Future<BookingModel?> fetchBookingDetails(
+      {required String token, required int bookId}) async {
+    try {
+      print("FETCH?");
+      return await http.get("$urlApi/bookings/$bookId".toUri, headers: {
+        HttpHeaders.authorizationHeader: "Bearer $token",
+        "accept": "application/json"
+      }).then((response) {
+        if (response.statusCode == 200) {
+          print("OK MAN DETAILS");
+          var data = json.decode(response.body);
+          print(data);
+
+          return BookingModel.fromJson(data);
+        }
+        return null;
+      });
+    } catch (e) {
+      print("ERREUR RECUPERATION SUR HISTORIQUE de booking : $e");
+      return null;
+    }
+  }
+
+  // fetchActivesAndPast(token, id, {fetchMore = false}) async {
+  //   await fetchMyBookings(token: token, userId: id, fetchMore: fetchMore)
+  //       .whenComplete(() {
+  //     if (bookings != null) {
+  //       actives = bookings!
+  //           .where((e) => e.status_name!.toLowerCase() == "active")
+  //           .toList();
+
+  //       print("ACTIVES");
+  //       print(actives!.length);
+  //        past = bookings!
+  //           .where((e) =>
+  //               e.status_name!.toLowerCase() == "done" ||
+  //               e.status_name!.toLowerCase() == "cancelled invoiced" ||
+  //               e.status_name!.toLowerCase() == "cancelled and refunded")
+  //           .toList();
+
+  //       actives!.sort((a, b) => a.start!.compareTo(b.start!));
+  //       past!.sort((a, b) => b.start!.compareTo(a.start!));
+  //     }
+  //     print("Actives: ${actives!.length}");
+  //     print("Past: ${past!.length}");
+  //   });
+  // }
 
   Future<void> fetchMyBookings({
     required String token,
     required String userId,
     required fetchMore,
+    required isActive,
   }) async {
     try {
-      String url = "$urlApi/bookings?client_id=$userId&per_page=$_perPage";
+      String url =
+          "$urlApi/client-bookings?per_page=$_perPage&onlyfields=name,id,end,activitiy_id,bookable_id&active=$isActive";
 
       if (fetchMore) {
         url =
@@ -121,9 +179,10 @@ class BookingAPIService {
     }
   }
 
-  Future<void> fetchBookable({required String token}) async {
+  Future<void> fetchBookable(
+      {required String token, required bool fetchMore}) async {
     try {
-      final respo = await http.get(Uri.parse("$urlApi/activities"), headers: {
+      final respo = await http.get(Uri.parse("$urlApi/activities?"), headers: {
         "Content-type": "application/json",
         "Authorization": "Bearer $token",
       });
@@ -134,7 +193,24 @@ class BookingAPIService {
           _bookable =
               fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
 
-          print(_bookable);
+          if (fetchMore) {
+            debugPrint("FETCHING morel");
+
+            _bookable.addAll(
+                fetchBookable.map((e) => ActivityModel.fromJson(e)).toList());
+          } else {
+            _bookable =
+                fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
+          }
+
+          // _pagingModel = PagingModel(
+          //     current_page: data['current_page'],
+          //     first_page_url: data['first_page_url'],
+          //     next_page_url: data['next_page_url'],
+          //     prev_page_url: data['prev_page_url'],
+          //     total: data['total']);
+          // print(_pagingModel);
+          // print(_bookable);
 
           for (var x = 0; x <= _bookable.length - 1; x++) {
             if (_bookable[x].description != null) {

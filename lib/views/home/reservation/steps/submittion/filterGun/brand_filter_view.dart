@@ -133,14 +133,16 @@ class BrandFilterView extends StatelessWidget {
                     // when the _loadMore function is running
                     if (model.isLoadMoreRunning == true)
                       Container(
-                        color: Colors.transparent,
-                        padding: const EdgeInsets.all(8),
-                        child: const Center(
-                          child: CircularProgressIndicator.adaptive(
-                            backgroundColor: Colors.grey,
-                          ),
-                        ),
-                      ),
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.all(8),
+                          child: const Center(
+                            child: CircularProgressIndicator.adaptive(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.black,
+                              ),
+                              backgroundColor: Colors.grey,
+                            ),
+                          )),
 
                     // When nothing else to load
                     if (model.hasNextPage == false)
