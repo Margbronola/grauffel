@@ -295,7 +295,7 @@ class ReservationView extends StatelessWidget {
 Widget refresherView(Widget body, ReservationViewModel model, bool isActive) {
   return SmartRefresher(
       enablePullDown: true,
-      enablePullUp: false,
+      enablePullUp: true,
       header: const WaterDropHeader(),
       controller:
           isActive ? model.refreshController1 : model.refreshController2,

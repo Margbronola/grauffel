@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/book_course_model.dart';
+import '../models/paging_model.dart';
 
 class BookingAPIService {
   List<BookingModel>? _bookings;
@@ -33,8 +34,16 @@ class BookingAPIService {
   List<BookingModel>? actives = [];
   List<BookingModel>? past = [];
 
-  fetchActivesAndPast(token, id) async {
-    await fetchMyBookings(token: token, userId: id).whenComplete(() {
+  PagingModel? _pagingModel;
+  PagingModel? get pagingModel => _pagingModel;
+  final int _perPage = 6;
+
+  //TODO: specific for active only
+  //TODO: specific fetch for past
+
+  fetchActivesAndPast(token, id, {fetchMore = false}) async {
+    await fetchMyBookings(token: token, userId: id, fetchMore: fetchMore)
+        .whenComplete(() {
       if (bookings != null) {
         actives = bookings!
             .where((e) => e.status_name!.toLowerCase() == "active")
@@ -58,35 +67,19 @@ class BookingAPIService {
     });
   }
 
-  // _bookable = [
-  //   const BookableModel(
-  //     image: "assets/images/precision.jpg",
-  //     name: "Tir Précision",
-  //     description:
-  //         "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe",
-  //   ),
-  //   const BookableModel(
-  //       image: "assets/images/funshoot.jpg",
-  //       name: "Fun shoot",
-  //       description:
-  //           "Réservez un PAS DE TIR pour pratiquer du tir statique sur cible fixe"),
-  //   const BookableModel(
-  //       image: "assets/images/course.jpg",
-  //       name: courseTSV,
-  //       description:
-  //           "Le TSV est une pratique dynamique du tir sportif Réservés aux abonnés Gold TSV & Black"),
-  //   const BookableModel(
-  //       image: "assets/images/alv.jpg",
-  //       name: "Alvéoles",
-  //       description:
-  //           "Pour vous et vos amis afin de pratiquer le tir 25m ou du Fun Shoot en dehors des heures d'ouverture")
-  // ];
-
-  Future<void> fetchMyBookings(
-      {required String token, required String userId}) async {
+  Future<void> fetchMyBookings({
+    required String token,
+    required String userId,
+    required fetchMore,
+  }) async {
     try {
-      final respo = await http
-          .get(Uri.parse("$urlApi/bookings?client_id=$userId"), headers: {
+      String url = "$urlApi/bookings?client_id=$userId&per_page=$_perPage";
+
+      if (fetchMore) {
+        url =
+            "${_pagingModel!.next_page_url}&client_id=$userId&per_page=$_perPage";
+      }
+      final respo = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       });
@@ -97,18 +90,24 @@ class BookingAPIService {
           print("RESERVATION DATA: $data");
           print("FETCH BOOKINGS PASS 2");
 
-          List fetchBookings = data;
+          List fetchBookings = data["data"];
 
-          _bookings =
-              fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
+          if (fetchMore) {
+            debugPrint("FETCHING morel");
+            _bookings!.addAll(
+                fetchBookings.map((e) => BookingModel.fromJson(e)).toList());
+          } else {
+            _bookings =
+                fetchBookings.map((e) => BookingModel.fromJson(e)).toList();
+          }
 
-          // _pagingModel = PagingModel(
-          //   current_page: data['current_page'],
-          //   first_page_url: data['first_page_url'],
-          //   next_page_url: data['next_page_url'],
-          //   prev_page_url: data['prev_page_url'],
-          // );
-          // print(_pagingModel);
+          _pagingModel = PagingModel(
+              current_page: data['current_page'],
+              first_page_url: data['first_page_url'],
+              next_page_url: data['next_page_url'],
+              prev_page_url: data['prev_page_url'],
+              total: data['total']);
+          print(_pagingModel);
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");

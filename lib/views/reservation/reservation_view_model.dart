@@ -60,10 +60,19 @@ class ReservationViewModel extends ReactiveViewModel {
 
   void onLoading() async {
     // monitor network fetch
-    await Future.delayed(const Duration(milliseconds: 1000));
-    // if failed,use loadFailed(),if no data return,use LoadNodata()
-    await _bookingAPIService.fetchActivesAndPast(
-        _userService.token, _userService.user!.id.toString());
+    print("Loadmre");
+    print(_bookingAPIService.pagingModel);
+    if (_bookingAPIService.pagingModel!.total !=
+        _bookingAPIService.bookings!.length) {
+      print(_bookingAPIService.bookings!.length);
+      await Future.delayed(const Duration(milliseconds: 1000));
+      // if failed,use loadFailed(),if no data return,use LoadNodata()
+      await _bookingAPIService.fetchActivesAndPast(
+          _userService.token, _userService.user!.id.toString(),
+          fetchMore: true);
+    } else {
+      print("Max reach");
+    }
     refreshController1.loadComplete();
     refreshController2.refreshCompleted();
     notifyListeners();
