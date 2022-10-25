@@ -1,4 +1,3 @@
-import 'package:egczacademy/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -7,7 +6,7 @@ import '../shared/color.dart';
 class RegisterHelper {
   void showFail() {
     Fluttertoast.showToast(
-        msg: "Regsiter fail",
+        msg: "Échec de la connexion",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
@@ -16,17 +15,17 @@ class RegisterHelper {
         fontSize: 16.0);
   }
 
-  Future<void> register(
-      {required GlobalKey<FormState> formKey, required UserModel user}) async {
-    if (formKey.currentState!.validate() == true) {
-      debugPrint("You can register now");
-      // _authenticationService.register(userModel: user).then((value) {
-      //   if (value) {
-      //     _navigationService.navigateToView(Home());
-      //   } else {
-      //     showFail();
-      //   }
-      // });
-    }
-  }
+  // Future<void> register(
+  //     {required GlobalKey<FormState> formKey, required UserModel user}) async {
+  //   if (formKey.currentState!.validate() == true) {
+  //     debugPrint("You can register now");
+  //     // _authenticationService.register(userModel: user).then((value) {
+  //     //   if (value) {
+  //     //     _navigationService.navigateToView(Home());
+  //     //   } else {
+  //     //     showFail();
+  //     //   }
+  //     // });
+  //   }
+  // }
 }
