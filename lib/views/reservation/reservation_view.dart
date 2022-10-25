@@ -1,7 +1,6 @@
 import 'package:egczacademy/models/book_model.dart';
 import 'package:egczacademy/view_model/booking_vm.dart';
 import 'package:egczacademy/views/reservation/courses/new_reservation_card.dart';
-import 'package:egczacademy/views/shared/widget/myloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -79,10 +78,10 @@ class ReservationView extends StatelessWidget {
                         delegate: SliverAppBarDelegate(
                           minHeight: model.isMandatoryPass()
                               ? 0
-                              : size(context).height * 0.06,
+                              : size(context).height * 0.07,
                           maxHeight: model.isMandatoryPass()
                               ? 0
-                              : size(context).height * 0.06,
+                              : size(context).height * 0.07,
                           child: model.isMandatoryPass()
                               ? const SizedBox()
                               : Container(
@@ -114,13 +113,13 @@ class ReservationView extends StatelessWidget {
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
-                                                horizontal: 38.w),
-                                            child: const Text(
+                                                horizontal: 30.w),
+                                            child: Text(
                                               "Des documents sont nécessaires pour accéder au stand de tir ",
                                               style: TextStyle(
                                                 fontFamily: 'ProductSans',
                                                 color: kcWhite,
-                                                fontSize: 20,
+                                                fontSize: 20.sp,
                                               ),
                                             ),
                                           ),
@@ -205,10 +204,23 @@ class ReservationView extends StatelessWidget {
                             stream: _vm.stream,
                             builder: (_, snapshot) {
                               if (!snapshot.hasData || snapshot.hasError) {
-                                return Center(
-                                    child: Myloader(
-                                  logoColor: buttonColor.withOpacity(0.8),
-                                ));
+                                return ListView(
+                                  children: [
+                                    cardShimmer(),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    cardShimmer(),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    cardShimmer(),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    cardShimmer(),
+                                  ],
+                                );
                               }
                               final List<BookModel> data = snapshot.data!;
                               final List<BookModel> active =
@@ -230,7 +242,7 @@ class ReservationView extends StatelessWidget {
                                     ListView.separated(
                                       itemCount: active.length,
                                       separatorBuilder: (_, i) => const Divider(
-                                        color: Colors.black54,
+                                        color: Colors.white,
                                       ),
                                       itemBuilder: ((context, index) =>
                                           NewReservationCard(
@@ -243,11 +255,8 @@ class ReservationView extends StatelessWidget {
                                     true,
                                   ),
                                   refresherView(
-                                    ListView.separated(
+                                    ListView.builder(
                                       itemCount: past.length,
-                                      separatorBuilder: (_, i) => const Divider(
-                                        color: Colors.black54,
-                                      ),
                                       itemBuilder: ((context, index) =>
                                           NewReservationCard(
                                             fromPast: true,

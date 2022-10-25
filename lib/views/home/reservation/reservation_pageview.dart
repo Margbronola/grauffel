@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import '../../shared/color.dart';
 import '../../shared/widget/header/header.dart';
-import '../../shared/ui_helper.dart';
 
 class ReservationPageView extends StatelessWidget {
   const ReservationPageView({Key? key}) : super(key: key);
@@ -37,59 +36,48 @@ class ReservationPageView extends StatelessWidget {
                 var h = constraints.maxHeight;
                 return Column(
                   children: [
-                    SizedBox(
-                      height: h / 11,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                verticalSpaceSmall(),
-                                Stack(
-                                  fit: StackFit.passthrough,
-                                  alignment: Alignment.bottomCenter,
-                                  children: [
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                              color: greyLight, width: 5),
-                                        ),
-                                      ),
-                                    ),
-                                    TabBar(
-                                      unselectedLabelStyle: TextStyle(
-                                        fontFamily: 'ProductSans',
-                                        color: Colors.black,
-                                        fontSize: 20.sp,
-                                      ),
-                                      labelStyle: TextStyle(
-                                          fontFamily: 'ProductSans',
-                                          color: Colors.black,
-                                          fontSize: 20.sp,
-                                          fontWeight: FontWeight.bold),
-                                      unselectedLabelColor: Colors.grey,
-                                      labelColor: Colors.black,
-                                      indicatorColor: buttonColor,
-                                      indicatorWeight: 5,
-                                      tabs: const [
-                                        Tab(
-                                          text: "Activités",
-                                        ),
-                                        Tab(
-                                          text: "Cours & Stages",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Stack(
+                          fit: StackFit.passthrough,
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            Container(
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom:
+                                      BorderSide(color: greyLight, width: 5),
+                                ),
+                              ),
+                            ),
+                            TabBar(
+                              unselectedLabelStyle: TextStyle(
+                                fontFamily: 'ProductSans',
+                                color: Colors.black,
+                                fontSize: 20.sp,
+                              ),
+                              labelStyle: TextStyle(
+                                  fontFamily: 'ProductSans',
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold),
+                              unselectedLabelColor: Colors.grey,
+                              labelColor: Colors.black,
+                              indicatorColor: buttonColor,
+                              indicatorWeight: 5,
+                              tabs: const [
+                                Tab(
+                                  text: "Activités",
+                                ),
+                                Tab(
+                                  text: "Cours & Stages",
                                 ),
                               ],
                             ),
-                          )
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
                     Expanded(
                       child: Container(
