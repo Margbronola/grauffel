@@ -119,7 +119,7 @@ class ReservationView extends StatelessWidget {
                                               style: TextStyle(
                                                 fontFamily: 'ProductSans',
                                                 color: kcWhite,
-                                                fontSize: 20.sp,
+                                                fontSize: 18.sp,
                                               ),
                                             ),
                                           ),
@@ -203,7 +203,9 @@ class ReservationView extends StatelessWidget {
                           child: StreamBuilder<List<BookModel>>(
                             stream: _vm.stream,
                             builder: (_, snapshot) {
-                              if (!snapshot.hasData || snapshot.hasError) {
+                              if (!snapshot.hasData ||
+                                  snapshot.hasError ||
+                                  model.isBusy) {
                                 return ListView(
                                   children: [
                                     cardShimmer(),

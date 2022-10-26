@@ -34,7 +34,7 @@ class CourseListView extends StatelessWidget {
                 : Expanded(
                     child: SmartRefresher(
                       enablePullDown: true,
-                      enablePullUp: true,
+                      enablePullUp: false,
                       header: const WaterDropHeader(),
                       controller: model.refreshController,
                       onRefresh: model.onRefresh,

@@ -439,7 +439,7 @@ class BookingAPIService {
     return false;
   }
 
-  Future<bool> book({
+  Future<String> book({
     required String token,
     required DateTime date,
     required String time,
@@ -475,21 +475,50 @@ class BookingAPIService {
         },
         body: json.encode(body),
       );
-      var data = json.decode(respo.body);
+
       if (respo.statusCode == 200) {
-        return data["message"] == 'success';
+        if (respo.body.contains('success')) {
+          print(respo.body);
+          return "";
+        } else {
+          print(respo.body);
+          String failReason = "";
+          if (respo.body.contains('arme')) {
+            print("arme");
+            failReason = "arme not available";
+          } else if (respo.body.contains('ammo')) {
+            print("ammo");
+            failReason = "ammo not available";
+          } else if (respo.body.contains('equipment')) {
+            print("equipment");
+            failReason = "equipment not available";
+          }
+          print(respo.body);
+          return failReason;
+        }
       } else {
+        String failReason = "";
+        if (respo.body.contains('conflict')) {
+          print("conflict");
+          failReason = "conflict booking";
+        } else if (respo.body.contains('no_slots')) {
+          failReason = "no_slots booking";
+          print("no slots");
+        } else if (respo.body.contains('no_stock')) {
+          failReason = "No stock booking";
+          print("no stock");
+        }
         print(respo.body);
-        print("CONVERSION JSON EROR IN BOOK");
-        return false;
+        print("NOT 200 in BOOK");
+        return failReason;
       }
     } catch (e) {
       print(e);
-      return false;
+      return "Server Error";
     }
   }
 
-  Future<bool> bookCourse({
+  Future<String> bookCourse({
     required int courseId,
     required String token,
     required List<GunModel> guns,
@@ -509,19 +538,40 @@ class BookingAPIService {
             equipments: equipments,
           ).toJson()));
 
-      var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
         print("book pass");
-        return data["message"] == 'success';
+
+        if (respo.body.contains('success')) {
+          print(respo.body);
+          return "";
+        } else {
+          print(respo.body);
+          String failReason = "";
+          if (respo.body.contains('arme')) {
+            print("arme");
+            failReason = "arme not available";
+          } else if (respo.body.contains('ammo')) {
+            print("ammo");
+            failReason = "ammo not available";
+          } else if (respo.body.contains('equipment')) {
+            print("equipment");
+            failReason = "equipment not available";
+          } else if (respo.body.contains('conflict')) {
+            print("conflict");
+            failReason = "conflict on booking";
+          }
+          print(respo.body);
+          return failReason;
+        }
       } else {
         print(respo.body);
-        print("SERVER FAIL bookCourses");
-        return false;
+        print("NOT 200 in coursebook");
+        return "no slot on booking";
       }
     } catch (e) {
       print(e);
       print("FETCH BOOKIGNS FAIL");
-      return false;
+      return "Server Error";
     }
   }
 }

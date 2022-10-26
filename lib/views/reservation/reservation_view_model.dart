@@ -104,13 +104,9 @@ class ReservationViewModel extends ReactiveViewModel {
           bookingId: bookingId,
           token: _userService.token!,
         );
-        _bookingAPIService.actives!
-            .removeWhere((element) => element.id == bookingId);
 
         // List.from(_vm.current).removeWhere((element) => element.id == bookingId);
-
         _vm.remove(bookingId);
-
         setBusy(false);
       }
     }

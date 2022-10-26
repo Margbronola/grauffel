@@ -99,6 +99,7 @@ class ReserveFailDialog extends StatelessWidget {
                         ],
                       )
                     : const SizedBox(),
+                const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -118,7 +119,8 @@ class ReserveFailDialog extends StatelessWidget {
                       "Annuler".toUpperCase(),
                     ),
                   ),
-                )
+                ),
+                verticalSpaceSmall(),
               ],
             ),
           ),

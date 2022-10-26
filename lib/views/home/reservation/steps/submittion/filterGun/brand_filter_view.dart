@@ -43,7 +43,7 @@ class BrandFilterView extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: model.uncheckAllBox,
+              onPressed: model.cancelFilter,
               child: Text(
                 "Annuler\nfiltres".toUpperCase(),
                 style: TextStyle(

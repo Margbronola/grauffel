@@ -142,6 +142,9 @@ class UserAPIService {
       required String cPassword,
       required String token}) async {
     try {
+      print(oldPassword);
+      print(newPassword);
+      print(cPassword);
       final respo =
           await http.post(Uri.parse("$urlApi/client/update-password"), body: {
         "old_password": oldPassword,

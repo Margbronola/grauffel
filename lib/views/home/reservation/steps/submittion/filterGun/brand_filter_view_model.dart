@@ -58,8 +58,9 @@ class BrandFilterViewModel extends ReactiveViewModel {
     setBusy(false);
   }
 
-  void uncheckAllBox() {
+  void cancelFilter() {
     _gunListService.clearFilter(filterType: Filter.marque);
+    countCheck++;
     notifyListeners();
   }
 

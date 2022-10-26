@@ -33,10 +33,10 @@ class CoursesListViewModel extends BaseViewModel {
   Future init() async {
     if (_bookingAPIService.bookableCourse!.isEmpty) {
       setBusy(true);
+      await _bookingAPIService.fetchCourses(token: _userService.token!);
+      notifyListeners();
+      setBusy(false);
     }
-    await _bookingAPIService.fetchCourses(token: _userService.token!);
-    notifyListeners();
-    setBusy(false);
   }
 
   Future<int> checkExistBooking(int courseId) async {

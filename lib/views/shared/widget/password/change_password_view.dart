@@ -103,7 +103,7 @@ class ChangePasswordView extends StatelessWidget {
                           model.toggle(1);
                         },
                         child: Icon(
-                          model.showPassword
+                          model.showNewPassword
                               ? Icons.visibility
                               : Icons.visibility_off,
                           color: Colors.grey,
@@ -139,7 +139,7 @@ class ChangePasswordView extends StatelessWidget {
                           model.toggle(2);
                         },
                         child: Icon(
-                          model.showPassword
+                          model.showCPassword
                               ? Icons.visibility
                               : Icons.visibility_off,
                           color: Colors.grey,
@@ -162,40 +162,9 @@ class ChangePasswordView extends StatelessWidget {
                                   token: model.userService.token!)
                               .then((value) {
                             if (value) {
-                              //TODO: true
+                              model.showDialogSuccess();
                             } else {
-                              return AlertDialog(
-                                title: Text(
-                                  'Save The Planet',
-                                  style: Theme.of(context).textTheme.headline1,
-                                ),
-                                content: SingleChildScrollView(
-                                  child: ListBody(
-                                    children: [
-                                      Text(
-                                        'Plant Tress and reduce Carbon Emission.',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText2,
-                                      ),
-                                      Text(
-                                        'Would you like to approve of this message?',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text('Approve'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
+                              model.showDialogFail();
                             }
                           });
                         }

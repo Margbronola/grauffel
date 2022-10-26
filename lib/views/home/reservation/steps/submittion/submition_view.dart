@@ -15,17 +15,19 @@ class SubmitionView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubmitionViewModel>.reactive(
       onModelReady: (model) => model.init(),
-      builder: (context, model, child) => SingleChildScrollView(
-        child: model.isBusy
-            ? const Center(
+      builder: (context, model, child) => model.isBusy
+          ? const Expanded(
+              child: Center(
                 child: CircularProgressIndicator.adaptive(
                   valueColor: AlwaysStoppedAnimation<Color>(
                     Colors.black,
                   ),
                   backgroundColor: Colors.grey,
                 ),
-              )
-            : Column(
+              ),
+            )
+          : SingleChildScrollView(
+              child: Column(
                 children: [
                   Container(
                     height: 70.h,
@@ -224,7 +226,7 @@ class SubmitionView extends StatelessWidget {
                   )
                 ],
               ),
-      ),
+            ),
       viewModelBuilder: () => SubmitionViewModel(),
     );
   }

@@ -72,6 +72,7 @@ class CaliberFilterViewModel extends ReactiveViewModel {
 
   void cancelFilter() {
     _gunListService.clearFilter(filterType: Filter.calibre);
+    countCheck++;
     notifyListeners();
   }
 

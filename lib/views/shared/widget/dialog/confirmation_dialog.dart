@@ -42,7 +42,9 @@ class ConfirmationDialog extends StatelessWidget {
                         fontFamily: 'ProductSans',
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.red),
+                        color: request!.additionalButtonTitle == "warning"
+                            ? Colors.red
+                            : Colors.green),
                   ),
                   //this one is for icon
                 ],
