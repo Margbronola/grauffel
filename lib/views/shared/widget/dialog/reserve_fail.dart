@@ -66,7 +66,7 @@ class ReserveFailDialog extends StatelessWidget {
                 ),
                 verticalSpaceLarge(),
                 Text(
-                  "Vérifiez votre solde sur lesite internet puis réessayez.",
+                  request!.data ?? "",
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -74,31 +74,6 @@ class ReserveFailDialog extends StatelessWidget {
                   ),
                 ),
                 verticalSpaceSmall(),
-                request!.data != null && request!.data == "no_stock"
-                    ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.info,
-                                color: Colors.grey[600],
-                              ),
-                              horizontalSpaceSmall(),
-                              Text(
-                                "Les stocks sont limités!",
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'ProductSans',
-                                ),
-                              ),
-                            ],
-                          ),
-                          verticalSpaceSmall(),
-                        ],
-                      )
-                    : const SizedBox(),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

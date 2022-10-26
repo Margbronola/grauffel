@@ -113,7 +113,7 @@ class SubmitionViewModel extends ReactiveViewModel {
     bool isBookedCourse =
         isCourse ? await reserveCourse() : await reserveBook();
 
-    _startClosing();
+    // _startClosing();
     if (isBookedCourse) {
       var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
@@ -132,10 +132,10 @@ class SubmitionViewModel extends ReactiveViewModel {
         }
       }
 
-      _startClosing().timeout(
-        const Duration(seconds: 1),
-        onTimeout: () => 'Manualy exit',
-      );
+      // _startClosing().timeout(
+      //   const Duration(seconds: 1),
+      //   onTimeout: () => 'Manualy exit',
+      // );
     } else {
       await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
@@ -146,10 +146,10 @@ class SubmitionViewModel extends ReactiveViewModel {
       _homePagingService.onTap(0);
       _navigationService.back();
 
-      _startClosing().timeout(
-        const Duration(seconds: 1),
-        onTimeout: () => 'Manualy exit',
-      );
+      // _startClosing().timeout(
+      //   const Duration(seconds: 1),
+      //   onTimeout: () => 'Manualy exit',
+      // );
     }
 
     setBusy(false);

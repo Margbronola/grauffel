@@ -485,13 +485,13 @@ class BookingAPIService {
           String failReason = "";
           if (respo.body.contains('arme')) {
             print("arme");
-            failReason = "arme not available";
+            failReason = "Arme non disponible!";
           } else if (respo.body.contains('ammo')) {
             print("ammo");
-            failReason = "ammo not available";
+            failReason = "Munitions non disponibles!";
           } else if (respo.body.contains('equipment')) {
             print("equipment");
-            failReason = "equipment not available";
+            failReason = "Équipement non disponible!";
           }
           print(respo.body);
           return failReason;
@@ -500,13 +500,13 @@ class BookingAPIService {
         String failReason = "";
         if (respo.body.contains('conflict')) {
           print("conflict");
-          failReason = "conflict booking";
+          failReason = "Conflit de réservation!";
         } else if (respo.body.contains('no_slots')) {
-          failReason = "no_slots booking";
           print("no slots");
+          failReason = "Aucun créneau!";
         } else if (respo.body.contains('no_stock')) {
-          failReason = "No stock booking";
           print("no stock");
+          failReason = "Pas de stock!";
         }
         print(respo.body);
         print("NOT 200 in BOOK");
@@ -549,24 +549,32 @@ class BookingAPIService {
           String failReason = "";
           if (respo.body.contains('arme')) {
             print("arme");
-            failReason = "arme not available";
+            failReason = "arme non disponible!";
           } else if (respo.body.contains('ammo')) {
             print("ammo");
-            failReason = "ammo not available";
+            failReason = "Munitions non disponibles!";
           } else if (respo.body.contains('equipment')) {
             print("equipment");
-            failReason = "equipment not available";
+            failReason = "Équipement non disponible!";
           } else if (respo.body.contains('conflict')) {
             print("conflict");
-            failReason = "conflict on booking";
+            failReason = "Conflit de réservation!";
           }
           print(respo.body);
           return failReason;
         }
       } else {
+        String failReason = "";
+        if (respo.body.contains('no_slots')) {
+          print("no slots");
+          failReason = "Aucun créneau!";
+        } else if (respo.body.contains('no_stock')) {
+          print("no stock");
+          failReason = "Pas de stock!";
+        }
         print(respo.body);
-        print("NOT 200 in coursebook");
-        return "no slot on booking";
+        print("NOT 200 in BOOK");
+        return failReason;
       }
     } catch (e) {
       print(e);
