@@ -77,7 +77,7 @@ class SelectDateView extends StatelessWidget {
                 child: SizedBox(
                   height: 100.h,
                   child: DatePicker(model.currentDate, model.scrollController,
-                      width: size(context).width * 0.1,
+                      width: size(context).width * 0.17,
                       selectionColor: buttonColor,
                       deactivatedColor: Colors.grey,
                       selectedTextColor: Colors.white,

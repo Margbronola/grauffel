@@ -73,7 +73,7 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   Future<bool> reserveBook() async {
-    errorString = await _bookingApiService.book(
+    return await _bookingApiService.book(
       token: _userService.token!,
       date: _bookingService.getselectedDate!,
       time: _bookingService.getselectedTimes!.time!,
@@ -82,22 +82,16 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-
-    print(errorString);
-    return errorString.isEmpty;
   }
 
   Future<bool> reserveCourse() async {
-    errorString = await _bookingApiService.bookCourse(
+    return await _bookingApiService.bookCourse(
       courseId: _bookingService.getselectedBookable!.id!,
       token: _userService.token!,
       guns: _bookingService.getselectedGun,
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-
-    print(errorString);
-    return errorString.isEmpty;
   }
 
   Future<String?> _startClosing() async {
@@ -139,7 +133,7 @@ class SubmitionViewModel extends ReactiveViewModel {
         onTimeout: () => 'Manualy exit',
       );
     } else {
-      var response = await _dialogService.showCustomDialog(
+      await _dialogService.showCustomDialog(
           mainButtonTitle: "ok",
           variant: DialogType.reservefail,
           barrierDismissible: false,

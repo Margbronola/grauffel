@@ -36,30 +36,29 @@ class Header extends StatelessWidget {
             ),
             Center(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    title.toUpperCase(),
-                    style: TextStyle(
-                      color: kcWhite,
-                      fontSize: 26.sp,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'ProductSans',
-                    ),
-                  )
+                  showLeading
+                      ? BackButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      : const SizedBox(),
                 ],
               ),
             ),
-            showLeading
-                ? Positioned(
-                    left: 5,
-                    top: 30,
-                    child: BackButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ))
-                : const SizedBox(),
+            Center(
+              child: Text(
+                title.toUpperCase(),
+                style: TextStyle(
+                  color: kcWhite,
+                  fontSize: 26.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'ProductSans',
+                ),
+              ),
+            )
           ],
         ));
   }

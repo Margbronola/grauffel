@@ -5,6 +5,7 @@ import 'package:egczacademy/services/local_notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../../services/user_api_service.dart';
 import '../../services/user_service.dart';
@@ -16,9 +17,9 @@ class HomeViewModel extends ReactiveViewModel {
   PageController get pageController => _homePagingService.pageController!;
   bool get isFromReview => _homePagingService.isFromReview;
 
-  final UserAPIService _userAPIService = locator<UserAPIService>(); //
-  final UserService userService = locator<UserService>(); //
-
+  final UserAPIService _userAPIService = locator<UserAPIService>();
+  final UserService userService = locator<UserService>();
+  final DialogService _dialogService = locator<DialogService>();
   bool get isProfilePage => _homePagingService.isProfileView;
 
   Future<void> backgroundHandler(RemoteMessage message) async {
@@ -67,16 +68,16 @@ class HomeViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
+  void onTap(int index, {bool isFromReview = false}) {
+    print("tap");
+    _homePagingService.onTap(index, isFromReview: isFromReview);
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
     _homePagingService.pageController!.dispose();
     super.dispose();
-  }
-
-  void onTap(int index, {bool isFromReview = false}) {
-    print("tap");
-    _homePagingService.onTap(index, isFromReview: isFromReview);
   }
 
   @override

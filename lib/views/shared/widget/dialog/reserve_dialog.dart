@@ -35,7 +35,7 @@ class ReserveDialog extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              height: size(context).height / 3.5.h,
+              height: size(context).height / 2.3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -79,7 +79,7 @@ class ReserveDialog extends StatelessWidget {
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                  verticalSpaceSmall(),
+                  const Spacer(),
                   SizedBox(
                     width: double.infinity,
                     child: CustomButton(
@@ -88,6 +88,7 @@ class ReserveDialog extends StatelessWidget {
                           completer!(DialogResponse(confirmed: true));
                         }),
                   ),
+                  verticalSpaceSmall(),
                 ],
               ),
             ),

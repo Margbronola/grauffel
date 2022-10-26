@@ -28,8 +28,10 @@ class BookingAPIService {
   List<ActivityModel> _bookable = [];
   List<ActivityModel>? get bookable => _bookable;
 
-  final List<ActivityModel> _bookableCourse = [];
+  List<ActivityModel> _bookableCourse = [];
   List<ActivityModel>? get bookableCourse => _bookableCourse;
+
+  set bookableCourse(value) => _bookableCourse = value;
 
   List<TimeModel> _availableTime = [];
   List<TimeModel>? get availableTime => _availableTime;
@@ -279,7 +281,8 @@ class BookingAPIService {
     }
   }
 
-  Future<void> fetchCourses({required String token}) async {
+  Future<void> fetchCourses(
+      {required String token, bool isFetchMore = false}) async {
     try {
       final respo =
           await http.get(Uri.parse("$urlApi/active/courses"), headers: {
@@ -293,6 +296,10 @@ class BookingAPIService {
 
           _courses =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
+
+          if (isFetchMore) {
+            _bookableCourse.clear();
+          }
 
           for (CourseModel x in _courses) {
             DateTime parseDt = DateTime.parse(x.date_from!);
@@ -432,7 +439,7 @@ class BookingAPIService {
     return false;
   }
 
-  Future<String> book({
+  Future<bool> book({
     required String token,
     required DateTime date,
     required String time,
@@ -468,20 +475,21 @@ class BookingAPIService {
         },
         body: json.encode(body),
       );
-
+      var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
-        return "";
+        return data["message"] == 'success';
       } else {
         print(respo.body);
         print("CONVERSION JSON EROR IN BOOK");
-        return "";
+        return false;
       }
     } catch (e) {
-      return e.toString();
+      print(e);
+      return false;
     }
   }
 
-  Future<String> bookCourse({
+  Future<bool> bookCourse({
     required int courseId,
     required String token,
     required List<GunModel> guns,
@@ -504,16 +512,16 @@ class BookingAPIService {
       var data = json.decode(respo.body);
       if (respo.statusCode == 200) {
         print("book pass");
-        return data["message"];
+        return data["message"] == 'success';
       } else {
         print(respo.body);
         print("SERVER FAIL bookCourses");
-        return "";
+        return false;
       }
     } catch (e) {
       print(e);
       print("FETCH BOOKIGNS FAIL");
-      return e.toString();
+      return false;
     }
   }
 }

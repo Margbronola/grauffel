@@ -90,8 +90,8 @@ class CoursesListViewModel extends BaseViewModel {
 
   void onRefresh() async {
     // monitor network fetch
-
-    await _bookingAPIService.fetchCourses(token: _userService.token!);
+    await _bookingAPIService.fetchCourses(
+        token: _userService.token!, isFetchMore: true);
     // if failed,use refreshFailed()
     refreshController.refreshCompleted();
     notifyListeners();
@@ -100,7 +100,6 @@ class CoursesListViewModel extends BaseViewModel {
   void onLoading() async {
     // monitor network fetch
     // await Future.delayed(const Duration(milliseconds: 1000));
-
     refreshController.loadComplete();
     notifyListeners();
   }

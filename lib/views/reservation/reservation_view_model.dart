@@ -13,6 +13,7 @@ import '../../app/app.locator.dart';
 import '../../models/booking_model.dart';
 import '../../services/document_service.dart';
 import '../../services/home_paging_service.dart';
+import '../../view_model/booking_vm.dart';
 
 class ReservationViewModel extends ReactiveViewModel {
   bool showHelp = true;
@@ -28,6 +29,7 @@ class ReservationViewModel extends ReactiveViewModel {
   UserModel get user => _userService.user!;
   List<BookingModel>? get actives => _bookingAPIService.actives;
   List<BookingModel>? get past => _bookingAPIService.past;
+  static final BookingVm _vm = BookingVm.instance;
 
   init() async {
     if (_homePagingService.isRefresh) {
@@ -104,6 +106,11 @@ class ReservationViewModel extends ReactiveViewModel {
         );
         _bookingAPIService.actives!
             .removeWhere((element) => element.id == bookingId);
+
+        // List.from(_vm.current).removeWhere((element) => element.id == bookingId);
+
+        _vm.remove(bookingId);
+
         setBusy(false);
       }
     }

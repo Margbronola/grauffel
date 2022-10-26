@@ -26,7 +26,7 @@ class SuccesReservation extends StatelessWidget {
                   imageSmallLogo,
                   color: buttonColor,
                   width: size(context).width / 2,
-                  height: size(context).width / 2,
+                  height: size(context).width / 1,
                 ),
               ),
             ),
@@ -34,16 +34,16 @@ class SuccesReservation extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              height: size(context).height / 4.h,
+              height: size(context).height / 2,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpaceLarge(),
-                  Image.asset(
-                    "assets/images/calendar.png",
-                    width: 38.w,
-                    height: 38.h,
-                  ),
+                  // Image.asset(
+                  //   "assets/images/calendar.png",
+                  //   width: 38.w,
+                  //   height: 38.h,
+                  // ),
                   verticalSpaceSmall(),
                   Text(
                     "Votre demande réservation a bien été prise en compte. EG-CZ Academy reviendra vers vous pour organiser cette réservation.",

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:egczacademy/firebase_options.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +21,10 @@ Future<void> main() async {
   await setupLocator();
   await initializePrefs();
   setupDialogUi();
-  runApp(const MyApp());
+  runApp(DevicePreview(
+    enabled: false,
+    builder: (context) => const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

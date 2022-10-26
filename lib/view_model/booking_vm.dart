@@ -14,4 +14,16 @@ class BookingVm {
   void populate(List<BookModel> data) {
     _subject.add(data);
   }
+
+  void remove(int id) {
+    List<BookModel> c = List.from(current);
+    c.removeWhere((element) => element.id == id);
+    _subject.add(c);
+  }
+
+  void addBook(BookModel newBook) {
+    List<BookModel> c = List.from(current);
+    c.add(newBook);
+    _subject.add(c);
+  }
 }
