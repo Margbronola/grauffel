@@ -238,10 +238,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-      registered: freezed == registered
-          ? _value.registered
-          : registered // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
   }
 
@@ -607,9 +603,13 @@ class _$_UserModel implements _UserModel {
                 other.firebase_id == firebase_id) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.birthday, birthday) ||
+<<<<<<< Updated upstream
                 other.birthday == birthday) &&
             (identical(other.registered, registered) ||
                 other.registered == registered));
+=======
+                other.birthday == birthday));
+>>>>>>> Stashed changes
   }
 
   @JsonKey(ignore: true)
@@ -641,8 +641,12 @@ class _$_UserModel implements _UserModel {
         country,
         firebase_id,
         image,
+<<<<<<< Updated upstream
         birthday,
         registered
+=======
+        birthday
+>>>>>>> Stashed changes
       ]);
 
   @JsonKey(ignore: true)
