@@ -67,12 +67,6 @@ dependencies:
   stacked: ^3.4.0
   stacked_services: ^1.1.0
   url_launcher: ^6.1.11
-<<<<<<< HEAD
-=======
-
-  # # date_picker_timeline:
-  # #   git: "https://gitea.qonvextechnology.com/Mobile_Team/calendar-timeline"
->>>>>>> bf0f3a734d1bc3eb274f0f4f01a8c935476bade8
   flutter:
     sdk: flutter
   pull_to_refresh: ^2.0.0
@@ -84,10 +78,6 @@ dependencies:
   searchfield: ^0.8.3
   path_provider: ^2.0.15
   flutter_datetime_picker_bdaya: ^3.0.1
-<<<<<<< HEAD
-=======
-  # date_picker_timeline: ^1.2.3
->>>>>>> bf0f3a734d1bc3eb274f0f4f01a8c935476bade8
 
 dev_dependencies:
   build_runner: null

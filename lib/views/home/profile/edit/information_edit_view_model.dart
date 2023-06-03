@@ -9,11 +9,6 @@ import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart';
-<<<<<<< HEAD
-=======
-// import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker.dart'
-    // as datepicker;
->>>>>>> bf0f3a734d1bc3eb274f0f4f01a8c935476bade8
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
