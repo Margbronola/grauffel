@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'subscription_model.dart';
 
@@ -42,7 +42,8 @@ mixin _$SubscriptionModel {
 abstract class $SubscriptionModelCopyWith<$Res> {
   factory $SubscriptionModelCopyWith(
           SubscriptionModel value, $Res Function(SubscriptionModel) then) =
-      _$SubscriptionModelCopyWithImpl<$Res>;
+      _$SubscriptionModelCopyWithImpl<$Res, SubscriptionModel>;
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -59,14 +60,16 @@ abstract class $SubscriptionModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SubscriptionModelCopyWithImpl<$Res>
+class _$SubscriptionModelCopyWithImpl<$Res, $Val extends SubscriptionModel>
     implements $SubscriptionModelCopyWith<$Res> {
   _$SubscriptionModelCopyWithImpl(this._value, this._then);
 
-  final SubscriptionModel _value;
   // ignore: unused_field
-  final $Res Function(SubscriptionModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -81,50 +84,51 @@ class _$SubscriptionModelCopyWithImpl<$Res>
     Object? end_date = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      subscription_type_id: subscription_type_id == freezed
+      subscription_type_id: freezed == subscription_type_id
           ? _value.subscription_type_id
           : subscription_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      start_date: start_date == freezed
+      start_date: freezed == start_date
           ? _value.start_date
           : start_date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      subscription_type: subscription_type == freezed
+      subscription_type: freezed == subscription_type
           ? _value.subscription_type
           : subscription_type // ignore: cast_nullable_to_non_nullable
               as SubscriptionTypeModel?,
-      end_date: end_date == freezed
+      end_date: freezed == end_date
           ? _value.end_date
           : end_date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SubscriptionTypeModelCopyWith<$Res>? get subscription_type {
     if (_value.subscription_type == null) {
       return null;
@@ -132,7 +136,7 @@ class _$SubscriptionModelCopyWithImpl<$Res>
 
     return $SubscriptionTypeModelCopyWith<$Res>(_value.subscription_type!,
         (value) {
-      return _then(_value.copyWith(subscription_type: value));
+      return _then(_value.copyWith(subscription_type: value) as $Val);
     });
   }
 }
@@ -144,6 +148,7 @@ abstract class _$$_SubscriptionModelCopyWith<$Res>
           $Res Function(_$_SubscriptionModel) then) =
       __$$_SubscriptionModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -162,15 +167,13 @@ abstract class _$$_SubscriptionModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_SubscriptionModelCopyWithImpl<$Res>
-    extends _$SubscriptionModelCopyWithImpl<$Res>
+    extends _$SubscriptionModelCopyWithImpl<$Res, _$_SubscriptionModel>
     implements _$$_SubscriptionModelCopyWith<$Res> {
   __$$_SubscriptionModelCopyWithImpl(
       _$_SubscriptionModel _value, $Res Function(_$_SubscriptionModel) _then)
-      : super(_value, (v) => _then(v as _$_SubscriptionModel));
+      : super(_value, _then);
 
-  @override
-  _$_SubscriptionModel get _value => super._value as _$_SubscriptionModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -185,43 +188,43 @@ class __$$_SubscriptionModelCopyWithImpl<$Res>
     Object? end_date = freezed,
   }) {
     return _then(_$_SubscriptionModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      subscription_type_id: subscription_type_id == freezed
+      subscription_type_id: freezed == subscription_type_id
           ? _value.subscription_type_id
           : subscription_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      start_date: start_date == freezed
+      start_date: freezed == start_date
           ? _value.start_date
           : start_date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      subscription_type: subscription_type == freezed
+      subscription_type: freezed == subscription_type
           ? _value.subscription_type
           : subscription_type // ignore: cast_nullable_to_non_nullable
               as SubscriptionTypeModel?,
-      end_date: end_date == freezed
+      end_date: freezed == end_date
           ? _value.end_date
           : end_date // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -278,40 +281,43 @@ class _$_SubscriptionModel implements _SubscriptionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubscriptionModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.client_id, client_id) &&
-            const DeepCollectionEquality()
-                .equals(other.subscription_type_id, subscription_type_id) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.start_date, start_date) &&
-            const DeepCollectionEquality()
-                .equals(other.subscription_type, subscription_type) &&
-            const DeepCollectionEquality().equals(other.end_date, end_date));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.client_id, client_id) ||
+                other.client_id == client_id) &&
+            (identical(other.subscription_type_id, subscription_type_id) ||
+                other.subscription_type_id == subscription_type_id) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.start_date, start_date) ||
+                other.start_date == start_date) &&
+            (identical(other.subscription_type, subscription_type) ||
+                other.subscription_type == subscription_type) &&
+            (identical(other.end_date, end_date) ||
+                other.end_date == end_date));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(client_id),
-      const DeepCollectionEquality().hash(subscription_type_id),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(start_date),
-      const DeepCollectionEquality().hash(subscription_type),
-      const DeepCollectionEquality().hash(end_date));
+      id,
+      client_id,
+      subscription_type_id,
+      price,
+      status,
+      created_at,
+      updated_at,
+      start_date,
+      subscription_type,
+      end_date);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SubscriptionModelCopyWith<_$_SubscriptionModel> get copyWith =>
       __$$_SubscriptionModelCopyWithImpl<_$_SubscriptionModel>(
           this, _$identity);

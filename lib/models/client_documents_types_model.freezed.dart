@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'client_documents_types_model.dart';
 
@@ -39,7 +39,8 @@ mixin _$ClientDocumentsTypesModel {
 abstract class $ClientDocumentsTypesModelCopyWith<$Res> {
   factory $ClientDocumentsTypesModelCopyWith(ClientDocumentsTypesModel value,
           $Res Function(ClientDocumentsTypesModel) then) =
-      _$ClientDocumentsTypesModelCopyWithImpl<$Res>;
+      _$ClientDocumentsTypesModelCopyWithImpl<$Res, ClientDocumentsTypesModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -51,14 +52,17 @@ abstract class $ClientDocumentsTypesModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClientDocumentsTypesModelCopyWithImpl<$Res>
+class _$ClientDocumentsTypesModelCopyWithImpl<$Res,
+        $Val extends ClientDocumentsTypesModel>
     implements $ClientDocumentsTypesModelCopyWith<$Res> {
   _$ClientDocumentsTypesModelCopyWithImpl(this._value, this._then);
 
-  final ClientDocumentsTypesModel _value;
   // ignore: unused_field
-  final $Res Function(ClientDocumentsTypesModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -70,35 +74,35 @@ class _$ClientDocumentsTypesModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      ismandatory: ismandatory == freezed
+      ismandatory: freezed == ismandatory
           ? _value.ismandatory
           : ismandatory // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,6 +114,7 @@ abstract class _$$_ClientDocumentsTypesModelCopyWith<$Res>
           $Res Function(_$_ClientDocumentsTypesModel) then) =
       __$$_ClientDocumentsTypesModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -122,17 +127,15 @@ abstract class _$$_ClientDocumentsTypesModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientDocumentsTypesModelCopyWithImpl<$Res>
-    extends _$ClientDocumentsTypesModelCopyWithImpl<$Res>
+    extends _$ClientDocumentsTypesModelCopyWithImpl<$Res,
+        _$_ClientDocumentsTypesModel>
     implements _$$_ClientDocumentsTypesModelCopyWith<$Res> {
   __$$_ClientDocumentsTypesModelCopyWithImpl(
       _$_ClientDocumentsTypesModel _value,
       $Res Function(_$_ClientDocumentsTypesModel) _then)
-      : super(_value, (v) => _then(v as _$_ClientDocumentsTypesModel));
+      : super(_value, _then);
 
-  @override
-  _$_ClientDocumentsTypesModel get _value =>
-      super._value as _$_ClientDocumentsTypesModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -144,31 +147,31 @@ class __$$_ClientDocumentsTypesModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_ClientDocumentsTypesModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      ismandatory: ismandatory == freezed
+      ismandatory: freezed == ismandatory
           ? _value.ismandatory
           : ismandatory // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -216,33 +219,27 @@ class _$_ClientDocumentsTypesModel implements _ClientDocumentsTypesModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClientDocumentsTypesModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.ismandatory, ismandatory) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.ismandatory, ismandatory) ||
+                other.ismandatory == ismandatory) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(ismandatory),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at));
+  int get hashCode => Object.hash(runtimeType, id, name, description, type,
+      ismandatory, created_at, updated_at);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClientDocumentsTypesModelCopyWith<_$_ClientDocumentsTypesModel>
       get copyWith => __$$_ClientDocumentsTypesModelCopyWithImpl<
           _$_ClientDocumentsTypesModel>(this, _$identity);

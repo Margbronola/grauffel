@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'paging_model.dart';
 
@@ -31,7 +31,8 @@ mixin _$PagingModel {
 abstract class $PagingModelCopyWith<$Res> {
   factory $PagingModelCopyWith(
           PagingModel value, $Res Function(PagingModel) then) =
-      _$PagingModelCopyWithImpl<$Res>;
+      _$PagingModelCopyWithImpl<$Res, PagingModel>;
+  @useResult
   $Res call(
       {int? current_page,
       String? first_page_url,
@@ -41,13 +42,16 @@ abstract class $PagingModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PagingModelCopyWithImpl<$Res> implements $PagingModelCopyWith<$Res> {
+class _$PagingModelCopyWithImpl<$Res, $Val extends PagingModel>
+    implements $PagingModelCopyWith<$Res> {
   _$PagingModelCopyWithImpl(this._value, this._then);
 
-  final PagingModel _value;
   // ignore: unused_field
-  final $Res Function(PagingModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? current_page = freezed,
@@ -57,27 +61,27 @@ class _$PagingModelCopyWithImpl<$Res> implements $PagingModelCopyWith<$Res> {
     Object? total = freezed,
   }) {
     return _then(_value.copyWith(
-      current_page: current_page == freezed
+      current_page: freezed == current_page
           ? _value.current_page
           : current_page // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_page_url: first_page_url == freezed
+      first_page_url: freezed == first_page_url
           ? _value.first_page_url
           : first_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      next_page_url: next_page_url == freezed
+      next_page_url: freezed == next_page_url
           ? _value.next_page_url
           : next_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      prev_page_url: prev_page_url == freezed
+      prev_page_url: freezed == prev_page_url
           ? _value.prev_page_url
           : prev_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -88,6 +92,7 @@ abstract class _$$_PagingModelCopyWith<$Res>
           _$_PagingModel value, $Res Function(_$_PagingModel) then) =
       __$$_PagingModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? current_page,
       String? first_page_url,
@@ -97,15 +102,14 @@ abstract class _$$_PagingModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PagingModelCopyWithImpl<$Res> extends _$PagingModelCopyWithImpl<$Res>
+class __$$_PagingModelCopyWithImpl<$Res>
+    extends _$PagingModelCopyWithImpl<$Res, _$_PagingModel>
     implements _$$_PagingModelCopyWith<$Res> {
   __$$_PagingModelCopyWithImpl(
       _$_PagingModel _value, $Res Function(_$_PagingModel) _then)
-      : super(_value, (v) => _then(v as _$_PagingModel));
+      : super(_value, _then);
 
-  @override
-  _$_PagingModel get _value => super._value as _$_PagingModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? current_page = freezed,
@@ -115,23 +119,23 @@ class __$$_PagingModelCopyWithImpl<$Res> extends _$PagingModelCopyWithImpl<$Res>
     Object? total = freezed,
   }) {
     return _then(_$_PagingModel(
-      current_page: current_page == freezed
+      current_page: freezed == current_page
           ? _value.current_page
           : current_page // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_page_url: first_page_url == freezed
+      first_page_url: freezed == first_page_url
           ? _value.first_page_url
           : first_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      next_page_url: next_page_url == freezed
+      next_page_url: freezed == next_page_url
           ? _value.next_page_url
           : next_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      prev_page_url: prev_page_url == freezed
+      prev_page_url: freezed == prev_page_url
           ? _value.prev_page_url
           : prev_page_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -170,28 +174,24 @@ class _$_PagingModel implements _PagingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PagingModel &&
-            const DeepCollectionEquality()
-                .equals(other.current_page, current_page) &&
-            const DeepCollectionEquality()
-                .equals(other.first_page_url, first_page_url) &&
-            const DeepCollectionEquality()
-                .equals(other.next_page_url, next_page_url) &&
-            const DeepCollectionEquality()
-                .equals(other.prev_page_url, prev_page_url) &&
-            const DeepCollectionEquality().equals(other.total, total));
+            (identical(other.current_page, current_page) ||
+                other.current_page == current_page) &&
+            (identical(other.first_page_url, first_page_url) ||
+                other.first_page_url == first_page_url) &&
+            (identical(other.next_page_url, next_page_url) ||
+                other.next_page_url == next_page_url) &&
+            (identical(other.prev_page_url, prev_page_url) ||
+                other.prev_page_url == prev_page_url) &&
+            (identical(other.total, total) || other.total == total));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(current_page),
-      const DeepCollectionEquality().hash(first_page_url),
-      const DeepCollectionEquality().hash(next_page_url),
-      const DeepCollectionEquality().hash(prev_page_url),
-      const DeepCollectionEquality().hash(total));
+  int get hashCode => Object.hash(runtimeType, current_page, first_page_url,
+      next_page_url, prev_page_url, total);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PagingModelCopyWith<_$_PagingModel> get copyWith =>
       __$$_PagingModelCopyWithImpl<_$_PagingModel>(this, _$identity);
 }

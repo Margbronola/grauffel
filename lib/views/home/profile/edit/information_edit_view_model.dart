@@ -8,8 +8,7 @@ import 'package:egczacademy/services/countries_service.dart';
 import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart'
-    as datepicker;
+import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -212,10 +211,10 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   void showDatePicker2(context) async {
     debugPrint("Show date picker");
-    await datepicker.DatePicker.showDatePicker(
+    await DatePickerBdaya.showDatePicker(
       context,
       showTitleActions: true,
-      locale: datepicker.LocaleType.fr,
+      locale: LocaleType.fr,
       currentTime: DateTime(
         int.parse(user!.birthday!.split("-")[0]),
         int.parse(user!.birthday!.split("-")[1]),
@@ -246,10 +245,10 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   void showDatePicker(context) async {
     debugPrint("Show date picker");
-    await datepicker.DatePicker.showPicker(
+    await DatePickerBdaya.showPicker(
       context,
       showTitleActions: true,
-      locale: datepicker.LocaleType.fr,
+      locale: LocaleType.fr,
       pickerModel: CustomPicker(
         currentTime: DateTime(
           int.parse(user!.birthday!.split("-")[0]),

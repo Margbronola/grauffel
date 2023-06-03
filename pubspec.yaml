@@ -40,7 +40,6 @@ dependencies:
   firebase_dynamic_links: ^5.3.2
   firebase_messaging: ^14.6.2
   flutter_camera_overlay: ^0.1.1
-  flutter_datetime_picker: ^1.5.1
   flutter_dotenv: ^5.1.0
   flutter_expanded_tile: ^0.3.7
   flutter_facebook_auth: ^5.0.11
@@ -66,16 +65,11 @@ dependencies:
   shimmer: ^3.0.0
   sign_in_with_apple: ^4.3.0
   stacked: ^3.4.0
-  stacked_core: ^1.2.4
   stacked_services: ^1.1.0
   url_launcher: ^6.1.11
-  
-  # # date_picker_timeline:
-  # #   git: "https://gitea.qonvextechnology.com/Mobile_Team/calendar-timeline"
   flutter:
     sdk: flutter
   pull_to_refresh: ^2.0.0
-
   flutter_localizations:
     sdk: flutter
   image_crop: ^0.4.1
@@ -83,7 +77,7 @@ dependencies:
   quiver: ^3.1.0
   searchfield: ^0.8.3
   path_provider: ^2.0.15
-  # date_picker_timeline: ^1.2.3
+  flutter_datetime_picker_bdaya: ^3.0.1
 
 dev_dependencies:
   build_runner: null

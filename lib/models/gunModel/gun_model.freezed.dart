@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'gun_model.dart';
 
@@ -55,7 +55,8 @@ mixin _$GunModel {
 /// @nodoc
 abstract class $GunModelCopyWith<$Res> {
   factory $GunModelCopyWith(GunModel value, $Res Function(GunModel) then) =
-      _$GunModelCopyWithImpl<$Res>;
+      _$GunModelCopyWithImpl<$Res, GunModel>;
+  @useResult
   $Res call(
       {int? id,
       String? model,
@@ -81,13 +82,16 @@ abstract class $GunModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
+class _$GunModelCopyWithImpl<$Res, $Val extends GunModel>
+    implements $GunModelCopyWith<$Res> {
   _$GunModelCopyWithImpl(this._value, this._then);
 
-  final GunModel _value;
   // ignore: unused_field
-  final $Res Function(GunModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -109,107 +113,110 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? ammunitions = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      model: model == freezed
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand_id: brand_id == freezed
+      brand_id: freezed == brand_id
           ? _value.brand_id
           : brand_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      caliber_id: caliber_id == freezed
+      caliber_id: freezed == caliber_id
           ? _value.caliber_id
           : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      reserve: reserve == freezed
+      reserve: freezed == reserve
           ? _value.reserve
           : reserve // ignore: cast_nullable_to_non_nullable
               as int?,
-      required_ammunition: required_ammunition == freezed
+      required_ammunition: freezed == required_ammunition
           ? _value.required_ammunition
           : required_ammunition // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      reservable: reservable == freezed
+      reservable: freezed == reservable
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
               as bool?,
-      caliber: caliber == freezed
+      caliber: freezed == caliber
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      qty: qty == freezed
+      qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_url: image_url == freezed
+      image_url: freezed == image_url
           ? _value.image_url
           : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_thumb_url: image_thumb_url == freezed
+      image_thumb_url: freezed == image_thumb_url
           ? _value.image_thumb_url
           : image_thumb_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PivotModelCopyWith<$Res>? get pivot {
     if (_value.pivot == null) {
       return null;
     }
 
     return $PivotModelCopyWith<$Res>(_value.pivot!, (value) {
-      return _then(_value.copyWith(pivot: value));
+      return _then(_value.copyWith(pivot: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CaliberModelCopyWith<$Res>? get caliber {
     if (_value.caliber == null) {
       return null;
     }
 
     return $CaliberModelCopyWith<$Res>(_value.caliber!, (value) {
-      return _then(_value.copyWith(caliber: value));
+      return _then(_value.copyWith(caliber: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BrandModelCopyWith<$Res>? get brand {
     if (_value.brand == null) {
       return null;
     }
 
     return $BrandModelCopyWith<$Res>(_value.brand!, (value) {
-      return _then(_value.copyWith(brand: value));
+      return _then(_value.copyWith(brand: value) as $Val);
     });
   }
 }
@@ -220,6 +227,7 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
           _$_GunModel value, $Res Function(_$_GunModel) then) =
       __$$_GunModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? model,
@@ -248,15 +256,14 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
+class __$$_GunModelCopyWithImpl<$Res>
+    extends _$GunModelCopyWithImpl<$Res, _$_GunModel>
     implements _$$_GunModelCopyWith<$Res> {
   __$$_GunModelCopyWithImpl(
       _$_GunModel _value, $Res Function(_$_GunModel) _then)
-      : super(_value, (v) => _then(v as _$_GunModel));
+      : super(_value, _then);
 
-  @override
-  _$_GunModel get _value => super._value as _$_GunModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -278,71 +285,71 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? ammunitions = freezed,
   }) {
     return _then(_$_GunModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      model: model == freezed
+      model: freezed == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
               as String?,
-      brand_id: brand_id == freezed
+      brand_id: freezed == brand_id
           ? _value.brand_id
           : brand_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      caliber_id: caliber_id == freezed
+      caliber_id: freezed == caliber_id
           ? _value.caliber_id
           : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      reserve: reserve == freezed
+      reserve: freezed == reserve
           ? _value.reserve
           : reserve // ignore: cast_nullable_to_non_nullable
               as int?,
-      required_ammunition: required_ammunition == freezed
+      required_ammunition: freezed == required_ammunition
           ? _value.required_ammunition
           : required_ammunition // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      reservable: reservable == freezed
+      reservable: freezed == reservable
           ? _value.reservable
           : reservable // ignore: cast_nullable_to_non_nullable
               as bool?,
-      caliber: caliber == freezed
+      caliber: freezed == caliber
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
               as CaliberModel?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      qty: qty == freezed
+      qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_url: image_url == freezed
+      image_url: freezed == image_url
           ? _value.image_url
           : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_thumb_url: image_thumb_url == freezed
+      image_thumb_url: freezed == image_thumb_url
           ? _value.image_thumb_url
           : image_thumb_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
@@ -425,6 +432,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   List<AmmunitionsModel>? get ammunitions {
     final value = _ammunitions;
     if (value == null) return null;
+    if (_ammunitions is EqualUnmodifiableListView) return _ammunitions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -463,27 +471,30 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GunModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.model, model) &&
-            const DeepCollectionEquality().equals(other.brand_id, brand_id) &&
-            const DeepCollectionEquality()
-                .equals(other.caliber_id, caliber_id) &&
-            const DeepCollectionEquality().equals(other.reserve, reserve) &&
-            const DeepCollectionEquality()
-                .equals(other.required_ammunition, required_ammunition) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.pivot, pivot) &&
-            const DeepCollectionEquality()
-                .equals(other.reservable, reservable) &&
-            const DeepCollectionEquality().equals(other.caliber, caliber) &&
-            const DeepCollectionEquality().equals(other.brand, brand) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
-            const DeepCollectionEquality().equals(other.qty, qty) &&
-            const DeepCollectionEquality().equals(other.image_url, image_url) &&
-            const DeepCollectionEquality()
-                .equals(other.image_thumb_url, image_thumb_url) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.brand_id, brand_id) ||
+                other.brand_id == brand_id) &&
+            (identical(other.caliber_id, caliber_id) ||
+                other.caliber_id == caliber_id) &&
+            (identical(other.reserve, reserve) || other.reserve == reserve) &&
+            (identical(other.required_ammunition, required_ammunition) ||
+                other.required_ammunition == required_ammunition) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.pivot, pivot) || other.pivot == pivot) &&
+            (identical(other.reservable, reservable) ||
+                other.reservable == reservable) &&
+            (identical(other.caliber, caliber) || other.caliber == caliber) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.qty, qty) || other.qty == qty) &&
+            (identical(other.image_url, image_url) ||
+                other.image_url == image_url) &&
+            (identical(other.image_thumb_url, image_thumb_url) ||
+                other.image_thumb_url == image_thumb_url) &&
             const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions));
   }
@@ -492,26 +503,27 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(model),
-      const DeepCollectionEquality().hash(brand_id),
-      const DeepCollectionEquality().hash(caliber_id),
-      const DeepCollectionEquality().hash(reserve),
-      const DeepCollectionEquality().hash(required_ammunition),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(pivot),
-      const DeepCollectionEquality().hash(reservable),
-      const DeepCollectionEquality().hash(caliber),
-      const DeepCollectionEquality().hash(brand),
-      const DeepCollectionEquality().hash(quantity),
-      const DeepCollectionEquality().hash(qty),
-      const DeepCollectionEquality().hash(image_url),
-      const DeepCollectionEquality().hash(image_thumb_url),
+      id,
+      model,
+      brand_id,
+      caliber_id,
+      reserve,
+      required_ammunition,
+      price,
+      description,
+      pivot,
+      reservable,
+      caliber,
+      brand,
+      quantity,
+      qty,
+      image_url,
+      image_thumb_url,
       const DeepCollectionEquality().hash(_ammunitions));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GunModelCopyWith<_$_GunModel> get copyWith =>
       __$$_GunModelCopyWithImpl<_$_GunModel>(this, _$identity);
 

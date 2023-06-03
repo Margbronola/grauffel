@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'book_cell_model.dart';
 
@@ -37,7 +37,8 @@ mixin _$BookCellModel {
 abstract class $BookCellModelCopyWith<$Res> {
   factory $BookCellModelCopyWith(
           BookCellModel value, $Res Function(BookCellModel) then) =
-      _$BookCellModelCopyWithImpl<$Res>;
+      _$BookCellModelCopyWithImpl<$Res, BookCellModel>;
+  @useResult
   $Res call(
       {String? date,
       String? time,
@@ -48,14 +49,16 @@ abstract class $BookCellModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BookCellModelCopyWithImpl<$Res>
+class _$BookCellModelCopyWithImpl<$Res, $Val extends BookCellModel>
     implements $BookCellModelCopyWith<$Res> {
   _$BookCellModelCopyWithImpl(this._value, this._then);
 
-  final BookCellModel _value;
   // ignore: unused_field
-  final $Res Function(BookCellModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? date = freezed,
@@ -66,31 +69,31 @@ class _$BookCellModelCopyWithImpl<$Res>
     Object? equipments = freezed,
   }) {
     return _then(_value.copyWith(
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      time: time == freezed
+      time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value.guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      equipments: equipments == freezed
+      equipments: freezed == equipments
           ? _value.equipments
           : equipments // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -101,6 +104,7 @@ abstract class _$$_BookCellModelCopyWith<$Res>
           _$_BookCellModel value, $Res Function(_$_BookCellModel) then) =
       __$$_BookCellModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? date,
       String? time,
@@ -112,15 +116,13 @@ abstract class _$$_BookCellModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_BookCellModelCopyWithImpl<$Res>
-    extends _$BookCellModelCopyWithImpl<$Res>
+    extends _$BookCellModelCopyWithImpl<$Res, _$_BookCellModel>
     implements _$$_BookCellModelCopyWith<$Res> {
   __$$_BookCellModelCopyWithImpl(
       _$_BookCellModel _value, $Res Function(_$_BookCellModel) _then)
-      : super(_value, (v) => _then(v as _$_BookCellModel));
+      : super(_value, _then);
 
-  @override
-  _$_BookCellModel get _value => super._value as _$_BookCellModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? date = freezed,
@@ -131,27 +133,27 @@ class __$$_BookCellModelCopyWithImpl<$Res>
     Object? equipments = freezed,
   }) {
     return _then(_$_BookCellModel(
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      time: time == freezed
+      time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value._guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      equipments: equipments == freezed
+      equipments: freezed == equipments
           ? _value._equipments
           : equipments // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
@@ -187,6 +189,7 @@ class _$_BookCellModel implements _BookCellModel {
   List<GunModel>? get guns {
     final value = _guns;
     if (value == null) return null;
+    if (_guns is EqualUnmodifiableListView) return _guns;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -196,6 +199,7 @@ class _$_BookCellModel implements _BookCellModel {
   List<AmmunitionsModel>? get ammunitions {
     final value = _ammunitions;
     if (value == null) return null;
+    if (_ammunitions is EqualUnmodifiableListView) return _ammunitions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -205,6 +209,7 @@ class _$_BookCellModel implements _BookCellModel {
   List<EquipmentModel>? get equipments {
     final value = _equipments;
     if (value == null) return null;
+    if (_equipments is EqualUnmodifiableListView) return _equipments;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -219,10 +224,10 @@ class _$_BookCellModel implements _BookCellModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BookCellModel &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality()
-                .equals(other.activity_id, activity_id) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.activity_id, activity_id) ||
+                other.activity_id == activity_id) &&
             const DeepCollectionEquality().equals(other._guns, _guns) &&
             const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions) &&
@@ -234,15 +239,16 @@ class _$_BookCellModel implements _BookCellModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(activity_id),
+      date,
+      time,
+      activity_id,
       const DeepCollectionEquality().hash(_guns),
       const DeepCollectionEquality().hash(_ammunitions),
       const DeepCollectionEquality().hash(_equipments));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BookCellModelCopyWith<_$_BookCellModel> get copyWith =>
       __$$_BookCellModelCopyWithImpl<_$_BookCellModel>(this, _$identity);
 

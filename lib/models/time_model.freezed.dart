@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'time_model.dart';
 
@@ -32,33 +32,37 @@ mixin _$TimeModel {
 /// @nodoc
 abstract class $TimeModelCopyWith<$Res> {
   factory $TimeModelCopyWith(TimeModel value, $Res Function(TimeModel) then) =
-      _$TimeModelCopyWithImpl<$Res>;
+      _$TimeModelCopyWithImpl<$Res, TimeModel>;
+  @useResult
   $Res call({String? time, int? available});
 }
 
 /// @nodoc
-class _$TimeModelCopyWithImpl<$Res> implements $TimeModelCopyWith<$Res> {
+class _$TimeModelCopyWithImpl<$Res, $Val extends TimeModel>
+    implements $TimeModelCopyWith<$Res> {
   _$TimeModelCopyWithImpl(this._value, this._then);
 
-  final TimeModel _value;
   // ignore: unused_field
-  final $Res Function(TimeModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? time = freezed,
     Object? available = freezed,
   }) {
     return _then(_value.copyWith(
-      time: time == freezed
+      time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String?,
-      available: available == freezed
+      available: freezed == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -68,30 +72,30 @@ abstract class _$$_TimeModelCopyWith<$Res> implements $TimeModelCopyWith<$Res> {
           _$_TimeModel value, $Res Function(_$_TimeModel) then) =
       __$$_TimeModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? time, int? available});
 }
 
 /// @nodoc
-class __$$_TimeModelCopyWithImpl<$Res> extends _$TimeModelCopyWithImpl<$Res>
+class __$$_TimeModelCopyWithImpl<$Res>
+    extends _$TimeModelCopyWithImpl<$Res, _$_TimeModel>
     implements _$$_TimeModelCopyWith<$Res> {
   __$$_TimeModelCopyWithImpl(
       _$_TimeModel _value, $Res Function(_$_TimeModel) _then)
-      : super(_value, (v) => _then(v as _$_TimeModel));
+      : super(_value, _then);
 
-  @override
-  _$_TimeModel get _value => super._value as _$_TimeModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? time = freezed,
     Object? available = freezed,
   }) {
     return _then(_$_TimeModel(
-      time: time == freezed
+      time: freezed == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String?,
-      available: available == freezed
+      available: freezed == available
           ? _value.available
           : available // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -122,19 +126,18 @@ class _$_TimeModel implements _TimeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimeModel &&
-            const DeepCollectionEquality().equals(other.time, time) &&
-            const DeepCollectionEquality().equals(other.available, available));
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.available, available) ||
+                other.available == available));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(time),
-      const DeepCollectionEquality().hash(available));
+  int get hashCode => Object.hash(runtimeType, time, available);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TimeModelCopyWith<_$_TimeModel> get copyWith =>
       __$$_TimeModelCopyWithImpl<_$_TimeModel>(this, _$identity);
 

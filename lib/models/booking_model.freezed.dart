@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'booking_model.dart';
 
@@ -63,7 +63,8 @@ mixin _$BookingModel {
 abstract class $BookingModelCopyWith<$Res> {
   factory $BookingModelCopyWith(
           BookingModel value, $Res Function(BookingModel) then) =
-      _$BookingModelCopyWithImpl<$Res>;
+      _$BookingModelCopyWithImpl<$Res, BookingModel>;
+  @useResult
   $Res call(
       {int? id,
       int? bookable_id,
@@ -103,13 +104,16 @@ abstract class $BookingModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
+class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
+    implements $BookingModelCopyWith<$Res> {
   _$BookingModelCopyWithImpl(this._value, this._then);
 
-  final BookingModel _value;
   // ignore: unused_field
-  final $Res Function(BookingModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -146,156 +150,158 @@ class _$BookingModelCopyWithImpl<$Res> implements $BookingModelCopyWith<$Res> {
     Object? bookable = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookable_id: bookable_id == freezed
+      bookable_id: freezed == bookable_id
           ? _value.bookable_id
           : bookable_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      start: start == freezed
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      end: end == freezed
+      end: freezed == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      cell_loc: cell_loc == freezed
+      cell_loc: freezed == cell_loc
           ? _value.cell_loc
           : cell_loc // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookable_cost: bookable_cost == freezed
+      bookable_cost: freezed == bookable_cost
           ? _value.bookable_cost
           : bookable_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_gun_cost: total_gun_cost == freezed
+      total_gun_cost: freezed == total_gun_cost
           ? _value.total_gun_cost
           : total_gun_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_ammunition_cost: total_ammunition_cost == freezed
+      total_ammunition_cost: freezed == total_ammunition_cost
           ? _value.total_ammunition_cost
           : total_ammunition_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_equipment_cost: total_equipment_cost == freezed
+      total_equipment_cost: freezed == total_equipment_cost
           ? _value.total_equipment_cost
           : total_equipment_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax_included: tax_included == freezed
+      tax_included: freezed == tax_included
           ? _value.tax_included
           : tax_included // ignore: cast_nullable_to_non_nullable
               as double?,
-      sub_total: sub_total == freezed
+      sub_total: freezed == sub_total
           ? _value.sub_total
           : sub_total // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_discount: total_discount == freezed
+      total_discount: freezed == total_discount
           ? _value.total_discount
           : total_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_cost: total_cost == freezed
+      total_cost: freezed == total_cost
           ? _value.total_cost
           : total_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      purchase_number: purchase_number == freezed
+      purchase_number: freezed == purchase_number
           ? _value.purchase_number
           : purchase_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      morph_class: morph_class == freezed
+      morph_class: freezed == morph_class
           ? _value.morph_class
           : morph_class // ignore: cast_nullable_to_non_nullable
               as String?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value.guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      equipements: equipements == freezed
+      equipements: freezed == equipements
           ? _value.equipements
           : equipements // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
-      bookable: bookable == freezed
+      bookable: freezed == bookable
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AdminModelCopyWith<$Res>? get admin {
     if (_value.admin == null) {
       return null;
     }
 
     return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
-      return _then(_value.copyWith(admin: value));
+      return _then(_value.copyWith(admin: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ActivityModelCopyWith<$Res>? get bookable {
     if (_value.bookable == null) {
       return null;
     }
 
     return $ActivityModelCopyWith<$Res>(_value.bookable!, (value) {
-      return _then(_value.copyWith(bookable: value));
+      return _then(_value.copyWith(bookable: value) as $Val);
     });
   }
 }
@@ -307,6 +313,7 @@ abstract class _$$_BookingModelCopyWith<$Res>
           _$_BookingModel value, $Res Function(_$_BookingModel) then) =
       __$$_BookingModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       int? bookable_id,
@@ -349,15 +356,13 @@ abstract class _$$_BookingModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_BookingModelCopyWithImpl<$Res>
-    extends _$BookingModelCopyWithImpl<$Res>
+    extends _$BookingModelCopyWithImpl<$Res, _$_BookingModel>
     implements _$$_BookingModelCopyWith<$Res> {
   __$$_BookingModelCopyWithImpl(
       _$_BookingModel _value, $Res Function(_$_BookingModel) _then)
-      : super(_value, (v) => _then(v as _$_BookingModel));
+      : super(_value, _then);
 
-  @override
-  _$_BookingModel get _value => super._value as _$_BookingModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -394,131 +399,131 @@ class __$$_BookingModelCopyWithImpl<$Res>
     Object? bookable = freezed,
   }) {
     return _then(_$_BookingModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookable_id: bookable_id == freezed
+      bookable_id: freezed == bookable_id
           ? _value.bookable_id
           : bookable_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      start: start == freezed
+      start: freezed == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      end: end == freezed
+      end: freezed == end
           ? _value.end
           : end // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      cell_loc: cell_loc == freezed
+      cell_loc: freezed == cell_loc
           ? _value.cell_loc
           : cell_loc // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookable_cost: bookable_cost == freezed
+      bookable_cost: freezed == bookable_cost
           ? _value.bookable_cost
           : bookable_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_gun_cost: total_gun_cost == freezed
+      total_gun_cost: freezed == total_gun_cost
           ? _value.total_gun_cost
           : total_gun_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_ammunition_cost: total_ammunition_cost == freezed
+      total_ammunition_cost: freezed == total_ammunition_cost
           ? _value.total_ammunition_cost
           : total_ammunition_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_equipment_cost: total_equipment_cost == freezed
+      total_equipment_cost: freezed == total_equipment_cost
           ? _value.total_equipment_cost
           : total_equipment_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax_included: tax_included == freezed
+      tax_included: freezed == tax_included
           ? _value.tax_included
           : tax_included // ignore: cast_nullable_to_non_nullable
               as double?,
-      sub_total: sub_total == freezed
+      sub_total: freezed == sub_total
           ? _value.sub_total
           : sub_total // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_discount: total_discount == freezed
+      total_discount: freezed == total_discount
           ? _value.total_discount
           : total_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_cost: total_cost == freezed
+      total_cost: freezed == total_cost
           ? _value.total_cost
           : total_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      purchase_number: purchase_number == freezed
+      purchase_number: freezed == purchase_number
           ? _value.purchase_number
           : purchase_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      morph_class: morph_class == freezed
+      morph_class: freezed == morph_class
           ? _value.morph_class
           : morph_class // ignore: cast_nullable_to_non_nullable
               as String?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value._guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      equipements: equipements == freezed
+      equipements: freezed == equipements
           ? _value._equipements
           : equipements // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
-      bookable: bookable == freezed
+      bookable: freezed == bookable
           ? _value.bookable
           : bookable // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
@@ -630,6 +635,7 @@ class _$_BookingModel implements _BookingModel {
   List<AmmunitionsModel>? get ammunitions {
     final value = _ammunitions;
     if (value == null) return null;
+    if (_ammunitions is EqualUnmodifiableListView) return _ammunitions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -639,6 +645,7 @@ class _$_BookingModel implements _BookingModel {
   List<GunModel>? get guns {
     final value = _guns;
     if (value == null) return null;
+    if (_guns is EqualUnmodifiableListView) return _guns;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -648,6 +655,7 @@ class _$_BookingModel implements _BookingModel {
   List<EquipmentModel>? get equipements {
     final value = _equipements;
     if (value == null) return null;
+    if (_equipements is EqualUnmodifiableListView) return _equipements;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -665,100 +673,106 @@ class _$_BookingModel implements _BookingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BookingModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.bookable_id, bookable_id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.client_id, client_id) &&
-            const DeepCollectionEquality()
-                .equals(other.activity_id, activity_id) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.end, end) &&
-            const DeepCollectionEquality().equals(other.cell_loc, cell_loc) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality()
-                .equals(other.bookable_cost, bookable_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_gun_cost, total_gun_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_ammunition_cost, total_ammunition_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_equipment_cost, total_equipment_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.tax_included, tax_included) &&
-            const DeepCollectionEquality().equals(other.sub_total, sub_total) &&
-            const DeepCollectionEquality()
-                .equals(other.gun_discount, gun_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.ammunition_discount, ammunition_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.equipment_discount, equipment_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.total_discount, total_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.total_cost, total_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.purchase_number, purchase_number) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.status_name, status_name) &&
-            const DeepCollectionEquality()
-                .equals(other.morph_class, morph_class) &&
-            const DeepCollectionEquality().equals(other.admin, admin) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.bookable_id, bookable_id) ||
+                other.bookable_id == bookable_id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.client_id, client_id) ||
+                other.client_id == client_id) &&
+            (identical(other.activity_id, activity_id) ||
+                other.activity_id == activity_id) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.end, end) || other.end == end) &&
+            (identical(other.cell_loc, cell_loc) ||
+                other.cell_loc == cell_loc) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.bookable_cost, bookable_cost) ||
+                other.bookable_cost == bookable_cost) &&
+            (identical(other.total_gun_cost, total_gun_cost) ||
+                other.total_gun_cost == total_gun_cost) &&
+            (identical(other.total_ammunition_cost, total_ammunition_cost) ||
+                other.total_ammunition_cost == total_ammunition_cost) &&
+            (identical(other.total_equipment_cost, total_equipment_cost) ||
+                other.total_equipment_cost == total_equipment_cost) &&
+            (identical(other.tax_included, tax_included) ||
+                other.tax_included == tax_included) &&
+            (identical(other.sub_total, sub_total) ||
+                other.sub_total == sub_total) &&
+            (identical(other.gun_discount, gun_discount) ||
+                other.gun_discount == gun_discount) &&
+            (identical(other.ammunition_discount, ammunition_discount) ||
+                other.ammunition_discount == ammunition_discount) &&
+            (identical(other.equipment_discount, equipment_discount) ||
+                other.equipment_discount == equipment_discount) &&
+            (identical(other.total_discount, total_discount) ||
+                other.total_discount == total_discount) &&
+            (identical(other.total_cost, total_cost) ||
+                other.total_cost == total_cost) &&
+            (identical(other.purchase_number, purchase_number) ||
+                other.purchase_number == purchase_number) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.status_name, status_name) ||
+                other.status_name == status_name) &&
+            (identical(other.morph_class, morph_class) ||
+                other.morph_class == morph_class) &&
+            (identical(other.admin, admin) || other.admin == admin) &&
             const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions) &&
             const DeepCollectionEquality().equals(other._guns, _guns) &&
             const DeepCollectionEquality()
                 .equals(other._equipements, _equipements) &&
-            const DeepCollectionEquality().equals(other.bookable, bookable));
+            (identical(other.bookable, bookable) ||
+                other.bookable == bookable));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(bookable_id),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(client_id),
-        const DeepCollectionEquality().hash(activity_id),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(start),
-        const DeepCollectionEquality().hash(end),
-        const DeepCollectionEquality().hash(cell_loc),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(duration),
-        const DeepCollectionEquality().hash(bookable_cost),
-        const DeepCollectionEquality().hash(total_gun_cost),
-        const DeepCollectionEquality().hash(total_ammunition_cost),
-        const DeepCollectionEquality().hash(total_equipment_cost),
-        const DeepCollectionEquality().hash(tax_included),
-        const DeepCollectionEquality().hash(sub_total),
-        const DeepCollectionEquality().hash(gun_discount),
-        const DeepCollectionEquality().hash(ammunition_discount),
-        const DeepCollectionEquality().hash(equipment_discount),
-        const DeepCollectionEquality().hash(total_discount),
-        const DeepCollectionEquality().hash(total_cost),
-        const DeepCollectionEquality().hash(purchase_number),
-        const DeepCollectionEquality().hash(created_at),
-        const DeepCollectionEquality().hash(updated_at),
-        const DeepCollectionEquality().hash(status_name),
-        const DeepCollectionEquality().hash(morph_class),
-        const DeepCollectionEquality().hash(admin),
+        id,
+        bookable_id,
+        name,
+        client_id,
+        activity_id,
+        description,
+        start,
+        end,
+        cell_loc,
+        status,
+        duration,
+        bookable_cost,
+        total_gun_cost,
+        total_ammunition_cost,
+        total_equipment_cost,
+        tax_included,
+        sub_total,
+        gun_discount,
+        ammunition_discount,
+        equipment_discount,
+        total_discount,
+        total_cost,
+        purchase_number,
+        created_at,
+        updated_at,
+        status_name,
+        morph_class,
+        admin,
         const DeepCollectionEquality().hash(_ammunitions),
         const DeepCollectionEquality().hash(_guns),
         const DeepCollectionEquality().hash(_equipements),
-        const DeepCollectionEquality().hash(bookable)
+        bookable
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BookingModelCopyWith<_$_BookingModel> get copyWith =>
       __$$_BookingModelCopyWithImpl<_$_BookingModel>(this, _$identity);
 

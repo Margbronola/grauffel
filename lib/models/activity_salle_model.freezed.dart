@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'activity_salle_model.dart';
 
@@ -40,7 +40,8 @@ mixin _$ActivitySalleModel {
 abstract class $ActivitySalleModelCopyWith<$Res> {
   factory $ActivitySalleModelCopyWith(
           ActivitySalleModel value, $Res Function(ActivitySalleModel) then) =
-      _$ActivitySalleModelCopyWithImpl<$Res>;
+      _$ActivitySalleModelCopyWithImpl<$Res, ActivitySalleModel>;
+  @useResult
   $Res call(
       {int? id,
       String? date_start,
@@ -56,14 +57,16 @@ abstract class $ActivitySalleModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ActivitySalleModelCopyWithImpl<$Res>
+class _$ActivitySalleModelCopyWithImpl<$Res, $Val extends ActivitySalleModel>
     implements $ActivitySalleModelCopyWith<$Res> {
   _$ActivitySalleModelCopyWithImpl(this._value, this._then);
 
-  final ActivitySalleModel _value;
   // ignore: unused_field
-  final $Res Function(ActivitySalleModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -77,53 +80,54 @@ class _$ActivitySalleModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      date_start: date_start == freezed
+      date_start: freezed == date_start
           ? _value.date_start
           : date_start // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_end: date_end == freezed
+      date_end: freezed == date_end
           ? _value.date_end
           : date_end // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity: activity == freezed
+      activity: freezed == activity
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ActivityModelCopyWith<$Res>? get activity {
     if (_value.activity == null) {
       return null;
     }
 
     return $ActivityModelCopyWith<$Res>(_value.activity!, (value) {
-      return _then(_value.copyWith(activity: value));
+      return _then(_value.copyWith(activity: value) as $Val);
     });
   }
 }
@@ -135,6 +139,7 @@ abstract class _$$_ActivitySalleModelCopyWith<$Res>
           $Res Function(_$_ActivitySalleModel) then) =
       __$$_ActivitySalleModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? date_start,
@@ -152,15 +157,13 @@ abstract class _$$_ActivitySalleModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ActivitySalleModelCopyWithImpl<$Res>
-    extends _$ActivitySalleModelCopyWithImpl<$Res>
+    extends _$ActivitySalleModelCopyWithImpl<$Res, _$_ActivitySalleModel>
     implements _$$_ActivitySalleModelCopyWith<$Res> {
   __$$_ActivitySalleModelCopyWithImpl(
       _$_ActivitySalleModel _value, $Res Function(_$_ActivitySalleModel) _then)
-      : super(_value, (v) => _then(v as _$_ActivitySalleModel));
+      : super(_value, _then);
 
-  @override
-  _$_ActivitySalleModel get _value => super._value as _$_ActivitySalleModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -174,39 +177,39 @@ class __$$_ActivitySalleModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_ActivitySalleModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      date_start: date_start == freezed
+      date_start: freezed == date_start
           ? _value.date_start
           : date_start // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_end: date_end == freezed
+      date_end: freezed == date_end
           ? _value.date_end
           : date_end // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity_id: activity_id == freezed
+      activity_id: freezed == activity_id
           ? _value.activity_id
           : activity_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      activity: activity == freezed
+      activity: freezed == activity
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
               as ActivityModel?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -260,37 +263,32 @@ class _$_ActivitySalleModel implements _ActivitySalleModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ActivitySalleModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.date_start, date_start) &&
-            const DeepCollectionEquality().equals(other.date_end, date_end) &&
-            const DeepCollectionEquality().equals(other.capacity, capacity) &&
-            const DeepCollectionEquality()
-                .equals(other.activity_id, activity_id) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.activity, activity) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.date_start, date_start) ||
+                other.date_start == date_start) &&
+            (identical(other.date_end, date_end) ||
+                other.date_end == date_end) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity) &&
+            (identical(other.activity_id, activity_id) ||
+                other.activity_id == activity_id) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.activity, activity) ||
+                other.activity == activity) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(date_start),
-      const DeepCollectionEquality().hash(date_end),
-      const DeepCollectionEquality().hash(capacity),
-      const DeepCollectionEquality().hash(activity_id),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(activity),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at));
+  int get hashCode => Object.hash(runtimeType, id, date_start, date_end,
+      capacity, activity_id, status, activity, created_at, updated_at);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ActivitySalleModelCopyWith<_$_ActivitySalleModel> get copyWith =>
       __$$_ActivitySalleModelCopyWithImpl<_$_ActivitySalleModel>(
           this, _$identity);

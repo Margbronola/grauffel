@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'transaction_model.dart';
 
@@ -68,7 +68,8 @@ mixin _$TransactionModel {
 abstract class $TransactionModelCopyWith<$Res> {
   factory $TransactionModelCopyWith(
           TransactionModel value, $Res Function(TransactionModel) then) =
-      _$TransactionModelCopyWithImpl<$Res>;
+      _$TransactionModelCopyWithImpl<$Res, TransactionModel>;
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -108,14 +109,16 @@ abstract class $TransactionModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TransactionModelCopyWithImpl<$Res>
+class _$TransactionModelCopyWithImpl<$Res, $Val extends TransactionModel>
     implements $TransactionModelCopyWith<$Res> {
   _$TransactionModelCopyWithImpl(this._value, this._then);
 
-  final TransactionModel _value;
   // ignore: unused_field
-  final $Res Function(TransactionModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -155,147 +158,147 @@ class _$TransactionModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      package_name: package_name == freezed
+      package_name: freezed == package_name
           ? _value.package_name
           : package_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      purchase_token: purchase_token == freezed
+      purchase_token: freezed == purchase_token
           ? _value.purchase_token
           : purchase_token // ignore: cast_nullable_to_non_nullable
               as String?,
-      uuid: uuid == freezed
+      uuid: freezed == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as int?,
-      transaction_id: transaction_id == freezed
+      transaction_id: freezed == transaction_id
           ? _value.transaction_id
           : transaction_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      booking_id: booking_id == freezed
+      booking_id: freezed == booking_id
           ? _value.booking_id
           : booking_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_subscription_id: client_subscription_id == freezed
+      client_subscription_id: freezed == client_subscription_id
           ? _value.client_subscription_id
           : client_subscription_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      subscription_name: subscription_name == freezed
+      subscription_name: freezed == subscription_name
           ? _value.subscription_name
           : subscription_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      price_per_hour: price_per_hour == freezed
+      price_per_hour: freezed == price_per_hour
           ? _value.price_per_hour
           : price_per_hour // ignore: cast_nullable_to_non_nullable
               as double?,
-      ook_cost: ook_cost == freezed
+      ook_cost: freezed == ook_cost
           ? _value.ook_cost
           : ook_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_gun_cost: total_gun_cost == freezed
+      total_gun_cost: freezed == total_gun_cost
           ? _value.total_gun_cost
           : total_gun_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_ammunition_cost: total_ammunition_cost == freezed
+      total_ammunition_cost: freezed == total_ammunition_cost
           ? _value.total_ammunition_cost
           : total_ammunition_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_equipment_cost: total_equipment_cost == freezed
+      total_equipment_cost: freezed == total_equipment_cost
           ? _value.total_equipment_cost
           : total_equipment_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      sub_total: sub_total == freezed
+      sub_total: freezed == sub_total
           ? _value.sub_total
           : sub_total // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_discount: total_discount == freezed
+      total_discount: freezed == total_discount
           ? _value.total_discount
           : total_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      purchase_number: purchase_number == freezed
+      purchase_number: freezed == purchase_number
           ? _value.purchase_number
           : purchase_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      purchase_name: purchase_name == freezed
+      purchase_name: freezed == purchase_name
           ? _value.purchase_name
           : purchase_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax_included: tax_included == freezed
+      tax_included: freezed == tax_included
           ? _value.tax_included
           : tax_included // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax: tax == freezed
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as double?,
-      reference_number: reference_number == freezed
+      reference_number: freezed == reference_number
           ? _value.reference_number
           : reference_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -306,6 +309,7 @@ abstract class _$$_TransactionModelCopyWith<$Res>
           _$_TransactionModel value, $Res Function(_$_TransactionModel) then) =
       __$$_TransactionModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -346,15 +350,13 @@ abstract class _$$_TransactionModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_TransactionModelCopyWithImpl<$Res>
-    extends _$TransactionModelCopyWithImpl<$Res>
+    extends _$TransactionModelCopyWithImpl<$Res, _$_TransactionModel>
     implements _$$_TransactionModelCopyWith<$Res> {
   __$$_TransactionModelCopyWithImpl(
       _$_TransactionModel _value, $Res Function(_$_TransactionModel) _then)
-      : super(_value, (v) => _then(v as _$_TransactionModel));
+      : super(_value, _then);
 
-  @override
-  _$_TransactionModel get _value => super._value as _$_TransactionModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -394,143 +396,143 @@ class __$$_TransactionModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_TransactionModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      telephone: telephone == freezed
+      telephone: freezed == telephone
           ? _value.telephone
           : telephone // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      package_name: package_name == freezed
+      package_name: freezed == package_name
           ? _value.package_name
           : package_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      purchase_token: purchase_token == freezed
+      purchase_token: freezed == purchase_token
           ? _value.purchase_token
           : purchase_token // ignore: cast_nullable_to_non_nullable
               as String?,
-      uuid: uuid == freezed
+      uuid: freezed == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
               as int?,
-      transaction_id: transaction_id == freezed
+      transaction_id: freezed == transaction_id
           ? _value.transaction_id
           : transaction_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      booking_id: booking_id == freezed
+      booking_id: freezed == booking_id
           ? _value.booking_id
           : booking_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_subscription_id: client_subscription_id == freezed
+      client_subscription_id: freezed == client_subscription_id
           ? _value.client_subscription_id
           : client_subscription_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      subscription_name: subscription_name == freezed
+      subscription_name: freezed == subscription_name
           ? _value.subscription_name
           : subscription_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      price_per_hour: price_per_hour == freezed
+      price_per_hour: freezed == price_per_hour
           ? _value.price_per_hour
           : price_per_hour // ignore: cast_nullable_to_non_nullable
               as double?,
-      ook_cost: ook_cost == freezed
+      ook_cost: freezed == ook_cost
           ? _value.ook_cost
           : ook_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_gun_cost: total_gun_cost == freezed
+      total_gun_cost: freezed == total_gun_cost
           ? _value.total_gun_cost
           : total_gun_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_ammunition_cost: total_ammunition_cost == freezed
+      total_ammunition_cost: freezed == total_ammunition_cost
           ? _value.total_ammunition_cost
           : total_ammunition_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_equipment_cost: total_equipment_cost == freezed
+      total_equipment_cost: freezed == total_equipment_cost
           ? _value.total_equipment_cost
           : total_equipment_cost // ignore: cast_nullable_to_non_nullable
               as double?,
-      sub_total: sub_total == freezed
+      sub_total: freezed == sub_total
           ? _value.sub_total
           : sub_total // ignore: cast_nullable_to_non_nullable
               as double?,
-      total_discount: total_discount == freezed
+      total_discount: freezed == total_discount
           ? _value.total_discount
           : total_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      purchase_number: purchase_number == freezed
+      purchase_number: freezed == purchase_number
           ? _value.purchase_number
           : purchase_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      purchase_name: purchase_name == freezed
+      purchase_name: freezed == purchase_name
           ? _value.purchase_name
           : purchase_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax_included: tax_included == freezed
+      tax_included: freezed == tax_included
           ? _value.tax_included
           : tax_included // ignore: cast_nullable_to_non_nullable
               as double?,
-      tax: tax == freezed
+      tax: freezed == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
               as double?,
-      reference_number: reference_number == freezed
+      reference_number: freezed == reference_number
           ? _value.reference_number
           : reference_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -665,107 +667,113 @@ class _$_TransactionModel implements _TransactionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TransactionModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.client_id, client_id) &&
-            const DeepCollectionEquality()
-                .equals(other.first_name, first_name) &&
-            const DeepCollectionEquality().equals(other.last_name, last_name) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.telephone, telephone) &&
-            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
-            const DeepCollectionEquality()
-                .equals(other.package_name, package_name) &&
-            const DeepCollectionEquality()
-                .equals(other.purchase_token, purchase_token) &&
-            const DeepCollectionEquality().equals(other.uuid, uuid) &&
-            const DeepCollectionEquality()
-                .equals(other.transaction_id, transaction_id) &&
-            const DeepCollectionEquality()
-                .equals(other.booking_id, booking_id) &&
-            const DeepCollectionEquality()
-                .equals(other.client_subscription_id, client_subscription_id) &&
-            const DeepCollectionEquality()
-                .equals(other.subscription_name, subscription_name) &&
-            const DeepCollectionEquality()
-                .equals(other.ammunition_discount, ammunition_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.equipment_discount, equipment_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.gun_discount, gun_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.price_per_hour, price_per_hour) &&
-            const DeepCollectionEquality().equals(other.ook_cost, ook_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_gun_cost, total_gun_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_ammunition_cost, total_ammunition_cost) &&
-            const DeepCollectionEquality()
-                .equals(other.total_equipment_cost, total_equipment_cost) &&
-            const DeepCollectionEquality().equals(other.sub_total, sub_total) &&
-            const DeepCollectionEquality()
-                .equals(other.total_discount, total_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.purchase_number, purchase_number) &&
-            const DeepCollectionEquality()
-                .equals(other.purchase_name, purchase_name) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.tax_included, tax_included) &&
-            const DeepCollectionEquality().equals(other.tax, tax) &&
-            const DeepCollectionEquality()
-                .equals(other.reference_number, reference_number) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.client_id, client_id) ||
+                other.client_id == client_id) &&
+            (identical(other.first_name, first_name) ||
+                other.first_name == first_name) &&
+            (identical(other.last_name, last_name) ||
+                other.last_name == last_name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.telephone, telephone) ||
+                other.telephone == telephone) &&
+            (identical(other.zipcode, zipcode) || other.zipcode == zipcode) &&
+            (identical(other.package_name, package_name) ||
+                other.package_name == package_name) &&
+            (identical(other.purchase_token, purchase_token) ||
+                other.purchase_token == purchase_token) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.transaction_id, transaction_id) ||
+                other.transaction_id == transaction_id) &&
+            (identical(other.booking_id, booking_id) ||
+                other.booking_id == booking_id) &&
+            (identical(other.client_subscription_id, client_subscription_id) ||
+                other.client_subscription_id == client_subscription_id) &&
+            (identical(other.subscription_name, subscription_name) ||
+                other.subscription_name == subscription_name) &&
+            (identical(other.ammunition_discount, ammunition_discount) ||
+                other.ammunition_discount == ammunition_discount) &&
+            (identical(other.equipment_discount, equipment_discount) ||
+                other.equipment_discount == equipment_discount) &&
+            (identical(other.gun_discount, gun_discount) ||
+                other.gun_discount == gun_discount) &&
+            (identical(other.price_per_hour, price_per_hour) ||
+                other.price_per_hour == price_per_hour) &&
+            (identical(other.ook_cost, ook_cost) ||
+                other.ook_cost == ook_cost) &&
+            (identical(other.total_gun_cost, total_gun_cost) ||
+                other.total_gun_cost == total_gun_cost) &&
+            (identical(other.total_ammunition_cost, total_ammunition_cost) ||
+                other.total_ammunition_cost == total_ammunition_cost) &&
+            (identical(other.total_equipment_cost, total_equipment_cost) ||
+                other.total_equipment_cost == total_equipment_cost) &&
+            (identical(other.sub_total, sub_total) ||
+                other.sub_total == sub_total) &&
+            (identical(other.total_discount, total_discount) ||
+                other.total_discount == total_discount) &&
+            (identical(other.purchase_number, purchase_number) ||
+                other.purchase_number == purchase_number) &&
+            (identical(other.purchase_name, purchase_name) ||
+                other.purchase_name == purchase_name) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.tax_included, tax_included) ||
+                other.tax_included == tax_included) &&
+            (identical(other.tax, tax) || other.tax == tax) &&
+            (identical(other.reference_number, reference_number) ||
+                other.reference_number == reference_number) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(client_id),
-        const DeepCollectionEquality().hash(first_name),
-        const DeepCollectionEquality().hash(last_name),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(address),
-        const DeepCollectionEquality().hash(city),
-        const DeepCollectionEquality().hash(telephone),
-        const DeepCollectionEquality().hash(zipcode),
-        const DeepCollectionEquality().hash(package_name),
-        const DeepCollectionEquality().hash(purchase_token),
-        const DeepCollectionEquality().hash(uuid),
-        const DeepCollectionEquality().hash(transaction_id),
-        const DeepCollectionEquality().hash(booking_id),
-        const DeepCollectionEquality().hash(client_subscription_id),
-        const DeepCollectionEquality().hash(subscription_name),
-        const DeepCollectionEquality().hash(ammunition_discount),
-        const DeepCollectionEquality().hash(equipment_discount),
-        const DeepCollectionEquality().hash(gun_discount),
-        const DeepCollectionEquality().hash(price_per_hour),
-        const DeepCollectionEquality().hash(ook_cost),
-        const DeepCollectionEquality().hash(total_gun_cost),
-        const DeepCollectionEquality().hash(total_ammunition_cost),
-        const DeepCollectionEquality().hash(total_equipment_cost),
-        const DeepCollectionEquality().hash(sub_total),
-        const DeepCollectionEquality().hash(total_discount),
-        const DeepCollectionEquality().hash(purchase_number),
-        const DeepCollectionEquality().hash(purchase_name),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(tax_included),
-        const DeepCollectionEquality().hash(tax),
-        const DeepCollectionEquality().hash(reference_number),
-        const DeepCollectionEquality().hash(created_at),
-        const DeepCollectionEquality().hash(updated_at)
+        id,
+        client_id,
+        first_name,
+        last_name,
+        email,
+        address,
+        city,
+        telephone,
+        zipcode,
+        package_name,
+        purchase_token,
+        uuid,
+        transaction_id,
+        booking_id,
+        client_subscription_id,
+        subscription_name,
+        ammunition_discount,
+        equipment_discount,
+        gun_discount,
+        price_per_hour,
+        ook_cost,
+        total_gun_cost,
+        total_ammunition_cost,
+        total_equipment_cost,
+        sub_total,
+        total_discount,
+        purchase_number,
+        purchase_name,
+        status,
+        price,
+        tax_included,
+        tax,
+        reference_number,
+        created_at,
+        updated_at
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TransactionModelCopyWith<_$_TransactionModel> get copyWith =>
       __$$_TransactionModelCopyWithImpl<_$_TransactionModel>(this, _$identity);
 

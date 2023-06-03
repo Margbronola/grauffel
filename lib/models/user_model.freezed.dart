@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_model.dart';
 
@@ -46,6 +46,7 @@ mixin _$UserModel {
   String? get firebase_id => throw _privateConstructorUsedError;
   ImageModel? get image => throw _privateConstructorUsedError;
   String? get birthday => throw _privateConstructorUsedError;
+  int? get registered => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +57,8 @@ mixin _$UserModel {
 /// @nodoc
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
-      _$UserModelCopyWithImpl<$Res>;
+      _$UserModelCopyWithImpl<$Res, UserModel>;
+  @useResult
   $Res call(
       {int? id,
       String? fullname,
@@ -83,20 +85,24 @@ abstract class $UserModelCopyWith<$Res> {
       CountryModel? country,
       String? firebase_id,
       ImageModel? image,
-      String? birthday});
+      String? birthday,
+      int? registered});
 
   $CountryModelCopyWith<$Res>? get country;
   $ImageModelCopyWith<$Res>? get image;
 }
 
 /// @nodoc
-class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
+class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
+    implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
-  final UserModel _value;
   // ignore: unused_field
-  final $Res Function(UserModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -125,134 +131,141 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
+    Object? registered = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullname: fullname == freezed
+      fullname: freezed == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      country_id: country_id == freezed
+      country_id: freezed == country_id
           ? _value.country_id
           : country_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      SIA_number: SIA_number == freezed
+      SIA_number: freezed == SIA_number
           ? _value.SIA_number
           : SIA_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      FFTir_license_number: FFTir_license_number == freezed
+      FFTir_license_number: freezed == FFTir_license_number
           ? _value.FFTir_license_number
           : FFTir_license_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      credit_points: credit_points == freezed
+      credit_points: freezed == credit_points
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
               as String?,
-      client_badge: client_badge == freezed
+      client_badge: freezed == client_badge
           ? _value.client_badge
           : client_badge // ignore: cast_nullable_to_non_nullable
               as String?,
-      verification: verification == freezed
+      verification: freezed == verification
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
               as int?,
-      payment_verification: payment_verification == freezed
+      payment_verification: freezed == payment_verification
           ? _value.payment_verification
           : payment_verification // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      reduced_mobility: reduced_mobility == freezed
+      reduced_mobility: freezed == reduced_mobility
           ? _value.reduced_mobility
           : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
-      initiation_course: initiation_course == freezed
+      initiation_course: freezed == initiation_course
           ? _value.initiation_course
           : initiation_course // ignore: cast_nullable_to_non_nullable
               as int?,
-      completed_steps: completed_steps == freezed
+      completed_steps: freezed == completed_steps
           ? _value.completed_steps
           : completed_steps // ignore: cast_nullable_to_non_nullable
               as String?,
-      experience: experience == freezed
+      experience: freezed == experience
           ? _value.experience
           : experience // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipment: equipment == freezed
+      equipment: freezed == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone_number: phone_number == freezed
+      phone_number: freezed == phone_number
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as CountryModel?,
-      firebase_id: firebase_id == freezed
+      firebase_id: freezed == firebase_id
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
-      birthday: birthday == freezed
+      birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+      registered: freezed == registered
+          ? _value.registered
+          : registered // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CountryModelCopyWith<$Res>? get country {
     if (_value.country == null) {
       return null;
     }
 
     return $CountryModelCopyWith<$Res>(_value.country!, (value) {
-      return _then(_value.copyWith(country: value));
+      return _then(_value.copyWith(country: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ImageModelCopyWith<$Res>? get image {
     if (_value.image == null) {
       return null;
     }
 
     return $ImageModelCopyWith<$Res>(_value.image!, (value) {
-      return _then(_value.copyWith(image: value));
+      return _then(_value.copyWith(image: value) as $Val);
     });
   }
 }
@@ -263,6 +276,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _$_UserModel value, $Res Function(_$_UserModel) then) =
       __$$_UserModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? fullname,
@@ -289,7 +303,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       CountryModel? country,
       String? firebase_id,
       ImageModel? image,
-      String? birthday});
+      String? birthday,
+      int? registered});
 
   @override
   $CountryModelCopyWith<$Res>? get country;
@@ -298,15 +313,14 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
+class __$$_UserModelCopyWithImpl<$Res>
+    extends _$UserModelCopyWithImpl<$Res, _$_UserModel>
     implements _$$_UserModelCopyWith<$Res> {
   __$$_UserModelCopyWithImpl(
       _$_UserModel _value, $Res Function(_$_UserModel) _then)
-      : super(_value, (v) => _then(v as _$_UserModel));
+      : super(_value, _then);
 
-  @override
-  _$_UserModel get _value => super._value as _$_UserModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -335,112 +349,117 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? firebase_id = freezed,
     Object? image = freezed,
     Object? birthday = freezed,
+    Object? registered = freezed,
   }) {
     return _then(_$_UserModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullname: fullname == freezed
+      fullname: freezed == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      zipcode: zipcode == freezed
+      zipcode: freezed == zipcode
           ? _value.zipcode
           : zipcode // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      country_id: country_id == freezed
+      country_id: freezed == country_id
           ? _value.country_id
           : country_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      SIA_number: SIA_number == freezed
+      SIA_number: freezed == SIA_number
           ? _value.SIA_number
           : SIA_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      FFTir_license_number: FFTir_license_number == freezed
+      FFTir_license_number: freezed == FFTir_license_number
           ? _value.FFTir_license_number
           : FFTir_license_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      credit_points: credit_points == freezed
+      credit_points: freezed == credit_points
           ? _value.credit_points
           : credit_points // ignore: cast_nullable_to_non_nullable
               as String?,
-      client_badge: client_badge == freezed
+      client_badge: freezed == client_badge
           ? _value.client_badge
           : client_badge // ignore: cast_nullable_to_non_nullable
               as String?,
-      verification: verification == freezed
+      verification: freezed == verification
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
               as int?,
-      payment_verification: payment_verification == freezed
+      payment_verification: freezed == payment_verification
           ? _value.payment_verification
           : payment_verification // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      reduced_mobility: reduced_mobility == freezed
+      reduced_mobility: freezed == reduced_mobility
           ? _value.reduced_mobility
           : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
-      initiation_course: initiation_course == freezed
+      initiation_course: freezed == initiation_course
           ? _value.initiation_course
           : initiation_course // ignore: cast_nullable_to_non_nullable
               as int?,
-      completed_steps: completed_steps == freezed
+      completed_steps: freezed == completed_steps
           ? _value.completed_steps
           : completed_steps // ignore: cast_nullable_to_non_nullable
               as String?,
-      experience: experience == freezed
+      experience: freezed == experience
           ? _value.experience
           : experience // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipment: equipment == freezed
+      equipment: freezed == equipment
           ? _value.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone_number: phone_number == freezed
+      phone_number: freezed == phone_number
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as CountryModel?,
-      firebase_id: firebase_id == freezed
+      firebase_id: freezed == firebase_id
           ? _value.firebase_id
           : firebase_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ImageModel?,
-      birthday: birthday == freezed
+      birthday: freezed == birthday
           ? _value.birthday
           : birthday // ignore: cast_nullable_to_non_nullable
               as String?,
+      registered: freezed == registered
+          ? _value.registered
+          : registered // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -474,7 +493,8 @@ class _$_UserModel implements _UserModel {
       this.country,
       this.firebase_id,
       this.image,
-      this.birthday});
+      this.birthday,
+      this.registered});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -531,10 +551,12 @@ class _$_UserModel implements _UserModel {
   final ImageModel? image;
   @override
   final String? birthday;
+  @override
+  final int? registered;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, initiation_course: $initiation_course, completed_steps: $completed_steps, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, initiation_course: $initiation_course, completed_steps: $completed_steps, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday, registered: $registered)';
   }
 
   @override
@@ -542,82 +564,90 @@ class _$_UserModel implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.fullname, fullname) &&
-            const DeepCollectionEquality()
-                .equals(other.first_name, first_name) &&
-            const DeepCollectionEquality().equals(other.last_name, last_name) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.zipcode, zipcode) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality()
-                .equals(other.country_id, country_id) &&
-            const DeepCollectionEquality()
-                .equals(other.SIA_number, SIA_number) &&
-            const DeepCollectionEquality()
-                .equals(other.FFTir_license_number, FFTir_license_number) &&
-            const DeepCollectionEquality()
-                .equals(other.credit_points, credit_points) &&
-            const DeepCollectionEquality()
-                .equals(other.client_badge, client_badge) &&
-            const DeepCollectionEquality()
-                .equals(other.verification, verification) &&
-            const DeepCollectionEquality()
-                .equals(other.payment_verification, payment_verification) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.reduced_mobility, reduced_mobility) &&
-            const DeepCollectionEquality()
-                .equals(other.initiation_course, initiation_course) &&
-            const DeepCollectionEquality()
-                .equals(other.completed_steps, completed_steps) &&
-            const DeepCollectionEquality()
-                .equals(other.experience, experience) &&
-            const DeepCollectionEquality().equals(other.equipment, equipment) &&
-            const DeepCollectionEquality()
-                .equals(other.phone_number, phone_number) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality()
-                .equals(other.firebase_id, firebase_id) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.birthday, birthday));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.fullname, fullname) ||
+                other.fullname == fullname) &&
+            (identical(other.first_name, first_name) ||
+                other.first_name == first_name) &&
+            (identical(other.last_name, last_name) ||
+                other.last_name == last_name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.zipcode, zipcode) || other.zipcode == zipcode) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.country_id, country_id) ||
+                other.country_id == country_id) &&
+            (identical(other.SIA_number, SIA_number) ||
+                other.SIA_number == SIA_number) &&
+            (identical(other.FFTir_license_number, FFTir_license_number) ||
+                other.FFTir_license_number == FFTir_license_number) &&
+            (identical(other.credit_points, credit_points) ||
+                other.credit_points == credit_points) &&
+            (identical(other.client_badge, client_badge) ||
+                other.client_badge == client_badge) &&
+            (identical(other.verification, verification) ||
+                other.verification == verification) &&
+            (identical(other.payment_verification, payment_verification) ||
+                other.payment_verification == payment_verification) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.reduced_mobility, reduced_mobility) ||
+                other.reduced_mobility == reduced_mobility) &&
+            (identical(other.initiation_course, initiation_course) ||
+                other.initiation_course == initiation_course) &&
+            (identical(other.completed_steps, completed_steps) ||
+                other.completed_steps == completed_steps) &&
+            (identical(other.experience, experience) ||
+                other.experience == experience) &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment) &&
+            (identical(other.phone_number, phone_number) ||
+                other.phone_number == phone_number) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.firebase_id, firebase_id) ||
+                other.firebase_id == firebase_id) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.birthday, birthday) ||
+                other.birthday == birthday) &&
+            (identical(other.registered, registered) ||
+                other.registered == registered));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(fullname),
-        const DeepCollectionEquality().hash(first_name),
-        const DeepCollectionEquality().hash(last_name),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(address),
-        const DeepCollectionEquality().hash(zipcode),
-        const DeepCollectionEquality().hash(city),
-        const DeepCollectionEquality().hash(country_id),
-        const DeepCollectionEquality().hash(SIA_number),
-        const DeepCollectionEquality().hash(FFTir_license_number),
-        const DeepCollectionEquality().hash(credit_points),
-        const DeepCollectionEquality().hash(client_badge),
-        const DeepCollectionEquality().hash(verification),
-        const DeepCollectionEquality().hash(payment_verification),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(reduced_mobility),
-        const DeepCollectionEquality().hash(initiation_course),
-        const DeepCollectionEquality().hash(completed_steps),
-        const DeepCollectionEquality().hash(experience),
-        const DeepCollectionEquality().hash(equipment),
-        const DeepCollectionEquality().hash(phone_number),
-        const DeepCollectionEquality().hash(country),
-        const DeepCollectionEquality().hash(firebase_id),
-        const DeepCollectionEquality().hash(image),
-        const DeepCollectionEquality().hash(birthday)
+        id,
+        fullname,
+        first_name,
+        last_name,
+        email,
+        address,
+        zipcode,
+        city,
+        country_id,
+        SIA_number,
+        FFTir_license_number,
+        credit_points,
+        client_badge,
+        verification,
+        payment_verification,
+        status,
+        reduced_mobility,
+        initiation_course,
+        completed_steps,
+        experience,
+        equipment,
+        phone_number,
+        country,
+        firebase_id,
+        image,
+        birthday,
+        registered
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
       __$$_UserModelCopyWithImpl<_$_UserModel>(this, _$identity);
 
@@ -656,7 +686,8 @@ abstract class _UserModel implements UserModel {
       final CountryModel? country,
       final String? firebase_id,
       final ImageModel? image,
-      final String? birthday}) = _$_UserModel;
+      final String? birthday,
+      final int? registered}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -713,6 +744,8 @@ abstract class _UserModel implements UserModel {
   ImageModel? get image;
   @override
   String? get birthday;
+  @override
+  int? get registered;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

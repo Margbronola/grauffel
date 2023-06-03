@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'admin_model.dart';
 
@@ -37,7 +37,8 @@ mixin _$AdminModel {
 abstract class $AdminModelCopyWith<$Res> {
   factory $AdminModelCopyWith(
           AdminModel value, $Res Function(AdminModel) then) =
-      _$AdminModelCopyWithImpl<$Res>;
+      _$AdminModelCopyWithImpl<$Res, AdminModel>;
+  @useResult
   $Res call(
       {int? id,
       String? first_name,
@@ -48,13 +49,16 @@ abstract class $AdminModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AdminModelCopyWithImpl<$Res> implements $AdminModelCopyWith<$Res> {
+class _$AdminModelCopyWithImpl<$Res, $Val extends AdminModel>
+    implements $AdminModelCopyWith<$Res> {
   _$AdminModelCopyWithImpl(this._value, this._then);
 
-  final AdminModel _value;
   // ignore: unused_field
-  final $Res Function(AdminModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -65,31 +69,31 @@ class _$AdminModelCopyWithImpl<$Res> implements $AdminModelCopyWith<$Res> {
     Object? fullname = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      iscoach: iscoach == freezed
+      iscoach: freezed == iscoach
           ? _value.iscoach
           : iscoach // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullname: fullname == freezed
+      fullname: freezed == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_AdminModelCopyWith<$Res>
           _$_AdminModel value, $Res Function(_$_AdminModel) then) =
       __$$_AdminModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? first_name,
@@ -110,15 +115,14 @@ abstract class _$$_AdminModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AdminModelCopyWithImpl<$Res> extends _$AdminModelCopyWithImpl<$Res>
+class __$$_AdminModelCopyWithImpl<$Res>
+    extends _$AdminModelCopyWithImpl<$Res, _$_AdminModel>
     implements _$$_AdminModelCopyWith<$Res> {
   __$$_AdminModelCopyWithImpl(
       _$_AdminModel _value, $Res Function(_$_AdminModel) _then)
-      : super(_value, (v) => _then(v as _$_AdminModel));
+      : super(_value, _then);
 
-  @override
-  _$_AdminModel get _value => super._value as _$_AdminModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -129,27 +133,27 @@ class __$$_AdminModelCopyWithImpl<$Res> extends _$AdminModelCopyWithImpl<$Res>
     Object? fullname = freezed,
   }) {
     return _then(_$_AdminModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      first_name: first_name == freezed
+      first_name: freezed == first_name
           ? _value.first_name
           : first_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      last_name: last_name == freezed
+      last_name: freezed == last_name
           ? _value.last_name
           : last_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      iscoach: iscoach == freezed
+      iscoach: freezed == iscoach
           ? _value.iscoach
           : iscoach // ignore: cast_nullable_to_non_nullable
               as int?,
-      fullname: fullname == freezed
+      fullname: freezed == fullname
           ? _value.fullname
           : fullname // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -194,28 +198,25 @@ class _$_AdminModel implements _AdminModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdminModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.first_name, first_name) &&
-            const DeepCollectionEquality().equals(other.last_name, last_name) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.iscoach, iscoach) &&
-            const DeepCollectionEquality().equals(other.fullname, fullname));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.first_name, first_name) ||
+                other.first_name == first_name) &&
+            (identical(other.last_name, last_name) ||
+                other.last_name == last_name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.iscoach, iscoach) || other.iscoach == iscoach) &&
+            (identical(other.fullname, fullname) ||
+                other.fullname == fullname));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(first_name),
-      const DeepCollectionEquality().hash(last_name),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(iscoach),
-      const DeepCollectionEquality().hash(fullname));
+      runtimeType, id, first_name, last_name, email, iscoach, fullname);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AdminModelCopyWith<_$_AdminModel> get copyWith =>
       __$$_AdminModelCopyWithImpl<_$_AdminModel>(this, _$identity);
 

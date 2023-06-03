@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'equipment_model.dart';
 
@@ -46,7 +46,8 @@ mixin _$EquipmentModel {
 abstract class $EquipmentModelCopyWith<$Res> {
   factory $EquipmentModelCopyWith(
           EquipmentModel value, $Res Function(EquipmentModel) then) =
-      _$EquipmentModelCopyWithImpl<$Res>;
+      _$EquipmentModelCopyWithImpl<$Res, EquipmentModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -68,14 +69,16 @@ abstract class $EquipmentModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EquipmentModelCopyWithImpl<$Res>
+class _$EquipmentModelCopyWithImpl<$Res, $Val extends EquipmentModel>
     implements $EquipmentModelCopyWith<$Res> {
   _$EquipmentModelCopyWithImpl(this._value, this._then);
 
-  final EquipmentModel _value;
   // ignore: unused_field
-  final $Res Function(EquipmentModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -88,90 +91,92 @@ class _$EquipmentModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? brand = freezed,
-    Object? quantity = freezed,
+    Object? quantity = null,
     Object? qty = freezed,
     Object? image_url = freezed,
     Object? image_thumb_url = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      stocks: stocks == freezed
+      stocks: freezed == stocks
           ? _value.stocks
           : stocks // ignore: cast_nullable_to_non_nullable
               as int?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-      qty: qty == freezed
+      qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_url: image_url == freezed
+      image_url: freezed == image_url
           ? _value.image_url
           : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_thumb_url: image_thumb_url == freezed
+      image_thumb_url: freezed == image_thumb_url
           ? _value.image_thumb_url
           : image_thumb_url // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PivotModelCopyWith<$Res>? get pivot {
     if (_value.pivot == null) {
       return null;
     }
 
     return $PivotModelCopyWith<$Res>(_value.pivot!, (value) {
-      return _then(_value.copyWith(pivot: value));
+      return _then(_value.copyWith(pivot: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $BrandModelCopyWith<$Res>? get brand {
     if (_value.brand == null) {
       return null;
     }
 
     return $BrandModelCopyWith<$Res>(_value.brand!, (value) {
-      return _then(_value.copyWith(brand: value));
+      return _then(_value.copyWith(brand: value) as $Val);
     });
   }
 }
@@ -183,6 +188,7 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
           _$_EquipmentModel value, $Res Function(_$_EquipmentModel) then) =
       __$$_EquipmentModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -207,15 +213,13 @@ abstract class _$$_EquipmentModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_EquipmentModelCopyWithImpl<$Res>
-    extends _$EquipmentModelCopyWithImpl<$Res>
+    extends _$EquipmentModelCopyWithImpl<$Res, _$_EquipmentModel>
     implements _$$_EquipmentModelCopyWith<$Res> {
   __$$_EquipmentModelCopyWithImpl(
       _$_EquipmentModel _value, $Res Function(_$_EquipmentModel) _then)
-      : super(_value, (v) => _then(v as _$_EquipmentModel));
+      : super(_value, _then);
 
-  @override
-  _$_EquipmentModel get _value => super._value as _$_EquipmentModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -228,65 +232,65 @@ class __$$_EquipmentModelCopyWithImpl<$Res>
     Object? created_at = freezed,
     Object? updated_at = freezed,
     Object? brand = freezed,
-    Object? quantity = freezed,
+    Object? quantity = null,
     Object? qty = freezed,
     Object? image_url = freezed,
     Object? image_thumb_url = freezed,
   }) {
     return _then(_$_EquipmentModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      stocks: stocks == freezed
+      stocks: freezed == stocks
           ? _value.stocks
           : stocks // ignore: cast_nullable_to_non_nullable
               as int?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      brand: brand == freezed
+      brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as BrandModel?,
-      quantity: quantity == freezed
+      quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-      qty: qty == freezed
+      qty: freezed == qty
           ? _value.qty
           : qty // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_url: image_url == freezed
+      image_url: freezed == image_url
           ? _value.image_url
           : image_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_thumb_url: image_thumb_url == freezed
+      image_thumb_url: freezed == image_thumb_url
           ? _value.image_thumb_url
           : image_thumb_url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -360,47 +364,50 @@ class _$_EquipmentModel implements _EquipmentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EquipmentModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.stocks, stocks) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.pivot, pivot) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality().equals(other.brand, brand) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
-            const DeepCollectionEquality().equals(other.qty, qty) &&
-            const DeepCollectionEquality().equals(other.image_url, image_url) &&
-            const DeepCollectionEquality()
-                .equals(other.image_thumb_url, image_thumb_url));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.stocks, stocks) || other.stocks == stocks) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.pivot, pivot) || other.pivot == pivot) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.qty, qty) || other.qty == qty) &&
+            (identical(other.image_url, image_url) ||
+                other.image_url == image_url) &&
+            (identical(other.image_thumb_url, image_thumb_url) ||
+                other.image_thumb_url == image_thumb_url));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(stocks),
-      const DeepCollectionEquality().hash(type),
-      const DeepCollectionEquality().hash(pivot),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(brand),
-      const DeepCollectionEquality().hash(quantity),
-      const DeepCollectionEquality().hash(qty),
-      const DeepCollectionEquality().hash(image_url),
-      const DeepCollectionEquality().hash(image_thumb_url));
+      id,
+      name,
+      price,
+      description,
+      stocks,
+      type,
+      pivot,
+      created_at,
+      updated_at,
+      brand,
+      quantity,
+      qty,
+      image_url,
+      image_thumb_url);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EquipmentModelCopyWith<_$_EquipmentModel> get copyWith =>
       __$$_EquipmentModelCopyWithImpl<_$_EquipmentModel>(this, _$identity);
 

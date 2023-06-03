@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pivot_model.dart';
 
@@ -37,7 +37,8 @@ mixin _$PivotModel {
 abstract class $PivotModelCopyWith<$Res> {
   factory $PivotModelCopyWith(
           PivotModel value, $Res Function(PivotModel) then) =
-      _$PivotModelCopyWithImpl<$Res>;
+      _$PivotModelCopyWithImpl<$Res, PivotModel>;
+  @useResult
   $Res call(
       {int? booking_id,
       int? equipement_id,
@@ -48,13 +49,16 @@ abstract class $PivotModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PivotModelCopyWithImpl<$Res> implements $PivotModelCopyWith<$Res> {
+class _$PivotModelCopyWithImpl<$Res, $Val extends PivotModel>
+    implements $PivotModelCopyWith<$Res> {
   _$PivotModelCopyWithImpl(this._value, this._then);
 
-  final PivotModel _value;
   // ignore: unused_field
-  final $Res Function(PivotModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? booking_id = freezed,
@@ -65,31 +69,31 @@ class _$PivotModelCopyWithImpl<$Res> implements $PivotModelCopyWith<$Res> {
     Object? total = freezed,
   }) {
     return _then(_value.copyWith(
-      booking_id: booking_id == freezed
+      booking_id: freezed == booking_id
           ? _value.booking_id
           : booking_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      equipement_id: equipement_id == freezed
+      equipement_id: freezed == equipement_id
           ? _value.equipement_id
           : equipement_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_PivotModelCopyWith<$Res>
           _$_PivotModel value, $Res Function(_$_PivotModel) then) =
       __$$_PivotModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? booking_id,
       int? equipement_id,
@@ -110,15 +115,14 @@ abstract class _$$_PivotModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PivotModelCopyWithImpl<$Res> extends _$PivotModelCopyWithImpl<$Res>
+class __$$_PivotModelCopyWithImpl<$Res>
+    extends _$PivotModelCopyWithImpl<$Res, _$_PivotModel>
     implements _$$_PivotModelCopyWith<$Res> {
   __$$_PivotModelCopyWithImpl(
       _$_PivotModel _value, $Res Function(_$_PivotModel) _then)
-      : super(_value, (v) => _then(v as _$_PivotModel));
+      : super(_value, _then);
 
-  @override
-  _$_PivotModel get _value => super._value as _$_PivotModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? booking_id = freezed,
@@ -129,27 +133,27 @@ class __$$_PivotModelCopyWithImpl<$Res> extends _$PivotModelCopyWithImpl<$Res>
     Object? total = freezed,
   }) {
     return _then(_$_PivotModel(
-      booking_id: booking_id == freezed
+      booking_id: freezed == booking_id
           ? _value.booking_id
           : booking_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      equipement_id: equipement_id == freezed
+      equipement_id: freezed == equipement_id
           ? _value.equipement_id
           : equipement_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      quantity: quantity == freezed
+      quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double?,
@@ -194,29 +198,26 @@ class _$_PivotModel implements _PivotModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PivotModel &&
-            const DeepCollectionEquality()
-                .equals(other.booking_id, booking_id) &&
-            const DeepCollectionEquality()
-                .equals(other.equipement_id, equipement_id) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity) &&
-            const DeepCollectionEquality().equals(other.capacity, capacity) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.total, total));
+            (identical(other.booking_id, booking_id) ||
+                other.booking_id == booking_id) &&
+            (identical(other.equipement_id, equipement_id) ||
+                other.equipement_id == equipement_id) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.total, total) || other.total == total));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(booking_id),
-      const DeepCollectionEquality().hash(equipement_id),
-      const DeepCollectionEquality().hash(quantity),
-      const DeepCollectionEquality().hash(capacity),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(total));
+      runtimeType, booking_id, equipement_id, quantity, capacity, price, total);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PivotModelCopyWith<_$_PivotModel> get copyWith =>
       __$$_PivotModelCopyWithImpl<_$_PivotModel>(this, _$identity);
 

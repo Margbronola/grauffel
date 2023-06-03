@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'activity_model.dart';
 
@@ -57,7 +57,8 @@ mixin _$ActivityModel {
 abstract class $ActivityModelCopyWith<$Res> {
   factory $ActivityModelCopyWith(
           ActivityModel value, $Res Function(ActivityModel) then) =
-      _$ActivityModelCopyWithImpl<$Res>;
+      _$ActivityModelCopyWithImpl<$Res, ActivityModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -90,14 +91,16 @@ abstract class $ActivityModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ActivityModelCopyWithImpl<$Res>
+class _$ActivityModelCopyWithImpl<$Res, $Val extends ActivityModel>
     implements $ActivityModelCopyWith<$Res> {
   _$ActivityModelCopyWithImpl(this._value, this._then);
 
-  final ActivityModel _value;
   // ignore: unused_field
-  final $Res Function(ActivityModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -127,128 +130,130 @@ class _$ActivityModelCopyWithImpl<$Res>
     Object? salles = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      free_duration: free_duration == freezed
+      free_duration: freezed == free_duration
           ? _value.free_duration
           : free_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      course_duration: course_duration == freezed
+      course_duration: freezed == course_duration
           ? _value.course_duration
           : course_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      competition_duration: competition_duration == freezed
+      competition_duration: freezed == competition_duration
           ? _value.competition_duration
           : competition_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      has_relation: has_relation == freezed
+      has_relation: freezed == has_relation
           ? _value.has_relation
           : has_relation // ignore: cast_nullable_to_non_nullable
               as bool?,
-      has_salle: has_salle == freezed
+      has_salle: freezed == has_salle
           ? _value.has_salle
           : has_salle // ignore: cast_nullable_to_non_nullable
               as bool?,
-      is_active: is_active == freezed
+      is_active: freezed == is_active
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      date_from: date_from == freezed
+      date_from: freezed == date_from
           ? _value.date_from
           : date_from // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_to: date_to == freezed
+      date_to: freezed == date_to
           ? _value.date_to
           : date_to // ignore: cast_nullable_to_non_nullable
               as String?,
-      start_time: start_time == freezed
+      start_time: freezed == start_time
           ? _value.start_time
           : start_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      end_time: end_time == freezed
+      end_time: freezed == end_time
           ? _value.end_time
           : end_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      max_persons: max_persons == freezed
+      max_persons: freezed == max_persons
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
               as int?,
-      active_booking_count: active_booking_count == freezed
+      active_booking_count: freezed == active_booking_count
           ? _value.active_booking_count
           : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      activitysalle: activitysalle == freezed
+      activitysalle: freezed == activitysalle
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<ActivitySalleModel>?,
-      salles: salles == freezed
+      salles: freezed == salles
           ? _value.salles
           : salles // ignore: cast_nullable_to_non_nullable
               as List<SalleModel>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TypeModelCopyWith<$Res>? get type {
     if (_value.type == null) {
       return null;
     }
 
     return $TypeModelCopyWith<$Res>(_value.type!, (value) {
-      return _then(_value.copyWith(type: value));
+      return _then(_value.copyWith(type: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AdminModelCopyWith<$Res>? get admin {
     if (_value.admin == null) {
       return null;
     }
 
     return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
-      return _then(_value.copyWith(admin: value));
+      return _then(_value.copyWith(admin: value) as $Val);
     });
   }
 }
@@ -260,6 +265,7 @@ abstract class _$$_ActivityModelCopyWith<$Res>
           _$_ActivityModel value, $Res Function(_$_ActivityModel) then) =
       __$$_ActivityModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -295,15 +301,13 @@ abstract class _$$_ActivityModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ActivityModelCopyWithImpl<$Res>
-    extends _$ActivityModelCopyWithImpl<$Res>
+    extends _$ActivityModelCopyWithImpl<$Res, _$_ActivityModel>
     implements _$$_ActivityModelCopyWith<$Res> {
   __$$_ActivityModelCopyWithImpl(
       _$_ActivityModel _value, $Res Function(_$_ActivityModel) _then)
-      : super(_value, (v) => _then(v as _$_ActivityModel));
+      : super(_value, _then);
 
-  @override
-  _$_ActivityModel get _value => super._value as _$_ActivityModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -333,103 +337,103 @@ class __$$_ActivityModelCopyWithImpl<$Res>
     Object? salles = freezed,
   }) {
     return _then(_$_ActivityModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      free_duration: free_duration == freezed
+      free_duration: freezed == free_duration
           ? _value.free_duration
           : free_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      course_duration: course_duration == freezed
+      course_duration: freezed == course_duration
           ? _value.course_duration
           : course_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      competition_duration: competition_duration == freezed
+      competition_duration: freezed == competition_duration
           ? _value.competition_duration
           : competition_duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      has_relation: has_relation == freezed
+      has_relation: freezed == has_relation
           ? _value.has_relation
           : has_relation // ignore: cast_nullable_to_non_nullable
               as bool?,
-      has_salle: has_salle == freezed
+      has_salle: freezed == has_salle
           ? _value.has_salle
           : has_salle // ignore: cast_nullable_to_non_nullable
               as bool?,
-      is_active: is_active == freezed
+      is_active: freezed == is_active
           ? _value.is_active
           : is_active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      date_from: date_from == freezed
+      date_from: freezed == date_from
           ? _value.date_from
           : date_from // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_to: date_to == freezed
+      date_to: freezed == date_to
           ? _value.date_to
           : date_to // ignore: cast_nullable_to_non_nullable
               as String?,
-      start_time: start_time == freezed
+      start_time: freezed == start_time
           ? _value.start_time
           : start_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      end_time: end_time == freezed
+      end_time: freezed == end_time
           ? _value.end_time
           : end_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      max_persons: max_persons == freezed
+      max_persons: freezed == max_persons
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
               as int?,
-      active_booking_count: active_booking_count == freezed
+      active_booking_count: freezed == active_booking_count
           ? _value.active_booking_count
           : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      activitysalle: activitysalle == freezed
+      activitysalle: freezed == activitysalle
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<ActivitySalleModel>?,
-      salles: salles == freezed
+      salles: freezed == salles
           ? _value._salles
           : salles // ignore: cast_nullable_to_non_nullable
               as List<SalleModel>?,
@@ -523,6 +527,7 @@ class _$_ActivityModel implements _ActivityModel {
   List<ActivitySalleModel>? get activitysalle {
     final value = _activitysalle;
     if (value == null) return null;
+    if (_activitysalle is EqualUnmodifiableListView) return _activitysalle;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -532,6 +537,7 @@ class _$_ActivityModel implements _ActivityModel {
   List<SalleModel>? get salles {
     final value = _salles;
     if (value == null) return null;
+    if (_salles is EqualUnmodifiableListView) return _salles;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -546,39 +552,44 @@ class _$_ActivityModel implements _ActivityModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ActivityModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.capacity, capacity) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.free_duration, free_duration) &&
-            const DeepCollectionEquality()
-                .equals(other.course_duration, course_duration) &&
-            const DeepCollectionEquality()
-                .equals(other.competition_duration, competition_duration) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.has_relation, has_relation) &&
-            const DeepCollectionEquality().equals(other.has_salle, has_salle) &&
-            const DeepCollectionEquality().equals(other.is_active, is_active) &&
-            const DeepCollectionEquality().equals(other.date_from, date_from) &&
-            const DeepCollectionEquality().equals(other.date_to, date_to) &&
-            const DeepCollectionEquality()
-                .equals(other.start_time, start_time) &&
-            const DeepCollectionEquality().equals(other.end_time, end_time) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality().equals(other.admin, admin) &&
-            const DeepCollectionEquality()
-                .equals(other.max_persons, max_persons) &&
-            const DeepCollectionEquality()
-                .equals(other.active_booking_count, active_booking_count) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.free_duration, free_duration) ||
+                other.free_duration == free_duration) &&
+            (identical(other.course_duration, course_duration) ||
+                other.course_duration == course_duration) &&
+            (identical(other.competition_duration, competition_duration) ||
+                other.competition_duration == competition_duration) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.has_relation, has_relation) ||
+                other.has_relation == has_relation) &&
+            (identical(other.has_salle, has_salle) ||
+                other.has_salle == has_salle) &&
+            (identical(other.is_active, is_active) ||
+                other.is_active == is_active) &&
+            (identical(other.date_from, date_from) ||
+                other.date_from == date_from) &&
+            (identical(other.date_to, date_to) || other.date_to == date_to) &&
+            (identical(other.start_time, start_time) ||
+                other.start_time == start_time) &&
+            (identical(other.end_time, end_time) ||
+                other.end_time == end_time) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.admin, admin) || other.admin == admin) &&
+            (identical(other.max_persons, max_persons) ||
+                other.max_persons == max_persons) &&
+            (identical(other.active_booking_count, active_booking_count) ||
+                other.active_booking_count == active_booking_count) &&
             const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
             const DeepCollectionEquality().equals(other._salles, _salles));
@@ -588,35 +599,36 @@ class _$_ActivityModel implements _ActivityModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(capacity),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(free_duration),
-        const DeepCollectionEquality().hash(course_duration),
-        const DeepCollectionEquality().hash(competition_duration),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(image),
-        const DeepCollectionEquality().hash(created_at),
-        const DeepCollectionEquality().hash(updated_at),
-        const DeepCollectionEquality().hash(has_relation),
-        const DeepCollectionEquality().hash(has_salle),
-        const DeepCollectionEquality().hash(is_active),
-        const DeepCollectionEquality().hash(date_from),
-        const DeepCollectionEquality().hash(date_to),
-        const DeepCollectionEquality().hash(start_time),
-        const DeepCollectionEquality().hash(end_time),
-        const DeepCollectionEquality().hash(type),
-        const DeepCollectionEquality().hash(admin),
-        const DeepCollectionEquality().hash(max_persons),
-        const DeepCollectionEquality().hash(active_booking_count),
+        id,
+        name,
+        description,
+        capacity,
+        price,
+        free_duration,
+        course_duration,
+        competition_duration,
+        status,
+        image,
+        created_at,
+        updated_at,
+        has_relation,
+        has_salle,
+        is_active,
+        date_from,
+        date_to,
+        start_time,
+        end_time,
+        type,
+        admin,
+        max_persons,
+        active_booking_count,
         const DeepCollectionEquality().hash(_activitysalle),
         const DeepCollectionEquality().hash(_salles)
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ActivityModelCopyWith<_$_ActivityModel> get copyWith =>
       __$$_ActivityModelCopyWithImpl<_$_ActivityModel>(this, _$identity);
 
