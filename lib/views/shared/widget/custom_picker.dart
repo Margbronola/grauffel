@@ -1,4 +1,4 @@
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart';
 
 class CustomPicker extends CommonPickerModel {
   String digits(int value, int length) {
