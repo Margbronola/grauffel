@@ -10,7 +10,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SplashViewModel>.reactive(
-      onModelReady: (model) async => await model.init(),
+      onViewModelReady: (model) async => await model.init(),
       builder: (context, model, child) => const Scaffold(
         body: CustomLoader(),
       ),

@@ -16,7 +16,7 @@ class ReserveStepsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReserveStepsViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
         appBar: AppBar(

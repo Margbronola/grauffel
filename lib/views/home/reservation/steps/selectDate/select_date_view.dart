@@ -16,7 +16,7 @@ class SelectDateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SelectDateViewModel>.reactive(
-      onModelReady: (model) async => model.init(context),
+      onViewModelReady: (model) async => model.init(context),
       builder: (context, model, child) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

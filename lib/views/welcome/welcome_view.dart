@@ -23,7 +23,7 @@ class _WelcomeViewState extends State<WelcomeView>
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<WelcomeViewModel>.reactive(
-      onModelReady: (model) => model.init(this),
+      onViewModelReady: (model) => model.init(this),
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
             ? const CustomLoader()

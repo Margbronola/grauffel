@@ -14,7 +14,7 @@ class SubmitionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubmitionViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, model, child) => model.isBusy
           ? const Expanded(
               child: Center(

@@ -13,7 +13,7 @@ class NotificationSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<NotificationSettingsViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           iconTheme: const IconThemeData(color: backgroundColor),

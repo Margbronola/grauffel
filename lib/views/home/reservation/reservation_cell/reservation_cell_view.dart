@@ -13,7 +13,7 @@ class ReservationCellView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReservationCellViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           toolbarHeight: 90,

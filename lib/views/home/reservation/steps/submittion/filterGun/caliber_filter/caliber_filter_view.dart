@@ -17,7 +17,7 @@ class CaliberFilterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CaliberFilterViewModel>.reactive(
-      onModelReady: (model) async => model.init(isGUn: isGun),
+      onViewModelReady: (model) async => model.init(isGUn: isGun),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           elevation: 0,

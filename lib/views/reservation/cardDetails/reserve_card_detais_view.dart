@@ -21,7 +21,7 @@ class ReserveCardDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReserveCardDetailsViewModel>.reactive(
-      onModelReady: (model) async => model.init(bookId),
+      onViewModelReady: (model) async => model.init(bookId),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
         appBar: AppBar(

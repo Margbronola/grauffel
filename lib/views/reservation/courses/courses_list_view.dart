@@ -1,4 +1,3 @@
-import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/views/reservation/courses/courses_list_view_model.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
@@ -18,7 +17,7 @@ class CourseListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CoursesListViewModel>.reactive(
-      onModelReady: (model) async => model.init(),
+      onViewModelReady: (model) async => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
         body: Column(

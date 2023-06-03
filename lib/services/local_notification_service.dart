@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
-
 import 'user_api_service.dart';
 
 class LocalNotificationService {
@@ -17,19 +15,24 @@ class LocalNotificationService {
     // Android initialization
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
-
-// ios initialization
-    const IOSInitializationSettings initializationSettingsIOS =
-        IOSInitializationSettings(
+    const DarwinInitializationSettings iosInitialization =
+        DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: false,
       requestSoundPermission: false,
+      // onDidReceiveLocalNotification: onDidReceiveLocalNotification,
     );
+// ios initialization
+    // const IOSInitializationSettings initializationSettingsIOS =
+    //     IOSInitializationSettings(
+
+    // );
 
     const InitializationSettings initializationSettings =
         InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS);
+      android: initializationSettingsAndroid,
+      iOS: iosInitialization,
+    );
 // the initialization settings are initialized after they are setted
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
@@ -103,8 +106,10 @@ class LocalNotificationService {
         android: AndroidNotificationDetails(
           'high_importance_channel',
           'High Importance Notifications',
-          // channelDescription:
-          'This channel is used for important notifications.',
+          channelDescription:
+              'This channel is used for important notifications.',
+          // // channelDescription:
+          // 'This channel is used for important notifications.',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',
