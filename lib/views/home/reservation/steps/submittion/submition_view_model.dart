@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element, avoid_print, depend_on_referenced_packages
+
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';
 import 'package:egczacademy/models/equipment_model.dart';
@@ -73,7 +75,8 @@ class SubmitionViewModel extends ReactiveViewModel {
   }
 
   Future<bool> reserveBook() async {
-    errorString = await _bookingApiService.book(
+    print("RESERVE BOOK");
+    return await _bookingApiService.book(
       token: _userService.token!,
       date: _bookingService.getselectedDate!,
       time: _bookingService.getselectedTimes!.time!,
@@ -82,11 +85,12 @@ class SubmitionViewModel extends ReactiveViewModel {
       ammunitions: _bookingService.getselectedAmmunition,
       equipments: _bookingService.getselectedEquipment,
     );
-    print("RESERVE BOOK $errorString");
-    return errorString.isEmpty ? true : false;
+    // print("RESERVE BOOK $errorString");
+    // return errorString.isEmpty;
   }
 
   Future<bool> reserveCourse() async {
+    print("RESERVE COURSE");
     errorString = await _bookingApiService.bookCourse(
       courseId: _bookingService.getselectedBookable!.id!,
       token: _userService.token!,
@@ -117,7 +121,7 @@ class SubmitionViewModel extends ReactiveViewModel {
     if (isBookedCourse) {
       var response = await _dialogService.showCustomDialog(
         mainButtonTitle: "ok",
-        variant: DialogType.reserve,
+        variant: isCourse ? DialogType.reserveCourse : DialogType.reserveBook,
         barrierDismissible: false,
       );
       _homePagingService.setRefresh(true);

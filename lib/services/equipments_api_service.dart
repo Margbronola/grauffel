@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:egczacademy/models/equipment_model.dart';
@@ -11,7 +13,7 @@ class EquipmentsAPIService {
   List<EquipmentModel>? get equipments => _equipments;
   PagingModel? _pagingModel;
   PagingModel? get pagingModel => _pagingModel;
-  final int _perPage = 6;
+  final int _perPage = 100;
 
   Future<void> fetchAllEquipments(
       {required String token, bool fetchMore = false}) async {

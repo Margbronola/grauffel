@@ -1,6 +1,10 @@
+// ignore_for_file: avoid_print
+
+import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked/stacked.dart';
 import 'package:egczacademy/views/shared/widget/step_shimmer_loader.dart';
 import '../../../../../shared/color.dart';
@@ -13,7 +17,6 @@ class AmmunitionView extends StatelessWidget {
   final Function() onTap;
   final Function() skipTap;
 
-  //TODO: dont select any if skip
   const AmmunitionView({
     Key? key,
     required this.onTap,
@@ -69,7 +72,7 @@ class AmmunitionView extends StatelessWidget {
                         child: Center(
                           child: Text(
                             "J’ai déjà des\nmunitions".toUpperCase(),
-                            style: ThemeData().textTheme.bodyText1!.copyWith(
+                            style: ThemeData().textTheme.bodyLarge!.copyWith(
                                 fontSize: 15.sp,
                                 color: Colors.grey,
                                 fontFamily: 'ProductSans',
@@ -78,12 +81,28 @@ class AmmunitionView extends StatelessWidget {
                         ),
                       ),
                       CustomButton(
-                          title: "Suivant",
-                          onTap: model.selectedAmmunition.isNotEmpty
-                              ? () {
-                                  model.suivant(onTap);
+                        title: "Suivant",
+                        onTap: model.selectedAmmunition.isNotEmpty
+                            ? () {
+                                model.suivant(onTap);
+                              }
+                            : () {
+                                Iterable<GunModel> required = model.selectedGun
+                                    .where((element) =>
+                                        element.required_ammunition == 1);
+                                print("$required");
+                                if (required.isNotEmpty) {
+                                  print("required");
+
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "Besoin de sélectionner les munitions requises");
+                                } else {
+                                  print("diri required");
+                                  skipTap();
                                 }
-                              : null)
+                              },
+                      ),
                     ],
                   ),
                 )

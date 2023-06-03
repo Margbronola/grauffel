@@ -13,6 +13,7 @@ import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:egczacademy/view_model/booking_vm.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import '../app/global.dart';
 import '../models/book_course_model.dart';
@@ -43,8 +44,7 @@ class BookingAPIService {
   PagingModel? get pagingModel => _pagingModel;
   final int _perPage = 6;
   static final BookingVm _bookVM = BookingVm.instance;
-  //TODO: specific for active only
-  //TODO: specific fetch for past
+
   Future<void> fetchBookingHistory({required String token}) async {
     try {
       print("FETCH?");
@@ -54,10 +54,7 @@ class BookingAPIService {
             "accept": "application/json"
           }).then((response) {
         if (response.statusCode == 200) {
-          print("OK MAN DIDI");
           List data = json.decode(response.body);
-
-          print(data);
 
           _bookVM.populate(data.map((e) => BookModel.fromJson(e)).toList());
 
@@ -184,17 +181,17 @@ class BookingAPIService {
   Future<void> fetchBookable(
       {required String token, required bool fetchMore}) async {
     try {
-      final respo = await http.get(Uri.parse("$urlApi/activities?"), headers: {
+      final respo = await http.get(Uri.parse("$urlApi/activities"), headers: {
         "Content-type": "application/json",
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+        List fetchBookable = data;
+        _bookable =
+            fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
+        print("ACTIVITIES: $data");
         try {
-          List fetchBookable = data;
-          _bookable =
-              fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
-
           if (fetchMore) {
             debugPrint("FETCHING morel");
 
@@ -296,6 +293,7 @@ class BookingAPIService {
 
           _courses =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
+          debugPrint("COURs: $_courses");
 
           if (isFetchMore) {
             _bookableCourse.clear();
@@ -390,6 +388,7 @@ class BookingAPIService {
           print("FETCH TIMEACTIVITY PASS");
           List time = data;
           _availableTime = time.map((e) => TimeModel.fromJson(e)).toList();
+          print("AVAILABLE TIME: $time");
         } catch (e) {
           print(e);
           print("FROMJSON FAIL");
@@ -439,7 +438,7 @@ class BookingAPIService {
     return false;
   }
 
-  Future<String> book({
+  Future<bool> book({
     required String token,
     required DateTime date,
     required String time,
@@ -479,12 +478,13 @@ class BookingAPIService {
       if (respo.statusCode == 200) {
         if (respo.body.contains('success')) {
           print(respo.body);
-          return "";
+          return true;
         } else {
           print(respo.body);
           String failReason = "";
           if (respo.body.contains('arme')) {
             print("arme");
+
             failReason = "Arme non disponible!";
           } else if (respo.body.contains('ammo')) {
             print("ammo");
@@ -494,7 +494,8 @@ class BookingAPIService {
             failReason = "Équipement non disponible!";
           }
           print(respo.body);
-          return failReason;
+          await Fluttertoast.showToast(msg: failReason);
+          return false;
         }
       } else {
         String failReason = "";
@@ -507,14 +508,20 @@ class BookingAPIService {
         } else if (respo.body.contains('no_stock')) {
           print("no stock");
           failReason = "Pas de stock!";
+        } else if (respo.body.contains('no_balance')) {
+          failReason = "Aucun points de crédit disponibles";
         }
         print(respo.body);
         print("NOT 200 in BOOK");
-        return failReason;
+        await Fluttertoast.showToast(msg: failReason);
+        return false;
       }
     } catch (e) {
       print(e);
-      return "Server Error";
+      Fluttertoast.showToast(
+        msg: "Une erreur s'est produite lors du traitement de la demande",
+      );
+      return false;
     }
   }
 

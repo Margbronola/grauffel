@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';

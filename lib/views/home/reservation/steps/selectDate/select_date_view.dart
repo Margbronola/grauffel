@@ -1,4 +1,3 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -76,22 +75,23 @@ class SelectDateView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
                   height: 100.h,
-                  child: DatePicker(model.currentDate, model.scrollController,
-                      width: size(context).width * 0.17,
-                      selectionColor: buttonColor,
-                      deactivatedColor: Colors.grey,
-                      selectedTextColor: Colors.white,
-                      onDateChange: model.setDate,
-                      inactiveDates: [DateTime.now()],
-                      initialSelectedDate: model.selectedDate,
-                      locale: 'fr_FR',
-                      controller: model.controller,
-                      daysCount: model.numDaysTotal,
-                      dayTextStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'ProductSans',
-                          color: backgroundColor,
-                          fontSize: 15.sp)),
+                  // child: DatePicker(model.currentDate,
+                  //     // model.scrollController,
+                  //     width: size(context).width * 0.17,
+                  //     selectionColor: buttonColor,
+                  //     deactivatedColor: Colors.grey,
+                  //     selectedTextColor: Colors.white,
+                  //     onDateChange: model.setDate,
+                  //     inactiveDates: [DateTime.now()],
+                  //     initialSelectedDate: model.selectedDate,
+                  //     locale: 'fr_FR',
+                  //     controller: model.controller,
+                  //     daysCount: model.numDaysTotal,
+                  //     dayTextStyle: TextStyle(
+                  //         fontWeight: FontWeight.bold,
+                  //         fontFamily: 'ProductSans',
+                  //         color: backgroundColor,
+                  //         fontSize: 15.sp)),
                 ),
               ),
               model.isBusy
@@ -191,40 +191,62 @@ Widget time(
     SizedBox(
       height: 60,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            padding: const EdgeInsets.all(10),
-            primary: avaiable > 0
-                ? selectedTime.toUtc().isAfter(DateTime.now().toUtc())
-                    ? isSelected
-                        ? buttonColor
-                        : customGrey
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: avaiable >= 0
+              ? selectedTime.toUtc().isAfter(DateTime.now().toUtc()) ||
+                      selectedTime.toUtc().isAfter(DateTime.now().toUtc())
+                  ? isSelected
+                      ? buttonColor
+                      : customGrey
+                  : DateTime.now().hour > int.parse(time.split(":")[0])
+                      ? isSelected
+                          ? buttonColor
+                          : customGrey
+                      : isSelected
+                          ? buttonColor
+                          : customDarkGrey
+              : customDarkGrey,
+          padding: const EdgeInsets.all(10), // <-- Button color
+        ),
+        onPressed:
+            // () {
+            // if (avaiable >= 0 &&
+            //     (selectedTime.toUtc().isAfter(DateTime.now().toUtc()) ||
+            //         DateTime.now().hour < int.parse(time.split(":")[0]))) {
+            //   print('Click');
+
+            //   onPress;
+            // }
+            // else {
+            //   print("${selectedTime.toUtc()}");
+            //   print("${DateTime.now().toUtc()}");
+            //   print(DateTime.now().hour < int.parse(time.split(":")[0]));
+            //   Fluttertoast.showToast(msg: "Can't book");
+            // }
+
+            avaiable >= 0
+                ? selectedTime.toUtc().isBefore(DateTime.now().toUtc()) ||
+                        selectedTime.toUtc().isAfter(DateTime.now().toUtc())
+                    ? onPress
                     : DateTime.now().hour < int.parse(time.split(":")[0])
-                        ? isSelected
-                            ? buttonColor
-                            : customGrey
-                        : isSelected
-                            ? buttonColor
-                            : customDarkGrey
-                : customDarkGrey, // <-- Button color
+                        ? onPress
+                        : () {}
+                : () {},
+
+        // },
+        child: Text(
+          "${time.split(":")[0]}h${time.split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"} - ${time.split("-")[1].split(":")[0]}h${time.split("-")[1].split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"}",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'ProductSans',
+            fontSize: 15.sp,
+            color: isSelected
+                ? kcWhite
+                : avaiable > 0
+                    ? backgroundColor
+                    : customTextGrey,
           ),
-          onPressed: avaiable > 0
-              ? selectedTime.toUtc().isAfter(DateTime.now().toUtc())
-                  ? onPress
-                  : DateTime.now().hour < int.parse(time.split(":")[0])
-                      ? onPress
-                      : () {}
-              : () {},
-          child: Text(
-            "${time.split(":")[0]}h${time.split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"} - ${time.split("-")[1].split(":")[0]}h${time.split("-")[1].split(":")[1].toString().length > 1 ? time.split(":")[1].toString() : "0${time.split("-")[1].split(":")[1].toString()}"}",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'ProductSans',
-                fontSize: 15.sp,
-                color: isSelected
-                    ? kcWhite
-                    : avaiable > 0
-                        ? backgroundColor
-                        : customTextGrey),
-          )),
+        ),
+      ),
     );

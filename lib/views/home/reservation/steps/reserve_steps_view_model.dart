@@ -25,6 +25,7 @@ class ReserveStepsViewModel extends BaseViewModel {
 
   void init() {
     if (isCourse) {
+      print("DIDI SUMULOD 1");
       bookingService.setSelectedDate =
           DateTime.parse(bookingService.getselectedBookable!.date_from!);
 
@@ -59,6 +60,7 @@ class ReserveStepsViewModel extends BaseViewModel {
         const SubmitionView()
       ];
     } else {
+      print("DIDI SUMULOD 2");
       bookingService.setSelectedTime = null;
       pages = [
         SelectDateView(

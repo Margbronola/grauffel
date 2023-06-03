@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, depend_on_referenced_packages
+
 import 'package:egczacademy/models/book_model.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +28,6 @@ class NewReservationCard extends StatelessWidget {
           return MaterialButton(
             padding: const EdgeInsets.all(0),
             onPressed: () async {
-              //TODO: show details of card
-              print("Show details");
               model.showDetailsCardNew(
                 data.id,
               );

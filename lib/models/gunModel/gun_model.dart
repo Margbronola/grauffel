@@ -1,5 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:egczacademy/models/ammunitions_model.dart';
-import 'package:egczacademy/models/equipment_model.dart';
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
 import 'package:egczacademy/models/gunModel/pivot_model.dart';
@@ -17,14 +18,15 @@ class GunModel with _$GunModel {
       int? brand_id,
       int? caliber_id,
       // int? mags_capacity,
-      // int? reserve,
+      int? reserve,
+      int? required_ammunition,
       double? price,
       String? description,
       // DateTime? created_at,
       // DateTime? updated_at,
       PivotModel? pivot,
       //available_ammunition {}
-      // bool? reservable,
+      bool? reservable,
       // relatedAmmo []
       // relatedEquipment []
       CaliberModel? caliber,

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, non_constant_identifier_names
+
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/gunModel/country_model.dart';
@@ -6,7 +8,8 @@ import 'package:egczacademy/services/countries_service.dart';
 import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart'
+    as datepicker;
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -209,10 +212,10 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   void showDatePicker2(context) async {
     debugPrint("Show date picker");
-    await DatePicker.showDatePicker(
+    await datepicker.DatePicker.showDatePicker(
       context,
       showTitleActions: true,
-      locale: LocaleType.fr,
+      locale: datepicker.LocaleType.fr,
       currentTime: DateTime(
         int.parse(user!.birthday!.split("-")[0]),
         int.parse(user!.birthday!.split("-")[1]),
@@ -220,12 +223,12 @@ class InformationEditViewModel extends ReactiveViewModel {
       ),
       minTime: DateTime(1990, 1, 1),
       maxTime: DateTime(2022, 1, 1),
-      theme: const DatePickerTheme(
-          // headerColor: Colors.orange,
-          // backgroundColor: Colors.blue,
-          itemStyle: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-          doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
+      // theme: const DatePickerTheme(
+      //     // headerColor: Colors.orange,
+      //     // backgroundColor: Colors.blue,
+      //     itemStyle: TextStyle(
+      //         color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+      //     doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
       onChanged: (date) {
         debugPrint('change $date in time zone ${date.timeZoneOffset.inHours}');
       },
@@ -243,10 +246,10 @@ class InformationEditViewModel extends ReactiveViewModel {
 
   void showDatePicker(context) async {
     debugPrint("Show date picker");
-    await DatePicker.showPicker(
+    await datepicker.DatePicker.showPicker(
       context,
       showTitleActions: true,
-      locale: LocaleType.fr,
+      locale: datepicker.LocaleType.fr,
       pickerModel: CustomPicker(
         currentTime: DateTime(
           int.parse(user!.birthday!.split("-")[0]),
@@ -256,12 +259,12 @@ class InformationEditViewModel extends ReactiveViewModel {
         // minTime: DateTime(1990, 1, 1),
         // maxTime: DateTime(2022, 1, 1),
       ),
-      theme: const DatePickerTheme(
-          // headerColor: Colors.orange,
-          // backgroundColor: Colors.blue,
-          itemStyle: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-          doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
+      // theme: const DatePickerTheme(
+      //     // headerColor: Colors.orange,
+      //     // backgroundColor: Colors.blue,
+      //     itemStyle: TextStyle(
+      //         color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+      //     doneStyle: TextStyle(color: Colors.black, fontSize: 16)),
       onChanged: (date) {
         debugPrint('change $date in time zone ${date.timeZoneOffset.inHours}');
       },
@@ -286,6 +289,5 @@ class InformationEditViewModel extends ReactiveViewModel {
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_userService];
 }

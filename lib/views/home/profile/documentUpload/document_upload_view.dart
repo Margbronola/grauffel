@@ -40,8 +40,8 @@ class DocumentUploadView extends StatelessWidget {
               )
             : SizedBox(
                 width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                child: ListView(
+                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "Demande de\nremplacement".toUpperCase(),
@@ -105,50 +105,12 @@ class DocumentUploadView extends StatelessWidget {
                       ),
                     ),
                     verticalSpaceMedium(),
-                    GestureDetector(
-                      onTap: () {
-                        model.uploadDocument(
-                            documentTypeModel: documentTypeModel);
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: SizedBox(
-                          width: size(context).width,
-                          child: Card(
-                            color: kcWhite,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: ListTile(
-                                title: Row(
-                                  children: [
-                                    const Text("Front"),
-                                    horizontalSpaceSmall(),
-                                    const Icon(
-                                      Icons.info,
-                                      color: Colors.black,
-                                    )
-                                  ],
-                                ),
-                                subtitle: Text(
-                                    "Fichier : ${model.fileFront ?? "aucun fichier choisi..."}",
-                                    overflow: TextOverflow.clip,
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontFamily: 'ProductSans',
-                                      fontSize: 18.sp,
-                                    ),
-                                    textAlign: TextAlign.center),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    documentTypeModel.type != 1
-                        ? const SizedBox()
-                        : GestureDetector(
+                    Expanded(
+                      child: Column(
+                        children: [
+                          GestureDetector(
                             onTap: () {
-                              model.uploadDocument2(
+                              model.uploadDocument(
                                   documentTypeModel: documentTypeModel);
                             },
                             child: Padding(
@@ -162,7 +124,7 @@ class DocumentUploadView extends StatelessWidget {
                                     child: ListTile(
                                       title: Row(
                                         children: [
-                                          const Text("Back"),
+                                          const Text("Front"),
                                           horizontalSpaceSmall(),
                                           const Icon(
                                             Icons.info,
@@ -171,7 +133,7 @@ class DocumentUploadView extends StatelessWidget {
                                         ],
                                       ),
                                       subtitle: Text(
-                                          "Fichier : ${model.fileBack ?? "aucun fichier choisi..."}",
+                                          "Fichier : ${model.fileFront ?? "aucun fichier choisi..."}",
                                           overflow: TextOverflow.clip,
                                           style: TextStyle(
                                             color: Colors.grey,
@@ -185,30 +147,83 @@ class DocumentUploadView extends StatelessWidget {
                               ),
                             ),
                           ),
-                    verticalSpaceLarge(),
-                    SizedBox(
+                          documentTypeModel.type != 1
+                              ? const SizedBox()
+                              : GestureDetector(
+                                  onTap: () {
+                                    model.uploadDocument2(
+                                        documentTypeModel: documentTypeModel);
+                                  },
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20.w),
+                                    child: SizedBox(
+                                      width: size(context).width,
+                                      child: Card(
+                                        color: kcWhite,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: ListTile(
+                                            title: Row(
+                                              children: [
+                                                const Text("Back"),
+                                                horizontalSpaceSmall(),
+                                                const Icon(
+                                                  Icons.info,
+                                                  color: Colors.black,
+                                                )
+                                              ],
+                                            ),
+                                            subtitle: Text(
+                                              "Fichier : ${model.fileBack ?? "aucun fichier choisi..."}",
+                                              overflow: TextOverflow.clip,
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: 'ProductSans',
+                                                fontSize: 18.sp,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                        ],
+                      ),
+                    ),
+                    verticalSpaceMedium(),
+                    Center(
+                      child: SizedBox(
                         width: 255.w,
                         child: CustomButton(
-                            title: "Valider la demande",
-                            textColor: kcWhite,
-                            onTap: documentTypeModel.type == 1
-                                ? model.fileFront != null &&
-                                        model.fileBack != null
-                                    ? () {
-                                        model.uploadDoc(
-                                            documentType: documentTypeModel,
-                                            fileFront: model.fileFront,
-                                            fileBack: model.fileBack);
-                                      }
-                                    : null
-                                : model.fileFront != null
-                                    ? () {
-                                        model.uploadDoc(
-                                            documentType: documentTypeModel,
-                                            fileFront: model.fileFront,
-                                            fileBack: model.fileBack);
-                                      }
-                                    : null))
+                          title: "Valider la demande",
+                          textColor: kcWhite,
+                          onTap: documentTypeModel.type == 1
+                              ? model.fileFront != null &&
+                                      model.fileBack != null
+                                  ? () {
+                                      model.uploadDoc(
+                                        documentType: documentTypeModel,
+                                        fileFront: model.fileFront,
+                                        fileBack: model.fileBack,
+                                      );
+                                    }
+                                  : null
+                              : model.fileFront != null
+                                  ? () {
+                                      model.uploadDoc(
+                                        documentType: documentTypeModel,
+                                        fileFront: model.fileFront,
+                                        fileBack: model.fileBack,
+                                      );
+                                    }
+                                  : null,
+                        ),
+                      ),
+                    ),
+                    verticalSpaceMedium()
                   ],
                 ),
               ),

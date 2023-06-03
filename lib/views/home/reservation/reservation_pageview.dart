@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:egczacademy/views/home/reservation/reservation_list.dart';
 import 'package:egczacademy/views/home/reservation/reservation_pageview_model.dart';
 import 'package:egczacademy/views/reservation/courses/courses_list_view.dart';

@@ -67,7 +67,9 @@ class EquipmentView extends StatelessWidget {
                                   debugPrint("x");
                                   model.suivant(onTap);
                                 }
-                              : null)
+                              : () {
+                                  skipTap();
+                                })
                     ],
                   ),
                 )

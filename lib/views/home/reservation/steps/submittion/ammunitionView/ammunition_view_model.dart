@@ -37,6 +37,8 @@ class AmmunitionViewModel extends ReactiveViewModel {
   List<AmmunitionsModel> get selectedAmmunition =>
       _bookingService.getselectedAmmunition;
 
+  List<GunModel> selectedGun = [];
+
   bool get haveorderedGuns => _bookingService.getselectedGun.isNotEmpty;
   bool get loader => _gunListService.loader;
   //paging
@@ -44,6 +46,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
   List<AmmunitionsModel> gunAmmunitionRecommendedList = [];
+
   gunAmmunitionRecommended() async {
     for (GunModel gun in _bookingService.getselectedGun) {
       gunAmmunitionRecommendedList.addAll(gun.ammunitions!);
@@ -52,9 +55,14 @@ class AmmunitionViewModel extends ReactiveViewModel {
         gunAmmunitionRecommendedList.toSet().toList();
   }
 
+  selectedGunss() {
+    selectedGun.addAll(_bookingService.getselectedGun);
+  }
+
   init() async {
     setBusy(true);
     initFilter();
+    await selectedGunss();
     await _ammunitionAPIService.fetchAllAmunition(
       token: _userService.token!,
     );
@@ -194,6 +202,5 @@ class AmmunitionViewModel extends ReactiveViewModel {
   notifyListeners();
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_gunListService];
 }

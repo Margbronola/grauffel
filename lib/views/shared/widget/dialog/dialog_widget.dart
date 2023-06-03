@@ -47,7 +47,6 @@ class DialogWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //TODO: show as list values to show arrows
                             // imageUrl == null
                             //     ? const SizedBox()
                             //     : Icon(

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/models/admin_model.dart';
 import 'package:egczacademy/models/ammunitions_model.dart';

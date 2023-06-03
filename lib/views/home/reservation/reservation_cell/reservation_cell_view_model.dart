@@ -19,7 +19,6 @@ class ReservationCellViewModel extends BaseViewModel {
     });
   }
 
-  //TODO: need to send email before showing
   void showModalSuccessReservation() {
     _dialogService.showCustomDialog(
         mainButtonTitle: "ok",

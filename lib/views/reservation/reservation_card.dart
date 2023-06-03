@@ -1,8 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:localization/localization.dart';
-
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/booking_model.dart';
 import 'package:egczacademy/views/shared/color.dart';

@@ -13,7 +13,6 @@ class LoginInput extends StatelessWidget {
     Key? key,
     required this.model,
   }) : super(key: key);
-  //TODO: error login
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:egczacademy/app/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
@@ -18,53 +19,93 @@ class ReserveStepsView extends StatelessWidget {
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          flexibleSpace: Container(
+            width: size(context).width,
+            color: buttonColor,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 150,
+                  top: -100,
+                  child: Opacity(
+                    opacity: 0.1,
+                    child: Image.asset(
+                      imagelBigLogo,
+                      color: kcWhite,
+                      scale: 1,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          centerTitle: false,
+          title: Text(
+            "Réservation".toUpperCase(),
+            style: TextStyle(
+              color: kcWhite,
+              fontSize: 26.sp,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'ProductSans',
+            ),
+          ),
+        ),
         body: LayoutBuilder(
           builder: (context, constraints) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                    height: constraints.maxHeight * .08,
-                    width: size(context).width,
-                    color: buttonColor,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 150,
-                          top: -100,
-                          child: Opacity(
-                            opacity: 0.1,
-                            child: Image.asset(
-                              imagelBigLogo,
-                              color: kcWhite,
-                              scale: 1,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              BackButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              Text(
-                                "Réservation".toUpperCase(),
-                                style: TextStyle(
-                                  color: kcWhite,
-                                  fontSize: 26.sp,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'ProductSans',
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    )),
+                // Container(
+                //     height: constraints.maxHeight * .08,
+                //     width: size(context).width,
+                //     color: buttonColor,
+                //     child: Stack(
+                //       children: [
+                //         Positioned(
+                //           left: 150,
+                //           top: -100,
+                //           child: Opacity(
+                //             opacity: 0.1,
+                //             child: Image.asset(
+                //               imagelBigLogo,
+                //               color: kcWhite,
+                //               scale: 1,
+                //             ),
+                //           ),
+                //         ),
+                //         Align(
+                //           alignment: Alignment.center,
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.start,
+                //             children: [
+                //               IconButton(
+                //                   onPressed: () {
+                //                     Navigator.of(context).pop();
+                //                   },
+                //                   icon: const Icon(
+                //                       Icons.arrow_back_ios_new_rounded)),
+                //               // BackButton(
+                //               //   color: Colors.yellow,
+                //               //   onPressed: () {
+                //               //     Navigator.of(context).pop();
+                //               //   },
+                //               // ),
+                //               Text(
+                //                 "Réservation".toUpperCase(),
+                //                 style: TextStyle(
+                //                   color: kcWhite,
+                //                   fontSize: 26.sp,
+                //                   fontWeight: FontWeight.bold,
+                //                   fontFamily: 'ProductSans',
+                //                 ),
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     )),
                 Container(
                   color: Colors.black,
                   width: size(context).width,

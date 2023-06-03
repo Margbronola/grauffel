@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, depend_on_referenced_packages
+
 import 'package:device_preview/device_preview.dart';
 import 'package:egczacademy/firebase_options.dart';
 import 'package:egczacademy/views/shared/color.dart';
@@ -13,12 +15,15 @@ import 'app/app.locator.dart';
 import 'app/app.router.dart';
 import 'views/shared/widget/dialog/initialize_prefs.dart';
 import 'views/shared/widget/dialog/setup_dialog_ui.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'views/shared/widget/pallete.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform, name: 'Grauffel');
   await setupLocator();
+  await dotenv.load();
   await initializePrefs();
   setupDialogUi();
   runApp(DevicePreview(

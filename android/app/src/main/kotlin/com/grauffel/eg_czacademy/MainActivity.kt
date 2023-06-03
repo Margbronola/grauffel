@@ -1,4 +1,4 @@
-package com.grauffel.egczacademy
+package com.grauffel.eg_czacademy
 
 import io.flutter.embedding.android.FlutterActivity
 

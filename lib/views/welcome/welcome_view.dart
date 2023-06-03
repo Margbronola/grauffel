@@ -1,4 +1,5 @@
 import 'package:egczacademy/app/global.dart';
+import 'package:egczacademy/views/shared/apple_button.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:egczacademy/views/shared/custom_button.dart';
 import 'package:egczacademy/views/shared/custom_loader.dart';
@@ -62,10 +63,52 @@ class _WelcomeViewState extends State<WelcomeView>
                           verticalSpaceSmall(),
                           model.keyBoardVisible
                               ? const SizedBox()
-                              : SocialButton(
-                                  fbTap: model.fbSignIn,
-                                  instaTap: () {},
-                                  logoTap: model.animateToRegister,
+                              : Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.center,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: AppleButton(
+                                        appleTap: () async {
+                                          await model.appleSignIn();
+                                        },
+                                        instaTap: () {},
+                                        logoTap: model.animateToRegister,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white,
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: SocialButton(
+                                        fbTap: model.fbSignIn,
+                                        instaTap: () {},
+                                        logoTap: model.animateToRegister,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Copyright © 2022 EG-CZ ACADEMY",
+                                      style: TextStyle(
+                                          color: kcWhite, fontSize: 10.sp),
+                                    ),
+                                  ],
                                 )
                         ],
                       ),

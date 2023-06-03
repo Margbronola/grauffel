@@ -18,8 +18,6 @@ class ProfileView extends StatelessWidget {
     required this.isFromHome,
   }) : super(key: key);
 
-  //TODO: error arrows
-  //TODO: count docs
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
@@ -117,7 +115,6 @@ class ProfileView extends StatelessWidget {
             ),
           ];
         },
-        //TODO: add badge and license
         body: model.isBusy
             ? const Center(
                 child: CircularProgressIndicator.adaptive(
@@ -212,16 +209,30 @@ class ProfileView extends StatelessWidget {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           infoContainer("Code postale",
-                                              model.user!.zipcode ?? "", 100.w),
+                                              model.user!.zipcode ?? "", 80.w),
                                           infoContainer("City",
-                                              model.user!.city ?? '', 80.w),
+                                              model.user!.city ?? '', 100.w),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
                                           infoContainer(
                                               "Ville",
                                               model.user!.country != null
                                                   ? model.user!.country!.name ??
                                                       ""
                                                   : "",
-                                              80.w),
+                                              50.w),
+                                          infoContainer(
+                                              "Points de crédit",
+                                              model.user!.credit_points != null
+                                                  ? model.user!.credit_points ??
+                                                      ""
+                                                  : "",
+                                              100.w),
                                         ],
                                       ),
                                       const SizedBox(
@@ -565,11 +576,10 @@ Widget editButton(Function() ontap) => Positioned(
       child: ElevatedButton(
         onPressed: ontap,
         style: ElevatedButton.styleFrom(
+          foregroundColor: buttonColor, backgroundColor: Colors.white,
           elevation: 0.2,
           shape: const CircleBorder(),
-          padding: const EdgeInsets.all(5),
-          primary: Colors.white, // <-- Button color
-          onPrimary: buttonColor, // <-- Splash color
+          padding: const EdgeInsets.all(5), // <-- Splash color
         ),
         child: Center(
           child: Icon(

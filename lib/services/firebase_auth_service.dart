@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -13,7 +15,7 @@ class FireBaseAuthService {
       UserCredential user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
 
-      debugPrint("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
+      print("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
 
       return await user.user!.getIdToken();
     } on FirebaseAuthException catch (e) {

@@ -25,15 +25,15 @@ mixin _$GunModel {
   int? get brand_id => throw _privateConstructorUsedError;
   int? get caliber_id =>
       throw _privateConstructorUsedError; // int? mags_capacity,
-// int? reserve,
+  int? get reserve => throw _privateConstructorUsedError;
+  int? get required_ammunition => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
   String? get description =>
       throw _privateConstructorUsedError; // DateTime? created_at,
 // DateTime? updated_at,
   PivotModel? get pivot =>
       throw _privateConstructorUsedError; //available_ammunition {}
-// bool? reservable,
-// relatedAmmo []
+  bool? get reservable => throw _privateConstructorUsedError; // relatedAmmo []
 // relatedEquipment []
   CaliberModel? get caliber => throw _privateConstructorUsedError;
   BrandModel? get brand =>
@@ -61,9 +61,12 @@ abstract class $GunModelCopyWith<$Res> {
       String? model,
       int? brand_id,
       int? caliber_id,
+      int? reserve,
+      int? required_ammunition,
       double? price,
       String? description,
       PivotModel? pivot,
+      bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
       int? quantity,
@@ -91,9 +94,12 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
     Object? model = freezed,
     Object? brand_id = freezed,
     Object? caliber_id = freezed,
+    Object? reserve = freezed,
+    Object? required_ammunition = freezed,
     Object? price = freezed,
     Object? description = freezed,
     Object? pivot = freezed,
+    Object? reservable = freezed,
     Object? caliber = freezed,
     Object? brand = freezed,
     Object? quantity = freezed,
@@ -119,6 +125,14 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.caliber_id
           : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      reserve: reserve == freezed
+          ? _value.reserve
+          : reserve // ignore: cast_nullable_to_non_nullable
+              as int?,
+      required_ammunition: required_ammunition == freezed
+          ? _value.required_ammunition
+          : required_ammunition // ignore: cast_nullable_to_non_nullable
+              as int?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -131,6 +145,10 @@ class _$GunModelCopyWithImpl<$Res> implements $GunModelCopyWith<$Res> {
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
+      reservable: reservable == freezed
+          ? _value.reservable
+          : reservable // ignore: cast_nullable_to_non_nullable
+              as bool?,
       caliber: caliber == freezed
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
@@ -207,9 +225,12 @@ abstract class _$$_GunModelCopyWith<$Res> implements $GunModelCopyWith<$Res> {
       String? model,
       int? brand_id,
       int? caliber_id,
+      int? reserve,
+      int? required_ammunition,
       double? price,
       String? description,
       PivotModel? pivot,
+      bool? reservable,
       CaliberModel? caliber,
       BrandModel? brand,
       int? quantity,
@@ -242,9 +263,12 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
     Object? model = freezed,
     Object? brand_id = freezed,
     Object? caliber_id = freezed,
+    Object? reserve = freezed,
+    Object? required_ammunition = freezed,
     Object? price = freezed,
     Object? description = freezed,
     Object? pivot = freezed,
+    Object? reservable = freezed,
     Object? caliber = freezed,
     Object? brand = freezed,
     Object? quantity = freezed,
@@ -270,6 +294,14 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value.caliber_id
           : caliber_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      reserve: reserve == freezed
+          ? _value.reserve
+          : reserve // ignore: cast_nullable_to_non_nullable
+              as int?,
+      required_ammunition: required_ammunition == freezed
+          ? _value.required_ammunition
+          : required_ammunition // ignore: cast_nullable_to_non_nullable
+              as int?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -282,6 +314,10 @@ class __$$_GunModelCopyWithImpl<$Res> extends _$GunModelCopyWithImpl<$Res>
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as PivotModel?,
+      reservable: reservable == freezed
+          ? _value.reservable
+          : reservable // ignore: cast_nullable_to_non_nullable
+              as bool?,
       caliber: caliber == freezed
           ? _value.caliber
           : caliber // ignore: cast_nullable_to_non_nullable
@@ -322,9 +358,12 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       this.model,
       this.brand_id,
       this.caliber_id,
+      this.reserve,
+      this.required_ammunition,
       this.price,
       this.description,
       this.pivot,
+      this.reservable,
       this.caliber,
       this.brand,
       this.quantity = 1,
@@ -346,7 +385,10 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   @override
   final int? caliber_id;
 // int? mags_capacity,
-// int? reserve,
+  @override
+  final int? reserve;
+  @override
+  final int? required_ammunition;
   @override
   final double? price;
   @override
@@ -356,7 +398,8 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
   @override
   final PivotModel? pivot;
 //available_ammunition {}
-// bool? reservable,
+  @override
+  final bool? reservable;
 // relatedAmmo []
 // relatedEquipment []
   @override
@@ -388,7 +431,7 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, price: $price, description: $description, pivot: $pivot, caliber: $caliber, brand: $brand, quantity: $quantity, qty: $qty, image_url: $image_url, image_thumb_url: $image_thumb_url, ammunitions: $ammunitions)';
+    return 'GunModel(id: $id, model: $model, brand_id: $brand_id, caliber_id: $caliber_id, reserve: $reserve, required_ammunition: $required_ammunition, price: $price, description: $description, pivot: $pivot, reservable: $reservable, caliber: $caliber, brand: $brand, quantity: $quantity, qty: $qty, image_url: $image_url, image_thumb_url: $image_thumb_url, ammunitions: $ammunitions)';
   }
 
   @override
@@ -400,9 +443,12 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       ..add(DiagnosticsProperty('model', model))
       ..add(DiagnosticsProperty('brand_id', brand_id))
       ..add(DiagnosticsProperty('caliber_id', caliber_id))
+      ..add(DiagnosticsProperty('reserve', reserve))
+      ..add(DiagnosticsProperty('required_ammunition', required_ammunition))
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('pivot', pivot))
+      ..add(DiagnosticsProperty('reservable', reservable))
       ..add(DiagnosticsProperty('caliber', caliber))
       ..add(DiagnosticsProperty('brand', brand))
       ..add(DiagnosticsProperty('quantity', quantity))
@@ -422,10 +468,15 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
             const DeepCollectionEquality().equals(other.brand_id, brand_id) &&
             const DeepCollectionEquality()
                 .equals(other.caliber_id, caliber_id) &&
+            const DeepCollectionEquality().equals(other.reserve, reserve) &&
+            const DeepCollectionEquality()
+                .equals(other.required_ammunition, required_ammunition) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.pivot, pivot) &&
+            const DeepCollectionEquality()
+                .equals(other.reservable, reservable) &&
             const DeepCollectionEquality().equals(other.caliber, caliber) &&
             const DeepCollectionEquality().equals(other.brand, brand) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
@@ -445,9 +496,12 @@ class _$_GunModel with DiagnosticableTreeMixin implements _GunModel {
       const DeepCollectionEquality().hash(model),
       const DeepCollectionEquality().hash(brand_id),
       const DeepCollectionEquality().hash(caliber_id),
+      const DeepCollectionEquality().hash(reserve),
+      const DeepCollectionEquality().hash(required_ammunition),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(pivot),
+      const DeepCollectionEquality().hash(reservable),
       const DeepCollectionEquality().hash(caliber),
       const DeepCollectionEquality().hash(brand),
       const DeepCollectionEquality().hash(quantity),
@@ -475,9 +529,12 @@ abstract class _GunModel implements GunModel {
       final String? model,
       final int? brand_id,
       final int? caliber_id,
+      final int? reserve,
+      final int? required_ammunition,
       final double? price,
       final String? description,
       final PivotModel? pivot,
+      final bool? reservable,
       final CaliberModel? caliber,
       final BrandModel? brand,
       final int? quantity,
@@ -497,7 +554,10 @@ abstract class _GunModel implements GunModel {
   @override
   int? get caliber_id;
   @override // int? mags_capacity,
-// int? reserve,
+  int? get reserve;
+  @override
+  int? get required_ammunition;
+  @override
   double? get price;
   @override
   String? get description;
@@ -505,8 +565,8 @@ abstract class _GunModel implements GunModel {
 // DateTime? updated_at,
   PivotModel? get pivot;
   @override //available_ammunition {}
-// bool? reservable,
-// relatedAmmo []
+  bool? get reservable;
+  @override // relatedAmmo []
 // relatedEquipment []
   CaliberModel? get caliber;
   @override

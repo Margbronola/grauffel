@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:egczacademy/models/gunModel/brand_model.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +44,6 @@ class BrandAPIService {
           });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
-        print(data);
         try {
           debugPrint("FETCH BRANDS PASS");
           List fetchBrandList = data['data'];

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:egczacademy/models/activity_model.dart';
@@ -13,7 +15,7 @@ class GunAPIService {
   List<GunModel>? get guns => _guns;
   PagingModel? _pagingModel;
   PagingModel? get pagingModel => _pagingModel;
-  final int _perPage = 6;
+  final int _perPage = 100;
 
   Future<void> fetchAllGuns(
       {required String token,
@@ -23,10 +25,6 @@ class GunAPIService {
       required TimeModel? time,
       List<int>? brandIds,
       List<int>? caliberIds}) async {
-    print(date);
-    print(time);
-    print(booked);
-
     String startDate = "";
     String endDate = "";
     if (booked.type == null) {
@@ -36,10 +34,6 @@ class GunAPIService {
       startDate = "${booked.date_from} ${booked.start_time}";
       endDate = "${booked.date_to} ${booked.end_time}";
     }
-
-    print("Date To pass");
-    print(startDate);
-    print(endDate);
 
     //dateformat --> 2022-02-01 10:00
     String url =
@@ -55,8 +49,6 @@ class GunAPIService {
       if (brandIds.isNotEmpty) {
         url += "&brand_id=$brands";
       }
-      debugPrint("BRANDS");
-      debugPrint(brands);
     }
     if (caliberIds != null) {
       String calibers = caliberIds.join(', ');
@@ -73,17 +65,13 @@ class GunAPIService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         try {
-          debugPrint("FETCH GUNS PASS");
           List fetchGuns = data['data'];
-
+          print("GUNS: $fetchGuns");
           if (fetchMore) {
-            debugPrint("FETCHING morel");
             _guns!.addAll(fetchGuns.map((e) => GunModel.fromJson(e)).toList());
           } else {
             _guns = fetchGuns.map((e) => GunModel.fromJson(e)).toList();
           }
-
-          print(fetchGuns);
 
           _pagingModel = PagingModel(
               current_page: data['current_page'],

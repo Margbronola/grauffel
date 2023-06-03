@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:egczacademy/models/gunModel/brand_model.dart';
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

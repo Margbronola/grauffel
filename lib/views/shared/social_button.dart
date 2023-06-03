@@ -15,7 +15,6 @@ class SocialButton extends StatelessWidget {
     required this.instaTap,
     required this.logoTap,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,8 +25,9 @@ class SocialButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleButton(
-                  onTap: fbTap,
-                  child: Row(children: [
+                onTap: fbTap,
+                child: Row(
+                  children: [
                     Image.asset(
                       fbLogo,
                       height: 30.h,
@@ -37,16 +37,18 @@ class SocialButton extends StatelessWidget {
                       "Facebook",
                       style: TextStyle(color: kcWhite),
                     )
-                  ])),
+                  ],
+                ),
+              ),
               // customDivider(),
-              // circleButton(
+              // CircleButton(
               //   onTap: logoTap,
               //   child: Image.asset(
               //     imageSmallLogo,
               //   ),
               // ),
               // customDivider(),
-              // circleButton(
+              // CircleButton(
               //   onTap: instaTap,
               //   child: Image.asset(
               //     instaLogo,
@@ -56,16 +58,6 @@ class SocialButton extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 5,
-        ),
-        Text(
-          "Copyright © 2022 EG-CZ ACADEMY",
-          style: TextStyle(color: kcWhite, fontSize: 10.sp),
-        ),
-        const SizedBox(
-          height: 5,
-        )
       ],
     );
   }

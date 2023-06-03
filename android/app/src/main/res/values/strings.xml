@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id">2723545124608087</string>
-    <string name="facebook_client_token">7e49283b8ea72f18df9951dc59ee606f</string>
-
+<string name="app_name">EG-CZ Academy</string>
+    <string name="facebook_app_id">813942669889735</string>
+    <string name="facebook_client_token">b18498d1158e6abdb8468638fc15b9b0</string>
+<string name="fb_login_protocol_scheme">fb813942669889735</string> 
 </resources>

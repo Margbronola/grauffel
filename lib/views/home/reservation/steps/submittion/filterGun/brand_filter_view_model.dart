@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/models/gunModel/brand_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
@@ -137,6 +139,5 @@ class BrandFilterViewModel extends ReactiveViewModel {
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_gunListService];
 }

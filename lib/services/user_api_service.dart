@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:egczacademy/models/transaction_model.dart';
@@ -46,6 +48,8 @@ class UserAPIService {
 
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
+        loggedUser = data;
+        print("USER DETAILS: $data");
         try {
           debugPrint("FETCH USER PASS");
           return UserModel.fromJson(data);
@@ -202,8 +206,6 @@ class UserAPIService {
     required String token,
   }) async {
     var fcmToken = await messaging.getToken();
-    debugPrint(fcmToken);
-    debugPrint(token);
     try {
       final respo =
           await http.post(Uri.parse("$urlApi/client/save-fcm"), body: {

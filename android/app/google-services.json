@@ -1,48 +1,56 @@
 {
   "project_info": {
-    "project_number": "711105303968",
-    "project_id": "grauffelmobile",
-    "storage_bucket": "grauffelmobile.appspot.com"
+    "project_number": "688011166079",
+    "project_id": "grauffelmobile-339602",
+    "storage_bucket": "grauffelmobile-339602.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:711105303968:android:7101f17d24a7010b5440c5",
+        "mobilesdk_app_id": "1:688011166079:android:c723c25713511d6a5b1a4a",
         "android_client_info": {
-          "package_name": "com.grauffel.egczacademy"
+          "package_name": "com.grauffel.eg_czacademy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "711105303968-heukfdhkpvv3k7n3 6mhqs27i75fcfiqa.apps.googleusercontent.com",
+          "client_id": "688011166079-0iq2jgkji996kt2kpmsnhbu9oci5lmq4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.grauffel.egczacademy",
-            "certificate_hash": "d10f4d7c2d9394fadcf6a625afdcf67d82da4d1d"
+            "package_name": "com.grauffel.eg_czacademy",
+            "certificate_hash": "c00c844d4ad0bcb22bf60bbbdde571cf43d9579f"
           }
         },
         {
-          "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+          "client_id": "688011166079-kui73524kvm0r5q8nten6850403vjesd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grauffel.eg_czacademy",
+            "certificate_hash": "be8f5360ae13763899689accdf838089724b77b7"
+          }
+        },
+        {
+          "client_id": "688011166079-9gs0saq4761ou1a7opkbgh36i3ogoqfq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTbXlG2HtCuOKZbbwvPmk6XeVF8jkt_s4"
+          "current_key": "AIzaSyB3TDUGNBn0YXxZEPFXfKNfs54lhzaqO_U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+              "client_id": "688011166079-9gs0saq4761ou1a7opkbgh36i3ogoqfq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
+              "client_id": "688011166079-quv2itqcnv0i8t1a82n8v0ruoh1fj42p.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.grauffel.egczacademy"
+                "bundle_id": "com.grauffel.eg-czacademy"
               }
             }
           ]
@@ -51,34 +59,58 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:711105303968:android:e1a1539ea246e4955440c5",
+        "mobilesdk_app_id": "1:688011166079:android:65580a1fd53162735b1a4a",
         "android_client_info": {
           "package_name": "com.grauffel.egczacademy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+          "client_id": "688011166079-nc2s4i8mdk79sq0crpqkagueoq92sn7l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grauffel.egczacademy",
+            "certificate_hash": "2523d2ef81598d16113e6ebfe6e9f61e104170e4"
+          }
+        },
+        {
+          "client_id": "688011166079-s08hup9judoh95hu8cfn28oj49p6rul7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grauffel.egczacademy",
+            "certificate_hash": "7bc615f906b0ce1558294e639abccdd34ec7bd8f"
+          }
+        },
+        {
+          "client_id": "688011166079-sg09taja1ns3rp6269k4ed5af05efsfd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grauffel.egczacademy",
+            "certificate_hash": "c00c844d4ad0bcb22bf60bbbdde571cf43d9579f"
+          }
+        },
+        {
+          "client_id": "688011166079-9gs0saq4761ou1a7opkbgh36i3ogoqfq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTbXlG2HtCuOKZbbwvPmk6XeVF8jkt_s4"
+          "current_key": "AIzaSyB3TDUGNBn0YXxZEPFXfKNfs54lhzaqO_U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "711105303968-u6q27aeav8flgvgkuebhg8dn97dcohob.apps.googleusercontent.com",
+              "client_id": "688011166079-9gs0saq4761ou1a7opkbgh36i3ogoqfq.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "711105303968-4qmgsa0vuqc38uiqc7i4mpg02fjt6vvu.apps.googleusercontent.com",
+              "client_id": "688011166079-quv2itqcnv0i8t1a82n8v0ruoh1fj42p.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.grauffel.egczacademy"
+                "bundle_id": "com.grauffel.eg-czacademy"
               }
             }
           ]

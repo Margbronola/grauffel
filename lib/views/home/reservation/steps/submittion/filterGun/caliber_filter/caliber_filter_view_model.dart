@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
@@ -141,6 +143,5 @@ class CaliberFilterViewModel extends ReactiveViewModel {
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_gunListService];
 }

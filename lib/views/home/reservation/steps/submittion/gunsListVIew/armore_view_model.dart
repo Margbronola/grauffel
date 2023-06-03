@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:egczacademy/app/components/enum.dart';
 import 'package:egczacademy/services/ammunition_api_service.dart';
 import 'package:egczacademy/services/brand_api_service.dart';
@@ -89,6 +91,10 @@ class ArmoreViewModel extends ReactiveViewModel {
   void selectCard(GunModel selectedGun) {
     if (_bookingService.getselectedGun.contains(selectedGun)) {
       _bookingService.getselectedGun.remove(selectedGun);
+    } else if (_bookingService.getselectedGun.contains(selectedGun)) {
+      if (selectedGun.reservable == false) {
+        _bookingService.getselectedGun.remove(selectedGun);
+      }
     } else {
       _bookingService.getselectedGun.add(selectedGun);
     }
@@ -121,6 +127,5 @@ class ArmoreViewModel extends ReactiveViewModel {
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_gunListService];
 }

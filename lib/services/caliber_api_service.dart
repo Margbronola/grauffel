@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:egczacademy/models/gunModel/caliber_model.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +45,6 @@ class CaliberAPIService {
           });
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
-        print(data);
         try {
           debugPrint("FETCH CALIBER PASS");
           List fetchCaliberList = data['data'];

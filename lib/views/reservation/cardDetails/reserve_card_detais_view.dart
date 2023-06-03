@@ -1,11 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:egczacademy/views/reservation/cardDetails/reserve_card_details_view_model.dart';
 import 'package:egczacademy/views/shared/widget/myloader.dart';
-
 import '../../shared/color.dart';
 import '../../shared/ui_helper.dart';
 import '../../shared/widget/item_card.dart';

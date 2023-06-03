@@ -1,9 +1,13 @@
 import 'dart:convert';
+import 'package:egczacademy/app/env_helper.dart';
 import 'dart:io';
 
-const String urlApi = "$urlServer/api";
-// const String urlServer = "https://back.eg-czacademy.com";
-const String urlServer = "https://dev.grauffel-app.studioseizh.com";
+import '../models/user_model.dart';
+
+final String urlServer = EnvHelper.url;
+final String urlApi = "$urlServer/api";
+
+UserModel? loggedUser;
 
 const String imageOwner = "assets/images/owner.png";
 const String imageSmallLogo = "assets/images/logo1.png";
@@ -11,6 +15,7 @@ const String imagelBigLogo = "assets/images/logo2.png";
 
 //ICONS
 const String fbLogo = "assets/images/fb.png";
+const String appleLogo = "assets/images/apple-logo.png";
 const String instaLogo = "assets/images/insta.png";
 const String secureIcon = "assets/images/secure-payment.png";
 const String bigTriangle = "assets/images/triangleRight.png";
@@ -31,6 +36,7 @@ String convertToBase64(File file) {
 String courseTSV = "Cours tsv";
 String funShoot = "";
 String alveoles = "Alvéoles";
+String reservation = "";
 
 String removeHtmlTags(String? text) => text == null
     ? ""

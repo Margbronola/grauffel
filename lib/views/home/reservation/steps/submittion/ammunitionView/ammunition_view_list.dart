@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
-
 import '../../../../../../models/ammunitions_model.dart';
 import '../../../../../shared/color.dart';
 import '../../../../../shared/ui_helper.dart';
@@ -19,37 +17,34 @@ class AmmunitionViewList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      child: Column(
-        children: [
-          model.haveorderedGuns && model.gunAmmunitionRecommendedList.isNotEmpty
-              ? Column(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        "Recommandé avec l'arme",
-                        style: ThemeData().textTheme.bodyText1!.copyWith(
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'ProductSans',
-                            ),
+    return SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        child: Column(
+          children: [
+            model.haveorderedGuns
+                ? Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "Recommandé avec l'arme",
+                          style: ThemeData().textTheme.bodyLarge!.copyWith(
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'ProductSans',
+                              ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 140,
-                      width: size(context).width,
-                      child: GridView.count(
-                        scrollDirection: Axis.horizontal,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      GridView.count(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
-                        crossAxisCount: 1,
-                        childAspectRatio: 1,
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         children: List.generate(
                             model.gunAmmunitionRecommendedList.length, (index) {
                           return amminitionCard(
@@ -59,147 +54,296 @@ class AmmunitionViewList extends StatelessWidget {
                               model: model);
                         }),
                       ),
-                    ),
-                  ],
-                )
-              : const SizedBox(),
-          verticalSpaceSmall(),
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              model.haveorderedGuns
-                  ? "D'autres choix"
-                  : "Choisissez vos munitions",
-              style: ThemeData().textTheme.bodyText1!.copyWith(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'ProductSans',
-                  ),
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Row(
-            children: [
-              OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      backgroundColor: model.filterMarqueIsActive
-                          ? buttonColor.withOpacity(0.3)
-                          : kcWhite,
-                      side: BorderSide(
-                          color: model.filterMarqueIsActive
-                              ? buttonColor
-                              : greyLight) //<-- SEE HERE
-                      ),
-                  onPressed: model.marqueFilter,
-                  child: Row(
-                    children: [
-                      Text(
-                        'Marque',
-                        style: TextStyle(
-                            color: backgroundColor,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'ProductSans',
-                            fontSize: 15.sp),
-                      ),
-                      model.filterMarqueIsActive
-                          ? Row(
-                              children: [
-                                horizontalSpaceSmall(),
-                                GFBadge(
-                                  shape: GFBadgeShape.circle,
-                                  color: buttonColor,
-                                  child:
-                                      Text(model.filterMarqueLength.toString()),
-                                ),
-                              ],
-                            )
-                          : const SizedBox(),
                     ],
-                  )),
-              horizontalSpaceSmall(),
-              OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      backgroundColor: model.filterCaliberIsActive
-                          ? buttonColor.withOpacity(0.3)
-                          : kcWhite,
-                      side: BorderSide(
-                          color: model.filterCaliberIsActive
-                              ? buttonColor
-                              : greyLight) //<-- SEE HERE
-                      ),
-                  onPressed: model.caliberFilter,
-                  child: Row(
+                  )
+                : Column(
                     children: [
-                      Text(
-                        'Calibre',
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          color: backgroundColor,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'ProductSans',
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          // model.haveorderedGuns
+                          //     ? "D'autres choix"
+                          //     :
+                          "Choisissez vos munitions",
+                          style: ThemeData().textTheme.bodyLarge!.copyWith(
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'ProductSans',
+                              ),
                         ),
                       ),
-                      model.filterCaliberIsActive
-                          ? Row(
-                              children: [
-                                horizontalSpaceSmall(),
-                                GFBadge(
-                                  shape: GFBadgeShape.circle,
-                                  color: buttonColor,
-                                  child: Text(model.filterCaliberIsActiveLength
-                                      .toString()),
-                                ),
-                              ],
-                            )
-                          : const SizedBox(),
-                    ],
-                  )),
-            ],
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                LazyLoadScrollView(
-                    isLoading: model.isloadDone,
-                    onEndOfPage: () => model.loadMore(),
-                    scrollOffset: 100,
-                    child: Expanded(
-                      child: GridView.count(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        crossAxisCount: 2,
-                        children:
-                            List.generate(model.ammunitions!.length, (index) {
-                          return amminitionCard(
-                              index: index,
-                              ammunition: model.ammunitions![index],
-                              model: model);
-                        }),
+                      const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  backgroundColor: model.filterMarqueIsActive
+                                      ? buttonColor.withOpacity(0.3)
+                                      : kcWhite,
+                                  side: BorderSide(
+                                      color: model.filterMarqueIsActive
+                                          ? buttonColor
+                                          : greyLight) //<-- SEE HERE
+                                  ),
+                              onPressed: model.marqueFilter,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Marque',
+                                    style: TextStyle(
+                                        color: backgroundColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'ProductSans',
+                                        fontSize: 15.sp),
+                                  ),
+                                  model.filterMarqueIsActive
+                                      ? Row(
+                                          children: [
+                                            horizontalSpaceSmall(),
+                                            GFBadge(
+                                              shape: GFBadgeShape.circle,
+                                              color: buttonColor,
+                                              child: Text(model
+                                                  .filterMarqueLength
+                                                  .toString()),
+                                            ),
+                                          ],
+                                        )
+                                      : const SizedBox(),
+                                ],
+                              )),
+                          horizontalSpaceSmall(),
+                          OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  backgroundColor: model.filterCaliberIsActive
+                                      ? buttonColor.withOpacity(0.3)
+                                      : kcWhite,
+                                  side: BorderSide(
+                                      color: model.filterCaliberIsActive
+                                          ? buttonColor
+                                          : greyLight) //<-- SEE HERE
+                                  ),
+                              onPressed: model.caliberFilter,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Calibre',
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      color: backgroundColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'ProductSans',
+                                    ),
+                                  ),
+                                  model.filterCaliberIsActive
+                                      ? Row(
+                                          children: [
+                                            horizontalSpaceSmall(),
+                                            GFBadge(
+                                              shape: GFBadgeShape.circle,
+                                              color: buttonColor,
+                                              child: Text(model
+                                                  .filterCaliberIsActiveLength
+                                                  .toString()),
+                                            ),
+                                          ],
+                                        )
+                                      : const SizedBox(),
+                                ],
+                              )),
+                        ],
                       ),
-                    )),
-                if (model.isloadDone == true)
-                  const Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Center(
-                        child: CircularProgressIndicator.adaptive(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.black,
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      // Expanded(
+                      // child:
+                      LazyLoadScrollView(
+                        isLoading: model.isloadDone,
+                        onEndOfPage: () => model.loadMore(),
+                        scrollOffset: 100,
+                        child: GridView.count(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          children: List.generate(
+                            model.ammunitions!.length,
+                            (index) {
+                              return amminitionCard(
+                                index: index,
+                                ammunition: model.ammunitions![index],
+                                model: model,
+                              );
+                            },
                           ),
-                          backgroundColor: Colors.grey,
                         ),
-                      )),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+                      ),
+                      if (model.isloadDone == true)
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10, bottom: 10),
+                          child: Center(
+                            child: CircularProgressIndicator.adaptive(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.black,
+                              ),
+                              backgroundColor: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      // ),
+                    ],
+                  )
+          ],
+        )
+        // child: Column(
+        //   children: [
+        //     model.haveorderedGuns && model.gunAmmunitionRecommendedList.isNotEmpty
+        //         ?
+        //         : const SizedBox(),
+        //     // verticalSpaceSmall(),
+        // SizedBox(
+        //   width: double.infinity,
+        //   child: Text(
+        //     model.haveorderedGuns
+        //         ? "D'autres choix"
+        //         : "Choisissez vos munitions",
+        //     style: ThemeData().textTheme.bodyText1!.copyWith(
+        //           fontSize: 24.sp,
+        //           fontWeight: FontWeight.bold,
+        //           fontFamily: 'ProductSans',
+        //         ),
+        //   ),
+        // ),
+        // const SizedBox(
+        //   height: 5,
+        // ),
+        // Row(
+        //   children: [
+        //     OutlinedButton(
+        //         style: OutlinedButton.styleFrom(
+        //             backgroundColor: model.filterMarqueIsActive
+        //                 ? buttonColor.withOpacity(0.3)
+        //                 : kcWhite,
+        //             side: BorderSide(
+        //                 color: model.filterMarqueIsActive
+        //                     ? buttonColor
+        //                     : greyLight) //<-- SEE HERE
+        //             ),
+        //         onPressed: model.marqueFilter,
+        //         child: Row(
+        //           children: [
+        //             Text(
+        //               'Marque',
+        //               style: TextStyle(
+        //                   color: backgroundColor,
+        //                   fontWeight: FontWeight.bold,
+        //                   fontFamily: 'ProductSans',
+        //                   fontSize: 15.sp),
+        //             ),
+        //             model.filterMarqueIsActive
+        //                 ? Row(
+        //                     children: [
+        //                       horizontalSpaceSmall(),
+        //                       GFBadge(
+        //                         shape: GFBadgeShape.circle,
+        //                         color: buttonColor,
+        //                         child:
+        //                             Text(model.filterMarqueLength.toString()),
+        //                       ),
+        //                     ],
+        //                   )
+        //                 : const SizedBox(),
+        //           ],
+        //         )),
+        //     horizontalSpaceSmall(),
+        //     OutlinedButton(
+        //         style: OutlinedButton.styleFrom(
+        //             backgroundColor: model.filterCaliberIsActive
+        //                 ? buttonColor.withOpacity(0.3)
+        //                 : kcWhite,
+        //             side: BorderSide(
+        //                 color: model.filterCaliberIsActive
+        //                     ? buttonColor
+        //                     : greyLight) //<-- SEE HERE
+        //             ),
+        //         onPressed: model.caliberFilter,
+        //         child: Row(
+        //           children: [
+        //             Text(
+        //               'Calibre',
+        //               style: TextStyle(
+        //                 fontSize: 15.sp,
+        //                 color: backgroundColor,
+        //                 fontWeight: FontWeight.bold,
+        //                 fontFamily: 'ProductSans',
+        //               ),
+        //             ),
+        //             model.filterCaliberIsActive
+        //                 ? Row(
+        //                     children: [
+        //                       horizontalSpaceSmall(),
+        //                       GFBadge(
+        //                         shape: GFBadgeShape.circle,
+        //                         color: buttonColor,
+        //                         child: Text(model.filterCaliberIsActiveLength
+        //                             .toString()),
+        //                       ),
+        //                     ],
+        //                   )
+        //                 : const SizedBox(),
+        //           ],
+        //         )),
+        //   ],
+        // ),
+        // const SizedBox(
+        //   height: 5,
+        // ),
+        // Expanded(
+        //   child: Column(
+        //     children: [
+        //       LazyLoadScrollView(
+        //         isLoading: model.isloadDone,
+        //         onEndOfPage: () => model.loadMore(),
+        //         scrollOffset: 100,
+        //         child: Expanded(
+        //           child: GridView.count(
+        //             padding: const EdgeInsets.symmetric(horizontal: 20),
+        //             mainAxisSpacing: 10,
+        //             crossAxisSpacing: 10,
+        //             crossAxisCount: 2,
+        //             children: List.generate(
+        //               model.ammunitions!.length,
+        //               (index) {
+        //                 return amminitionCard(
+        //                   index: index,
+        //                   ammunition: model.ammunitions![index],
+        //                   model: model,
+        //                 );
+        //               },
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //       if (model.isloadDone == true)
+        //         const Padding(
+        //           padding: EdgeInsets.only(top: 10, bottom: 10),
+        //           child: Center(
+        //             child: CircularProgressIndicator.adaptive(
+        //               valueColor: AlwaysStoppedAnimation<Color>(
+        //                 Colors.black,
+        //               ),
+        //               backgroundColor: Colors.grey,
+        //             ),
+        //           ),
+        //         ),
+        //     ],
+        //   ),
+        // ),
+        //   ],
+        // ),
+        );
   }
 }
 
@@ -213,11 +357,12 @@ Widget amminitionCard(
       },
       child: Container(
         decoration: BoxDecoration(
-            border: model.selectedAmmunition.contains(ammunition)
-                ? Border.all(color: buttonColor, width: 2)
-                : null,
-            color: greyLighter,
-            borderRadius: BorderRadius.circular(5)),
+          border: model.selectedAmmunition.contains(ammunition)
+              ? Border.all(color: buttonColor, width: 2)
+              : null,
+          color: greyLighter,
+          borderRadius: BorderRadius.circular(5),
+        ),
         width: 161.w,
         height: 167.h,
         padding: const EdgeInsets.all(5),
@@ -261,7 +406,7 @@ Widget amminitionCard(
                   child: Text(
                     ammunition.name!,
                     overflow: TextOverflow.ellipsis,
-                    style: ThemeData().textTheme.bodyText1!.copyWith(
+                    style: ThemeData().textTheme.bodyLarge!.copyWith(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'ProductSans',
@@ -274,14 +419,14 @@ Widget amminitionCard(
                   children: [
                     Text(
                       "Marque",
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                      style: ThemeData().textTheme.bodyLarge!.copyWith(
                             fontSize: 10.sp,
                             fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       ammunition.brand!.name!,
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                      style: ThemeData().textTheme.bodyLarge!.copyWith(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'ProductSans',
@@ -308,14 +453,14 @@ Widget amminitionCard(
                   children: [
                     Text(
                       "Calibre",
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                      style: ThemeData().textTheme.bodyLarge!.copyWith(
                             fontSize: 10.sp,
                             fontFamily: 'ProductSans',
                           ),
                     ),
                     Text(
                       ammunition.caliber!.name!,
-                      style: ThemeData().textTheme.bodyText1!.copyWith(
+                      style: ThemeData().textTheme.bodyLarge!.copyWith(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'ProductSans',

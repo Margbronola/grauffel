@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
+import '../../../app/global.dart';
 import '../../../services/booking_api_service.dart';
 import '../../../services/booking_service.dart';
 import '../../../services/user_service.dart';
@@ -21,6 +24,7 @@ class CoursesListViewModel extends BaseViewModel {
   List<ActivityModel> get bookableCourse => _bookingAPIService.bookableCourse!;
   List<ActivityModel> get cours => _bookingAPIService.bookableCourse!
       .where((element) => element.type!.name == "cours")
+      //  || element.type!.name == "initiation"
       .toList();
 
   List<ActivityModel> get entrainement => _bookingAPIService.bookableCourse!
@@ -46,7 +50,8 @@ class CoursesListViewModel extends BaseViewModel {
 
   Future<bool> checkSlotFull(ActivityModel course) async {
     print("COURSE CHECKER");
-    print("${course.active_booking_count} and ${course.max_persons}");
+    print(
+        "ACTIVE BOOKING : ${course.active_booking_count} and  MAX PERSON: ${course.max_persons}");
     return course.active_booking_count! == course.max_persons!;
   }
 
@@ -56,14 +61,23 @@ class CoursesListViewModel extends BaseViewModel {
     bool isFull = await checkSlotFull(bookableCourse[index]);
     debugPrint("Card Reserve click");
     print(isExist);
-    if (isExist == 1) {
-      showExistDialog("Vous avez déjà réservé ce cours.");
-    } else if (isFull) {
-      //TODO: edit dialog
-      showExistDialog("La réservation du cours est complète");
+    if (loggedUser!.initiation_course == 1) {
+      if (loggedUser!.completed_steps == null) {
+        showExistDialog(
+            "Nous évaluons votre compte pour la phase d'initiation.");
+      } else {
+        showExistDialog(
+            "Vous devez finir votre initiation avant de pouvoir accéder à l'ensemble des possibilités.");
+      }
     } else {
-      debugPrint("click");
-      navigateToReservation(bookable: bookableCourse[index]);
+      if (isExist == 1) {
+        showExistDialog("Vous avez déjà réservé ce cours.");
+      } else if (isFull) {
+        showExistDialog("La réservation du cours est complète");
+      } else {
+        debugPrint("click");
+        navigateToReservation(bookable: bookableCourse[index]);
+      }
     }
     setBusy(false);
   }
@@ -84,7 +98,6 @@ class CoursesListViewModel extends BaseViewModel {
         variant: DialogType.confirmation);
   }
 
-  //TODO: refresh
   final RefreshController refreshController =
       RefreshController(initialRefresh: false);
 

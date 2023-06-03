@@ -19,26 +19,32 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<string>3.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+
+<key>FirebaseDynamicLinksCustomDomains</key>
+<array>
+    <string>https://custom.domain.io/path1</string>
+    <string>https://custom.domain.io/path2</string>
+</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb303473781691560</string>
+				<string>fb813942669889735</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FacebookAppID</key>
-	<string>303473781691560</string>
+	<string>813942669889735</string>
 	<key>FacebookClientToken</key>
-	<string>83198125fa43a2d5c570573e1fb68691</string>
+	<string>b18498d1158e6abdb8468638fc15b9b0</string>
 	<key>FacebookDisplayName</key>
-	<string>egczacademy</string>
+	<string>EG-CZ Academy</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -49,11 +55,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Used to capture audio for image picker plugin</string>
+	<string>Cette application nécessite d'accéder à votre appareil photo pour afficher l'image sur le profil et l'envoyer à notre serveur pour la transformation de l'utilisateur</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
+	<string>Cette application nécessite d'accéder à votre photothèque pour afficher l'image sur le profil et l'envoyer à notre serveur pour la transformation de l'utilisateur</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -76,5 +80,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

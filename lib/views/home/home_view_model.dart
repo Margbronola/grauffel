@@ -1,7 +1,10 @@
+// ignore_for_file: unused_field, avoid_print, deprecated_member_use
+
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
 import 'package:egczacademy/services/local_notification_service.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -22,9 +25,7 @@ class HomeViewModel extends ReactiveViewModel {
   final DialogService _dialogService = locator<DialogService>();
   bool get isProfilePage => _homePagingService.isProfileView;
 
-  Future<void> backgroundHandler(RemoteMessage message) async {
-    //TODO: redirect in docs page
-  }
+  Future<void> backgroundHandler(RemoteMessage message) async {}
 
   void initState(context) async {
     _homePagingService.setPage(0);
@@ -39,10 +40,15 @@ class HomeViewModel extends ReactiveViewModel {
     String? token = await FirebaseMessaging.instance.getToken();
     debugPrint("Message token: ${token!}");
 
+    // Check if you received the link via `getInitialLink` first
+    final PendingDynamicLinkData? initialLink =
+        await FirebaseDynamicLinks.instance.getInitialLink();
+    print("INITIAL LINK: $initialLink");
+
     //FOREGRUOUND
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       LocalNotificationService.initialize();
-      LocalNotificationService.display(message);
+      _messageHandler(message);
     });
 
     //BACK
@@ -62,6 +68,12 @@ class HomeViewModel extends ReactiveViewModel {
     });
   }
 
+  Future<void> _messageHandler(RemoteMessage message) async {
+    Map<String, dynamic> data = message.data;
+    print(data);
+    await LocalNotificationService().display(notification: message);
+  }
+
   void changePage(int index) {
     print("changepage");
     _homePagingService.setPage(index);
@@ -75,12 +87,10 @@ class HomeViewModel extends ReactiveViewModel {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _homePagingService.pageController!.dispose();
     super.dispose();
   }
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_homePagingService];
 }

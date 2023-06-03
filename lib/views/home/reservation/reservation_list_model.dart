@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
@@ -56,10 +58,6 @@ class ReservationListModel extends BaseViewModel {
   }
 
   void onLoading() async {
-    //TODO: fetch more
-    // monitor network fetch
-    // await _bookingAPIService.fetchBookable(token: _userService.token!);
-    // if failed,use loadFailed(),if no data return,use LoadNodata()
     if (_bookingAPIService.pagingModel!.total !=
         _bookingAPIService.bookable!.length) {
       await _bookingAPIService.fetchBookable(

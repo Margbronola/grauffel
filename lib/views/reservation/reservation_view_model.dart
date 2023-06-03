@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
@@ -19,7 +21,7 @@ class ReservationViewModel extends ReactiveViewModel {
   bool showHelp = true;
   bool absorb = false;
   final HomePagingService _homePagingService = locator<HomePagingService>();
-  ScrollController scrolleController = ScrollController();
+  late final ScrollController scrolleController;
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
@@ -32,9 +34,9 @@ class ReservationViewModel extends ReactiveViewModel {
   static final BookingVm _vm = BookingVm.instance;
 
   init() async {
+    scrolleController = ScrollController();
     if (_homePagingService.isRefresh) {
       setBusy(true);
-      //TODO setbusy
       await _bookingAPIService.fetchBookingHistory(token: _userService.token!);
 
       setBusy(false);
@@ -114,7 +116,6 @@ class ReservationViewModel extends ReactiveViewModel {
   }
 
   void showDetailsCardNew(int bookingID) async {
-    //TODO: show details
     _navigationService.navigateToView(ReserveCardDetailsView(
       bookId: bookingID,
     ));
@@ -131,6 +132,5 @@ class ReservationViewModel extends ReactiveViewModel {
   List days = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim'];
 
   @override
-  // TODO: implement reactiveServices
   List<ReactiveServiceMixin> get reactiveServices => [_homePagingService];
 }

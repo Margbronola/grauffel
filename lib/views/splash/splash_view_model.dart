@@ -18,7 +18,6 @@ class SplashViewModel extends BaseViewModel {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       debugPrint("HASKEY ${_sharedPrefService.hasKeyToken}");
       if (_sharedPrefService.hasKeyToken) {
-        debugPrint("FETCHING ${_sharedPrefService.prefsToken}");
         UserModel? user = await _userAPIService.fethUserDetailsApi(
             token: _sharedPrefService.prefsToken);
         if (user != null) {

@@ -6,10 +6,10 @@ import 'package:stacked_services/stacked_services.dart';
 import '../../color.dart';
 import '../../ui_helper.dart';
 
-class ReserveDialog extends StatelessWidget {
+class ReserveCourseDialog extends StatelessWidget {
   final DialogRequest? request;
   final Function(DialogResponse)? completer;
-  const ReserveDialog({Key? key, this.request, this.completer})
+  const ReserveCourseDialog({Key? key, this.request, this.completer})
       : super(key: key);
 
   @override
@@ -55,7 +55,7 @@ class ReserveDialog extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "PAS DE TIR 25 mètres",
+                    "COURS",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: buttonColor,

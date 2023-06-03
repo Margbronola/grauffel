@@ -1,4 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
+import 'package:egczacademy/app/app.locator.dart';
+import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -6,10 +10,9 @@ import '../models/user_model.dart';
 import '../app/global.dart';
 
 class AuthenticationService {
-  Future<Map<String, dynamic>?> login(
+  final UserService _userService = locator<UserService>();
+  Future<String?> login(
       {required String firebaseToken, required String deviceName}) async {
-    print("firbase_token: $firebaseToken");
-    print("AuthenticationService.login");
     try {
       final respo = await http.post(Uri.parse("$urlApi/login"), body: {
         "firebase_token": firebaseToken,
@@ -20,16 +23,15 @@ class AuthenticationService {
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         Fluttertoast.showToast(msg: "Successful Login");
-        print("User Data: $data");
         try {
-          UserModel user = UserModel.fromJson(data['client']);
+          var user = UserModel.fromJson(data['client']);
+          loggedUser = user;
           String token = data['access_token'];
-
-          return {'user': user, 'token': token};
+          _userService.updateUser(user);
+          _userService.updateToken(token);
+          return token;
         } catch (e) {
-          print("User Data: $data");
-          print(e);
-          debugPrint("convert login fail here");
+          return null;
         }
       }
     } catch (e) {
@@ -69,7 +71,7 @@ class AuthenticationService {
         "Authorization": "Bearer $token",
       });
       if (respo.statusCode == 200) {
-        debugPrint("success");
+        print("success");
         Fluttertoast.showToast(msg: "Logout Successfully");
         return true;
       }

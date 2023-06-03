@@ -63,8 +63,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '711105303968',
     projectId: 'grauffelmobile',
     storageBucket: 'grauffelmobile.appspot.com',
-    androidClientId: '711105303968-heukfdhkpvv3k7n36mhqs27i75fcfiqa.apps.googleusercontent.com',
-    iosClientId: '711105303968-qmqkgp8g6o6jidjbpssse9skbeuj6ct7.apps.googleusercontent.com',
-    iosBundleId: 'com.grauffel.egczacademy',
+    androidClientId:
+        '711105303968-heukfdhkpvv3k7n36mhqs27i75fcfiqa.apps.googleusercontent.com',
+    iosClientId:
+        '711105303968-qmqkgp8g6o6jidjbpssse9skbeuj6ct7.apps.googleusercontent.com',
+    iosBundleId: 'com.grauffel.eg_czacademy',
   );
 }

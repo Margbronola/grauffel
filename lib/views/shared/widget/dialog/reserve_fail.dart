@@ -32,7 +32,9 @@ class ReserveFailDialog extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 25),
             height: size(context).height / 1.8,
             child: Column(
@@ -67,6 +69,14 @@ class ReserveFailDialog extends StatelessWidget {
                 verticalSpaceLarge(),
                 Text(
                   request!.data ?? "",
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ProductSans',
+                  ),
+                ),
+                Text(
+                  "Aucun points de crédit disponibles",
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,

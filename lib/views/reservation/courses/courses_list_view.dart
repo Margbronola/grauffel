@@ -1,3 +1,4 @@
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/activity_model.dart';
 import 'package:egczacademy/views/reservation/courses/courses_list_view_model.dart';
 import 'package:egczacademy/views/shared/ui_helper.dart';
@@ -13,7 +14,6 @@ import '../../shared/widget/reserve_card.dart';
 
 class CourseListView extends StatelessWidget {
   const CourseListView({Key? key}) : super(key: key);
-  //TODO refreshview
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +43,27 @@ class CourseListView extends StatelessWidget {
                           ? const Center(
                               child: Text("Pas encore de réservation!"),
                             )
-                          : ListView(children: [
-                              reservationCards(
+                          : ListView(
+                              children: [
+                                reservationCards(
                                   model: model,
                                   values: model.cours,
-                                  title: "Cours"),
-                              verticalSpaceMedium(),
-                              reservationCards(
+                                  title: "Cours",
+                                ),
+                                verticalSpaceMedium(),
+                                reservationCards(
                                   model: model,
                                   values: model.stages,
-                                  title: "Stages"),
-                              verticalSpaceMedium(),
-                              reservationCards(
+                                  title: "Stages",
+                                ),
+                                verticalSpaceMedium(),
+                                reservationCards(
                                   model: model,
                                   values: model.entrainement,
-                                  title: "Entrainement")
-                            ]),
+                                  title: "Entrainement",
+                                )
+                              ],
+                            ),
                     ),
                   ),
           ],
@@ -96,17 +101,17 @@ Widget reservationCards(
                     model.cardSelected(model.bookableCourse.indexOf(e));
                   },
                   reserve: ReserveModel(
-                      type: e.type,
-                      dateTo: e.date_to ?? "",
-                      dateFrom: e.date_from ?? "",
-                      startTime: e.start_time ?? "",
-                      endTime: e.end_time ?? "",
-                      instructor:
-                          e.admin != null ? e.admin!.fullname ?? "" : "",
-                      restantes: 10,
-                      image: e.image ?? "",
-                      title: e.name!.toUpperCase(),
-                      description: e.description ?? ""),
+                    type: e.type,
+                    dateTo: e.date_to ?? "",
+                    dateFrom: e.date_from ?? "",
+                    startTime: e.start_time ?? "",
+                    endTime: e.end_time ?? "",
+                    instructor: e.admin != null ? e.admin!.fullname ?? "" : "",
+                    restantes: 10,
+                    image: e.image ?? "",
+                    title: e.name!.toUpperCase(),
+                    description: e.description ?? "",
+                  ),
                 ),
               )
               .toList(),

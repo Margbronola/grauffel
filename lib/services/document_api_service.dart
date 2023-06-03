@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:egczacademy/models/document_model.dart';
 import 'package:egczacademy/models/document_type_model.dart';

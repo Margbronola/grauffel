@@ -19,7 +19,6 @@ class NotificationSettingsViewModel extends BaseViewModel {
   }
 
   void toggleNotificationOnn(bool? value) async {
-    print("TOGGLE");
     if (value != null) {
       if (value) {
         notificationOnn = value;

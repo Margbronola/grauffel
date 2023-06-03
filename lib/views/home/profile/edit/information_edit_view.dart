@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/Picker.dart';
@@ -514,7 +516,7 @@ class InformationEditView extends StatelessWidget {
                                             Picker(
                                                     adapter: PickerDataAdapter<
                                                             String>(
-                                                        pickerdata: model
+                                                        pickerData: model
                                                             .countries!
                                                             .map((e) => e.name)
                                                             .toList()),

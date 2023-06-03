@@ -11,11 +11,14 @@ _$_GunModel _$$_GunModelFromJson(Map<String, dynamic> json) => _$_GunModel(
       model: json['model'] as String?,
       brand_id: json['brand_id'] as int?,
       caliber_id: json['caliber_id'] as int?,
+      reserve: json['reserve'] as int?,
+      required_ammunition: json['required_ammunition'] as int?,
       price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String?,
       pivot: json['pivot'] == null
           ? null
           : PivotModel.fromJson(json['pivot'] as Map<String, dynamic>),
+      reservable: json['reservable'] as bool?,
       caliber: json['caliber'] == null
           ? null
           : CaliberModel.fromJson(json['caliber'] as Map<String, dynamic>),
@@ -37,9 +40,12 @@ Map<String, dynamic> _$$_GunModelToJson(_$_GunModel instance) =>
       'model': instance.model,
       'brand_id': instance.brand_id,
       'caliber_id': instance.caliber_id,
+      'reserve': instance.reserve,
+      'required_ammunition': instance.required_ammunition,
       'price': instance.price,
       'description': instance.description,
       'pivot': instance.pivot,
+      'reservable': instance.reservable,
       'caliber': instance.caliber,
       'brand': instance.brand,
       'quantity': instance.quantity,

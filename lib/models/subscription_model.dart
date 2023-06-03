@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:egczacademy/models/subscription_type_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

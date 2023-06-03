@@ -37,6 +37,8 @@ mixin _$UserModel {
   int? get payment_verification => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
   int? get reduced_mobility => throw _privateConstructorUsedError;
+  int? get initiation_course => throw _privateConstructorUsedError;
+  String? get completed_steps => throw _privateConstructorUsedError;
   String? get experience => throw _privateConstructorUsedError;
   String? get equipment => throw _privateConstructorUsedError;
   String? get phone_number => throw _privateConstructorUsedError;
@@ -73,6 +75,8 @@ abstract class $UserModelCopyWith<$Res> {
       int? payment_verification,
       int? status,
       int? reduced_mobility,
+      int? initiation_course,
+      String? completed_steps,
       String? experience,
       String? equipment,
       String? phone_number,
@@ -112,6 +116,8 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? payment_verification = freezed,
     Object? status = freezed,
     Object? reduced_mobility = freezed,
+    Object? initiation_course = freezed,
+    Object? completed_steps = freezed,
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
@@ -189,6 +195,14 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.reduced_mobility
           : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
+      initiation_course: initiation_course == freezed
+          ? _value.initiation_course
+          : initiation_course // ignore: cast_nullable_to_non_nullable
+              as int?,
+      completed_steps: completed_steps == freezed
+          ? _value.completed_steps
+          : completed_steps // ignore: cast_nullable_to_non_nullable
+              as String?,
       experience: experience == freezed
           ? _value.experience
           : experience // ignore: cast_nullable_to_non_nullable
@@ -267,6 +281,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       int? payment_verification,
       int? status,
       int? reduced_mobility,
+      int? initiation_course,
+      String? completed_steps,
       String? experience,
       String? equipment,
       String? phone_number,
@@ -310,6 +326,8 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? payment_verification = freezed,
     Object? status = freezed,
     Object? reduced_mobility = freezed,
+    Object? initiation_course = freezed,
+    Object? completed_steps = freezed,
     Object? experience = freezed,
     Object? equipment = freezed,
     Object? phone_number = freezed,
@@ -387,6 +405,14 @@ class __$$_UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.reduced_mobility
           : reduced_mobility // ignore: cast_nullable_to_non_nullable
               as int?,
+      initiation_course: initiation_course == freezed
+          ? _value.initiation_course
+          : initiation_course // ignore: cast_nullable_to_non_nullable
+              as int?,
+      completed_steps: completed_steps == freezed
+          ? _value.completed_steps
+          : completed_steps // ignore: cast_nullable_to_non_nullable
+              as String?,
       experience: experience == freezed
           ? _value.experience
           : experience // ignore: cast_nullable_to_non_nullable
@@ -440,6 +466,8 @@ class _$_UserModel implements _UserModel {
       this.payment_verification,
       this.status,
       this.reduced_mobility,
+      this.initiation_course,
+      this.completed_steps,
       this.experience,
       this.equipment,
       this.phone_number,
@@ -486,6 +514,10 @@ class _$_UserModel implements _UserModel {
   @override
   final int? reduced_mobility;
   @override
+  final int? initiation_course;
+  @override
+  final String? completed_steps;
+  @override
   final String? experience;
   @override
   final String? equipment;
@@ -502,7 +534,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, initiation_course: $initiation_course, completed_steps: $completed_steps, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday)';
   }
 
   @override
@@ -537,6 +569,10 @@ class _$_UserModel implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other.reduced_mobility, reduced_mobility) &&
             const DeepCollectionEquality()
+                .equals(other.initiation_course, initiation_course) &&
+            const DeepCollectionEquality()
+                .equals(other.completed_steps, completed_steps) &&
+            const DeepCollectionEquality()
                 .equals(other.experience, experience) &&
             const DeepCollectionEquality().equals(other.equipment, equipment) &&
             const DeepCollectionEquality()
@@ -569,6 +605,8 @@ class _$_UserModel implements _UserModel {
         const DeepCollectionEquality().hash(payment_verification),
         const DeepCollectionEquality().hash(status),
         const DeepCollectionEquality().hash(reduced_mobility),
+        const DeepCollectionEquality().hash(initiation_course),
+        const DeepCollectionEquality().hash(completed_steps),
         const DeepCollectionEquality().hash(experience),
         const DeepCollectionEquality().hash(equipment),
         const DeepCollectionEquality().hash(phone_number),
@@ -610,6 +648,8 @@ abstract class _UserModel implements UserModel {
       final int? payment_verification,
       final int? status,
       final int? reduced_mobility,
+      final int? initiation_course,
+      final String? completed_steps,
       final String? experience,
       final String? equipment,
       final String? phone_number,
@@ -655,6 +695,10 @@ abstract class _UserModel implements UserModel {
   int? get status;
   @override
   int? get reduced_mobility;
+  @override
+  int? get initiation_course;
+  @override
+  String? get completed_steps;
   @override
   String? get experience;
   @override
