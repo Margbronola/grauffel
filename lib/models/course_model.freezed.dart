@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'course_model.dart';
 
@@ -54,7 +54,8 @@ mixin _$CourseModel {
 abstract class $CourseModelCopyWith<$Res> {
   factory $CourseModelCopyWith(
           CourseModel value, $Res Function(CourseModel) then) =
-      _$CourseModelCopyWithImpl<$Res>;
+      _$CourseModelCopyWithImpl<$Res, CourseModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -85,13 +86,16 @@ abstract class $CourseModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
+class _$CourseModelCopyWithImpl<$Res, $Val extends CourseModel>
+    implements $CourseModelCopyWith<$Res> {
   _$CourseModelCopyWithImpl(this._value, this._then);
 
-  final CourseModel _value;
   // ignore: unused_field
-  final $Res Function(CourseModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -119,120 +123,122 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? questions = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      type_id: type_id == freezed
+      type_id: freezed == type_id
           ? _value.type_id
           : type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      level_id: level_id == freezed
+      level_id: freezed == level_id
           ? _value.level_id
           : level_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      max_persons: max_persons == freezed
+      max_persons: freezed == max_persons
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
               as int?,
-      active_booking_count: active_booking_count == freezed
+      active_booking_count: freezed == active_booking_count
           ? _value.active_booking_count
           : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      date_from: date_from == freezed
+      date_from: freezed == date_from
           ? _value.date_from
           : date_from // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_to: date_to == freezed
+      date_to: freezed == date_to
           ? _value.date_to
           : date_to // ignore: cast_nullable_to_non_nullable
               as String?,
-      start_time: start_time == freezed
+      start_time: freezed == start_time
           ? _value.start_time
           : start_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      end_time: end_time == freezed
+      end_time: freezed == end_time
           ? _value.end_time
           : end_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      color_code: color_code == freezed
+      color_code: freezed == color_code
           ? _value.color_code
           : color_code // ignore: cast_nullable_to_non_nullable
               as String?,
-      period: period == freezed
+      period: freezed == period
           ? _value.period
           : period // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      admin_id: admin_id == freezed
+      admin_id: freezed == admin_id
           ? _value.admin_id
           : admin_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      salle_id: salle_id == freezed
+      salle_id: freezed == salle_id
           ? _value.salle_id
           : salle_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
-      questions: questions == freezed
+      questions: freezed == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AdminModelCopyWith<$Res>? get admin {
     if (_value.admin == null) {
       return null;
     }
 
     return $AdminModelCopyWith<$Res>(_value.admin!, (value) {
-      return _then(_value.copyWith(admin: value));
+      return _then(_value.copyWith(admin: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TypeModelCopyWith<$Res>? get type {
     if (_value.type == null) {
       return null;
     }
 
     return $TypeModelCopyWith<$Res>(_value.type!, (value) {
-      return _then(_value.copyWith(type: value));
+      return _then(_value.copyWith(type: value) as $Val);
     });
   }
 }
@@ -244,6 +250,7 @@ abstract class _$$_CourseModelCopyWith<$Res>
           _$_CourseModel value, $Res Function(_$_CourseModel) then) =
       __$$_CourseModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -276,15 +283,14 @@ abstract class _$$_CourseModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
+class __$$_CourseModelCopyWithImpl<$Res>
+    extends _$CourseModelCopyWithImpl<$Res, _$_CourseModel>
     implements _$$_CourseModelCopyWith<$Res> {
   __$$_CourseModelCopyWithImpl(
       _$_CourseModel _value, $Res Function(_$_CourseModel) _then)
-      : super(_value, (v) => _then(v as _$_CourseModel));
+      : super(_value, _then);
 
-  @override
-  _$_CourseModel get _value => super._value as _$_CourseModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -312,95 +318,95 @@ class __$$_CourseModelCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? questions = freezed,
   }) {
     return _then(_$_CourseModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      type_id: type_id == freezed
+      type_id: freezed == type_id
           ? _value.type_id
           : type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      level_id: level_id == freezed
+      level_id: freezed == level_id
           ? _value.level_id
           : level_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      max_persons: max_persons == freezed
+      max_persons: freezed == max_persons
           ? _value.max_persons
           : max_persons // ignore: cast_nullable_to_non_nullable
               as int?,
-      active_booking_count: active_booking_count == freezed
+      active_booking_count: freezed == active_booking_count
           ? _value.active_booking_count
           : active_booking_count // ignore: cast_nullable_to_non_nullable
               as int?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      date_from: date_from == freezed
+      date_from: freezed == date_from
           ? _value.date_from
           : date_from // ignore: cast_nullable_to_non_nullable
               as String?,
-      date_to: date_to == freezed
+      date_to: freezed == date_to
           ? _value.date_to
           : date_to // ignore: cast_nullable_to_non_nullable
               as String?,
-      start_time: start_time == freezed
+      start_time: freezed == start_time
           ? _value.start_time
           : start_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      end_time: end_time == freezed
+      end_time: freezed == end_time
           ? _value.end_time
           : end_time // ignore: cast_nullable_to_non_nullable
               as String?,
-      color_code: color_code == freezed
+      color_code: freezed == color_code
           ? _value.color_code
           : color_code // ignore: cast_nullable_to_non_nullable
               as String?,
-      period: period == freezed
+      period: freezed == period
           ? _value._period
           : period // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      admin_id: admin_id == freezed
+      admin_id: freezed == admin_id
           ? _value.admin_id
           : admin_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      salle_id: salle_id == freezed
+      salle_id: freezed == salle_id
           ? _value.salle_id
           : salle_id // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      admin: admin == freezed
+      admin: freezed == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
               as AdminModel?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
-      questions: questions == freezed
+      questions: freezed == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
@@ -470,6 +476,7 @@ class _$_CourseModel implements _CourseModel {
   List<int>? get period {
     final value = _period;
     if (value == null) return null;
+    if (_period is EqualUnmodifiableListView) return _period;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -497,6 +504,7 @@ class _$_CourseModel implements _CourseModel {
   List<dynamic>? get questions {
     final value = _questions;
     if (value == null) return null;
+    if (_questions is EqualUnmodifiableListView) return _questions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -511,36 +519,41 @@ class _$_CourseModel implements _CourseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CourseModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.type_id, type_id) &&
-            const DeepCollectionEquality().equals(other.level_id, level_id) &&
-            const DeepCollectionEquality()
-                .equals(other.max_persons, max_persons) &&
-            const DeepCollectionEquality()
-                .equals(other.active_booking_count, active_booking_count) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.date_from, date_from) &&
-            const DeepCollectionEquality().equals(other.date_to, date_to) &&
-            const DeepCollectionEquality()
-                .equals(other.start_time, start_time) &&
-            const DeepCollectionEquality().equals(other.end_time, end_time) &&
-            const DeepCollectionEquality()
-                .equals(other.color_code, color_code) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type_id, type_id) || other.type_id == type_id) &&
+            (identical(other.level_id, level_id) ||
+                other.level_id == level_id) &&
+            (identical(other.max_persons, max_persons) ||
+                other.max_persons == max_persons) &&
+            (identical(other.active_booking_count, active_booking_count) ||
+                other.active_booking_count == active_booking_count) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.date_from, date_from) ||
+                other.date_from == date_from) &&
+            (identical(other.date_to, date_to) || other.date_to == date_to) &&
+            (identical(other.start_time, start_time) ||
+                other.start_time == start_time) &&
+            (identical(other.end_time, end_time) ||
+                other.end_time == end_time) &&
+            (identical(other.color_code, color_code) ||
+                other.color_code == color_code) &&
             const DeepCollectionEquality().equals(other._period, _period) &&
-            const DeepCollectionEquality().equals(other.admin_id, admin_id) &&
-            const DeepCollectionEquality().equals(other.salle_id, salle_id) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.status_name, status_name) &&
-            const DeepCollectionEquality().equals(other.admin, admin) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
+            (identical(other.admin_id, admin_id) ||
+                other.admin_id == admin_id) &&
+            (identical(other.salle_id, salle_id) ||
+                other.salle_id == salle_id) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.status_name, status_name) ||
+                other.status_name == status_name) &&
+            (identical(other.admin, admin) || other.admin == admin) &&
+            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions));
   }
@@ -549,33 +562,34 @@ class _$_CourseModel implements _CourseModel {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(type_id),
-        const DeepCollectionEquality().hash(level_id),
-        const DeepCollectionEquality().hash(max_persons),
-        const DeepCollectionEquality().hash(active_booking_count),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(date_from),
-        const DeepCollectionEquality().hash(date_to),
-        const DeepCollectionEquality().hash(start_time),
-        const DeepCollectionEquality().hash(end_time),
-        const DeepCollectionEquality().hash(color_code),
+        id,
+        name,
+        type_id,
+        level_id,
+        max_persons,
+        active_booking_count,
+        price,
+        date_from,
+        date_to,
+        start_time,
+        end_time,
+        color_code,
         const DeepCollectionEquality().hash(_period),
-        const DeepCollectionEquality().hash(admin_id),
-        const DeepCollectionEquality().hash(salle_id),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(created_at),
-        const DeepCollectionEquality().hash(updated_at),
-        const DeepCollectionEquality().hash(status_name),
-        const DeepCollectionEquality().hash(admin),
-        const DeepCollectionEquality().hash(type),
+        admin_id,
+        salle_id,
+        description,
+        status,
+        created_at,
+        updated_at,
+        status_name,
+        admin,
+        type,
         const DeepCollectionEquality().hash(_questions)
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CourseModelCopyWith<_$_CourseModel> get copyWith =>
       __$$_CourseModelCopyWithImpl<_$_CourseModel>(this, _$identity);
 

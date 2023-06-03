@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_model.dart';
 
@@ -38,7 +38,8 @@ mixin _$ImageModel {
 abstract class $ImageModelCopyWith<$Res> {
   factory $ImageModelCopyWith(
           ImageModel value, $Res Function(ImageModel) then) =
-      _$ImageModelCopyWithImpl<$Res>;
+      _$ImageModelCopyWithImpl<$Res, ImageModel>;
+  @useResult
   $Res call(
       {int? id,
       String? filename,
@@ -50,13 +51,16 @@ abstract class $ImageModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImageModelCopyWithImpl<$Res> implements $ImageModelCopyWith<$Res> {
+class _$ImageModelCopyWithImpl<$Res, $Val extends ImageModel>
+    implements $ImageModelCopyWith<$Res> {
   _$ImageModelCopyWithImpl(this._value, this._then);
 
-  final ImageModel _value;
   // ignore: unused_field
-  final $Res Function(ImageModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -68,35 +72,35 @@ class _$ImageModelCopyWithImpl<$Res> implements $ImageModelCopyWith<$Res> {
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      filename: filename == freezed
+      filename: freezed == filename
           ? _value.filename
           : filename // ignore: cast_nullable_to_non_nullable
               as String?,
-      path: path == freezed
+      path: freezed == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String?,
-      order: order == freezed
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -107,6 +111,7 @@ abstract class _$$_ImageModelCopyWith<$Res>
           _$_ImageModel value, $Res Function(_$_ImageModel) then) =
       __$$_ImageModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? filename,
@@ -118,15 +123,14 @@ abstract class _$$_ImageModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ImageModelCopyWithImpl<$Res> extends _$ImageModelCopyWithImpl<$Res>
+class __$$_ImageModelCopyWithImpl<$Res>
+    extends _$ImageModelCopyWithImpl<$Res, _$_ImageModel>
     implements _$$_ImageModelCopyWith<$Res> {
   __$$_ImageModelCopyWithImpl(
       _$_ImageModel _value, $Res Function(_$_ImageModel) _then)
-      : super(_value, (v) => _then(v as _$_ImageModel));
+      : super(_value, _then);
 
-  @override
-  _$_ImageModel get _value => super._value as _$_ImageModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -138,31 +142,31 @@ class __$$_ImageModelCopyWithImpl<$Res> extends _$ImageModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_ImageModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      filename: filename == freezed
+      filename: freezed == filename
           ? _value.filename
           : filename // ignore: cast_nullable_to_non_nullable
               as String?,
-      path: path == freezed
+      path: freezed == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String?,
-      order: order == freezed
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -224,31 +228,26 @@ class _$_ImageModel with DiagnosticableTreeMixin implements _ImageModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ImageModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.filename, filename) &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.order, order) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.filename, filename) ||
+                other.filename == filename) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.order, order) || other.order == order) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(filename),
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(order),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at));
+      runtimeType, id, filename, path, order, status, created_at, updated_at);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ImageModelCopyWith<_$_ImageModel> get copyWith =>
       __$$_ImageModelCopyWithImpl<_$_ImageModel>(this, _$identity);
 

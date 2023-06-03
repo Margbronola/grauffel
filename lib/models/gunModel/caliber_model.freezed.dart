@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'caliber_model.dart';
 
@@ -37,7 +37,8 @@ mixin _$CaliberModel {
 abstract class $CaliberModelCopyWith<$Res> {
   factory $CaliberModelCopyWith(
           CaliberModel value, $Res Function(CaliberModel) then) =
-      _$CaliberModelCopyWithImpl<$Res>;
+      _$CaliberModelCopyWithImpl<$Res, CaliberModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -48,13 +49,16 @@ abstract class $CaliberModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CaliberModelCopyWithImpl<$Res> implements $CaliberModelCopyWith<$Res> {
+class _$CaliberModelCopyWithImpl<$Res, $Val extends CaliberModel>
+    implements $CaliberModelCopyWith<$Res> {
   _$CaliberModelCopyWithImpl(this._value, this._then);
 
-  final CaliberModel _value;
   // ignore: unused_field
-  final $Res Function(CaliberModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -65,31 +69,31 @@ class _$CaliberModelCopyWithImpl<$Res> implements $CaliberModelCopyWith<$Res> {
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      metric: metric == freezed
+      metric: freezed == metric
           ? _value.metric
           : metric // ignore: cast_nullable_to_non_nullable
               as String?,
-      typicalBulletDiameter: typicalBulletDiameter == freezed
+      typicalBulletDiameter: freezed == typicalBulletDiameter
           ? _value.typicalBulletDiameter
           : typicalBulletDiameter // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_CaliberModelCopyWith<$Res>
           _$_CaliberModel value, $Res Function(_$_CaliberModel) then) =
       __$$_CaliberModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -111,15 +116,13 @@ abstract class _$$_CaliberModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_CaliberModelCopyWithImpl<$Res>
-    extends _$CaliberModelCopyWithImpl<$Res>
+    extends _$CaliberModelCopyWithImpl<$Res, _$_CaliberModel>
     implements _$$_CaliberModelCopyWith<$Res> {
   __$$_CaliberModelCopyWithImpl(
       _$_CaliberModel _value, $Res Function(_$_CaliberModel) _then)
-      : super(_value, (v) => _then(v as _$_CaliberModel));
+      : super(_value, _then);
 
-  @override
-  _$_CaliberModel get _value => super._value as _$_CaliberModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -130,27 +133,27 @@ class __$$_CaliberModelCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(_$_CaliberModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      metric: metric == freezed
+      metric: freezed == metric
           ? _value.metric
           : metric // ignore: cast_nullable_to_non_nullable
               as String?,
-      typicalBulletDiameter: typicalBulletDiameter == freezed
+      typicalBulletDiameter: freezed == typicalBulletDiameter
           ? _value.typicalBulletDiameter
           : typicalBulletDiameter // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -208,28 +211,25 @@ class _$_CaliberModel with DiagnosticableTreeMixin implements _CaliberModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CaliberModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.metric, metric) &&
-            const DeepCollectionEquality()
-                .equals(other.typicalBulletDiameter, typicalBulletDiameter) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.metric, metric) || other.metric == metric) &&
+            (identical(other.typicalBulletDiameter, typicalBulletDiameter) ||
+                other.typicalBulletDiameter == typicalBulletDiameter) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(metric),
-      const DeepCollectionEquality().hash(typicalBulletDiameter),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode => Object.hash(runtimeType, id, name, metric,
+      typicalBulletDiameter, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CaliberModelCopyWith<_$_CaliberModel> get copyWith =>
       __$$_CaliberModelCopyWithImpl<_$_CaliberModel>(this, _$identity);
 

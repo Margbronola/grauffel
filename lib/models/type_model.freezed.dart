@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'type_model.dart';
 
@@ -36,7 +36,8 @@ mixin _$TypeModel {
 /// @nodoc
 abstract class $TypeModelCopyWith<$Res> {
   factory $TypeModelCopyWith(TypeModel value, $Res Function(TypeModel) then) =
-      _$TypeModelCopyWithImpl<$Res>;
+      _$TypeModelCopyWithImpl<$Res, TypeModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -47,13 +48,16 @@ abstract class $TypeModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TypeModelCopyWithImpl<$Res> implements $TypeModelCopyWith<$Res> {
+class _$TypeModelCopyWithImpl<$Res, $Val extends TypeModel>
+    implements $TypeModelCopyWith<$Res> {
   _$TypeModelCopyWithImpl(this._value, this._then);
 
-  final TypeModel _value;
   // ignore: unused_field
-  final $Res Function(TypeModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -64,31 +68,31 @@ class _$TypeModelCopyWithImpl<$Res> implements $TypeModelCopyWith<$Res> {
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      slug: slug == freezed
+      slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -98,6 +102,7 @@ abstract class _$$_TypeModelCopyWith<$Res> implements $TypeModelCopyWith<$Res> {
           _$_TypeModel value, $Res Function(_$_TypeModel) then) =
       __$$_TypeModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -108,15 +113,14 @@ abstract class _$$_TypeModelCopyWith<$Res> implements $TypeModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TypeModelCopyWithImpl<$Res> extends _$TypeModelCopyWithImpl<$Res>
+class __$$_TypeModelCopyWithImpl<$Res>
+    extends _$TypeModelCopyWithImpl<$Res, _$_TypeModel>
     implements _$$_TypeModelCopyWith<$Res> {
   __$$_TypeModelCopyWithImpl(
       _$_TypeModel _value, $Res Function(_$_TypeModel) _then)
-      : super(_value, (v) => _then(v as _$_TypeModel));
+      : super(_value, _then);
 
-  @override
-  _$_TypeModel get _value => super._value as _$_TypeModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -127,27 +131,27 @@ class __$$_TypeModelCopyWithImpl<$Res> extends _$TypeModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_TypeModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      slug: slug == freezed
+      slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -192,29 +196,24 @@ class _$_TypeModel implements _TypeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TypeModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.slug, slug) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.slug, slug) || other.slug == slug) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(slug),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at));
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, slug, status, created_at, updated_at);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TypeModelCopyWith<_$_TypeModel> get copyWith =>
       __$$_TypeModelCopyWithImpl<_$_TypeModel>(this, _$identity);
 

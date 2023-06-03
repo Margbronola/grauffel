@@ -20,6 +20,7 @@ class SplashViewModel extends BaseViewModel {
       if (_sharedPrefService.hasKeyToken) {
         UserModel? user = await _userAPIService.fethUserDetailsApi(
             token: _sharedPrefService.prefsToken);
+        print("USER: $user");
         if (user != null) {
           _userService.updateUser(user);
           _userService.updateToken(_sharedPrefService.prefsToken);

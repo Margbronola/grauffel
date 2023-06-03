@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'subscription_type_model.dart';
 
@@ -46,7 +46,8 @@ mixin _$SubscriptionTypeModel {
 abstract class $SubscriptionTypeModelCopyWith<$Res> {
   factory $SubscriptionTypeModelCopyWith(SubscriptionTypeModel value,
           $Res Function(SubscriptionTypeModel) then) =
-      _$SubscriptionTypeModelCopyWithImpl<$Res>;
+      _$SubscriptionTypeModelCopyWithImpl<$Res, SubscriptionTypeModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -65,14 +66,17 @@ abstract class $SubscriptionTypeModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SubscriptionTypeModelCopyWithImpl<$Res>
+class _$SubscriptionTypeModelCopyWithImpl<$Res,
+        $Val extends SubscriptionTypeModel>
     implements $SubscriptionTypeModelCopyWith<$Res> {
   _$SubscriptionTypeModelCopyWithImpl(this._value, this._then);
 
-  final SubscriptionTypeModel _value;
   // ignore: unused_field
-  final $Res Function(SubscriptionTypeModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -91,63 +95,63 @@ class _$SubscriptionTypeModelCopyWithImpl<$Res>
     Object? allow_guns = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      duration_type: duration_type == freezed
+      duration_type: freezed == duration_type
           ? _value.duration_type
           : duration_type // ignore: cast_nullable_to_non_nullable
               as int?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      price_per_hour: price_per_hour == freezed
+      price_per_hour: freezed == price_per_hour
           ? _value.price_per_hour
           : price_per_hour // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      fcredit: fcredit == freezed
+      fcredit: freezed == fcredit
           ? _value.fcredit
           : fcredit // ignore: cast_nullable_to_non_nullable
               as double?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      allow_guns: allow_guns == freezed
+      allow_guns: freezed == allow_guns
           ? _value.allow_guns
           : allow_guns // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -158,6 +162,7 @@ abstract class _$$_SubscriptionTypeModelCopyWith<$Res>
           $Res Function(_$_SubscriptionTypeModel) then) =
       __$$_SubscriptionTypeModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -177,16 +182,13 @@ abstract class _$$_SubscriptionTypeModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_SubscriptionTypeModelCopyWithImpl<$Res>
-    extends _$SubscriptionTypeModelCopyWithImpl<$Res>
+    extends _$SubscriptionTypeModelCopyWithImpl<$Res, _$_SubscriptionTypeModel>
     implements _$$_SubscriptionTypeModelCopyWith<$Res> {
   __$$_SubscriptionTypeModelCopyWithImpl(_$_SubscriptionTypeModel _value,
       $Res Function(_$_SubscriptionTypeModel) _then)
-      : super(_value, (v) => _then(v as _$_SubscriptionTypeModel));
+      : super(_value, _then);
 
-  @override
-  _$_SubscriptionTypeModel get _value =>
-      super._value as _$_SubscriptionTypeModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -205,59 +207,59 @@ class __$$_SubscriptionTypeModelCopyWithImpl<$Res>
     Object? allow_guns = freezed,
   }) {
     return _then(_$_SubscriptionTypeModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      duration_type: duration_type == freezed
+      duration_type: freezed == duration_type
           ? _value.duration_type
           : duration_type // ignore: cast_nullable_to_non_nullable
               as int?,
-      ammunition_discount: ammunition_discount == freezed
+      ammunition_discount: freezed == ammunition_discount
           ? _value.ammunition_discount
           : ammunition_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      equipment_discount: equipment_discount == freezed
+      equipment_discount: freezed == equipment_discount
           ? _value.equipment_discount
           : equipment_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      gun_discount: gun_discount == freezed
+      gun_discount: freezed == gun_discount
           ? _value.gun_discount
           : gun_discount // ignore: cast_nullable_to_non_nullable
               as double?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      price_per_hour: price_per_hour == freezed
+      price_per_hour: freezed == price_per_hour
           ? _value.price_per_hour
           : price_per_hour // ignore: cast_nullable_to_non_nullable
               as double?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      fcredit: fcredit == freezed
+      fcredit: freezed == fcredit
           ? _value.fcredit
           : fcredit // ignore: cast_nullable_to_non_nullable
               as double?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      allow_guns: allow_guns == freezed
+      allow_guns: freezed == allow_guns
           ? _value._allow_guns
           : allow_guns // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
@@ -319,6 +321,7 @@ class _$_SubscriptionTypeModel implements _SubscriptionTypeModel {
   List<dynamic>? get allow_guns {
     final value = _allow_guns;
     if (value == null) return null;
+    if (_allow_guns is EqualUnmodifiableListView) return _allow_guns;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -333,26 +336,27 @@ class _$_SubscriptionTypeModel implements _SubscriptionTypeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubscriptionTypeModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality()
-                .equals(other.duration_type, duration_type) &&
-            const DeepCollectionEquality()
-                .equals(other.ammunition_discount, ammunition_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.equipment_discount, equipment_discount) &&
-            const DeepCollectionEquality()
-                .equals(other.gun_discount, gun_discount) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.price_per_hour, price_per_hour) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.fcredit, fcredit) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.duration_type, duration_type) ||
+                other.duration_type == duration_type) &&
+            (identical(other.ammunition_discount, ammunition_discount) ||
+                other.ammunition_discount == ammunition_discount) &&
+            (identical(other.equipment_discount, equipment_discount) ||
+                other.equipment_discount == equipment_discount) &&
+            (identical(other.gun_discount, gun_discount) ||
+                other.gun_discount == gun_discount) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.price_per_hour, price_per_hour) ||
+                other.price_per_hour == price_per_hour) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.fcredit, fcredit) || other.fcredit == fcredit) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
             const DeepCollectionEquality()
                 .equals(other._allow_guns, _allow_guns));
   }
@@ -361,23 +365,24 @@ class _$_SubscriptionTypeModel implements _SubscriptionTypeModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(duration_type),
-      const DeepCollectionEquality().hash(ammunition_discount),
-      const DeepCollectionEquality().hash(equipment_discount),
-      const DeepCollectionEquality().hash(gun_discount),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(price_per_hour),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(fcredit),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
+      id,
+      name,
+      duration,
+      duration_type,
+      ammunition_discount,
+      equipment_discount,
+      gun_discount,
+      price,
+      price_per_hour,
+      status,
+      fcredit,
+      created_at,
+      updated_at,
       const DeepCollectionEquality().hash(_allow_guns));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SubscriptionTypeModelCopyWith<_$_SubscriptionTypeModel> get copyWith =>
       __$$_SubscriptionTypeModelCopyWithImpl<_$_SubscriptionTypeModel>(
           this, _$identity);

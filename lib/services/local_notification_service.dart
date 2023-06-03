@@ -11,46 +11,45 @@ class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-  static void initialize() async {
-    // Android initialization
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const DarwinInitializationSettings iosInitialization =
-        DarwinInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: false,
-      requestSoundPermission: false,
-      // onDidReceiveLocalNotification: onDidReceiveLocalNotification,
-    );
-// ios initialization
-    // const IOSInitializationSettings initializationSettingsIOS =
-    //     IOSInitializationSettings(
+//   static void initialize() async {
+//     // Android initialization
+//     const AndroidInitializationSettings initializationSettingsAndroid =
+//         AndroidInitializationSettings('@mipmap/ic_launcher');
+//     const DarwinInitializationSettings iosInitialization =
+//         DarwinInitializationSettings(
+//       requestAlertPermission: true,
+//       requestBadgePermission: false,
+//       requestSoundPermission: false,
+//       // onDidReceiveLocalNotification: onDidReceiveLocalNotification,
+//     );
+// // ios initialization
+//     // const IOSInitializationSettings initializationSettingsIOS =
+//     //     IOSInitializationSettings(
 
-    // );
+//     // );
 
+//     const InitializationSettings initializationSettings =
+//         InitializationSettings(
+//       android: initializationSettingsAndroid,
+//       iOS: iosInitialization,
+//     );
+// // the initialization settings are initialized after they are setted
+//     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+//   }
+
+  static void initialize() {
     const InitializationSettings initializationSettings =
         InitializationSettings(
-      android: initializationSettingsAndroid,
-      iOS: iosInitialization,
+      iOS: DarwinInitializationSettings(
+        requestSoundPermission: false,
+        requestBadgePermission: false,
+        requestAlertPermission: false,
+      ),
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
     );
-// the initialization settings are initialized after they are setted
-    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+    _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
-
-  // static void initialize() {
-  //   const InitializationSettings initializationSettings =
-  //       InitializationSettings(
-  //     iOS: DarwinInitializationSettings(
-  //       requestSoundPermission: false,
-  //       requestBadgePermission: false,
-  //       requestAlertPermission: false,
-  //     ),
-
-  //     android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-  //   );
-
-  //   _flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  // }
 
   static Future<void> requestPermissions(
       UserAPIService userAPIService, String token) async {

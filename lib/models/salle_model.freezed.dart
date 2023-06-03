@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'salle_model.dart';
 
@@ -46,7 +46,8 @@ mixin _$SalleModel {
 abstract class $SalleModelCopyWith<$Res> {
   factory $SalleModelCopyWith(
           SalleModel value, $Res Function(SalleModel) then) =
-      _$SalleModelCopyWithImpl<$Res>;
+      _$SalleModelCopyWithImpl<$Res, SalleModel>;
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -66,13 +67,16 @@ abstract class $SalleModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SalleModelCopyWithImpl<$Res> implements $SalleModelCopyWith<$Res> {
+class _$SalleModelCopyWithImpl<$Res, $Val extends SalleModel>
+    implements $SalleModelCopyWith<$Res> {
   _$SalleModelCopyWithImpl(this._value, this._then);
 
-  final SalleModel _value;
   // ignore: unused_field
-  final $Res Function(SalleModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -92,67 +96,67 @@ class _$SalleModelCopyWithImpl<$Res> implements $SalleModelCopyWith<$Res> {
     Object? courses = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      color_code: color_code == freezed
+      color_code: freezed == color_code
           ? _value.color_code
           : color_code // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      activity_capacity: activity_capacity == freezed
+      activity_capacity: freezed == activity_capacity
           ? _value.activity_capacity
           : activity_capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookings: bookings == freezed
+      bookings: freezed == bookings
           ? _value.bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      activitysalle: activitysalle == freezed
+      activitysalle: freezed == activitysalle
           ? _value.activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value.pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as Map<dynamic, dynamic>?,
-      courses: courses == freezed
+      courses: freezed == courses
           ? _value.courses
           : courses // ignore: cast_nullable_to_non_nullable
               as List<CourseModel>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -163,6 +167,7 @@ abstract class _$$_SalleModelCopyWith<$Res>
           _$_SalleModel value, $Res Function(_$_SalleModel) then) =
       __$$_SalleModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       String? name,
@@ -182,15 +187,14 @@ abstract class _$$_SalleModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SalleModelCopyWithImpl<$Res> extends _$SalleModelCopyWithImpl<$Res>
+class __$$_SalleModelCopyWithImpl<$Res>
+    extends _$SalleModelCopyWithImpl<$Res, _$_SalleModel>
     implements _$$_SalleModelCopyWith<$Res> {
   __$$_SalleModelCopyWithImpl(
       _$_SalleModel _value, $Res Function(_$_SalleModel) _then)
-      : super(_value, (v) => _then(v as _$_SalleModel));
+      : super(_value, _then);
 
-  @override
-  _$_SalleModel get _value => super._value as _$_SalleModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -210,63 +214,63 @@ class __$$_SalleModelCopyWithImpl<$Res> extends _$SalleModelCopyWithImpl<$Res>
     Object? courses = freezed,
   }) {
     return _then(_$_SalleModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String?,
-      color_code: color_code == freezed
+      color_code: freezed == color_code
           ? _value.color_code
           : color_code // ignore: cast_nullable_to_non_nullable
               as String?,
-      capacity: capacity == freezed
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      status_name: status_name == freezed
+      status_name: freezed == status_name
           ? _value.status_name
           : status_name // ignore: cast_nullable_to_non_nullable
               as String?,
-      activity_capacity: activity_capacity == freezed
+      activity_capacity: freezed == activity_capacity
           ? _value.activity_capacity
           : activity_capacity // ignore: cast_nullable_to_non_nullable
               as int?,
-      bookings: bookings == freezed
+      bookings: freezed == bookings
           ? _value._bookings
           : bookings // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      activitysalle: activitysalle == freezed
+      activitysalle: freezed == activitysalle
           ? _value._activitysalle
           : activitysalle // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      pivot: pivot == freezed
+      pivot: freezed == pivot
           ? _value._pivot
           : pivot // ignore: cast_nullable_to_non_nullable
               as Map<dynamic, dynamic>?,
-      courses: courses == freezed
+      courses: freezed == courses
           ? _value._courses
           : courses // ignore: cast_nullable_to_non_nullable
               as List<CourseModel>?,
@@ -328,6 +332,7 @@ class _$_SalleModel implements _SalleModel {
   List<dynamic>? get bookings {
     final value = _bookings;
     if (value == null) return null;
+    if (_bookings is EqualUnmodifiableListView) return _bookings;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -337,6 +342,7 @@ class _$_SalleModel implements _SalleModel {
   List<dynamic>? get activitysalle {
     final value = _activitysalle;
     if (value == null) return null;
+    if (_activitysalle is EqualUnmodifiableListView) return _activitysalle;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -346,6 +352,7 @@ class _$_SalleModel implements _SalleModel {
   Map<dynamic, dynamic>? get pivot {
     final value = _pivot;
     if (value == null) return null;
+    if (_pivot is EqualUnmodifiableMapView) return _pivot;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -355,6 +362,7 @@ class _$_SalleModel implements _SalleModel {
   List<CourseModel>? get courses {
     final value = _courses;
     if (value == null) return null;
+    if (_courses is EqualUnmodifiableListView) return _courses;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -369,23 +377,25 @@ class _$_SalleModel implements _SalleModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SalleModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
-            const DeepCollectionEquality()
-                .equals(other.color_code, color_code) &&
-            const DeepCollectionEquality().equals(other.capacity, capacity) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at) &&
-            const DeepCollectionEquality()
-                .equals(other.status_name, status_name) &&
-            const DeepCollectionEquality()
-                .equals(other.activity_capacity, activity_capacity) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.color_code, color_code) ||
+                other.color_code == color_code) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at) &&
+            (identical(other.status_name, status_name) ||
+                other.status_name == status_name) &&
+            (identical(other.activity_capacity, activity_capacity) ||
+                other.activity_capacity == activity_capacity) &&
             const DeepCollectionEquality().equals(other._bookings, _bookings) &&
             const DeepCollectionEquality()
                 .equals(other._activitysalle, _activitysalle) &&
@@ -397,17 +407,17 @@ class _$_SalleModel implements _SalleModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(color_code),
-      const DeepCollectionEquality().hash(capacity),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(updated_at),
-      const DeepCollectionEquality().hash(status_name),
-      const DeepCollectionEquality().hash(activity_capacity),
+      id,
+      name,
+      description,
+      location,
+      color_code,
+      capacity,
+      status,
+      created_at,
+      updated_at,
+      status_name,
+      activity_capacity,
       const DeepCollectionEquality().hash(_bookings),
       const DeepCollectionEquality().hash(_activitysalle),
       const DeepCollectionEquality().hash(_pivot),
@@ -415,6 +425,7 @@ class _$_SalleModel implements _SalleModel {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SalleModelCopyWith<_$_SalleModel> get copyWith =>
       __$$_SalleModelCopyWithImpl<_$_SalleModel>(this, _$identity);
 

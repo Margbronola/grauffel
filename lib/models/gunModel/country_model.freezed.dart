@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'country_model.dart';
 
@@ -33,33 +33,37 @@ mixin _$CountryModel {
 abstract class $CountryModelCopyWith<$Res> {
   factory $CountryModelCopyWith(
           CountryModel value, $Res Function(CountryModel) then) =
-      _$CountryModelCopyWithImpl<$Res>;
+      _$CountryModelCopyWithImpl<$Res, CountryModel>;
+  @useResult
   $Res call({int? id, String? name});
 }
 
 /// @nodoc
-class _$CountryModelCopyWithImpl<$Res> implements $CountryModelCopyWith<$Res> {
+class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
+    implements $CountryModelCopyWith<$Res> {
   _$CountryModelCopyWithImpl(this._value, this._then);
 
-  final CountryModel _value;
   // ignore: unused_field
-  final $Res Function(CountryModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -70,31 +74,30 @@ abstract class _$$_CountryModelCopyWith<$Res>
           _$_CountryModel value, $Res Function(_$_CountryModel) then) =
       __$$_CountryModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int? id, String? name});
 }
 
 /// @nodoc
 class __$$_CountryModelCopyWithImpl<$Res>
-    extends _$CountryModelCopyWithImpl<$Res>
+    extends _$CountryModelCopyWithImpl<$Res, _$_CountryModel>
     implements _$$_CountryModelCopyWith<$Res> {
   __$$_CountryModelCopyWithImpl(
       _$_CountryModel _value, $Res Function(_$_CountryModel) _then)
-      : super(_value, (v) => _then(v as _$_CountryModel));
+      : super(_value, _then);
 
-  @override
-  _$_CountryModel get _value => super._value as _$_CountryModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_$_CountryModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -125,19 +128,17 @@ class _$_CountryModel implements _CountryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CountryModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CountryModelCopyWith<_$_CountryModel> get copyWith =>
       __$$_CountryModelCopyWithImpl<_$_CountryModel>(this, _$identity);
 

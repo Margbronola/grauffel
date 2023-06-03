@@ -37,6 +37,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           ? null
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
       birthday: json['birthday'] as String?,
+      registered: json['registered'] as int?,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -67,4 +68,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'firebase_id': instance.firebase_id,
       'image': instance.image,
       'birthday': instance.birthday,
+      'registered': instance.registered,
     };

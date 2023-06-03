@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'reserve_model.dart';
 
@@ -41,7 +41,8 @@ mixin _$ReserveModel {
 abstract class $ReserveModelCopyWith<$Res> {
   factory $ReserveModelCopyWith(
           ReserveModel value, $Res Function(ReserveModel) then) =
-      _$ReserveModelCopyWithImpl<$Res>;
+      _$ReserveModelCopyWithImpl<$Res, ReserveModel>;
+  @useResult
   $Res call(
       {String? image,
       String? title,
@@ -58,13 +59,16 @@ abstract class $ReserveModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReserveModelCopyWithImpl<$Res> implements $ReserveModelCopyWith<$Res> {
+class _$ReserveModelCopyWithImpl<$Res, $Val extends ReserveModel>
+    implements $ReserveModelCopyWith<$Res> {
   _$ReserveModelCopyWithImpl(this._value, this._then);
 
-  final ReserveModel _value;
   // ignore: unused_field
-  final $Res Function(ReserveModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? image = freezed,
@@ -79,57 +83,58 @@ class _$ReserveModelCopyWithImpl<$Res> implements $ReserveModelCopyWith<$Res> {
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateTo: dateTo == freezed
+      dateTo: freezed == dateTo
           ? _value.dateTo
           : dateTo // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateFrom: dateFrom == freezed
+      dateFrom: freezed == dateFrom
           ? _value.dateFrom
           : dateFrom // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: startTime == freezed
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      endTime: endTime == freezed
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      instructor: instructor == freezed
+      instructor: freezed == instructor
           ? _value.instructor
           : instructor // ignore: cast_nullable_to_non_nullable
               as String?,
-      restantes: restantes == freezed
+      restantes: freezed == restantes
           ? _value.restantes
           : restantes // ignore: cast_nullable_to_non_nullable
               as int?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TypeModelCopyWith<$Res>? get type {
     if (_value.type == null) {
       return null;
     }
 
     return $TypeModelCopyWith<$Res>(_value.type!, (value) {
-      return _then(_value.copyWith(type: value));
+      return _then(_value.copyWith(type: value) as $Val);
     });
   }
 }
@@ -141,6 +146,7 @@ abstract class _$$_ReserveModelCopyWith<$Res>
           _$_ReserveModel value, $Res Function(_$_ReserveModel) then) =
       __$$_ReserveModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? image,
       String? title,
@@ -159,15 +165,13 @@ abstract class _$$_ReserveModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ReserveModelCopyWithImpl<$Res>
-    extends _$ReserveModelCopyWithImpl<$Res>
+    extends _$ReserveModelCopyWithImpl<$Res, _$_ReserveModel>
     implements _$$_ReserveModelCopyWith<$Res> {
   __$$_ReserveModelCopyWithImpl(
       _$_ReserveModel _value, $Res Function(_$_ReserveModel) _then)
-      : super(_value, (v) => _then(v as _$_ReserveModel));
+      : super(_value, _then);
 
-  @override
-  _$_ReserveModel get _value => super._value as _$_ReserveModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? image = freezed,
@@ -182,43 +186,43 @@ class __$$_ReserveModelCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_$_ReserveModel(
-      image: image == freezed
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateTo: dateTo == freezed
+      dateTo: freezed == dateTo
           ? _value.dateTo
           : dateTo // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateFrom: dateFrom == freezed
+      dateFrom: freezed == dateFrom
           ? _value.dateFrom
           : dateFrom // ignore: cast_nullable_to_non_nullable
               as String?,
-      startTime: startTime == freezed
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      endTime: endTime == freezed
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      instructor: instructor == freezed
+      instructor: freezed == instructor
           ? _value.instructor
           : instructor // ignore: cast_nullable_to_non_nullable
               as String?,
-      restantes: restantes == freezed
+      restantes: freezed == restantes
           ? _value.restantes
           : restantes // ignore: cast_nullable_to_non_nullable
               as int?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as TypeModel?,
@@ -292,37 +296,31 @@ class _$_ReserveModel with DiagnosticableTreeMixin implements _ReserveModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReserveModel &&
-            const DeepCollectionEquality().equals(other.image, image) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.dateTo, dateTo) &&
-            const DeepCollectionEquality().equals(other.dateFrom, dateFrom) &&
-            const DeepCollectionEquality().equals(other.startTime, startTime) &&
-            const DeepCollectionEquality().equals(other.endTime, endTime) &&
-            const DeepCollectionEquality()
-                .equals(other.instructor, instructor) &&
-            const DeepCollectionEquality().equals(other.restantes, restantes) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.dateTo, dateTo) || other.dateTo == dateTo) &&
+            (identical(other.dateFrom, dateFrom) ||
+                other.dateFrom == dateFrom) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.instructor, instructor) ||
+                other.instructor == instructor) &&
+            (identical(other.restantes, restantes) ||
+                other.restantes == restantes) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(image),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(dateTo),
-      const DeepCollectionEquality().hash(dateFrom),
-      const DeepCollectionEquality().hash(startTime),
-      const DeepCollectionEquality().hash(endTime),
-      const DeepCollectionEquality().hash(instructor),
-      const DeepCollectionEquality().hash(restantes),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode => Object.hash(runtimeType, image, title, description,
+      dateTo, dateFrom, startTime, endTime, instructor, restantes, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ReserveModelCopyWith<_$_ReserveModel> get copyWith =>
       __$$_ReserveModelCopyWithImpl<_$_ReserveModel>(this, _$identity);
 

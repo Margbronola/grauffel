@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'book_course_model.dart';
 
@@ -35,7 +35,8 @@ mixin _$BookCourseModel {
 abstract class $BookCourseModelCopyWith<$Res> {
   factory $BookCourseModelCopyWith(
           BookCourseModel value, $Res Function(BookCourseModel) then) =
-      _$BookCourseModelCopyWithImpl<$Res>;
+      _$BookCourseModelCopyWithImpl<$Res, BookCourseModel>;
+  @useResult
   $Res call(
       {int? course_id,
       List<GunModel>? guns,
@@ -44,14 +45,16 @@ abstract class $BookCourseModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BookCourseModelCopyWithImpl<$Res>
+class _$BookCourseModelCopyWithImpl<$Res, $Val extends BookCourseModel>
     implements $BookCourseModelCopyWith<$Res> {
   _$BookCourseModelCopyWithImpl(this._value, this._then);
 
-  final BookCourseModel _value;
   // ignore: unused_field
-  final $Res Function(BookCourseModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? course_id = freezed,
@@ -60,23 +63,23 @@ class _$BookCourseModelCopyWithImpl<$Res>
     Object? equipments = freezed,
   }) {
     return _then(_value.copyWith(
-      course_id: course_id == freezed
+      course_id: freezed == course_id
           ? _value.course_id
           : course_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value.guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value.ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      equipments: equipments == freezed
+      equipments: freezed == equipments
           ? _value.equipments
           : equipments // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -87,6 +90,7 @@ abstract class _$$_BookCourseModelCopyWith<$Res>
           _$_BookCourseModel value, $Res Function(_$_BookCourseModel) then) =
       __$$_BookCourseModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? course_id,
       List<GunModel>? guns,
@@ -96,15 +100,13 @@ abstract class _$$_BookCourseModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_BookCourseModelCopyWithImpl<$Res>
-    extends _$BookCourseModelCopyWithImpl<$Res>
+    extends _$BookCourseModelCopyWithImpl<$Res, _$_BookCourseModel>
     implements _$$_BookCourseModelCopyWith<$Res> {
   __$$_BookCourseModelCopyWithImpl(
       _$_BookCourseModel _value, $Res Function(_$_BookCourseModel) _then)
-      : super(_value, (v) => _then(v as _$_BookCourseModel));
+      : super(_value, _then);
 
-  @override
-  _$_BookCourseModel get _value => super._value as _$_BookCourseModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? course_id = freezed,
@@ -113,19 +115,19 @@ class __$$_BookCourseModelCopyWithImpl<$Res>
     Object? equipments = freezed,
   }) {
     return _then(_$_BookCourseModel(
-      course_id: course_id == freezed
+      course_id: freezed == course_id
           ? _value.course_id
           : course_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      guns: guns == freezed
+      guns: freezed == guns
           ? _value._guns
           : guns // ignore: cast_nullable_to_non_nullable
               as List<GunModel>?,
-      ammunitions: ammunitions == freezed
+      ammunitions: freezed == ammunitions
           ? _value._ammunitions
           : ammunitions // ignore: cast_nullable_to_non_nullable
               as List<AmmunitionsModel>?,
-      equipments: equipments == freezed
+      equipments: freezed == equipments
           ? _value._equipments
           : equipments // ignore: cast_nullable_to_non_nullable
               as List<EquipmentModel>?,
@@ -155,6 +157,7 @@ class _$_BookCourseModel implements _BookCourseModel {
   List<GunModel>? get guns {
     final value = _guns;
     if (value == null) return null;
+    if (_guns is EqualUnmodifiableListView) return _guns;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -164,6 +167,7 @@ class _$_BookCourseModel implements _BookCourseModel {
   List<AmmunitionsModel>? get ammunitions {
     final value = _ammunitions;
     if (value == null) return null;
+    if (_ammunitions is EqualUnmodifiableListView) return _ammunitions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -173,6 +177,7 @@ class _$_BookCourseModel implements _BookCourseModel {
   List<EquipmentModel>? get equipments {
     final value = _equipments;
     if (value == null) return null;
+    if (_equipments is EqualUnmodifiableListView) return _equipments;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -187,7 +192,8 @@ class _$_BookCourseModel implements _BookCourseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BookCourseModel &&
-            const DeepCollectionEquality().equals(other.course_id, course_id) &&
+            (identical(other.course_id, course_id) ||
+                other.course_id == course_id) &&
             const DeepCollectionEquality().equals(other._guns, _guns) &&
             const DeepCollectionEquality()
                 .equals(other._ammunitions, _ammunitions) &&
@@ -199,13 +205,14 @@ class _$_BookCourseModel implements _BookCourseModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(course_id),
+      course_id,
       const DeepCollectionEquality().hash(_guns),
       const DeepCollectionEquality().hash(_ammunitions),
       const DeepCollectionEquality().hash(_equipments));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BookCourseModelCopyWith<_$_BookCourseModel> get copyWith =>
       __$$_BookCourseModelCopyWithImpl<_$_BookCourseModel>(this, _$identity);
 

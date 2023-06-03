@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'document_model.dart';
 
@@ -46,7 +46,8 @@ mixin _$DocumentModel {
 abstract class $DocumentModelCopyWith<$Res> {
   factory $DocumentModelCopyWith(
           DocumentModel value, $Res Function(DocumentModel) then) =
-      _$DocumentModelCopyWithImpl<$Res>;
+      _$DocumentModelCopyWithImpl<$Res, DocumentModel>;
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -67,14 +68,16 @@ abstract class $DocumentModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DocumentModelCopyWithImpl<$Res>
+class _$DocumentModelCopyWithImpl<$Res, $Val extends DocumentModel>
     implements $DocumentModelCopyWith<$Res> {
   _$DocumentModelCopyWithImpl(this._value, this._then);
 
-  final DocumentModel _value;
   // ignore: unused_field
-  final $Res Function(DocumentModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -93,66 +96,67 @@ class _$DocumentModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_document_type_id: client_document_type_id == freezed
+      client_document_type_id: freezed == client_document_type_id
           ? _value.client_document_type_id
           : client_document_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_base64_front: image_base64_front == freezed
+      image_base64_front: freezed == image_base64_front
           ? _value.image_base64_front
           : image_base64_front // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_base64_back: image_base64_back == freezed
+      image_base64_back: freezed == image_base64_back
           ? _value.image_base64_back
           : image_base64_back // ignore: cast_nullable_to_non_nullable
               as String?,
-      path: path == freezed
+      path: freezed == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String?,
-      path2: path2 == freezed
+      path2: freezed == path2
           ? _value.path2
           : path2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiration: expiration == freezed
+      expiration: freezed == expiration
           ? _value.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      is_valid: is_valid == freezed
+      is_valid: freezed == is_valid
           ? _value.is_valid
           : is_valid // ignore: cast_nullable_to_non_nullable
               as int?,
-      is_new: is_new == freezed
+      is_new: freezed == is_new
           ? _value.is_new
           : is_new // ignore: cast_nullable_to_non_nullable
               as int?,
-      is_viewed: is_viewed == freezed
+      is_viewed: freezed == is_viewed
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_document_types: client_document_types == freezed
+      client_document_types: freezed == client_document_types
           ? _value.client_document_types
           : client_document_types // ignore: cast_nullable_to_non_nullable
               as ClientDocumentsTypesModel?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ClientDocumentsTypesModelCopyWith<$Res>? get client_document_types {
     if (_value.client_document_types == null) {
       return null;
@@ -160,7 +164,7 @@ class _$DocumentModelCopyWithImpl<$Res>
 
     return $ClientDocumentsTypesModelCopyWith<$Res>(
         _value.client_document_types!, (value) {
-      return _then(_value.copyWith(client_document_types: value));
+      return _then(_value.copyWith(client_document_types: value) as $Val);
     });
   }
 }
@@ -172,6 +176,7 @@ abstract class _$$_DocumentModelCopyWith<$Res>
           _$_DocumentModel value, $Res Function(_$_DocumentModel) then) =
       __$$_DocumentModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       int? client_id,
@@ -194,15 +199,13 @@ abstract class _$$_DocumentModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_DocumentModelCopyWithImpl<$Res>
-    extends _$DocumentModelCopyWithImpl<$Res>
+    extends _$DocumentModelCopyWithImpl<$Res, _$_DocumentModel>
     implements _$$_DocumentModelCopyWith<$Res> {
   __$$_DocumentModelCopyWithImpl(
       _$_DocumentModel _value, $Res Function(_$_DocumentModel) _then)
-      : super(_value, (v) => _then(v as _$_DocumentModel));
+      : super(_value, _then);
 
-  @override
-  _$_DocumentModel get _value => super._value as _$_DocumentModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -221,59 +224,59 @@ class __$$_DocumentModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
   }) {
     return _then(_$_DocumentModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_id: client_id == freezed
+      client_id: freezed == client_id
           ? _value.client_id
           : client_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_document_type_id: client_document_type_id == freezed
+      client_document_type_id: freezed == client_document_type_id
           ? _value.client_document_type_id
           : client_document_type_id // ignore: cast_nullable_to_non_nullable
               as int?,
-      image_base64_front: image_base64_front == freezed
+      image_base64_front: freezed == image_base64_front
           ? _value.image_base64_front
           : image_base64_front // ignore: cast_nullable_to_non_nullable
               as String?,
-      image_base64_back: image_base64_back == freezed
+      image_base64_back: freezed == image_base64_back
           ? _value.image_base64_back
           : image_base64_back // ignore: cast_nullable_to_non_nullable
               as String?,
-      path: path == freezed
+      path: freezed == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String?,
-      path2: path2 == freezed
+      path2: freezed == path2
           ? _value.path2
           : path2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiration: expiration == freezed
+      expiration: freezed == expiration
           ? _value.expiration
           : expiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      created_at: created_at == freezed
+      created_at: freezed == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      is_valid: is_valid == freezed
+      is_valid: freezed == is_valid
           ? _value.is_valid
           : is_valid // ignore: cast_nullable_to_non_nullable
               as int?,
-      is_new: is_new == freezed
+      is_new: freezed == is_new
           ? _value.is_new
           : is_new // ignore: cast_nullable_to_non_nullable
               as int?,
-      is_viewed: is_viewed == freezed
+      is_viewed: freezed == is_viewed
           ? _value.is_viewed
           : is_viewed // ignore: cast_nullable_to_non_nullable
               as int?,
-      client_document_types: client_document_types == freezed
+      client_document_types: freezed == client_document_types
           ? _value.client_document_types
           : client_document_types // ignore: cast_nullable_to_non_nullable
               as ClientDocumentsTypesModel?,
-      updated_at: updated_at == freezed
+      updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -342,50 +345,55 @@ class _$_DocumentModel implements _DocumentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DocumentModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.client_id, client_id) &&
-            const DeepCollectionEquality().equals(
-                other.client_document_type_id, client_document_type_id) &&
-            const DeepCollectionEquality()
-                .equals(other.image_base64_front, image_base64_front) &&
-            const DeepCollectionEquality()
-                .equals(other.image_base64_back, image_base64_back) &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.path2, path2) &&
-            const DeepCollectionEquality()
-                .equals(other.expiration, expiration) &&
-            const DeepCollectionEquality()
-                .equals(other.created_at, created_at) &&
-            const DeepCollectionEquality().equals(other.is_valid, is_valid) &&
-            const DeepCollectionEquality().equals(other.is_new, is_new) &&
-            const DeepCollectionEquality().equals(other.is_viewed, is_viewed) &&
-            const DeepCollectionEquality()
-                .equals(other.client_document_types, client_document_types) &&
-            const DeepCollectionEquality()
-                .equals(other.updated_at, updated_at));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.client_id, client_id) ||
+                other.client_id == client_id) &&
+            (identical(
+                    other.client_document_type_id, client_document_type_id) ||
+                other.client_document_type_id == client_document_type_id) &&
+            (identical(other.image_base64_front, image_base64_front) ||
+                other.image_base64_front == image_base64_front) &&
+            (identical(other.image_base64_back, image_base64_back) ||
+                other.image_base64_back == image_base64_back) &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.path2, path2) || other.path2 == path2) &&
+            (identical(other.expiration, expiration) ||
+                other.expiration == expiration) &&
+            (identical(other.created_at, created_at) ||
+                other.created_at == created_at) &&
+            (identical(other.is_valid, is_valid) ||
+                other.is_valid == is_valid) &&
+            (identical(other.is_new, is_new) || other.is_new == is_new) &&
+            (identical(other.is_viewed, is_viewed) ||
+                other.is_viewed == is_viewed) &&
+            (identical(other.client_document_types, client_document_types) ||
+                other.client_document_types == client_document_types) &&
+            (identical(other.updated_at, updated_at) ||
+                other.updated_at == updated_at));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(client_id),
-      const DeepCollectionEquality().hash(client_document_type_id),
-      const DeepCollectionEquality().hash(image_base64_front),
-      const DeepCollectionEquality().hash(image_base64_back),
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(path2),
-      const DeepCollectionEquality().hash(expiration),
-      const DeepCollectionEquality().hash(created_at),
-      const DeepCollectionEquality().hash(is_valid),
-      const DeepCollectionEquality().hash(is_new),
-      const DeepCollectionEquality().hash(is_viewed),
-      const DeepCollectionEquality().hash(client_document_types),
-      const DeepCollectionEquality().hash(updated_at));
+      id,
+      client_id,
+      client_document_type_id,
+      image_base64_front,
+      image_base64_back,
+      path,
+      path2,
+      expiration,
+      created_at,
+      is_valid,
+      is_new,
+      is_viewed,
+      client_document_types,
+      updated_at);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DocumentModelCopyWith<_$_DocumentModel> get copyWith =>
       __$$_DocumentModelCopyWithImpl<_$_DocumentModel>(this, _$identity);
 
