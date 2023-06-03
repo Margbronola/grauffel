@@ -20,7 +20,7 @@ class ExperienceEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ExperienceEditViewModel>.reactive(
-      onModelReady: (model) => model.init(extraDetails),
+      onViewModelReady: (model) => model.init(extraDetails),
       builder: (context, model, child) => Scaffold(
         backgroundColor: kcWhite,
         appBar: AppBar(

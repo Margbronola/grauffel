@@ -21,7 +21,7 @@ class ReservationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ReservationViewModel>.reactive(
-      onModelReady: (model) async => model.init(),
+      onViewModelReady: (model) async => model.init(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
         extendBodyBehindAppBar: true,

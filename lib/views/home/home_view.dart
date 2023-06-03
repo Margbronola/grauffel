@@ -25,7 +25,7 @@ class _HomeViewState extends State<HomeView> with BookingAPIService {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     return ViewModelBuilder<HomeViewModel>.reactive(
-      onModelReady: (model) async {
+      onViewModelReady: (model) async {
         model.initState(context);
         await fetchBookingHistory(token: model.userService.token!);
       },

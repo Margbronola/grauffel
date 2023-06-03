@@ -21,7 +21,7 @@ class EquipmentView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<EquipmentViewModel>.reactive(
-      onModelReady: (model) async => model.init(),
+      onViewModelReady: (model) async => model.init(),
       builder: (context, model, child) => model.isBusy
           ? const StepeShimmerLoader()
           : Column(

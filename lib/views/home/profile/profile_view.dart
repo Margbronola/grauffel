@@ -21,7 +21,8 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ProfileViewModel>.reactive(
-      onModelReady: (model) async => await model.init(isFromHome: isFromHome),
+      onViewModelReady: (model) async =>
+          await model.init(isFromHome: isFromHome),
       builder: (context, model, child) => Scaffold(
           body: NestedScrollView(
         headerSliverBuilder: (context, value) {

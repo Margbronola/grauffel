@@ -22,7 +22,7 @@ class BrandFilterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<BrandFilterViewModel>.reactive(
-      onModelReady: (model) async =>
+      onViewModelReady: (model) async =>
           model.init(filterList: filterListType, isGUn: isGUn),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(

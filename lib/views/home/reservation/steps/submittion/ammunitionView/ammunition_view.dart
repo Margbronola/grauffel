@@ -26,7 +26,7 @@ class AmmunitionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<AmmunitionViewModel>.reactive(
-      onModelReady: (model) => model.init(),
+      onViewModelReady: (model) => model.init(),
       builder: (context, model, child) => model.isBusy
           ? const StepeShimmerLoader()
           : Column(
