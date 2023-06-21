@@ -1,5 +1,9 @@
 // ignore_for_file: avoid_print, non_constant_identifier_names
+import 'dart:io';
 
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/gunModel/country_model.dart';
@@ -7,9 +11,8 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/countries_service.dart';
 import 'package:egczacademy/services/user_api_service.dart';
 import 'package:egczacademy/services/user_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -18,10 +21,10 @@ import '../../../shared/widget/custom_picker.dart';
 class InformationEditViewModel extends ReactiveViewModel {
   final UserAPIService _userAPIService = locator<UserAPIService>();
   final UserService _userService = locator<UserService>();
-  final ImagePicker _picker = ImagePicker();
   final NavigationService _navigationService = locator<NavigationService>();
   final CountriesService _countriesService = locator<CountriesService>();
-  XFile? image;
+  String? path;
+  File? file;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
@@ -171,9 +174,9 @@ class InformationEditViewModel extends ReactiveViewModel {
           ),
           token: _userService.token!);
 
-      if (image != null) {
+      if (path != null) {
         await _userAPIService.updateAvatar(
-            image: image, token: _userService.token!);
+            image: path, token: _userService.token!);
       }
       if (update) {
         await updateSuccess();
@@ -200,13 +203,29 @@ class InformationEditViewModel extends ReactiveViewModel {
   void changeProfilePick() {}
   Future<void> pickInGallary() async {
     try {
-      image = await _picker.pickImage(source: ImageSource.gallery);
-
-      debugPrint("image : $image");
+      List<Media>? res = await ImagesPicker.pick(pickType: PickType.image);
+      print(res);
+      if (res != null) {
+        print(res.map((e) => e.path).toList());
+        path = res[0].thumbPath;
+        file = await downloadFile(res[0].path);
+        // bool status = await ImagesPicker.saveImageToAlbum(File(res[0]?.path));
+        print(path);
+      }
       notifyListeners();
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<File> downloadFile(String url) async {
+    Dio simple = Dio();
+    String savePath = '${Directory.systemTemp.path}/${url.split('/').last}';
+    await simple.download(url, savePath,
+        options: Options(responseType: ResponseType.bytes));
+    print(savePath);
+    File file = File(savePath);
+    return file;
   }
 
   void showDatePicker2(context) async {

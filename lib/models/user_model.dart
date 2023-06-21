@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:egczacademy/models/gunModel/country_model.dart';
+import 'package:egczacademy/models/subscription_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'client_subscription_model.dart';
 import 'image_model.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -37,7 +37,7 @@ class UserModel with _$UserModel {
     ImageModel? image,
     String? birthday,
     int? registered,
-    // ClientSubscriptionModel? active_client_subscription,
+    SubscriptionModel? active_client_subscription,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

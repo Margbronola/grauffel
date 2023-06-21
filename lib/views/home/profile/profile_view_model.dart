@@ -10,7 +10,7 @@ import 'package:egczacademy/views/home/profile/experience/experience_edit_view.d
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.router.dart';
@@ -24,7 +24,6 @@ import 'dart:math';
 
 class ProfileViewModel extends ReactiveViewModel {
   final UserService _userService = locator<UserService>();
-  final ImagePicker _picker = ImagePicker();
   final NavigationService _navigationService = locator<NavigationService>();
   final DocumentAPIService _documentAPIService = locator<DocumentAPIService>();
   final DocumentService _documentService = locator<DocumentService>();
@@ -180,15 +179,27 @@ class ProfileViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
-  Future<XFile?> pickInGallary() async {
-    XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    return image;
+  Future<String?> pickInGallary() async {
+    List<Media>? res = await ImagesPicker.pick(
+      pickType: PickType.image,
+    );
+
+    print("IMAGE: $res");
+    return null;
+    // String? image = await _picker. .pickImage(source: ImageSource.gallery);
+    // return image;
   }
 
   // Capture a photo
-  Future<XFile?> captureImage() async {
-    XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    return image;
+  Future<String?> captureImage() async {
+    List<Media>? res = await ImagesPicker.openCamera(
+      pickType: PickType.image,
+    );
+
+    print("IMAGE: $res");
+    return null;
+    // XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    // return image;
   }
 
   void editInformation() {

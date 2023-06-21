@@ -2,7 +2,6 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:egczacademy/firebase_options.dart';
-import 'package:egczacademy/views/shared/color.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,10 +12,11 @@ import 'package:localization/localization.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/app.locator.dart';
 import 'app/app.router.dart';
+import 'views/shared/color.dart';
+import 'views/shared/widget/pallete.dart';
 import 'views/shared/widget/dialog/initialize_prefs.dart';
 import 'views/shared/widget/dialog/setup_dialog_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'views/shared/widget/pallete.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           return const Locale('fr', 'FR');
         },
         supportedLocales: const [
-          // Locale('en', 'US'),
+          Locale('en', 'US'),
           Locale('fr', 'FR'),
         ],
         localizationsDelegates: [

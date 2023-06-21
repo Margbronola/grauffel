@@ -4,9 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../app/datacacher.dart';
+import '../app/global.dart';
+
 class FireBaseAuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
+  final DataCacher _cacher = DataCacher.instance;
 
   Future<String?> signIn(
       {required String email, required String password}) async {
@@ -16,7 +20,7 @@ class FireBaseAuthService {
           email: email, password: password);
 
       print("FIREBASE TOKEN : ${await user.user!.getIdToken()}");
-
+      if (user.user == null) return null;
       return await user.user!.getIdToken();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

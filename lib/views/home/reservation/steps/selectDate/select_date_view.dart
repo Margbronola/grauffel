@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:egczacademy/views/shared/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,8 +77,29 @@ class SelectDateView extends StatelessWidget {
                 color: customGrey,
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10),
                 child: SizedBox(
-                  height: 100.h,
-                  // child: DatePicker(model.currentDate,
+                  height: 120.h,
+                  child: DatePicker(
+                    // DateTime.now(),
+                    model.currentDate,
+                    width: size(context).width * 0.17,
+                    initialSelectedDate: model.selectedDate,
+                    selectionColor: buttonColor,
+                    deactivatedColor: Colors.grey,
+                    selectedTextColor: Colors.white,
+                    monthTextStyle: const TextStyle(color: Colors.transparent),
+                    onDateChange: model.setDate,
+                    // inactiveDates: [DateTime.now()],
+                    locale: 'fr_FR',
+                    controller: model.controller,
+                    daysCount: model.numDaysTotal,
+                    dayTextStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'ProductSans',
+                      color: backgroundColor,
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                  // DatePicker(model.currentDate,
                   //     // model.scrollController,
                   //     width: size(context).width * 0.17,
                   //     selectionColor: buttonColor,
@@ -85,13 +109,13 @@ class SelectDateView extends StatelessWidget {
                   //     inactiveDates: [DateTime.now()],
                   //     initialSelectedDate: model.selectedDate,
                   //     locale: 'fr_FR',
-                  //     controller: model.controller,
-                  //     daysCount: model.numDaysTotal,
-                  //     dayTextStyle: TextStyle(
-                  //         fontWeight: FontWeight.bold,
-                  //         fontFamily: 'ProductSans',
-                  //         color: backgroundColor,
-                  //         fontSize: 15.sp)),
+                  // controller: model.controller,
+                  // daysCount: model.numDaysTotal,
+                  // dayTextStyle: TextStyle(
+                  //     fontWeight: FontWeight.bold,
+                  //     fontFamily: 'ProductSans',
+                  //     color: backgroundColor,
+                  //     fontSize: 15.sp)),
                 ),
               ),
               model.isBusy

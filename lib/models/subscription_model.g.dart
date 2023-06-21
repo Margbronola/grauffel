@@ -26,6 +26,11 @@ _$_SubscriptionModel _$$_SubscriptionModelFromJson(Map<String, dynamic> json) =>
           ? null
           : SubscriptionTypeModel.fromJson(
               json['subscription_type'] as Map<String, dynamic>),
+      paymentMethodToken: json['paymentMethodToken'] as String?,
+      subscriptionId: json['subscriptionId'] as String?,
+      bank: json['bank'] as int?,
+      recurring_cycle: json['recurring_cycle'] as int?,
+      recurring_status: json['recurring_status'] as int?,
       end_date: json['end_date'] == null
           ? null
           : DateTime.parse(json['end_date'] as String),
@@ -43,5 +48,10 @@ Map<String, dynamic> _$$_SubscriptionModelToJson(
       'updated_at': instance.updated_at?.toIso8601String(),
       'start_date': instance.start_date?.toIso8601String(),
       'subscription_type': instance.subscription_type,
+      'paymentMethodToken': instance.paymentMethodToken,
+      'subscriptionId': instance.subscriptionId,
+      'bank': instance.bank,
+      'recurring_cycle': instance.recurring_cycle,
+      'recurring_status': instance.recurring_status,
       'end_date': instance.end_date?.toIso8601String(),
     };

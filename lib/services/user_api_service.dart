@@ -7,7 +7,6 @@ import 'package:egczacademy/models/user_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
 import '../app/global.dart';
 
 class UserAPIService {
@@ -39,39 +38,54 @@ class UserAPIService {
   }
 
   Future<UserModel?> fethUserDetailsApi({required String token}) async {
+    print("TOKEN $token");
+    print("sumulod didi");
     try {
-      final respo =
-          await http.get(Uri.parse("$urlApi/client/details"), headers: {
+      return await http.get(Uri.parse("$urlApi/client/details"), headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
-      });
-
-      if (respo.statusCode == 200) {
+      }).then((respo) {
         var data = json.decode(respo.body);
-        loggedUser = data;
-        print("USER DETAILS: $data");
-        try {
-          debugPrint("FETCH USER PASS");
+        print("FETCH USER PASS: $data");
+        if (respo.statusCode == 200 || respo.statusCode == 201) {
           return UserModel.fromJson(data);
-        } catch (e) {
-          print(e);
-          debugPrint("FROMJSON FAIL");
         }
-      } else {
-        debugPrint("SERVER FAIL fetch user details");
-      }
-    } catch (e) {
-      print(e);
+        return null;
+      });
+      // try {
+      //   final respo =
+      //       await http.get(Uri.parse("$urlApi/client/details"), headers: {
+      //     "Accept": "application/json",
+      //     "Authorization": "Bearer $token",
+      //   });
+
+      //   if (respo.statusCode == 200) {
+      //     var data = json.decode(respo.body);
+      //     loggedUser = data;
+      //     print("USER DETAILS: $data");
+      //     try {
+      //       debugPrint("FETCH USER PASS");
+      //       return UserModel.fromJson(data);
+      //     } catch (e) {
+      //       print("FETCHING $e");
+      //       debugPrint("FROMJSON FAIL");
+      //     }
+      //   } else {
+      //     debugPrint("SERVER FAIL fetch user details");
+      //   }
+    } catch (e, s) {
+      print("ERROR FETCHING: $e");
+      print("ERROR FETCHING: $s");
       debugPrint("FETCH USER FAIL");
     }
     return null;
   }
 
-  Future<void> updateAvatar({XFile? image, required String token}) async {
+  Future<void> updateAvatar({String? image, required String token}) async {
     try {
       final respo =
           await http.post(Uri.parse("$urlApi/client/update-avatar"), body: {
-        "avatar": convertToBase64(File(image!.path))
+        "avatar": convertToBase64(File(image!))
       }, headers: {
         "Accept": "application/json",
         "Authorization": "Bearer $token",
@@ -228,6 +242,7 @@ class UserAPIService {
     required String token,
   }) async {
     var fcmToken = await messaging.getToken();
+    print("FCM TOKEN: $fcmToken");
     try {
       final respo =
           await http.post(Uri.parse("$urlApi/client/remove-fcm"), body: {

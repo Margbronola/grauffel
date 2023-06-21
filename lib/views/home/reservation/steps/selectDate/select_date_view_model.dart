@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_print
 
+import 'package:date_picker_timetable/date_picker_widget.dart';
 import 'package:egczacademy/models/time_model.dart';
 import 'package:egczacademy/services/booking_api_service.dart';
 import 'package:egczacademy/services/booking_service.dart';
@@ -15,7 +16,7 @@ class SelectDateViewModel extends ReactiveViewModel {
   final BookingAPIService _bookingAPIService = locator<BookingAPIService>();
   final BookingService _bookingService = locator<BookingService>();
   final UserService _userService = locator<UserService>();
-  // final DatePickerController controller = DatePickerController();
+  final DatePickerController controller = DatePickerController();
   late ScrollController scrollController = ScrollController();
   final DateFormat formatter = DateFormat('yMMM');
   DateTime selectedDate = DateTime.now();

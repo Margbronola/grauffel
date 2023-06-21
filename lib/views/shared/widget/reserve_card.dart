@@ -39,7 +39,7 @@ class _ReserveCardState extends State<ReserveCard> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         child: SizedBox(
-          height: 175.h,
+          height: 180.h,
           child: Card(
             elevation: 3,
             color: kcWhite,

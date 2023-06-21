@@ -6,7 +6,8 @@ import '../models/user_model.dart';
 
 final String urlServer = EnvHelper.url;
 final String urlApi = "$urlServer/api";
-
+String? accesstoken;
+String? fcmToken;
 UserModel? loggedUser;
 
 const String imageOwner = "assets/images/owner.png";
