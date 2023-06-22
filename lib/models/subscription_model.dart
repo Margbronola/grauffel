@@ -18,6 +18,11 @@ class SubscriptionModel with _$SubscriptionModel {
       DateTime? updated_at,
       DateTime? start_date,
       SubscriptionTypeModel? subscription_type,
+      String? paymentMethodToken,
+      String? subscriptionId,
+      int? bank,
+      int? recurring_cycle,
+      int? recurring_status,
       DateTime? end_date}) = _SubscriptionModel;
   //pivot
 

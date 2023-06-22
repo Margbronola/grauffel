@@ -38,6 +38,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
           : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
       birthday: json['birthday'] as String?,
       registered: json['registered'] as int?,
+      active_client_subscription: json['active_client_subscription'] == null
+          ? null
+          : SubscriptionModel.fromJson(
+              json['active_client_subscription'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -69,4 +73,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'image': instance.image,
       'birthday': instance.birthday,
       'registered': instance.registered,
+      'active_client_subscription': instance.active_client_subscription,
     };

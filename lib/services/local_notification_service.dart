@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -11,49 +12,27 @@ class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-//   static void initialize() async {
-//     // Android initialization
-//     const AndroidInitializationSettings initializationSettingsAndroid =
-//         AndroidInitializationSettings('@mipmap/ic_launcher');
-//     const DarwinInitializationSettings iosInitialization =
-//         DarwinInitializationSettings(
-//       requestAlertPermission: true,
-//       requestBadgePermission: false,
-//       requestSoundPermission: false,
-//       // onDidReceiveLocalNotification: onDidReceiveLocalNotification,
-//     );
-// // ios initialization
-//     // const IOSInitializationSettings initializationSettingsIOS =
-//     //     IOSInitializationSettings(
-
-//     // );
-
-//     const InitializationSettings initializationSettings =
-//         InitializationSettings(
-//       android: initializationSettingsAndroid,
-//       iOS: iosInitialization,
-//     );
-// // the initialization settings are initialized after they are setted
-//     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
-//   }
-
-  static void initialize() {
+  static void initialize() async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const DarwinInitializationSettings initializationSettingsDarwin =
+        DarwinInitializationSettings(
+      requestSoundPermission: false,
+      requestBadgePermission: false,
+      requestAlertPermission: false,
+    );
     const InitializationSettings initializationSettings =
         InitializationSettings(
-      iOS: DarwinInitializationSettings(
-        requestSoundPermission: false,
-        requestBadgePermission: false,
-        requestAlertPermission: false,
-      ),
-      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsDarwin,
     );
-
-    _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    print("SUMULOD DIDI");
   }
 
   static Future<void> requestPermissions(
       UserAPIService userAPIService, String token) async {
-    debugPrint("PERMISSIONS CHECKING");
+    print("PERMISSIONS CHECKING");
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -77,6 +56,8 @@ class LocalNotificationService {
       userAPIService.removeFCMToken(token: token);
       debugPrint('User declined or has not accepted permission');
     }
+
+    print('User granted permission: ${settings.authorizationStatus}');
   }
 
   Future<String> _downloadAndSaveFile(String url, String fileName) async {
@@ -88,8 +69,10 @@ class LocalNotificationService {
     return filePath;
   }
 
-  Future display({required RemoteMessage notification}) async {
+  void display({required RemoteMessage notification}) async {
     debugPrint("test notification alert");
+    debugPrint("TITLE: ${notification.notification!.title}");
+    debugPrint("NOTIF: ${notification.notification!.body}");
     debugPrint("LINK: ${notification.notification!.android!.link}");
 
     final String largeIconPath = await _downloadAndSaveFile(
@@ -102,13 +85,12 @@ class LocalNotificationService {
       notification.notification!.title,
       notification.notification!.body,
       NotificationDetails(
+        iOS: const DarwinNotificationDetails(),
         android: AndroidNotificationDetails(
           'high_importance_channel',
           'High Importance Notifications',
           channelDescription:
               'This channel is used for important notifications.',
-          // // channelDescription:
-          // 'This channel is used for important notifications.',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',

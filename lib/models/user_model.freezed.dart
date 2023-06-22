@@ -47,6 +47,8 @@ mixin _$UserModel {
   ImageModel? get image => throw _privateConstructorUsedError;
   String? get birthday => throw _privateConstructorUsedError;
   int? get registered => throw _privateConstructorUsedError;
+  SubscriptionModel? get active_client_subscription =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -86,10 +88,12 @@ abstract class $UserModelCopyWith<$Res> {
       String? firebase_id,
       ImageModel? image,
       String? birthday,
-      int? registered});
+      int? registered,
+      SubscriptionModel? active_client_subscription});
 
   $CountryModelCopyWith<$Res>? get country;
   $ImageModelCopyWith<$Res>? get image;
+  $SubscriptionModelCopyWith<$Res>? get active_client_subscription;
 }
 
 /// @nodoc
@@ -132,6 +136,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? image = freezed,
     Object? birthday = freezed,
     Object? registered = freezed,
+    Object? active_client_subscription = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -242,6 +247,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.registered
           : registered // ignore: cast_nullable_to_non_nullable
               as int?,
+      active_client_subscription: freezed == active_client_subscription
+          ? _value.active_client_subscription
+          : active_client_subscription // ignore: cast_nullable_to_non_nullable
+              as SubscriptionModel?,
     ) as $Val);
   }
 
@@ -266,6 +275,19 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
 
     return $ImageModelCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SubscriptionModelCopyWith<$Res>? get active_client_subscription {
+    if (_value.active_client_subscription == null) {
+      return null;
+    }
+
+    return $SubscriptionModelCopyWith<$Res>(_value.active_client_subscription!,
+        (value) {
+      return _then(_value.copyWith(active_client_subscription: value) as $Val);
     });
   }
 }
@@ -304,12 +326,15 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String? firebase_id,
       ImageModel? image,
       String? birthday,
-      int? registered});
+      int? registered,
+      SubscriptionModel? active_client_subscription});
 
   @override
   $CountryModelCopyWith<$Res>? get country;
   @override
   $ImageModelCopyWith<$Res>? get image;
+  @override
+  $SubscriptionModelCopyWith<$Res>? get active_client_subscription;
 }
 
 /// @nodoc
@@ -350,6 +375,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? image = freezed,
     Object? birthday = freezed,
     Object? registered = freezed,
+    Object? active_client_subscription = freezed,
   }) {
     return _then(_$_UserModel(
       id: freezed == id
@@ -460,6 +486,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.registered
           : registered // ignore: cast_nullable_to_non_nullable
               as int?,
+      active_client_subscription: freezed == active_client_subscription
+          ? _value.active_client_subscription
+          : active_client_subscription // ignore: cast_nullable_to_non_nullable
+              as SubscriptionModel?,
     ));
   }
 }
@@ -494,7 +524,8 @@ class _$_UserModel implements _UserModel {
       this.firebase_id,
       this.image,
       this.birthday,
-      this.registered});
+      this.registered,
+      this.active_client_subscription});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -553,10 +584,12 @@ class _$_UserModel implements _UserModel {
   final String? birthday;
   @override
   final int? registered;
+  @override
+  final SubscriptionModel? active_client_subscription;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, initiation_course: $initiation_course, completed_steps: $completed_steps, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday, registered: $registered)';
+    return 'UserModel(id: $id, fullname: $fullname, first_name: $first_name, last_name: $last_name, email: $email, address: $address, zipcode: $zipcode, city: $city, country_id: $country_id, SIA_number: $SIA_number, FFTir_license_number: $FFTir_license_number, credit_points: $credit_points, client_badge: $client_badge, verification: $verification, payment_verification: $payment_verification, status: $status, reduced_mobility: $reduced_mobility, initiation_course: $initiation_course, completed_steps: $completed_steps, experience: $experience, equipment: $equipment, phone_number: $phone_number, country: $country, firebase_id: $firebase_id, image: $image, birthday: $birthday, registered: $registered, active_client_subscription: $active_client_subscription)';
   }
 
   @override
@@ -609,7 +642,11 @@ class _$_UserModel implements _UserModel {
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.registered, registered) ||
-                other.registered == registered));
+                other.registered == registered) &&
+            (identical(other.active_client_subscription,
+                    active_client_subscription) ||
+                other.active_client_subscription ==
+                    active_client_subscription));
   }
 
   @JsonKey(ignore: true)
@@ -642,7 +679,8 @@ class _$_UserModel implements _UserModel {
         firebase_id,
         image,
         birthday,
-        registered
+        registered,
+        active_client_subscription
       ]);
 
   @JsonKey(ignore: true)
@@ -687,7 +725,8 @@ abstract class _UserModel implements UserModel {
       final String? firebase_id,
       final ImageModel? image,
       final String? birthday,
-      final int? registered}) = _$_UserModel;
+      final int? registered,
+      final SubscriptionModel? active_client_subscription}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -746,6 +785,8 @@ abstract class _UserModel implements UserModel {
   String? get birthday;
   @override
   int? get registered;
+  @override
+  SubscriptionModel? get active_client_subscription;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

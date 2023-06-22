@@ -32,11 +32,11 @@ class InformationEditView extends StatelessWidget {
                       children: [
                         Container(
                           color: Colors.black,
-                          width: double.infinity,
+                          width: double.infinity, 
                           child: model.user!.image != null
-                              ? model.image != null
-                                  ? Image.asset(
-                                      model.image!.path,
+                              ? model.file != null
+                                  ? Image.file(
+                                      model.file!,
                                       fit: BoxFit.fitHeight,
                                       scale: 5,
                                     )
@@ -59,11 +59,12 @@ class InformationEditView extends StatelessWidget {
                           children: [
                             const BackButton(),
                             IconButton(
-                                onPressed: model.pickInGallary,
-                                icon: const Icon(
-                                  Icons.camera_alt,
-                                  color: buttonColor,
-                                )),
+                              onPressed: model.pickInGallary,
+                              icon: const Icon(
+                                Icons.camera_alt,
+                                color: buttonColor,
+                              ),
+                            ),
                           ],
                         )
                       ],
@@ -120,26 +121,27 @@ class InformationEditView extends StatelessWidget {
                                           },
                                           decoration: InputDecoration(
                                             label: RichText(
-                                                text: TextSpan(
-                                                    text: 'Adresse mail',
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            'ProductSans',
-                                                        color:
-                                                            model.isEmailFucos
-                                                                ? Colors.black
-                                                                : Colors.grey,
-                                                        fontSize: 12.sp,
-                                                        letterSpacing: 1.3,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    children: const [
+                                              text: TextSpan(
+                                                text: 'Adresse mail',
+                                                style: TextStyle(
+                                                    fontFamily: 'ProductSans',
+                                                    color: model.isEmailFucos
+                                                        ? Colors.black
+                                                        : Colors.grey,
+                                                    fontSize: 12.sp,
+                                                    letterSpacing: 1.3,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                children: const [
                                                   TextSpan(
-                                                      text: ' *',
-                                                      style: TextStyle(
-                                                        color: buttonColor,
-                                                      ))
-                                                ])),
+                                                    text: ' *',
+                                                    style: TextStyle(
+                                                      color: buttonColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                             fillColor: Colors.black,
                                             focusedBorder:
                                                 const UnderlineInputBorder(
@@ -176,26 +178,28 @@ class InformationEditView extends StatelessWidget {
                                           },
                                           decoration: InputDecoration(
                                             label: RichText(
-                                                text: TextSpan(
-                                                    text: 'Prénom',
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            'ProductSans',
-                                                        color: model
-                                                                .isfirstNameFucos
+                                              text: TextSpan(
+                                                text: 'Prénom',
+                                                style: TextStyle(
+                                                    fontFamily: 'ProductSans',
+                                                    color:
+                                                        model.isfirstNameFucos
                                                             ? Colors.black
                                                             : Colors.grey,
-                                                        fontSize: 12.sp,
-                                                        letterSpacing: 1.3,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    children: const [
+                                                    fontSize: 12.sp,
+                                                    letterSpacing: 1.3,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                children: const [
                                                   TextSpan(
-                                                      text: ' *',
-                                                      style: TextStyle(
-                                                        color: buttonColor,
-                                                      ))
-                                                ])),
+                                                    text: ' *',
+                                                    style: TextStyle(
+                                                      color: buttonColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                             fillColor: Colors.black,
                                             focusedBorder:
                                                 const UnderlineInputBorder(
@@ -232,26 +236,27 @@ class InformationEditView extends StatelessWidget {
                                           },
                                           decoration: InputDecoration(
                                             label: RichText(
-                                                text: TextSpan(
-                                                    text: 'Nom de famille',
-                                                    style: TextStyle(
-                                                        fontFamily:
-                                                            'ProductSans',
-                                                        color: model
-                                                                .islastNameFucos
-                                                            ? Colors.black
-                                                            : Colors.grey,
-                                                        fontSize: 12.sp,
-                                                        letterSpacing: 1.3,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                    children: const [
+                                              text: TextSpan(
+                                                text: 'Nom de famille',
+                                                style: TextStyle(
+                                                    fontFamily: 'ProductSans',
+                                                    color: model.islastNameFucos
+                                                        ? Colors.black
+                                                        : Colors.grey,
+                                                    fontSize: 12.sp,
+                                                    letterSpacing: 1.3,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                children: const [
                                                   TextSpan(
-                                                      text: ' *',
-                                                      style: TextStyle(
-                                                        color: buttonColor,
-                                                      ))
-                                                ])),
+                                                    text: ' *',
+                                                    style: TextStyle(
+                                                      color: buttonColor,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                             fillColor: Colors.black,
                                             focusedBorder:
                                                 const UnderlineInputBorder(

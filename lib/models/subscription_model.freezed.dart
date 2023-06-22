@@ -30,6 +30,11 @@ mixin _$SubscriptionModel {
   DateTime? get start_date => throw _privateConstructorUsedError;
   SubscriptionTypeModel? get subscription_type =>
       throw _privateConstructorUsedError;
+  String? get paymentMethodToken => throw _privateConstructorUsedError;
+  String? get subscriptionId => throw _privateConstructorUsedError;
+  int? get bank => throw _privateConstructorUsedError;
+  int? get recurring_cycle => throw _privateConstructorUsedError;
+  int? get recurring_status => throw _privateConstructorUsedError;
   DateTime? get end_date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,6 +59,11 @@ abstract class $SubscriptionModelCopyWith<$Res> {
       DateTime? updated_at,
       DateTime? start_date,
       SubscriptionTypeModel? subscription_type,
+      String? paymentMethodToken,
+      String? subscriptionId,
+      int? bank,
+      int? recurring_cycle,
+      int? recurring_status,
       DateTime? end_date});
 
   $SubscriptionTypeModelCopyWith<$Res>? get subscription_type;
@@ -81,6 +91,11 @@ class _$SubscriptionModelCopyWithImpl<$Res, $Val extends SubscriptionModel>
     Object? updated_at = freezed,
     Object? start_date = freezed,
     Object? subscription_type = freezed,
+    Object? paymentMethodToken = freezed,
+    Object? subscriptionId = freezed,
+    Object? bank = freezed,
+    Object? recurring_cycle = freezed,
+    Object? recurring_status = freezed,
     Object? end_date = freezed,
   }) {
     return _then(_value.copyWith(
@@ -120,6 +135,26 @@ class _$SubscriptionModelCopyWithImpl<$Res, $Val extends SubscriptionModel>
           ? _value.subscription_type
           : subscription_type // ignore: cast_nullable_to_non_nullable
               as SubscriptionTypeModel?,
+      paymentMethodToken: freezed == paymentMethodToken
+          ? _value.paymentMethodToken
+          : paymentMethodToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subscriptionId: freezed == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bank: freezed == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as int?,
+      recurring_cycle: freezed == recurring_cycle
+          ? _value.recurring_cycle
+          : recurring_cycle // ignore: cast_nullable_to_non_nullable
+              as int?,
+      recurring_status: freezed == recurring_status
+          ? _value.recurring_status
+          : recurring_status // ignore: cast_nullable_to_non_nullable
+              as int?,
       end_date: freezed == end_date
           ? _value.end_date
           : end_date // ignore: cast_nullable_to_non_nullable
@@ -159,6 +194,11 @@ abstract class _$$_SubscriptionModelCopyWith<$Res>
       DateTime? updated_at,
       DateTime? start_date,
       SubscriptionTypeModel? subscription_type,
+      String? paymentMethodToken,
+      String? subscriptionId,
+      int? bank,
+      int? recurring_cycle,
+      int? recurring_status,
       DateTime? end_date});
 
   @override
@@ -185,6 +225,11 @@ class __$$_SubscriptionModelCopyWithImpl<$Res>
     Object? updated_at = freezed,
     Object? start_date = freezed,
     Object? subscription_type = freezed,
+    Object? paymentMethodToken = freezed,
+    Object? subscriptionId = freezed,
+    Object? bank = freezed,
+    Object? recurring_cycle = freezed,
+    Object? recurring_status = freezed,
     Object? end_date = freezed,
   }) {
     return _then(_$_SubscriptionModel(
@@ -224,6 +269,26 @@ class __$$_SubscriptionModelCopyWithImpl<$Res>
           ? _value.subscription_type
           : subscription_type // ignore: cast_nullable_to_non_nullable
               as SubscriptionTypeModel?,
+      paymentMethodToken: freezed == paymentMethodToken
+          ? _value.paymentMethodToken
+          : paymentMethodToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subscriptionId: freezed == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bank: freezed == bank
+          ? _value.bank
+          : bank // ignore: cast_nullable_to_non_nullable
+              as int?,
+      recurring_cycle: freezed == recurring_cycle
+          ? _value.recurring_cycle
+          : recurring_cycle // ignore: cast_nullable_to_non_nullable
+              as int?,
+      recurring_status: freezed == recurring_status
+          ? _value.recurring_status
+          : recurring_status // ignore: cast_nullable_to_non_nullable
+              as int?,
       end_date: freezed == end_date
           ? _value.end_date
           : end_date // ignore: cast_nullable_to_non_nullable
@@ -245,6 +310,11 @@ class _$_SubscriptionModel implements _SubscriptionModel {
       this.updated_at,
       this.start_date,
       this.subscription_type,
+      this.paymentMethodToken,
+      this.subscriptionId,
+      this.bank,
+      this.recurring_cycle,
+      this.recurring_status,
       this.end_date});
 
   factory _$_SubscriptionModel.fromJson(Map<String, dynamic> json) =>
@@ -269,11 +339,21 @@ class _$_SubscriptionModel implements _SubscriptionModel {
   @override
   final SubscriptionTypeModel? subscription_type;
   @override
+  final String? paymentMethodToken;
+  @override
+  final String? subscriptionId;
+  @override
+  final int? bank;
+  @override
+  final int? recurring_cycle;
+  @override
+  final int? recurring_status;
+  @override
   final DateTime? end_date;
 
   @override
   String toString() {
-    return 'SubscriptionModel(id: $id, client_id: $client_id, subscription_type_id: $subscription_type_id, price: $price, status: $status, created_at: $created_at, updated_at: $updated_at, start_date: $start_date, subscription_type: $subscription_type, end_date: $end_date)';
+    return 'SubscriptionModel(id: $id, client_id: $client_id, subscription_type_id: $subscription_type_id, price: $price, status: $status, created_at: $created_at, updated_at: $updated_at, start_date: $start_date, subscription_type: $subscription_type, paymentMethodToken: $paymentMethodToken, subscriptionId: $subscriptionId, bank: $bank, recurring_cycle: $recurring_cycle, recurring_status: $recurring_status, end_date: $end_date)';
   }
 
   @override
@@ -296,6 +376,15 @@ class _$_SubscriptionModel implements _SubscriptionModel {
                 other.start_date == start_date) &&
             (identical(other.subscription_type, subscription_type) ||
                 other.subscription_type == subscription_type) &&
+            (identical(other.paymentMethodToken, paymentMethodToken) ||
+                other.paymentMethodToken == paymentMethodToken) &&
+            (identical(other.subscriptionId, subscriptionId) ||
+                other.subscriptionId == subscriptionId) &&
+            (identical(other.bank, bank) || other.bank == bank) &&
+            (identical(other.recurring_cycle, recurring_cycle) ||
+                other.recurring_cycle == recurring_cycle) &&
+            (identical(other.recurring_status, recurring_status) ||
+                other.recurring_status == recurring_status) &&
             (identical(other.end_date, end_date) ||
                 other.end_date == end_date));
   }
@@ -313,6 +402,11 @@ class _$_SubscriptionModel implements _SubscriptionModel {
       updated_at,
       start_date,
       subscription_type,
+      paymentMethodToken,
+      subscriptionId,
+      bank,
+      recurring_cycle,
+      recurring_status,
       end_date);
 
   @JsonKey(ignore: true)
@@ -341,6 +435,11 @@ abstract class _SubscriptionModel implements SubscriptionModel {
       final DateTime? updated_at,
       final DateTime? start_date,
       final SubscriptionTypeModel? subscription_type,
+      final String? paymentMethodToken,
+      final String? subscriptionId,
+      final int? bank,
+      final int? recurring_cycle,
+      final int? recurring_status,
       final DateTime? end_date}) = _$_SubscriptionModel;
 
   factory _SubscriptionModel.fromJson(Map<String, dynamic> json) =
@@ -364,6 +463,16 @@ abstract class _SubscriptionModel implements SubscriptionModel {
   DateTime? get start_date;
   @override
   SubscriptionTypeModel? get subscription_type;
+  @override
+  String? get paymentMethodToken;
+  @override
+  String? get subscriptionId;
+  @override
+  int? get bank;
+  @override
+  int? get recurring_cycle;
+  @override
+  int? get recurring_status;
   @override
   DateTime? get end_date;
   @override
