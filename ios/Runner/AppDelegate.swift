@@ -12,9 +12,6 @@ import flutter_local_notifications
        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
      }
      GeneratedPluginRegistrant.register(with: self)
-//    FlutterLocalNotificationsPlugin.setPluginRegistrantCallback { (registry) in
-//    GeneratedPluginRegistrant.register(with: registry)
-//  }
 
     
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)

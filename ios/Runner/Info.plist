@@ -55,6 +55,8 @@
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+  <string>sms</string>
+  <string>tel</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -91,5 +93,6 @@
 	<false/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
 </dict>
 </plist>
