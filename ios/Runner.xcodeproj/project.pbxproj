@@ -10,6 +10,11 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		520E4D4E293DDDD000595973 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 520E4D4D293DDDD000595973 /* GoogleService-Info.plist */; };
+		5264238B2A4420E700CABD06 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5264238A2A4420E700CABD06 /* UserNotifications.framework */; };
+		5264238D2A4420E700CABD06 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5264238C2A4420E700CABD06 /* UserNotificationsUI.framework */; };
+		526423902A4420E700CABD06 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264238F2A4420E700CABD06 /* NotificationViewController.swift */; };
+		526423932A4420E700CABD06 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526423912A4420E700CABD06 /* MainInterface.storyboard */; };
+		526423972A4420E700CABD06 /* GrauffelApp.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 526423892A4420E700CABD06 /* GrauffelApp.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		52F46C8E2A4318F500AF24D8 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F46C8D2A4318F500AF24D8 /* NotificationService.m */; };
 		52F46C922A4318F500AF24D8 /* ImageNotification.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 52F46C8A2A4318F500AF24D8 /* ImageNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -21,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		526423952A4420E700CABD06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 526423882A4420E700CABD06;
+			remoteInfo = GrauffelApp;
+		};
 		52F46C902A4318F500AF24D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
@@ -37,6 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				526423972A4420E700CABD06 /* GrauffelApp.appex in Embed Foundation Extensions */,
 				52F46C922A4318F500AF24D8 /* ImageNotification.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -62,6 +75,12 @@
 		35646FB7ED2286AD9346334B /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		520E4D4D293DDDD000595973 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../.util/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		526423892A4420E700CABD06 /* GrauffelApp.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GrauffelApp.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5264238A2A4420E700CABD06 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		5264238C2A4420E700CABD06 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		5264238F2A4420E700CABD06 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		526423922A4420E700CABD06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		526423942A4420E700CABD06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52F46C8A2A4318F500AF24D8 /* ImageNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F46C8C2A4318F500AF24D8 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		52F46C8D2A4318F500AF24D8 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
@@ -84,6 +103,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		526423862A4420E700CABD06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5264238D2A4420E700CABD06 /* UserNotificationsUI.framework in Frameworks */,
+				5264238B2A4420E700CABD06 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F46C872A4318F500AF24D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -108,8 +136,20 @@
 			children = (
 				5C2F5C1ED15C47297E7098F3 /* Pods_Runner.framework */,
 				EDCE2370F211693F7B8AA695 /* Pods_ImageNotification.framework */,
+				5264238A2A4420E700CABD06 /* UserNotifications.framework */,
+				5264238C2A4420E700CABD06 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5264238E2A4420E700CABD06 /* GrauffelApp */ = {
+			isa = PBXGroup;
+			children = (
+				5264238F2A4420E700CABD06 /* NotificationViewController.swift */,
+				526423912A4420E700CABD06 /* MainInterface.storyboard */,
+				526423942A4420E700CABD06 /* Info.plist */,
+			);
+			path = GrauffelApp;
 			sourceTree = "<group>";
 		};
 		52F46C8B2A4318F500AF24D8 /* ImageNotification */ = {
@@ -139,6 +179,7 @@
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
 				52F46C8B2A4318F500AF24D8 /* ImageNotification */,
+				5264238E2A4420E700CABD06 /* GrauffelApp */,
 				97C146EF1CF9000F007C117D /* Products */,
 				D248ACEFBA00D7E4F3F92901 /* Pods */,
 				3306EDCB62E573E9EA8A0CC7 /* Frameworks */,
@@ -150,6 +191,7 @@
 			children = (
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				52F46C8A2A4318F500AF24D8 /* ImageNotification.appex */,
+				526423892A4420E700CABD06 /* GrauffelApp.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +228,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		526423882A4420E700CABD06 /* GrauffelApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5264239B2A4420E700CABD06 /* Build configuration list for PBXNativeTarget "GrauffelApp" */;
+			buildPhases = (
+				526423852A4420E700CABD06 /* Sources */,
+				526423862A4420E700CABD06 /* Frameworks */,
+				526423872A4420E700CABD06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GrauffelApp;
+			productName = GrauffelApp;
+			productReference = 526423892A4420E700CABD06 /* GrauffelApp.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		52F46C892A4318F500AF24D8 /* ImageNotification */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52F46C972A4318F500AF24D8 /* Build configuration list for PBXNativeTarget "ImageNotification" */;
@@ -222,6 +281,7 @@
 			);
 			dependencies = (
 				52F46C912A4318F500AF24D8 /* PBXTargetDependency */,
+				526423962A4420E700CABD06 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
@@ -234,9 +294,13 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
+					526423882A4420E700CABD06 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					52F46C892A4318F500AF24D8 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -261,11 +325,20 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				52F46C892A4318F500AF24D8 /* ImageNotification */,
+				526423882A4420E700CABD06 /* GrauffelApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		526423872A4420E700CABD06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				526423932A4420E700CABD06 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F46C882A4318F500AF24D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +456,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		526423852A4420E700CABD06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				526423902A4420E700CABD06 /* NotificationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52F46C862A4318F500AF24D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +484,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		526423962A4420E700CABD06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 526423882A4420E700CABD06 /* GrauffelApp */;
+			targetProxy = 526423952A4420E700CABD06 /* PBXContainerItemProxy */;
+		};
 		52F46C912A4318F500AF24D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 52F46C892A4318F500AF24D8 /* ImageNotification */;
@@ -411,6 +497,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		526423912A4420E700CABD06 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				526423922A4420E700CABD06 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		97C146FA1CF9000F007C117D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -485,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -505,6 +600,108 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Profile;
+		};
+		526423982A4420E700CABD06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 423R7YX74X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GrauffelApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GrauffelApp;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.grauffel.eg-czacademy.GrauffelApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		526423992A4420E700CABD06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 423R7YX74X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GrauffelApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GrauffelApp;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.grauffel.eg-czacademy.GrauffelApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5264239A2A4420E700CABD06 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 423R7YX74X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GrauffelApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GrauffelApp;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.grauffel.eg-czacademy.GrauffelApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Profile;
 		};
@@ -721,6 +918,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -749,6 +947,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -775,6 +974,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5264239B2A4420E700CABD06 /* Build configuration list for PBXNativeTarget "GrauffelApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				526423982A4420E700CABD06 /* Debug */,
+				526423992A4420E700CABD06 /* Release */,
+				5264239A2A4420E700CABD06 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52F46C972A4318F500AF24D8 /* Build configuration list for PBXNativeTarget "ImageNotification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

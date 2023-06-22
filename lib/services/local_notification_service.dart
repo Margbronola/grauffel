@@ -6,11 +6,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:rxdart/rxdart.dart';
 import 'user_api_service.dart';
 
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  final BehaviorSubject<String> behaviorSubject = BehaviorSubject();
 
   static void initialize() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
@@ -62,30 +64,38 @@ class LocalNotificationService {
 
   Future<String> _downloadAndSaveFile(String url, String fileName) async {
     final Directory? directory = await getExternalStorageDirectory();
-    final String filePath = '${directory!.path}/$fileName.png';
+    final String filePath = '${directory!.path}/$fileName';
     final http.Response response = await http.get(Uri.parse(url));
     final File file = File(filePath);
     await file.writeAsBytes(response.bodyBytes);
     return filePath;
   }
 
-  void display({required RemoteMessage notification}) async {
+  Future display({required RemoteMessage notification}) async {
     debugPrint("test notification alert");
     debugPrint("TITLE: ${notification.notification!.title}");
     debugPrint("NOTIF: ${notification.notification!.body}");
-    debugPrint("LINK: ${notification.notification!.android!.link}");
+    debugPrint("LINK: ${notification.notification!.android?.link}");
+    debugPrint("IMAGE: ${notification.notification!.android?.imageUrl}");
+    // debugPrint("LINK: ${notification.notification!.apple?.}");
+    debugPrint("IMAGE: ${notification.notification!.apple?.imageUrl}");
 
     final String largeIconPath = await _downloadAndSaveFile(
-      'https://back.eg-czacademy.com/images/${notification.notification?.android?.imageUrl}',
+      'https://back.eg-czacademy.com/images/${notification.notification!.android?.imageUrl ?? ""}',
       'largeIcon',
     );
+
+    debugPrint("IMAGE: $largeIconPath");
 
     await _flutterLocalNotificationsPlugin.show(
       notification.hashCode,
       notification.notification!.title,
       notification.notification!.body,
       NotificationDetails(
-        iOS: const DarwinNotificationDetails(),
+        iOS: DarwinNotificationDetails(attachments: [
+          DarwinNotificationAttachment(
+              "https://back.eg-czacademy.com/images/${notification.notification!.apple?.imageUrl}")
+        ]),
         android: AndroidNotificationDetails(
           'high_importance_channel',
           'High Importance Notifications',

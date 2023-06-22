@@ -38,45 +38,52 @@ class HomeViewModel extends ReactiveViewModel {
 
   void initState(context) async {
     _homePagingService.setPage(0);
-    _homePagingService.setController(PageController());
     FirebaseMessaging.onBackgroundMessage(backgroundHandler);
     FirebaseMessaging.instance.getInitialMessage();
     LocalNotificationService.requestPermissions(
-        _userAPIService, userService.token!);
-    // LocalNotificationService.initialize();
+      _userAPIService,
+      userService.token!,
+    );
+    _homePagingService.setController(PageController());
 
     String? token = await FirebaseMessaging.instance.getToken();
     debugPrint("Message token: ${token!}");
 
-    // IOS FOREGRUOUND NOTIFICATION
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true, // Required to display a heads up notification
-      badge: true,
-      sound: true,
-    );
-
     //FOREGRUOUND
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      debugPrint("ON Message: $message");
+      print("ON Message: $message");
       LocalNotificationService.initialize();
-      LocalNotificationService().display(notification: message);
+      _messageHandler(message);
+      // LocalNotificationService().display(notification: message);
     });
 
     //BACKGROUND
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {
+    FirebaseMessaging.onMessageOpenedApp.listen((event) async {
       LocalNotificationService.initialize();
       print("Message on App opened ${event.toString()}");
-      debugPrint("OPENEd");
-      LocalNotificationService().display(notification: event);
+      print("OPENEd");
+      print("LINK ${event.notification?.android?.link}");
+      if (event.notification?.android?.link != null) {
+        print("SUMULOD DIDI");
+        String url = 'https://${event.notification?.android?.link}';
+        if (await canLaunch(url)) {
+          await launch(
+            url,
+          );
+        } else {
+          throw 'Could not launch $url';
+        }
+      } else {
+        _messageHandler(event);
+      }
     });
   }
 
-  // Future<void> _messageHandler(RemoteMessage message) async {
-  //   Map<String, dynamic> data = message.data;
-  //   print("NOTIFICATION DETAILS: $data");
-  //   LocalNotificationService().display(notification: message);
-  // }
+  Future<void> _messageHandler(RemoteMessage message) async {
+    Map<String, dynamic> data = message.data;
+    print(data);
+    await LocalNotificationService().display(notification: message);
+  }
 
   void changePage(int index) {
     print("changepage");
