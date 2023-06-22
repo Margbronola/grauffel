@@ -73,11 +73,12 @@ class LocalNotificationService {
 
   Future display({required RemoteMessage notification}) async {
     debugPrint("test notification alert");
+    debugPrint("DATA: ${notification.data}");
     debugPrint("TITLE: ${notification.notification!.title}");
     debugPrint("NOTIF: ${notification.notification!.body}");
-    debugPrint("LINK: ${notification.notification!.android?.link}");
+    debugPrint("LINK: ${notification.data['link']}");
     debugPrint("IMAGE: ${notification.notification!.android?.imageUrl}");
-    // debugPrint("LINK: ${notification.notification!.apple?.}");
+    debugPrint("IOS");
     debugPrint("IMAGE: ${notification.notification!.apple?.imageUrl}");
 
     final String largeIconPath = await _downloadAndSaveFile(

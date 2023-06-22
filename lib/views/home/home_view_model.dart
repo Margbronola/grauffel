@@ -62,14 +62,12 @@ class HomeViewModel extends ReactiveViewModel {
       LocalNotificationService.initialize();
       print("Message on App opened ${event.toString()}");
       print("OPENEd");
-      print("LINK ${event.notification?.android?.link}");
-      if (event.notification?.android?.link != null) {
+      print("LINK ${event.data['link']}");
+      if (event.data['link'] != null) {
         print("SUMULOD DIDI");
-        String url = 'https://${event.notification?.android?.link}';
+        String url = '${event.data['link']}';
         if (await canLaunch(url)) {
-          await launch(
-            url,
-          );
+          await launch(url);
         } else {
           throw 'Could not launch $url';
         }
