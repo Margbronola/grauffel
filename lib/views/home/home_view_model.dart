@@ -1,6 +1,5 @@
 // ignore_for_file: unused_field, avoid_print, deprecated_member_use
 
-import 'package:another_flushbar/flushbar.dart';
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
