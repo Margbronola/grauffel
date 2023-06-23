@@ -1,6 +1,5 @@
 // ignore_for_file: unused_field, avoid_print, deprecated_member_use
 
-import 'package:another_flushbar/flushbar.dart';
 import 'package:egczacademy/app/app.locator.dart';
 import 'package:egczacademy/services/booking_service.dart';
 import 'package:egczacademy/services/home_paging_service.dart';
@@ -26,14 +25,14 @@ class HomeViewModel extends ReactiveViewModel {
   final UserService userService = locator<UserService>();
   final DialogService _dialogService = locator<DialogService>();
   bool get isProfilePage => _homePagingService.isProfileView;
+  final localNotification = LocalNotificationService();
 
   Future<void> backgroundHandler(RemoteMessage message) async {
     print("Handling a background message");
     await Firebase.initializeApp();
-    LocalNotificationService.initialize();
+    // LocalNotificationService.initialize();
+    localNotification.initialize;
     LocalNotificationService().display(notification: message);
-    print("title: ${message.notification!.title}");
-    print("body: ${message.notification!.body}");
   }
 
   void initState(context) async {
@@ -50,21 +49,17 @@ class HomeViewModel extends ReactiveViewModel {
     debugPrint("Message token: ${token!}");
 
     //FOREGRUOUND
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       print("ON Message: $message");
-      LocalNotificationService.initialize();
+      localNotification.initialize();
       _messageHandler(message);
-      // LocalNotificationService().display(notification: message);
     });
 
     //BACKGROUND
     FirebaseMessaging.onMessageOpenedApp.listen((event) async {
-      LocalNotificationService.initialize();
-      print("Message on App opened ${event.toString()}");
-      print("OPENEd");
-      print("LINK ${event.data['link']}");
+      localNotification.initialize();
+      print("Message on App opened");
       if (event.data['link'] != null) {
-        print("SUMULOD DIDI");
         String url = '${event.data['link']}';
         if (await canLaunch(url)) {
           await launch(url);
