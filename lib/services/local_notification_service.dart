@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'user_api_service.dart';
 
 class LocalNotificationService {
@@ -14,7 +17,7 @@ class LocalNotificationService {
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   final BehaviorSubject<String> behaviorSubject = BehaviorSubject();
 
-  static void initialize() async {
+  initialize() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const DarwinInitializationSettings initializationSettingsDarwin =
@@ -28,8 +31,22 @@ class LocalNotificationService {
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
-    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
-    print("SUMULOD DIDI");
+    await _flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: onSelectNotification,
+      onDidReceiveBackgroundNotificationResponse: onSelectNotification,
+    );
+  }
+
+  onSelectNotification(NotificationResponse notificationResponse) async {
+    if (notificationResponse.payload != null) {
+      String url = '${notificationResponse.payload}';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
   }
 
   static Future<void> requestPermissions(
@@ -75,7 +92,7 @@ class LocalNotificationService {
     debugPrint("test notification alert");
     debugPrint("DATA: ${notification.data}");
     debugPrint("TITLE: ${notification.notification!.title}");
-    debugPrint("NOTIF: ${notification.notification!.body}");
+    debugPrint("BODY: ${notification.notification!.body}");
     debugPrint("LINK: ${notification.data['link']}");
     debugPrint("IMAGE: ${notification.notification!.android?.imageUrl}");
     debugPrint("IOS");
@@ -85,8 +102,6 @@ class LocalNotificationService {
       'https://back.eg-czacademy.com/images/${notification.notification!.android?.imageUrl ?? ""}',
       'largeIcon',
     );
-
-    debugPrint("IMAGE: $largeIconPath");
 
     await _flutterLocalNotificationsPlugin.show(
       notification.hashCode,
@@ -109,6 +124,7 @@ class LocalNotificationService {
           styleInformation: const BigTextStyleInformation(''),
         ),
       ),
+      payload: notification.data['link'],
     );
   }
 }
