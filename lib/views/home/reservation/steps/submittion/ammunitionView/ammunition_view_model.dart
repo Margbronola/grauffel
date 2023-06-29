@@ -38,6 +38,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
       _bookingService.getselectedAmmunition;
 
   List<GunModel> selectedGun = [];
+  bool requiredAmmo = false;
 
   bool get haveorderedGuns => _bookingService.getselectedGun.isNotEmpty;
   bool get loader => _gunListService.loader;
@@ -59,6 +60,20 @@ class AmmunitionViewModel extends ReactiveViewModel {
     selectedGun.addAll(_bookingService.getselectedGun);
   }
 
+  getRequired() {
+    Iterable<GunModel> required =
+        selectedGun.where((element) => element.required_ammunition == 1);
+
+    print("GET REQUIRED: ${required.length}");
+    print("GET REQUIRED: $required");
+
+    if (required.isNotEmpty) {
+      requiredAmmo = true;
+    } else {
+      requiredAmmo = false;
+    }
+  }
+
   init() async {
     setBusy(true);
     initFilter();
@@ -67,7 +82,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
       token: _userService.token!,
     );
     await gunAmmunitionRecommended();
-
+    await getRequired();
     await _gunListService.setAmmunitionList(_ammunitionAPIService.ammunitions!);
     List<int?> gunAmmunitionRecommendedListId =
         gunAmmunitionRecommendedList.map((e) => e.id).toList();
@@ -122,7 +137,7 @@ class AmmunitionViewModel extends ReactiveViewModel {
       if (response.confirmed) {
         debugPrint("confirm");
       } else {
-        debugPrint("CANCE:");
+        debugPrint("CANCEL:");
       }
     }
   }

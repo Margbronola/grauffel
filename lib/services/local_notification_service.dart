@@ -108,10 +108,10 @@ class LocalNotificationService {
       notification.notification!.title,
       notification.notification!.body,
       NotificationDetails(
-        iOS: DarwinNotificationDetails(attachments: [
-          DarwinNotificationAttachment(
-              "https://back.eg-czacademy.com/images/${notification.notification!.apple?.imageUrl}")
-        ]),
+        // iOS: DarwinNotificationDetails(attachments: [
+        //   DarwinNotificationAttachment(
+        //       "https://back.eg-czacademy.com/images/${notification.notification!.apple?.imageUrl}")
+        // ]),
         android: AndroidNotificationDetails(
           'high_importance_channel',
           'High Importance Notifications',

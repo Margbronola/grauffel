@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:egczacademy/models/gunModel/gun_model.dart';
 import 'package:egczacademy/views/home/reservation/steps/submittion/ammunitionView/ammunition_view_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,19 +64,17 @@ class AmmunitionView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          skipTap();
-                        },
-                        child: Center(
-                          child: Text(
-                            "J’ai déjà des\nmunitions".toUpperCase(),
-                            style: ThemeData().textTheme.bodyLarge!.copyWith(
+                      Center(
+                        child: Text(
+                          model.requiredAmmo == false
+                              ? "J’ai déjà des\nmunitions".toUpperCase()
+                              : "",
+                          style: ThemeData().textTheme.bodyLarge!.copyWith(
                                 fontSize: 15.sp,
                                 color: Colors.grey,
                                 fontFamily: 'ProductSans',
-                                fontWeight: FontWeight.bold),
-                          ),
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ),
                       CustomButton(
@@ -87,11 +84,7 @@ class AmmunitionView extends StatelessWidget {
                                 model.suivant(onTap);
                               }
                             : () {
-                                Iterable<GunModel> required = model.selectedGun
-                                    .where((element) =>
-                                        element.required_ammunition == 1);
-                                print("$required");
-                                if (required.isNotEmpty) {
+                                if (model.requiredAmmo == true) {
                                   print("required");
 
                                   Fluttertoast.showToast(

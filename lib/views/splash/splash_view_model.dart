@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:egczacademy/app/app.router.dart';
+import 'package:egczacademy/app/global.dart';
 import 'package:egczacademy/models/user_model.dart';
 import 'package:egczacademy/services/sharedpref_service.dart';
 import 'package:egczacademy/services/user_api_service.dart';
@@ -19,22 +20,20 @@ class SplashViewModel extends BaseViewModel {
 
   init() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // print("HASKEY ${_sharedPrefService.hasKeyToken}");
-      // print("TOKEN: ${_sharedPrefService.prefsToken}");
       if (_sharedPrefService.hasKeyToken) {
-        print("sumulod didi sa if");
         UserModel? user = await _userAPIService.fethUserDetailsApi(
             token: _sharedPrefService.prefsToken);
         print("USER: $user");
         if (user != null) {
+          loggedUser = user;
           _userService.updateUser(user);
           _userService.updateToken(_sharedPrefService.prefsToken);
+          print("LOGGED USER: $loggedUser");
           _navigationService.pushNamedAndRemoveUntil(Routes.homeView);
         } else {
           _navigationService.pushNamedAndRemoveUntil(Routes.welcomeView);
         }
       } else {
-        print("sumulod didi sa else");
         _navigationService.pushNamedAndRemoveUntil(Routes.welcomeView);
       }
     });

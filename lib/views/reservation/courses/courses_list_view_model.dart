@@ -60,6 +60,7 @@ class CoursesListViewModel extends BaseViewModel {
     int isExist = await checkExistBooking(bookableCourse[index].id!);
     bool isFull = await checkSlotFull(bookableCourse[index]);
     debugPrint("Card Reserve click");
+    print(loggedUser);
     print(isExist);
     if (loggedUser!.initiation_course == 1) {
       if (loggedUser!.completed_steps == null) {

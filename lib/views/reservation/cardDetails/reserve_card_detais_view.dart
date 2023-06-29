@@ -69,6 +69,7 @@ class ReserveCardDetailsView extends StatelessWidget {
                     verticalSpaceMedium(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           children: [
@@ -78,12 +79,16 @@ class ReserveCardDetailsView extends StatelessWidget {
                               color: Colors.black,
                             ),
                             verticalSpaceSmall(),
-                            Text(
-                              model.book!.name!,
-                              style: const TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
+                            SizedBox(
+                              width: 100,
+                              child: Text(
+                                model.book!.name!,
+                                style: const TextStyle(
+                                    fontFamily: 'ProductSans',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
@@ -95,12 +100,17 @@ class ReserveCardDetailsView extends StatelessWidget {
                               color: Colors.black,
                             ),
                             verticalSpaceSmall(),
-                            Text(
-                              DateFormat.MMMEd('fr').format(model.book!.start!),
-                              style: const TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
+                            SizedBox(
+                              width: 80,
+                              child: Text(
+                                DateFormat.MMMEd('fr')
+                                    .format(model.book!.start!),
+                                style: const TextStyle(
+                                    fontFamily: 'ProductSans',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
@@ -112,12 +122,16 @@ class ReserveCardDetailsView extends StatelessWidget {
                               color: Colors.black,
                             ),
                             verticalSpaceSmall(),
-                            Text(
-                              model.time(),
-                              style: const TextStyle(
-                                  fontFamily: 'ProductSans',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
+                            SizedBox(
+                              width: 90,
+                              child: Text(
+                                model.time(),
+                                style: const TextStyle(
+                                    fontFamily: 'ProductSans',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),

@@ -43,8 +43,11 @@ String removeHtmlTags(String? text) => text == null
     ? ""
     : text
         .replaceAll("<p>", "")
-        .replaceAll("</p>", "")
-        .replaceAll("<strong>", "");
+        .replaceAll("</p>", " ")
+        .replaceAll("<strong>", " ")
+        .replaceAll("</strong>", " ")
+        .replaceAll("<u>", " ")
+        .replaceAll("</u>", " ");
 
 String dateFormat(DateTime date) {
   // final DateFormat formatter = DateFormat('MMMM');
@@ -53,3 +56,9 @@ String dateFormat(DateTime date) {
       "${date.day}/${date.month.toString().length == 1 ? "0${date.month.toString()}" : date.month.toString()}/${date.year}";
   return formatted;
 }
+
+
+// DATA IN MODEL: {id: 4438, name: Pré Match amical - Vendredi Après-Midi - Squad 98, description: <p>Match amical de l'EG-CZ Academy</p><p>Pré match - 
+// Vendredi 07 juillet 2023 <strong><u>APRES-MIDI</u></strong></p><p><strong>Squad 98</strong></p><p>10 places maxi</p><p><span style="color: rgba(255, 255, 255, 0.698);
+// ">Les divisions &amp; catégories seront validées durant la registration qui se fera 1H avant le début des tirs.</span></p>, 
+// start: 2023-07-07 13:30:00.000, end: 2023-07-07 17:30:00.000, status: 1}

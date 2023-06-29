@@ -55,6 +55,7 @@ class SubmitionView extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Column(
                               children: [
@@ -63,12 +64,17 @@ class SubmitionView extends StatelessWidget {
                                   width: 27.w,
                                 ),
                                 verticalSpaceSmall(),
-                                Text(
-                                  model.bookedModel!.name ?? "",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'ProductSans',
-                                    fontSize: 13.sp,
+                                SizedBox(
+                                  width: 100,
+                                  child: Text(
+                                    model.bookedModel!.name ?? "",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'ProductSans',
+                                      fontSize: 13.sp,
+                                    ),
+                                    maxLines: 5,
+                                    textAlign: TextAlign.center,
                                   ),
                                 )
                               ],
@@ -80,12 +86,16 @@ class SubmitionView extends StatelessWidget {
                                   width: 27.w,
                                 ),
                                 verticalSpaceSmall(),
-                                Text(
-                                  model.date(),
-                                  style: TextStyle(
-                                    fontFamily: 'ProductSans',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13.sp,
+                                SizedBox(
+                                  width: 80,
+                                  child: Text(
+                                    model.date(),
+                                    style: TextStyle(
+                                      fontFamily: 'ProductSans',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13.sp,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 )
                               ],
@@ -99,12 +109,16 @@ class SubmitionView extends StatelessWidget {
                                 verticalSpaceSmall(),
                                 model.bookedModel!.name == courseTSV
                                     ? const SizedBox()
-                                    : Text(
-                                        model.time(),
-                                        style: TextStyle(
-                                          fontFamily: 'ProductSans',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13.sp,
+                                    : SizedBox(
+                                        width: 80,
+                                        child: Text(
+                                          model.time(),
+                                          style: TextStyle(
+                                            fontFamily: 'ProductSans',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13.sp,
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
                                       )
                               ],
