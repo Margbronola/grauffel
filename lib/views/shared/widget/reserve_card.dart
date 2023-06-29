@@ -69,15 +69,13 @@ class _ReserveCardState extends State<ReserveCard> {
                           widget.reserve.title!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: ThemeData().textTheme.bodyText1!.copyWith(
+                          style: ThemeData().textTheme.bodyLarge!.copyWith(
                               fontSize: 18.sp,
                               color: buttonColor,
                               fontFamily: 'ProductSans',
                               fontWeight: FontWeight.w500),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         !widget.isCourse
                             ? FittedBox(
                                 child: Column(
@@ -124,7 +122,7 @@ class _ReserveCardState extends State<ReserveCard> {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style:
-                                    ThemeData().textTheme.bodyText1!.copyWith(
+                                    ThemeData().textTheme.bodyLarge!.copyWith(
                                           fontSize: 12.sp,
                                           fontFamily: 'ProductSans',
                                         ),

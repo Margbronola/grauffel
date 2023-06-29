@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../services/user_api_service.dart';
 import '../../services/user_service.dart';
 

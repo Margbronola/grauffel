@@ -6,13 +6,11 @@ import 'package:egczacademy/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import '../app/datacacher.dart';
 import '../models/user_model.dart';
 import '../app/global.dart';
 
 class AuthenticationService {
   final UserService _userService = locator<UserService>();
-  final DataCacher _cacher = DataCacher.instance;
 
   Future<String?> login(
       {required String firebaseToken, required String deviceName}) async {

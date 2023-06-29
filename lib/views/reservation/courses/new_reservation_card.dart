@@ -115,6 +115,7 @@ class NewReservationCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 15),
                         ),
+                        const SizedBox(height: 5),
                         Expanded(
                           child: Text(
                             removeHtmlTags(data.description),

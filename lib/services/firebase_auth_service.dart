@@ -4,13 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../app/datacacher.dart';
-import '../app/global.dart';
-
 class FireBaseAuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
-  final DataCacher _cacher = DataCacher.instance;
 
   Future<String?> signIn(
       {required String email, required String password}) async {
