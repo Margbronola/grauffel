@@ -55,7 +55,7 @@ class ReserveCourseDialog extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "COURS",
+                    "${request!.title}",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: buttonColor,

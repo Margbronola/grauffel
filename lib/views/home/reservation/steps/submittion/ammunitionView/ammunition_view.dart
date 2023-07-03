@@ -64,19 +64,24 @@ class AmmunitionView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Center(
-                        child: Text(
-                          model.requiredAmmo == false
-                              ? "J’ai déjà des\nmunitions".toUpperCase()
-                              : "",
-                          style: ThemeData().textTheme.bodyLarge!.copyWith(
-                                fontSize: 15.sp,
-                                color: Colors.grey,
-                                fontFamily: 'ProductSans',
-                                fontWeight: FontWeight.bold,
+                      model.requiredAmmo == false
+                          ? TextButton(
+                              onPressed: () {
+                                skipTap();
+                              },
+                              child: Text(
+                                "J’ai déjà des\nmunitions".toUpperCase(),
+                                style: ThemeData()
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                        fontSize: 15.sp,
+                                        color: Colors.grey,
+                                        fontFamily: 'ProductSans',
+                                        fontWeight: FontWeight.bold),
                               ),
-                        ),
-                      ),
+                            )
+                          : Container(),
                       CustomButton(
                         title: "Suivant",
                         onTap: model.selectedAmmunition.isNotEmpty
