@@ -191,6 +191,7 @@ class BookingAPIService {
         _bookable =
             fetchBookable.map((e) => ActivityModel.fromJson(e)).toList();
         print("ACTIVITIES: $data");
+        print("ACTIVITIES: ${_bookable[0].activitysalle}");
         try {
           if (fetchMore) {
             debugPrint("FETCHING morel");
@@ -293,7 +294,7 @@ class BookingAPIService {
 
           _courses =
               fetchCouresList.map((e) => CourseModel.fromJson(e)).toList();
-          debugPrint("COURs: $_courses");
+          print("COURs: ${_courses[0]}");
 
           if (isFetchMore) {
             _bookableCourse.clear();
