@@ -40,7 +40,7 @@ class SubmitionView extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "Récapitulatif".toUpperCase(),
-                        style: ThemeData().textTheme.bodyText1!.copyWith(
+                        style: ThemeData().textTheme.bodyLarge!.copyWith(
                               fontSize: 22.sp,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans',

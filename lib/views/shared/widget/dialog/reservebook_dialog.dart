@@ -9,7 +9,9 @@ import '../../ui_helper.dart';
 class ReserveBookDialog extends StatelessWidget {
   final DialogRequest? request;
   final Function(DialogResponse)? completer;
-  const ReserveBookDialog({Key? key, this.request, this.completer})
+  final String? activityName;
+  const ReserveBookDialog(
+      {Key? key, this.request, this.completer, this.activityName})
       : super(key: key);
 
   @override
@@ -55,7 +57,8 @@ class ReserveBookDialog extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "PAS DE TIR 25 mètres",
+                    // "PAS DE TIR 25 mètres",
+                    "${request!.title}",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: buttonColor,
