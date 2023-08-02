@@ -201,14 +201,15 @@ class AmmunitionViewModel extends ReactiveViewModel {
     notifyListeners();
   }
 
-  void suivant(Function onTap) {
+  void suivant(Function onTap, Function skipTap) {
     if (_bookingService.getselectedAmmunition.isNotEmpty) {
       if (selectedIndex == 0) {
         debugPrint("its zero");
         nextPage(1);
       } else {
         debugPrint("not zero");
-        onTap();
+        // onTap();
+        skipTap();
       }
     }
   }

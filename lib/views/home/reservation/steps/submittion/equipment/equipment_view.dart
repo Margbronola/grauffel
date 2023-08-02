@@ -53,7 +53,7 @@ class EquipmentView extends StatelessWidget {
                         onPressed: skipTap,
                         child: Text(
                           "J’ai déjà des\néquipements".toUpperCase(),
-                          style: ThemeData().textTheme.bodyText1!.copyWith(
+                          style: ThemeData().textTheme.bodyLarge!.copyWith(
                               fontSize: 15.sp,
                               color: Colors.grey,
                               fontFamily: 'ProductSans',
