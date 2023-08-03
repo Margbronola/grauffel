@@ -24,7 +24,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
             width: double.infinity,
             child: Text(
               "Choisissez la quantité",
-              style: ThemeData().textTheme.bodyText1!.copyWith(
+              style: ThemeData().textTheme.bodyLarge!.copyWith(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'ProductSans',
@@ -38,7 +38,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
             width: double.infinity,
             child: Text(
               "Les munitions sont disponibles en boite de 50.",
-              style: ThemeData().textTheme.bodyText1!.copyWith(
+              style: ThemeData().textTheme.bodyLarge!.copyWith(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'ProductSans',
@@ -107,7 +107,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                         style: ThemeData()
                                             .textTheme
-                                            .bodyText1!
+                                            .bodyLarge!
                                             .copyWith(
                                               fontSize: 10.sp,
                                               fontWeight: FontWeight.bold,
@@ -124,7 +124,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                           "Marque",
                                           style: ThemeData()
                                               .textTheme
-                                              .bodyText1!
+                                              .bodyLarge!
                                               .copyWith(
                                                 fontSize: 10.sp,
                                                 fontFamily: 'ProductSans',
@@ -135,7 +135,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                               .name!,
                                           style: ThemeData()
                                               .textTheme
-                                              .bodyText1!
+                                              .bodyLarge!
                                               .copyWith(
                                                 fontSize: 10.sp,
                                                 fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                       "Calibre",
                                       style: ThemeData()
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .copyWith(
                                             fontSize: 10.sp,
                                             fontFamily: 'ProductSans',
@@ -167,7 +167,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                           .name!,
                                       style: ThemeData()
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .copyWith(
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.bold,
@@ -204,7 +204,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                               .toString(),
                                           style: ThemeData()
                                               .textTheme
-                                              .bodyText1!
+                                              .bodyLarge!
                                               .copyWith(
                                                   fontSize: 20.sp,
                                                   fontFamily: 'ProductSans',
@@ -230,7 +230,7 @@ class AmmunitionViewQuantity extends StatelessWidget {
                                       "boites",
                                       style: ThemeData()
                                           .textTheme
-                                          .bodyText1!
+                                          .bodyLarge!
                                           .copyWith(
                                             fontSize: 13.sp,
                                             fontWeight: FontWeight.bold,

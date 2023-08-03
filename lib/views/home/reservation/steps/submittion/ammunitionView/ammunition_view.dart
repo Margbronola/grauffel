@@ -67,6 +67,7 @@ class AmmunitionView extends StatelessWidget {
                       model.requiredAmmo == false
                           ? TextButton(
                               onPressed: () {
+                                print("required ammo == ${model.requiredAmmo}");
                                 skipTap();
                               },
                               child: Text(
@@ -86,7 +87,7 @@ class AmmunitionView extends StatelessWidget {
                         title: "Suivant",
                         onTap: model.selectedAmmunition.isNotEmpty
                             ? () {
-                                model.suivant(onTap);
+                                model.suivant(onTap, skipTap);
                               }
                             : () {
                                 if (model.requiredAmmo == true) {

@@ -57,7 +57,6 @@ class ReserveBookDialog extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    // "PAS DE TIR 25 mètres",
                     "${request!.title}",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
