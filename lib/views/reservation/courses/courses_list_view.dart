@@ -52,15 +52,15 @@ class CourseListView extends StatelessWidget {
                                 verticalSpaceMedium(),
                                 reservationCards(
                                   model: model,
-                                  values: model.stages,
-                                  title: "Stages",
+                                  values: model.entrainement,
+                                  title: "Entrainement",
                                 ),
                                 verticalSpaceMedium(),
                                 reservationCards(
                                   model: model,
-                                  values: model.entrainement,
-                                  title: "Entrainement",
-                                )
+                                  values: model.stages,
+                                  title: "Stages",
+                                ),
                               ],
                             ),
                     ),
