@@ -3,7 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../shared/color.dart';
 
-class RegisterHelper {
+mixin class RegisterHelper {
   void showFail() {
     Fluttertoast.showToast(
         msg: "Échec de la connexion",
