@@ -17,7 +17,7 @@ import '../../app/app.locator.dart';
 import '../../services/authentication_service.dart';
 import '../shared/color.dart';
 
-class LoginHelper {
+mixin class LoginHelper {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final FireBaseAuthService _fireBaseAuthService =
