@@ -56,7 +56,9 @@ class AmmunitionViewList extends StatelessWidget {
                       ),
                     ],
                   )
-                : Column(
+                : ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       SizedBox(
                         width: double.infinity,
@@ -158,28 +160,30 @@ class AmmunitionViewList extends StatelessWidget {
                       ),
                       // Expanded(
                       // child:
-                      LazyLoadScrollView(
-                        isLoading: model.isloadDone,
-                        onEndOfPage: () => model.loadMore(),
-                        scrollOffset: 100,
-                        child: GridView.count(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          crossAxisCount: 2,
-                          children: List.generate(
-                            model.ammunitions!.length,
-                            (index) {
-                              return amminitionCard(
-                                index: index,
-                                ammunition: model.ammunitions![index],
-                                model: model,
-                              );
-                            },
-                          ),
+                      // LazyLoadScrollView(
+                      //   isLoading: model.isloadDone,
+                      //   onEndOfPage: () => model.loadMore(),
+                      //   scrollOffset: 100,
+                      //   child:
+                      GridView.count(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        physics: const NeverScrollableScrollPhysics(),
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        crossAxisCount: 2,
+                        children: List.generate(
+                          model.ammunitions!.length,
+                          (index) {
+                            return amminitionCard(
+                              index: index,
+                              ammunition: model.ammunitions![index],
+                              model: model,
+                            );
+                          },
                         ),
                       ),
+                      // ),
                       if (model.isloadDone == true)
                         const Padding(
                           padding: EdgeInsets.only(top: 10, bottom: 10),
