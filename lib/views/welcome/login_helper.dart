@@ -97,7 +97,7 @@ class LoginHelper {
           if (firebaseUser != null) {
             await _authenticationService
                 .login(
-                    firebaseToken: await firebaseUser.getIdToken(),
+                    firebaseToken: firebaseUser.getIdToken().toString(),
                     deviceName: _deviceName)
                 .then((value) async {
               if (value != null) {
@@ -160,7 +160,7 @@ class LoginHelper {
           if (firebaseUser != null) {
             await _authenticationService
                 .login(
-                    firebaseToken: await firebaseUser.getIdToken(),
+                    firebaseToken: firebaseUser.getIdToken().toString(),
                     deviceName: _deviceName)
                 .then((value) async {
               if (value != null) {

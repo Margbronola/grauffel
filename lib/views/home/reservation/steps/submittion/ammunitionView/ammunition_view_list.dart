@@ -165,6 +165,7 @@ class AmmunitionViewList extends StatelessWidget {
                         child: GridView.count(
                           shrinkWrap: true,
                           padding: const EdgeInsets.symmetric(horizontal: 20),
+                          physics: const NeverScrollableScrollPhysics(),
                           mainAxisSpacing: 10,
                           crossAxisSpacing: 10,
                           crossAxisCount: 2,
