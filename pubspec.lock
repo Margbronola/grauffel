@@ -317,10 +317,10 @@ packages:
     dependency: "direct main"
     description:
       name: date_picker_timetable
-      sha256: f8d9caebe86a254f07370a773ac326eaeab3d42ac444b5893a6fe1c439997451
+      sha256: ddcd9dd6c823e13e54fa5c01affb7a1d62418c319a7e8981a167949321f5294d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   dbus:
     dependency: transitive
     description:

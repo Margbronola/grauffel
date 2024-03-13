@@ -46,6 +46,8 @@ String removeHtmlTags(String? text) => text == null
         .replaceAll("</p>", " ")
         .replaceAll("<strong>", " ")
         .replaceAll("</strong>", " ")
+        .replaceAll("<span>", " ")
+        .replaceAll("</span>", " ")
         .replaceAll("<u>", " ")
         .replaceAll("</u>", " ");
 
