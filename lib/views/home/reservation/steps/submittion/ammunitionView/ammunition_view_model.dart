@@ -208,8 +208,8 @@ class AmmunitionViewModel extends ReactiveViewModel {
         nextPage(1);
       } else {
         debugPrint("not zero");
-        // onTap();
-        skipTap();
+        onTap(); 
+        // skipTap();
       }
     }
   }
