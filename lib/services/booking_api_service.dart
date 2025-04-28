@@ -19,7 +19,7 @@ import '../app/global.dart';
 import '../models/book_course_model.dart';
 import '../models/paging_model.dart';
 
-class BookingAPIService {
+mixin class BookingAPIService {
   List<BookingModel>? _bookings;
   List<BookingModel>? get bookings => _bookings;
 

@@ -9,7 +9,11 @@
 .buildlog/
 .history
 .svn/
+<<<<<<< HEAD
 .swiftpm/
+=======
+.util/
+>>>>>>> master
 migrate_working_dir/
 **/android/key.properties
 
