@@ -21,15 +21,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform, name: 'Grauffel');
+    options: DefaultFirebaseOptions.currentPlatform,
+    name: 'Grauffel',
+  );
   await setupLocator();
   await dotenv.load();
   await initializePrefs();
   setupDialogUi();
-  runApp(DevicePreview(
-    enabled: false,
-    builder: (context) => const MyApp(),
-  ));
+  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,39 +41,41 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
-        .copyWith(systemNavigationBarColor: Colors.black));
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light.copyWith(
+        systemNavigationBarColor: Colors.black,
+      ),
+    );
 
     LocalJsonLocalization.delegate.directories = ['lib/i18n'];
 
     return ScreenUtilInit(
       designSize: const Size(428, 926),
-      builder: (context, child) => MaterialApp(
-        localeResolutionCallback: (locale, supportedLocales) {
-          return const Locale('fr', 'FR');
-        },
-        supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('fr', 'FR'),
-        ],
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          LocalJsonLocalization.delegate,
-        ],
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
-            textTheme: GoogleFonts.notoSansTakriTextTheme(),
-            brightness: Brightness.dark,
-            primarySwatch: Palette.kToDark,
-            backgroundColor: backgroundColor,
-            canvasColor: backgroundColor),
-        navigatorKey: StackedService.navigatorKey,
-        onGenerateRoute: StackedRouter().onGenerateRoute,
-      ),
+      builder:
+          (context, child) => MaterialApp(
+            localeResolutionCallback: (locale, supportedLocales) {
+              return const Locale('fr', 'FR');
+            },
+            supportedLocales: const [Locale('en', 'US'), Locale('fr', 'FR')],
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              LocalJsonLocalization.delegate,
+            ],
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              appBarTheme: const AppBarTheme(backgroundColor: primaryColor),
+              textTheme: GoogleFonts.notoSansTakriTextTheme(),
+              brightness: Brightness.dark,
+              primarySwatch: Palette.kToDark,
+              // backgroundColor: backgroundColor,
+              canvasColor: backgroundColor,
+            ),
+            navigatorKey: StackedService.navigatorKey,
+            onGenerateRoute: StackedRouter().onGenerateRoute,
+          ),
     );
   }
 }
