@@ -23,6 +23,8 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+      print("AMMOS: ${title}");
     return Stack(
       children: [
         Container(

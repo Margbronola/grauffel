@@ -32,42 +32,42 @@ mixin class LoginHelper {
 
   void showFail() {
     Fluttertoast.showToast(
-        msg: "Accès refusé",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.white.withOpacity(0.1),
-        textColor: errorColor,
-        fontSize: 16.0);
+      msg: "Accès refusé",
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.white.withOpacity(0.1),
+      textColor: errorColor,
+      fontSize: 16.0,
+    );
   }
 
   void goToHome() {
     _navigationService.pushNamedAndRemoveUntil("/home-view");
   }
 
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
-    await _fireBaseAuthService
-        .signIn(email: email, password: password)
-        .then((value) async {
+  Future<void> login({required String email, required String password}) async {
+    await _fireBaseAuthService.signIn(email: email, password: password).then((
+      value,
+    ) async {
       debugPrint(value);
       debugPrint("data jere");
       if (value != null) {
         await _authenticationService
             .login(firebaseToken: value, deviceName: _deviceName)
             .then((value) async {
-          debugPrint("LOGIN DATA $value");
-          if (value != null) {
-            await _sharedPrefService.saveToken(token: value);
-            goToHome();
-          } else {
-            showFail();
-            _navigationService.navigateToView(const WelcomeView(),
-                popGesture: true);
-          }
-        });
+              debugPrint("LOGIN DATA $value");
+              if (value != null) {
+                await _sharedPrefService.saveToken(token: value);
+                goToHome();
+              } else {
+                showFail();
+                _navigationService.navigateToView(
+                  const WelcomeView(),
+                  popGesture: true,
+                );
+              }
+            });
       } else {
         showFail();
         _navigationService.navigateToView(const WelcomeView());
@@ -78,7 +78,7 @@ mixin class LoginHelper {
   Future<void> appleSignIn() async {
     try {
       final result = await AppleSignIn.performRequests([
-        const AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+        const AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName]),
       ]);
       switch (result.status) {
         case AuthorizationStatus.authorized:
@@ -87,9 +87,11 @@ mixin class LoginHelper {
 
           final credential = oAuthProvider.credential(
             idToken: String.fromCharCodes(
-                appleIdCredential?.identityToken as Iterable<int>),
+              appleIdCredential?.identityToken as Iterable<int>,
+            ),
             accessToken: String.fromCharCodes(
-                appleIdCredential?.authorizationCode as Iterable<int>),
+              appleIdCredential?.authorizationCode as Iterable<int>,
+            ),
           );
           final authResult = await _fireBaseAuthService.firebaseAuth
               .signInWithCredential(credential);
@@ -97,16 +99,17 @@ mixin class LoginHelper {
           if (firebaseUser != null) {
             await _authenticationService
                 .login(
-                    firebaseToken: await firebaseUser.getIdToken(),
-                    deviceName: _deviceName)
+                  firebaseToken: firebaseUser.getIdToken().toString(),
+                  deviceName: _deviceName,
+                )
                 .then((value) async {
-              if (value != null) {
-                await _sharedPrefService.saveToken(token: value);
-                goToHome();
-              } else {
-                showFail();
-              }
-            });
+                  if (value != null) {
+                    await _sharedPrefService.saveToken(token: value);
+                    goToHome();
+                  } else {
+                    showFail();
+                  }
+                });
           }
 
           return;
@@ -131,8 +134,8 @@ mixin class LoginHelper {
       return;
     } on HttpException {
       Fluttertoast.showToast(
-          msg:
-              "Une erreur s'est produite lors de l'exécution de cette opération");
+        msg: "Une erreur s'est produite lors de l'exécution de cette opération",
+      );
       return;
     } on FormatException {
       Fluttertoast.showToast(msg: "Erreur de format");
@@ -151,8 +154,9 @@ mixin class LoginHelper {
       print("SUMULOD DIDI");
       switch (result.status) {
         case LoginStatus.success:
-          final facebookCredential =
-              FacebookAuthProvider.credential(result.accessToken!.token);
+          final facebookCredential = FacebookAuthProvider.credential(
+            result.accessToken!.tokenString,
+          );
           final authResult = await _fireBaseAuthService.firebaseAuth
               .signInWithCredential(facebookCredential);
           print("AUTH RESULT: $authResult");
@@ -160,16 +164,17 @@ mixin class LoginHelper {
           if (firebaseUser != null) {
             await _authenticationService
                 .login(
-                    firebaseToken: await firebaseUser.getIdToken(),
-                    deviceName: _deviceName)
+                  firebaseToken: firebaseUser.getIdToken().toString(),
+                  deviceName: _deviceName,
+                )
                 .then((value) async {
-              if (value != null) {
-                await _sharedPrefService.saveToken(token: value);
-                goToHome();
-              } else {
-                showFail();
-              }
-            });
+                  if (value != null) {
+                    await _sharedPrefService.saveToken(token: value);
+                    goToHome();
+                  } else {
+                    showFail();
+                  }
+                });
           }
           return;
         case LoginStatus.cancelled:
@@ -200,8 +205,8 @@ mixin class LoginHelper {
       rethrow;
     } on HttpException {
       Fluttertoast.showToast(
-          msg:
-              "Une erreur s'est produite lors de l'exécution de cette opération");
+        msg: "Une erreur s'est produite lors de l'exécution de cette opération",
+      );
       return;
     } on FormatException {
       Fluttertoast.showToast(msg: "Erreur de format");

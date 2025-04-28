@@ -6,7 +6,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
-class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
+class WelcomeViewModel extends BaseViewModel {
   ScrollController scrollController = ScrollController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -52,9 +52,10 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
 
   late StreamSubscription<bool> keyboardSubscription;
 
-  String get btnText => isLoginView
-      ? "se connecter".toUpperCase()
-      : isRegisterView
+  String get btnText =>
+      isLoginView
+          ? "se connecter".toUpperCase()
+          : isRegisterView
           ? "S'inscrire".toUpperCase()
           : "J'AI UN COMPTE";
 
@@ -98,8 +99,9 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
 
   void init(TickerProvider vsync) {
     var keyboardVisibilityController = KeyboardVisibilityController();
-    keyboardSubscription =
-        keyboardVisibilityController.onChange.listen((bool visible) {
+    keyboardSubscription = keyboardVisibilityController.onChange.listen((
+      bool visible,
+    ) {
       keyBoardVisible = visible;
       notifyListeners();
     });
@@ -119,9 +121,11 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       isPasswordFucos = passwordFocusNode.hasFocus;
       if (passwordFocusNode.hasFocus) {
         Future.delayed(const Duration(milliseconds: 600), () {
-          scrollController.animateTo(255,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeIn);
+          scrollController.animateTo(
+            255,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+          );
         });
       }
       notifyListeners();
@@ -131,32 +135,33 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
       isEmailFucos = emailFocusNode.hasFocus;
       if (emailFocusNode.hasFocus) {
         Future.delayed(const Duration(milliseconds: 500), () {
-          scrollController.animateTo(235,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeIn);
+          scrollController.animateTo(
+            235,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+          );
         });
       }
       notifyListeners();
     });
 
     controllerInputText = AnimationController(
-        duration: const Duration(milliseconds: 300), vsync: vsync);
+      duration: const Duration(milliseconds: 300),
+      vsync: vsync,
+    );
 
     controllerLogo = AnimationController(
-        duration: const Duration(milliseconds: 300), vsync: vsync);
+      duration: const Duration(milliseconds: 300),
+      vsync: vsync,
+    );
 
     Animation<Offset> setOffSet({required double start, required double end}) =>
-        Tween<Offset>(
-          begin: const Offset(50, 0.0),
-          end: Offset.zero,
-        ).animate(CurvedAnimation(
-          parent: controllerInputText,
-          curve: Interval(
-            start,
-            end,
-            curve: Curves.ease,
+        Tween<Offset>(begin: const Offset(50, 0.0), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: controllerInputText,
+            curve: Interval(start, end, curve: Curves.ease),
           ),
-        ));
+        );
 
     offsetAnimation5 = setOffSet(start: 0.0, end: 0.2);
     offsetAnimation4 = setOffSet(start: 0.2, end: 0.4);
@@ -171,25 +176,39 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     ).animate(
       CurvedAnimation(
         parent: controllerLogo,
-        curve: const Interval(
-          0.0,
-          0.1,
-          curve: Curves.ease,
-        ),
+        curve: const Interval(0.0, 0.1, curve: Curves.ease),
       ),
     );
   }
 
   void jumpToLogin() async {
-    pageController.animateToPage(1,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+    pageController.animateToPage(
+      1,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
+    isLoginView = true;
+    notifyListeners();
+  }
+
+  appleSignIn() async {
+    LoginHelper().appleSignIn();
+    isLoginView = true;
+    notifyListeners();
+  }
+
+  fbSignIn() async {
+    LoginHelper().fbSignIn();
     isLoginView = true;
     notifyListeners();
   }
 
   void back() async {
-    pageController.animateToPage(0,
-        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+    pageController.animateToPage(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
     isLoginView = false;
     notifyListeners();
   }
@@ -197,14 +216,17 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
   void animateToRegister() async {
     debugPrint("ANIMATEREGISTER");
     if (isLoginView) {
-      controllerInputText.reverse().then((value) {
-        isRegisterView = true;
-        isLoginView = false;
-        notifyListeners();
-      }).then((value) async {
-        await controllerInputText.forward();
-        notifyListeners();
-      });
+      controllerInputText
+          .reverse()
+          .then((value) {
+            isRegisterView = true;
+            isLoginView = false;
+            notifyListeners();
+          })
+          .then((value) async {
+            await controllerInputText.forward();
+            notifyListeners();
+          });
     } else {
       isRegisterView = true;
       notifyListeners();
@@ -230,8 +252,10 @@ class WelcomeViewModel extends BaseViewModel with LoginHelper, RegisterHelper {
     if (formKey.currentState!.validate()) {
       flexSize = 440;
       setBusy(true);
-      await login(
-          email: emailController.text, password: passwordController.text);
+      await LoginHelper().login(
+        email: emailController.text,
+        password: passwordController.text,
+      );
       setBusy(false);
     } else {
       flexSize = 540;

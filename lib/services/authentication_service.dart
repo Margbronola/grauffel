@@ -21,6 +21,7 @@ class AuthenticationService {
       }, headers: {
         "Accept": "application/json",
       });
+      print("LOGIN RESPONSE BODY ${respo.body}");
       if (respo.statusCode == 200) {
         var data = json.decode(respo.body);
         Fluttertoast.showToast(msg: "Successful Login");

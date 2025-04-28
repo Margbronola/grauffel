@@ -88,16 +88,19 @@ class AmmunitionView extends StatelessWidget {
                         onTap: model.selectedAmmunition.isNotEmpty
                             ? () {
                                 model.suivant(onTap, skipTap);
+                                print("Didi sumulod is not empty");
                               }
                             : () {
                                 if (model.requiredAmmo == true) {
                                   print("required");
+                                print("Didi sumulod required ammos");
 
                                   Fluttertoast.showToast(
                                       msg:
                                           "Besoin de sélectionner les munitions requises");
                                 } else {
                                   print("diri required");
+                                print("Didi sumulod diri required an ammos");
                                   skipTap();
                                 }
                               },
